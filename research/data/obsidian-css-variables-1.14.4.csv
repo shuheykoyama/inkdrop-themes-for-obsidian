@@ -1,0 +1,1236 @@
+variable,documented,doc_page,defined_in_appcss,default_dark,default_light,defining_selector,notes
+--accent-h,y,Foundations/Colors.md,y,258,258,body@2939,app.js sets inline style on body when user picks accent color
+--accent-l,y,Foundations/Colors.md,y,66%,66%,body@2941,app.js sets inline style on body when user picks accent color
+--accent-s,y,Foundations/Colors.md,y,88%,88%,body@2940,app.js sets inline style on body when user picks accent color
+--anim-duration-fast,n,,y,140ms,140ms,body@2024,
+--anim-duration-moderate,n,,y,300ms,300ms,body@2025,
+--anim-duration-none,n,,y,0,0,body@2022,
+--anim-duration-slow,n,,y,560ms,560ms,body@2026,
+--anim-duration-superfast,n,,y,70ms,70ms,body@2023,
+--anim-motion-delay,n,,y,"cubic-bezier(0.65, 0.05, 0.36, 1)","cubic-bezier(0.65, 0.05, 0.36, 1)",body@2028,
+--anim-motion-jumpy,n,,y,"cubic-bezier(0.68, -0.55, 0.27, 1.55)","cubic-bezier(0.68, -0.55, 0.27, 1.55)",body@2029,
+--anim-motion-smooth,n,,y,"cubic-bezier(0.45, 0.05, 0.55, 0.95)","cubic-bezier(0.45, 0.05, 0.55, 0.95)",body@2027,
+--anim-motion-swing,n,,y,"cubic-bezier(0, 0.55, 0.45, 1)","cubic-bezier(0, 0.55, 0.45, 1)",body@2030,
+--annotation-unfocused-field-background,n,,pdfjs-only,,,,pdf.js-region only
+--autoscroll-padding,n,,y,,,.is-mobile@19497,also/only in 1 other rule(s): .is-mobile
+--background-modifier-active-hover,y,Foundations/Colors.md,y,"color-mix(in oklch, var(--interactive-accent) 10%, transparent)","color-mix(in oklch, var(--interactive-accent) 10%, transparent)",body@2947,
+--background-modifier-border,y,Foundations/Colors.md,y,var(--color-base-30),var(--color-base-30),body@2948,also/only in 1 other rule(s): .metadata-property-value .multi-select-container
+--background-modifier-border-focus,y,Foundations/Colors.md,y,var(--color-base-40),var(--color-base-40),body@2950,also/only in 1 other rule(s): .pdf-findbar .mod-not-found
+--background-modifier-border-hover,y,Foundations/Colors.md,y,var(--color-base-35),var(--color-base-35),body@2949,
+--background-modifier-box-shadow,n,,y,"rgba(0, 0, 0, 0.3)","rgba(0, 0, 0, 0.1)",.theme-dark@3072; .theme-light@3010,
+--background-modifier-cover,n,,y,"rgba(10, 10, 10, 0.4)","rgba(220, 220, 220, 0.4)",.theme-dark@3073; .theme-light@3011,also/only in 1 other rule(s): .is-mobile
+--background-modifier-error,y,Foundations/Colors.md,y,var(--color-red),var(--color-red),body@2951,
+--background-modifier-error-hover,y,Foundations/Colors.md,y,var(--color-red),var(--color-red),body@2953,
+--background-modifier-error-rgb,y,Foundations/Colors.md,y,var(--color-red-rgb),var(--color-red-rgb),body@2978,DEPRECATED per docs Colors.md (1.13); app.css comment: Deprecated
+--background-modifier-form-field,y,Foundations/Colors.md,y,var(--color-base-25),var(--color-base-00),body@2958; .theme-dark@3065,also/only in 8 other rule(s): .pdf-findbar .mod-not-found | .metadata-property-value .multi-select-container | .bases-search-row | .is-mobile ...
+--background-modifier-form-field-hover,n,,y,var(--background-modifier-form-field),var(--background-modifier-form-field),body@2959,also/only in 3 other rule(s): .bases-search-row | .is-mobile | .workspace-drawer .search-input-container
+--background-modifier-hover,y,Foundations/Colors.md,y,"color-mix(in oklch, var(--mono-100) 6.7%, transparent)","color-mix(in oklch, var(--mono-100) 6.7%, transparent)",body@2946,
+--background-modifier-message,y,Foundations/Colors.md,y,"color-mix(in oklch, black 90%, transparent)","color-mix(in oklch, black 90%, transparent)",body@2956,also/only in 1 other rule(s): .is-mobile.theme-dark
+--background-modifier-success,y,Foundations/Colors.md,y,var(--color-green),var(--color-green),body@2955,
+--background-modifier-success-rgb,y,Foundations/Colors.md,y,var(--color-green-rgb),var(--color-green-rgb),body@2979,DEPRECATED per docs Colors.md (1.13); app.css comment: Deprecated
+--background-modifier-warning,n,,y,var(--color-orange),var(--color-orange),body@2952,
+--background-modifier-warning-hover,n,,y,var(--color-orange),var(--color-orange),body@2954,
+--background-primary,y,Foundations/Colors.md,y,var(--color-base-00),var(--color-base-00),body@2943,
+--background-primary-alt,y,Foundations/Colors.md,y,var(--color-base-10),var(--color-base-10),body@2944,
+--background-secondary,y,Foundations/Colors.md,y,var(--color-base-20),var(--color-base-20),body@2945,
+--background-secondary-alt,y,Foundations/Colors.md,y,var(--color-base-30),var(--color-base-05),.theme-dark@3066; .theme-light@3009,
+--bases-cards-background,y,Editor/Bases.md,y,var(--background-primary),var(--background-primary),body@2076,
+--bases-cards-border-width,y,Editor/Bases.md,y,var(--border-width),var(--border-width),body@2077,
+--bases-cards-container-background,y,Editor/Bases.md,y,transparent,transparent,body@2078,
+--bases-cards-corner-shape,n,,y,var(--corner-shape),var(--corner-shape),body@2079,
+--bases-cards-cover-background,y,Editor/Bases.md,y,var(--background-primary-alt),var(--background-primary-alt),body@2080,
+--bases-cards-font-size,n,,y,var(--font-smaller),var(--font-smaller),body@2081,
+--bases-cards-group-padding,y,Editor/Bases.md,n,,,,not defined nor used in app.css 1.14.4/1.13.7
+--bases-cards-line-height,y,Editor/Bases.md,y,24px,24px,body@2082,
+--bases-cards-radius,n,,y,var(--radius-m),var(--radius-m),body@2083,
+--bases-cards-scale,y,Editor/Bases.md,y,1,1,body@2084,also/only in 1 other rule(s): .is-mobile
+--bases-cards-shadow,y,Editor/Bases.md,y,0 0 0 1px var(--background-modifier-border),0 0 0 1px var(--background-modifier-border),body@2086,
+--bases-cards-shadow-hover,y,Editor/Bases.md,y,0 0 0 1px var(--background-modifier-border-hover),0 0 0 1px var(--background-modifier-border-hover),body@2085,
+--bases-embed-border-color,y,Editor/Bases.md,y,var(--background-modifier-border),var(--background-modifier-border),body@2039,also/only in 1 other rule(s): .callout
+--bases-embed-border-radius,y,Editor/Bases.md,y,var(--radius-s),var(--radius-s),body@2040,also/only in 3 other rule(s): .hover-popover > .bases-embed | .canvas-node .bases-embed | .is-phone
+--bases-embed-border-width,y,Editor/Bases.md,y,0px,0px,body@2038,"also/only in 5 other rule(s): .hover-popover > .bases-embed | .canvas-node .bases-embed | .bases-view[data-view-type=""kanban""] | .bases-view[data-view-type=""table""] ..."
+--bases-embed-height,n,,y,,,".bases-view[data-view-type=""kanban""]@15887","also/only in 1 other rule(s): .bases-view[data-view-type=""kanban""]; NEW in 1.14.x (absent in 1.13.7)"
+--bases-embed-padding,n,,y,,,".bases-view[data-view-type=""cards""]@15778; .is-phone .bases-view[data-view-type=""cards""]@15781; .bases-view[data-view-type=""kanban""]@15885","also/only in 4 other rule(s): .bases-view[data-view-type=""cards""] | .is-phone .bases-view[data-view-type=""cards""] | .bases-view[data-view-type=""kanban""] | .bases-view[data-view-type=""list""]"
+--bases-embed-transform,n,,y,,,.is-phone@19723; .is-phone .callout-content@19756,also/only in 2 other rule(s): .is-phone | .is-phone .callout-content
+--bases-embed-width,n,,y,,,.is-phone@19720; .is-phone .callout-content@19757,also/only in 2 other rule(s): .is-phone | .is-phone .callout-content
+--bases-filter-input-background,n,,y,var(--background-modifier-form-field),var(--background-modifier-form-field),body@2042,
+--bases-filter-menu-width,y,Editor/Bases.md,y,520px,520px,body@2041,
+--bases-group-heading-property-color,n,,y,var(--text-muted),var(--text-muted),body@2045,
+--bases-group-heading-property-display,n,,y,block,block,body@2048,
+--bases-group-heading-property-size,n,,y,var(--font-ui-smaller),var(--font-ui-smaller),body@2043,
+--bases-group-heading-property-weight,n,,y,var(--font-normal),var(--font-normal),body@2044,
+--bases-group-heading-value-size,n,,y,var(--font-smaller),var(--font-smaller),body@2046,
+--bases-group-heading-value-weight,n,,y,var(--font-semibold),var(--font-semibold),body@2047,
+--bases-header-border-width,y,Editor/Bases.md,y,0 0 var(--border-width) 0,0 0 var(--border-width) 0,body@2032,"also/only in 2 other rule(s): .app-container .block-language-base, .app-container .bases-embed | .canvas-node .bases-embed"
+--bases-header-height,y,Editor/Bases.md,y,40px,40px,body@2033,also/only in 1 other rule(s): .is-mobile
+--bases-header-padding-end,y,Editor/Bases.md,y,2px,2px,body@2035,"also/only in 4 other rule(s): .workspace-leaf-content[data-type=""bases""] | .markdown-source-view.mod-cm6 .cm-content > .bases-embed, .markdown-source-view.mod-cm6 .cm-content > .cm-lang-base | .hover-popover > .bases-embed .bases-header | .is-mobile .workspace-leaf-content[data-type=bases-query]"
+--bases-header-padding-start,y,Editor/Bases.md,y,2px,2px,body@2034,"also/only in 3 other rule(s): .workspace-leaf-content[data-type=""bases""] | .hover-popover > .bases-embed .bases-header | .is-mobile .workspace-leaf-content[data-type=bases-query]"
+--bases-kanban-card-background,n,,y,var(--background-primary),var(--background-primary),body@2094,NEW in 1.14.x (absent in 1.13.7)
+--bases-kanban-card-corner-shape,n,,y,var(--corner-shape),var(--corner-shape),body@2096,NEW in 1.14.x (absent in 1.13.7)
+--bases-kanban-card-radius,n,,y,var(--radius-m),var(--radius-m),body@2095,NEW in 1.14.x (absent in 1.13.7)
+--bases-kanban-card-shadow,n,,y,"0 0 0 1px var(--background-modifier-border), 0 1px 2px 0 rgba(0, 0, 0, 0.2)","0 0 0 1px var(--background-modifier-border), 0 1px 2px 0 rgba(0, 0, 0, 0.2)",body@2097,NEW in 1.14.x (absent in 1.13.7)
+--bases-kanban-card-shadow-focus,n,,y,0 0 0 2px var(--background-modifier-border-focus),0 0 0 2px var(--background-modifier-border-focus),body@2099,NEW in 1.14.x (absent in 1.13.7)
+--bases-kanban-card-shadow-hover,n,,y,"0 0 0 1px var(--background-modifier-border-hover), 0 1.5px 3px 0 rgba(0, 0, 0, 0.2)","0 0 0 1px var(--background-modifier-border-hover), 0 1.5px 3px 0 rgba(0, 0, 0, 0.2)",body@2098,NEW in 1.14.x (absent in 1.13.7)
+--bases-kanban-column-background,n,,y,var(--background-primary-alt),var(--background-primary-alt),body@2090,NEW in 1.14.x (absent in 1.13.7)
+--bases-kanban-column-box-shadow,n,,y,none,none,body@2092,NEW in 1.14.x (absent in 1.13.7)
+--bases-kanban-column-header-background,n,,y,transparent,transparent,body@2093,NEW in 1.14.x (absent in 1.13.7)
+--bases-kanban-column-radius,n,,y,var(--radius-m),var(--radius-m),body@2091,NEW in 1.14.x (absent in 1.13.7)
+--bases-kanban-container-background,n,,y,transparent,transparent,body@2087,NEW in 1.14.x (absent in 1.13.7)
+--bases-kanban-container-gap,n,,y,var(--size-4-2),var(--size-4-2),body@2088,NEW in 1.14.x (absent in 1.13.7)
+--bases-kanban-container-padding,n,,y,var(--size-4-3),var(--size-4-3),body@2089,NEW in 1.14.x (absent in 1.13.7)
+--bases-kanban-cover-background,n,,y,var(--background-secondary),var(--background-secondary),body@2100,NEW in 1.14.x (absent in 1.13.7)
+--bases-kanban-line-height,n,,y,24px,24px,body@2101,NEW in 1.14.x (absent in 1.13.7)
+--bases-property-menu-item-radius,n,,y,,,.bases-toolbar-menu-container@15099; .is-phone .bases-toolbar-menu-container@19869,also/only in 2 other rule(s): .bases-toolbar-menu-container | .is-phone .bases-toolbar-menu-container
+--bases-table-border-color,y,Editor/Bases.md,y,var(--table-border-color),var(--table-border-color),body@2060,also/only in 1 other rule(s): .callout
+--bases-table-cell-background-active,y,Editor/Bases.md,y,var(--background-primary),var(--background-primary),body@2073,
+--bases-table-cell-background-disabled,y,Editor/Bases.md,y,var(--background-primary-alt),var(--background-primary-alt),body@2074,
+--bases-table-cell-background-selected,n,,y,var(--table-selection),var(--table-selection),body@2075,
+--bases-table-cell-edge-padding,n,,y,,,".workspace-leaf-content[data-type=""bases""]@14752; .hover-popover > .bases-embed@14857","also/only in 2 other rule(s): .workspace-leaf-content[data-type=""bases""] | .hover-popover > .bases-embed"
+--bases-table-cell-radius-active,y,Editor/Bases.md,y,2px,2px,body@2069,
+--bases-table-cell-radius-focus,n,,y,2px,2px,body@2071,
+--bases-table-cell-shadow-active,y,Editor/Bases.md,y,0 0 0 2px var(--background-modifier-border-focus),0 0 0 2px var(--background-modifier-border-focus),body@2070,
+--bases-table-cell-shadow-focus,n,,y,0 0 0 2px var(--interactive-accent),0 0 0 2px var(--interactive-accent),body@2072,
+--bases-table-column-border-width,y,Editor/Bases.md,y,var(--border-width),var(--border-width),body@2061,
+--bases-table-column-max-width,y,Editor/Bases.md,y,300,300,body@2067,
+--bases-table-column-min-width,y,Editor/Bases.md,y,40,40,body@2068,
+--bases-table-container-border-radius,y,Editor/Bases.md,y,var(--radius-s),var(--radius-s),body@2050,"also/only in 1 other rule(s): .workspace-leaf-content[data-type=""bases""]"
+--bases-table-container-border-width,y,Editor/Bases.md,y,var(--border-width),var(--border-width),body@2049,"also/only in 1 other rule(s): .workspace-leaf-content[data-type=""bases""]"
+--bases-table-font-size,n,,y,var(--font-smaller),var(--font-smaller),body@2066,
+--bases-table-group-background,n,,y,var(--background-primary-alt),var(--background-primary-alt),body@2051,
+--bases-table-group-gap,n,,y,10px,10px,body@2062,
+--bases-table-header-background,y,Editor/Bases.md,y,var(--background-primary),var(--background-primary),body@2055,also/only in 2 other rule(s): .callout | .mod-sidedock
+--bases-table-header-background-hover,y,Editor/Bases.md,y,var(--background-modifier-hover),var(--background-modifier-hover),body@2056,also/only in 1 other rule(s): .callout
+--bases-table-header-color,y,Editor/Bases.md,y,var(--text-muted),var(--text-muted),body@2053,
+--bases-table-header-icon-display,y,Editor/Bases.md,y,flex,flex,body@2054,
+--bases-table-header-sort-mask,y,Editor/Bases.md,y,"linear-gradient(to left, transparent var(--size-4-6), black var(--size-4-6))","linear-gradient(to left, transparent var(--size-4-6), black var(--size-4-6))",body@2057,"also/only in 1 other rule(s): [dir='rtl'], .rtl, .mod-rtl"
+--bases-table-header-weight,y,Editor/Bases.md,y,var(--font-weight),var(--font-weight),body@2052,
+--bases-table-row-background-hover,y,Editor/Bases.md,y,var(--table-row-background-hover),var(--table-row-background-hover),body@2064,
+--bases-table-row-border-width,y,Editor/Bases.md,y,var(--border-width),var(--border-width),body@2063,
+--bases-table-row-height,y,Editor/Bases.md,y,30px,30px,body@2065,
+--bases-table-summary-background,n,,y,var(--background-primary),var(--background-primary),body@2058,
+--bases-table-summary-background-hover,n,,y,var(--background-modifier-hover),var(--background-modifier-hover),body@2059,
+--bases-table-text-size,y,Editor/Bases.md,n,,,,not in app.css; app.css uses --bases-table-font-size
+--bases-toolbar-badge-display,y,Editor/Bases.md,y,none,none,body@2037,also/only in 1 other rule(s): [@container (width < 590px)] .bases-header .bases-toolbar-item:not(.bases-toolbar-result-count)
+--bases-toolbar-label-display,y,Editor/Bases.md,y,block,block,body@2036,also/only in 2 other rule(s): [@container (width < 590px)] .bases-header .bases-toolbar-item:not(.bases-toolbar-result-count) | .is-phone .bases-header .bases-toolbar-item
+--bases-view-padding,n,,y,,,".workspace-leaf-content[data-type=""bases""]@14753; .bases-view[data-view-type=""cards""]@15777; .bases-view[data-view-type=""kanban""]@15884","also/only in 6 other rule(s): .workspace-leaf-content[data-type=""bases""] | .bases-view[data-view-type=""cards""] | .bases-view[data-view-type=""kanban""] | .bases-view[data-view-type=""list""] ..."
+--blockquote-background-color,y,Editor/Blockquote.md,y,transparent,transparent,body@2107,
+--blockquote-border-color,y,Editor/Blockquote.md,y,var(--interactive-accent),var(--interactive-accent),body@2104,
+--blockquote-border-thickness,y,Editor/Blockquote.md,y,2px,2px,body@2103,
+--blockquote-color,y,Editor/Blockquote.md,y,inherit,inherit,body@2106,
+--blockquote-font-style,y,Editor/Blockquote.md,y,normal,normal,body@2105,
+--blur-background,n,,y,"color-mix(in srgb, var(--interactive-normal) var(--blur-opacity-s), transparent) linear-gradient(var(--interactive-normal), color-mix(in srgb, var(--interactive-normal) var(--blur-opacity-s), transparent))","color-mix(in srgb, var(--background-primary) var(--blur-opacity-s), transparent) linear-gradient(var(--background-primary), color-mix(in srgb, var(--background-primary) var(--blur-opacity-s), transparent))",body@2119; .theme-dark@3064,
+--blur-brightness,n,,y,1.15,1.15,body@2122,
+--blur-l,n,,y,blur(var(--blur-radius-l)) saturate(var(--blur-saturation)) brightness(var(--blur-brightness)),blur(var(--blur-radius-l)) saturate(var(--blur-saturation)) brightness(var(--blur-brightness)),body@2129,
+--blur-m,n,,y,blur(var(--blur-radius-m)) saturate(var(--blur-saturation)) brightness(var(--blur-brightness)),blur(var(--blur-radius-m)) saturate(var(--blur-saturation)) brightness(var(--blur-brightness)),body@2128,
+--blur-opacity-m,n,,y,90%,90%,body@2121,
+--blur-opacity-s,n,,y,65%,65%,body@2120,
+--blur-radius-l,n,,y,16px,16px,body@2126,
+--blur-radius-m,n,,y,10px,10px,body@2125,
+--blur-radius-s,n,,y,6px,6px,body@2124,
+--blur-s,n,,y,blur(var(--blur-radius-s)) saturate(var(--blur-saturation)) brightness(var(--blur-brightness)),blur(var(--blur-radius-s)) saturate(var(--blur-saturation)) brightness(var(--blur-brightness)),body@2127,
+--blur-saturation,n,,y,1.5,1.5,body@2123,
+--bold-color,y,Foundations/Typography.md,y,inherit,inherit,body@2110,
+--bold-modifier,y,Foundations/Typography.md,y,200,200,body@2109,
+--bold-weight,y,Foundations/Typography.md,y,calc(var(--font-weight) + var(--bold-modifier)),calc(var(--font-weight) + var(--bold-modifier)),body@2111,
+--border-width,y,Foundations/Borders.md,y,1px,1px,body@2113,"also/only in 1 other rule(s): [@media (min-resolution: 2dppx), (min-resolution: 192dpi)] .is-phone"
+--button-corner-shape,n,,y,var(--corner-shape),var(--corner-shape),body@2116,
+--button-disabled-opacity,n,,pdfjs-only,,,,pdf.js-region only
+--button-primary-active-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-primary-active-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-primary-active-fg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-primary-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-primary-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-primary-disabled-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-primary-disabled-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-primary-disabled-fg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-primary-fg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-primary-hover-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-primary-hover-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-primary-hover-fg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-radius,y,Components/Button.md,y,var(--input-radius),var(--input-radius),body@2115,
+--button-secondary-active-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-secondary-active-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-secondary-active-fg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-secondary-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-secondary-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-secondary-disabled-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-secondary-disabled-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-secondary-disabled-fg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-secondary-fg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-secondary-hover-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-secondary-hover-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-secondary-hover-fg-color,n,,pdfjs-only,,,,pdf.js-region only
+--button-transition,n,,y,none,none,body@2117,also/only in 1 other rule(s): .is-mobile; NEW in 1.14.x (absent in 1.13.7)
+--callout-blend-mode,y,Editor/Callout.md,y,var(--highlight-mix-blend-mode),var(--highlight-mix-blend-mode),body@2135,also/only in 1 other rule(s): .popover.hover-popover
+--callout-border-opacity,y,Editor/Callout.md,y,0.25,0.25,body@2132,
+--callout-border-width,y,Editor/Callout.md,y,0px,0px,body@2131,
+--callout-bug,y,Editor/Callout.md,y,var(--color-red),var(--color-red),body@2142,
+--callout-color,y,Editor/Callout.md,y,,,".callout@11638; .callout[data-callout=""abstract""], .callout[data-callout=""summary""], .callout[data-callout=""tldr""]@11649; .callout[data-callout=""info""]@11653","also/only in 14 other rule(s): .callout | .callout[data-callout=""abstract""], .callout[data-callout=""summary""], .callout[data-callout=""tldr""] | .callout[data-callout=""info""] | .callout[data-callout=""todo""] ..."
+--callout-content-background,y,Editor/Callout.md,y,transparent,transparent,body@2141,
+--callout-content-padding,y,Editor/Callout.md,y,0,0,body@2140,
+--callout-default,y,Editor/Callout.md,y,var(--color-blue),var(--color-blue),body@2143,
+--callout-error,y,Editor/Callout.md,y,var(--color-red),var(--color-red),body@2144,
+--callout-example,y,Editor/Callout.md,y,var(--color-purple),var(--color-purple),body@2145,
+--callout-fail,y,Editor/Callout.md,y,var(--color-red),var(--color-red),body@2146,
+--callout-icon,y,Editor/Callout.md,y,,,".callout@11639; .callout[data-callout=""abstract""], .callout[data-callout=""summary""], .callout[data-callout=""tldr""]@11650; .callout[data-callout=""info""]@11654","also/only in 14 other rule(s): .callout | .callout[data-callout=""abstract""], .callout[data-callout=""summary""], .callout[data-callout=""tldr""] | .callout[data-callout=""info""] | .callout[data-callout=""todo""] ..."
+--callout-important,y,Editor/Callout.md,y,var(--color-cyan),var(--color-cyan),body@2147,
+--callout-info,y,Editor/Callout.md,y,var(--color-blue),var(--color-blue),body@2148,
+--callout-padding,y,Editor/Callout.md,y,var(--size-4-3) var(--size-4-3) var(--size-4-3) var(--size-4-6),var(--size-4-3) var(--size-4-3) var(--size-4-3) var(--size-4-6),body@2133,"also/only in 1 other rule(s): .mod-rtl, .is-rtl, .rtl"
+--callout-question,y,Editor/Callout.md,y,var(--color-orange),var(--color-orange),body@2149,
+--callout-quote,y,Editor/Callout.md,y,#9e9e9e,#9e9e9e,body@2155,
+--callout-radius,y,Editor/Callout.md,y,var(--radius-s),var(--radius-s),body@2134,
+--callout-success,y,Editor/Callout.md,y,var(--color-green),var(--color-green),body@2150,
+--callout-summary,y,Editor/Callout.md,y,var(--color-cyan),var(--color-cyan),body@2151,
+--callout-tip,y,Editor/Callout.md,y,var(--color-cyan),var(--color-cyan),body@2152,
+--callout-title-color,y,Editor/Callout.md,y,inherit,inherit,body@2136,
+--callout-title-padding,y,Editor/Callout.md,y,0,0,body@2137,
+--callout-title-size,y,Editor/Callout.md,y,inherit,inherit,body@2138,
+--callout-title-weight,y,Editor/Callout.md,y,calc(var(--font-weight) + var(--bold-modifier)),calc(var(--font-weight) + var(--bold-modifier)),body@2139,
+--callout-todo,y,Editor/Callout.md,y,var(--color-blue),var(--color-blue),body@2153,
+--callout-warning,y,Editor/Callout.md,y,var(--color-orange),var(--color-orange),body@2154,
+--canvas-background,y,Plugins/Canvas.md,y,var(--background-primary),var(--background-primary),body@2157,
+--canvas-card-label-color,y,Plugins/Canvas.md,y,var(--text-faint),var(--text-faint),body@2158,
+--canvas-color,n,,y,#c0c0c0,#c0c0c0,body@18185,also/only in 7 other rule(s): .mod-canvas-color-1 | .mod-canvas-color-2 | .mod-canvas-color-3 | .mod-canvas-color-4 ...
+--canvas-color-1,y,Plugins/Canvas.md,y,var(--color-red),var(--color-red),body@2159,
+--canvas-color-2,y,Plugins/Canvas.md,y,var(--color-orange),var(--color-orange),body@2160,
+--canvas-color-3,y,Plugins/Canvas.md,y,var(--color-yellow),var(--color-yellow),body@2161,
+--canvas-color-4,y,Plugins/Canvas.md,y,var(--color-green),var(--color-green),body@2162,
+--canvas-color-5,y,Plugins/Canvas.md,y,var(--color-cyan),var(--color-cyan),body@2163,
+--canvas-color-6,y,Plugins/Canvas.md,y,var(--color-purple),var(--color-purple),body@2164,
+--canvas-controls-icon-size,n,,y,var(--icon-s),var(--icon-s),body@2166,also/only in 1 other rule(s): .is-mobile
+--canvas-controls-icon-stroke,n,,y,var(--icon-s-stroke-width),var(--icon-s-stroke-width),body@2167,also/only in 1 other rule(s): .is-mobile
+--canvas-controls-radius,n,,y,var(--radius-s),var(--radius-s),body@2165,also/only in 1 other rule(s): .is-mobile
+--canvas-dot-pattern,y,Plugins/Canvas.md,y,var(--color-base-30),var(--color-base-30),body@2168,
+--caret-color,y,Foundations/Colors.md,y,var(--text-normal),var(--text-normal),body@2170,also/only in 1 other rule(s): .is-mobile
+--checkbox-border-color,y,Components/Checkbox.md,y,var(--text-faint),var(--text-faint),body@2177,
+--checkbox-border-color-hover,y,Components/Checkbox.md,y,var(--text-muted),var(--text-muted),body@2178,
+--checkbox-color,y,Components/Checkbox.md,y,var(--interactive-accent),var(--interactive-accent),body@2175,
+--checkbox-color-hover,y,Components/Checkbox.md,y,var(--interactive-accent-hover),var(--interactive-accent-hover),body@2176,
+--checkbox-margin-inline-start,y,Components/Checkbox.md,y,0.85em,0.85em,body@2179,
+--checkbox-marker-color,y,Components/Checkbox.md,y,var(--background-primary),var(--background-primary),body@2174,also/only in 1 other rule(s): .attachments-gallery .download-attachment-item
+--checkbox-radius,y,Components/Checkbox.md,y,var(--radius-s),var(--radius-s),body@2172,
+--checkbox-size,y,Components/Checkbox.md,y,var(--font-preferred-size),var(--font-preferred-size),body@2173,also/only in 4 other rule(s): .attachments-gallery .download-attachment-item | .suggestion-item.mod-complex.suggestion-secret-key | .modal | .is-mobile
+--checklist-done-color,y,Components/Checkbox.md,y,var(--text-muted),var(--text-muted),body@2181,
+--checklist-done-decoration,y,Components/Checkbox.md,y,line-through,line-through,body@2180,
+--clickable-icon-radius,y,Foundations/Icons.md,y,var(--radius-s),var(--radius-s),body@2400,also/only in 2 other rule(s): .mod-macos | .is-mobile
+--code-background,y,Editor/Code.md,y,var(--background-primary-alt),var(--background-primary-alt),body@2189,
+--code-border-color,n,,y,var(--background-modifier-border),var(--background-modifier-border),body@2185,
+--code-border-width,n,,y,0px,0px,body@2184,
+--code-bracket-background,n,,y,var(--background-modifier-hover),var(--background-modifier-hover),body@2186,
+--code-comment,y,Editor/Code.md,y,var(--text-faint),var(--text-faint),body@2191,
+--code-function,y,Editor/Code.md,y,var(--color-yellow),var(--color-yellow),body@2192,
+--code-important,y,Editor/Code.md,y,var(--color-orange),var(--color-orange),body@2193,
+--code-keyword,y,Editor/Code.md,y,var(--color-pink),var(--color-pink),body@2194,
+--code-normal,y,Editor/Code.md,y,var(--text-normal),var(--text-normal),body@2190,
+--code-operator,y,Editor/Code.md,y,var(--color-red),var(--color-red),body@2195,
+--code-property,y,Editor/Code.md,y,var(--color-cyan),var(--color-cyan),body@2196,
+--code-punctuation,y,Editor/Code.md,y,var(--text-muted),var(--text-muted),body@2197,
+--code-radius,n,,y,var(--radius-s),var(--radius-s),body@2187,
+--code-size,y,Editor/Code.md,y,var(--font-smaller),var(--font-smaller),body@2188,also/only in 1 other rule(s): .cm-s-obsidian .HyperMD-table-row span.cm-inline-code
+--code-string,y,Editor/Code.md,y,var(--color-green),var(--color-green),body@2198,
+--code-tag,y,Editor/Code.md,y,var(--color-red),var(--color-red),body@2199,
+--code-value,y,Editor/Code.md,y,var(--color-purple),var(--color-purple),body@2200,
+--code-white-space,y,Editor/Code.md,y,pre-wrap,pre-wrap,body@2183,
+--collapse-icon-color,n,,y,var(--text-faint),var(--text-faint),body@2202,
+--collapse-icon-color-collapsed,n,,y,var(--text-accent),var(--text-accent),body@2203,
+--color-accent,y,Foundations/Colors.md,y,"hsl(var(--accent-h), var(--accent-s), var(--accent-l))","hsl(var(--accent-h), var(--accent-s), var(--accent-l))",.theme-dark@3056; .theme-light@3006,
+--color-accent-1,y,Foundations/Colors.md,y,"hsl(calc(var(--accent-h) - 3), calc(var(--accent-s) * 1.02), calc(var(--accent-l) * 1.15))","hsl(calc(var(--accent-h) - 1), calc(var(--accent-s) * 1.01), calc(var(--accent-l) * 1.075))",.theme-dark@3057; .theme-light@3007,
+--color-accent-2,y,Foundations/Colors.md,y,"hsl(calc(var(--accent-h) - 5), calc(var(--accent-s) * 1.05), calc(var(--accent-l) * 1.29))","hsl(calc(var(--accent-h) - 3), calc(var(--accent-s) * 1.02), calc(var(--accent-l) * 1.15))",.theme-dark@3058; .theme-light@3008,
+--color-accent-hsl,y,Foundations/Colors.md,y,"var(--accent-h), var(--accent-s), var(--accent-l)","var(--accent-h), var(--accent-s), var(--accent-l)",.theme-dark@3086; .theme-light@3021,DEPRECATED per docs Colors.md (1.13); app.css comment: Deprecated
+--color-base-00,y,Foundations/Colors.md,y,#1C1C1C,#ffffff,.theme-dark@3044; .theme-light@2994,also/only in 1 other rule(s): .is-mobile.theme-dark
+--color-base-05,y,Foundations/Colors.md,y,#212121,#fcfcfc,.theme-dark@3045; .theme-light@2995,
+--color-base-10,y,Foundations/Colors.md,y,#232323,#fafafa,.theme-dark@3046; .theme-light@2996,also/only in 1 other rule(s): .is-mobile.theme-dark
+--color-base-100,y,Foundations/Colors.md,y,#dadada,#222222,.theme-dark@3055; .theme-light@3005,also/only in 1 other rule(s): .is-mobile.theme-light
+--color-base-20,y,Foundations/Colors.md,y,#282828,#f6f6f6,.theme-dark@3047; .theme-light@2997,also/only in 1 other rule(s): .is-mobile.theme-dark
+--color-base-25,y,Foundations/Colors.md,y,#2e2e2e,#efefef,.theme-dark@3048; .theme-light@2998,
+--color-base-30,y,Foundations/Colors.md,y,#333333,#e4e4e4,.theme-dark@3049; .theme-light@2999,
+--color-base-35,y,Foundations/Colors.md,y,#3f3f3f,#dadada,.theme-dark@3050; .theme-light@3000,
+--color-base-40,y,Foundations/Colors.md,y,#555555,#bdbdbd,.theme-dark@3051; .theme-light@3001,
+--color-base-50,y,Foundations/Colors.md,y,#666666,#ababab,.theme-dark@3052; .theme-light@3002,
+--color-base-60,y,Foundations/Colors.md,y,#999999,#707070,.theme-dark@3053; .theme-light@3003,
+--color-base-70,y,Foundations/Colors.md,y,#b3b3b3,#5c5c5c,.theme-dark@3054; .theme-light@3004,
+--color-blue,y,Foundations/Colors.md,y,#027aff,#086ddd,.theme-dark@3041; .theme-light@2991,
+--color-blue-rgb,y,Foundations/Colors.md,y,"2, 122, 255","8, 109, 221",.theme-dark@3092; .theme-light@3027,DEPRECATED per docs Colors.md (1.13); app.css comment: Deprecated
+--color-cyan,y,Foundations/Colors.md,y,#53dfdd,#00bfbc,.theme-dark@3040; .theme-light@2990,
+--color-cyan-rgb,y,Foundations/Colors.md,y,"83, 223, 221","0, 191, 188",.theme-dark@3091; .theme-light@3026,DEPRECATED per docs Colors.md (1.13); app.css comment: Deprecated
+--color-green,y,Foundations/Colors.md,y,#44cf6e,#08b94e,.theme-dark@3039; .theme-light@2989,
+--color-green-rgb,y,Foundations/Colors.md,y,"68, 207, 110","8, 185, 78",.theme-dark@3090; .theme-light@3025,DEPRECATED per docs Colors.md (1.13); app.css comment: Deprecated
+--color-orange,y,Foundations/Colors.md,y,#e9973f,#ec7500,.theme-dark@3037; .theme-light@2987,
+--color-orange-rgb,y,Foundations/Colors.md,y,"233, 151, 63","236, 117, 0",.theme-dark@3088; .theme-light@3023,DEPRECATED per docs Colors.md (1.13); app.css comment: Deprecated
+--color-pink,y,Foundations/Colors.md,y,#fa99cd,#d53984,.theme-dark@3043; .theme-light@2993,
+--color-pink-rgb,y,Foundations/Colors.md,y,"250, 153, 205","213, 57, 132",.theme-dark@3094; .theme-light@3029,DEPRECATED per docs Colors.md (1.13); app.css comment: Deprecated
+--color-purple,y,Foundations/Colors.md,y,#a882ff,#7852ee,.theme-dark@3042; .theme-light@2992,
+--color-purple-rgb,y,Foundations/Colors.md,y,"168, 130, 255","120, 82, 238",.theme-dark@3093; .theme-light@3028,DEPRECATED per docs Colors.md (1.13); app.css comment: Deprecated
+--color-red,y,Foundations/Colors.md,y,#fb464c,#e93147,.theme-dark@3036; .theme-light@2986,
+--color-red-rgb,y,Foundations/Colors.md,y,"251, 70, 76","233, 49, 71",.theme-dark@3087; .theme-light@3022,DEPRECATED per docs Colors.md (1.13); app.css comment: Deprecated
+--color-secondary-2,n,,y,"color-mix(in srgb, var(--background-secondary) 96%, white 4%)",,.theme-dark@3059,NEW in 1.14.x (absent in 1.13.7)
+--color-secondary-3,n,,y,"color-mix(in srgb, var(--background-secondary) 92%, white 8%)",,.theme-dark@3060,NEW in 1.14.x (absent in 1.13.7)
+--color-secondary-4,n,,y,"color-mix(in srgb, var(--background-secondary) 90%, white 10%)",,.theme-dark@3061,NEW in 1.14.x (absent in 1.13.7)
+--color-secondary-5,n,,y,"color-mix(in srgb, var(--background-secondary) 84%, white 16%)",,.theme-dark@3062,NEW in 1.14.x (absent in 1.13.7)
+--color-secondary-6,n,,y,"color-mix(in srgb, var(--background-secondary) 76%, white 24%)",,.theme-dark@3063,NEW in 1.14.x (absent in 1.13.7)
+--color-yellow,y,Foundations/Colors.md,y,#e0de71,#e0ac00,.theme-dark@3038; .theme-light@2988,
+--color-yellow-rgb,y,Foundations/Colors.md,y,"224, 222, 113","224, 172, 0",.theme-dark@3089; .theme-light@3024,DEPRECATED per docs Colors.md (1.13); app.css comment: Deprecated
+--component-title-color,y,Publish/Site components.md,n,,,,Publish-only doc
+--component-title-font,y,Publish/Site components.md,n,,,,Publish-only doc
+--component-title-size,y,Publish/Site components.md,n,,,,Publish-only doc
+--component-title-style,y,Publish/Site components.md,n,,,,Publish-only doc
+--component-title-transform,y,Publish/Site components.md,n,,,,Publish-only doc
+--component-title-variant,y,Publish/Site components.md,n,,,,Publish-only doc
+--component-title-weight,y,Publish/Site components.md,n,,,,Publish-only doc
+--content-height,n,,y,,,.mobile-onboarding@19995,also/only in 1 other rule(s): .mobile-onboarding
+--corner-shape,n,,y,round,round,body@2648,also/only in 1 other rule(s): .mod-macos
+--csstools-color-scheme--dark,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--0,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--1,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--10,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--11,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--12,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--13,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--14,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--15,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--16,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--17,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--18,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--19,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--2,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--20,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--21,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--22,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--23,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--24,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--25,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--26,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--27,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--28,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--29,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--3,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--30,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--31,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--32,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--33,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--34,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--35,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--36,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--37,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--38,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--39,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--4,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--40,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--41,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--5,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--6,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--7,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--8,n,,pdfjs-only,,,,pdf.js-region only
+--csstools-light-dark-toggle--9,n,,pdfjs-only,,,,pdf.js-region only
+--cursor,y,Foundations/Cursor.md,y,default,default,body@2205,also/only in 1 other rule(s): .is-mobile
+--cursor-link,y,Foundations/Cursor.md,y,pointer,pointer,body@2206,also/only in 1 other rule(s): .sync-history-preview
+--dialog-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--dialog-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--dialog-max-height,y,Components/Dialog.md,y,85vh,85vh,body@2210,"also/only in 2 other rule(s): .is-phone .modal-container | .is-phone .modal-container.mod-confirmation .modal, .is-phone .modal.mod-lg, .is-phone .modal.mod-sidebar-layout"
+--dialog-max-width,y,Components/Dialog.md,y,80vw,80vw,body@2209,"also/only in 2 other rule(s): .is-phone .modal-container | .is-phone .modal-container.mod-confirmation .modal, .is-phone .modal.mod-lg, .is-phone .modal.mod-sidebar-layout"
+--dialog-shadow,n,,pdfjs-only,,,,pdf.js-region only
+--dialog-width,y,Components/Dialog.md,y,560px,560px,body@2208,"also/only in 2 other rule(s): .is-phone .modal-container | .is-phone .modal-container.mod-confirmation .modal, .is-phone .modal.mod-lg, .is-phone .modal.mod-sidebar-layout"
+--direction,n,,y,,,"body, [dir='ltr']@4874; .mod-rtl, [dir='rtl']@4882; .markdown-rendered .is-collapsed:dir(ltr), .cm-line:dir(ltr)@4893","also/only in 6 other rule(s): body, [dir='ltr'] | .mod-rtl, [dir='rtl'] | [@supports selector(:dir(rtl))] .markdown-rendered .is-collapsed:dir(ltr), .cm-line:dir(ltr) | [@supports selector(:dir(rtl))] .markdown-rendered .is-collapsed:dir(rtl), .cm-line:dir(rtl) ..."
+--divider-color,y,Window/Divider.md,y,var(--background-modifier-border),var(--background-modifier-border),body@2212,also/only in 1 other rule(s): .is-translucent:not(.is-fullscreen)
+--divider-color-hover,y,Window/Divider.md,y,var(--interactive-accent),var(--interactive-accent),body@2213,
+--divider-vertical-height,y,Window/Divider.md,y,calc(100% - var(--header-height)),calc(100% - var(--header-height)),body@2216,also/only in 1 other rule(s): .is-hidden-frameless
+--divider-width,y,Window/Divider.md,y,1px,1px,body@2214,"also/only in 1 other rule(s): [@media (min-resolution: 2dppx), (min-resolution: 192dpi)] .is-phone"
+--divider-width-hover,y,Window/Divider.md,y,3px,3px,body@2215,
+--drag-ghost-background,y,Components/Dragging.md,y,"rgba(0, 0, 0, 0.85)","rgba(0, 0, 0, 0.85)",body@2218,
+--drag-ghost-text-color,y,Components/Dragging.md,y,#fff,#fff,body@2219,
+--drag-item-background,n,,y,var(--background-primary),var(--background-primary),body@2220,also/only in 2 other rule(s): .workspace-ribbon | .mobile-tab
+--drag-item-shadow,n,,y,0 2px 8px var(--background-modifier-box-shadow),0 2px 8px var(--background-modifier-box-shadow),body@2221,also/only in 1 other rule(s): .mobile-tab
+--dropdown-background,y,Components/Dropdowns.md,y,var(--interactive-normal),var(--interactive-normal),body@2223,also/only in 2 other rule(s): .mod-macos:not(.is-mobile) .mod-settings | .is-mobile .menu
+--dropdown-background-blend-mode,y,Components/Dropdowns.md,y,"hard-light, normal","hard-light, normal",body@2225,
+--dropdown-background-hover,y,Components/Dropdowns.md,y,var(--interactive-hover),var(--interactive-hover),body@2224,also/only in 1 other rule(s): .mod-macos:not(.is-mobile) .mod-settings
+--dropdown-background-position,y,Components/Dropdowns.md,y,"var(--inset-end) var(--dropdown-icon-inset) top 50%, var(--inset-end) 0.15em top 50%, 0 0","var(--inset-end) var(--dropdown-icon-inset) top 50%, var(--inset-end) 0.15em top 50%, 0 0",body@2226,
+--dropdown-background-size,y,Components/Dropdowns.md,y,"var(--dropdown-icon-width) auto, 2em 2em, 100%","var(--dropdown-icon-width) auto, 2em 2em, 100%",body@2227,
+--dropdown-icon-background,n,,y,transparent,transparent,body@2228,also/only in 1 other rule(s): .mod-macos:not(.is-mobile) .mod-settings
+--dropdown-icon-inset,n,,y,0.65em,0.65em,body@2230,also/only in 1 other rule(s): .is-mobile
+--dropdown-icon-width,n,,y,1em,1em,body@2229,
+--dropdown-padding,y,Components/Dropdowns.md,y,0 var(--dropdown-padding-end) 0 var(--dropdown-padding-start),0 var(--dropdown-padding-end) 0 var(--dropdown-padding-start),body@2231,"also/only in 3 other rule(s): .mod-rtl, .is-rtl, .rtl | .combobox-button | .is-mobile .combobox-button"
+--dropdown-padding-end,n,,y,2.4em,2.4em,body@2233,also/only in 1 other rule(s): .is-mobile
+--dropdown-padding-start,n,,y,0.8em,0.8em,body@2232,also/only in 1 other rule(s): .is-mobile
+--dropdown-text-align,n,,y,start,start,body@2234,also/only in 1 other rule(s): .mod-macos:not(.is-mobile) .mod-settings
+--dropdown-transition,n,,y,none,none,body@2235,also/only in 1 other rule(s): .is-mobile; NEW in 1.14.x (absent in 1.13.7)
+--embed-action-color,n,,y,var(--text-normal),var(--text-normal),body@2252,
+--embed-action-radius,n,,y,var(--clickable-icon-radius),var(--clickable-icon-radius),body@2253,also/only in 1 other rule(s): .is-mobile
+--embed-actions-background,n,,y,"color-mix(in srgb, var(--background-primary) 80%, transparent)","color-mix(in srgb, var(--background-primary) 80%, transparent)",body@2246,
+--embed-actions-blur,n,,y,var(--blur-s),var(--blur-s),body@2247,
+--embed-actions-corner-shape,n,,y,var(--corner-shape),var(--corner-shape),body@2248,also/only in 1 other rule(s): .is-mobile
+--embed-actions-padding,n,,y,var(--size-2-1),var(--size-2-1),body@2249,also/only in 1 other rule(s): .is-mobile
+--embed-actions-radius,n,,y,calc(var(--embed-action-radius) + var(--embed-actions-padding)),calc(var(--embed-action-radius) + var(--embed-actions-padding)),body@2250,also/only in 1 other rule(s): .is-mobile
+--embed-actions-shadow,n,,y,"0 1px 2px 0 rgba(0, 0, 0, 0.05), 0 0 6px 0 rgba(0, 0, 0, 0.05)","0 1px 2px 0 rgba(0, 0, 0, 0.05), 0 0 6px 0 rgba(0, 0, 0, 0.05)",body@2251,also/only in 1 other rule(s): .is-mobile
+--embed-background,y,Editor/Embed.md,y,inherit,inherit,body@2239,
+--embed-block-shadow-hover,y,Editor/Block.md,y,"0 0 0 1px var(--background-modifier-border), inset 0 0 0 1px var(--background-modifier-border)","0 0 0 1px var(--background-modifier-border), inset 0 0 0 1px var(--background-modifier-border)",body@2255,
+--embed-border-bottom,y,Editor/Embed.md,y,none,none,body@2243,
+--embed-border-end,y,Editor/Embed.md,y,none,none,body@2241,
+--embed-border-start,y,Editor/Embed.md,y,2px solid var(--interactive-accent),2px solid var(--interactive-accent),body@2240,
+--embed-border-top,y,Editor/Embed.md,y,none,none,body@2242,
+--embed-canvas-max-height,y,Editor/Embed.md,y,400px,400px,body@2238,
+--embed-font-style,y,Editor/Embed.md,y,inherit,inherit,body@2245,
+--embed-max-height,y,Editor/Embed.md,y,4000px,4000px,body@2237,
+--embed-padding,y,Editor/Embed.md,y,0 0 0 var(--size-4-6),0 0 0 var(--size-4-6),body@2244,"also/only in 1 other rule(s): .mod-rtl, .is-rtl, .rtl"
+--file-folding-offset,y,Editor/File.md,y,24px,24px,body@2258,also/only in 1 other rule(s): .markdown-preview-view .markdown-embed .markdown-preview-view
+--file-header-background,n,,y,var(--background-primary),var(--background-primary),body@2265,
+--file-header-background-focused,n,,y,var(--background-primary),var(--background-primary),body@2266,
+--file-header-border,y,Editor/File.md,y,var(--border-width) solid transparent,var(--border-width) solid transparent,body@2267,
+--file-header-font,n,,y,var(--font-interface),var(--font-interface),body@2262,
+--file-header-font-size,y,Editor/File.md,y,var(--font-ui-small),var(--font-ui-small),body@2263,
+--file-header-font-weight,y,Editor/File.md,y,400,400,body@2264,
+--file-header-justify,y,Editor/File.md,y,start,start,body@2268,also/only in 1 other rule(s): .is-phone
+--file-line-width,y,Editor/File.md,y,700px,700px,body@2257,
+--file-margins,y,Editor/File.md,y,var(--file-margins-y) var(--file-margins-x),var(--file-margins-y) var(--file-margins-x),body@2259,"also/only in 2 other rule(s): .mod-secondary-split .markdown-preview-view, .mod-primary-split .markdown-preview-view, .mod-secondary-split .markdown-source-view.mod-cm6 .cm-scroller, .mod-primary-split .markdown-source-view.mod-cm6 .cm-scroller | .popover.hover-popover > .markdown-embed[data-type=""footnote""] > .markdown-embed-content .cm-scroller, .popover.hover-popover > .markdown-embed[data-type=""footnote""] > .markdown-embed-content .markdown-preview-view"
+--file-margins-x,n,,y,var(--size-4-8),var(--size-4-8),body@2260,also/only in 1 other rule(s): .is-mobile
+--file-margins-y,n,,y,var(--size-4-8),var(--size-4-8),body@2261,also/only in 1 other rule(s): .is-mobile
+--flair-background,n,,y,var(--interactive-normal),var(--interactive-normal),body@2275,also/only in 5 other rule(s): .community-item .flair | .flair.mod-pop | .bases-toolbar .toolbar-badge | .bases-toolbar .mod-error ...
+--flair-color,n,,y,var(--text-normal),var(--text-normal),body@2276,also/only in 4 other rule(s): .community-item .flair | .flair.mod-pop | .bases-toolbar .mod-error | .bases-toolbar-menu .bases-toolbar-section-header
+--focus-ring-color,n,,pdfjs-only,,,,pdf.js-region only
+--focus-ring-outline,n,,pdfjs-only,,,,pdf.js-region only
+--font-black,y,Foundations/Typography.md,y,900,900,body@2292,
+--font-bold,y,Foundations/Typography.md,y,700,700,body@2290,
+--font-default,n,,y,"ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, ""Segoe UI"", ""Google Sans Flex"", Roboto, ""Inter Variable"", ""Inter"", ""Apple Color Emoji"", ""Segoe UI Emoji"", ""Segoe UI Symbol"", sans-serif","ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, ""Segoe UI"", ""Google Sans Flex"", Roboto, ""Inter Variable"", ""Inter"", ""Apple Color Emoji"", ""Segoe UI Emoji"", ""Segoe UI Symbol"", sans-serif",body@3187,
+--font-extrabold,y,Foundations/Typography.md,y,800,800,body@2291,
+--font-extralight,y,Foundations/Typography.md,y,200,200,body@2285,
+--font-interface,n,,y,"var(--font-interface-override), var(--font-interface-theme), var(--default-font, '??'), var(--font-default)","var(--font-interface-override), var(--font-interface-theme), var(--default-font, '??'), var(--font-default)",body@3191,
+--font-interface-override,n,,y,'??','??',body@3189,app.js sets inline style on body (user font setting)
+--font-interface-theme,y,Foundations/Typography.md;Publish/Site fonts.md,y,'??','??',body@3190,
+--font-light,y,Foundations/Typography.md,y,300,300,body@2286,
+--font-medium,y,Foundations/Typography.md,y,500,500,body@2288,
+--font-mermaid,n,,y,var(--font-text),var(--font-text),body@3202,
+--font-monospace,n,,y,"var(--font-monospace-override), var(--font-monospace-theme), var(--font-monospace-default)","var(--font-monospace-override), var(--font-monospace-theme), var(--font-monospace-default)",body@3199,
+--font-monospace-default,n,,y,"ui-monospace, SFMono-Regular, ""Cascadia Mono"", ""Roboto Mono"", ""DejaVu Sans Mono"", ""Liberation Mono"", Menlo, Monaco, ""Consolas"", ""Source Code Pro"", monospace","ui-monospace, SFMono-Regular, ""Cascadia Mono"", ""Roboto Mono"", ""DejaVu Sans Mono"", ""Liberation Mono"", Menlo, Monaco, ""Consolas"", ""Source Code Pro"", monospace",body@3188,
+--font-monospace-override,n,,y,'??','??',body@3197,app.js sets inline style on body (user font setting)
+--font-monospace-theme,y,Foundations/Typography.md;Publish/Site fonts.md,y,'??','??',body@3198,
+--font-normal,y,Foundations/Typography.md,y,400,400,body@2287,
+--font-preferred-size,n,,y,var(--font-text-size),var(--font-text-size),body@3201,also/only in 1 other rule(s): .is-mobile; NEW in 1.14.x (absent in 1.13.7)
+--font-print,n,,y,"var(--font-print-override), var(--font-text-override), var(--font-text-theme), 'Arial'","var(--font-print-override), var(--font-text-override), var(--font-text-theme), 'Arial'",body@3196,
+--font-print-override,n,,y,'??','??',body@3195,
+--font-semibold,y,Foundations/Typography.md,y,600,600,body@2289,
+--font-small,y,Foundations/Typography.md,y,0.933em,0.933em,body@2273,
+--font-smaller,y,Foundations/Typography.md,y,0.875em,0.875em,body@2272,
+--font-smallest,y,Foundations/Typography.md,y,0.8em,0.8em,body@2271,
+--font-text,n,,y,"var(--font-text-override), var(--font-text-theme), var(--font-default)","var(--font-text-override), var(--font-text-theme), var(--font-default)",body@3194,also/only in 1 other rule(s): [@media print] body
+--font-text-override,n,,y,'??','??',body@3192,app.js sets inline style on body (user font setting)
+--font-text-size,y,Foundations/Typography.md;Publish/Site fonts.md,y,16px,16px,body@3200,app.js sets inline style on body from Appearance font size setting (overrides theme body rule)
+--font-text-theme,y,Foundations/Typography.md;Publish/Site fonts.md,y,'??','??',body@3193,
+--font-thin,y,Foundations/Typography.md,y,100,100,body@2284,
+--font-ui-large,y,Foundations/Typography.md,y,20px,20px,body@2281,also/only in 1 other rule(s): .is-mobile
+--font-ui-medium,y,Foundations/Typography.md,y,15px,15px,body@2280,also/only in 1 other rule(s): .is-mobile
+--font-ui-small,y,Foundations/Typography.md,y,13px,13px,body@2279,also/only in 1 other rule(s): .is-mobile
+--font-ui-smaller,y,Foundations/Typography.md,y,12px,12px,body@2278,also/only in 1 other rule(s): .is-mobile
+--font-weight,y,Foundations/Typography.md,y,var(--font-normal),var(--font-normal),body@2283,"also/only in 15 other rule(s): .callout-title-inner | h1, .markdown-rendered h1 | h2, .markdown-rendered h2 | h3, .markdown-rendered h3 ..."
+--footer-display,y,Publish/Site footer.md,n,,,,Publish-only doc
+--footnote-divider-color,n,,y,var(--metadata-divider-color),var(--metadata-divider-color),body@2295,
+--footnote-divider-color-active,n,,y,var(--metadata-divider-color-focus),var(--metadata-divider-color-focus),body@2294,
+--footnote-divider-width,n,,y,var(--border-width),var(--border-width),body@2296,
+--footnote-gap,n,,y,var(--size-4-1),var(--size-4-1),body@2297,
+--footnote-id-color,n,,y,var(--text-muted),var(--text-muted),body@2299,
+--footnote-id-color-no-occurrences,n,,y,var(--text-faint),var(--text-faint),body@2298,
+--footnote-id-delimiter,n,,y,""".""",""".""",body@2300,
+--footnote-input-background,n,,y,var(--metadata-input-background),var(--metadata-input-background),body@2302,
+--footnote-input-background-active,n,,y,var(--metadata-input-background-active),var(--metadata-input-background-active),body@2301,
+--footnote-line-height,n,,y,var(--line-height-normal),var(--line-height-normal),body@2303,
+--footnote-padding-block,n,,y,var(--size-2-3),var(--size-2-3),body@2304,
+--footnote-padding-inline,n,,y,var(--size-2-3),var(--size-2-3),body@2305,
+--footnote-radius,n,,y,var(--radius-s),var(--radius-s),body@2306,
+--footnote-size,y,Editor/Footnote.md,y,var(--font-smaller),var(--font-smaller),body@2307,
+--frame-left-space,n,,y,,,".mod-macos@4307; .mod-macos.mod-system-rtl@4311; .mod-windows, .mod-linux@4316","also/only in 5 other rule(s): .mod-macos | .mod-macos.mod-system-rtl | .mod-windows, .mod-linux | .mod-windows.mod-system-rtl, .mod-linux.mod-system-rtl ..."
+--frame-ribbon-left,n,,y,var(--ribbon-width),var(--ribbon-width),body@4295,also/only in 2 other rule(s): .mod-rtl | .is-popout-window; NEW in 1.14.x (absent in 1.13.7)
+--frame-ribbon-right,n,,y,0px,0px,body@4296,also/only in 2 other rule(s): .mod-rtl | .is-popout-window; NEW in 1.14.x (absent in 1.13.7)
+--frame-right-space,n,,y,,,".mod-macos@4308; .mod-macos.mod-system-rtl@4312; .mod-windows, .mod-linux@4317","also/only in 5 other rule(s): .mod-macos | .mod-macos.mod-system-rtl | .mod-windows, .mod-linux | .mod-windows.mod-system-rtl, .mod-linux.mod-system-rtl ..."
+--graph-controls-width,y,Plugins/Graph.md,y,240px,240px,body@2309,
+--graph-height,y,Publish/Site components.md,n,,,,Publish-only doc
+--graph-line,y,Plugins/Graph.md,y,"var(--color-base-35, var(--background-modifier-border-focus))","var(--color-base-35, var(--background-modifier-border-focus))",body@2311,
+--graph-node,y,Plugins/Graph.md,y,var(--text-muted),var(--text-muted),body@2312,
+--graph-node-attachment,y,Plugins/Graph.md,y,var(--color-yellow),var(--color-yellow),body@2316,
+--graph-node-focused,y,Plugins/Graph.md,y,var(--text-accent),var(--text-accent),body@2314,
+--graph-node-tag,y,Plugins/Graph.md,y,var(--color-green),var(--color-green),body@2315,
+--graph-node-unresolved,y,Plugins/Graph.md,y,var(--text-faint),var(--text-faint),body@2313,
+--graph-text,y,Plugins/Graph.md,y,var(--text-normal),var(--text-normal),body@2310,
+--h1-color,y,Editor/Headings.md,y,inherit,inherit,body@2320,
+--h1-font,y,Editor/Headings.md,y,inherit,inherit,body@2326,
+--h1-letter-spacing,n,,y,-0.015em,-0.015em,body@2332,
+--h1-line-height,y,Editor/Headings.md,y,1.2,1.2,body@2338,
+--h1-size,y,Editor/Headings.md,y,1.618em,1.618em,body@2344,
+--h1-style,y,Editor/Headings.md,y,normal,normal,body@2350,
+--h1-variant,y,Editor/Headings.md,y,normal,normal,body@2356,
+--h1-weight,y,Editor/Headings.md,y,700,700,:root@2002,also/only in 1 other rule(s): [@supports (font-variation-settings: normal)] :root
+--h2-color,y,Editor/Headings.md,y,inherit,inherit,body@2321,
+--h2-font,y,Editor/Headings.md,y,inherit,inherit,body@2327,
+--h2-letter-spacing,n,,y,-0.011em,-0.011em,body@2333,
+--h2-line-height,y,Editor/Headings.md,y,1.2,1.2,body@2339,
+--h2-size,y,Editor/Headings.md,y,1.462em,1.462em,body@2345,
+--h2-style,y,Editor/Headings.md,y,normal,normal,body@2351,
+--h2-variant,y,Editor/Headings.md,y,normal,normal,body@2357,
+--h2-weight,y,Editor/Headings.md,y,600,600,:root@2003,also/only in 1 other rule(s): [@supports (font-variation-settings: normal)] :root
+--h3-color,y,Editor/Headings.md,y,inherit,inherit,body@2322,
+--h3-font,y,Editor/Headings.md,y,inherit,inherit,body@2328,
+--h3-letter-spacing,n,,y,-0.008em,-0.008em,body@2334,
+--h3-line-height,y,Editor/Headings.md,y,1.3,1.3,body@2340,
+--h3-size,y,Editor/Headings.md,y,1.318em,1.318em,body@2346,
+--h3-style,y,Editor/Headings.md,y,normal,normal,body@2352,
+--h3-variant,y,Editor/Headings.md,y,normal,normal,body@2358,
+--h3-weight,y,Editor/Headings.md,y,600,600,:root@2004,also/only in 1 other rule(s): [@supports (font-variation-settings: normal)] :root
+--h4-color,y,Editor/Headings.md,y,inherit,inherit,body@2323,
+--h4-font,y,Editor/Headings.md,y,inherit,inherit,body@2329,
+--h4-letter-spacing,n,,y,-0.005em,-0.005em,body@2335,
+--h4-line-height,y,Editor/Headings.md,y,1.4,1.4,body@2341,
+--h4-size,y,Editor/Headings.md,y,1.188em,1.188em,body@2347,
+--h4-style,y,Editor/Headings.md,y,normal,normal,body@2353,
+--h4-variant,y,Editor/Headings.md,y,normal,normal,body@2359,
+--h4-weight,y,Editor/Headings.md,y,600,600,:root@2005,also/only in 1 other rule(s): [@supports (font-variation-settings: normal)] :root
+--h5-color,y,Editor/Headings.md,y,inherit,inherit,body@2324,
+--h5-font,y,Editor/Headings.md,y,inherit,inherit,body@2330,
+--h5-letter-spacing,n,,y,-0.002em,-0.002em,body@2336,
+--h5-line-height,y,Editor/Headings.md,y,var(--line-height-normal),var(--line-height-normal),body@2342,
+--h5-size,y,Editor/Headings.md,y,1.076em,1.076em,body@2348,
+--h5-style,y,Editor/Headings.md,y,normal,normal,body@2354,
+--h5-variant,y,Editor/Headings.md,y,normal,normal,body@2360,
+--h5-weight,y,Editor/Headings.md,y,600,600,:root@2006,also/only in 1 other rule(s): [@supports (font-variation-settings: normal)] :root
+--h6-color,y,Editor/Headings.md,y,inherit,inherit,body@2325,
+--h6-font,y,Editor/Headings.md,y,inherit,inherit,body@2331,
+--h6-letter-spacing,n,,y,0em,0em,body@2337,
+--h6-line-height,y,Editor/Headings.md,y,var(--line-height-normal),var(--line-height-normal),body@2343,
+--h6-size,y,Editor/Headings.md,y,1em,1em,body@2349,
+--h6-style,y,Editor/Headings.md,y,normal,normal,body@2355,
+--h6-variant,y,Editor/Headings.md,y,normal,normal,body@2361,
+--h6-weight,y,Editor/Headings.md,y,600,600,:root@2007,also/only in 1 other rule(s): [@supports (font-variation-settings: normal)] :root
+--hcm-highlight-filter,n,,pdfjs-only,,,,pdf.js-region only
+--hcm-highlight-selected-filter,n,,pdfjs-only,,,,pdf.js-region only
+--header-height,y,Publish/Site header.md;Window/Window frame.md,y,40px,40px,body@2269,
+--heading-formatting,y,Editor/Headings.md,y,var(--text-faint),var(--text-faint),body@2318,
+--heading-spacing,y,Editor/Headings.md;Foundations/Typography.md,y,calc(var(--p-spacing) * 2.5),calc(var(--p-spacing) * 2.5),body@2319,
+--hidden-nav-navbar-transform,n,,y,,,.is-hidden-nav .mobile-navbar@21669,also/only in 1 other rule(s): .is-hidden-nav .mobile-navbar
+--hidden-nav-offset,n,,y,,,.is-phone.is-hidden-nav .view-header@20238,also/only in 1 other rule(s): .is-phone.is-hidden-nav .view-header
+--highlight-backdrop-filter,n,,y,,,.pdf-container .textLayer .highlight@11435,also/only in 1 other rule(s): .pdf-container .textLayer .highlight
+--highlight-background,n,,y,"var(--text-highlight-bg, var(--highlight-background-yellow))","var(--text-highlight-bg, var(--highlight-background-yellow))",body@2373,"also/only in 18 other rule(s): .markdown-rendered mark[data-highlight=""red""] | .markdown-rendered mark[data-highlight=""orange""] | .markdown-rendered mark[data-highlight=""yellow""] | .markdown-rendered mark[data-highlight=""green""] ...; NEW in 1.14.x (absent in 1.13.7)"
+--highlight-background-blue,n,,y,"color-mix(in oklch, var(--color-blue) var(--highlight-opacity), transparent)","color-mix(in oklch, var(--color-blue) var(--highlight-opacity), transparent)",body@2378,NEW in 1.14.x (absent in 1.13.7)
+--highlight-background-green,n,,y,"color-mix(in oklch, var(--color-green) var(--highlight-opacity), transparent)","color-mix(in oklch, var(--color-green) var(--highlight-opacity), transparent)",body@2377,NEW in 1.14.x (absent in 1.13.7)
+--highlight-background-orange,n,,y,"color-mix(in oklch, var(--color-orange) var(--highlight-opacity), transparent)","color-mix(in oklch, var(--color-orange) var(--highlight-opacity), transparent)",body@2375,NEW in 1.14.x (absent in 1.13.7)
+--highlight-background-purple,n,,y,"color-mix(in oklch, var(--color-purple) var(--highlight-opacity), transparent)","color-mix(in oklch, var(--color-purple) var(--highlight-opacity), transparent)",body@2379,NEW in 1.14.x (absent in 1.13.7)
+--highlight-background-red,n,,y,"color-mix(in oklch, var(--color-red) var(--highlight-opacity), transparent)","color-mix(in oklch, var(--color-red) var(--highlight-opacity), transparent)",body@2374,NEW in 1.14.x (absent in 1.13.7)
+--highlight-background-yellow,n,,y,"color-mix(in oklch, var(--color-yellow) var(--highlight-opacity), transparent)","color-mix(in oklch, var(--color-yellow) var(--highlight-opacity), transparent)",body@2376,NEW in 1.14.x (absent in 1.13.7)
+--highlight-bg-color,n,,y,,,.pdf-container .textLayer .highlight@11433,also/only in 1 other rule(s): .pdf-container .textLayer .highlight
+--highlight-mix-blend-mode,n,,y,lighten,darken,.theme-dark@3033; .theme-light@2983,also/only in 1 other rule(s): [@media print] .theme-dark
+--highlight-opacity,n,,y,30%,30%,body@2372,NEW in 1.14.x (absent in 1.13.7)
+--highlight-selected-backdrop-filter,n,,y,,,.pdf-container .textLayer .highlight@11436,also/only in 1 other rule(s): .pdf-container .textLayer .highlight
+--highlight-selected-bg-color,n,,y,,,.pdf-container .textLayer .highlight@11434,also/only in 1 other rule(s): .pdf-container .textLayer .highlight
+--hotkey-background,n,,y,var(--background-modifier-hover),var(--background-modifier-hover),body@2367,NEW in 1.14.x (absent in 1.13.7)
+--hotkey-corner-shape,n,,y,round,round,body@2364,NEW in 1.14.x (absent in 1.13.7)
+--hotkey-font,n,,y,var(--font-interface),var(--font-interface),body@2366,NEW in 1.14.x (absent in 1.13.7)
+--hotkey-font-size,n,,y,var(--font-ui-smaller),var(--font-ui-smaller),body@2365,NEW in 1.14.x (absent in 1.13.7)
+--hotkey-radius,n,,y,2em,2em,body@2363,NEW in 1.14.x (absent in 1.13.7)
+--hover-filter,n,,pdfjs-only,,,,pdf.js-region only
+--hr-color,y,Editor/Horizontal rule.md,y,var(--background-modifier-border),var(--background-modifier-border),body@2369,
+--hr-thickness,y,Editor/Horizontal rule.md,y,2px,2px,body@2370,
+--icon-color,y,Foundations/Icons.md,y,var(--text-muted),var(--text-muted),body@2393,"also/only in 19 other rule(s): .community-item-downloads | .horizontal-tab-nav-item.mobile-tap, .vertical-tab-nav-item.mobile-tap | .bases-toolbar-menu-item.is-disabled | .bases-toolbar-menu-item.mod-hidden ..."
+--icon-color-active,y,Foundations/Icons.md,y,var(--text-accent),var(--text-accent),body@2395,"also/only in 5 other rule(s): .is-mobile .modal-header-button, .is-mobile .modal-close-button, .is-mobile .modal-setting-back-button, .is-mobile .view-header-nav-buttons, .is-mobile .view-header .view-action | .workspace-drawer .nav-buttons-container | body.is-tablet .sidebar-toggle-button | .mobile-navbar-actions ..."
+--icon-color-focus,n,,y,,,".is-mobile .modal-header-button, .is-mobile .modal-close-button, .is-mobile .modal-setting-back-button, .is-mobile .view-header-nav-buttons, .is-mobile .view-header .view-action@20193; .workspace-drawer .nav-buttons-container@20751; body.is-tablet .sidebar-toggle-button@21251","also/only in 5 other rule(s): .is-mobile .modal-header-button, .is-mobile .modal-close-button, .is-mobile .modal-setting-back-button, .is-mobile .view-header-nav-buttons, .is-mobile .view-header .view-action | .workspace-drawer .nav-buttons-container | body.is-tablet .sidebar-toggle-button | .mobile-navbar-actions ..."
+--icon-color-focused,y,Foundations/Icons.md,y,var(--text-normal),var(--text-normal),body@2396,
+--icon-color-hover,y,Foundations/Icons.md,y,var(--text-muted),var(--text-muted),body@2394,also/only in 10 other rule(s): .text-icon-button.mod-pill | .text-icon-button.mod-destructive | .bases-toolbar .bases-toolbar-item.bases-toolbar-views-menu .text-icon-button | .view-action.mod-bookmarked ...
+--icon-l,y,Foundations/Icons.md,y,18px,18px,body@2386,also/only in 1 other rule(s): .is-mobile
+--icon-l-stroke-width,y,Foundations/Icons.md,y,1.75px,1.75px,body@2391,
+--icon-m,y,Foundations/Icons.md,y,16px,16px,body@2385,also/only in 1 other rule(s): .is-mobile
+--icon-m-stroke-width,y,Foundations/Icons.md,y,2px,2px,body@2390,
+--icon-opacity,y,Foundations/Icons.md,y,0.85,0.85,body@2397,also/only in 1 other rule(s): .is-mobile
+--icon-opacity-active,y,Foundations/Icons.md,y,1,1,body@2399,
+--icon-opacity-hover,y,Foundations/Icons.md,y,1,1,body@2398,also/only in 2 other rule(s): .is-mobile | .workspace-drawer .nav-buttons-container
+--icon-s,y,Foundations/Icons.md,y,16px,16px,body@2384,also/only in 1 other rule(s): .is-mobile
+--icon-s-stroke-width,y,Foundations/Icons.md,y,2px,2px,body@2389,
+--icon-size,y,Foundations/Icons.md,y,var(--icon-m),var(--icon-m),body@2381,"also/only in 91 other rule(s): .drag-ghost-self > .svg-icon | .markdown-source-view.mod-cm6 .cm-table-widget .table-row-drag-handle, .markdown-source-view.mod-cm6 .cm-table-widget .table-col-drag-handle | .markdown-source-view.mod-cm6 .cm-table-widget .table-row-btn, .markdown-source-view.mod-cm6 .cm-table-widget .table-col-btn | .loader-spinner ..."
+--icon-stroke,y,Foundations/Icons.md,y,var(--icon-m-stroke-width),var(--icon-m-stroke-width),body@2382,"also/only in 78 other rule(s): .drag-ghost-self > .svg-icon | .markdown-source-view.mod-cm6 .cm-table-widget .table-row-drag-handle, .markdown-source-view.mod-cm6 .cm-table-widget .table-col-drag-handle | .markdown-source-view.mod-cm6 .cm-table-widget .table-row-btn, .markdown-source-view.mod-cm6 .cm-table-widget .table-col-btn | .loader-spinner ..."
+--icon-xl,y,Foundations/Icons.md,y,32px,32px,body@2387,
+--icon-xl-stroke-width,y,Foundations/Icons.md,y,1.25px,1.25px,body@2392,
+--icon-xs,y,Foundations/Icons.md,y,14px,14px,body@2383,also/only in 1 other rule(s): .is-mobile
+--icon-xs-stroke-width,y,Foundations/Icons.md,y,2px,2px,body@2388,
+--image-radius,n,,y,4px,4px,body@2402,"also/only in 1 other rule(s): .cm-editor.cm-focused .image-embed.is-selected, .cm-editor .image-embed.has-active-menu"
+--indent-size,n,,y,4,4,body@2404,
+--indent-unit,n,,y,0.5625em,0.5625em,body@2405,
+--indentation-guide-color,y,Components/Indentation guides.md,y,"color-mix(in oklch, var(--mono-100) 12%, transparent)","color-mix(in oklch, var(--mono-100) 12%, transparent)",body@2409,
+--indentation-guide-color-active,y,Components/Indentation guides.md,y,"color-mix(in oklch, var(--mono-100) 30%, transparent)","color-mix(in oklch, var(--mono-100) 30%, transparent)",body@2410,
+--indentation-guide-editing-indent,y,Components/Indentation guides.md,y,0.85em,0.85em,body@2411,also/only in 1 other rule(s): .markdown-source-view.mod-cm6 .cm-hmd-codeblock
+--indentation-guide-reading-indent,y,Components/Indentation guides.md,y,-0.85em,-0.85em,body@2412,
+--indentation-guide-source-indent,y,Components/Indentation guides.md,y,0.25em,0.25em,body@2413,
+--indentation-guide-width,y,Components/Indentation guides.md,y,var(--border-width),var(--border-width),body@2407,
+--indentation-guide-width-active,y,Components/Indentation guides.md,y,var(--border-width),var(--border-width),body@2408,
+--inline-title-color,y,Editor/Inline title.md,y,var(--h1-color),var(--h1-color),body@2415,
+--inline-title-font,y,Editor/Inline title.md,y,var(--h1-font),var(--h1-font),body@2416,
+--inline-title-line-height,y,Editor/Inline title.md,y,var(--h1-line-height),var(--h1-line-height),body@2417,
+--inline-title-margin-bottom,n,,y,0.5em,0.5em,body@2422,
+--inline-title-size,y,Editor/Inline title.md,y,var(--h1-size),var(--h1-size),body@2418,
+--inline-title-style,y,Editor/Inline title.md,y,var(--h1-style),var(--h1-style),body@2419,
+--inline-title-variant,y,Editor/Inline title.md,y,var(--h1-variant),var(--h1-variant),body@2420,
+--inline-title-weight,y,Editor/Inline title.md,y,var(--h1-weight),var(--h1-weight),body@2421,
+--input-border-width,y,Components/Text input.md,y,var(--border-width),var(--border-width),body@2429,also/only in 5 other rule(s): .metadata-property | .bases-rendered-value | .bases-search-row | .is-mobile ...
+--input-border-width-focus,n,,y,2px,2px,body@2430,also/only in 3 other rule(s): .metadata-property | .bases-search-row | .workspace-drawer .search-input-container
+--input-corner-shape,n,,y,var(--corner-shape),var(--corner-shape),body@2427,
+--input-date-separator,n,,y,var(--text-faint),var(--text-faint),body@2432,
+--input-disabled-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--input-focus-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--input-focus-outline,n,,pdfjs-only,,,,pdf.js-region only
+--input-font-weight,y,Components/Text input.md,y,var(--font-normal),var(--font-normal),body@2428,also/only in 1 other rule(s): .is-mobile
+--input-height,y,Components/Text input.md,y,30px,30px,body@2424,also/only in 8 other rule(s): .metadata-container | .bases-toolbar-menu | .bases-group-page .bases-group-add-line | .bases-cards-item ...
+--input-hover-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--input-icon-inset,n,,y,var(--size-4-1),var(--size-4-1),body@2433,also/only in 2 other rule(s): .mod-macos | .is-mobile
+--input-padding,n,,y,var(--size-4-1) var(--size-4-2),var(--size-4-1) var(--size-4-2),body@2425,also/only in 2 other rule(s): .metadata-property-value | .is-mobile
+--input-placeholder-color,n,,y,var(--text-faint),var(--text-faint),body@2431,"also/only in 3 other rule(s): .bases-table-container | .bases-table-summary-cell .summary-content | .bases-td .metadata-input.mod-date, .bases-td .metadata-input.mod-datetime"
+--input-radius,y,Components/Text input.md,y,5px,5px,body@2426,also/only in 3 other rule(s): .mod-macos | .metadata-property | .is-mobile
+--input-shadow,n,,y,"inset 0 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.09), 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 1px 1.5px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 0 0 0 transparent","inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.065), 0 0 0 0 transparent",.theme-dark@3076; .theme-light@3012,"also/only in 4 other rule(s): .mod-macos | .base-toolbar-sort-item, .base-toolbar-groupby-item | .bases-query-container .filter-expression | .is-mobile"
+--input-shadow-hover,n,,y,"inset 0 0.5px 1px 0.5px rgba(255, 255, 255, 0.16), 0 2px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.4), 0 0 0 0 transparent","inset 0 0 0 1px rgba(0, 0, 0, 0.17), 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 0 transparent",.theme-dark@3077; .theme-light@3013,also/only in 2 other rule(s): .mod-macos | .is-mobile
+--input-text-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--input-text-fg-color,n,,pdfjs-only,,,,pdf.js-region only
+--input-transition,n,,y,none,none,body@2434,also/only in 1 other rule(s): .is-mobile; NEW in 1.14.x (absent in 1.13.7)
+--input-unfocused-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--inset-end,n,,y,,,"body, [dir='ltr']@4876; .mod-rtl, [dir='rtl']@4884","also/only in 2 other rule(s): body, [dir='ltr'] | .mod-rtl, [dir='rtl']"
+--inset-start,n,,y,,,"body, [dir='ltr']@4875; .mod-rtl, [dir='rtl']@4883","also/only in 2 other rule(s): body, [dir='ltr'] | .mod-rtl, [dir='rtl']"
+--interactive-accent,y,Foundations/Colors.md,y,var(--color-accent),var(--color-accent-1),body@2974; .theme-dark@3070,"also/only in 1 other rule(s): [@media (forced-colors: active)] .horizontal-tab-nav-item, .vertical-tab-nav-item"
+--interactive-accent-hover,y,Foundations/Colors.md,y,var(--color-accent-1),var(--color-accent-2),body@2975; .theme-dark@3071,
+--interactive-accent-hsl,y,Foundations/Colors.md,y,var(--color-accent-hsl),var(--color-accent-hsl),body@2977,DEPRECATED per docs Colors.md (1.13); app.css comment: Deprecated
+--interactive-hover,y,Foundations/Colors.md,y,var(--color-base-35),var(--color-base-10),body@2973; .theme-dark@3068,also/only in 3 other rule(s): .mod-macos | .is-mobile | .is-mobile.theme-dark
+--interactive-normal,y,Foundations/Colors.md,y,var(--color-base-30),var(--color-base-00),body@2972; .theme-dark@3067,also/only in 5 other rule(s): .mod-macos | .is-mobile | .is-mobile.theme-dark | .is-mobile.theme-light .menu ...
+--italic-color,y,Foundations/Typography.md,y,inherit,inherit,body@2436,
+--italic-weight,n,,y,inherit,inherit,body@2437,
+--keyboard-background,n,,y,,,.is-mobile@19594,also/only in 1 other rule(s): .is-mobile
+--keyboard-height,n,,y,0px,0px,:root@19489,
+--layer-cover,y,Foundations/Layers.md,y,5,5,body@2439,
+--layer-dragged-item,y,Foundations/Layers.md,y,80,80,body@2448,
+--layer-menu,y,Foundations/Layers.md,y,65,65,body@2446,
+--layer-modal,y,Foundations/Layers.md,y,50,50,body@2444,
+--layer-notice,y,Foundations/Layers.md,y,60,60,body@2445,
+--layer-popover,y,Foundations/Layers.md,y,30,30,body@2442,
+--layer-sidedock,y,Foundations/Layers.md,y,10,10,body@2440,
+--layer-slides,y,Foundations/Layers.md,y,45,45,body@2443,
+--layer-status-bar,y,Foundations/Layers.md,y,15,15,body@2441,
+--layer-tooltip,y,Foundations/Layers.md,y,70,70,body@2447,
+--lightbox-background,n,,y,black,black,body@2450,
+--lightbox-close-size,n,,y,,,.lightbox-titlebar@8991; .is-mobile .lightbox-titlebar@9009,also/only in 2 other rule(s): .lightbox-titlebar | .is-mobile .lightbox-titlebar
+--lightbox-close-top,n,,y,,,.lightbox-titlebar@8990; .is-mobile .lightbox-titlebar@9008,also/only in 2 other rule(s): .lightbox-titlebar | .is-mobile .lightbox-titlebar
+--lightbox-titlebar-color,n,,y,white,white,body@2451,
+--lightbox-titlebar-display,n,,y,flex,flex,body@2452,
+--line-height-normal,y,Foundations/Typography.md,y,1.5,1.5,body@2454,
+--line-height-tight,y,Foundations/Typography.md,y,1.3,1.3,body@2455,
+--link-color,y,Editor/Link.md,y,var(--text-accent),var(--text-accent),body@2457,also/only in 7 other rule(s): .setting-item-description | [@keyframes multi-select-highlight] from | .bases-group-heading | .bases-toolbar-menu-item.mod-hidden .bases-toolbar-menu-item-name ...
+--link-color-hover,y,Editor/Link.md,y,var(--text-accent-hover),var(--text-accent-hover),body@2458,also/only in 4 other rule(s): .setting-item-description | .bases-group-heading | .bases-toolbar-menu-item.mod-hidden .bases-toolbar-menu-item-name | .bases-toolbar-menu-item .bases-toolbar-menu-item-name
+--link-decoration,y,Editor/Link.md,y,underline,underline,body@2459,also/only in 4 other rule(s): .bases-group-heading | .bases-toolbar-menu-item .bases-toolbar-menu-item-name | .bases-cards-property.mod-title | .bases-kanban-card-property.mod-title
+--link-decoration-hover,y,Editor/Link.md,y,underline,underline,body@2460,
+--link-decoration-thickness,y,Editor/Link.md,y,auto,auto,body@2461,
+--link-external-color,y,Editor/Link.md,y,var(--text-accent),var(--text-accent),body@2463,also/only in 1 other rule(s): .community-plugins-banner
+--link-external-color-hover,y,Editor/Link.md,y,var(--text-accent-hover),var(--text-accent-hover),body@2464,also/only in 1 other rule(s): .community-plugins-banner
+--link-external-decoration,y,Editor/Link.md,y,underline,underline,body@2465,
+--link-external-decoration-hover,y,Editor/Link.md,y,underline,underline,body@2466,
+--link-external-filter,n,,y,none,none,body@2467,
+--link-fg-color,n,,pdfjs-only,,,,pdf.js-region only
+--link-hover-fg-color,n,,pdfjs-only,,,,pdf.js-region only
+--link-outline,n,,pdfjs-only,,,,pdf.js-region only
+--link-unresolved-color,y,Editor/Link.md,y,var(--text-accent),var(--text-accent),body@2468,also/only in 5 other rule(s): .bases-group-heading | .bases-toolbar-menu-item.mod-hidden .bases-toolbar-menu-item-name | .bases-toolbar-menu-item .bases-toolbar-menu-item-name | .bases-cards-property.mod-title ...
+--link-unresolved-decoration-color,y,Editor/Link.md,y,"color-mix(in oklch, var(--interactive-accent) 30%, transparent)","color-mix(in oklch, var(--interactive-accent) 30%, transparent)",body@2472,
+--link-unresolved-decoration-style,y,Editor/Link.md,y,solid,solid,body@2471,
+--link-unresolved-filter,y,Editor/Link.md,y,none,none,body@2470,
+--link-unresolved-opacity,y,Editor/Link.md,y,0.7,0.7,body@2469,also/only in 4 other rule(s): .bases-group-heading | .bases-toolbar-menu-item .bases-toolbar-menu-item-name | .bases-cards-property.mod-title | .bases-kanban-card-property.mod-title
+--link-weight,y,Editor/Link.md,y,var(--font-weight),var(--font-weight),body@2462,"also/only in 16 other rule(s): h1 a, .markdown-rendered h1 a | h2 a, .markdown-rendered h2 a | h3 a, .markdown-rendered h3 a | h4 a, .markdown-rendered h4 a ..."
+--list-bullet-border,y,Editor/List.md,y,none,none,body@2481,
+--list-bullet-end-padding,y,Editor/List.md,y,1.3rem,1.3rem,body@2486,
+--list-bullet-radius,y,Editor/List.md,y,50%,50%,body@2482,
+--list-bullet-size,y,Editor/List.md,y,0.3em,0.3em,body@2483,
+--list-bullet-transform,y,Editor/List.md,y,none,none,body@2484,
+--list-indent,y,Editor/List.md,y,calc(var(--indent-unit) * var(--indent-size)),calc(var(--indent-unit) * var(--indent-size)),body@2474,
+--list-indent-editing,y,Editor/List.md,y,0.75em,0.75em,body@2475,
+--list-indent-source,y,Editor/List.md,y,0,0,body@2476,
+--list-marker-color,y,Editor/List.md,y,var(--text-faint),var(--text-faint),body@2478,
+--list-marker-color-collapsed,y,Editor/List.md,y,var(--text-accent),var(--text-accent),body@2480,
+--list-marker-color-hover,y,Editor/List.md,y,var(--text-muted),var(--text-muted),body@2479,
+--list-marker-space,n,,y,,,.markdown-source-view@13589; .markdown-source-view.is-live-preview@13593,also/only in 2 other rule(s): .markdown-source-view | .markdown-source-view.is-live-preview
+--list-numbered-style,y,Editor/List.md,y,decimal,decimal,body@2485,
+--list-padding-inline-start,n,,y,,,.markdown-source-view@13588; .markdown-source-view.is-live-preview@13592,also/only in 2 other rule(s): .markdown-source-view | .markdown-source-view.is-live-preview
+--list-spacing,y,Editor/List.md,y,0.075em,0.075em,body@2477,
+--loading-icon-delay,n,,pdfjs-only,,,,pdf.js-region only
+--logo-height,y,Publish/Site header.md,n,,,,Publish-only doc
+--logo-max-height,y,Publish/Site header.md,n,,,,Publish-only doc
+--logo-max-width,y,Publish/Site header.md,n,,,,Publish-only doc
+--logo-radius,y,Publish/Site header.md,n,,,,Publish-only doc
+--logo-width,y,Publish/Site header.md,n,,,,Publish-only doc
+--menu-backdrop-filter,n,,y,none,none,body@2543,also/only in 1 other rule(s): .is-mobile
+--menu-background,n,,y,var(--background-secondary),var(--background-secondary),body@2540,
+--menu-border-color,n,,y,var(--background-modifier-border-hover),var(--background-modifier-border-hover),body@2541,
+--menu-border-width,n,,y,var(--border-width),var(--border-width),body@2542,
+--menu-corner-shape,n,,y,var(--corner-shape),var(--corner-shape),body@2539,
+--menu-divider-color,n,,y,,,.is-mobile@19537; .is-mobile.theme-dark@19612,also/only in 2 other rule(s): .is-mobile | .is-mobile.theme-dark
+--menu-divider-width,n,,y,,,.is-mobile@19536,also/only in 1 other rule(s): .is-mobile
+--menu-padding,n,,y,var(--size-2-3),var(--size-2-3),body@2536,also/only in 1 other rule(s): .is-phone
+--menu-radius,n,,y,var(--radius-m),var(--radius-m),body@2538,
+--menu-scroll-mask,n,,y,var(--scroll-mask-small),var(--scroll-mask-small),body@2544,
+--menu-shadow,n,,y,var(--shadow-s),var(--shadow-s),body@2537,
+--message-bar-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--message-bar-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--message-bar-close-button-active-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--message-bar-close-button-border,n,,pdfjs-only,,,,pdf.js-region only
+--message-bar-close-button-border-radius,n,,pdfjs-only,,,,pdf.js-region only
+--message-bar-close-button-color,n,,pdfjs-only,,,,pdf.js-region only
+--message-bar-close-button-color-hover,n,,pdfjs-only,,,,pdf.js-region only
+--message-bar-close-button-focus-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--message-bar-close-button-hover-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--message-bar-fg-color,n,,pdfjs-only,,,,pdf.js-region only
+--message-bar-icon-color,n,,pdfjs-only,,,,pdf.js-region only
+--metadata-background,y,Editor/Properties.md,y,transparent,transparent,body@2546,
+--metadata-border-color,y,Editor/Properties.md,y,var(--background-modifier-border),var(--background-modifier-border),body@2551,
+--metadata-border-radius,y,Editor/Properties.md,y,0,0,body@2552,
+--metadata-border-width,y,Editor/Properties.md,y,0,0,body@2553,
+--metadata-display-editing,y,Editor/Properties.md,y,block,block,body@2548,
+--metadata-display-reading,y,Editor/Properties.md,y,block,block,body@2547,
+--metadata-divider-color,y,Editor/Properties.md,y,var(--background-modifier-border),var(--background-modifier-border),body@2554,"also/only in 2 other rule(s): [@media (hover: hover)] .metadata-property:hover | .metadata-property.has-focus, .metadata-property:focus-within"
+--metadata-divider-color-focus,y,Editor/Properties.md,y,transparent,transparent,body@2556,
+--metadata-divider-color-hover,y,Editor/Properties.md,y,transparent,transparent,body@2555,"also/only in 2 other rule(s): .is-phone .metadata-container, .workspace-drawer .metadata-container | .workspace > .workspace-split:not(.mod-root) .metadata-container"
+--metadata-divider-width,y,Editor/Properties.md,y,0,0,body@2557,"also/only in 4 other rule(s): .base-toolbar-sort-item, .base-toolbar-groupby-item | .bases-query-container .filter-expression | .bases-table-container | .workspace > .workspace-split:not(.mod-root) .metadata-container"
+--metadata-gap,y,Editor/Properties.md,y,3px,3px,body@2558,"also/only in 2 other rule(s): .is-phone .metadata-properties, .workspace-drawer .metadata-properties | .workspace > .workspace-split:not(.mod-root) .metadata-container .metadata-properties"
+--metadata-input-background,y,Editor/Properties.md,y,transparent,transparent,body@2584,
+--metadata-input-background-active,y,Editor/Properties.md,y,var(--background-modifier-hover),var(--background-modifier-hover),body@2586,also/only in 2 other rule(s): .bases-group-page .bases-group-add-line | .bases-table-container
+--metadata-input-background-hover,y,Editor/Properties.md,y,transparent,transparent,body@2585,
+--metadata-input-font,n,,y,var(--font-interface),var(--font-interface),body@2582,
+--metadata-input-font-size,y,Editor/Properties.md,y,var(--font-smaller),var(--font-smaller),body@2583,also/only in 4 other rule(s): .bases-group-page .bases-group-add-line | .bases-query-container .filter-expression | .bases-table-container | .workspace > .workspace-split:not(.mod-root) .metadata-container
+--metadata-input-height,y,Editor/Properties.md,y,calc(var(--font-preferred-size) * 1.75),calc(var(--font-preferred-size) * 1.75),body@2580,"also/only in 1 other rule(s): .is-phone .metadata-container, .workspace-drawer .metadata-container"
+--metadata-input-longtext-lines,n,,y,3,3,body@2587,also/only in 1 other rule(s): .bases-table-container
+--metadata-input-padding,n,,y,var(--size-4-1) var(--size-4-2),var(--size-4-1) var(--size-4-2),body@2588,also/only in 1 other rule(s): .bases-group-page .bases-group-add-line
+--metadata-input-text-color,y,Editor/Properties.md,y,var(--text-normal),var(--text-normal),body@2581,
+--metadata-label-background,n,,y,transparent,transparent,body@2571,
+--metadata-label-background-active,y,Editor/Properties.md,y,var(--background-modifier-hover),var(--background-modifier-hover),body@2573,
+--metadata-label-background-hover,y,Editor/Properties.md,y,transparent,transparent,body@2572,
+--metadata-label-font,n,,y,var(--font-interface),var(--font-interface),body@2574,
+--metadata-label-font-size,y,Editor/Properties.md,y,var(--font-smaller),var(--font-smaller),body@2575,also/only in 1 other rule(s): .workspace > .workspace-split:not(.mod-root) .metadata-container
+--metadata-label-font-weight,y,Editor/Properties.md,y,inherit,inherit,body@2576,
+--metadata-label-text-color,y,Editor/Properties.md,y,var(--text-muted),var(--text-muted),body@2577,
+--metadata-label-text-color-hover,y,Editor/Properties.md,y,var(--text-muted),var(--text-muted),body@2578,
+--metadata-label-width,y,Editor/Properties.md,y,9em,9em,body@2579,"also/only in 3 other rule(s): .base-toolbar-sort-item, .base-toolbar-groupby-item | .bases-query-container .filter-expression | .is-phone"
+--metadata-max-width,y,Editor/Properties.md,y,none,none,body@2549,
+--metadata-padding,y,Editor/Properties.md,y,var(--size-4-2) 0,var(--size-4-2) 0,body@2550,"also/only in 2 other rule(s): .is-phone .metadata-container, .workspace-drawer .metadata-container | .workspace > .workspace-split:not(.mod-root) .metadata-container"
+--metadata-property-background,y,Editor/Properties.md,y,transparent,transparent,body@2566,"also/only in 1 other rule(s): .base-toolbar-sort-item, .base-toolbar-groupby-item"
+--metadata-property-background-active,y,Editor/Properties.md,y,var(--background-modifier-hover),var(--background-modifier-hover),body@2568,
+--metadata-property-background-hover,y,Editor/Properties.md,y,transparent,transparent,body@2567,
+--metadata-property-box-shadow,n,,y,,,"body:not(.is-phone) .base-toolbar-sort-item, body:not(.is-phone) .base-toolbar-groupby-item@15033; .bases-group-page .bases-group-add-line@15322; .bases-query-container .filter-expression@15731","also/only in 4 other rule(s): body:not(.is-phone) .base-toolbar-sort-item, body:not(.is-phone) .base-toolbar-groupby-item | .bases-group-page .bases-group-add-line | .bases-query-container .filter-expression | .is-phone"
+--metadata-property-box-shadow-focus,n,,y,0 0 0 2px var(--background-modifier-border-focus),0 0 0 2px var(--background-modifier-border-focus),body@2570,also/only in 1 other rule(s): .bases-group-page .bases-group-add-line
+--metadata-property-box-shadow-hover,n,,y,0 0 0 var(--border-width) var(--background-modifier-border-hover),0 0 0 var(--border-width) var(--background-modifier-border-hover),body@2569,also/only in 1 other rule(s): .bases-group-page .bases-group-add-line
+--metadata-property-corner-shape,n,,y,var(--corner-shape),var(--corner-shape),body@2563,
+--metadata-property-corner-shape-focus,n,,y,var(--corner-shape),var(--corner-shape),body@2565,
+--metadata-property-corner-shape-hover,n,,y,var(--corner-shape),var(--corner-shape),body@2564,
+--metadata-property-padding,y,Editor/Properties.md,y,0,0,body@2559,
+--metadata-property-radius,y,Editor/Properties.md,y,6px,6px,body@2560,"also/only in 2 other rule(s): .is-phone .metadata-container, .workspace-drawer .metadata-container | .workspace > .workspace-split:not(.mod-root) .metadata-container"
+--metadata-property-radius-focus,y,Editor/Properties.md,y,6px,6px,body@2562,
+--metadata-property-radius-hover,y,Editor/Properties.md,y,6px,6px,body@2561,"also/only in 1 other rule(s): .is-phone .metadata-container, .workspace-drawer .metadata-container"
+--metadata-sidebar-input-font-size,y,Editor/Properties.md,y,var(--font-ui-small),var(--font-ui-small),body@2590,
+--metadata-sidebar-label-font-size,y,Editor/Properties.md,y,var(--font-ui-small),var(--font-ui-small),body@2589,
+--mobile-sidebar-background,n,,y,,,.is-mobile@19543; .is-mobile.theme-dark@19613,also/only in 2 other rule(s): .is-mobile | .is-mobile.theme-dark
+--mobile-sidebar-max-width,n,,y,,,.is-mobile@19542,also/only in 1 other rule(s): .is-mobile
+--mobile-sidebar-min-width,n,,y,,,.is-mobile@19541; .is-phone.is-mobile@19660,also/only in 2 other rule(s): .is-mobile | [@media (max-width: 380px)] .is-phone.is-mobile
+--mobile-sidebar-radius,n,,y,,,.is-mobile@19544; .is-phone.is-mobile@19662; .is-tablet@19669,also/only in 5 other rule(s): .is-mobile | [@media (max-width: 380px)] .is-phone.is-mobile | .is-tablet | .workspace-drawer.mod-primary.is-pinned ...
+--mobile-sidebar-width,n,,y,,,.is-mobile@19539; .is-phone.is-mobile@19661,also/only in 2 other rule(s): .is-mobile | [@media (max-width: 380px)] .is-phone.is-mobile
+--mobile-sidebar-width-pinned,n,,y,,,.is-mobile@19540,also/only in 1 other rule(s): .is-mobile
+--mobile-toolbar-height,n,,y,,,.is-mobile@19496,also/only in 1 other rule(s): .is-mobile
+--modal-background,y,Components/Modal.md,y,var(--background-primary),var(--background-primary),body@2592,also/only in 3 other rule(s): .is-mobile | .is-mobile.theme-dark | .is-mobile .mod-community-modal
+--modal-border-color,y,Components/Modal.md,y,var(--background-modifier-border-hover),var(--background-modifier-border-hover),body@2602,also/only in 1 other rule(s): .is-mobile.theme-dark
+--modal-border-width,y,Components/Modal.md,y,var(--border-width),var(--border-width),body@2601,also/only in 1 other rule(s): .is-phone
+--modal-community-sidebar-width,y,Components/Modal.md,y,280px,280px,body@2604,also/only in 1 other rule(s): .is-phone
+--modal-header-height,n,,y,auto,auto,body@2595,also/only in 2 other rule(s): .is-phone .modal.mod-settings.mod-sidebar-layout | .is-phone .modal.mod-community-modal .community-modal-details
+--modal-header-inset-top,n,,y,,,.is-phone .modal.mod-settings.mod-sidebar-layout@21564,also/only in 1 other rule(s): .is-phone .modal.mod-settings.mod-sidebar-layout; NEW in 1.14.x (absent in 1.13.7)
+--modal-height,y,Components/Modal.md,y,85vh,85vh,body@2596,
+--modal-max-height,y,Components/Modal.md,y,1000px,1000px,body@2598,also/only in 1 other rule(s): .is-phone .modal-container
+--modal-max-width,y,Components/Modal.md,y,1100px,1100px,body@2597,
+--modal-max-width-narrow,y,Components/Modal.md,y,800px,800px,body@2599,
+--modal-radius,y,Components/Modal.md,y,var(--radius-l),var(--radius-l),body@2603,"also/only in 5 other rule(s): .mod-macos | .is-mobile | .is-phone .modal-container | .is-phone .modal-container.mod-confirmation .modal, .is-phone .modal.mod-lg, .is-phone .modal.mod-sidebar-layout ..."
+--modal-shadow,n,,y,none,none,body@2600,
+--modal-sidebar-background,n,,y,var(--modal-background),var(--modal-background),body@2593,also/only in 1 other rule(s): .is-mobile
+--modal-sidebar-inset,n,,y,,,.modal-sidebar-inner@9364; .is-mobile .modal-sidebar-inner@21401,also/only in 2 other rule(s): .modal-sidebar-inner | .is-mobile .modal-sidebar-inner
+--modal-width,y,Components/Modal.md,y,90vw,90vw,body@2594,also/only in 1 other rule(s): .is-phone .modal-container
+--mono-0,y,Foundations/Colors.md,y,black,white,.theme-dark@3034; .theme-light@2984,
+--mono-100,y,Foundations/Colors.md,y,white,black,.theme-dark@3035; .theme-light@2985,
+--mono-rgb-0,y,Foundations/Colors.md,y,"0, 0, 0","255, 255, 255",.theme-dark@3084; .theme-light@3019,DEPRECATED per docs Colors.md (1.13); app.css comment: Deprecated
+--mono-rgb-100,y,Foundations/Colors.md,y,"255, 255, 255","0, 0, 0",.theme-dark@3085; .theme-light@3020,DEPRECATED per docs Colors.md (1.13); app.css comment: Deprecated
+--nav-collapse-icon-color,y,Components/Navigation.md;Publish/Site navigation.md,y,var(--collapse-icon-color),var(--collapse-icon-color),body@2509,also/only in 5 other rule(s): .is-translucent:not(.is-fullscreen) | .sync-history-list-item-header.is-active | [@media (hover: hover)] .sync-history-list-item-header.is-active:hover | [@media (hover: hover)] .sync-history-list-item-header.is-active .tree-item-flair:hover ...
+--nav-collapse-icon-color-collapsed,y,Components/Navigation.md,y,var(--text-faint),var(--text-faint),body@2510,also/only in 1 other rule(s): .is-translucent:not(.is-fullscreen)
+--nav-collapse-icon-color-hover,y,Publish/Site navigation.md,n,,,,Publish-only doc
+--nav-heading-color,y,Components/Navigation.md,y,var(--text-normal),var(--text-normal),body@2511,
+--nav-heading-color-colapsed-hover,y,Components/Navigation.md,n,,,,docs typo; app.css defines --nav-heading-color-collapsed-hover
+--nav-heading-color-collapsed,y,Components/Navigation.md,y,var(--text-faint),var(--text-faint),body@2513,
+--nav-heading-color-collapsed-hover,n,,y,var(--text-muted),var(--text-muted),body@2514,
+--nav-heading-color-hover,y,Components/Navigation.md,y,var(--text-normal),var(--text-normal),body@2512,
+--nav-heading-weight,y,Components/Navigation.md,y,var(--font-medium),var(--font-medium),body@2515,
+--nav-heading-weight-hover,y,Components/Navigation.md,y,var(--font-medium),var(--font-medium),body@2516,
+--nav-height,n,,y,,,.mobile-onboarding@19994,also/only in 1 other rule(s): .mobile-onboarding
+--nav-indentation-guide-color,y,Components/Navigation.md,y,var(--indentation-guide-color),var(--indentation-guide-color),body@2508,
+--nav-indentation-guide-width,y,Components/Navigation.md,y,var(--indentation-guide-width),var(--indentation-guide-width),body@2507,
+--nav-item-background-active,y,Components/Navigation.md,y,var(--background-modifier-hover),var(--background-modifier-hover),body@2496,
+--nav-item-background-hover,y,Components/Navigation.md,y,var(--background-modifier-hover),var(--background-modifier-hover),body@2495,
+--nav-item-background-selected,y,Components/Navigation.md,y,"color-mix(in oklch, var(--color-accent) 15%, transparent)","color-mix(in oklch, var(--color-accent) 15%, transparent)",body@2497,
+--nav-item-border-color,y,Publish/Site navigation.md,n,,,,Publish-only doc
+--nav-item-border-color-active,y,Publish/Site navigation.md,n,,,,Publish-only doc
+--nav-item-border-color-hover,y,Publish/Site navigation.md,n,,,,Publish-only doc
+--nav-item-children-margin-start,y,Components/Navigation.md,y,var(--size-4-3),var(--size-4-3),body@2502,
+--nav-item-children-padding-start,y,Components/Navigation.md,y,var(--size-2-2),var(--size-2-2),body@2501,
+--nav-item-color,y,Components/Navigation.md;Publish/Site navigation.md,y,var(--text-muted),var(--text-muted),body@2490,also/only in 1 other rule(s): .is-mobile
+--nav-item-color-active,y,Components/Navigation.md;Publish/Site navigation.md,y,var(--text-normal),var(--text-normal),body@2492,
+--nav-item-color-highlighted,y,Components/Navigation.md,y,var(--text-accent),var(--text-accent),body@2494,
+--nav-item-color-hover,y,Components/Navigation.md;Publish/Site navigation.md,y,var(--text-normal),var(--text-normal),body@2491,
+--nav-item-color-selected,y,Components/Navigation.md,y,var(--text-normal),var(--text-normal),body@2493,
+--nav-item-margin-bottom,n,,y,var(--size-2-1),var(--size-2-1),body@2500,also/only in 1 other rule(s): .is-mobile
+--nav-item-padding,y,Components/Navigation.md,y,var(--size-4-1) var(--size-4-2) var(--size-4-1) var(--size-4-6),var(--size-4-1) var(--size-4-2) var(--size-4-1) var(--size-4-6),body@2498,"also/only in 4 other rule(s): .mod-rtl, .is-rtl, .rtl | .mod-rtl.is-mobile | .is-mobile | .is-tablet"
+--nav-item-parent-padding,y,Components/Navigation.md,y,var(--nav-item-padding),var(--nav-item-padding),body@2499,
+--nav-item-radius,n,,y,var(--radius-m),var(--radius-m),body@2489,also/only in 1 other rule(s): .is-mobile
+--nav-item-size,y,Components/Navigation.md,y,var(--font-ui-small),var(--font-ui-small),body@2488,also/only in 2 other rule(s): .is-mobile | .is-phone
+--nav-item-weight,y,Components/Navigation.md,y,inherit,inherit,body@2503,
+--nav-item-weight-active,y,Components/Navigation.md;Publish/Site navigation.md,y,inherit,inherit,body@2505,
+--nav-item-weight-hover,y,Components/Navigation.md,y,inherit,inherit,body@2504,
+--nav-item-white-space,y,Components/Navigation.md,y,pre,pre,body@2506,
+--nav-parent-item-color,y,Publish/Site navigation.md,n,,,,Publish-only doc
+--nav-parent-item-color-active,y,Publish/Site navigation.md,n,,,,Publish-only doc
+--nav-parent-item-weight,y,Publish/Site navigation.md,n,,,,Publish-only doc
+--nav-tag-background,n,,y,transparent,transparent,body@2517,
+--nav-tag-color,n,,y,var(--text-faint),var(--text-faint),body@2519,
+--nav-tag-color-active,n,,y,var(--text-muted),var(--text-muted),body@2521,
+--nav-tag-color-hover,n,,y,var(--text-muted),var(--text-muted),body@2520,
+--nav-tag-radius,n,,y,var(--radius-s),var(--radius-s),body@2518,
+--nav-tag-weight,n,,y,var(--font-semibold),var(--font-semibold),body@2522,
+--navbar-bottom-offset,n,,y,,,.is-mobile@19548,also/only in 1 other rule(s): .is-mobile
+--navbar-height,n,,y,,,.is-mobile@19549; .is-mobile.is-floating-nav@22223,also/only in 2 other rule(s): .is-mobile | .is-mobile.is-floating-nav
+--navbar-max-width,n,,y,,,.is-mobile@19552; .is-mobile.is-floating-nav@22221,also/only in 2 other rule(s): .is-mobile | .is-mobile.is-floating-nav
+--navbar-position,n,,y,,,".is-phone.is-floating-nav, .is-phone.auto-full-screen@22214; .is-mobile.is-floating-nav@22225","also/only in 2 other rule(s): .is-phone.is-floating-nav, .is-phone.auto-full-screen | .is-mobile.is-floating-nav"
+--navbar-radius,n,,y,,,.is-mobile@19550; .is-mobile.is-floating-nav@22224,also/only in 2 other rule(s): .is-mobile | .is-mobile.is-floating-nav
+--navbar-width,n,,y,,,.is-mobile@19551; .is-mobile.is-floating-nav@22222,also/only in 2 other rule(s): .is-mobile | .is-mobile.is-floating-nav
+--no-tooltip,n,,y,,,body.is-grabbing@3331; .empty-state-action-list > .text-icon-button.mod-pill@4144; .empty-state-action-list > .text-icon-button.mod-pill@4179,also/only in 6 other rule(s): body.is-grabbing | .empty-state-action-list > .text-icon-button.mod-pill | [@container empty-state (max-width: 230px)] .empty-state-action-list > .text-icon-button.mod-pill | .workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header ...
+--notice-background,n,,y,var(--background-modifier-message),var(--background-modifier-message),body@2525,NEW in 1.14.x (absent in 1.13.7)
+--notice-border,n,,y,none,none,body@2534,NEW in 1.14.x (absent in 1.13.7)
+--notice-color,n,,y,#FAFAFA,#FAFAFA,body@2526,NEW in 1.14.x (absent in 1.13.7)
+--notice-corner-shape,n,,y,var(--corner-shape),var(--corner-shape),body@2524,NEW in 1.14.x (absent in 1.13.7)
+--notice-font-size,n,,y,var(--font-ui-small),var(--font-ui-small),body@2527,NEW in 1.14.x (absent in 1.13.7)
+--notice-font-weight,n,,y,var(--font-normal),var(--font-normal),body@2528,NEW in 1.14.x (absent in 1.13.7)
+--notice-line-height,n,,y,var(--line-height-tight),var(--line-height-tight),body@2529,NEW in 1.14.x (absent in 1.13.7)
+--notice-max-width,n,,y,300px,300px,body@2531,NEW in 1.14.x (absent in 1.13.7)
+--notice-padding,n,,y,var(--size-4-2) var(--size-4-3),var(--size-4-2) var(--size-4-3),body@2530,NEW in 1.14.x (absent in 1.13.7)
+--notice-radius,n,,y,var(--radius-m),var(--radius-m),body@2532,NEW in 1.14.x (absent in 1.13.7)
+--notice-shadow,n,,y,var(--shadow-s),var(--shadow-s),body@2533,NEW in 1.14.x (absent in 1.13.7)
+--outline-heading-color,y,Publish/Site components.md,n,,,,Publish-only doc
+--outline-heading-color-active,y,Publish/Site components.md,n,,,,Publish-only doc
+--outline-heading-color-hover,y,Publish/Site components.md,n,,,,Publish-only doc
+--outline-heading-weight-active,y,Publish/Site components.md,n,,,,Publish-only doc
+--p-spacing,y,Foundations/Typography.md,y,1rem,1rem,body@2622,also/only in 1 other rule(s): .markdown-source-view:not(.is-live-preview)
+--p-spacing-empty,n,,y,0rem,0rem,body@2623,
+--page-bg-color,n,,y,,,.pdf-container .pdfViewer .page@11393,also/only in 1 other rule(s): .pdf-container .pdfViewer .page
+--page-border,n,,y,,,.pdf-container .pdfViewer .page@11391,also/only in 1 other rule(s): .pdf-container .pdfViewer .page
+--page-margin,n,,y,,,.pdf-container .pdfViewer .page@11392,also/only in 1 other rule(s): .pdf-container .pdfViewer .page
+--page-padding,y,Publish/Site pages.md,n,,,,Publish-only doc
+--page-title-color,y,Publish/Site pages.md,n,,,,Publish-only doc
+--page-title-font,y,Publish/Site fonts.md;Publish/Site pages.md,n,,,,Publish-only doc
+--page-title-line-height,y,Publish/Site pages.md,n,,,,Publish-only doc
+--page-title-size,y,Publish/Site pages.md,n,,,,Publish-only doc
+--page-title-style,y,Publish/Site pages.md,n,,,,Publish-only doc
+--page-title-variant,y,Publish/Site pages.md,n,,,,Publish-only doc
+--page-title-weight,y,Publish/Site pages.md,n,,,,Publish-only doc
+--page-width,y,Publish/Site pages.md,n,,,,Publish-only doc
+--pdf-background,n,,y,var(--background-primary),var(--background-primary),body@2625,
+--pdf-page-background,n,,y,var(--background-primary),var(--background-primary),body@2626,
+--pdf-popup-width,n,,y,,,.popupWrapper@11471,also/only in 1 other rule(s): .popupWrapper
+--pdf-shadow,n,,y,0 0 0 1px var(--background-modifier-border),"0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.1)",body@2627; .theme-dark@3081,
+--pdf-sidebar-background,n,,y,var(--background-primary),var(--background-primary),body@2629,
+--pdf-spread-shadow,n,,y,"0 0 0 1px rgba(0, 0, 0, 0.05)","0 0 0 1px rgba(0, 0, 0, 0.05)",body@2628,
+--pdf-thumbnail-shadow,n,,y,0 0 0 1px var(--background-modifier-border),"0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.2)",body@2630; .theme-dark@3082,
+--pdfViewer-padding-bottom,n,,pdfjs-only,,,,pdf.js-region only
+--pill-background,y,Components/Multi-select.md,y,transparent,transparent,body@2612,"also/only in 2 other rule(s): .metadata-property-value .multi-select-container .multi-select-pill.is-invalid | .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-background-hover,y,Components/Multi-select.md,y,transparent,transparent,body@2613,"also/only in 1 other rule(s): .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-border-color,y,Components/Multi-select.md,y,var(--background-modifier-border),var(--background-modifier-border),body@2614,"also/only in 1 other rule(s): .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-border-color-hover,y,Components/Multi-select.md,y,var(--background-modifier-border-hover),var(--background-modifier-border-hover),body@2615,"also/only in 1 other rule(s): .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-border-width,y,Components/Multi-select.md,y,var(--border-width),var(--border-width),body@2616,"also/only in 2 other rule(s): .metadata-property-value .multi-select-pill | .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-color,y,Components/Multi-select.md,y,var(--text-muted),var(--text-muted),body@2606,"also/only in 3 other rule(s): .metadata-property-value .multi-select-pill | .metadata-property-value .multi-select-container .multi-select-pill.is-invalid | .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-color-hover,y,Components/Multi-select.md,y,var(--text-normal),var(--text-normal),body@2607,"also/only in 1 other rule(s): .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-color-remove,y,Components/Multi-select.md,y,var(--text-faint),var(--text-faint),body@2608,"also/only in 2 other rule(s): .metadata-property-value .multi-select-container .multi-select-pill.is-invalid | .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-color-remove-hover,y,Components/Multi-select.md,y,var(--text-accent),var(--text-accent),body@2609,"also/only in 1 other rule(s): .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-corner-shape,n,,y,,,".metadata-property-value[data-property-type=""tags""] .multi-select-pill@13031","also/only in 1 other rule(s): .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-decoration,y,Components/Multi-select.md,y,none,none,body@2610,"also/only in 1 other rule(s): .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-decoration-hover,y,Components/Multi-select.md,y,none,none,body@2611,"also/only in 1 other rule(s): .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-focus-left-adjust,n,,y,-4px,-4px,body@9596,"also/only in 1 other rule(s): .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-focus-width,n,,y,calc(100% + 6px),calc(100% + 6px),body@9595,"also/only in 1 other rule(s): .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-padding-x,y,Components/Multi-select.md,y,0.65em,0.65em,body@2617,"also/only in 2 other rule(s): .metadata-property-value .multi-select-pill | .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-padding-y,y,Components/Multi-select.md,y,0.25em,0.25em,body@2618,"also/only in 2 other rule(s): .metadata-property-value .multi-select-pill | .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-radius,y,Components/Multi-select.md,y,2em,2em,body@2619,"also/only in 1 other rule(s): .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--pill-weight,y,Components/Multi-select.md,y,inherit,inherit,body@2620,"also/only in 1 other rule(s): .metadata-property-value[data-property-type=""tags""] .multi-select-pill"
+--popover-font-size,y,Components/Popover.md,y,var(--font-preferred-size),var(--font-preferred-size),body@2637,"also/only in 1 other rule(s): .popover.hover-popover > .markdown-embed[data-type=""footnote""]:not(.mod-empty)"
+--popover-height,y,Components/Popover.md,y,400px,400px,body@2633,
+--popover-max-height,y,Components/Popover.md,y,95vh,95vh,body@2634,
+--popover-pdf-height,y,Components/Popover.md,y,400px,400px,body@2636,
+--popover-pdf-width,y,Components/Popover.md,y,450px,450px,body@2635,
+--popover-width,y,Components/Popover.md,y,450px,450px,body@2632,
+--preferred-text-scale,n,,y,"env(preferred-text-scale, 1)","env(preferred-text-scale, 1)",:root@19488,
+--prompt-backdrop-filter,n,,y,none,none,body@2640,also/only in 1 other rule(s): .is-mobile
+--prompt-background,n,,y,var(--background-primary),var(--background-primary),body@2639,also/only in 1 other rule(s): .is-mobile
+--prompt-border-color,y,Components/Prompt.md,y,var(--background-modifier-border-hover),var(--background-modifier-border-hover),body@2646,
+--prompt-border-width,y,Components/Prompt.md,y,var(--border-width),var(--border-width),body@2645,also/only in 1 other rule(s): .is-phone
+--prompt-input-height,y,Components/Prompt.md,y,40px,40px,body@2641,also/only in 1 other rule(s): .is-mobile
+--prompt-max-height,y,Components/Prompt.md,y,70vh,70vh,body@2644,
+--prompt-max-width,y,Components/Prompt.md,y,80vw,80vw,body@2643,also/only in 1 other rule(s): .is-phone .modal-container
+--prompt-top,n,,y,,,.is-phone .prompt@21785,also/only in 1 other rule(s): .is-phone .prompt
+--prompt-width,y,Components/Prompt.md,y,700px,700px,body@2642,
+--radio-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--radio-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--radio-checked-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--radio-checked-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--radius-l,y,Foundations/Radiuses.md,y,12px,12px,body@2651,
+--radius-m,y,Foundations/Radiuses.md,y,8px,8px,body@2650,
+--radius-s,y,Foundations/Radiuses.md,y,4px,4px,body@2649,
+--radius-xl,y,Foundations/Radiuses.md,y,24px,24px,body@2652,also/only in 1 other rule(s): .is-mobile
+--raised,n,,y,,,.is-tablet .view-actions@20235; .is-tablet .prompt-input-container@21848,also/only in 2 other rule(s): .is-tablet .view-actions | .is-tablet .prompt-input-container; NEW in 1.14.x (absent in 1.13.7)
+--raised-background,n,,y,var(--blur-background),var(--blur-background),body@2654,"also/only in 2 other rule(s): .is-phone:not(.is-floating-nav) .workspace-drawer, .is-phone:not(.is-floating-nav) .view-header | .is-phone:not(.is-floating-nav) .mobile-navbar"
+--raised-blur,n,,y,var(--blur-s),var(--blur-s),body@2655,
+--raised-mask,n,,y,"linear-gradient(white, white) padding-box, linear-gradient(white, white) border-box","linear-gradient(white, white) padding-box, linear-gradient(white, white) border-box",body@2660,
+--raised-mask-background,n,,y,transparent,"linear-gradient(to bottom left, white, transparent, white) border-box no-repeat",body@2659; .theme-dark@3074,
+--raised-mask-border-width,n,,y,0,0,body@2658,also/only in 1 other rule(s): .is-mobile.is-floating-nav.is-ios
+--raised-mask-composite,n,,y,"exclude, add","exclude, add",body@2661,
+--raised-mask-display,n,,y,block,block,body@2657,
+--raised-shadow,n,,y,var(--shadow-xs),var(--shadow-xs),body@2656,
+--resizer-size,n,,y,,,.canvas-wrapper@18196,also/only in 1 other rule(s): .canvas-wrapper
+--ribbon-background,y,Window/Ribbon.md,y,var(--background-secondary),var(--background-secondary),body@2663,
+--ribbon-background-collapsed,y,Window/Ribbon.md,y,var(--background-primary),var(--background-primary),body@2664,
+--ribbon-padding,y,Window/Ribbon.md,y,var(--size-4-2) var(--size-4-1) var(--size-4-3),var(--size-4-2) var(--size-4-1) var(--size-4-3),body@2666,
+--ribbon-width,y,Window/Ribbon.md,y,44px,44px,body@2665,also/only in 2 other rule(s): body:not(.show-ribbon) | .is-mobile
+--safe-area-inline-end,n,,y,,,"body, [dir='ltr']@4878; .mod-rtl, [dir='rtl']@4886","also/only in 2 other rule(s): body, [dir='ltr'] | .mod-rtl, [dir='rtl']; NEW in 1.14.x (absent in 1.13.7)"
+--safe-area-inline-start,n,,y,,,"body, [dir='ltr']@4877; .mod-rtl, [dir='rtl']@4885","also/only in 2 other rule(s): body, [dir='ltr'] | .mod-rtl, [dir='rtl']; NEW in 1.14.x (absent in 1.13.7)"
+--safe-area-inset-bottom,n,,y,env(safe-area-inset-bottom),env(safe-area-inset-bottom),:root@19485,also/only in 1 other rule(s): body.emulate-mobile
+--safe-area-inset-left,n,,y,env(safe-area-inset-left),env(safe-area-inset-left),:root@19486,also/only in 1 other rule(s): body.emulate-mobile
+--safe-area-inset-right,n,,y,env(safe-area-inset-right),env(safe-area-inset-right),:root@19487,also/only in 1 other rule(s): body.emulate-mobile
+--safe-area-inset-top,n,,y,env(safe-area-inset-top),env(safe-area-inset-top),:root@19484,also/only in 1 other rule(s): body.emulate-mobile
+--scale-factor,n,,pdfjs-only,,,,pdf.js-region only
+--scale-round-x,n,,pdfjs-only,,,,pdf.js-region only
+--scale-round-y,n,,pdfjs-only,,,,pdf.js-region only
+--scroll-fade-offset-left,n,,y,,,.mod-fade@22186,also/only in 1 other rule(s): .mod-fade
+--scroll-fade-offset-right,n,,y,,,.mobile-toolbar-options-container@21908; .mod-fade@22185,also/only in 2 other rule(s): .mobile-toolbar-options-container | .mod-fade
+--scroll-mask-small,n,,y,"linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000000 24px)","linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000000 24px)",body@2676,also/only in 1 other rule(s): .is-mobile; NEW in 1.14.x (absent in 1.13.7)
+--scrollbar-active-thumb-bg,y,Window/Scrollbar.md,y,"color-mix(in oklch, var(--mono-100) 20%, transparent)","color-mix(in oklch, var(--mono-100) 20%, transparent)",body@2672,
+--scrollbar-bg,y,Window/Scrollbar.md,y,transparent,transparent,body@2673,
+--scrollbar-border-width,n,,y,3px 3px 3px 2px,3px 3px 3px 2px,body@2670,also/only in 1 other rule(s): .is-android
+--scrollbar-height,n,,y,12px,12px,body@2669,also/only in 1 other rule(s): .is-android
+--scrollbar-native-width,n,,y,auto,auto,body@2675,also/only in 10 other rule(s): .view-header-title | .setting-group-filters | .workspace-tab-header-container-inner | .multi-select-input ...
+--scrollbar-radius,n,,y,var(--radius-l),var(--radius-l),body@2671,also/only in 1 other rule(s): .is-android
+--scrollbar-thumb-bg,y,Window/Scrollbar.md,y,"color-mix(in oklch, var(--mono-100) 10%, transparent)","color-mix(in oklch, var(--mono-100) 10%, transparent)",body@2674,also/only in 1 other rule(s): .mod-macos
+--scrollbar-width,n,,y,12px,12px,body@2668,also/only in 1 other rule(s): .is-android
+--search-clear-button-color,y,Plugins/Search.md,y,var(--text-muted),var(--text-muted),body@2678,
+--search-clear-button-size,y,Plugins/Search.md,y,13px,13px,body@2679,also/only in 2 other rule(s): .prompt-input-container | .is-mobile
+--search-icon-color,y,Plugins/Search.md,y,var(--text-muted),var(--text-muted),body@2680,also/only in 2 other rule(s): .combobox .search-input-container | .bases-toolbar-menu-container .search-input-container
+--search-icon-size,y,Plugins/Search.md,y,16px,16px,body@2681,also/only in 1 other rule(s): .is-mobile
+--search-input-corner-shape,n,,y,var(--input-corner-shape),var(--input-corner-shape),body@2682,also/only in 1 other rule(s): .mod-macos
+--search-input-radius,n,,y,var(--input-radius),var(--input-radius),body@2683,also/only in 2 other rule(s): .mod-macos | .workspace-drawer .search-input-container
+--search-result-background,y,Plugins/Search.md,y,var(--background-primary),var(--background-primary),body@2684,also/only in 1 other rule(s): .is-mobile.theme-dark
+--separator-color,n,,pdfjs-only,,,,pdf.js-region only
+--setting-group-center-offset,n,,y,,,.modal.mod-settings@5134,also/only in 1 other rule(s): .modal.mod-settings
+--setting-group-heading-color,n,,y,var(--text-normal),var(--text-normal),body@2687,also/only in 1 other rule(s): .is-mobile
+--setting-group-heading-size,n,,y,var(--font-ui-medium),var(--font-ui-medium),body@2688,
+--setting-group-heading-weight,n,,y,var(--font-semibold),var(--font-semibold),body@2689,also/only in 1 other rule(s): .is-mobile
+--setting-group-max-width,n,,y,700px,700px,body@2690,also/only in 1 other rule(s): .is-phone .modal.mod-settings
+--setting-item-name-color,n,,y,var(--text-normal),var(--text-normal),body@2699,also/only in 1 other rule(s): .setting-item.mod-empty-state .setting-item-name; NEW in 1.14.x (absent in 1.13.7)
+--setting-item-name-size,n,,y,var(--font-ui-small),var(--font-ui-small),body@2700,also/only in 1 other rule(s): .is-mobile; NEW in 1.14.x (absent in 1.13.7)
+--setting-item-name-weight,n,,y,var(--font-normal),var(--font-normal),body@2701,also/only in 1 other rule(s): .is-android; NEW in 1.14.x (absent in 1.13.7)
+--setting-items-background,n,,y,var(--background-primary-alt),var(--background-primary-alt),body@2691,also/only in 2 other rule(s): .is-mobile | .is-mobile.theme-dark
+--setting-items-border-color,n,,y,var(--background-modifier-border),var(--background-modifier-border),body@2696,
+--setting-items-border-width,n,,y,0,0,body@2695,
+--setting-items-divider-color,n,,y,var(--background-modifier-border),var(--background-modifier-border),body@2698,also/only in 1 other rule(s): .is-mobile.theme-dark; NEW in 1.14.x (absent in 1.13.7)
+--setting-items-divider-width,n,,y,1px,1px,body@2697,also/only in 1 other rule(s): .setting-item:focus-visible
+--setting-items-padding-x,n,,y,var(--size-4-5),var(--size-4-5),body@2692,also/only in 2 other rule(s): .setting-group.mod-list | .is-phone .modal .setting-group.mod-list
+--setting-items-padding-y,n,,y,var(--size-4-5),var(--size-4-5),body@2693,also/only in 3 other rule(s): .setting-item.mod-empty-state | .setting-group.mod-list | .is-phone .modal .setting-group.mod-list
+--setting-items-radius,n,,y,var(--radius-l),var(--radius-l),body@2694,also/only in 2 other rule(s): .setting-item:focus-visible | .is-mobile
+--settings-background,n,,y,var(--modal-background),var(--modal-background),body@2686,also/only in 2 other rule(s): .is-mobile | .is-mobile.theme-dark
+--settings-home-background,n,,n,,,(1.13.7) .is-mobile@18822; .is-mobile.theme-dark@18865,REMOVED in 1.14.x (present in 1.13.7)
+--shadow-border-accent,n,,y,,,.canvas-wrapper@18199,also/only in 1 other rule(s): .canvas-wrapper
+--shadow-border-themed,n,,y,,,.canvas-node@18503,also/only in 1 other rule(s): .canvas-node
+--shadow-border-themed-inset,n,,y,,,.canvas-node@18502,also/only in 1 other rule(s): .canvas-node
+--shadow-drag,n,,y,,,.canvas-wrapper@18198,also/only in 1 other rule(s): .canvas-wrapper
+--shadow-edges,n,,y,,0 0 transparent,.theme-light@3014,also/only in 2 other rule(s): .is-mobile.is-floating-nav.is-ios.theme-light | .is-mobile.is-floating-nav.is-ios.theme-dark
+--shadow-l,n,,y,"0px 1.8px 7.3px rgba(0, 0, 0, 0.071), 0px 6.3px 24.7px rgba(0, 0, 0, 0.112), 0px 30px 90px rgba(0, 0, 0, 0.2)","0px 1.8px 7.3px rgba(0, 0, 0, 0.071), 0px 6.3px 24.7px rgba(0, 0, 0, 0.112), 0px 15px 30px rgba(0, 0, 0, 0.1)",.theme-dark@3080; .theme-light@3017,
+--shadow-s,n,,y,"0px 1px 2px rgba(0, 0, 0, 0.121), 0px 3.4px 6.7px rgba(0, 0, 0, 0.179), 0px 15px 30px rgba(0, 0, 0, 0.3)","0px 1px 2px rgba(0, 0, 0, 0.028), 0px 3.4px 6.7px rgba(0, 0, 0, 0.042), 0px 15px 30px rgba(0, 0, 0, 0.07)",.theme-dark@3079; .theme-light@3016,
+--shadow-stationary,n,,y,,,.canvas-wrapper@18197,also/only in 1 other rule(s): .canvas-wrapper
+--shadow-xs,n,,y,"0 1px 6px rgba(0, 0, 0, 0.045), 0 4px 24px rgba(0, 0, 0, 0.195), var(--shadow-edges)","0 1px 6px rgba(0, 0, 0, 0.015), 0 4px 24px rgba(0, 0, 0, 0.065), var(--shadow-edges)",.theme-dark@3078; .theme-light@3015,
+--sidebar-left-background,y,Publish/Site sidebars.md,n,,,,Publish-only doc
+--sidebar-left-border-color,y,Publish/Site sidebars.md,n,,,,Publish-only doc
+--sidebar-left-border-width,y,Publish/Site sidebars.md,n,,,,Publish-only doc
+--sidebar-left-toggle-inner-width,n,,y,8.33%,8.33%,body@2733,also/only in 1 other rule(s): .workspace.is-left-sidedock-open .sidebar-toggle-button.mod-left .sidebar-toggle-icon-inner
+--sidebar-left-toggle-inner-width-open,n,,y,24%,24%,body@2735,
+--sidebar-left-width,y,Publish/Site sidebars.md,n,,,,Publish-only doc
+--sidebar-markdown-font-size,y,Window/Sidebar.md,y,calc(var(--font-preferred-size) * 0.9),calc(var(--font-preferred-size) * 0.9),body@2730,
+--sidebar-right-background,y,Publish/Site sidebars.md,n,,,,Publish-only doc
+--sidebar-right-border-color,y,Publish/Site sidebars.md,n,,,,Publish-only doc
+--sidebar-right-border-width,y,Publish/Site sidebars.md,n,,,,Publish-only doc
+--sidebar-right-toggle-inner-width,n,,y,8.33%,8.33%,body@2734,also/only in 1 other rule(s): .workspace.is-right-sidedock-open .sidebar-toggle-button.mod-right .clickable-icon .sidebar-toggle-icon-inner
+--sidebar-right-toggle-inner-width-open,n,,y,24%,24%,body@2736,
+--sidebar-right-width,y,Publish/Site sidebars.md,n,,,,Publish-only doc
+--sidebar-tab-container-background,n,,y,var(--tab-container-background),var(--tab-container-background),body@2732,"also/only in 1 other rule(s): .sidebar-toggle-button, .workspace-tabs.mod-top; NEW in 1.14.x (absent in 1.13.7)"
+--sidebar-tab-text-display,y,Window/Sidebar.md,y,none,none,body@2731,
+--sidebar-width,n,,y,,,.pdf-content-container@10981,also/only in 1 other rule(s): .pdf-content-container
+--site-menu-icon-color,y,Publish/Site header.md,n,,,,Publish-only doc
+--site-menu-icon-color-hover,y,Publish/Site header.md,n,,,,Publish-only doc
+--site-menu-icon-size,y,Publish/Site header.md,n,,,,Publish-only doc
+--site-name-color,y,Publish/Site header.md,n,,,,Publish-only doc
+--site-name-color-hover,y,Publish/Site header.md,n,,,,Publish-only doc
+--site-name-font,y,Publish/Site header.md,n,,,,Publish-only doc
+--site-name-size,y,Publish/Site header.md,n,,,,Publish-only doc
+--site-name-weight,y,Publish/Site header.md,n,,,,Publish-only doc
+--size,y,Foundations/Spacing.md,n,,,,"docs prose placeholder for --size-* family, not a real variable"
+--size-2-1,y,Foundations/Spacing.md,y,2px,2px,body@2714,
+--size-2-2,y,Foundations/Spacing.md,y,4px,4px,body@2715,
+--size-2-3,y,Foundations/Spacing.md,y,6px,6px,body@2716,
+--size-4-1,y,Foundations/Spacing.md,y,4px,4px,body@2717,
+--size-4-10,n,,y,40px,40px,body@2725,
+--size-4-12,y,Foundations/Spacing.md,y,48px,48px,body@2726,
+--size-4-16,y,Foundations/Spacing.md,y,64px,64px,body@2727,
+--size-4-18,y,Foundations/Spacing.md,y,72px,72px,body@2728,
+--size-4-2,y,Foundations/Spacing.md,y,8px,8px,body@2718,
+--size-4-3,y,Foundations/Spacing.md,y,12px,12px,body@2719,
+--size-4-4,y,Foundations/Spacing.md,y,16px,16px,body@2720,
+--size-4-5,y,Foundations/Spacing.md,y,20px,20px,body@2721,
+--size-4-6,y,Foundations/Spacing.md,y,24px,24px,body@2722,
+--size-4-8,y,Foundations/Spacing.md,y,32px,32px,body@2723,
+--size-4-9,y,Foundations/Spacing.md,y,36px,36px,body@2724,
+--slider-fill-background,n,,y,var(--interactive-accent),var(--interactive-accent),body@2755,
+--slider-fill-position,n,,y,,,input[type='range'].slider@8796,also/only in 1 other rule(s): input[type='range'].slider
+--slider-s-thumb-position,n,,y,-5px,-5px,body@2754,
+--slider-s-thumb-size,n,,y,15px,15px,body@2753,
+--slider-thumb-background,n,,y,white,white,body@2740,
+--slider-thumb-background-hover,n,,y,white,white,body@2741,
+--slider-thumb-border-color,y,Components/Slider.md,y,var(--background-modifier-border-hover),var(--background-modifier-border-hover),body@2739,
+--slider-thumb-border-width,y,Components/Slider.md,y,0.5px,0.5px,body@2738,also/only in 2 other rule(s): .mod-macos | .is-mobile
+--slider-thumb-height,y,Components/Slider.md,y,18px,18px,body@2742,also/only in 1 other rule(s): .is-mobile
+--slider-thumb-height-active,n,,y,var(--slider-thumb-height),var(--slider-thumb-height),body@2744,also/only in 1 other rule(s): .mod-macos
+--slider-thumb-opacity-active,n,,y,,,.mod-macos@3111,also/only in 1 other rule(s): .mod-macos
+--slider-thumb-radius,y,Components/Slider.md,y,var(--slider-thumb-height),var(--slider-thumb-height),body@2748,
+--slider-thumb-shadow,n,,y,"0 0px 2px 0px rgba(0, 0, 0, 0.1), 0 2px 6px 0px rgba(0, 0, 0, 0.1)","0 0px 2px 0px rgba(0, 0, 0, 0.1), 0 2px 6px 0px rgba(0, 0, 0, 0.1)",body@2749,
+--slider-thumb-shadow-active,n,,y,var(--slider-thumb-shadow),var(--slider-thumb-shadow),body@2751,
+--slider-thumb-shadow-focus,n,,y,"var(--slider-thumb-shadow-active), 0 0px 0px 2px var(--background-modifier-border-focus)","var(--slider-thumb-shadow-active), 0 0px 0px 2px var(--background-modifier-border-focus)",body@2752,
+--slider-thumb-shadow-hover,n,,y,var(--slider-thumb-shadow),var(--slider-thumb-shadow),body@2750,
+--slider-thumb-width,y,Components/Slider.md,y,18px,18px,body@2743,also/only in 3 other rule(s): .mod-macos | .is-mobile | .is-ios
+--slider-thumb-width-active,n,,y,var(--slider-thumb-width),var(--slider-thumb-width),body@2745,also/only in 1 other rule(s): .mod-macos
+--slider-thumb-y,y,Components/Slider.md,y,-6px,-6px,body@2746,also/only in 1 other rule(s): .is-mobile
+--slider-thumb-y-active,n,,y,var(--slider-thumb-y),var(--slider-thumb-y),body@2747,also/only in 1 other rule(s): .mod-macos
+--slider-track-background,y,Components/Slider.md,y,var(--background-modifier-border-hover),var(--background-modifier-border-hover),body@2756,
+--slider-track-height,y,Components/Slider.md,y,4px,4px,body@2757,also/only in 1 other rule(s): .is-mobile
+--slider-value-font-size,n,,y,var(--font-ui-small),var(--font-ui-small),body@2758,
+--slider-value-font-weight,n,,y,var(--input-font-weight),var(--input-font-weight),body@2759,
+--spreadHorizontalWrapped-margin-LR,n,,y,,,".pdf-container .pdfViewer.removePageBorders.spread .page, .pdf-container .pdfViewer.removePageBorders:is(.scrollHorizontal, .scrollWrapped) .page@11402","also/only in 1 other rule(s): .pdf-container .pdfViewer.removePageBorders.spread .page, .pdf-container .pdfViewer.removePageBorders:is(.scrollHorizontal, .scrollWrapped) .page"
+--status-bar-background,y,Window/Status bar.md,y,var(--background-secondary),var(--background-secondary),body@2761,
+--status-bar-border-color,y,Window/Status bar.md,y,var(--divider-color),var(--divider-color),body@2762,
+--status-bar-border-width,y,Window/Status bar.md,y,var(--border-width) 0 0 var(--border-width),var(--border-width) 0 0 var(--border-width),body@2763,also/only in 1 other rule(s): .mod-rtl
+--status-bar-font-size,y,Window/Status bar.md,y,var(--font-ui-smaller),var(--font-ui-smaller),body@2764,
+--status-bar-position,y,Window/Status bar.md,y,fixed,fixed,body@2766,
+--status-bar-radius,y,Window/Status bar.md,y,var(--radius-m) 0 0 0,var(--radius-m) 0 0 0,body@2767,also/only in 1 other rule(s): .mod-rtl
+--status-bar-scroll-padding,y,Window/Status bar.md,n,,,,not defined nor used in app.css 1.14.4
+--status-bar-text-color,y,Window/Status bar.md,y,var(--text-muted),var(--text-muted),body@2765,
+--suggestion-backdrop-filter,n,,y,none,none,body@2770,also/only in 1 other rule(s): .is-mobile
+--suggestion-background,n,,y,var(--background-primary),var(--background-primary),body@2769,also/only in 1 other rule(s): .is-mobile
+--swatch-height,y,Components/Color input.md,y,22px,22px,body@2783,"also/only in 3 other rule(s): .graph-color-group | .canvas-color-picker-item input[type=""color""] | .is-mobile"
+--swatch-radius,y,Components/Color input.md,y,14px,14px,body@2782,also/only in 1 other rule(s): .is-mobile
+--swatch-shadow,y,Components/Color input.md,y,"inset 0 0 0 1px color-mix(in oklch, var(--mono-100) 15%, transparent)","inset 0 0 0 1px color-mix(in oklch, var(--mono-100) 15%, transparent)",body@2785,also/only in 1 other rule(s): .is-mobile
+--swatch-width,y,Components/Color input.md,y,22px,22px,body@2784,"also/only in 3 other rule(s): .graph-color-group | .canvas-color-picker-item input[type=""color""] | .is-mobile"
+--sync-avatar-color-1,y,Plugins/Sync.md,y,var(--color-red),var(--color-red),body@2773,
+--sync-avatar-color-2,y,Plugins/Sync.md,y,var(--color-orange),var(--color-orange),body@2774,
+--sync-avatar-color-3,y,Plugins/Sync.md,y,var(--color-yellow),var(--color-yellow),body@2775,
+--sync-avatar-color-4,y,Plugins/Sync.md,y,var(--color-green),var(--color-green),body@2776,
+--sync-avatar-color-5,y,Plugins/Sync.md,y,var(--color-cyan),var(--color-cyan),body@2777,
+--sync-avatar-color-6,y,Plugins/Sync.md,y,var(--color-blue),var(--color-blue),body@2778,
+--sync-avatar-color-7,y,Plugins/Sync.md,y,var(--color-purple),var(--color-purple),body@2779,
+--sync-avatar-color-8,y,Plugins/Sync.md,y,var(--color-pink),var(--color-pink),body@2780,
+--sync-avatar-color-current-user,y,Plugins/Sync.md,y,transparent,transparent,body@2772,
+--system-status-background,n,,y,,,.is-mobile@19499; .is-tablet@19668,also/only in 2 other rule(s): .is-mobile | .is-tablet
+--tab-background,n,,y,transparent,transparent,body@2787,NEW in 1.14.x (absent in 1.13.7)
+--tab-background-active,y,Components/Tabs.md,y,var(--background-primary),var(--background-primary),body@2789,
+--tab-background-hover,n,,y,transparent,transparent,body@2788,NEW in 1.14.x (absent in 1.13.7)
+--tab-container-background,y,Components/Tabs.md,y,var(--background-secondary),var(--background-secondary),body@2805,"also/only in 1 other rule(s): .sidebar-toggle-button, .workspace-tabs.mod-top"
+--tab-container-padding-end,n,,y,var(--size-4-2),var(--size-4-2),body@2807,NEW in 1.14.x (absent in 1.13.7)
+--tab-container-padding-start,n,,y,var(--size-4-2),var(--size-4-2),body@2806,NEW in 1.14.x (absent in 1.13.7)
+--tab-corner-shape,n,,y,var(--corner-shape),var(--corner-shape),body@2812,NEW in 1.14.x (absent in 1.13.7)
+--tab-curve,y,Components/Tabs.md,y,10px,10px,body@2813,
+--tab-divider-color,y,Components/Tabs.md,y,var(--background-modifier-border-hover),var(--background-modifier-border-hover),body@2808,
+--tab-font-size,y,Components/Tabs.md,y,var(--font-ui-small),var(--font-ui-small),body@2803,also/only in 1 other rule(s): .is-tablet
+--tab-font-weight,y,Components/Tabs.md,y,inherit,inherit,body@2804,
+--tab-inner-background,n,,y,transparent,transparent,body@2790,NEW in 1.14.x (absent in 1.13.7)
+--tab-inner-background-active,n,,y,transparent,transparent,body@2792,NEW in 1.14.x (absent in 1.13.7)
+--tab-inner-background-hover,n,,y,var(--background-modifier-hover),var(--background-modifier-hover),body@2791,NEW in 1.14.x (absent in 1.13.7)
+--tab-inner-border-color,n,,y,transparent,transparent,body@2794,NEW in 1.14.x (absent in 1.13.7)
+--tab-inner-border-color-active,n,,y,transparent,transparent,body@2796,NEW in 1.14.x (absent in 1.13.7)
+--tab-inner-border-color-hover,n,,y,transparent,transparent,body@2795,NEW in 1.14.x (absent in 1.13.7)
+--tab-inner-border-width,n,,y,0px,0px,body@2793,NEW in 1.14.x (absent in 1.13.7)
+--tab-max-width,y,Components/Tabs.md,y,320px,320px,body@2817,
+--tab-outline-color,y,Components/Tabs.md,y,var(--divider-color),var(--divider-color),body@2809,
+--tab-outline-color-hover,n,,y,transparent,transparent,body@2810,NEW in 1.14.x (absent in 1.13.7)
+--tab-outline-width,y,Components/Tabs.md,y,1px,1px,body@2811,"also/only in 1 other rule(s): [@media (min-resolution: 2dppx), (min-resolution: 192dpi)] .is-phone"
+--tab-radius,y,Components/Tabs.md,y,var(--radius-s),var(--radius-s),body@2814,also/only in 1 other rule(s): .mod-macos
+--tab-radius-active,y,Components/Tabs.md,y,10px 10px 0 0,10px 10px 0 0,body@2815,
+--tab-stacked-font-size,y,Components/Tabs.md,y,var(--font-ui-small),var(--font-ui-small),body@2829,
+--tab-stacked-font-weight,y,Components/Tabs.md,y,400,400,body@2830,
+--tab-stacked-header-width,y,Components/Tabs.md,y,var(--header-height),var(--header-height),body@2828,
+--tab-stacked-pane-width,y,Components/Tabs.md,y,700px,700px,body@2827,
+--tab-stacked-shadow,y,Components/Tabs.md,y,"-8px 0 8px 0 rgba(0, 0, 0, 0.05)","-8px 0 8px 0 rgba(0, 0, 0, 0.05)",body@2834,
+--tab-stacked-text-align,y,Components/Tabs.md,y,start,start,body@2831,
+--tab-stacked-text-transform,y,Components/Tabs.md,y,rotate(0deg),rotate(0deg),body@2832,also/only in 1 other rule(s): .mod-rtl
+--tab-stacked-text-writing-mode,y,Components/Tabs.md,y,vertical-lr,vertical-lr,body@2833,
+--tab-switcher-background,n,,y,var(--background-secondary),var(--background-secondary),body@2820,
+--tab-switcher-menubar-background,n,,y,"linear-gradient(to top, var(--background-secondary), transparent)","linear-gradient(to top, var(--background-secondary), transparent)",body@2819,
+--tab-switcher-preview-background-shadow,n,,y,"0 4px 30px 2px rgba(0, 0, 0, 0.2)","0 4px 30px 2px rgba(0, 0, 0, 0.2)",body@2823,
+--tab-switcher-preview-corner-shape,n,,y,var(--corner-shape),var(--corner-shape),body@2822,
+--tab-switcher-preview-radius,n,,y,var(--radius-xl),var(--radius-xl),body@2821,
+--tab-switcher-preview-shadow,n,,y,"0 0 0 1px color-mix(in oklch, var(--mono-100) 5%, transparent)","0 0 0 1px color-mix(in oklch, var(--mono-100) 5%, transparent)",body@2824,
+--tab-switcher-preview-shadow-active,n,,y,0 0 0 2px var(--color-accent),0 0 0 2px var(--color-accent),body@2825,
+--tab-text-color,y,Components/Tabs.md,y,var(--text-faint),var(--text-faint),body@2797,
+--tab-text-color-active,y,Components/Tabs.md,y,var(--text-muted),var(--text-muted),body@2798,
+--tab-text-color-focused,y,Components/Tabs.md,y,var(--text-muted),var(--text-muted),body@2799,
+--tab-text-color-focused-active,y,Components/Tabs.md,y,var(--text-muted),var(--text-muted),body@2800,
+--tab-text-color-focused-active-current,y,Components/Tabs.md,y,var(--text-normal),var(--text-normal),body@2802,
+--tab-text-color-focused-highlighted,y,Components/Tabs.md,y,var(--text-accent),var(--text-accent),body@2801,
+--tab-width,y,Components/Tabs.md,y,200px,200px,body@2816,
+--table-add-button-background,y,Editor/Table.md,y,transparent,transparent,body@2871,
+--table-add-button-border-color,y,Editor/Table.md,y,var(--background-modifier-border),var(--background-modifier-border),body@2873,
+--table-add-button-border-width,y,Editor/Table.md,y,var(--table-border-width),var(--table-border-width),body@2872,
+--table-background,y,Editor/Table.md,y,transparent,transparent,body@2836,
+--table-border-color,y,Editor/Table.md,y,var(--background-modifier-border),var(--background-modifier-border),body@2838,also/only in 1 other rule(s): .callout
+--table-border-width,y,Editor/Table.md,y,1px,1px,body@2837,
+--table-cell-vertical-alignment,y,Editor/Table.md,y,top,top,body@2865,
+--table-column-alt-background,y,Editor/Table.md,y,var(--table-background),var(--table-background),body@2853,
+--table-column-first-border-width,y,Editor/Table.md,y,var(--table-border-width),var(--table-border-width),body@2854,
+--table-column-last-border-width,y,Editor/Table.md,y,var(--table-border-width),var(--table-border-width),body@2855,
+--table-column-max-width,y,Editor/Table.md,y,none,none,body@2852,
+--table-column-min-width,n,,y,6ch,6ch,body@2851,
+--table-drag-handle-background,y,Editor/Table.md,y,transparent,transparent,body@2866,
+--table-drag-handle-background-active,y,Editor/Table.md,y,var(--table-selection-border-color),var(--table-selection-border-color),body@2867,
+--table-drag-handle-color,y,Editor/Table.md,y,var(--text-faint),var(--text-faint),body@2868,
+--table-drag-handle-color-active,y,Editor/Table.md,y,var(--text-on-accent),var(--text-on-accent),body@2869,
+--table-drag-handle-size,n,,y,,,.markdown-source-view.mod-cm6 .cm-table-widget@3750; .is-mobile .markdown-source-view.mod-cm6 .cm-table-widget@3757,also/only in 2 other rule(s): .markdown-source-view.mod-cm6 .cm-table-widget | .is-mobile .markdown-source-view.mod-cm6 .cm-table-widget
+--table-drop-indicator-half-width,n,,y,2px,2px,body@2870,
+--table-header-background,y,Editor/Table.md,y,var(--table-background),var(--table-background),body@2840,
+--table-header-background-hover,y,Editor/Table.md,y,inherit,inherit,body@2841,
+--table-header-border-color,y,Editor/Table.md,y,var(--table-border-color),var(--table-border-color),body@2843,
+--table-header-border-width,y,Editor/Table.md,y,var(--table-border-width),var(--table-border-width),body@2842,
+--table-header-color,y,Editor/Table.md,y,var(--text-normal),var(--text-normal),body@2847,
+--table-header-font,y,Editor/Table.md,y,inherit,inherit,body@2844,
+--table-header-size,y,Editor/Table.md,y,var(--table-text-size),var(--table-text-size),body@2845,
+--table-header-weight,y,Editor/Table.md,y,calc(var(--font-weight) + var(--bold-modifier)),calc(var(--font-weight) + var(--bold-modifier)),body@2846,
+--table-line-height,y,Editor/Table.md,y,var(--line-height-tight),var(--line-height-tight),body@2848,
+--table-row-alt-background,y,Editor/Table.md,y,var(--table-background),var(--table-background),body@2857,
+--table-row-alt-background-hover,y,Editor/Table.md,y,var(--table-background),var(--table-background),body@2858,
+--table-row-background-hover,y,Editor/Table.md,y,var(--table-background),var(--table-background),body@2856,
+--table-row-last-border-width,y,Editor/Table.md,y,var(--table-border-width),var(--table-border-width),body@2859,
+--table-selection,y,Editor/Table.md,y,"color-mix(in oklch, var(--color-accent) 10%, transparent)","color-mix(in oklch, var(--color-accent) 10%, transparent)",body@2860,
+--table-selection-blend-mode,y,Editor/Table.md,y,var(--highlight-mix-blend-mode),var(--highlight-mix-blend-mode),body@2861,
+--table-selection-border-color,y,Editor/Table.md,y,var(--interactive-accent),var(--interactive-accent),body@2862,
+--table-selection-border-radius,y,Editor/Table.md,y,4px,4px,body@2864,
+--table-selection-border-width,y,Editor/Table.md,y,2px,2px,body@2863,
+--table-text-color,y,Editor/Table.md,y,inherit,inherit,body@2850,
+--table-text-size,y,Editor/Table.md,y,var(--font-preferred-size),var(--font-preferred-size),body@2849,
+--table-white-space,y,Editor/Table.md,y,break-spaces,break-spaces,body@2839,
+--tag-background,y,Editor/Tag.md,y,"color-mix(in oklch, var(--interactive-accent) 10%, transparent)","color-mix(in oklch, var(--interactive-accent) 10%, transparent)",body@2880,also/only in 1 other rule(s): .is-mobile.theme-dark
+--tag-background-hover,y,Editor/Tag.md,y,"color-mix(in oklch, var(--interactive-accent) 20%, transparent)","color-mix(in oklch, var(--interactive-accent) 20%, transparent)",body@2881,
+--tag-border-color,y,Editor/Tag.md,y,"color-mix(in oklch, var(--interactive-accent) 15%, transparent)","color-mix(in oklch, var(--interactive-accent) 15%, transparent)",body@2882,
+--tag-border-color-hover,y,Editor/Tag.md,y,"color-mix(in oklch, var(--interactive-accent) 15%, transparent)","color-mix(in oklch, var(--interactive-accent) 15%, transparent)",body@2883,
+--tag-border-width,y,Editor/Tag.md,y,0px,0px,body@2884,
+--tag-color,y,Editor/Tag.md,y,var(--text-accent),var(--text-accent),body@2876,
+--tag-color-hover,y,Editor/Tag.md,y,var(--text-accent),var(--text-accent),body@2877,
+--tag-corner-shape,n,,y,round,round,body@2888,
+--tag-decoration,y,Editor/Tag.md,y,none,none,body@2878,
+--tag-decoration-hover,y,Editor/Tag.md,y,none,none,body@2879,
+--tag-padding-x,y,Editor/Tag.md,y,0.65em,0.65em,body@2885,
+--tag-padding-y,y,Editor/Tag.md,y,0.25em,0.25em,body@2886,
+--tag-radius,y,Editor/Tag.md,y,2em,2em,body@2887,
+--tag-size,y,Editor/Tag.md,y,var(--font-smaller),var(--font-smaller),body@2875,
+--tag-weight,y,Editor/Tag.md,y,inherit,inherit,body@2889,
+--text-accent,y,Foundations/Colors.md,y,var(--color-accent-1),var(--color-accent),body@2970; .theme-dark@3069,
+--text-accent-hover,y,Foundations/Colors.md,y,var(--color-accent-2),var(--color-accent-2),body@2971,
+--text-color,n,,y,,,button@7526; button.mod-cta@7599; button.mod-warning@7614,also/only in 5 other rule(s): button | button.mod-cta | button.mod-warning | button.mod-destructive ...
+--text-error,y,Foundations/Colors.md,y,var(--color-red),var(--color-red),body@2966,
+--text-faint,y,Foundations/Colors.md,y,var(--color-base-50),var(--color-base-50),body@2963,
+--text-highlight-bg,y,Foundations/Colors.md,n,,,,"REMOVED in 1.14.x (present in 1.13.7); used via var() in app.css but never defined (1 uses); 1.14: no default; read as fallback by --highlight-background (body) -> var(--text-highlight-bg, var(--highlight-background-yellow))"
+--text-highlight-bg-rgb,y,Foundations/Colors.md,n,,,,DEPRECATED per docs Colors.md (1.13); REMOVED in 1.14.x (present in 1.13.7); removed in 1.14 (was body in 1.13.7); docs list as deprecated
+--text-muted,y,Foundations/Colors.md,y,var(--color-base-70),var(--color-base-70),body@2962,
+--text-normal,y,Foundations/Colors.md,y,var(--color-base-100),var(--color-base-100),body@2961,
+--text-on-accent,y,Foundations/Colors.md,y,white,white,body@2964,app.js may set inline var(--text-on-accent-inverted) on body for light accent
+--text-on-accent-inverted,y,Foundations/Colors.md,y,black,black,body@2965,
+--text-primary-color,n,,pdfjs-only,,,,pdf.js-region only
+--text-secondary-color,n,,pdfjs-only,,,,pdf.js-region only
+--text-selection,y,Foundations/Colors.md,y,"color-mix(in oklch, var(--interactive-accent) 33%, transparent)","color-mix(in oklch, var(--interactive-accent) 20%, transparent)",body@2969; .theme-dark@3075,also/only in 2 other rule(s): .markdown-source-view.mod-cm6 .cm-table-widget.has-selection | .markdown-source-view.mod-cm6 .cm-table-widget.is-selected
+--text-success,y,Foundations/Colors.md,y,var(--color-green),var(--color-green),body@2968,
+--text-warning,y,Foundations/Colors.md,y,var(--color-orange),var(--color-orange),body@2967,
+--textarea-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--textarea-border-color,n,,pdfjs-only,,,,pdf.js-region only
+--textarea-fg-color,n,,pdfjs-only,,,,pdf.js-region only
+--textarea-padding,n,,y,,,.is-mobile@19583,also/only in 1 other rule(s): .is-mobile
+--textarea-radius,n,,y,,,.is-mobile@19582,also/only in 1 other rule(s): .is-mobile
+--thumbnail-height,n,,y,,,.pdf-sidebar-container .thumbnail@11080,also/only in 1 other rule(s): .pdf-sidebar-container .thumbnail
+--thumbnail-width,n,,y,,,.pdf-sidebar-container .thumbnail@11079,also/only in 1 other rule(s): .pdf-sidebar-container .thumbnail
+--titlebar-background,y,Window/Window frame.md,y,var(--background-secondary),var(--background-secondary),body@2893,also/only in 3 other rule(s): body.is-focused .titlebar | body.is-frameless.in-progress | .is-tablet.theme-dark
+--titlebar-background-focused,y,Window/Window frame.md,y,var(--background-secondary),var(--background-secondary),body@2894,also/only in 2 other rule(s): body.is-frameless.in-progress | .is-tablet.theme-dark
+--titlebar-border-color,y,Window/Window frame.md,y,var(--background-modifier-border),var(--background-modifier-border),body@2896,
+--titlebar-border-width,y,Window/Window frame.md,y,0px,0px,body@2895,
+--titlebar-height,n,,y,30px,30px,body@4294,
+--titlebar-text-color,y,Window/Window frame.md,y,var(--text-muted),var(--text-muted),body@2897,
+--titlebar-text-color-focused,y,Window/Window frame.md,y,var(--text-normal),var(--text-normal),body@2898,
+--titlebar-text-weight,y,Window/Window frame.md,y,var(--font-bold),var(--font-bold),body@2899,
+--toggle-border-width,y,Components/Toggle.md,y,2px,2px,body@2901,
+--toggle-radius,y,Components/Toggle.md,y,18px,18px,body@2903,also/only in 3 other rule(s): .mod-macos | .is-mobile | .is-ios
+--toggle-s-border-width,y,Components/Toggle.md,y,2px,2px,body@2909,
+--toggle-s-thumb-height,y,Components/Toggle.md,y,15px,15px,body@2911,also/only in 2 other rule(s): .mod-macos | .is-ios
+--toggle-s-thumb-width,y,Components/Toggle.md,y,15px,15px,body@2912,also/only in 2 other rule(s): .mod-macos | .is-ios
+--toggle-s-width,y,Components/Toggle.md,y,34px,34px,body@2910,also/only in 2 other rule(s): .mod-macos | .is-ios
+--toggle-thumb-color,y,Components/Toggle.md,y,white,white,body@2904,
+--toggle-thumb-height,y,Components/Toggle.md,y,18px,18px,body@2906,also/only in 3 other rule(s): .mod-macos | .is-mobile | .is-ios
+--toggle-thumb-opacity-active,n,,y,1,1,body@2908,also/only in 2 other rule(s): .mod-macos | .is-ios
+--toggle-thumb-radius,y,Components/Toggle.md,y,18px,18px,body@2905,also/only in 3 other rule(s): .mod-macos | .is-mobile | .is-ios
+--toggle-thumb-width,y,Components/Toggle.md,y,18px,18px,body@2907,also/only in 3 other rule(s): .mod-macos | .is-mobile | .is-ios
+--toggle-width,y,Components/Toggle.md,y,40px,40px,body@2902,also/only in 3 other rule(s): .mod-macos | .is-mobile | .is-ios
+--toolbar-option-width,n,,y,,,.is-phone@21879; .is-tablet@21882,also/only in 2 other rule(s): .is-phone | .is-tablet
+--tooltip-background,n,,y,var(--background-modifier-message),var(--background-modifier-message),body@2704,NEW in 1.14.x (absent in 1.13.7)
+--tooltip-color,n,,y,#FAFAFA,#FAFAFA,body@2705,NEW in 1.14.x (absent in 1.13.7)
+--tooltip-corner-shape,n,,y,var(--corner-shape),var(--corner-shape),body@2703,NEW in 1.14.x (absent in 1.13.7)
+--tooltip-font-size,n,,y,var(--font-ui-small),var(--font-ui-small),body@2706,NEW in 1.14.x (absent in 1.13.7)
+--tooltip-font-weight,n,,y,var(--font-normal),var(--font-normal),body@2707,NEW in 1.14.x (absent in 1.13.7)
+--tooltip-line-height,n,,y,var(--line-height-tight),var(--line-height-tight),body@2708,NEW in 1.14.x (absent in 1.13.7)
+--tooltip-max-width,n,,y,300px,300px,body@2710,NEW in 1.14.x (absent in 1.13.7)
+--tooltip-padding,n,,y,var(--size-4-2) var(--size-4-3),var(--size-4-2) var(--size-4-3),body@2709,NEW in 1.14.x (absent in 1.13.7)
+--tooltip-radius,n,,y,var(--radius-l),var(--radius-l),body@2711,NEW in 1.14.x (absent in 1.13.7)
+--tooltip-shadow,n,,y,var(--shadow-s),var(--shadow-s),body@2712,NEW in 1.14.x (absent in 1.13.7)
+--total-scale-factor,n,,pdfjs-only,,,,pdf.js-region only
+--touch-radius-l,n,,y,var(--touch-size-l),var(--touch-size-l),body@2924,
+--touch-radius-m,n,,y,var(--touch-size-m),var(--touch-size-m),body@2923,
+--touch-radius-s,n,,y,var(--touch-size-s),var(--touch-size-s),body@2922,
+--touch-radius-xl,n,,y,var(--touch-size-xl),var(--touch-size-xl),body@2925,
+--touch-radius-xs,n,,y,var(--touch-size-xs),var(--touch-size-xs),body@2921,
+--touch-radius-xxs,n,,y,var(--touch-size-xxs),var(--touch-size-xxs),body@2920,
+--touch-size-l,n,,y,52px,52px,body@2918,
+--touch-size-m,n,,y,44px,44px,body@2917,
+--touch-size-s,n,,y,40px,40px,body@2916,
+--touch-size-xl,n,,y,60px,60px,body@2919,
+--touch-size-xs,n,,y,30px,30px,body@2915,
+--touch-size-xxs,n,,y,24px,24px,body@2914,
+--traffic-lights-offset-x,n,,y,var(--header-height),var(--header-height),body@2891,also/only in 1 other rule(s): body.is-popout-modal
+--traffic-lights-offset-y,n,,y,var(--header-height),var(--header-height),body@2892,also/only in 1 other rule(s): body.is-popout-modal
+--undo-button-bg-color,n,,pdfjs-only,,,,pdf.js-region only
+--undo-button-bg-color-active,n,,pdfjs-only,,,,pdf.js-region only
+--undo-button-bg-color-hover,n,,pdfjs-only,,,,pdf.js-region only
+--undo-button-border,n,,pdfjs-only,,,,pdf.js-region only
+--undo-button-fg-color,n,,pdfjs-only,,,,pdf.js-region only
+--undo-button-fg-color-active,n,,pdfjs-only,,,,pdf.js-region only
+--undo-button-fg-color-hover,n,,pdfjs-only,,,,pdf.js-region only
+--user-unit,n,,pdfjs-only,,,,pdf.js-region only
+--vault-profile-actions-display,y,Plugins/File explorer.md;Window/Vault profile.md,y,flex,flex,body@2929,
+--vault-profile-color,y,Plugins/File explorer.md;Window/Vault profile.md,y,var(--text-normal),var(--text-normal),body@2932,
+--vault-profile-color-hover,y,Plugins/File explorer.md;Window/Vault profile.md,y,var(--vault-profile-color),var(--vault-profile-color),body@2933,
+--vault-profile-display,y,Plugins/File explorer.md;Window/Vault profile.md,y,flex,flex,body@2927,
+--vault-profile-font-size,y,Plugins/File explorer.md;Window/Vault profile.md,y,var(--font-ui-small),var(--font-ui-small),body@2930,
+--vault-profile-font-weight,y,Plugins/File explorer.md;Window/Vault profile.md,y,var(--font-medium),var(--font-medium),body@2931,
+--vault-profile-order,n,,y,2,2,body@2928,
+--vault-profile-radius,n,,y,var(--radius-s),var(--radius-s),body@2934,also/only in 1 other rule(s): .mod-macos
+--view-bottom-fade-mask,n,,y,,,.is-phone@19639; .is-phone.is-floating-nav@22310; .is-phone.is-hidden-nav@22314,also/only in 3 other rule(s): .is-phone | .is-phone.is-floating-nav | .is-phone.is-hidden-nav
+--view-bottom-fade-opacity,n,,y,,,.is-phone@19638,also/only in 1 other rule(s): .is-phone
+--view-bottom-spacing,n,,y,,,".is-phone@19637; .is-phone.is-floating-nav, .is-phone.auto-full-screen@22218","also/only in 2 other rule(s): .is-phone | .is-phone.is-floating-nav, .is-phone.auto-full-screen"
+--view-header-action-radius,n,,y,,,.is-mobile@19494,also/only in 1 other rule(s): .is-mobile
+--view-header-height,n,,y,,,.is-mobile@19493; .is-phone@19644,also/only in 2 other rule(s): .is-mobile | .is-phone
+--view-header-position,n,,y,,,".is-phone@19646; .is-phone.is-floating-nav, .is-phone.auto-full-screen@22215","also/only in 2 other rule(s): .is-phone | .is-phone.is-floating-nav, .is-phone.auto-full-screen"
+--view-header-top-offset,n,,y,,,.is-phone@19645,also/only in 1 other rule(s): .is-phone
+--view-top-fade-mask,n,,y,,,.is-phone@19641; .is-phone.is-floating-nav@22309; .is-phone.is-hidden-nav@22313,also/only in 3 other rule(s): .is-phone | .is-phone.is-floating-nav | .is-phone.is-hidden-nav
+--view-top-fade-opacity,n,,y,,,.is-phone@19640,also/only in 1 other rule(s): .is-phone
+--view-top-spacing,n,,y,,,".is-phone@19643; .is-phone .mod-root .workspace-leaf-content[data-type=""markdown""]@21238; .is-phone.is-floating-nav, .is-phone.auto-full-screen@22216","also/only in 3 other rule(s): .is-phone | .is-phone .mod-root .workspace-leaf-content[data-type=""markdown""] | .is-phone.is-floating-nav, .is-phone.auto-full-screen"
+--view-top-spacing-markdown,n,,y,,,".is-phone@19642; .is-mobile .document-search-container + .markdown-preview-view, .is-mobile .document-search-container + .cm-editor@19964; .is-phone.is-floating-nav, .is-phone.auto-full-screen@22217","also/only in 3 other rule(s): .is-phone | .is-mobile .document-search-container + .markdown-preview-view, .is-mobile .document-search-container + .cm-editor | .is-phone.is-floating-nav, .is-phone.auto-full-screen"
+--viewer-container-height,n,,pdfjs-only,,,,pdf.js-region only
+--workspace-background-translucent,y,Window/Workspace.md,y,"color-mix(in oklch, var(--mono-0) 60%, transparent)","color-mix(in oklch, var(--mono-0) 60%, transparent)",body@2936,
+--xfa-focus-outline,n,,pdfjs-only,,,,pdf.js-region only
+--xfa-unfocused-field-background,n,,pdfjs-only,,,,pdf.js-region only
+--zoom-factor,n,,y,1,1,body@4293,
+--zoom-multiplier,n,,y,,,.canvas-wrapper@18200; body.is-mobile .canvas-node-resizer@18688,also/only in 2 other rule(s): .canvas-wrapper | body.is-mobile .canvas-node-resizer

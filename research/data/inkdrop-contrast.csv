@@ -1,0 +1,31 @@
+theme,pair,fg_token,bg_token,contrast_ratio,wcag_text
+Solarized Dark,本文 / エディタ,--editor-foreground-color,--editor-background-color,5.31,AA
+Solarized Dark,プレビュー本文 / エディタ,--text-color,--editor-background,5.31,AA
+Solarized Dark,muted / エディタ,--muted-text-color,--editor-background,6.31,AA
+Solarized Dark,light / エディタ,--light-text-color,--editor-background,11.46,AA
+Solarized Dark,コメント / エディタ,--syntax-comment-color,--editor-background-color,3.12,AA-large
+Solarized Dark,ガター文字 / エディタ,--editor-gutter-color,--editor-background-color,3.12,AA-large
+Solarized Dark,見出し / エディタ,--syntax-heading-1-color,--editor-background-color,5.04,AA
+Solarized Dark,リンク(preview) / エディタ,--mde-preview-link-color,--editor-background,5.38,AA
+Solarized Dark,リンク(editor) / エディタ,--syntax-link-color,--editor-background-color,5.38,AA
+Solarized Dark,サイドバー項目 / サイドバー,--sidebar-menu-item-color,--sidebar-background,4.16,AA-large
+Solarized Dark,サイドバー節見出し / サイドバー,--sidebar-menu-section-color,--sidebar-background,2.42,fail
+Solarized Dark,ノート抜粋 / ノートリスト,--note-list-view-item-color,--note-list-bar-background,5.78,AA
+Solarized Dark,日付 / ノートリスト,--note-list-view-item-date-color,--note-list-bar-background,3.40,AA-large
+Solarized Dark,disabled / エディタ,--disabled-text-color,--editor-background,2.51,fail
+Solarized Dark,primary ボタン文字 / primary,--primary-button-text-color,--primary-color,4.05,AA-large
+Kanagawa Dragon,本文 / エディタ,--editor-foreground-color,--editor-background-color,10.06,AA
+Kanagawa Dragon,プレビュー本文 / エディタ,--text-color,--editor-background,8.41,AA
+Kanagawa Dragon,muted / エディタ,--muted-text-color,--editor-background,5.16,AA
+Kanagawa Dragon,light / エディタ,--light-text-color,--editor-background,3.86,AA-large
+Kanagawa Dragon,コメント / エディタ,--syntax-comment-color,--editor-background-color,3.94,AA-large
+Kanagawa Dragon,ガター文字 / エディタ,--editor-gutter-color,--editor-background-color,2.63,fail
+Kanagawa Dragon,見出し / エディタ,--syntax-heading-1-color,--editor-background-color,8.00,AA
+Kanagawa Dragon,リンク(preview) / エディタ,--mde-preview-link-color,--editor-background,5.54,AA
+Kanagawa Dragon,リンク(editor) / エディタ,--syntax-link-color,--editor-background-color,6.53,AA
+Kanagawa Dragon,サイドバー項目 / サイドバー,--sidebar-menu-item-color,--sidebar-background,6.89,AA
+Kanagawa Dragon,サイドバー節見出し / サイドバー,--sidebar-menu-section-color,--sidebar-background,4.33,AA-large
+Kanagawa Dragon,ノート抜粋 / ノートリスト,--note-list-view-item-color,--note-list-bar-background,5.38,AA
+Kanagawa Dragon,日付 / ノートリスト,--note-list-view-item-date-color,--note-list-bar-background,5.85,AA
+Kanagawa Dragon,disabled / エディタ,--disabled-text-color,--editor-background,2.08,fail
+Kanagawa Dragon,primary ボタン文字 / primary,--primary-button-text-color,--primary-color,6.37,AA
