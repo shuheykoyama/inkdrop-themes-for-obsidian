@@ -20,14 +20,14 @@
 
 凡例:
 - **[確認済]** = ソースを読んで確認した事実。**[推測]** = ソースからの推論。**[未確認]** = 未検証。
-- **宣言値** = CSS ソース上の値を `var()` 置換・`light-dark()` 選択して得た値（本書の CSV はすべてこれ）。**Computed Style** = 実ブラウザで計算された値。本調査では実アプリ（Inkdrop）を起動していないため、Computed Style は直接観測していない。ただし `palette.json`（後述）は theme-dev-helpers がブラウザで抽出した computed 値であり、これとの突合を行った。
-- 16 進値は宣言 HSL から Python `colorsys` で計算した値で、ブラウザ丸めと ±1 ずれる可能性がある。
+- **宣言値** = CSS ソース上の値を `var()` 置換・`light-dark()` 選択して得た値（本書の CSV はすべてこれ）。**Computed Style** = 実ブラウザで計算された値。本調査では実アプリ（Inkdrop）を起動していないため、Computed Style は直接観測していない。`palette.json`（後述）は theme-dev-helpers の harness 上の値で、これとの突合を行った。突合が裏付けるのは `var()` の展開と `light-dark()` の分岐選択が harness と一致したことで、描画色ではない（Phase 1B で訂正。§1.5）。
+- 16 進値は宣言 HSL を Python `colorsys` で sRGB に変換し、8 ビットに丸めた**計算値**である。画面上の描画色を測ったものではない。ブラウザの変換や色管理によって ±1 程度ずれる可能性がある（Phase 1B で表現を訂正）。
 
 関連データ（機械可読）:
 - `research/data/inkdrop-solarized-dark-tokens.csv`（2,356 トークン、うちテーマ宣言 521）
 - `research/data/inkdrop-kanagawa-dragon-tokens.csv`（2,395 トークン、うちテーマ宣言 645）
 - `research/data/inkdrop-palettes.json`（両テーマのパレット、Osaka / 本家 Solarized 16 色 / kanagawa.nvim 上流色との対応）
-- 生成スクリプト（リポジトリ外）: `scratchpad/scripts/resolve_tokens.py`, `build_palettes.py`, `leaks.py`, `show.py`
+- 生成スクリプト: [`tools/resolve_tokens.py`](tools/resolve_tokens.py), [`tools/build_palettes.py`](tools/build_palettes.py), [`tools/leaks.py`](tools/leaks.py)（Phase 1B でリポジトリに収録。手順は [tools/README.md](tools/README.md)。値の確認に使った `show.py` は表示用の補助で、収録していない）
 
 ---
 
@@ -38,7 +38,7 @@
    - **Solarized Dark = ランプ上書き型**: 基盤の `--hsl-{neutral,blue,cyan,green,yellow,orange,red,violet,pink}-{50..950}` を Solarized Osaka 由来の値に差し替え（`@layer theme`）、基盤 `ui.css` の既定値をそのまま流用しつつ一部セマンティック変数を上書きする。
    - **Kanagawa Dragon = 名前付きパレット型**: 基盤ランプには触れず、独自の `--kanagawa-*`（39 色）を定義し、セマンティック変数を「ほぼ全部」明示的に再割り当てする（ui.css だけで 569 行）。
 3. 背景の奥行き方向が逆。Solarized Dark は **サイドバーが最も明るく（base02）エディタに向かって暗くなる**。Kanagawa Dragon は **サイドバーが暗く（page / menu / input の Black0 に次ぐ Black1）エディタが最も明るい**（kanagawa.nvim の depth model を踏襲とコメントあり）。
-4. 自作の解決スクリプトの宣言値は、両テーマの `palette.json`（ブラウザ抽出の computed 値）と **1,638 / 1,638 トークン全一致**（引用符の正規化のみ）。CSV の値は高い信頼度で「実アプリ上の custom property 値」と一致すると判断できる。
+4. 自作の解決スクリプトの宣言値は、両テーマの `palette.json` と **1,638 / 1,638 トークン全一致**（引用符の正規化のみ）。`palette.json` は theme-dev-helpers の検証用ページ（harness）上の値で、`var()` の展開はブラウザ、`light-dark()` の分岐はツールの文字列処理による。したがってこの一致は、本調査の解決結果と harness の結果が一致したことを示すもので、実アプリ上の値（harness は `layers.css` を読まない）や描画色を裏付けるものではない（Phase 1B で訂正。§1.5）。
 
 ---
 
@@ -98,6 +98,14 @@ theme-dev-helpers の `generate-palette` が、テーマ適用状態で `body`�
 | Kanagawa Dragon | 1,638 | 1,638 | 0（同上） |
 
 この結果から、`palette.json` の生成時点の CSS と現 HEAD の CSS は実質的に同一とみなせる。**[推測]**
+
+**Phase 1B の補足**: `palette.json` の各値は、次の 3 つの処理を経たものである（theme-dev-helpers@a7bcbe6 `src/generate-palette.ts`、`src/palette.ts:246-263`）。
+
+1. `var()` の展開: ブラウザの `computedStyleMap()`。CSS Custom Properties の仕様では、カスタムプロパティの計算値は「変数を置換した指定値」で、色としては解決されない。
+2. `light-dark()` の分岐: ツール側の文字列処理（`resolveLightDark`）。ブラウザではない。
+3. `color-mix()`: ブラウザに計算させ、計算済みの色で置き換える（`computeColorMixes`）。
+
+両テーマの `palette.json` には `color-mix()` 由来の値がないため（Phase 1B で確認）、色は `hsl(45deg 7% 11%)` のような HSL の文字列のまま記録されている。したがってこの突合が示すのは、本調査の解決スクリプトと harness の結果（`var()` の展開と、別実装の文字列処理による分岐選択）が一致したことである。実アプリ上の値や画面上の描画色を裏付けるものではない。
 
 ---
 
@@ -184,7 +192,9 @@ theme-dev-helpers の `generate-palette` が、テーマ適用状態で `body`�
 出典: 上流 HEX は rebelot_kanagawa.nvim@bb85e4b lua/kanagawa/colors.lua:14-85。
 
 要点:
-- **HSL 丸め誤差**: CSS の正本は「整数 % の HSL」なので、レンダリング色はコメントの HEX から最大 2/255 ずれる（dragonPink, dragonTeal, dragonYellow, samuraiRed, roninYellow, katanaGray など）。**Inkdrop 版を正本とするなら、Obsidian 側では HSL 宣言値（または HSL から計算した Hex）を使うのが厳密**。HEX コメントは参照値にすぎない。**[確認済: 数値計算]**
+- **HSL 宣言と HEX コメントの差**: CSS の正本は「整数 % の HSL」である。HSL を sRGB に変換して 8 ビットに丸めた**計算値**は、コメントの HEX から最大 2/255 ずれる（dragonPink, dragonTeal, dragonYellow, samuraiRed, roninYellow, katanaGray など）。**[確認済: 数値計算]**
+  - Phase 1 は「レンダリング色はコメントの HEX からずれる」と書いていたが、描画色は測っていない。計算値と描画色を区別して書き直した（Phase 1B、R-05）。
+  - **Inkdrop 版を正本とするなら、Obsidian 側でも同じ `hsl()` 宣言を使うのが最も厳密**である。両アプリとも Chromium の同じ変換を通るので、HEX への換算そのものが不要になる（ただし両アプリの Chromium 版と色管理が同じかは未確認）。HEX コメントは参照値にすぎない。
 - **dragonBlack2 / dragonBlack3 の入れ替え**: §10 で詳述する。
 - 旧 `kanagawa-dragon-syntax` の palette.css と現行 `packages/dragon/styles/palette.css` の定義は全 39 色が完全一致する（スクリプトで diff して確認）。
 
@@ -507,7 +517,7 @@ Solarized は preview.css のコメントで「gitGraph のブランチラベル
 | 項目 | kanagawa.nvim（dragon） | Inkdrop kanagawa-dragon | 判定 |
 |---|---|---|---|
 | dragonBlack2 / dragonBlack3 の HEX | Black2 = `#1D1C19`、Black3 = `#181616`（colors.lua:64-65）。Black3 は Black2 より暗く、番号順が非単調 | Black2 = `#181616`、Black3 = `#1D1C19`（palette.css:18-19）。**番号順に明るくなるよう入れ替え** | **[確認済] 差異**。上流の colors.lua は 2023-09 以降この並びのまま（GitHub API でコミット履歴を確認、直近の変更 bc78b40 は lotusYellow の空白修正のみ） |
-| エディタ背景 | `ui.bg = dragonBlack3` = `#181616`（themes.lua:211） | `--kanagawa-dragonBlack3`（コメント "ui.bg"）= `#1d1c19`（HSL 計算で `#1e1d1a`） | 名前で対応付けたため、**実際の色は上流の bg_m1（`#1d1c19`）**になっている。意図的な単調化か誤りかは不明 **[推測不能]** |
+| エディタ背景 | `ui.bg = dragonBlack3` = `#181616`（themes.lua:211） | `--kanagawa-dragonBlack3`（コメント "ui.bg"）= `#1d1c19`（HSL 計算で `#1e1d1a`） | 名前で対応付けたため、**Inkdrop のエディタ背景の宣言値は、上流の bg_m1（`#1d1c19`）に当たる色**（HSL 宣言 `45deg 7% 11%`）になっている。描画色は未測定。意図的な単調化か誤りかは不明 **[推測不能]** |
 | サイドバー等 | 上流は sidebar 専用色なし（float.bg = Black0、bg_dim = Black1） | sidebar Black1、note-list Black2、menu / input Black0 | Inkdrop 独自の割り当て |
 | pmenu（補完） | bg = waveBlue1、bg_sel = waveBlue2（themes.lua:222-229） | tooltip 背景 = Black3、選択 = waveBlue2（syntax.css:51-60、コメント "pmenu.bg" は不正確） | 一部差異 |
 | CursorLine | bg_p2 = Black5（editor.lua:26） | アクティブ行 = Black4 @30%（syntax.css:25-27、コメントは "ui.bg_p2"） | 差異（弱めた） |
@@ -562,9 +572,11 @@ Solarized は preview.css のコメントで「gitGraph のブランチラベル
   - 太字を dragonRed、プレビューのリンクを dragonGreen2 にする（上流 nvim には無い色付け）。
   - Wave と Dragon は ui.css の構造（行構成）がほぼ同一で、色名だけ違う（kw-wave 563 行 / kw-dragon 569 行、宣言数はどちらも 606）。
 
-### 13.4 既存テーマを無条件に正としない: 確認された問題点・漏れ
+### 13.4 既存テーマを無条件に正としない: 基盤既定色の継承と不整合
 
 `leaks.py` で、テーマが上書きしていない基盤ランプ（Tailwind 系）に解決されるセマンティックトークンを機械的に抽出した。**[確認済]**
+
+**Phase 1B の訂正（R-06）**: Phase 1 はこれを「漏れ」「問題点」と呼んでいた。しかし、テーマ作者が意図して基盤既定に任せたのか、見落としたのかは、ソースからは判断できない。また Inkdrop で**実際に表示されるのはこの色**であり、「Inkdrop を正本とする」方針では、これも正本の一部である。本節では「基盤既定色の継承」と中立に呼ぶ。テーマのパレットへ寄せるかどうかはユーザー判断（09 Q-D9）。意図の確認は 09 U-11。
 - **Solarized Dark（94 トークン）**:
   - info 系の背景・枠・見出し・文字が sky に解決される（例: `--info-background-color` = sky-200 @20%）。
   - `--focused-form-border-color` が sky-300 に解決される。
@@ -600,7 +612,7 @@ Solarized は preview.css のコメントで「gitGraph のブランチラベル
   - エディタの見出しは dragonYellow、リンク文字列は下線付き。太字 `**icons**` は赤系。
   - プレビュー（右）の見出しは dragonYellow で、h2 に下線。
   - 未チェックのタスクはチェックボックス表示。インラインコードは枠付きのピル。
-  - タグピルは Tailwind 寄りの鮮やかな色（Feature = 黄、Bug = 橙、AI = 赤など）に見え、§13.4 のタグ色の漏れと整合する。**[推測]**
+  - タグピルは Tailwind 寄りの鮮やかな色（Feature = 黄、Bug = 橙、AI = 赤など）に見え、§13.4 のタグ色の基盤既定色の継承と整合する。**[推測]**
 
 ---
 

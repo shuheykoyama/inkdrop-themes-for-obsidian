@@ -524,7 +524,7 @@ README の記載は `css@add48d9 README.md` の Cascade layers 表によりま�
 
 ## 9. 機械解析（`research/data/inkdrop-base-tokens.csv`）
 
-- スクリプト: `scratchpad/analyze_tokens.py`（リポジトリ外の一時ファイル。Python 3.12 の標準ライブラリだけを使用）
+- スクリプト: [`tools/analyze_tokens.py`](tools/analyze_tokens.py)（Phase 1B でリポジトリに収録。Python 3.12 の標準ライブラリだけを使用。手順は [tools/README.md](tools/README.md)）
   - コメントを除去し、括弧と引用符の深さを追いながら `{ } ;` を走査します。
   - 宣言ごとに次を記録します。
     - ファイル名と行番号

@@ -1,0 +1,642 @@
+"""Generate research/data/mapping-candidates.csv and a markdown table fragment.
+
+Rows are hand-curated mapping candidates. Inkdrop token values are looked up
+mechanically from the resolved-token CSVs produced for 02, so the values in the
+mapping never diverge from that data.
+
+usage: python3 -I gen_mapping.py <research_dir> <out_md_fragment>
+"""
+import csv
+import sys
+from pathlib import Path
+
+research = Path(sys.argv[1])
+out_md = Path(sys.argv[2])
+
+
+def load(name):
+    with open(research / "data" / name, newline="") as f:
+        return {r["token"]: r for r in csv.DictReader(f)}
+
+
+SD = load("inkdrop-solarized-dark-tokens.csv")
+KD = load("inkdrop-kanagawa-dragon-tokens.csv")
+
+D, S, N = "Direct", "Semantic", "Obsidian-native"
+
+# (id, area, obsidian_element, inkdrop_candidate, class, inkdrop_tokens(list),
+#  obsidian_targets, rationale, confidence, theme_divergence, sources, verify)
+ROWS = [
+    # ---------------- Workspace ----------------
+    ("W01", "Workspace", "ウィンドウ最背面 / Hidden frame のタブバー兼タイトルバー",
+     "ページ背景（ウィンドウ地）", S, ["--page-background"],
+     "--titlebar-background, --titlebar-background-focused, --tab-container-background（.workspace-tabs.mod-top は titlebar 色を代入）",
+     "Inkdrop の page は最暗の地色で、各ペインの背後に来る。Obsidian で各ペインの背後にある面は titlebar / tab container。ただし Inkdrop の page が実際にどの DOM に塗られるかは非公開 CSS",
+     "Low", "両テーマとも page は最暗色（SD base04 / KD Black0）で傾向は同じ",
+     "01 §5.2（page: 非公開）, 02 §4, 05 Workspace, app.css L4354-4357", "要: Inkdrop 実機で page 背景の露出箇所を確認"),
+    ("W02", "Workspace", "Ribbon（左端アイコン列）",
+     "なし（隣接するサイドバー or page を流用）", N, ["--sidebar-background", "--page-background"],
+     "--ribbon-background, --ribbon-background-collapsed",
+     "Inkdrop に縦アイコン列はない。配色は隣接面（左サイドバー or 地色）から決めるしかない",
+     "Low", "SD はサイドバーが最も明るいため、ribbon をサイドバー色にすると左端が最明部になる。KD は最暗部側に揃う",
+     "05 Workspace, 02 §4", "要: 両案の見え方比較"),
+    ("W03", "Workspace", "左サイドバー（File Explorer 等を収めるサイドドック）",
+     "Inkdrop サイドバー（ノートブック / タグ）または ノートリスト", S,
+     ["--sidebar-background", "--note-list-bar-background"],
+     "公式変数のみ: --background-secondary（左右ドック本体で共有、L6913）。docs 未掲載のスコープ再定義: .workspace-split.mod-left-split（1.13.7 / 1.14.4 とも付与。RTL で左右反転）または .mod-primary-split（1.14 以降のみ）で --background-secondary を再定義すればドック本体だけ別色。ドックのタブ帯の --sidebar-tab-container-background（L6931、未掲載）は 1.14 以降のみで、最上段のタブグループ（.workspace-tabs.mod-top）では --titlebar-background に置き換わる（L4354-4358）。File Explorer 内は .nav-header / .nav-files-container、ビュー単位は .workspace-leaf-content[data-type=\"file-explorer\"]。モバイルは .workspace-drawer.mod-primary と --mobile-sidebar-background",
+     "File Explorer は Inkdrop の『サイドバー（ノートブック階層）』と『ノートリスト（ノート一覧）』の 2 役を 1 ペインで担う。**横並びの 2 ペイン構造はテーマ CSS では作れない**が、**背景色の段数は 2 段に限られない**。ドック本体 / タブ帯 / File Explorer 内のヘッダー帯 / Ribbon を別色にでき、ドック本体を左右で塗り分けることもできる。ただし docs 未掲載のクラスに依存し、一部は 1.14 以降のみ、最上段のタブ帯はタイトルバー色と連動する（07 R05）。どの面にどの色を当てるかで全体の明度構成が変わる",
+     "Medium", "**SD と KD で結論が変わりうる**: SD は sidebar(base02 #073541) > note-list(base03) で sidebar が最明。KD は sidebar(Black1) < note-list(Black2) で最暗に近い",
+     "01 §5.2, 02 §4・§13.3, 05 Workspace（L6912）", "要: 両案のモック比較（ユーザー判断 Q-D1）"),
+    ("W04", "Workspace", "右サイドバー（Outline / Backlinks 等）",
+     "エディタドロワー（候補）/ なし", S, ["--editor-drawer-background", "--editor-drawer-border-left"],
+     "--background-secondary（左右共通）、右だけなら .workspace-split.mod-right-split（app.js で付与を確認。DOM 上の実在は実機未確認）",
+     "Inkdrop のエディタ右側ドロワーは補助情報パネルという役割で近い。ただし drawer の実表示箇所は非公開 CSS で未確認",
+     "Low", "SD drawer は base03 @70%、KD は Black1 @70%（半透明）",
+     "01 §5.2（drawer: 非公開）, 02 §4", "要: Inkdrop のドロワー実画面確認"),
+    ("W05", "Workspace", "ノート領域（エディタ背景）",
+     "エディタ背景", D, ["--editor-background", "--editor-background-color"],
+     "--background-primary（Modal / Prompt / Popover / Canvas ノードと共有）、--color-base-00",
+     "両アプリとも本文編集面。役割が一致する",
+     "High", "SD neutral-900 #002129（Osaka にない中間色）、KD dragonBlack3（HSL 宣言から #1e1d1a。上流 kanagawa.nvim の ui.bg #181616 ではない）",
+     "01 §5.1, 02 §4・§12, 05 注意点", "推奨: 他面への波及（modal 等）を実機確認"),
+    ("W06", "Workspace", "ワークスペースタブ（メイン領域のノートタブ）",
+     "なし", N, ["--editor-background", "--note-list-bar-background"],
+     "--tab-background-active, --tab-text-color(-active/-focused-active), --tab-container-background, .workspace-tab-header::before/::after",
+     "Inkdrop メインウィンドウにノートタブは見当たらない（05 は推測と明記）。アクティブタブ = エディタ面、タブバー = 背後面、と Obsidian 既定の構造に従うのが自然",
+     "Low", "—",
+     "05 Workspace（L7025-7050）", "要: Inkdrop にタブ相当 UI がないか確認"),
+    ("W07", "Workspace", "View Header（ノート上部のパンくず・操作アイコン）",
+     "ノートヘッダーメニュー（header-note-menu）", S,
+     ["--header-note-menu-background", "--header-note-menu-color", "--header-note-menu-action-item-active-background"],
+     "--background-primary（view-header）、--icon-color(-hover/-active)、.view-header",
+     "ノート上部の操作列という役割が一致。Inkdrop 側の背景は transparent（エディタ面に乗る）",
+     "Medium", "両テーマとも背景 transparent 系",
+     "01 §5.2（非公開）, 05 Workspace", "要: Inkdrop の header 実画面"),
+    ("W08", "Workspace", "Inline title（本文先頭のノートタイトル）",
+     "エディタヘッダーのタイトル入力", S, ["--editor-header-title-input-background", "--text-color"],
+     "--inline-title-color, --inline-title-size, --inline-title-weight",
+     "ノートのタイトルを本文上部に表示する役割が同じ。Inkdrop のタイトル文字色・サイズのトークンは見当たらない",
+     "Medium", "—", "01 §5.2, 05 Editor", "要: Inkdrop タイトルの文字サイズ・色を実測"),
+    ("W09", "Workspace", "ステータスバー",
+     "なし（近いのはサイドバー下部の同期状態表示）", N,
+     ["--sidebar-sync-status-view-background", "--sidebar-sync-status-view-text-color"],
+     "--status-bar-background, --status-bar-text-color, --status-bar-border-color",
+     "Inkdrop に常設ステータスバーはない。情報の役割（状態表示）で同期状態表示が最も近い",
+     "Low", "—", "01 §5.2, 05 Workspace", "不要（設計判断）"),
+    ("W10", "Workspace", "分割ペイン境界（divider）",
+     "サイドバー / ノートリストの右境界線", D,
+     ["--sidebar-border-right", "--note-list-bar-border-right"],
+     "--divider-color, --divider-width",
+     "ペイン間の区切り線という役割が一致",
+     "Medium", "SD: base03 / base02 の 1px。KD: Black4 / Black4@75%",
+     "02 §10, 05 Workspace", "推奨"),
+    ("W11", "Workspace", "半透明ウィンドウ（macOS vibrancy）",
+     "acrylic-window 条件の半透明背景", D, ["--page-background", "--sidebar-background"],
+     "body.is-translucent / .is-translucent:not(.is-fullscreen) と関連 3 変数",
+     "OS 透過を前提とした背景差し替えという機能が一致。Inkdrop は :root:has(body.acrylic-window) で各面を半透明化",
+     "Medium", "両テーマとも acrylic 時の上書きあり（SD ui.css:176-187, KD ui.css:557-568）",
+     "01 §3.6, 02 §1.4, 03 §5", "要: macOS 実機で透過度を比較"),
+    # ---------------- Navigation ----------------
+    ("N01", "Navigation", "File Explorer のフォルダ項目",
+     "サイドバーのノートブック項目", S,
+     ["--sidebar-menu-item-color", "--sidebar-menu-active-item-color", "--sidebar-menu-item-active-background"],
+     "--nav-item-color(-hover/-active), --nav-item-background-(hover/active), .nav-folder-title",
+     "階層化されたコンテナ（ノートブック ≒ フォルダ）という役割が一致",
+     "Medium", "SD 項目色は fg #839495、KD は oldWhite @80%",
+     "01 §5.2, 02 §5, 05 Navigation（L10734-10830）", "要: Inkdrop サイドバーの hover 表現"),
+    ("N02", "Navigation", "File Explorer のノート項目",
+     "ノートリスト項目（タイトル）", S,
+     ["--note-list-view-item-header-color", "--note-list-view-item-color"],
+     "--nav-item-color, .nav-file-title",
+     "個々のノートを列挙する役割が一致。ただし Obsidian はタイトル 1 行、Inkdrop は 2〜3 行カード（抜粋・日付）",
+     "Medium", "SD タイトル fg / 抜粋 base3@60%。KD タイトル dragonWhite / 抜粋 oldWhite@70%",
+     "01 §5.2, 02 §5", "要"),
+    ("N03", "Navigation", "File Explorer: 開いているファイル（active）",
+     "ノートリスト active（フォーカス中の選択）または サイドバー active", S,
+     ["--note-list-view-item-active-background", "--sidebar-menu-item-active-background"],
+     "--nav-item-background-active, --nav-item-color-active",
+     "『現在開いているノート』を示す状態。Inkdrop ではノートリストの選択がこれに当たるが、active / selected の意味（フォーカス有無）が Obsidian の active / selected（開いている / 複数選択）と一致しない",
+     "Medium", "SD blue-500 @40%（list）/ blue-300 @30%（sidebar）。KD waveBlue2 @80%（list）/ waveBlue2 @60%（sidebar）",
+     "02 §6.2, 05 Navigation", "要: 状態の対応を実機で確認"),
+    ("N04", "Navigation", "File Explorer: 複数選択（selected）",
+     "ノートリスト selected（フォーカス外の選択）", S,
+     ["--note-list-view-item-selected-background"],
+     "--nav-item-background-selected, --nav-item-color-selected",
+     "選択の弱い段階として転用可能。意味は一致しない（Inkdrop は非フォーカス選択）",
+     "Low", "SD blue-500 @20%、KD waveBlue1 @70%",
+     "02 §6.2, 05 Navigation", "要"),
+    ("N05", "Navigation", "File Explorer: hover",
+     "サイドバー inactive 背景 / メニュー hover（基盤既定の白アルファ）", S,
+     ["--sidebar-menu-item-inactive-background", "--menu-hover-item-background"],
+     "--nav-item-background-hover, --background-modifier-hover",
+     "Inkdrop のサイドバー hover 専用トークンは見当たらない。inactive-background が hover か非フォーカス選択かは非公開 CSS 次第",
+     "Low", "両テーマとも menu hover は基盤既定 #ffffff05",
+     "01 §5.2, 02 §6.2", "要: Inkdrop 実機で hover 色を観察"),
+    ("N06", "Navigation", "ナビ見出し / セクション見出し（Vault 名・ブックマーク見出し等）",
+     "サイドバー節見出し", S, ["--sidebar-menu-section-color"],
+     "--nav-heading-color(-hover/-collapsed), .tree-item-self.mod-root",
+     "グループ見出しという役割が一致",
+     "Medium", "SD violet-600 系（unselected-text 経由）、KD dragonViolet @80%",
+     "02 §5", "推奨"),
+    ("N07", "Navigation", "折り畳みアイコン",
+     "なし（サイドバーの展開矢印は非公開）", S, ["--sidebar-menu-action-color"],
+     "--collapse-icon-color(-collapsed), --nav-collapse-icon-color",
+     "展開・折り畳みのアイコン色。Inkdrop は action 色がアイコン類に当たると推定",
+     "Low", "—", "01 §5.2", "要"),
+    ("N08", "Navigation", "Search ペインの入力欄",
+     "ノート検索バー", D, ["--note-search-bar-input-background", "--input-background"],
+     "--background-modifier-form-field, --input-shadow, .search-input-container input",
+     "ノート検索の入力という役割が一致",
+     "Medium", "SD #002129、KD Black0（SD は editor 色、KD は最暗色と方針が異なる）",
+     "02 §4", "推奨"),
+    ("N09", "Navigation", "Search 結果の一致箇所ハイライト",
+     "エディタ検索一致", S, ["--editor-search-match-background-color", "--highlight-background"],
+     "--text-highlight-bg / --highlight-background（.search-result-file-matched-text）",
+     "検索語の一致を示す役割が近い",
+     "Medium", "SD yellow @35%、KD waveBlue2",
+     "02 §8.1, 05 Editor", "推奨"),
+    ("N10", "Navigation", "Bookmarks",
+     "なし（近い: ノートリストの pinned セクション）", S, ["--note-list-bar-pinned-section-header-background"],
+     "--nav-item-*（tree-item 共通）",
+     "ピン留め = 優先表示という役割が近いが UI 構造は異なる",
+     "Low", "—", "01 §5.2, 05 Navigation", "不要"),
+    ("N11", "Navigation", "Outline",
+     "不明（Inkdrop の目次 UI のトークンは見当たらない）", N, [],
+     "--nav-item-*（tree-item 共通）",
+     "公開 CSS に目次 UI のトークンがない。tree-item 共通の配色に従う",
+     "Low", "—", "05 Navigation", "要: Inkdrop に目次 UI があるか確認"),
+    ("N12", "Navigation", "Backlinks / Outgoing links",
+     "なし", N, [], "--nav-item-*, .search-result-*",
+     "Inkdrop にリンク逆引き UI はない", "High", "—", "05 Navigation", "不要"),
+    ("N13", "Navigation", "Tags view（タグペイン）",
+     "サイドバーのタグ一覧", S, ["--sidebar-menu-item-color", "--tag-default-text-color"],
+     ".tag-pane-tag（専用変数なし。--nav-item-* を流用）",
+     "タグによる絞り込み一覧という役割が一致。Inkdrop のタグはサイドバー項目 + 色付きピル",
+     "Medium", "KD のタグ色は Tailwind 系のまま（02 §13.4）",
+     "02 §13.4, 05 Navigation", "推奨"),
+    # ---------------- Editor ----------------
+    ("E01", "Editor", "本文テキスト（編集時）",
+     "エディタ前景", D, ["--editor-foreground-color"],
+     "--text-normal（全 UI 共有）、--color-base-100",
+     "本文文字色。--text-normal は UI 全体の文字色でもあるため、Inkdrop の UI 文字色との差に注意",
+     "High", "SD #839495（UI text と同値）。KD editor #c5c9c5、UI --text-color は #c5c9c5 @90% で **わずかに異なる**",
+     "02 §5・§8.1", "推奨"),
+    ("E02", "Editor", "本文テキスト（Reading View）",
+     "プレビュー本文", D, ["--text-color"],
+     "--text-normal（.markdown-rendered は同変数）",
+     "本文文字色。Obsidian は編集・閲覧で同じ変数",
+     "High", "KD は編集と閲覧で値が異なる（上記）。どちらに寄せるかは判断事項",
+     "01 §4.3, 02 §5", "推奨"),
+    ("E03", "Editor", "弱い文字（muted / faint）",
+     "muted / light / disabled テキスト", S,
+     ["--muted-text-color", "--light-text-color", "--disabled-text-color"],
+     "--text-muted, --text-faint",
+     "階層の 2 段目・3 段目の文字。Inkdrop は段数が多い（dark/muted/light/unselected/hovered/...）",
+     "Medium", "SD は base3（クリーム）のアルファになる（ランプ置換の副作用、02 §5）。KD は oldWhite / dragonGray3",
+     "02 §5", "要: Solarized のクリーム系アルファを採るか判断（Q-D3）"),
+    ("E04", "Editor", "キャレット",
+     "エディタキャレット", D, ["--editor-caret-color"], "--caret-color",
+     "役割一致", "High", "SD base0 #9fabad、KD dragonWhite", "02 §8.1", "不要"),
+    ("E05", "Editor", "選択範囲",
+     "エディタ選択（非フォーカス / フォーカス）+ UI テキスト選択", D,
+     ["--editor-selection-background", "--editor-focused-selection-background", "--highlight-background"],
+     "--text-selection（1 変数。フォーカス有無の区別なし）、.cm-selectionBackground, ::selection",
+     "役割一致。ただし Obsidian は 1 変数で、Inkdrop の 2 段階を再現するには .cm-focused 等への直接セレクタが要る",
+     "High", "SD base02 / blue-500 @30%。KD Black5 / waveBlue1",
+     "02 §8.1, 05 Editor（L3645-3659）", "推奨"),
+    ("E06", "Editor", "アクティブ行",
+     "エディタのアクティブ行（本体 / ガター）", D,
+     ["--editor-active-line-background-color", "--editor-active-line-gutter-background-color"],
+     ".cm-line.cm-active, .cm-gutterElement.cm-active（変数なし・既定スタイルなし）",
+     "役割一致。Obsidian に変数がないため直接セレクタ必須",
+     "High", "SD base03 @50%、KD Black4 @30%",
+     "02 §8.1, 05 直接セレクタ表", "推奨"),
+    ("E07", "Editor", "行番号ガター",
+     "エディタガター", D, ["--editor-gutter-color", "--editor-gutter-background-color", "--editor-gutter-border-right"],
+     ".markdown-source-view.mod-cm6 .cm-gutters（L3726: color: var(--text-faint) !important / border-right: none !important）",
+     "役割一致。文字色は変数参照の !important なので、.cm-gutters 上で --text-faint を再定義すれば !important なしで変えられる（CSS 仕様からの推論）。右線は固定値の !important のため、border-right で描くなら !important が要る。box-shadow 等の別プロパティで描く迂回は可能と推測",
+     "High", "SD 文字 base01・線なし。KD 文字 Black6・右線 1px Black4（KD だけが右線を必要とする）",
+     "02 §8.1, 05 直接セレクタ表（L3726）", "要: V-07"),
+    ("E08", "Editor", "見出し H1〜H6（色・太さ）",
+     "エディタ見出しトークン + プレビュー見出し", D,
+     ["--syntax-heading-1-color", "--mde-preview-heading-color"],
+     "--h1-color〜--h6-color, --h1-weight…, .HyperMD-header-N / .markdown-rendered hN",
+     "役割一致。Inkdrop は h1〜h6 同色",
+     "High", "SD yellow-500 #b28600。KD dragonYellow（上流 nvim の Function=dragonBlue2 とは異なる）",
+     "02 §7.2・§8.2・§12", "不要"),
+    ("E09", "Editor", "見出しサイズ・下線",
+     "プレビュー見出しサイズ（--h1..--h6）と h1/h2 下線", S,
+     ["--mde-preview-heading-border-color"],
+     "--h1-size〜--h6-size, .markdown-rendered h1/h2 の border（変数なし）",
+     "Reading View には写せるが、Live Preview で同じ下線を出すと編集時の見た目が変わる。エディタ側の見出しサイズは Inkdrop でトークン化されていない",
+     "Medium", "サイズ比は基盤共通（2 / 1.5 / 1.25 / 1 / 0.875 / 0.85em）",
+     "02 §7.1・§10", "要: Inkdrop エディタの見出しサイズを実測"),
+    ("E10", "Editor", "見出し記号 `#` などの Markdown 記号",
+     ".md-header-mark 等（規則が空。見出しトークンの色を継承すると推測）", D, ["--syntax-heading-1-color"],
+     ".cm-formatting-header（--text-faint 固定）、.cm-formatting-*",
+     "記号の表示色。Inkdrop は記号用の規則が空（syntax.css:679-704）で、見出しなら見出し色を継承する可能性が高い（推測）。Obsidian は --text-faint 固定のため差が出る",
+     "Medium", "—", "01 §4.2, 05 Editor（L13251）", "要: Inkdrop で # の色を観察"),
+    ("E11", "Editor", "太字",
+     "強調（strong）", D, ["--syntax-strong-color", "--mde-preview-strong-color"],
+     "--bold-color, --bold-weight",
+     "役割一致", "High", "SD base1 #adb8b8。KD dragonRed #c4746e（上流 nvim にない色付け）",
+     "02 §7.2・§8.2", "不要"),
+    ("E12", "Editor", "斜体",
+     "強調（em）", D, ["--syntax-emphasis-color", "--mde-preview-em-color"],
+     "--italic-color", "役割一致", "High", "SD green-500、KD dragonGreen2", "02 §7.2・§8.2", "不要"),
+    ("E13", "Editor", "取り消し線",
+     "strikethrough トークン（装飾のみ）", D, ["--syntax-strikethrough-text-decoration"],
+     ".cm-strikethrough, .markdown-rendered del（変数なし）",
+     "役割一致。色指定はなく装飾のみ", "Medium", "—", "02 §8.2, 05 直接セレクタ表", "推奨"),
+    ("E14", "Editor", "外部リンク（Reading / Live Preview）",
+     "プレビューのリンク / エディタのリンク", D,
+     ["--mde-preview-link-color", "--syntax-link-color", "--link-color"],
+     "--link-external-color(-hover), --link-color, --link-decoration",
+     "役割一致。ただし Inkdrop はエディタ・プレビュー・UI でリンク色が分かれている",
+     "High", "**SD**: preview / editor cyan、UI blue。**KD**: preview dragonGreen2、editor dragonBlue2、UI dragonBlue2。Obsidian は LP と Reading で同じ変数のため、どれを正とするか判断が要る",
+     "02 §5・§7.2・§8.2", "要: Q-D4"),
+    ("E15", "Editor", "内部リンク（wikilink）",
+     "リンク（Inkdrop のノート間リンクも同じリンク色）", S,
+     ["--mde-preview-link-color", "--syntax-link-color"],
+     "--link-color(-hover), .cm-hmd-internal-link, .internal-link",
+     "ノート間リンクという役割は近いが、Inkdrop は wikilink 記法を持たず通常リンクと同色",
+     "Medium", "E14 と同じ分岐", "02 §7.2", "要"),
+    ("E16", "Editor", "URL 文字列（Source / LP の生 URL）",
+     "エディタ URL トークン", D, ["--syntax-url-color"], ".cm-url（--link-external-color 系）",
+     "役割一致", "High", "SD yellow、KD dragonTeal", "02 §8.2", "不要"),
+    ("E17", "Editor", "未解決リンク",
+     "なし", N, [], "--link-unresolved-color, --link-unresolved-opacity",
+     "Inkdrop に未解決リンクの概念はない", "High", "—", "05 Editor", "不要"),
+    ("E18", "Editor", "ハイライト（==mark==）",
+     "インライン mark", D,
+     ["--md-inline-mark-background-color", "--md-inline-mark-text-color", "--mde-preview-inline-mark-background-color"],
+     "--highlight-background（1.14 は --text-highlight-bg を fallback として読む）、.cm-highlight, .markdown-rendered mark",
+     "役割一致。dark では mix-blend-mode: lighten が掛かり、指定色がそのまま出ない可能性。Inkdrop の 3px 下線は変数なし",
+     "High", "SD 文字 red-50 / 背景 red-900 / 下線 red-500。KD dragonWhite / dragonYellow @22% / roninYellow",
+     "02 §7.2・§8.2, 03 §11.2, 05 Editor（L2372-2379）", "要: blend mode 下の見え方"),
+    ("E19", "Editor", "インラインコード",
+     "インラインコード（エディタ / プレビュー）", D,
+     ["--md-inline-code-background-color", "--md-inline-code-border-color", "--mde-preview-inline-code-text-color"],
+     "--code-background（コードブロックと共有）、--code-normal、.cm-inline-code、.markdown-rendered :not(pre)>code",
+     "役割一致。Obsidian はインラインとブロックで背景変数を共有し、枠線の変数もない → 直接セレクタ",
+     "High", "SD 背景 base01 @30%・枠 @50%。KD 背景 Black4 @50%・枠 Black6 @50%、文字 oldWhite",
+     "02 §7.2・§8.2, 03 §6.3", "推奨"),
+    ("E20", "Editor", "コードブロック（枠・背景）",
+     "フェンスコードブロック", D,
+     ["--md-codeblock-background-color", "--mde-preview-codeblock-background-color", "--mde-preview-codeblock-border-color"],
+     "--code-background, .HyperMD-codeblock-bg, .markdown-rendered pre",
+     "役割一致。Inkdrop プレビューの言語名メタ行に対応する UI は Obsidian にない（コピーボタンのみ）",
+     "High", "SD base03 @40%。KD Black2 @50%。KD の枠色は Tailwind blue-200 @10% のまま（02 §13.4）",
+     "02 §7.2, 03 §6.3", "推奨"),
+    ("E21", "Editor", "コード内シンタックスハイライト",
+     "--syntax-*（エディタとプレビューで共有）", S,
+     ["--syntax-keyword-color", "--syntax-string-color", "--syntax-comment-color"],
+     "--code-comment / -function / -keyword / -important / -operator / -property / -punctuation / -string / -tag / -value + .token.*（Reading）/ .cm-*（Editing）",
+     "Inkdrop は Lezer の tok-* クラス（エディタとプレビューで共通）。Obsidian は編集時が CM5 モード由来の .cm-*、閲覧時が Prism の .token.*。公式変数 --code-* だけでは再現できないが、.cm-* / .token.* を直接塗れば一致度は上げられる。ただし Obsidian 側のトークナイザが同じクラスを出す箇所は CSS で区別できない（例: 編集時 JS の関数呼び出しと変数参照はどちらも cm-variable、閲覧時 Python の関数呼び出しは span なし。03 §6.3）。全体の一致度は言語ごとに未検証",
+     "Medium", "配色体系が全く異なる: SD keyword green / string yellow / function blue。KD keyword dragonViolet / string dragonGreen2 / function dragonBlue2",
+     "02 §8.3, 03 §6.3", "要: 言語別サンプルで比較"),
+    ("E22", "Editor", "リストマーカー（階層別色）",
+     "リストマーカー 1/2/3", D,
+     ["--md-list-mark-color", "--md-list-mark-2-color", "--md-list-mark-3-color", "--mde-preview-list-marker-color"],
+     "--list-marker-color(-hover/-collapsed)（1 変数）、階層別は .HyperMD-list-line-N / ul ul li::marker への直接セレクタ",
+     "役割一致。Obsidian は階層別色の変数を持たない",
+     "High", "SD green / orange / cyan。KD dragonTeal / roninYellow / springGreen",
+     "02 §7.2・§8.2, 05 Editor", "推奨"),
+    ("E23", "Editor", "タスクリストのチェックボックス",
+     "UI チェックボックス + タスク完了色", S,
+     ["--checkbox-active-background", "--mde-preview-task-list-checked-color"],
+     "--checkbox-color(-hover), --checkbox-border-color, --checkbox-marker-color, --checklist-done-color, --checklist-done-decoration",
+     "完了状態の表現（取り消し線と色）が近い。Inkdrop はプレビューの task-list に専用チェックボックス変数を持たない",
+     "Medium", "SD primary blue @90%、KD dragonBlue2", "02 §6.2・§7.1", "要"),
+    ("E24", "Editor", "カスタムタスク状態（[?] [!] など）",
+     "なし", N, [], "[data-task=\"?\"] 等（変数なし）",
+     "Inkdrop は GFM の [ ] [x] のみ", "High", "—", "05 Editor", "不要"),
+    ("E25", "Editor", "引用（blockquote）",
+     "引用", D, ["--md-blockquote-border-color", "--mde-preview-blockquote-border-color", "--syntax-quote-color"],
+     "--blockquote-border-color, --blockquote-border-thickness, --blockquote-color, --blockquote-font-style",
+     "役割一致", "High", "SD 線 base01（editor）/ base02（preview）、文字 fg。KD 線 Black6、文字 oldWhite italic",
+     "02 §7.2・§8.2", "不要"),
+    ("E26", "Editor", "Callout",
+     "GFM alert（note / tip / important / warning / caution）", S,
+     ["--gfm-alert-note", "--gfm-alert-tip", "--gfm-alert-important", "--gfm-alert-warning", "--gfm-alert-caution"],
+     "--callout-default / -info / -tip / -important / -warning / -danger 等（1.13 以降は色値）、.callout[data-callout]",
+     "注記ブロックという役割と 5 種の型名が近い。Obsidian の callout は種類が多く（13 系統）、残りは Inkdrop に対応元がない",
+     "Medium", "--gfm-alert-* 自体は両テーマとも基盤定義で、参照先の --blue / --green / --purple / --orange / --red が値を決める。SD は --purple 未上書きのため important は基盤既定の Tailwind purple #a855f7 を継承。KD は参照先をテーマで再定義済み",
+     "02 §7.2・§13.4, 03 §0", "推奨"),
+    ("E27", "Editor", "テーブル",
+     "テーブル（エディタ / プレビュー）", D,
+     ["--mde-preview-table-head-background-color", "--mde-preview-table-head-text-color", "--mde-preview-table-row-stripe-background-color", "--md-table-border-color"],
+     "--table-header-background, --table-header-color, --table-row-alt-background, --table-border-color, --table-row-background-hover",
+     "役割一致", "High", "SD 見出し文字 yellow・背景 base02 @80%。KD dragonYellow・Black4 @60%",
+     "02 §7.2", "不要"),
+    ("E28", "Editor", "水平線（hr）",
+     "プレビュー hr（0.25em の帯）/ エディタ区切りトークン", D,
+     ["--mde-preview-hr-background-color", "--syntax-content-separator-color"],
+     "--hr-color, --hr-thickness, .cm-hr（--code-punctuation）",
+     "役割一致。Inkdrop プレビューは太い帯、エディタは記号に強い色",
+     "Medium", "エディタ記号: SD pink-600、KD autumnRed（両テーマとも旧版から変更された箇所）",
+     "02 §7.2・§8.2", "推奨"),
+    ("E29", "Editor", "画像",
+     "プレビュー画像背景", D, ["--mde-preview-image-background-color"],
+     ".markdown-rendered img, .image-embed（変数なし）",
+     "役割一致（透過画像の下地）", "Medium", "SD base02 @80%、KD Black4 @60%", "02 §7.2", "推奨"),
+    ("E30", "Editor", "インラインタグ（#tag）",
+     "Inkdrop のタグピル（メタデータ）", S,
+     ["--tag-default-background-color", "--tag-default-text-color"],
+     "--tag-color(-hover), --tag-background(-hover), --tag-border-color, --tag-radius",
+     "Inkdrop のタグは本文中の #記法ではなくノート属性の色付きピル。見た目（ピル）は近いが、意味と 14 色の色分けは対応しない",
+     "Low", "KD のタグ色は全面的に Tailwind 系のまま。SD は上書きしたランプの系統（red / green 等）は Solarized 色になるが、olive / teal / purple は Tailwind の lime / teal / purple のまま（02 §13.4）。default タグは両テーマとも Tailwind gray 系 #9ca3b0",
+     "01 §4.5, 02 §13.4", "要: Q-D5"),
+    ("E31", "Editor", "Properties（frontmatter フォーム）",
+     "なし（近い: タグバー入力、ノートステータス）", N, ["--note-tags-bar-input-background"],
+     "--metadata-*（46 変数）",
+     "Inkdrop に本文内のプロパティフォームはない",
+     "Low", "—", "05 Editor", "不要"),
+    ("E32", "Editor", "数式（MathJax）",
+     "なし（inkdrop-math プラグイン。色トークンなし）", N, [], "currentColor 継承（専用変数なし）",
+     "公開 CSS に数式の色トークンはない", "Medium", "—", "05 Editor", "不要"),
+    ("E33", "Editor", "Mermaid",
+     "--mermaid-*（150 変数、probe で SVG に焼き込み）", D,
+     ["--mermaid-text-color", "--mermaid-line-color", "--mermaid-node-background-color", "--mermaid-node-border-color"],
+     ".theme-dark .mermaid > svg の反転フィルタ解除 + SVG 内部要素への直接指定（Obsidian は themeVariables を CSS から受け取らない）",
+     "役割は一致するが、Obsidian 側に配色を渡す経路がなく、CSS で SVG 要素（.node rect, .edgePath 等）を塗る必要がある",
+     "Medium", "SD 線 cyan・ノード base02 / blue 枠。KD 線 dragonGreen2・ノード waveBlue1 @55%",
+     "01 §4.4, 02 §9, 05 Editor（L11875）", "要: 図種別に実機確認"),
+    ("E34", "Editor", "脚注",
+     "プレビュー脚注", D, ["--mde-preview-footnote-text-color", "--mde-preview-footnote-border-color"],
+     "--footnote-*（未掲載 13 変数）", "役割一致", "Medium", "—", "02 §7, 05 Editor", "推奨"),
+    ("E35", "Editor", "kbd",
+     "kbd", D, ["--mde-preview-kbd-background-color", "--mde-preview-kbd-border-color", "--mde-preview-kbd-text-color"],
+     ".markdown-rendered kbd（--code-* 参照）、--hotkey-*（設定画面のホットキー表示）",
+     "役割一致", "Medium", "—", "02 §7.1, 05 General UI（L10931）", "推奨"),
+    ("E36", "Editor", "埋め込み（transclusion）",
+     "なし", N, [], "--embed-*", "Inkdrop にノート埋め込みはない", "High", "—", "05 Editor", "不要"),
+    ("E37", "Editor", "折り畳みプレースホルダ",
+     "エディタ fold placeholder", D,
+     ["--editor-fold-placeholder-color", "--editor-fold-placeholder-background-color", "--editor-fold-placeholder-border"],
+     ".cm-foldPlaceholder（--text-faint 固定）", "役割一致", "Medium", "—", "05 直接セレクタ表", "推奨"),
+    ("E38", "Editor", "エディタ内検索の一致 / 現在の一致",
+     "エディタ検索一致", D,
+     ["--editor-search-match-background-color", "--editor-search-match-selected-background-color", "--editor-search-match-selected-outline"],
+     ".obsidian-search-match-highlight, .search-highlight（--text-selection と --text-accent を流用）",
+     "役割一致。Obsidian に専用変数がない", "High", "SD yellow @35% / orange @45%。KD waveBlue2 / dragonYellow @40%",
+     "02 §8.1, 05 Editor（L7940-7955）", "推奨"),
+    ("E39", "Editor", "対応括弧",
+     "括弧一致 / 不一致", D,
+     ["--editor-matching-bracket-background-color", "--editor-matching-bracket-outline"],
+     "--code-bracket-background（未掲載）、.cm-matchingBracket", "役割一致", "High",
+     "SD red 系、KD dragonTeal 系", "02 §8.1, 03 §6.3", "不要"),
+    ("E40", "Editor", "選択一致（同じ語のハイライト）",
+     "selection match", D, ["--editor-selection-match-background-color"],
+     ".cm-selectionMatch（変数なし）", "役割一致", "Medium", "SD cyan @30%、KD waveAqua1 @35%", "02 §8.1", "推奨"),
+    ("E41", "Editor", "補完ポップアップ",
+     "エディタ tooltip / autocomplete", D,
+     ["--editor-tooltip-background-color", "--editor-tooltip-autocomplete-item-selected-background-color"],
+     ".cm-tooltip.cm-tooltip-autocomplete, .suggestion-container（--background-primary を共有）",
+     "役割一致。Obsidian は popover と同じ背景変数", "Medium",
+     "SD 背景 base03・選択 base02。KD 背景 Black3・選択 waveBlue2", "02 §8.1, 05 Editor", "推奨"),
+    ("E42", "Editor", "インデントガイド",
+     "なし", N, [], "--indentation-guide-color(-active)", "Inkdrop に該当トークンなし", "Medium", "—", "05 Editor", "不要"),
+    # ---------------- General UI ----------------
+    ("G01", "General UI", "アクセントカラー",
+     "primary color", D, ["--primary-color"],
+     "--accent-h / --accent-s / --accent-l → --color-accent(-1/-2)、--interactive-accent",
+     "アプリ全体の強調色という役割が一致。ユーザーがアクセント色を設定すると inline style で上書きされる",
+     "High", "SD blue-500 @90%、KD dragonBlue2", "02 §5, 03 §2.5", "要: Q-D6（ユーザー設定を尊重するか）"),
+    ("G02", "General UI", "拡張色（--color-red 等 8 色）",
+     "色名トークン（--red, --orange, ...）/ 各ランプの 500", S,
+     ["--red", "--orange", "--yellow", "--green", "--teal", "--blue", "--violet", "--purple", "--pink"],
+     "--color-red / -orange / -yellow / -green / -cyan / -blue / -purple / -pink",
+     "両者とも『色相ごとの基準色』という役割は近いが、消費先が違う（Obsidian は --code-* 既定値、graph / canvas / callout の既定に使う。Inkdrop は GFM alert、ラベル等）。色名の集合も一致しない（Obsidian の cyan に対し Inkdrop は teal、Obsidian の purple に対し Inkdrop は violet と purple の 2 つ）。色名で機械的に対応付けず、どの Inkdrop 色を基準色とするかは Phase 2 で決める",
+     "Medium", "SD は 500 段が本家 Solarized アクセント。--purple は基盤既定（Tailwind purple）を継承。KD は --blue 等をテーマが再定義",
+     "02 §2・§13.4, 04 §8", "推奨"),
+    ("G03", "General UI", "意味色（成功 / 警告 / エラー）",
+     "positive / warning / negative", D, ["--positive-color", "--warning-color", "--negative-color"],
+     "--text-success / -warning / -error, --background-modifier-success / -error",
+     "役割一致", "High", "SD green / yellow / red。KD dragonGreen2 / roninYellow / dragonRed", "02 §5", "不要"),
+    ("G04", "General UI", "境界線（汎用）",
+     "border / strong-border / solid-border", S,
+     ["--border-color", "--strong-border-color", "--solid-border-color"],
+     "--background-modifier-border(-hover/-focus)",
+     "Obsidian の border 系は不透明の base 色、Inkdrop は半透明。階層（通常 / 強 / ソリッド）で対応付ける",
+     "Medium", "SD base00 @15% / @22% / base02。KD Black6 @40% / @60% / Black5", "02 §10", "推奨"),
+    ("G05", "General UI", "hover 背景（汎用）",
+     "menu / selection-list hover（白アルファ）", S,
+     ["--menu-hover-item-background", "--selection-list-hover-background"],
+     "--background-modifier-hover, --background-modifier-active-hover",
+     "汎用 hover。両テーマとも基盤既定の白アルファのまま", "Medium", "両テーマ同値（#ffffff05 等）",
+     "02 §6.2, 05 注意点", "推奨"),
+    ("G06", "General UI", "Command Palette / Quick Switcher",
+     "モーダル + 選択リスト", S,
+     ["--modal-box-content-background", "--selection-list-active-background"],
+     "--prompt-background（未掲載）、--prompt-border-color、.prompt, .suggestion-item.is-selected（--background-modifier-hover）",
+     "検索付き選択リストのモーダル。Inkdrop の該当 UI（コマンドパレット等）が base-ui-theme のどのコンポーネントで描かれるかは未確認",
+     "Medium", "—", "01 §5.2, 05 General UI", "要"),
+    ("G07", "General UI", "Settings（設定画面）",
+     "環境設定ウィンドウ", D,
+     ["--preferences-sidebar-background", "--preferences-sidebar-item-active-background", "--preferences-view-background"],
+     ".modal.mod-settings, .vertical-tab-header, .vertical-tab-nav-item.is-active, --setting-*（未掲載）",
+     "設定画面のサイドナビ + 本体という構造が一致",
+     "Medium", "SD 側 base04 / 本体 #002129。KD Black0 / Black3", "02 §4, 05 General UI", "推奨"),
+    ("G08", "General UI", "Modal / Dialog",
+     "モーダル（ヘッダー / 本文 / アクション）", D,
+     ["--modal-box-header-background", "--modal-box-content-background", "--modal-box-actions-background"],
+     "--modal-background（= --background-primary）、--modal-border-color、--modal-radius、.modal-title（ヘッダー帯は変数なし）",
+     "役割一致。Inkdrop はヘッダー帯が 1 段明るいが、Obsidian のモーダルにヘッダー帯の背景はない",
+     "High", "本文はエディタと同色（SD #002129 / KD #1e1d1a）で --background-primary と整合。ヘッダーは SD base03 / KD Black4",
+     "02 §4, 05 General UI", "推奨"),
+    ("G09", "General UI", "Menu / Context Menu",
+     "メニュー（Semantic UI menu）", S,
+     ["--menu-background", "--menu-hover-item-background", "--menu-item-text-color"],
+     "--menu-background（未掲載）、--menu-border-color、.menu-item.selected（hover は JS 付与クラス）",
+     "アプリ内メニューという役割は近い。ただし Inkdrop のコンテキストメニューが OS ネイティブメニューか HTML かは未確認",
+     "Medium", "SD base04、KD Black0（最暗色）", "02 §4, 05 General UI（L9219）", "要: Inkdrop の右クリックメニューの実体"),
+    ("G10", "General UI", "Popover / Page preview",
+     "popup", S, ["--popup-background"],
+     ".popover（--background-primary を共有。差を付けるならセレクタで再代入）",
+     "浮遊パネル。Obsidian の hover preview はノート内容を表示するためエディタ面との一致も妥当",
+     "Medium", "**SD** popup = base04（エディタより暗い）。**KD** popup = Black2（エディタより暗い）。どちらも --background-primary と異なる",
+     "02 §4, 05 Workspace", "要: Q-D7"),
+    ("G11", "General UI", "Tooltip",
+     "tooltip", D, ["--tooltip-background"], "--tooltip-background / --tooltip-color（未掲載、1.14 追加）",
+     "役割一致", "Medium", "popup 背景を継承", "02 §4, 03 §0", "推奨"),
+    ("G12", "General UI", "Notice（通知トースト）",
+     "通知アイテム", D, ["--notification-item-background"], "--notice-background / --notice-text-color（未掲載、1.14 追加）",
+     "役割一致", "Medium", "SD base04 @80%、KD Black0 @80%", "02 §4", "推奨"),
+    ("G13", "General UI", "Button（通常）",
+     "button", D, ["--button-background", "--button-hover-background-color", "--button-text-color"],
+     "--interactive-normal, --interactive-hover（.theme-dark / .mod-macos が再定義するため詳細度に注意）, button",
+     "役割一致", "High", "SD base03 @70% → base02 @70%、文字 base3 @60%。KD Black4 → Black5、文字 dragonWhite @75%",
+     "02 §6.2, 03 §2.4", "要: .mod-macos との優先度"),
+    ("G14", "General UI", "Button.mod-cta",
+     "primary button", D,
+     ["--primary-button-background-color", "--primary-button-hover-background-color", "--primary-button-text-color"],
+     "--interactive-accent, --interactive-accent-hover, --text-on-accent",
+     "役割一致", "High", "SD blue-500 → blue-600。KD dragonBlue2 → dragonTeal", "02 §6.2", "不要"),
+    ("G15", "General UI", "Button.mod-warning / 破壊的操作",
+     "negative button", D, ["--negative-button-background-color", "--negative-button-hover-background-color"],
+     ".mod-warning（--background-modifier-error 系）", "役割一致", "Medium", "SD red、KD dragonRed", "01 §5.2", "推奨"),
+    ("G16", "General UI", "テキスト入力",
+     "input", D, ["--input-background", "--input-border", "--input-color"],
+     "--background-modifier-form-field, --input-shadow(-hover)（枠は box-shadow）, --input-radius",
+     "役割一致。Obsidian は枠を box-shadow で描くため、Inkdrop の border を box-shadow に組み直す",
+     "High", "SD base04、KD Black0", "02 §4, 05 General UI（L3076-3077）", "推奨"),
+    ("G17", "General UI", "フォーカス表示",
+     "focused outline / input focus border / focused form border", D,
+     ["--focused-outline-color", "--input-focus-border-color", "--focused-form-border-color"],
+     "--background-modifier-border-focus、:focus-visible（共通規則なし、Obsidian 部で 47 箇所に分散）",
+     "役割一致。Obsidian は部品ごとに実装が異なり一律適用には直接セレクタが要る",
+     "Medium", "SD primary @30%・入力枠 blue・フォーム枠は基盤既定の Tailwind sky-300 を継承。KD dragonBlue2 系で統一",
+     "02 §6.2・§13.4, 05 General UI", "要: アクセシビリティ確認"),
+    ("G18", "General UI", "Dropdown（select）",
+     "form select / dropdown", D, ["--form-select-background", "--dropdown-menu-background"],
+     "--dropdown-background(-hover), .dropdown（矢印は SVG background-image）", "役割一致", "Medium",
+     "SD base04、KD Black0", "02 §4, 05 直接セレクタ表", "推奨"),
+    ("G19", "General UI", "Checkbox（フォーム）",
+     "checkbox", D, ["--checkbox-background", "--checkbox-active-background", "--checkbox-active-check-color"],
+     "--checkbox-color, --checkbox-border-color, --checkbox-marker-color", "役割一致", "High",
+     "active は primary（SD blue @90% / KD dragonBlue2）", "02 §6.2", "不要"),
+    ("G20", "General UI", "Toggle",
+     "toggle", D, ["--toggle-on-lane-color", "--toggle-lane-background", "--toggle-handle-background"],
+     "--interactive-accent（ON レーン）、--toggle-thumb-color、.checkbox-container（OFF は --background-modifier-border-hover）",
+     "役割一致。.mod-macos が toggle 変数を再定義", "Medium", "ON は primary", "02 §6.2, 05 General UI", "推奨"),
+    ("G21", "General UI", "Slider",
+     "なし", N, [], "--slider-*", "Inkdrop に該当なし。アクセント色で代替", "High", "—", "05 General UI", "不要"),
+    ("G22", "General UI", "Scrollbar",
+     "scrollbar", D, ["--scrollbar-thumb-background", "--scrollbar-track-background", "--scrollbar-width"],
+     "--scrollbar-thumb-bg, --scrollbar-active-thumb-bg, --scrollbar-bg（body.styled-scrollbars 配下で適用。app.js は macOS 以外でのみこのクラスを付与するため、macOS では OS 既定のスクロールバーになる見込み）",
+     "役割は一致するが、最優先の macOS ではスクロールバー変数が効かない可能性が高い（app.js の `Qy.isMacOS||document.body.addClass(\"styled-scrollbars\")` から推測、実機未確認）", "Medium", "両テーマとも基盤既定（白 @20% / @2%）", "02 §6.2, 05 未確認事項", "要"),
+    ("G23", "General UI", "アイコン（クリック可能アイコン）",
+     "サイドバー action / ヘッダーメニュー色", S,
+     ["--sidebar-menu-action-color", "--sidebar-menu-action-hover-color", "--header-note-menu-color"],
+     "--icon-color(-hover/-active/-focused), .clickable-icon",
+     "操作アイコンの色という役割が近い", "Medium", "—", "01 §5.2", "要"),
+    ("G24", "General UI", "影", "floating / subtle / modal shadow", S,
+     ["--floating-shadow", "--subtle-shadow", "--modal-box-shadow"],
+     "--shadow-s, --shadow-l（.theme-dark で定義、未掲載）", "浮遊要素の影という役割が一致", "Medium",
+     "基盤既定（黒アルファ多層）。KD は --black を Black2 に再定義しているため subtle-shadow の色が異なる", "02 §10", "推奨"),
+    ("G25", "General UI", "角丸", "default radius / squircle", S,
+     ["--default-border-radius", "--absolute-border-radius"],
+     "--radius-s / -m / -l, --input-radius, --modal-radius, --corner-shape（.mod-macos が定義）",
+     "形状トークン。Inkdrop は Chromium で squircle を使う（@supports）。Obsidian も macOS で --corner-shape を持つ", "Medium",
+     "両テーマ共通（基盤既定）", "02 §10, 03 §2.4", "要: 両アプリの角丸を実測"),
+    ("G26", "General UI", "フォント", "UI フォントスタック / プレビュー本文サイズ", S, [],
+     "--font-interface-theme, --font-text-theme, --font-monospace-theme（ユーザー設定 *-override が優先）",
+     "フォントはユーザー設定が優先されるため、テーマで固定すべきかは方針次第", "Medium",
+     "両テーマ共通（基盤既定）", "02 §10, 03 §2.5", "要: Q-D8"),
+    # ---------------- Obsidian-native ----------------
+    ("O01", "Obsidian 固有", "Canvas（背景・ドット・ノード・エッジ・選択）",
+     "なし", N, [], "--canvas-background, --canvas-dot-pattern, --canvas-color-1..6（body で定義）, --canvas-color（既定ノード色。body.theme-dark で詳細度 0,1,1）",
+     "Inkdrop に対応 UI なし。パレットと拡張色から導出する", "High", "—", "05 Obsidian 固有（L18187）", "要: 見た目確認"),
+    ("O02", "Obsidian 固有", "Graph View",
+     "なし", N, [], "--graph-line / -node / -node-focused / -node-tag / -node-attachment / -node-unresolved / -text、.graph-view.color-*",
+     "Inkdrop に対応 UI なし。JS が computed color を読む", "High", "—", "05 Obsidian 固有", "要: oklch 等の解釈"),
+    ("O03", "Obsidian 固有", "Bases（テーブル / カード / カンバン）",
+     "なし（テーブル配色は Markdown テーブルから類推可能）", N, ["--mde-preview-table-head-background-color"],
+     "--bases-*（79 変数、うち 33 未掲載）", "Inkdrop にデータベースビューはない", "High", "—", "05 Obsidian 固有", "要"),
+    ("O04", "Obsidian 固有", "Slides / PDF viewer / Web viewer",
+     "なし", N, [], "--r-*（reveal.js）、PDF は対象外", "テーマの配色対象外または限定的", "High", "—", "05 Obsidian 固有", "不要"),
+    ("O05", "Obsidian 固有", "Sync / Publish の状態表示",
+     "サイドバーの同期状態表示", S, ["--sidebar-sync-status-view-background", "--sidebar-sync-status-view-text-color"],
+     "ステータスバーのアイコン等（--status-bar-*）", "同期状態の表示という役割が近い", "Low", "—", "01 §5.2", "不要"),
+]
+
+
+def val(tbl, tok):
+    r = tbl.get(tok)
+    if not r:
+        return f"{tok}=(未定義)"
+    v = r["resolved_value"] or r["raw_value"]
+    src = "t" if r["source"] == "theme" else "b"
+    return f"{tok}={v}[{src}]"
+
+
+def load_consumers():
+    # Map each base token to whether any public source (CSS rules, base-ui-theme, mermaid) consumes it.
+    # The base inventory (01) records this in its notes column as "consumers=...".
+    pub = {}
+    with open(research / "data" / "inkdrop-base-tokens.csv", newline="") as f:
+        for r in csv.DictReader(f):
+            m = [p for p in r["notes"].split(";") if p.strip().startswith("consumers=")]
+            if not m:
+                continue
+            public = "none-in-public-sources" not in m[0]
+            # A token defined several times counts as public if any definition is consumed.
+            pub[r["token"]] = pub.get(r["token"], False) or public
+    return pub
+
+
+CONSUMERS = load_consumers()
+
+
+def consumer_status(toks):
+    # Summarise the Inkdrop tokens of one row: all public / all non-public / mixed / theme-only.
+    if not toks:
+        return "—"
+    states = set()
+    for t in toks:
+        if t not in CONSUMERS:
+            states.add("theme-only")  # declared by the theme, not part of the base inventory
+        else:
+            states.add("public" if CONSUMERS[t] else "non-public")
+    if states == {"public"}:
+        return "公開"
+    if states == {"non-public"}:
+        return "非公開"
+    return "混在(" + "/".join(sorted(states)) + ")"
+
+
+def auto_divergence(toks):
+    # Fill an empty divergence cell by comparing the two themes' resolved values token by token.
+    if not toks:
+        return "—（比較できる Inkdrop トークンなし）"
+    diffs = []
+    for t in toks:
+        a = (SD.get(t) or {}).get("resolved_value", "")
+        b = (KD.get(t) or {}).get("resolved_value", "")
+        if a != b:
+            diffs.append(f"{t}: SD {a} / KD {b}")
+    if not diffs:
+        return "両テーマ同値（機械比較）"
+    return "機械比較: " + "; ".join(diffs)
+
+
+ROWS = [r if r[9] != "—" else r[:9] + (auto_divergence(r[5]),) + r[10:] for r in ROWS]
+
+# The CSV is written after the divergence fill so that CSV and Markdown carry identical cells.
+cols = ["id", "area", "obsidian_element", "inkdrop_candidate", "classification", "inkdrop_tokens",
+        "obsidian_vars_or_selectors", "rationale", "confidence", "inkdrop_consumer",
+        "solarized_dark_values", "kanagawa_dragon_values", "theme_divergence", "sources",
+        "live_verification"]
+with open(research / "data" / "mapping-candidates.csv", "w", newline="") as f:
+    w = csv.writer(f)
+    w.writerow(cols)
+    for (i, area, ob, ink, cl, toks, otg, why, conf, div, src, ver) in ROWS:
+        w.writerow([i, area, ob, ink, cl, "; ".join(toks), otg, why, conf, consumer_status(toks),
+                    "; ".join(val(SD, t) for t in toks), "; ".join(val(KD, t) for t in toks),
+                    div, src, ver])
+
+
+def esc(s):
+    return s.replace("|", "\\|").replace("\n", " ")
+
+
+lines = []
+area = None
+for (i, a, ob, ink, cl, toks, otg, why, conf, div, src, ver) in ROWS:
+    if a != area:
+        area = a
+        lines += ["", f"### {a}", "",
+                  "| ID | Obsidian の UI 要素 | Inkdrop の対応候補 | 分類 | Inkdrop の CSS 変数 | Obsidian の変数 / セレクタ | 対応付けの根拠 | 確信度 | Inkdrop 適用先 | SD / KD の差 | 根拠ソース | 実画面検証 |",
+                  "|---|---|---|---|---|---|---|---|---|---|---|---|"]
+    toks_md = "<br>".join(f"`{t}`" for t in toks) or "—"
+    lines.append("| " + " | ".join(esc(x) for x in [i, ob, ink, cl, toks_md, otg, why, conf, consumer_status(toks), div, src, ver]) + " |")
+
+from collections import Counter
+c = Counter(r[4] for r in ROWS)
+cc = Counter(r[8] for r in ROWS)
+summary = f"<!-- generated: {len(ROWS)} rows; class={dict(c)}; confidence={dict(cc)} -->"
+out_md.write_text(summary + "\n" + "\n".join(lines) + "\n")
+print(summary)
+missing = sorted({t for r in ROWS for t in r[5] if t not in SD or t not in KD})
+print("tokens missing in SD or KD CSV:", missing)

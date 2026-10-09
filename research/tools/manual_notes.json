@@ -1,0 +1,17 @@
+{
+  "--accent-h": "app.js sets inline style on body when user picks accent color",
+  "--accent-l": "app.js sets inline style on body when user picks accent color",
+  "--accent-s": "app.js sets inline style on body when user picks accent color",
+  "--bases-cards-group-padding": "not defined nor used in app.css 1.14.4/1.13.7",
+  "--bases-table-text-size": "not in app.css; app.css uses --bases-table-font-size",
+  "--font-interface-override": "app.js sets inline style on body (user font setting)",
+  "--font-monospace-override": "app.js sets inline style on body (user font setting)",
+  "--font-text-override": "app.js sets inline style on body (user font setting)",
+  "--font-text-size": "app.js sets inline style on body from Appearance font size setting (overrides theme body rule)",
+  "--nav-heading-color-colapsed-hover": "docs typo; app.css defines --nav-heading-color-collapsed-hover",
+  "--size": "docs prose placeholder for --size-* family, not a real variable",
+  "--status-bar-scroll-padding": "not defined nor used in app.css 1.14.4",
+  "--text-highlight-bg": "1.14: no default; read as fallback by --highlight-background (body) -> var(--text-highlight-bg, var(--highlight-background-yellow))",
+  "--text-highlight-bg-rgb": "removed in 1.14 (was body in 1.13.7); docs list as deprecated",
+  "--text-on-accent": "app.js may set inline var(--text-on-accent-inverted) on body for light accent"
+}

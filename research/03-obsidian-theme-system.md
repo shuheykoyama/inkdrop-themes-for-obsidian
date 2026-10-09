@@ -13,7 +13,7 @@
   - **[未確認]** 情報源を見つけられなかった
   - **[第三者]** 公式サイトを WebFetch の要約経由で読んだもの（原文の全文照合はしていない）
   - CSS 値はすべて **宣言値** を指す。Computed Style（実機 DevTools での解決値）は本調査では取得していない。
-- 付属データ: `research/data/obsidian-css-variables-1.14.4.csv`（生成スクリプト: scratchpad の `scripts/cssvars.py`。リポジトリには含めない）
+- 付属データ: `research/data/obsidian-css-variables-1.14.4.csv`（生成スクリプト: [`tools/cssvars.py`](tools/cssvars.py) と [`tools/apply_manual_notes.py`](tools/apply_manual_notes.py)。Phase 1B でリポジトリに収録。手で確認した注記 15 件は `tools/manual_notes.json`）
 
 ---
 
@@ -270,9 +270,16 @@ app.css の前半 L1–L1997 は pdf.js 由来の CSS である（L1 コメン�
 
 ### 6.3 シンタックスハイライト（`--code-*`）
 
-`Editor/Code.md:17-18` は、「Editing view と Reading view で別ライブラリを使うため完全には一致しない」と注記している。app.css(1.14.4) での対応は次のとおり。
+`Editor/Code.md:17-18` の原文は "Since Obsidian uses two different libraries for syntax highlighting—one for Editing view and another for Reading view—styling may not match perfectly between the two." である（公開版も同文。Phase 1B で WebFetch により確認）。**"may not match perfectly" であって、一致が不可能とは書いていない。** どちらのビューにどのライブラリを使うかも書かれていない。
 
-| 変数 | Reading（Prism `.token`、L12045–L12095） | Editing（CM `.cm-*`、L12099–L12137） |
+各ビューのトークナイザ（Phase 1B で app.js を静的解析して確認）:
+
+- **編集ビュー**: CM6 の Lezer（`@lezer/highlight` の `tok-*`）ではない。CM5 のモードを CM6 の StreamLanguage で動かしている（app.js の `StreamLanguage:()=>wp` と `wp.define(CodeMirror.getMode({},{name:"hypermd"}))`）。モードが返すトークン名に `cm-` を付けてクラスにしている（app.js の `class:f.map((function(e){return"cm-"+e})).join(" ")`）。コードフェンス内は HyperMD が言語ごとの CM5 モードに切り替える。言語モードは `lib/codemirror/modes.min.js`（`defineMode("…")` の呼び出し 119 個）から遅延ロードされる。
+- **閲覧ビュー**: Prism。`lib/prism.min.js`（約 577KB、`languages.X=` が約 360）を遅延ロードし、`code[class*="language-"]` に `Prism.highlightElement` を適用する。Prism はトークン名が言語ごとに違う（例: JS の `function` は「識別子 + `(`」で呼び出しにも付くが、Python の `function` は `def` の直後の名前だけ）。
+
+app.css(1.14.4) での `--code-*` の割り当ては次のとおり。
+
+| 変数 | Reading（Prism `.token`、L12031–L12097） | Editing（CM `.cm-*`、L12098–L12139） |
 |---|---|---|
 | `--code-comment` | `.token.comment, .prolog, .doctype, .cdata` | `.cm-comment, .cm-meta` |
 | `--code-tag` | `.token.tag, .constant, .symbol, .deleted` | `.cm-tag` |
@@ -288,7 +295,15 @@ app.css の前半 L1–L1997 は pdf.js 由来の CSS である（L1 コメン�
 | `--code-background` | `.markdown-rendered pre/code` | `div.HyperMD-codeblock-bg`, `span.cm-inline-code` |
 | `--code-bracket-background` [未掲載] | — | `.cm-editor.cm-focused .cm-matchingBracket` |
 
-- `--code-property` は Reading では property、Editing では variable に対応し、`--code-function` は Editing では `.cm-property` に対応する。つまり **同じ変数でもトークンの意味が両ビューで一致しない**。これは Inkdrop の配色（トークン単位）を写すときの制約になる [確認済]。
+- `--code-property` は Reading では property、Editing では variable に対応し、`--code-function` は Editing では `.cm-property` に対応する。つまり **同じ変数でもトークンの意味が両ビューで一致しない** [確認済]。これは「公式変数だけで写す」場合の制約であり、`.cm-*` / `.token.*` を直接塗れば回避できる。
+- `.cm-def` と `.cm-atom` には既定の色がない（`cm-def` が出てくるのは frontmatter 用の L13043 だけ）。テーマが直接塗れば、区別できる種類が増える [確認済]。
+- **直接セレクタを使っても区別できない例**がある [Phase 1B、静的解析で確認]。CSS はテキスト内容を条件にできない。後続の要素は `:has(+ …)` で条件にできるが、区別の手がかりになる `(` などは CM5 モードが style を返さず span にならない（テキストノードのまま）と考えられるため、使えない（推測、09 V-12）。そのため、Obsidian 側で同じクラスになるトークンは塗り分けられない。
+  1. 編集ビュー・JS: 関数呼び出し `foo()` と変数参照 `bar` は、CM5 の JS モードではどちらも `cm-variable`（ローカルなら `cm-variable-2`）。Inkdrop では function 色と variable 色に分かれる（SD は blue-500 と neutral-500）。
+  2. 編集ビュー・JS: `obj.method()` と `obj.prop` はどちらも `cm-property`（KD では dragonBlue2 と dragonYellow に分かれる）。
+  3. 閲覧ビュー・JS: `this` と `const` はどちらも `token keyword`（Prism の alias が付かない側同士）。
+  4. 閲覧ビュー・Python: 関数呼び出しの名前と引数の変数には span が付かない（`--code-normal`）。
+  - Inkdrop 側の対応（`t.function(t.variableName)` → `tok-variable-name tok-function`）は、`inkdropapp/css` の `syntax.css` の構造と `@lezer/javascript` のタグ付けからの推定で、Inkdrop の tokenHighlighter のソースでは確認していない [推測]。
+- **まとめ**: 公式変数 `--code-*` だけでは Inkdrop の配色を再現できない。`.cm-*` / `.token.*` の直接指定を併用すれば一致度は上げられるが、上限はトークナイザが出すクラスの粒度で決まり、上の例のように原理的に区別できない箇所がある。全体の一致度は言語ごとの実機確認が必要である（09 V-12）。
 - `.cm-*` のトークンルールは `.cm-s-obsidian` で限定されていない。そのためエディタ外の CM6 インスタンス（`.formula-editor .cm-scroller` など）にも効く [推測]。
 
 ---

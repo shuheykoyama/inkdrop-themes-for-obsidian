@@ -89,7 +89,8 @@ Callout の `--callout-color` も RGB 三つ組ではなく色値で、`rgba(var
 ### Workspace
 
 ウィンドウ上端は、既定の Hidden frame ではタブバーがタイトルバーを兼ねる。
-`.workspace-tabs.mod-top` と `.sidebar-toggle-button` は `--tab-container-background` に `--titlebar-background` を代入しており（L4354〜4357）、タイトルバー色を変えるとタブバー背景も変わる。
+`.workspace-tabs.mod-top` と `.sidebar-toggle-button` は `--tab-container-background` と `--sidebar-tab-container-background` の両方に `--titlebar-background` を代入しており（L4354〜4358）、タイトルバー色を変えるとタブバー背景も変わる。
+`mod-top` は app.js が各分割（ルートと左右ドック）の最上段のタブグループに付けるため、この連動はメイン領域のタブバーだけでなく、左右ドックの最上段のタブ帯にも及ぶ（Phase 1B の批判的レビューで確認。静的解析、実機未確認）。
 macOS では左端に `calc(80px - var(--frame-ribbon-left))` の余白を確保し、信号機ボタンの領域にする（L4306〜4309）。
 信号機ボタンの位置そのものは、`app.js` が `--traffic-lights-offset-x/y`（既定 `var(--header-height)` = 40px）を読み取り Electron に渡して決める（確認済み）。
 この 2 変数は docs に載っていないが、ヘッダー高を変えるテーマはこれも合わせて変える必要がある。
@@ -99,6 +100,7 @@ macOS では左端に `calc(80px - var(--frame-ribbon-left))` の余白を確保
 左右で色を分けるには分割ペインのクラスへの直接セレクタが要る。
 `app.css` 上で確認できるクラスは `.mod-primary-split`、`.mod-secondary-split`、`.mod-sidedock` である。
 **統合時の追加確認**: `app.js` ではサイドドックの生成時に `addClass("mod-sidedock", AS(side, "mod-{side}-split"))` を呼ぶ。`AS()` は `mod-primary-split` / `mod-secondary-split` と、`DS()` が返す `mod-left-split` / `mod-right-split` の両方を返す。`DS()` は RTL（`vb()`）のとき左右を入れ替える（確認済み、静的解析。DOM 上の実在は実機未確認）。
+**版による違い（Phase 1B で確認）**: 上は 1.14.4 の実装である。1.13.7 の app.js は `"mod-".concat(i,"-split")` で `mod-left-split` / `mod-right-split` だけを付け、`mod-primary-split` は app.css・app.js のどちらにも出てこない。1.13.x も対象にするなら、左右の塗り分けは `mod-left-split` / `mod-right-split` で書く必要がある（09 Q-D20）。
 ノート領域の背景も専用変数がなく `--background-primary`（L4663）であり、Modal、Prompt、Popover も同じ変数を参照する。
 
 ワークスペースタブは `::before` / `::after` の `box-shadow` と `clip-path` でブラウザ風の曲線を描く（L7025〜7050）。
@@ -107,7 +109,7 @@ macOS では左端に `calc(80px - var(--frame-ribbon-left))` の余白を確保
 
 `.mod-macos`（L3096〜3126）は `--interactive-normal` と `--interactive-hover` を `--background-modifier-border` に、`--input-shadow` を `none` に、`--scrollbar-thumb-bg` を `gray` に上書きする。
 `.mod-macos` と `.theme-dark` は同じ詳細度で、`app.css` 内では `.mod-macos` が後にある。
-テーマのスタイルシートが `app.css` より後に読み込まれるなら、テーマの `.theme-dark` 定義が勝つ（推測、読込順は未確認）。
+テーマのスタイルシートは `app.css` より後に挿入される（03 §2.3 で app.js と index.html から確認済み）。したがって同じ詳細度なら、テーマの `.theme-dark` 定義が勝つ（カスケードの規則からの推論。computed は実機未確認、09 V-01）。Phase 1 では読込順を「未確認」としていたが、03 と食い違っていたため Phase 1B で改めた。
 
 ### Navigation
 
@@ -220,13 +222,12 @@ PDF は dark かつ themed 表示のとき、注釈要素に反転フィルタ�
 ## 未調査、未確認事項
 
 - 実機の Computed Style は一切取得していない。値はすべて `app.css` の宣言値を機械的に展開したものである。
-- テーマのスタイルシートと `app.css` の読込順を実機で確認していない。`.mod-macos` や `.theme-dark` との優劣はこの順序に依存する。
-- アクセント色の設定値が `--accent-h/s/l` をどこで上書きするか（インライン style か、別の style 要素か）を確認していない。
+- 読込順（app.css → theme.css → snippets）とアクセント色の注入方法（`body` の inline style）は、03 §2.3・§2.5 で静的解析により確認済みである（Phase 1B で本書の記述を 03 に合わせた）。実機の computed style で優劣を確かめてはいない（09 V-01・V-02）。
 - `.mod-left-split` / `.mod-right-split` は `app.js` の静的解析で付与を確認した（Workspace 節）。実機の DOM では未確認。
 - `body.styled-scrollbars` は、`app.js` の `Qy.isMacOS||document.body.addClass("styled-scrollbars")` により **macOS 以外でのみ**付与される（統合時に確認、03 §2.2 と一致）。macOS ではスクロールバー変数が効かない見込みだが、実機では未確認。
 - Graph View の色解釈が `oklch()` や `color-mix()` を含む値で正しく働くかは推測にとどまる。
 - Slides の `--r-*` 上書きが実際に効くかは確認していない。
-- 公開版ドキュメント（https://docs.obsidian.md/Reference/CSS%20variables/CSS%20variables）は取得しておらず、GitHub 原稿 @c56c7e7（2026-08-10）との差分は未確認である。原稿は 1.14.4 の公開より前の時点のため、Bases カンバンなど新しい変数の記載が公開版で追加されている可能性がある。
+- 公開版ドキュメント（https://docs.obsidian.md/Reference/CSS%20variables/CSS%20variables）の全体は取得しておらず、GitHub 原稿 @c56c7e7（2026-08-10）との差分は未確認である（Phase 1 で Window/Tooltip のページが存在しないこと、Phase 1B で Editor/Code の文言が原稿と同じことだけを確認した）。原稿は 1.14.4 の公開より前の時点のため、Bases カンバンなど新しい変数の記載が公開版で追加されている可能性がある。
 - モバイル（`.is-mobile`、`.is-phone`、`.is-tablet`）固有の上書きは調査対象外とした。
 - コミュニティプラグイン由来の UI、Publish 公開サイトの `publish.css`、PDF 本文の配色は対象外である。
 - Inkdrop 側の対応有無は `inkdropapp/css` の変数名とクラス名からの目安であり、Inkdrop アプリの実画面とは突き合わせていない。特に「Inkdrop のメインウィンドウにノートタブはない」は推測である。

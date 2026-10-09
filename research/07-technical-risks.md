@@ -18,7 +18,7 @@
 | R02 | シンタックスハイライトの粒度と意味が両アプリで一致しない | F | 高 | 02 §8.3, 03 §6.3 |
 | R03 | エディタとプレビューで Inkdrop の配色が分かれている | F | 中 | 02 §5・§7.2, 06 §3 |
 | R04 | Mermaid の配色経路が Obsidian にない | F, M | 中 | 01 §4.4, 05 Editor |
-| R05 | 画面構成の違い（3 ペイン vs サイドドック）で背景階層を写せない | F | 高 | 02 §4, 06 §2 |
+| R05 | 画面構成の違い（3 ペイン vs サイドドック）。3 ペイン構造は再現できず、3 段以上の背景色は docs 未掲載のクラスへの依存と引き換えになる | F, M | 高 | 02 §4, 06 §2 |
 | R06 | 詳細度とクラスの再定義でテーマ変数が負ける | C, F | 高 | 03 §2.4, 05 全体の構造 |
 | R07 | ユーザー設定（アクセント色、フォント）が inline style でテーマに勝つ | F | 中 | 03 §2.5 |
 | R08 | ドキュメント未掲載の変数への依存 | C, M | 中 | 03 §3.4, 05 全体の構造 |
@@ -26,7 +26,7 @@
 | R10 | OS・ウィンドウ設定による差（macOS、translucent、frame） | F, C | 中 | 03 §5, 05 Workspace |
 | R11 | モバイルのダークモードで base 色が上書きされる | C | 中 | 03 §2.4 |
 | R12 | Inkdrop 側の消費箇所が非公開で、宣言値の適用先が確定しない | F | 高 | 01 §4.1・§10 |
-| R13 | Inkdrop テーマ自体の「漏れ」（Tailwind 既定色の残存）とコメント不整合 | F | 中 | 02 §13.4 |
+| R13 | Inkdrop テーマが基盤既定色（Tailwind 系）を継承している箇所（意図は不明）と、コメントの不整合 | F | 中 | 02 §13.4 |
 | R14 | Kanagawa のパレット命名ずれと HSL 丸め | F | 中 | 02 §2.2・§12, 04 §6.3 |
 | R15 | Inkdrop 原色のままではコントラスト基準を満たさない組み合わせがある | A, F | 中 | `data/inkdrop-contrast.csv` |
 | R16 | コミュニティプラグインとの衝突・未対応 | C | 中 | 04 §1〜§6 |
@@ -63,12 +63,18 @@
 **事実**
 
 - Inkdrop: Lezer の `.tok-*` クラスと `--syntax-*` 変数。エディタとプレビューのコードブロックは同じ変数を共有する（01 §4.2、02 §8）。
-- Obsidian: `--code-*` 10 色＋`--code-normal` / `--code-background`。Reading View は Prism の `.token.*`、編集時は CM の `.cm-*` で、**同じ変数が両ビューで別のトークンを指す**（03 §6.3）。例: `--code-function` は Reading で `.token.function`、編集時は `.cm-property`。
-- 公式ドキュメントも「両ビューは完全には一致しない」と注記している（`Editor/Code.md:17-18`、03 §6.3）。
+- Obsidian: `--code-*` 10 色＋`--code-normal` / `--code-background`。Reading View は Prism の `.token.*`、編集時は CM5 モード由来の `.cm-*` で、**同じ変数が両ビューで別のトークンを指す**（03 §6.3）。例: `--code-function` は Reading で `.token.function`、編集時は `.cm-property`。
+- 公式ドキュメントの文言は「styling may not match perfectly between the two」で、不可能とは書いていない（`Editor/Code.md:17-18`、03 §6.3）。
 
-**影響**
+**影響（Phase 1B で訂正）**
 
-- Inkdrop の配色表（02 §8.3）を変数だけで写すと、少なくとも編集時か Reading のどちらかでトークンの色がずれる。
+- Phase 1 は「完全一致は不可能」と断定し、その理由に「変数が 10 色しかない」「同じ変数が両ビューで別のトークンを指す」を挙げていた。これは**公式変数だけで写す場合**の制約であり、`.cm-*` / `.token.*` を直接塗れば回避できる。理由としては誤りだった。
+- 一方で、直接セレクタを併用しても**原理的に区別できないトークン**がある。Obsidian 側のトークナイザが同じクラスを出すと、CSS では塗り分けられない。静的解析で次の例を確認した（03 §6.3）。
+  - 編集時・JS: 関数呼び出しと変数参照がどちらも `cm-variable`。
+  - 編集時・JS: メソッド呼び出しとプロパティ参照がどちらも `cm-property`。
+  - 閲覧時・JS: `this` と `const` がどちらも `token keyword`。
+  - 閲覧時・Python: 関数呼び出しに span が付かない。
+- したがって、正しい結論は「公式変数のみでは再現不可。直接セレクタ併用で再現できる範囲は言語ごとのトークン粒度に依存し、一部は原理的に区別できない。全体の一致度は未検証」である。
 - SD はトークンの色分けが細かい（string yellow、operator violet、class orange、punctuation cyan、variable base00 など）。KD は kanagawa.nvim の `syn` 表に沿っている。どちらも 10 色に縮約すると情報が落ちる。
 
 **選択肢**
@@ -76,10 +82,10 @@
 | 案 | 内容 | 忠実度 | 保守性 |
 |---|---|---|---|
 | A. `--code-*` のみ | 10 色に縮約 | 低〜中 | 高 |
-| B. `--code-*` + `.token.*` / `.cm-*` の上書き | 両ビューのトークンクラスを直接塗り、意味を揃える | 中〜高 | 中（Prism・CM のクラス名は Obsidian の実装に依存） |
-| C. B の上で言語別の調整 | 特定言語のトークンを個別に合わせる | 高 | 低 |
+| B. `--code-*` + `.token.*` / `.cm-*` の上書き | 両ビューのトークンクラスを直接塗り、意味を揃える。`.cm-def` / `.cm-atom` など既定で無色のクラスも塗れる | 中〜高（言語依存） | 中（Prism・CM5 モードのクラス名は Obsidian の実装に依存） |
+| C. B の上で言語別の調整 | 特定言語のトークンを個別に合わせる | 高（ただしクラスの粒度による上限あり） | 低 |
 
-未確認: Obsidian の Prism / CM のトークンクラスが言語ごとにどの粒度で出るか。実機の DOM で言語別サンプルを確認する必要がある（09 V-12）。
+残る検証: Obsidian の Prism / CM5 モードのトークンクラスが言語ごとにどの粒度で出るか、上の例が実機の DOM でも成り立つか（09 V-12）。
 
 ---
 
@@ -134,15 +140,34 @@
 **事実（02 §4、06 §2・§3）**
 
 - Inkdrop は「サイドバー / ノートリスト / エディタ」の 3 面で明度の段階を作る。SD はサイドバーが最も明るく、KD はエディタが最も明るい。
-- Obsidian は「Ribbon / 左サイドドック / ワークスペース / 右サイドドック / ステータスバー」で、背景変数は `--background-primary` と `--background-secondary` の 2 段が中心。左右サイドドックは同じ `--background-secondary` を使う（05 Workspace、L6912）。
+- Obsidian は「Ribbon / 左サイドドック / ワークスペース / 右サイドドック / ステータスバー」で、ペイン本体の背景は `--background-primary`（ノート領域）と `--background-secondary`（左右ドック共通、`.workspace-tabs .workspace-leaf`、L6912-6913）の 2 つが基本。
+- Ribbon（`--ribbon-background`）、タブヘッダー帯と分割の地（`--tab-container-background`）、タイトルバー（`--titlebar-background`）、ステータスバー（`--status-bar-background`）は docs 掲載の変数で個別に塗れる。ドックのタブ帯は docs 未掲載の `--sidebar-tab-container-background`（L6931-6932）。
 - Obsidian の `--background-primary` はノート領域、Modal、Prompt、Popover、補完ポップアップが共有する（05 注意点）。
+- app.js はサイドドックに `mod-sidedock` と、論理名（`mod-primary-split` / `mod-secondary-split`）・物理名（`mod-left-split` / `mod-right-split`）の両方を付ける。各ビューには `.workspace-leaf-content[data-type="file-explorer"]` などの属性が付く（Phase 1B で確認、静的解析）。
 
-**影響**
+**影響（Phase 1B で訂正）**
 
-- Inkdrop の 3 段（＋ page）を 2 段に縮約することになる。どの 2 面を採るかで印象が大きく変わる（06 W03、09 Q-D1）。
+- Phase 1 は「Inkdrop の 3 段（＋ page）を 2 段に縮約することになる」と断定していた。これは**公式変数だけでペイン本体を塗る場合**に限った話で、テーマで表現できる背景色の段数が 2 段に限られるわけではない。次の 2 つを区別する。
+  - **構造的な 3 ペインの再現**: 不可能。File Explorer は 1 本のツリーで、Inkdrop の横並び（サイドバー｜ノートリスト）はテーマ CSS では作れない。
+  - **3 段以上の背景色の再現**: 可能。手段と制約は次表のとおり。
+
+| 手段 | 例 | docs 掲載 | 対応版 | 主な制約・副作用 |
+|---|---|---|---|---|
+| 公式の帯変数 | Ribbon、タブ帯、タイトルバー、ステータスバーを別色にする | 掲載 | 1.13.7 / 1.14.4 | `--tab-container-background` は左右ドックとルートのタブ帯で共有。**各分割の最上段のタブグループ（`.workspace-tabs.mod-top`）では、`--tab-container-background` と `--sidebar-tab-container-background` が `--titlebar-background` に置き換わる**（app.css L4354-4358。`mod-top` は app.js が最上段のタブグループに付ける）。通常、ドックのタブ帯は最上段にしかないため、タブ帯の色はタイトルバーの色と連動する |
+| ドックのタブ帯とリストを別色にする | `--sidebar-tab-container-background` と `--background-secondary` | 未掲載 | **1.14 以降のみ**（1.13.7 の app.css に該当変数なし） | 上記のとおり最上段では `--titlebar-background` が勝つため、実際にはタイトルバー色との連動になる見込み。変数名の変更リスク |
+| ドック本体を左右で塗り分ける | `.workspace-split.mod-left-split { --background-secondary: X }`（両版）または `.mod-primary-split`（**1.14 以降のみ**） | 未掲載（クラス） | `mod-left-split` は 1.13.7 / 1.14.4、`mod-primary-split` は 1.14.4 のみ（1.13.7 の app.js は `"mod-".concat(i,"-split")` で left / right だけを付ける） | 局所再定義は、その要素とその子孫で `var(--background-secondary)` を参照する箇所にだけ効く。`--tab-container-background` などは `body` 要素の上で計算値が確定し、子孫はその計算値を継承するため変わらない（CSS Custom Properties 仕様）。ドック内で secondary を直接参照する他の UI（graph-controls、分割要素上で宣言される Bases の表ヘッダー変数 L16191-16192 など）も同じ色になる |
+| ビュー単位で塗り分ける | `.workspace-leaf-content[data-type="file-explorer"]` | 未掲載 | 1.13.7 / 1.14.4 | 同じドック内でも Search や Bookmarks のタブは別色になる |
+| File Explorer 内の帯 | `.nav-header` と `.nav-files-container` | 未掲載 | 1.13.7 / 1.14.4 | DOM の親子関係は実機未確認 |
+
+- 対応版は、各版の app.css / app.js に該当するクラス・変数があるかを grep で確認した結果である（Phase 1B の批判的レビューで判明）。1.14 以降のみの手段を使うかどうかは、09 Q-D20（`minAppVersion`）の判断に依存する。
+- 共通の注意:
+  - RTL では left / right が反転する。「Inkdrop のサイドバー側」という意味で塗るには、1.14 以降なら論理名の `mod-primary-split` が使える。1.13.x も対象にするなら `mod-left-split` を使い、RTL での反転を許容することになる。
+  - モバイルのサイドバーは `.workspace-drawer` で、`--mobile-sidebar-background` を使う。デスクトップ用の `.mod-*-split` セレクタは届かない。
+  - translucent 設定では、leaf・split・タブ帯が `transparent !important` で上書きされる（L6579-6590）。
+  - Theme guidelines（L29-33）は、クラス名の変更でセレクタが壊れることを最も多い保守上の問題として挙げている。docs にはワークスペースのクラス名が載っていない。
 - SD の popup（base04）や KD の popup（Black2）はエディタ面と色が違うため、`--background-primary` を共有する Obsidian の popover ではセレクタでの再代入が要る（06 G10）。
 
-**選択肢**: 06 W03 の 2 案（sidebar 基準 / note-list 基準）に加え、左右のサイドドックを別色にする案（`.workspace-split.mod-left-split` / `.mod-right-split` への直接セレクタ。クラスの付与は app.js の静的解析で確認済み、RTL では左右が反転。05 Workspace）がある。
+**選択肢**: 09 Q-D1 に整理した。公式変数だけで済ませる案と、上表の手段で段数を増やす案がある。どの面にどの色を当てるかで印象が大きく変わる（06 W03）。実機での確認項目は 09 V-03。
 
 ---
 
@@ -269,20 +294,23 @@
 **事実（02 §12・§13.4）**
 
 - **非公開の消費箇所（R12）**: サイドバー、ノートリスト、エディタ外枠、ヘッダーメニュー、環境設定、通知、CodeMirror chrome の約 60 変数と `--editor-*` 63 変数は、公開ソースで使われていない。どの DOM に塗られるかは Inkdrop 本体の非公開 CSS 次第（01 §4.1・§9）。
-- **基盤色の漏れ（R13）**
-  - SD: 94 トークンが Tailwind 系のまま（info → sky、warning 背景 → amber、secondary → zinc、`--focused-form-border-color` → sky-300、GFM important → `#a855f7` など）。
+- **基盤既定色（Tailwind 系）の継承（R13）**: テーマが上書きしなかったトークンが、基盤 `@inkdropapp/css` の既定ランプ（Tailwind 系の色）に解決される箇所。Phase 1 では「漏れ」と呼んでいたが、意図的な継承か見落としかはソースから判断できないため、Phase 1B で中立的な表現に改めた。**Inkdrop で実際に表示されるのはこの色**であり、「Inkdrop を正本とする」方針の下では、これも正本の一部である。
+  - SD: 94 トークンが Tailwind 系に解決される（info → sky、warning 背景 → amber、secondary → zinc、`--focused-form-border-color` → sky-300、GFM important → `#a855f7` など）。
   - KD: タグ色の全体、コードブロック枠（Tailwind blue-200 @10%）、input error placeholder（red-200）。
+  - 意図の手がかり: 同系の Inkdrop テーマ gruvbox は「対応のない系統は重複で埋めず、参照するセマンティック変数を付け替える」と明記している（02 §13.1）。SD と KD にはそうした注記がなく、意図は不明（09 U-11）。
 - **コメント不整合（R13）**: KD `preview.css:6`（links dragonBlue2 と書いて実値は dragonGreen2）、`syntax.css:53` の "pmenu.bg"、`syntax.css:27` の "ui.bg_p2"。
 - **Kanagawa の命名ずれ（R14）**: Inkdrop の `dragonBlack2` = `#181616`、`dragonBlack3` = `#1D1C19` で、kanagawa.nvim と逆（nvim は Black2 = `#1D1C19`、Black3 = `#181616`、`ui.bg = dragonBlack3`）。Inkdrop は初回コミット `7cd5fba`（2026-06-24）からこの並びで、旧 `kanagawa-dragon-syntax` も `--editor-background-color: hsl(var(--kanagawa-dragonBlack3)) /* ui.bg */`（`kanagawa-dragon-syntax@0ef752c styles/index.css:16`）。つまり **Inkdrop のエディタ背景は一貫して `#1D1C19` 系**であり、上流の `ui.bg`（`#181616`）とは違う。意図的かどうかは確認できない。
-- **HSL の丸め（R14）**: KD は整数 % の HSL が正本で、コメントの HEX と最大 2/255 ずれる（例: dragonBlack3 は HSL から `#1e1d1a`、コメントは `#1D1C19`）。
+- **HSL 宣言と HEX コメントの差（R14）**: KD の CSS の宣言値は整数 % の HSL（例: dragonBlack3 = `hsl(45deg 7% 11%)`）で、行末コメントの HEX（`#1D1C19`）は参照用である。HSL を sRGB に変換して 8 ビットに丸めると `#1e1d1a` になり、コメントの HEX と最大 2/255 ずれる（Python の `colorsys` による計算）。
+  - Phase 1B の訂正: `#1e1d1a` は**計算値**であって、画面上の描画色を測ったものではない。実際の描画色は Chromium の色変換とディスプレイの色管理を経る。Inkdrop の `palette.json` も値を `hsl(45deg 7% 11%)` のまま記録しており（カスタムプロパティの計算値は色に解決されない）、描画色の証拠にはならない。
+  - 忠実度の観点で厳密なのは、Obsidian 側でも**同じ `hsl()` 宣言を書く**ことである。そうすれば両アプリとも同じ Chromium の変換を通るため、HEX への換算そのものが不要になる（ただし両アプリの Chromium 版と色管理が同じかは未確認）。
 
-**影響**: 「Inkdrop を正本とする」方針の下で、漏れや不整合まで忠実に写すか、Inkdrop の意図を推定して直すかの判断が要る（09 Q-D2・Q-D9）。
+**影響**: 「Inkdrop を正本とする」方針の下で、基盤既定色の継承やコメントの不整合まで表示どおりに写すか、Inkdrop の意図を推定して直すかの判断が要る（09 Q-D9）。HSL 宣言の扱いは方針から導出できる（09 Q-D2）。
 
 ---
 
 ## 14. コントラスト（R15）
 
-`scratchpad/scripts/contrast.py` で、主要な文字色と背景色の組の WCAG 2.x コントラスト比を宣言値から計算した（アルファは背景に合成してから測定）。結果は [`data/inkdrop-contrast.csv`](data/inkdrop-contrast.csv)。実機の computed 値ではない。
+[`tools/contrast.py`](tools/contrast.py) で、主要な文字色と背景色の組の WCAG 2.x コントラスト比を宣言値から計算した（アルファは背景に合成してから測定。色は 07 R14 と同じく HSL 宣言を 8 ビットの sRGB に換算した計算値）。結果は [`data/inkdrop-contrast.csv`](data/inkdrop-contrast.csv)。実機の computed 値ではない。
 
 | 組み合わせ | SD | KD |
 |---|---|---|

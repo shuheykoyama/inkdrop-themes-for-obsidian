@@ -116,22 +116,42 @@ Web ページ（一次情報）:
 
 `postcss-nesting` は、レビュー時に npm registry で最新版 14.0.3（2026-10-05 公開、`engines.node` は `>=20.19.0`）を確認した。初版調査で記載した 14.0.0（2026-01-14）は 14 系の初版である。
 
+Phase 1B（独立レビュー対応）で追加した一次情報:
+
+| 対象 | 確認内容 | 取得日 |
+|---|---|---|
+| [HTML Standard](https://html.spec.whatwg.org/multipage/semantics.html)「update a style block」 | `<style>` から作られる CSS スタイルシートは location を持たない（08 §1） | 2026-10-09 |
+| [CSS Values and Units 4](https://drafts.csswg.org/css-values-4/) §4.5.1 Relative URLs | 文書に埋め込まれたスタイルシートの相対 URL は、そのコンテナのベース URL で解決される（08 §1） | 2026-10-09 |
+| [CSS Custom Properties for Cascading Variables 1](https://www.w3.org/TR/css-variables-1/) | カスタムプロパティの計算値は「変数を置換した指定値」で、`var()` は宣言された要素の上で解決されてから継承される（07 R05） | 2026-10-09 |
+| [docs.obsidian.md Editor/Code](https://docs.obsidian.md/Reference/CSS%20variables/Editor/Code) | 公開版の文言が原稿 `Editor/Code.md:17-18` と同じ "may not match perfectly" であること（03 §6.3） | 2026-10-09 |
+| Obsidian 1.14.4 の `lib/codemirror/modes.min.js`、`lib/prism.min.js` | 編集ビューは CM5 モード（`defineMode("…")` の呼び出し 119 個）、閲覧ビューは Prism（03 §6.3） | 2026-10-09 |
+| `sass` 1.105.1、`lightningcss-cli` 1.33.0（`npx` で一時実行、リポジトリには追加していない） | 色の出力形式（08 §3.3・§3.5） | 2026-10-09 |
+
 ---
 
-## 6. 生成データと一時スクリプト
+## 6. 生成データと再現手順
 
-作業リポジトリに含めたデータ（`research/data/`）:
+`research/data/` の機械可読データは、[`research/tools/`](tools/) のスクリプトで再生成できる。手順と各スクリプトの役割は [tools/README.md](tools/README.md) にある。
 
-| ファイル | 内容 | 生成元 |
+| ファイル | 内容 | 生成元（`research/tools/`） |
 |---|---|---|
-| `inkdrop-base-tokens.csv` | 基盤 CSS のトークン定義 2,372 件（レイヤー、条件、参照、消費箇所） | `scratchpad/analyze_tokens.py` |
-| `inkdrop-solarized-dark-tokens.csv` | SD 適用時の全トークンの宣言値と解決値（2,356 件） | `scratchpad/scripts/resolve_tokens.py` |
+| `inkdrop-base-tokens.csv` | 基盤 CSS のトークン定義 2,372 件（レイヤー、条件、参照、消費箇所） | `analyze_tokens.py` |
+| `inkdrop-solarized-dark-tokens.csv` | SD 適用時の全トークンの宣言値と解決値（2,356 件） | `resolve_tokens.py` |
 | `inkdrop-kanagawa-dragon-tokens.csv` | KD 適用時の全トークンの宣言値と解決値（2,395 件） | 同上 |
-| `inkdrop-palettes.json` | 両テーマのパレット、Osaka・本家 Solarized・kanagawa.nvim との対応 | `scratchpad/scripts/build_palettes.py` |
-| `obsidian-css-variables-1.14.4.csv` | Obsidian の CSS 変数 1,235 件（ドキュメント掲載の有無、既定値、定義セレクタ、1.13.7 との差分） | `scratchpad/scripts/cssvars.py` + 個別の追記 |
-| `obsidian-ui-inventory.csv` | Obsidian の UI 要素 108 件 | `scratchpad/ui-inv/` |
-| `mapping-candidates.csv` | Inkdrop ↔ Obsidian 対応候補 97 件 | `scratchpad/scripts/gen_mapping.py` |
-| `inkdrop-contrast.csv` | 主要な文字色・背景色の組のコントラスト比 | `scratchpad/scripts/contrast.py` |
+| `inkdrop-palettes.json` | 両テーマのパレット、Osaka・本家 Solarized・kanagawa.nvim との対応 | `build_palettes.py` |
+| `obsidian-css-variables-1.14.4.csv` | Obsidian の CSS 変数 1,235 件（ドキュメント掲載の有無、既定値、定義セレクタ、1.13.7 との差分） | `cssvars.py` + `apply_manual_notes.py`（手で確認した注記 15 件は `manual_notes.json`） |
+| `obsidian-ui-inventory.csv` | Obsidian の UI 要素 108 件 | `mkcsv.py`（行の内容はスクリプト内に人手で記述） |
+| `mapping-candidates.csv` | Inkdrop ↔ Obsidian 対応候補 97 件 | `gen_mapping.py`（行の内容は人手、値の列は機械抽出） |
+| `inkdrop-contrast.csv` | 主要な文字色・背景色の組のコントラスト比 30 件 | `contrast.py` |
 
-- 一時スクリプトは作業リポジトリ外（セッション用の一時領域）にあり、リポジトリには含めていない。再現が必要になった場合に備え、Phase 2 で `tools/` 等へ移すかどうかを検討する余地がある。
-- 解決値の妥当性: 02 の解決値は、両テーマの `palette.json`（theme-dev-helpers がブラウザで抽出した computed 値）と 1,638 / 1,638 件一致した（02 §1.5）。
+**再現性の検証結果（Phase 1B）**: `fetch_sources.sh` で 30 リポジトリを記録済みの SHA で取得し直し、Obsidian 1.14.4 / 1.13.7 の asar を GitHub Releases から取得し直した。`app.css` の SHA-256 は §2.1 の値と一致した。この入力から `regenerate.sh` で再生成したところ、Phase 1B での修正前の時点で、8 ファイルすべてがコミット済みのファイル（基準コミット `e35d5f5`）とバイト単位で一致した。ただし `obsidian-css-variables-1.14.4.csv` は、手書きの注記 15 件を `manual_notes.json` に切り出してからの一致である（Phase 1 では一時的なスニペットで追記していた）。
+
+**再現できない、または部分的にしか再現できないもの**:
+
+- `obsidian-ui-inventory.csv`、`mapping-candidates.csv` の行の内容（分類、根拠、確信度など）は人手の判断で、スクリプトはそれを CSV に書き出すだけである。判断の過程は再現の対象外。
+- 05 の棚卸しで使った探索用の補助スクリプト（app.css を規則単位に分解する `parse.py` など）はリポジトリに含めていない。05 の本文の数値（変数 961 個、`body` の 876 個など）は、`cssvars.py` の出力で照合できる範囲に限って検証した（README「資料間で数値が異なる箇所」）。
+- 02 の `leaks.py` は、基盤既定色に解決されるトークンを列挙する補助スクリプトで、出力ファイルは `research/data/` にない（02 §13.4 の件数の根拠）。
+- 04 の `!important` / `:has()` の件数は `cssstats.py` の出力で、テーマのリポジトリを引数に渡して再計測できる。
+- Web ページ（docs.obsidian.md、developers.inkdrop.app、changelog など）は取得時点の内容で、固定版は保存していない。
+
+**値の解釈についての注意（Phase 1B で訂正）**: 02 の解決値は、両テーマの `palette.json` と 1,638 / 1,638 件一致した。ただし `palette.json` は theme-dev-helpers の harness 上の値で、`var()` の展開はブラウザ、`light-dark()` の分岐はツールの文字列処理による。両テーマには `color-mix()` 由来の値がないため、色は `hsl(45deg 7% 11%)` のような文字列のまま記録されている。この一致が示すのは本調査の解決結果と harness の結果の一致であり、実アプリ上の値や画面上の描画色ではない（02 §1.5、07 R14）。
