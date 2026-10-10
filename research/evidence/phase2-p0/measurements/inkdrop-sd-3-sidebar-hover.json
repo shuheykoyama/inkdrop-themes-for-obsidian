@@ -1,0 +1,58 @@
+{
+  "theme": "solarized-dark",
+  "hovered": [
+    {
+      "classes": [
+        "sidebar-menu-item",
+        "selectable",
+        "sidebar-menu-status-list-item"
+      ],
+      "rect": [
+        0,
+        246,
+        199,
+        30
+      ],
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(131, 148, 149)",
+      "boxShadow": "rgba(0, 0, 0, 0) 5px 0px 0px 0px inset"
+    }
+  ],
+  "selected": [
+    {
+      "classes": [
+        "sidebar-menu-item",
+        "active",
+        "selectable",
+        "sidebar-menu-item-all-notes"
+      ],
+      "rect": [
+        0,
+        93,
+        199,
+        30
+      ],
+      "backgroundColor": "rgba(71, 173, 245, 0.2)",
+      "color": "rgb(131, 148, 149)",
+      "boxShadow": "rgba(0, 0, 0, 0) 5px 0px 0px 0px inset"
+    }
+  ],
+  "idle": [
+    {
+      "classes": [
+        "sidebar-menu-item",
+        "sidebar-menu-section-header",
+        "sidebar-menu-section-notebooks"
+      ],
+      "rect": [
+        0,
+        123,
+        199,
+        30
+      ],
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(91, 96, 190)",
+      "boxShadow": "rgba(0, 0, 0, 0) 5px 0px 0px 0px inset"
+    }
+  ]
+}

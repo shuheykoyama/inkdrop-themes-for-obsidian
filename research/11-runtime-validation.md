@@ -23,9 +23,9 @@
 
 | 項目 | 状態 | 要旨 |
 |---|---|---|
-| V-30 Inkdrop の基準スクリーンショット | **BLOCKED** | Inkdrop がこの Mac にインストールされていない。インストールとログインは無断で行わない約束のため未実施。リポジトリ既存の `docs/screenshot.png` は撮影環境が不明で、PASS として扱わない |
-| V-20 Inkdrop UI 変数の適用先 | **STATIC**（実機は BLOCKED） | 公開配布物 Inkdrop 6.1.5 を展開して静的解析した。06 の対象 42 行のうち 41 行で消費箇所を特定。実機の Computed Style は未確認 |
-| V-22 Inkdrop エディタ変数の適用先 | **STATIC**（実機は BLOCKED） | CodeMirror の外枠のテーマは本体 JS の `EditorView.theme` に直接書かれていた。主要な変数の適用先を特定 |
+| V-30 Inkdrop の基準スクリーンショット | **VERIFIED**（2026-10-10 再開、§14） | 両テーマ × 5 状態の基準スクリーンショットを不透明表示（acrylic 無効）で取得した。macOS 既定の半透明（acrylic）表示は Computed Style だけを記録し、合成結果のスクリーンショットは取得できなかった。以下は当初（再開前）の記録: | Inkdrop がこの Mac にインストールされていない。インストールとログインは無断で行わない約束のため未実施。リポジトリ既存の `docs/screenshot.png` は撮影環境が不明で、PASS として扱わない |
+| V-20 Inkdrop UI 変数の適用先 | **VERIFIED**（2026-10-10 再開、§14） | 主要な背景面・境界線・選択状態の項目で、静的予測と実機の Computed Style が全件一致した。DOM 階層も確認した。以下は当初（再開前）の記録: | 公開配布物 Inkdrop 6.1.5 を展開して静的解析した。06 の対象 42 行のうち 41 行で消費箇所を特定。実機の Computed Style は未確認 |
+| V-22 Inkdrop エディタ変数の適用先 | **VERIFIED**（2026-10-10 再開、§14） | エディタの背景・前景・キャレット・選択・アクティブ行・ガターを実機で確認した。以下は当初（再開前）の記録: | CodeMirror の外枠のテーマは本体 JS の `EditorView.theme` に直接書かれていた。主要な変数の適用先を特定 |
 | V-01 Obsidian の CSS 優先関係 | **VERIFIED** | Obsidian 1.14.4 の隔離インスタンスで、診断用 CSS の Computed Style を測定。静的解析の予測はすべて実測と一致した |
 | V-03 Obsidian の DOM 構造 | **VERIFIED** | サイドドックのクラス（論理名と物理名の両方）、`mod-top`、File Explorer の子要素構成を確認 |
 | V-16 背景色のスコープ再定義 | **VERIFIED**（デスクトップ）、**VERIFIED（エミュレーション）**（モバイル） | 方式 1〜4 はすべてデスクトップで成立。モバイルでは方式 2 に別のセレクタと変数が必要なことを確認 |
@@ -59,7 +59,7 @@ Phase 1B の資料と版の差はない（Obsidian 1.14.4）。Inkdrop 本体の
 
 ---
 
-## 4. V-30 の結果（Inkdrop の基準スクリーンショット）: BLOCKED
+## 4. V-30 の結果（Inkdrop の基準スクリーンショット）: 当初 BLOCKED（§14 で VERIFIED）
 
 - 実機での撮影はできなかった。
 - 参考として、リポジトリ既存の画像（`solarized-dark@4337f6e docs/screenshot.png`、`kanagawa@f9c14a5 packages/dragon/docs/screenshot.png`）の観察は 02 §14 にある。撮影バージョンや環境が不明なため、V-30 の PASS としては扱わない。
@@ -67,7 +67,7 @@ Phase 1B の資料と版の差はない（Obsidian 1.14.4）。Inkdrop 本体の
 
 ---
 
-## 5. V-20 の結果（Inkdrop UI 変数の適用先）: STATIC
+## 5. V-20 の結果（Inkdrop UI 変数の適用先）: 当初 STATIC（§14 で VERIFIED）
 
 ### 5.1 集計
 
@@ -113,7 +113,7 @@ Phase 1 の 06 は `--*-active-background` を「フォーカス中の選択の�
 
 ---
 
-## 6. V-22 の結果（Inkdrop エディタ変数の適用先）: STATIC
+## 6. V-22 の結果（Inkdrop エディタ変数の適用先）: 当初 STATIC（§14 で VERIFIED）
 
 CodeMirror の外枠のテーマは、独立したパッケージではなく本体 JS（`renderer/assets/notebook-picker-*.js`）の `EditorView.theme({...})` に直接書かれていた。Phase 1B で推定していた `@inkdropapp/cm6-theme-common` という名前のパッケージは、6.1.5 には同梱されていない。
 
@@ -275,18 +275,21 @@ Inkdrop 側の正本（§5.2、STATIC）: サイドバー｜ノートリスト�
 | 方式 1〜4（デスクトップ） | VERIFIED |
 | モバイルのドロワー構造と `--mobile-sidebar-background` | VERIFIED（エミュレーション） |
 | iOS / Android 実機、phone 判定 | BLOCKED |
-| Inkdrop の各面の適用先（§5.2）と状態色の構造（§5.3） | STATIC |
-| Inkdrop の CodeMirror 外枠の適用先（§6） | STATIC |
-| Inkdrop のレイアウトが横並びの兄弟で、面が重ならないこと | STATIC / INFERRED（DOM の入れ子は未確認） |
-| x64 版の Inkdrop が arm64 版と同じ CSS を持つこと | INFERRED |
-| Inkdrop の実機の Computed Style と描画、基準スクリーンショット | BLOCKED |
+| Inkdrop の各面の適用先（§5.2）と状態色の構造（§5.3） | STATIC → **VERIFIED**（§14.4、32 項目一致） |
+| Inkdrop の CodeMirror 外枠の適用先（§6） | STATIC → **VERIFIED**（§14.5） |
+| Inkdrop のレイアウトが横並びの兄弟で、面が重ならないこと | STATIC → **VERIFIED**（§14.4 の DOM 階層） |
+| x64 版の Inkdrop が arm64 版と同じ CSS を持つこと | INFERRED（実機の x64 版の Computed Style は arm64 版の静的予測と一致した） |
+| Inkdrop の基準スクリーンショット（不透明表示） | **VERIFIED**（§14.3） |
+| macOS の既定が acrylic（半透明）であることと、そのときの Computed Style | **VERIFIED**（§14.4） |
+| acrylic 表示の実際の見え方（スクリーンショット） | BLOCKED（§14.8） |
+| Inkdrop のオーバーレイ（メニュー、モーダル、ポップアップ） | 未実施（§14.8） |
 
 ---
 
 ## 12. Phase 2 の設計判断に進むための条件
 
 1. **Q-D1 の判断材料**: Obsidian 側の技術的な実現性は揃った（§8・§9）。各方式が成立するかどうかは実測で確認済みで、残るのは「どの面にどの色を当てるか」というデザイン判断である。
-2. **残る前提**: 判断の比較基準になる Inkdrop の実機スクリーンショット（V-30）と、Inkdrop 実機での面の構造の確認（V-20 の DOM の入れ子）がない。静的解析の結果（§5.2）だけで判断を進めることは可能だが、Inkdrop の実際の見え方との比較はできない。
+2. **（2026-10-10 更新）比較基準**: Inkdrop の実機スクリーンショット（不透明表示）と、面の構造・実際の適用色が揃った（§14）。Inkdrop の実際の見え方と Obsidian の各方式を並べて比較できる。新たに、macOS の既定が半透明表示であること（09 Q-D22）と、アクティブ行・ガターが既定で表示されないこと（09 Q-D23）が判断事項に加わった。
 3. **モバイル**: デスクトップの方式のうち、方式 2 は書き分けが必要、方式 4 はモバイルで未確認。モバイルの実機検証は、実装方針（デスクトップとモバイルで別のセレクタを持つこと）を決めるうえでは必須ではないが、完全対応（Q-D10）の確認には必須である。
 
 ---
@@ -330,3 +333,143 @@ Inkdrop のインストールとサインインはユーザーの判断で行う
 ### 13.3 モバイル（Q-D10）
 
 iOS / Android の実機での検証は、実機と検証専用 Vault の用意が必要で、今回は実施していない（§10）。
+
+---
+
+## 14. Inkdrop の実機検証（再開、2026-10-10）
+
+ユーザーが Inkdrop をインストールしてサインインしたため、V-30・V-20・V-22 を実機で検証した。
+
+### 14.1 環境と手順
+
+| 項目 | 値 |
+|---|---|
+| Inkdrop | **6.1.5**（x86_64、`/Applications/Inkdrop.app`）。静的解析した配布物と同じ版 |
+| テーマ | Solarized Dark **2.2.1**、Kanagawa Dragon **1.2.1**（`inkdrop.packages` が報告した版）。調査で解析したコミット（`solarized-dark@4337f6e`、`kanagawa@f9c14a5 packages/dragon`）の `package.json`・`palette.json`・`styles/` を `packages/` に置いて読み込んだ（ユーザーの承認による。ipm の CLI は未インストールで、本体のレンダラー側にインストール API はない） |
+| 元の状態（復元用に記録） | テーマ `default-dark`、`core.mainWindow.acrylicEnabled` は `true`、`editor.lineNumbers` と `editor.styleActiveLine` は `false`、パッケージは markdown-emoji / math / mermaid、開いているノートなし |
+| 接続 | ユーザーの承認を得て Inkdrop を通常終了し、`--remote-debugging-port=9334 --remote-debugging-address=127.0.0.1` で再起動。待ち受けは `127.0.0.1:9334` だけ（`lsof` で確認） |
+| 検証データ | ユーザーの承認を得て、検証用ノートブック「Theme Validation (Phase 2B)」とノート「Sample note」（Obsidian の検証と同じ本文、frontmatter を除く）を 1 件ずつ作成し、検証後に削除した |
+| 撮影範囲 | サイドバーを検証用ノートブックのワークスペース（`actions.sidebar.showWorkspace`）に絞り、他のノートブック・タグ・ノートが写らないようにした。全スクリーンショットを目視で確認した |
+| 表示 | CDP の `Emulation.setDeviceMetricsOverride` で 1024×800 CSS px、`deviceScaleFactor` 1（画像は 1024×800 px）。Obsidian の画像（2048×1600、倍率 2）とは倍率が違う |
+| 区分 | 以下の Computed Style・DOM・スクリーンショットはすべて **VERIFIED**（Inkdrop 6.1.5 実機） |
+
+先に、専用の `--user-data-dir` で隔離インスタンスを試したが、ログイン画面で止まった（認証情報は入力していない）。そのため、ユーザーのインスタンスで検証した。
+
+### 14.2 復元（VERIFIED）
+
+- テスト用ノートとノートブックは、作成時に記録した ID と名前の両方が一致することを確かめてから削除した（`db.notes.remove`、`db.books.remove`）。作成と削除はアカウントに同期されるため、同期の履歴には残る。
+- テーマは `default-dark`、acrylic は `true`、行番号とアクティブ行の強調は `false` に戻した。
+- 2 つのテーマパッケージは unload したうえで `packages/` から取り除いた（リポジトリ外の作業領域へ移動）。パッケージ一覧は作業前と同一。
+- `config.json` は、途中の再起動で `lastNavigationState`（削除したテスト用ノートを指していた）とウィンドウ位置が書き込まれていたため、Inkdrop を終了してから作業前の控えを書き戻した。作業前のファイルとバイト単位で一致し、通常起動後も変化しないことを確認した。
+- Inkdrop はリモートデバッグなしで通常起動し、ポート 9334 が閉じていることを確認した。
+
+### 14.3 V-30: 基準スクリーンショット（VERIFIED、不透明表示）
+
+| 状態 | Solarized Dark | Kanagawa Dragon |
+|---|---|---|
+| 1. 既定（エディタにフォーカス、選択なし。行番号・アクティブ行は Inkdrop 既定の無効） | `inkdrop/sd-1-default.png` | `inkdrop/kd-1-default.png` |
+| 2. ノートリストにフォーカス（選択項目の左 5px バー） | `inkdrop/sd-2-notelist-focus.png` | `inkdrop/kd-2-notelist-focus.png` |
+| 3. サイドバーのステータス行「Active」を hover | `inkdrop/sd-3-sidebar-hover.png` | `inkdrop/kd-3-sidebar-hover.png` |
+| 4. エディタ（行番号とアクティブ行を一時的に有効化、「bold」を選択） | `inkdrop/sd-4-editor-selection.png` | `inkdrop/kd-4-editor-selection.png` |
+| 5. プレビュー | `inkdrop/sd-5-preview.png` | `inkdrop/kd-5-preview.png` |
+
+各画像に対応する Computed Style は `measurements/inkdrop-<sd|kd>-<状態>.json`。KD の状態 2 と 3 の画像は同一（hover で画素が変わらなかった）。
+
+macOS 既定の半透明（acrylic）表示のスクリーンショットは取得できなかった。CDP のスクリーンショットは透過部分にデスクトップが合成されないため使えない。macOS の画面キャプチャを試したところ、システムの権限確認ダイアログが重なって写ったので、そこで中止した（その 1 枚はコミットしていない）。
+
+### 14.4 V-20: 背景面と状態色（VERIFIED）
+
+**DOM 階層**（両テーマ共通）:
+
+```
+body.dark-mode.platform-darwin.theme-<name>[.acrylic-window]
+└─ div#app-container                         背景 --page-background
+   └─ div.main-layout.main-layout-full
+      ├─ div.sidebar-layout (x 0, 幅 200)     └ .sidebar-layout-content       背景 --sidebar-background
+      ├─ div.note-list-bar-layout (x 200, 幅 300) └ .note-list-bar-layout-content 背景 --note-list-bar-background
+      ├─ div.editor-layout (x 500, 幅 524)    背景 --editor-background
+      │  ├─ .editor-title-bar-layout          背景 --header-note-menu-background（透明）
+      │  └─ .mde-layout > .editor > .mde > .cm-editor  背景 --editor-background-color
+      │     （プレビュー時は .mde-preview-container > .mde-preview。背景は透明）
+      └─ div.modal-layout (幅 0)
+```
+
+3 つの面は `.main-layout` の直下に横に並ぶ兄弟で、重ならない。静的解析（§5.2）の推定どおりだった。
+
+**静的予測との照合**: 32 項目すべてが一致した（1/255 以内、`measurements/inkdrop-static-vs-runtime.csv`、`tools/compare-inkdrop.py`）。主な値（不透明表示）:
+
+| 面 | Solarized Dark（Computed） | Kanagawa Dragon（Computed） |
+|---|---|---|
+| ページ `#app-container` | `rgb(0, 20, 26)` | `rgb(13, 12, 12)` |
+| サイドバー | `rgb(7, 53, 65)`、右線 `1px solid rgb(0, 45, 56)` | `rgb(17, 17, 14)`、右線 `1px solid rgb(39, 38, 38)` |
+| ノートリスト | `rgb(0, 45, 56)`、右線 `1px solid rgb(7, 53, 65)` | `rgb(24, 22, 22)`、右線 `1px solid rgba(39, 38, 38, 0.75)` |
+| エディタ外枠 / `.cm-editor` | `rgb(0, 33, 41)` / `rgb(0, 33, 41)` | `rgb(30, 29, 26)` / `rgb(30, 29, 26)` |
+| ノート上部のメニュー、プレビュー | 透明（エディタ外枠の色が見える） | 透明 |
+
+ページ背景は、不透明表示では 3 つの面に覆われて見えない（各面が `#app-container` の全域を覆う）。
+
+KD のエディタ背景の宣言 `hsl(45deg 7% 11%)` は、Chromium の計算値で `rgb(30, 29, 26)`（`#1e1d1a`）になった。HEX コメントの `#1D1C19` ではない（Q-D2 の前提を実機で確認）。
+
+**状態色**:
+
+| 要素 | Solarized Dark | Kanagawa Dragon |
+|---|---|---|
+| サイドバーの選択行の塗り（`--sidebar-menu-item-inactive-background`） | `rgba(71, 173, 245, 0.2)` | `rgba(140, 165, 177, 0.2)` |
+| サイドバーの選択行の左 5px バー | サイドバーにフォーカスがないため透明（`rgba(0, 0, 0, 0) 5px 0 0 0 inset`） | 同左 |
+| ノートリストの選択項目の塗り（`--note-list-view-item-selected-background`） | `rgba(39, 139, 211, 0.2)`。フォーカスの有無で変わらない | `rgba(34, 50, 73, 0.7)` |
+| ノートリストにフォーカスしたときの左 5px バー（`--note-list-view-item-active-background`） | `rgba(39, 139, 211, 0.4) 5px 0 0 0 inset` | `rgba(45, 79, 103, 0.8) 5px 0 0 0 inset` |
+| サイドバーの行の hover | 背景は透明のまま（変化なし） | 背景は透明のまま。画素も変化なし |
+
+`*-active-background` が塗りではなくフォーカス時の左 5px バーであること（§5.3 の静的解析）は、実機で確認できた。
+
+**macOS 既定の半透明（acrylic）表示**（VERIFIED、Computed Style のみ）:
+
+- Inkdrop 6.1.5 の既定設定は `acrylicEnabled: !!Mo()`（本体 JS、プラットフォーム判定）で、ユーザー環境も `true` だった。**macOS で Inkdrop を使う人が普段見ているのは半透明の表示である**。
+- このとき `body.acrylic-window` が付き、テーマの acrylic 用の規則が効く。
+
+| 面 | Solarized Dark | Kanagawa Dragon |
+|---|---|---|
+| ページ | 透明 | 透明 |
+| サイドバー | `rgba(0, 45, 56, 0.5)`（base03 の 50%。不透明時の base02 とは別の色） | `rgba(17, 17, 14, 0.5)` |
+| ノートリスト | `rgba(0, 33, 41, 0.7)`（neutral-900 の 70%。不透明時の base03 とは別の色） | `rgba(24, 22, 22, 0.7)` |
+| エディタ外枠 / `.cm-editor` | `rgba(0, 33, 41, 0.9)` / 透明 | `rgba(30, 29, 26, 0.9)` / 透明 |
+
+記録: `measurements/inkdrop-sd-acrylic.json`、`measurements/inkdrop-kd-acrylic.json`。実際の見え方は、背後のデスクトップとぼかしの合成で決まり、Computed Style からは決まらない。
+
+### 14.5 V-22: エディタ（VERIFIED）
+
+| 要素 | Solarized Dark | Kanagawa Dragon | 備考 |
+|---|---|---|---|
+| 前景 | `rgb(131, 148, 149)` | `rgb(197, 201, 197)` | `.cm-editor` の color |
+| キャレット | `.cm-cursor` の `border-left: 2px solid rgb(159, 171, 173)` | `2px solid rgb(197, 201, 197)` | `.cm-content` の `caret-color` は透明で、CodeMirror の描画カーソルを使う |
+| 選択（フォーカス時） | `.cm-selectionBackground` が `rgba(39, 139, 211, 0.3)` | `rgb(34, 50, 73)` | |
+| アクティブ行 / そのガター | `rgba(0, 45, 56, 0.5)` | `rgba(39, 38, 38, 0.3)` | `editor.styleActiveLine` が有効なときだけ存在する。**Inkdrop の既定は無効** |
+| ガター | 文字 `rgb(88, 110, 116)`、背景透明、右線なし | 文字 `rgb(98, 94, 91)`、右線 `1px solid rgb(39, 38, 38)` | `editor.lineNumbers` が有効なときだけ存在する。**Inkdrop の既定は無効** |
+
+Inkdrop 6.1.5 の既定のエディタ設定は `lineNumbers: false`、`styleActiveLine: false` である（本体 JS の既定値、ユーザー設定も同じ）。既定の見た目には、ガターもアクティブ行の強調もない。
+
+### 14.6 静的解析との差（訂正と追加）
+
+| 事項 | 静的解析（§5・§6、Phase 1） | 実機 | 区分 |
+|---|---|---|---|
+| 各面の色・境界線・選択状態 | 宣言値を予測 | 32 項目すべて一致 | 一致 |
+| DOM 階層（横並びの兄弟） | 推定 | 確認 | 一致 |
+| `*-active-background` は左 5px バー | 推定 | 確認 | 一致 |
+| macOS での既定の表示 | 不透明を前提に分析していた。acrylic は条件付きの上書きとして扱った | **macOS の既定は acrylic（半透明）**。サイドバーとノートリストは、不透明時とは別の色（SD は base03 と neutral-900）の半透明になる | **訂正** |
+| アクティブ行・ガター | テーマの変数として分析 | Inkdrop の既定では**表示されない**（設定で有効にしたときだけ） | **追加** |
+| サイドバーの hover | 配色は未特定 | 背景の変化なし | **追加** |
+| KD エディタ背景の計算値 | `#1e1d1a`（計算） | `rgb(30, 29, 26)` | 一致 |
+
+### 14.7 Q-D1 の判断に関係する新しい発見
+
+1. **比較の基準になる Inkdrop の見た目が 2 つある**: 不透明表示（テーマの基本の配色）と、macOS 既定の半透明表示。Obsidian にも半透明（`.is-translucent`）があるが、既定は無効である。どちらを忠実度の基準にするかは、新しい判断事項（09 Q-D22）。
+2. **3 つの面は横並びで重ならず、明度の順は不透明時に SD: サイドバー > ノートリスト > エディタ、KD: エディタ > ノートリスト > サイドバー**（実測値で確認）。半透明時は SD の順序が変わる（サイドバー base03 の 50%、ノートリスト neutral-900 の 70%、エディタ neutral-900 の 90%）。
+3. **選択状態は「塗り」と「フォーカス時の左 5px バー」の 2 層**。Obsidian の File Explorer で再現するなら、`--nav-item-background-active` などの塗りに加えて、`box-shadow: inset 5px 0 0 …` をフォーカス時に重ねる必要がある（直接セレクタ）。
+4. **アクティブ行とガターは Inkdrop の既定では表示されない**。Obsidian 側で既定でどう扱うかは判断事項（09 Q-D23）。
+
+### 14.8 残る未確認事項
+
+- acrylic 表示の実際の見え方（スクリーンショット）。macOS の画面収録の権限がある状態で、ウィンドウキャプチャを撮る必要がある。
+- サイドバー以外の hover（ノートリストの未選択項目、ボタン類）。検証用ノートが 1 件だけで、未選択のノート項目がなかった。
+- メニュー、モーダル、コマンドパレット、ポップアップなどのオーバーレイ（今回は撮影していない）。
+- 撮影時のウィンドウは CDP のエミュレーションで 1024×800 にした。実ウィンドウ（1200×700、倍率 2）での見え方とは、レイアウト幅と倍率が異なる。

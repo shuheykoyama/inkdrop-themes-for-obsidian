@@ -1,0 +1,35 @@
+theme,region,element / property,token,"declared (02, resolved)",computed (runtime),verdict
+solarized-dark,page,app-container (page) / backgroundColor,--page-background,#00141a,"rgb(0, 20, 26)",MATCH
+solarized-dark,sidebar,sidebar / backgroundColor,--sidebar-background,#073541,"rgb(7, 53, 65)",MATCH
+solarized-dark,sidebar right border,sidebar / borderRight,--sidebar-border-right,1px solid #002d38,"1px solid rgb(0, 45, 56)",MATCH
+solarized-dark,note list,note-list / backgroundColor,--note-list-bar-background,#002d38,"rgb(0, 45, 56)",MATCH
+solarized-dark,note list right border,note-list / borderRight,--note-list-bar-border-right,1px solid #073541,"1px solid rgb(7, 53, 65)",MATCH
+solarized-dark,editor (outer),editor-layout / backgroundColor,--editor-background,#002129,"rgb(0, 33, 41)",MATCH
+solarized-dark,editor (CodeMirror),cm-editor / backgroundColor,--editor-background-color,#002129,"rgb(0, 33, 41)",MATCH
+solarized-dark,editor text,cm-editor / color,--editor-foreground-color,#839495,"rgb(131, 148, 149)",MATCH
+solarized-dark,note menu bar,editor-title-bar / backgroundColor,--header-note-menu-background,transparent,"rgba(0, 0, 0, 0)",MATCH
+solarized-dark,sidebar selected row fill,sidebar item (active) / backgroundColor,--sidebar-menu-item-inactive-background,#47adf533,"rgba(71, 173, 245, 0.2)",MATCH
+solarized-dark,note list selected item fill,note-list item (active) / backgroundColor,--note-list-view-item-selected-background,#278bd333,"rgba(39, 139, 211, 0.2)",MATCH
+solarized-dark,note list focus bar,note-list item (active) / boxShadow,--note-list-view-item-active-background,#278bd366,"rgba(39, 139, 211, 0.4) 5px 0px 0px 0px inset",MATCH
+solarized-dark,active line,cm-activeLine / backgroundColor,--editor-active-line-background-color,#002d3880,"rgba(0, 45, 56, 0.5)",MATCH
+solarized-dark,gutter text,cm-gutters / color,--editor-gutter-color,#586e74,"rgb(88, 110, 116)",MATCH
+solarized-dark,gutter right border,cm-gutters / borderRight,--editor-gutter-border-right,none,"0px none rgb(88, 110, 116)",MATCH
+solarized-dark,selection (focused),cm-selectionBackground / backgroundColor,--editor-focused-selection-background,#278bd34c,"rgba(39, 139, 211, 0.3)",MATCH
+solarized-dark,preview background,preview / backgroundColor,,,"rgba(0, 0, 0, 0)",INFO
+kanagawa-dragon,page,app-container (page) / backgroundColor,--page-background,#0d0c0c,"rgb(13, 12, 12)",MATCH
+kanagawa-dragon,sidebar,sidebar / backgroundColor,--sidebar-background,#11110e,"rgb(17, 17, 14)",MATCH
+kanagawa-dragon,sidebar right border,sidebar / borderRight,--sidebar-border-right,1px solid #272626,"1px solid rgb(39, 38, 38)",MATCH
+kanagawa-dragon,note list,note-list / backgroundColor,--note-list-bar-background,#181616,"rgb(24, 22, 22)",MATCH
+kanagawa-dragon,note list right border,note-list / borderRight,--note-list-bar-border-right,1px solid #272626bf,"1px solid rgba(39, 38, 38, 0.75)",MATCH
+kanagawa-dragon,editor (outer),editor-layout / backgroundColor,--editor-background,#1e1d1a,"rgb(30, 29, 26)",MATCH
+kanagawa-dragon,editor (CodeMirror),cm-editor / backgroundColor,--editor-background-color,#1e1d1a,"rgb(30, 29, 26)",MATCH
+kanagawa-dragon,editor text,cm-editor / color,--editor-foreground-color,#c5c9c5,"rgb(197, 201, 197)",MATCH
+kanagawa-dragon,note menu bar,editor-title-bar / backgroundColor,--header-note-menu-background,transparent,"rgba(0, 0, 0, 0)",MATCH
+kanagawa-dragon,sidebar selected row fill,sidebar item (active) / backgroundColor,--sidebar-menu-item-inactive-background,#8ca5b133,"rgba(140, 165, 177, 0.2)",MATCH
+kanagawa-dragon,note list selected item fill,note-list item (active) / backgroundColor,--note-list-view-item-selected-background,#223249b2,"rgba(34, 50, 73, 0.7)",MATCH
+kanagawa-dragon,note list focus bar,note-list item (active) / boxShadow,--note-list-view-item-active-background,#2d4f67cc,"rgba(45, 79, 103, 0.8) 5px 0px 0px 0px inset",MATCH
+kanagawa-dragon,active line,cm-activeLine / backgroundColor,--editor-active-line-background-color,#2726264c,"rgba(39, 38, 38, 0.3)",MATCH
+kanagawa-dragon,gutter text,cm-gutters / color,--editor-gutter-color,#625e5b,"rgb(98, 94, 91)",MATCH
+kanagawa-dragon,gutter right border,cm-gutters / borderRight,--editor-gutter-border-right,1px solid #272626,"1px solid rgb(39, 38, 38)",MATCH
+kanagawa-dragon,selection (focused),cm-selectionBackground / backgroundColor,--editor-focused-selection-background,#223249,"rgb(34, 50, 73)",MATCH
+kanagawa-dragon,preview background,preview / backgroundColor,,,"rgba(0, 0, 0, 0)",INFO

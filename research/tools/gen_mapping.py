@@ -93,7 +93,7 @@ ROWS = [
     ("W11", "Workspace", "半透明ウィンドウ（macOS vibrancy）",
      "acrylic-window 条件の半透明背景", D, ["--page-background", "--sidebar-background"],
      "body.is-translucent / .is-translucent:not(.is-fullscreen) と関連 3 変数",
-     "OS 透過を前提とした背景差し替えという機能が一致。Inkdrop は :root:has(body.acrylic-window) で各面を半透明化",
+     "OS 透過を前提とした背景差し替えという機能が一致。Inkdrop は :root:has(body.acrylic-window) で各面を半透明化。Inkdrop 6.1.5 では macOS の既定が acrylicEnabled: true で、実機でも各面が半透明の値になった（SD のサイドバーは base03 の 50%、ノートリストは neutral-900 の 70%。11 §14.4、VERIFIED）。Obsidian の .is-translucent は既定で無効（09 Q-D22）",
      "Medium", "両テーマとも acrylic 時の上書きあり（SD ui.css:176-187, KD ui.css:557-568）",
      "01 §3.6, 02 §1.4, 03 §5", "要: macOS 実機で透過度を比較"),
     # ---------------- Navigation ----------------
@@ -129,7 +129,7 @@ ROWS = [
      "サイドバー inactive 背景 / メニュー hover（基盤既定の白アルファ）", S,
      ["--sidebar-menu-item-inactive-background", "--menu-hover-item-background"],
      "--nav-item-background-hover, --background-modifier-hover",
-     "Inkdrop のサイドバー hover 専用トークンは見当たらない。Phase 2B の静的解析（Inkdrop 6.1.5）では、--sidebar-menu-item-inactive-background は hover ではなく選択中の項目（`.sidebar-menu-item.active`）の塗りに使われていた（11 §5、STATIC）。hover の配色は未特定",
+     "Inkdrop のサイドバー hover 専用トークンは見当たらない。Phase 2B の静的解析（Inkdrop 6.1.5）では、--sidebar-menu-item-inactive-background は hover ではなく選択中の項目（`.sidebar-menu-item.active`）の塗りに使われていた（11 §5、STATIC）。Inkdrop 6.1.5 の実機では、サイドバーの行を hover しても背景は透明のまま変わらなかった（両テーマ、11 §14.4、VERIFIED）",
      "Low", "両テーマとも menu hover は基盤既定 #ffffff05",
      "01 §5.2, 02 §6.2", "要: Inkdrop 実機で hover 色を観察"),
     ("N06", "Navigation", "ナビ見出し / セクション見出し（Vault 名・ブックマーク見出し等）",

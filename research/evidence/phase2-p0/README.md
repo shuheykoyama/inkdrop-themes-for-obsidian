@@ -16,7 +16,8 @@
 | テスト Vault | 一時ディレクトリに新規作成。ノート 4 件（`Sample note.md`、`Other note.md`、`Folder A/In folder.md`、`Folder A/Sub/Deep.md`）と、診断用テーマ `P2B-Diagnostic` だけを置いた。行番号表示はこの Vault でだけ有効にした |
 | 表示 | ウィンドウ 1024×800 CSS px、`devicePixelRatio` 2（スクリーンショットは 2048×1600 px） |
 | 外観 | ダーク（`theme-dark`）。`body` のクラスは `mod-macos`、`is-frameless`、`is-hidden-frameless` ほか（[measurements/probe-env.json](measurements/probe-env.json)） |
-| Inkdrop | **未インストール・未起動**。公開配布物 6.1.5（arm64 の zip）を展開した静的解析だけを行った（`research/data/inkdrop-consumers-6.1.5.csv`） |
+| Inkdrop（当初） | 未インストール。公開配布物 6.1.5（arm64 の zip）を展開した静的解析だけを行った（`research/data/inkdrop-consumers-6.1.5.csv`） |
+| Inkdrop（2026-10-10 再開） | 6.1.5（x86_64）をユーザーがインストール・サインイン済み。ユーザーの承認を得て、リモートデバッグ（`127.0.0.1:9334` 限定）付きで再起動し、テーマの読み込み・検証用ノートの作成と削除・設定の一時変更を行った。すべて元に戻した（11 §14.2） |
 
 ## ファイル
 
@@ -55,6 +56,20 @@
 | `mobile-emulation-case-B.json` | ケース B、同上 | `tools/probe-mobile-drawers.js` |
 | `mobile-emulation-case-C.json` | ケース C、同上 | `tools/probe-mobile-drawers.js` |
 
+### `inkdrop/`（スクリーンショット、Inkdrop 6.1.5 の実機キャプチャ、CDP の `Page.captureScreenshot`）
+
+すべて不透明表示（acrylic を一時的に無効化）、1024×800 CSS px、`deviceScaleFactor` 1（画像も 1024×800 px）。サイドバーは検証用ノートブックのワークスペースに絞り、写っているのは検証用ノートブック「Theme Validation (Phase 2B)」とノート「Sample note」だけである（目視で確認）。検証用データは撮影後に削除した。
+
+| ファイル | 状態 | SHA-256（先頭 16 桁） |
+|---|---|---|
+| `sd-1-default.png` / `kd-1-default.png` | 既定（エディタにフォーカス、選択なし、行番号・アクティブ行は Inkdrop 既定の無効） | `b2e6916d1593d1bb` / `6a03c6ca9f52e66e` |
+| `sd-2-notelist-focus.png` / `kd-2-notelist-focus.png` | ノートリストにフォーカス（選択項目の左 5px バー） | `3dbc7e68d924d153` / `21d911b5f9e5e2c4` |
+| `sd-3-sidebar-hover.png` / `kd-3-sidebar-hover.png` | サイドバーのステータス行「Active」を hover（KD は状態 2 と同一の画素） | `448ba1179554befc` / `21d911b5f9e5e2c4` |
+| `sd-4-editor-selection.png` / `kd-4-editor-selection.png` | 行番号とアクティブ行を一時的に有効化し、「bold」を選択 | `76d786a1d356424d` / `5df7a8374bf51014` |
+| `sd-5-preview.png` / `kd-5-preview.png` | プレビュー | `e568b1862439888a` / `bee7277203826c11` |
+
+対応する Computed Style は `measurements/inkdrop-<sd|kd>-<状態>.json`。acrylic（macOS 既定）表示の Computed Style は `measurements/inkdrop-<sd|kd>-acrylic.json`（スクリーンショットはなし）。静的予測との照合結果は `measurements/inkdrop-static-vs-runtime.csv`。
+
 ### `tools/`（診断用スクリプト）
 
 | ファイル | 内容 |
@@ -63,7 +78,15 @@
 | `setup-layout.js`、`setup-lines.js` | テスト Vault のレイアウト（ノートを開く、左右ドックを展開、Outline を表示）と、行番号表示・カーソル位置の設定 |
 | `probe-*.js` | 上の測定 |
 | `enter-mobile-emulation.js`、`exit-mobile-emulation.js` | `app.emulateMobile(true / false)`。ウィンドウが再読み込みされる |
-| `probe-inkdrop.js` | **未実行**。Inkdrop の実機検証（V-20・V-22）用に用意した、読み取り専用の測定スクリプト |
+| `probe-inkdrop.js`、`probe-inkdrop-hover.js` | Inkdrop の各面・選択状態・エディタの Computed Style と DOM の親子関係を読む（読み取り専用。ノートの内容は読まない） |
+| `inkdrop-create-test-note.js` | 検証用ノートブックとノートを 1 件ずつ作る（ユーザーの承認による） |
+| `inkdrop-show-test-note.js` | サイドバーを検証用ノートブックのワークスペースに絞り、ノートを開く |
+| `inkdrop-select-theme.js` | テーマを切り替える |
+| `inkdrop-state.js` | 撮影状態（既定、ノートリストにフォーカス、エディタで選択、プレビュー）に切り替える。ノートの内容は変えない |
+| `inkdrop-editor-chrome-on.js` / `inkdrop-editor-chrome-off.js` | 行番号とアクティブ行の強調を一時的に有効化 / 既定（無効）に戻す |
+| `inkdrop-capture-theme.sh` | 1 テーマ分の撮影と測定（5 状態） |
+| `inkdrop-restore.js` | 検証前の状態への復元（テスト用ノート・ノートブックの削除、設定の復元） |
+| `compare-inkdrop.py` | 実機の Computed Style と、02 の宣言値（静的予測）を照合する |
 
 ## 再現手順（Obsidian）
 
@@ -91,4 +114,6 @@ node tools/cdp.mjs 9333 eval tools/probe-cascade.js
 ## 注意
 
 - モバイルの結果は、デスクトップ上の `app.emulateMobile(true)` によるエミュレーション（タブレット判定）である。iOS / Android の実機では検証していない。
-- Inkdrop の実機検証（V-30・V-20・V-22）は、Inkdrop が未インストールのため行っていない（11 §3・§4）。
+- Inkdrop の実機検証（V-30・V-20・V-22）は、当初は Inkdrop が未インストールのため行えなかった（11 §3・§4）。2026-10-10 にユーザーがインストールしたあと再開し、完了した（11 §14）。
+- Inkdrop の acrylic（macOS 既定の半透明）表示のスクリーンショットは含まれていない（11 §14.8）。
+- `cdp.mjs` の `eval` は、環境変数 `CDP_VIEWPORT=1024x800` を付けると、スクリーンショットと同じ表示サイズに固定してから評価する。`hovershot <out.png> <x> <y> [w h]` はマウスを移動してから撮影する。

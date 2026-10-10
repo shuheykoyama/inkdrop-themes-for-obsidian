@@ -40,6 +40,12 @@ function send(method, params = {}) {
 }
 
 if (cmd === "eval") {
+  // Optional fixed layout viewport (e.g. CDP_VIEWPORT=1024x800) so measurements match the screenshots.
+  if (process.env.CDP_VIEWPORT) {
+    const [vw, vh] = process.env.CDP_VIEWPORT.split("x").map(Number);
+    await send("Emulation.setDeviceMetricsOverride", { width: vw, height: vh, deviceScaleFactor: 1, mobile: false });
+    await new Promise((r) => setTimeout(r, 600));
+  }
   const expression = readFileSync(arg, "utf8");
   const res = await send("Runtime.evaluate", { expression, returnByValue: true, awaitPromise: true });
   if (res.result?.exceptionDetails) {
@@ -55,6 +61,17 @@ if (cmd === "eval") {
   const res = await send("Page.captureScreenshot", { format: "png" });
   writeFileSync(arg, Buffer.from(res.result.data, "base64"));
   console.log("wrote", arg);
+} else if (cmd === "hovershot") {
+  // hovershot <out.png> <x> <y> [w h]: move the mouse to (x, y) in CSS px, then capture (hover states).
+  const [out, x, y, vw, vh] = process.argv.slice(4);
+  if (vw && vh) {
+    await send("Emulation.setDeviceMetricsOverride", { width: +vw, height: +vh, deviceScaleFactor: 1, mobile: false });
+  }
+  await send("Input.dispatchMouseEvent", { type: "mouseMoved", x: +x, y: +y });
+  await new Promise((r) => setTimeout(r, 700));
+  const res = await send("Page.captureScreenshot", { format: "png" });
+  writeFileSync(out, Buffer.from(res.result.data, "base64"));
+  console.log("wrote", out);
 } else {
   console.error("unknown command", cmd);
   process.exit(1);

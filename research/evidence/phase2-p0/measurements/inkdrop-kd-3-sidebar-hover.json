@@ -1,0 +1,58 @@
+{
+  "theme": "kanagawa-dragon",
+  "hovered": [
+    {
+      "classes": [
+        "sidebar-menu-item",
+        "selectable",
+        "sidebar-menu-status-list-item"
+      ],
+      "rect": [
+        0,
+        246,
+        199,
+        30
+      ],
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgba(200, 192, 146, 0.8)",
+      "boxShadow": "rgba(0, 0, 0, 0) 5px 0px 0px 0px inset"
+    }
+  ],
+  "selected": [
+    {
+      "classes": [
+        "sidebar-menu-item",
+        "active",
+        "selectable",
+        "sidebar-menu-item-all-notes"
+      ],
+      "rect": [
+        0,
+        93,
+        199,
+        30
+      ],
+      "backgroundColor": "rgba(140, 165, 177, 0.2)",
+      "color": "rgb(197, 201, 197)",
+      "boxShadow": "rgba(0, 0, 0, 0) 5px 0px 0px 0px inset"
+    }
+  ],
+  "idle": [
+    {
+      "classes": [
+        "sidebar-menu-item",
+        "sidebar-menu-section-header",
+        "sidebar-menu-section-notebooks"
+      ],
+      "rect": [
+        0,
+        123,
+        199,
+        30
+      ],
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgba(138, 147, 168, 0.8)",
+      "boxShadow": "rgba(0, 0, 0, 0) 5px 0px 0px 0px inset"
+    }
+  ]
+}
