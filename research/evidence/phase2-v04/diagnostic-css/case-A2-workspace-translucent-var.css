@@ -1,0 +1,5 @@
+/* V-04 case A2 (diagnostic): the app.css variable used for .app-container while translucent
+   (not listed in the official CSS variable docs). */
+.theme-dark {
+  --workspace-background-translucent: rgba(0, 255, 255, 0.3);  /* cyan */
+}

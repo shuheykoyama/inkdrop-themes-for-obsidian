@@ -1,0 +1,5 @@
+/* V-04 case C3 (diagnostic): same targets with !important. Theme CSS loads after app.css, so with
+   equal importance a later / more specific declaration wins. */
+.is-translucent:not(.is-fullscreen) .workspace-split.mod-left-split { background-color: rgba(255, 0, 0, 0.5) !important; }
+.is-translucent:not(.is-fullscreen) .workspace-split.mod-right-split .workspace-tabs .workspace-leaf { background-color: rgba(0, 255, 0, 0.5) !important; }
+.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary { background-color: rgba(0, 0, 255, 0.5) !important; }

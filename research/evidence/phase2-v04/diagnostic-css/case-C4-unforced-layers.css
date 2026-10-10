@@ -1,0 +1,5 @@
+/* V-04 case C4 (diagnostic): paint layers that app.css does NOT force transparent
+   (.workspace-leaf-content, .view-content), without !important. */
+.workspace-split.mod-left-split .workspace-leaf-content { background-color: rgba(255, 0, 0, 0.5); }
+.workspace-split.mod-right-split .workspace-leaf-content { background-color: rgba(0, 255, 0, 0.5); }
+.workspace-split.mod-root .view-content { background-color: rgba(0, 0, 255, 0.5); }

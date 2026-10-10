@@ -219,6 +219,7 @@
 
 - macOS: `.mod-macos` の変数上書き、信号機ボタン領域（`--traffic-lights-offset-x/y`、app.js が読む）、`.is-translucent` による透過（03 §5、05 Workspace）。
 - Inkdrop 側: `:root:has(body.acrylic-window)` で半透明化、`.platform-win32` の dark 用上書き（01 §3.6、02 §1.4）。（Phase 2B で追加）Inkdrop 6.1.5 の macOS の既定は acrylic 有効で、各面の見た目は不透明表示と異なる（11 §14.4・§15、VERIFIED）。どちらを基準にするかは 09 Q-D22（未決定）。
+- （V-04 で追加、VERIFIED、Obsidian 1.14.4）Obsidian の translucent は macOS 専用で、`setVibrancy("sidebar")` を使う（Inkdrop は `under-window`）。translucent 時は `.workspace-split`・`.workspace-tabs`・`.workspace-leaf`・タブ帯・Ribbon・vault profile が `transparent !important` になり、テーマが変数で渡した色は描画されない。`.workspace-leaf-content` と中央のノート領域（`--background-primary` のスコープ再定義）は `!important` なしで半透明に塗れる。タブ帯・Ribbon を塗るには `!important` が必要。非アクティブ時はマテリアルの見た目が変わる（`visualEffectState` 未指定）。詳細は 12。
 - モバイル: `.is-mobile.theme-dark`（0,2,0）が `--color-base-00/10/20` を `#000 / #111 / #1e1e1e` に上書きする。テーマの `.theme-dark` は負ける（03 §2.4）。
 
 **影響**: macOS を最優先にする方針（確定済み）なら、`.mod-macos` と translucent の検証が必須。モバイルを対象外にするなら、モバイルで Obsidian 既定の黒背景が出ることを許容することになる（09 Q-D10）。

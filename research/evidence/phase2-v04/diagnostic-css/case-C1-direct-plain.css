@@ -1,0 +1,5 @@
+/* V-04 case C1 (diagnostic): direct background on the layers that app.css forces to
+   `transparent !important` while translucent, written without !important. */
+.workspace-split.mod-left-split { background-color: rgba(255, 0, 0, 0.5); }
+.workspace-split.mod-right-split .workspace-tabs .workspace-leaf { background-color: rgba(0, 255, 0, 0.5); }
+.workspace-ribbon.mod-primary { background-color: rgba(0, 0, 255, 0.5); }

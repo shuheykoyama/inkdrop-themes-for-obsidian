@@ -24,7 +24,9 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 | [09-open-questions.md](09-open-questions.md) | ユーザー判断事項 23 件（Q-D）、実機検証項目 30 件（V、優先順位付き）、その他の未確認事項 12 件（U） | **次に決めること** |
 | [10-review-remediation.md](10-review-remediation.md) | 独立レビュー（R-01〜R-12）の判定、根拠、修正内容、残る不確実性、Phase 2 へ進む条件 | 訂正の経緯 |
 | [11-runtime-validation.md](11-runtime-validation.md) | Phase 2B の実機検証（Obsidian 1.14.4 の CSS 優先関係・DOM・背景のスコープ再定義、Inkdrop 6.1.5 の背景面・状態色・エディタと基準スクリーンショット、半透明（acrylic）表示のネイティブキャプチャ）と、Inkdrop 配布物の静的解析。Q-D1 の選択肢別の技術評価 | **Q-D1 の判断材料** |
+| [12-obsidian-translucency-validation.md](12-obsidian-translucency-validation.md) | V-04: Obsidian 1.14.4 の translucent の仕組み、translucent 時の CSS 優先関係、Inkdrop の acrylic 宣言値を当てた合成結果と V-32 との比較、Q-D22 の各案の技術評価 | **Q-D22 の判断材料** |
 | [evidence/phase2-p0/](evidence/phase2-p0/README.md) | 11 の証拠（スクリーンショット、Computed Style の測定値、診断用 CSS / JS、テスト Vault） | 実測の確認 |
+| [evidence/phase2-v04/](evidence/phase2-v04/README.md) | 12 の証拠（ネイティブキャプチャ、Computed Style、画素の計測値、診断用 CSS、ツール） | 実測の確認 |
 | [tools/](tools/README.md) | `data/` を再生成するスクリプト、入力ソースの取得手順、検証手順 | 再現性の確認 |
 
 推奨する読み順:
@@ -38,7 +40,7 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 詳細と出典は各資料にある。ここでは結論と参照先だけを示す。Phase 1B で訂正した項目には（訂正）と書いた。
 
 1. **背景の奥行きが 2 テーマで逆である。** Solarized Dark はサイドバーが最も明るく、Kanagawa Dragon はエディタが最も明るい（02 §4）。
-   - （訂正）Obsidian の公式変数だけを使うなら、ペイン本体の地色は 2 色（ノート領域と、左右ドック共通の `--background-secondary`）になる。ただし、docs 未掲載のクラスへのスコープ再定義を使えば、3 段以上の背景を表現できる（例: `.workspace-split.mod-left-split { --background-secondary: … }` で左右のドックを塗り分ける）。制約として、一部の手段（`mod-primary-split`、`--sidebar-tab-container-background`）は 1.14 以降にしかなく、ドックのタブ帯は最上段ではタイトルバーの色と連動する。
+   - （訂正）Obsidian の公式変数だけを使うなら、ペイン本体の地色は 2 色（ノート領域と、左右ドック共通の `--background-secondary`）になる。ただし、docs 未掲載のクラスへのスコープ再定義を使えば、3 段以上の背景を表現できる（例: `.workspace-split.mod-left-split { --background-secondary: … }` で左右のドックを塗り分ける）。制約として、一部の手段（`mod-primary-split`、`--sidebar-tab-container-background`）は 1.14 以降にしかない。ドックの最上段のタブ帯は、公式変数だけではタイトルバーの色と連動するが、限定したセレクタ（`.mod-left-split .workspace-tabs.mod-top`）を使えば分離できる（11 §8.2。docs 未掲載のクラスへの依存が保守上のリスク）。
    - 一方、Inkdrop の横並びの 2 ペイン（サイドバー｜ノートリスト）という**構造**は、テーマ CSS では再現できない（06 §2、07 R05、09 Q-D1）。
 2. **Kanagawa Dragon の正本値は上流と違う。** Inkdrop 版は kanagawa.nvim の dragonBlack2 / 3 と名前が逆で、エディタ背景は上流の `ui.bg`（`#181616`）ではなく、HSL 宣言 `hsl(45deg 7% 11%)`（コメントの HEX は `#1D1C19`）である。
    - （訂正）この HSL を 8 ビットの sRGB に換算すると `#1e1d1a` になるが、これは**計算値**で、描画色を測ったものではない。最も厳密なのは、Obsidian 側でも同じ `hsl()` 宣言を書くことである（02 §2.2・§12、07 R14）。
@@ -55,6 +57,7 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 10. **（Phase 2B、VERIFIED）Inkdrop 6.1.5 の実機で、サイドバー・ノートリスト・エディタが横に並ぶ独立した面であること、選択状態の `*-active-background` が塗りではなくフォーカス時の左 5px のバーであることを確認した。** 主要な背景面・境界線・選択状態の 32 項目で、静的予測と実機の Computed Style が全件一致した。両テーマの基準スクリーンショット（不透明表示）も取得した（11 §14）。
 11. **（Phase 2B、VERIFIED）macOS の Inkdrop の既定は半透明（acrylic）表示で、各面の色が不透明時と変わる。** Solarized Dark ではサイドバーが base03 の 50%、ノートリストが neutral-900 の 70% になる。また、アクティブ行とガターは Inkdrop の既定では表示されない。どちらを忠実度の基準にするかは新しい判断事項（09 Q-D22・Q-D23）。
 12. **（Phase 2B、V-32、VERIFIED）acrylic 表示の実際の見え方をネイティブの画面キャプチャで確認した。** この環境では、合成結果は背後のウィンドウの柄にもフォーカスの有無にも依存せず、各面がほぼ一定の暗い灰色の下地に重なった見た目になった。Solarized Dark は明度の順（サイドバー > ノートリスト > エディタ）を保ったまま差が縮み、Kanagawa Dragon は 3 面がほぼ同じ明るさになる（不透明時の順は崩れる）。画素値はディスプレイの色空間の合成結果で、CSS の値ではない。壁紙の影響は未確認（11 §15）。
+13. **（V-04、VERIFIED）Obsidian の translucent で、Inkdrop の acrylic の見た目をほぼ再現できた（この環境、アクティブ時）。** Obsidian は macOS でだけ `setVibrancy("sidebar")` を使い（Inkdrop は `under-window`）、左右ドック・タブ帯・Ribbon を `transparent !important` にする。テーマは `.workspace-leaf-content` と中央のノート領域なら `!important` なしで半透明の面を描け、Inkdrop の acrylic 宣言値をそのまま置くと、合成後の画素が V-32 と ΔE2000 0.4 未満で一致した。タブ帯・Ribbon まで塗るには `!important` が要り、非アクティブ時は Obsidian だけマテリアルの見た目が変わる。`.is-translucent` の 1 条件で不透明配色と切り替えられる（12）。
 
 ### レビューの重点
 
@@ -72,9 +75,9 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 ### Phase 2 で検討すべき事項
 
 1. 09 §1 の Q-D のうち「Phase 2 前半」のもの。Q-D2・Q-D6・Q-D9・Q-D10・Q-D13・Q-D15・Q-D20・Q-D21 はユーザーが確定済み（09 §0.1）。未決定で先に必要なのは Q-D22（不透明表示と半透明表示のどちらを基準にするか）と Q-D1（サイドドックと帯への色の割り当て。Q-D22 と同時に判断）。Q-D23（アクティブ行・ガター）は Phase 2 後半。Q-D16（directory 配布）は配布前まで保留できる。
-2. 09 §2.1 の P0 の実機検証（V-30、V-20・V-22、V-01）は完了した（11 §7・§14・§15）。残る P1 は V-10・V-11（一部）・V-12・V-29（一部）・V-31（一部）と、Q-D22 の選択次第で V-04（Obsidian の translucent）。
+2. 09 §2.1 の P0 の実機検証（V-30、V-20・V-22、V-01）は完了した（11 §7・§14・§15）。V-04（Obsidian の translucent）も P1 として実施した（12）。残る P1 は V-10・V-11（一部）・V-12・V-29（一部）・V-31（一部）。
 3. 06 の候補から配色仕様を確定すること。
-4. 08 の実装方式の確定（案 B と案 C の小さな試作による比較を推奨）。
+4. 実装方式の最終確定。Q-D21 で「Vanilla CSS + PostCSS（`postcss-import`）を第一候補とし、小規模な技術検証で最終確定する」ことがユーザーにより決まっている（09 §0.1）。次に必要なのはこの第一候補の小規模な技術検証である（08 の比較表は判断材料として残す）。
 
 ### 機械可読データ（`data/`）
 
@@ -127,7 +130,7 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 | E 技術課題と実装候補 | 完了 | ディレクトリ構造とビルドツールは未確定（意図どおり） |
 | 独立レビュー対応（Phase 1B） | 完了 | R-01〜R-12 の判定と修正（10） |
 | 再現性 | 完了（スクリプト収録・再生成で一致） | 人手の判断を含む行の内容は再現の対象外（00 §6） |
-| 実機検証 | **一部完了**（Phase 2B） | P0（V-01・V-20・V-22・V-30）と V-03・V-16・V-32 は VERIFIED（11）。モバイル実機、V-33 などは未実施（09 §0.2・§2） |
+| 実機検証 | **一部完了**（Phase 2B） | P0（V-01・V-20・V-22・V-30）と V-03・V-16・V-32 は VERIFIED（11）、V-04 は VERIFIED（12）。モバイル実機、V-33 などは未実施（09 §0.2・§2） |
 
 ### 意図的に行っていないこと
 

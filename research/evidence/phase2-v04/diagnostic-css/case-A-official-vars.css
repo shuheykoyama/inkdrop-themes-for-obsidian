@@ -1,0 +1,9 @@
+/* V-04 case A (diagnostic, not theme code): official CSS variables only, defined on .theme-dark.
+   Sentinel colours are semi-transparent so a painted layer is visible in native captures. */
+.theme-dark {
+  --background-primary: rgba(255, 0, 0, 0.5);          /* red: editor */
+  --background-secondary: rgba(0, 255, 0, 0.5);        /* green: side docks */
+  --ribbon-background: rgba(0, 0, 255, 0.5);           /* blue */
+  --titlebar-background: rgba(255, 255, 0, 0.5);       /* yellow */
+  --tab-container-background: rgba(255, 0, 255, 0.5);  /* magenta */
+}

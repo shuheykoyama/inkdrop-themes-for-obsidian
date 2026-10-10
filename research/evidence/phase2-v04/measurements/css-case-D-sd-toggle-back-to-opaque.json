@@ -1,0 +1,350 @@
+{
+  "measuredAt": "2026-10-10T03:49:41.534Z",
+  "obsidian": "1.14.4",
+  "electron": "39.5.1",
+  "themeHead": "/* V-04 case case-D-sd (diagnostic only, NOT theme code): Inkdrop Solarized Dark",
+  "translucencyConfig": false,
+  "bodyClasses": [
+    "theme-dark",
+    "mod-macos",
+    "is-frameless",
+    "is-hidden-frameless",
+    "obsidian-app",
+    "show-inline-title",
+    "is-floating-nav",
+    "auto-full-screen",
+    "show-ribbon",
+    "show-view-header",
+    "is-focused"
+  ],
+  "windowFocused": true,
+  "documentHasFocus": true,
+  "bounds": {
+    "x": 400,
+    "y": 250,
+    "width": 1200,
+    "height": 700
+  },
+  "viewport": [
+    1200,
+    700,
+    2
+  ],
+  "vars": {
+    "--background-primary": "#1C1C1C",
+    "--background-secondary": "#282828",
+    "--ribbon-background": "#282828",
+    "--titlebar-background": "#282828",
+    "--tab-container-background": "#282828",
+    "--workspace-background-translucent": "color-mix(in oklch, black 60%, transparent)",
+    "left --background-secondary": "hsl(192deg 81% 14%)",
+    "right --background-secondary": "hsl(192deg 100% 11%)",
+    "root --background-primary": "hsl(192deg 100% 8%)"
+  },
+  "layers": {
+    "body": {
+      "selector": "body",
+      "backgroundColor": "rgb(28, 28, 28)",
+      "rect": [
+        0,
+        0,
+        1200,
+        700
+      ]
+    },
+    "app-container": {
+      "selector": ".app-container",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": [
+        0,
+        0,
+        1200,
+        700
+      ]
+    },
+    "horizontal-main-container": {
+      "selector": ".horizontal-main-container",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": [
+        0,
+        0,
+        1200,
+        700
+      ]
+    },
+    "workspace": {
+      "selector": ".workspace",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": [
+        0,
+        0,
+        1200,
+        700
+      ]
+    },
+    "ribbon": {
+      "selector": ".workspace-ribbon.mod-primary",
+      "backgroundColor": "rgb(40, 40, 40)",
+      "rect": [
+        0,
+        40,
+        44,
+        660
+      ]
+    },
+    "left split": {
+      "selector": ".workspace-split.mod-left-split",
+      "backgroundColor": "rgb(40, 40, 40)",
+      "rect": [
+        44,
+        0,
+        260,
+        700
+      ]
+    },
+    "left tab-header-container": {
+      "selector": ".workspace-split.mod-left-split .workspace-tab-header-container",
+      "backgroundColor": "rgb(40, 40, 40)",
+      "rect": [
+        44,
+        0,
+        260,
+        40
+      ]
+    },
+    "left tabs": {
+      "selector": ".workspace-split.mod-left-split .workspace-tabs",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": [
+        44,
+        0,
+        260,
+        658
+      ]
+    },
+    "left leaf": {
+      "selector": ".workspace-split.mod-left-split .workspace-leaf",
+      "backgroundColor": "rgb(7, 53, 65)",
+      "rect": [
+        44,
+        40,
+        260,
+        618
+      ]
+    },
+    "left leaf-content (file-explorer)": {
+      "selector": ".workspace-leaf-content[data-type=\"file-explorer\"]",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": [
+        44,
+        40,
+        260,
+        618
+      ]
+    },
+    "left nav-header": {
+      "selector": ".workspace-leaf-content[data-type=\"file-explorer\"] .nav-header",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": [
+        44,
+        40,
+        260,
+        40
+      ]
+    },
+    "left nav-files-container": {
+      "selector": ".workspace-leaf-content[data-type=\"file-explorer\"] .nav-files-container",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": [
+        44,
+        80,
+        260,
+        578
+      ]
+    },
+    "left vault-profile": {
+      "selector": ".workspace-sidedock-vault-profile",
+      "backgroundColor": "rgb(7, 53, 65)",
+      "rect": [
+        44,
+        658,
+        260,
+        42
+      ]
+    },
+    "root split": {
+      "selector": ".workspace-split.mod-root",
+      "backgroundColor": "rgb(0, 33, 41)",
+      "rect": [
+        304,
+        0,
+        636,
+        700
+      ]
+    },
+    "root tab-header-container": {
+      "selector": ".workspace-split.mod-root .workspace-tab-header-container",
+      "backgroundColor": "rgb(40, 40, 40)",
+      "rect": [
+        304,
+        0,
+        636,
+        40
+      ]
+    },
+    "root tabs": {
+      "selector": ".workspace-split.mod-root .workspace-tabs",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": [
+        304,
+        0,
+        636,
+        700
+      ]
+    },
+    "root leaf": {
+      "selector": ".workspace-split.mod-root .workspace-leaf",
+      "backgroundColor": "rgb(0, 33, 41)",
+      "rect": [
+        304,
+        40,
+        636,
+        660
+      ]
+    },
+    "root leaf-content": {
+      "selector": ".workspace-split.mod-root .workspace-leaf-content",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": [
+        304,
+        40,
+        636,
+        660
+      ]
+    },
+    "root view-header": {
+      "selector": ".workspace-split.mod-root .view-header",
+      "backgroundColor": "rgb(0, 33, 41)",
+      "rect": [
+        304,
+        40,
+        636,
+        38
+      ]
+    },
+    "root view-content": {
+      "selector": ".workspace-split.mod-root .view-content",
+      "backgroundColor": "rgb(0, 33, 41)",
+      "rect": [
+        304,
+        78,
+        636,
+        622
+      ]
+    },
+    "root markdown-source-view": {
+      "selector": ".workspace-split.mod-root .markdown-source-view",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": [
+        304,
+        78,
+        636,
+        622
+      ]
+    },
+    "root cm-editor": {
+      "selector": ".workspace-split.mod-root .cm-editor",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": [
+        304,
+        78,
+        636,
+        622
+      ]
+    },
+    "root cm-scroller": {
+      "selector": ".workspace-split.mod-root .cm-scroller",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": [
+        304,
+        78,
+        636,
+        622
+      ]
+    },
+    "right split": {
+      "selector": ".workspace-split.mod-right-split",
+      "backgroundColor": "rgb(40, 40, 40)",
+      "rect": [
+        940,
+        0,
+        260,
+        700
+      ]
+    },
+    "right tab-header-container": {
+      "selector": ".workspace-split.mod-right-split .workspace-tab-header-container",
+      "backgroundColor": "rgb(40, 40, 40)",
+      "rect": [
+        940,
+        0,
+        260,
+        40
+      ]
+    },
+    "right leaf": {
+      "selector": ".workspace-split.mod-right-split .workspace-leaf:has(> .workspace-leaf-content[data-type=\"outline\"])",
+      "backgroundColor": "rgb(0, 45, 56)",
+      "rect": [
+        940,
+        40,
+        260,
+        660
+      ]
+    },
+    "right leaf-content (outline)": {
+      "selector": ".workspace-leaf-content[data-type=\"outline\"]",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": [
+        940,
+        40,
+        260,
+        660
+      ]
+    },
+    "right view-content": {
+      "selector": ".workspace-leaf-content[data-type=\"outline\"] .view-content",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": [
+        940,
+        80,
+        260,
+        620
+      ]
+    },
+    "status-bar": {
+      "selector": ".status-bar",
+      "backgroundColor": "rgb(40, 40, 40)",
+      "rect": [
+        819,
+        673,
+        381,
+        27
+      ]
+    },
+    "titlebar": {
+      "selector": ".titlebar",
+      "backgroundColor": "rgb(40, 40, 40)",
+      "rect": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "ribbon:before": {
+      "selector": ".workspace-ribbon.mod-primary::before",
+      "backgroundColor": "rgb(40, 40, 40)"
+    }
+  }
+}

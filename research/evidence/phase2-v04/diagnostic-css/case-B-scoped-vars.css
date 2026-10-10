@@ -1,0 +1,5 @@
+/* V-04 case B (diagnostic): scoped redefinition of official variables per region. */
+.workspace-split.mod-left-split { --background-secondary: rgba(255, 0, 0, 0.5); --tab-container-background: rgba(255, 0, 0, 0.5); }
+.workspace-split.mod-right-split { --background-secondary: rgba(0, 255, 0, 0.5); --tab-container-background: rgba(0, 255, 0, 0.5); }
+.workspace-split.mod-root { --background-primary: rgba(0, 0, 255, 0.5); }
+.workspace-leaf-content[data-type="file-explorer"] { --background-secondary: rgba(255, 255, 0, 0.5); }

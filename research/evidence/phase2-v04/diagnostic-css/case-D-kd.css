@@ -1,0 +1,31 @@
+/* V-04 case case-D-kd (diagnostic only, NOT theme code): Inkdrop Kanagawa Dragon colours on a provisional mapping
+   left dock = Inkdrop sidebar, right dock = Inkdrop note list, centre note = Inkdrop editor.
+   Values are the HSL declarations Inkdrop 6.1.5 applies (opaque, and the acrylic-window overrides).
+   Switches by body.is-translucent only (Q-D22 (c) feasibility check). */
+.theme-dark {
+  --v04-sidebar: hsl(60deg 9% 6%);
+  --v04-notelist: hsl(0deg 4% 9%);
+  --v04-editor: hsl(45deg 7% 11%);
+}
+.theme-dark.is-translucent:not(.is-fullscreen) {
+  --v04-sidebar: hsl(60deg 9% 6% / 50%);
+  --v04-notelist: hsl(0deg 4% 9% / 70%);
+  --v04-editor: hsl(45deg 7% 11% / 90%);
+  /* Inkdrop sets --page-background: transparent under acrylic; Obsidian tints .app-container with
+     this (undocumented) variable, default color-mix(in oklch, black 60%, transparent). */
+  --workspace-background-translucent: transparent;
+}
+/* Opaque mode: whole docks via scoped official variables (V-16). */
+.workspace-split.mod-left-split { --background-secondary: var(--v04-sidebar); }
+.workspace-split.mod-right-split { --background-secondary: var(--v04-notelist); }
+/* Centre note area: scoped official variable (paints .view-header / .view-content). */
+.workspace-split.mod-root {
+  --background-primary: var(--v04-editor);
+  /* The note header resolves --file-header-background(-focused) on body, so it is redefined here too. */
+  --file-header-background: var(--v04-editor);
+  --file-header-background-focused: var(--v04-editor);
+}
+/* Translucent mode: the split / tabs / leaf layers are forced transparent !important by app.css,
+   so the dock colour is put on the leaf content, which app.css does not force. */
+.is-translucent:not(.is-fullscreen) .workspace-split.mod-left-split .workspace-leaf-content { background-color: var(--v04-sidebar); }
+.is-translucent:not(.is-fullscreen) .workspace-split.mod-right-split .workspace-leaf-content { background-color: var(--v04-notelist); }
