@@ -46,5 +46,17 @@ for ver in 1.14.4 1.13.7; do
   echo "extracted Obsidian $ver"
 done
 
+# Inkdrop 6.1.5 public distribution (Phase 2B, static analysis only: never installed or launched).
+inkdrop_zip="$work/inkdrop-dist/inkdrop-6.1.5-arm64-mac.zip"
+inkdrop_sha="96c9a1e636a64814f3e3e6b32e5f612d981b7d99284ce8ef938c8d9a4b46bf49"
+if [ ! -f "$work/inkdrop-dist/asar/package.json" ]; then
+  mkdir -p "$work/inkdrop-dist"
+  curl -fsSL -o "$inkdrop_zip" "https://dist.inkdrop.app/releases/inkdrop-6.1.5-arm64-mac.zip"
+  echo "$inkdrop_sha  $inkdrop_zip" | shasum -a 256 -c -
+  ditto -x -k "$inkdrop_zip" "$work/inkdrop-dist/unzipped"
+  npx -y @electron/asar@4.3.1 extract "$work/inkdrop-dist/unzipped/Inkdrop.app/Contents/Resources/app.asar" "$work/inkdrop-dist/asar"
+  echo "extracted Inkdrop 6.1.5"
+fi
+
 # Expected app.css SHA-256 values recorded in research/00-sources.md.
 shasum -a 256 "$work"/obsidian-app/asar-*/app.css

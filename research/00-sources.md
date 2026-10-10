@@ -127,6 +127,14 @@ Phase 1B（独立レビュー対応）で追加した一次情報:
 | Obsidian 1.14.4 の `lib/codemirror/modes.min.js`、`lib/prism.min.js` | 編集ビューは CM5 モード（`defineMode("…")` の呼び出し 119 個）、閲覧ビューは Prism（03 §6.3） | 2026-10-09 |
 | `sass` 1.105.1、`lightningcss-cli` 1.33.0（`npx` で一時実行、リポジトリには追加していない） | 色の出力形式（08 §3.3・§3.5） | 2026-10-09 |
 
+Phase 2B（実機検証）で追加した一次情報:
+
+| 対象 | 確認内容 | 取得日 |
+|---|---|---|
+| Inkdrop 6.1.5（`https://dist.inkdrop.app/releases/inkdrop-6.1.5-arm64-mac.zip`、SHA-256 `96c9a1e636a64814f3e3e6b32e5f612d981b7d99284ce8ef938c8d9a4b46bf49`）。URL は [Homebrew cask](https://formulae.brew.sh/cask/inkdrop) の記載 | 本体の `app.asar` を展開して CSS / JS を静的解析（起動・インストールはしていない）。同梱の `@inkdropapp/css` は 0.9.12 | 2026-10-10 |
+| Obsidian 1.14.4 の実機（隔離インスタンス、macOS 26.5.2、Electron 39.5.1） | CSS の優先関係、DOM 構造、背景のスコープ再定義（[11](11-runtime-validation.md)、[evidence/phase2-p0/](evidence/phase2-p0/README.md)） | 2026-10-10 |
+| Obsidian インストーラー 1.11.7 の `main.js` | `userData` ディレクトリにある最新の `obsidian-<ver>.asar` を読み込むこと（隔離インスタンスの起動方法の根拠） | 2026-10-10 |
+
 ---
 
 ## 6. 生成データと再現手順
@@ -143,6 +151,7 @@ Phase 1B（独立レビュー対応）で追加した一次情報:
 | `obsidian-ui-inventory.csv` | Obsidian の UI 要素 108 件 | `mkcsv.py`（行の内容はスクリプト内に人手で記述） |
 | `mapping-candidates.csv` | Inkdrop ↔ Obsidian 対応候補 97 件 | `gen_mapping.py`（行の内容は人手、値の列は機械抽出） |
 | `inkdrop-contrast.csv` | 主要な文字色・背景色の組のコントラスト比 30 件 | `contrast.py` |
+| `inkdrop-consumers-6.1.5.csv` | （Phase 2B）Inkdrop 6.1.5 の本体 CSS / JS でのトークンの消費箇所 277 件（STATIC） | `inkdrop_consumers.py`（入力は `fetch_sources.sh` が取得・展開する配布物） |
 
 **再現性の検証結果（Phase 1B）**: `fetch_sources.sh` で 30 リポジトリを記録済みの SHA で取得し直し、Obsidian 1.14.4 / 1.13.7 の asar を GitHub Releases から取得し直した。`app.css` の SHA-256 は §2.1 の値と一致した。この入力から `regenerate.sh` で再生成したところ、Phase 1B での修正前の時点で、8 ファイルすべてがコミット済みのファイル（基準コミット `e35d5f5`）とバイト単位で一致した。ただし `obsidian-css-variables-1.14.4.csv` は、手書きの注記 15 件を `manual_notes.json` に切り出してからの一致である（Phase 1 では一時的なスニペットで追記していた）。
 

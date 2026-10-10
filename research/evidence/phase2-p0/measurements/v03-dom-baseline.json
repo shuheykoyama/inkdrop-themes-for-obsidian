@@ -1,0 +1,806 @@
+{
+  "body": {
+    "selector": "body",
+    "count": 1,
+    "classes": [
+      "theme-dark",
+      "mod-macos",
+      "is-frameless",
+      "is-hidden-frameless",
+      "obsidian-app",
+      "show-inline-title",
+      "is-floating-nav",
+      "auto-full-screen",
+      "show-ribbon",
+      "show-view-header",
+      "is-focused"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgb(28, 28, 28)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "html"
+    ]
+  },
+  "ribbon(left)": {
+    "selector": ".workspace-ribbon.mod-left",
+    "count": 0
+  },
+  "split.mod-left-split": {
+    "selector": ".workspace-split.mod-left-split",
+    "count": 1,
+    "classes": [
+      "workspace-split",
+      "mod-horizontal",
+      "mod-sidedock",
+      "mod-primary-split",
+      "mod-left-split"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgb(40, 40, 40)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "split.mod-right-split": {
+    "selector": ".workspace-split.mod-right-split",
+    "count": 1,
+    "classes": [
+      "workspace-split",
+      "mod-horizontal",
+      "mod-sidedock",
+      "mod-secondary-split",
+      "mod-right-split"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgb(40, 40, 40)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "split.mod-primary-split": {
+    "selector": ".workspace-split.mod-primary-split",
+    "count": 1,
+    "classes": [
+      "workspace-split",
+      "mod-horizontal",
+      "mod-sidedock",
+      "mod-primary-split",
+      "mod-left-split"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgb(40, 40, 40)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "split.mod-secondary-split": {
+    "selector": ".workspace-split.mod-secondary-split",
+    "count": 1,
+    "classes": [
+      "workspace-split",
+      "mod-horizontal",
+      "mod-sidedock",
+      "mod-secondary-split",
+      "mod-right-split"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgb(40, 40, 40)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "split.mod-root": {
+    "selector": ".workspace-split.mod-root",
+    "count": 1,
+    "classes": [
+      "workspace-split",
+      "mod-vertical",
+      "mod-root"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgb(28, 28, 28)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "left: tabs.mod-top": {
+    "selector": ".workspace-split.mod-left-split .workspace-tabs.mod-top",
+    "count": 1,
+    "classes": [
+      "workspace-tabs",
+      "mod-top",
+      "mod-top-left-space",
+      "mod-active"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace-split.mod-horizontal.mod-sidedock.mod-primary-split.mod-left-split",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "left: tab-header-container": {
+    "selector": ".workspace-split.mod-left-split .workspace-tab-header-container",
+    "count": 1,
+    "classes": [
+      "workspace-tab-header-container"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgb(40, 40, 40)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace-tabs.mod-top.mod-top-left-space.mod-active",
+      "div.workspace-split.mod-horizontal.mod-sidedock.mod-primary-split.mod-left-split",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "left: leaf": {
+    "selector": ".workspace-split.mod-left-split .workspace-leaf",
+    "count": 3,
+    "classes": [
+      "workspace-leaf",
+      "mod-active"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgb(40, 40, 40)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace-tab-container",
+      "div.workspace-tabs.mod-top.mod-top-left-space.mod-active",
+      "div.workspace-split.mod-horizontal.mod-sidedock.mod-primary-split.mod-left-split",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "left: file-explorer leaf-content": {
+    "selector": ".workspace-leaf-content[data-type=\"file-explorer\"]",
+    "count": 1,
+    "classes": [
+      "workspace-leaf-content"
+    ],
+    "dataType": "file-explorer",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace-leaf.mod-active",
+      "div.workspace-tab-container",
+      "div.workspace-tabs.mod-top.mod-top-left-space.mod-active",
+      "div.workspace-split.mod-horizontal.mod-sidedock.mod-primary-split.mod-left-split",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "left: nav-header": {
+    "selector": ".workspace-leaf-content[data-type=\"file-explorer\"] .nav-header",
+    "count": 1,
+    "classes": [
+      "nav-header"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace-leaf-content",
+      "div.workspace-leaf.mod-active",
+      "div.workspace-tab-container",
+      "div.workspace-tabs.mod-top.mod-top-left-space.mod-active",
+      "div.workspace-split.mod-horizontal.mod-sidedock.mod-primary-split.mod-left-split",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "left: nav-files-container": {
+    "selector": ".workspace-leaf-content[data-type=\"file-explorer\"] .nav-files-container",
+    "count": 1,
+    "classes": [
+      "nav-files-container",
+      "node-insert-event"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace-leaf-content",
+      "div.workspace-leaf.mod-active",
+      "div.workspace-tab-container",
+      "div.workspace-tabs.mod-top.mod-top-left-space.mod-active",
+      "div.workspace-split.mod-horizontal.mod-sidedock.mod-primary-split.mod-left-split",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "left: view-content": {
+    "selector": ".workspace-leaf-content[data-type=\"file-explorer\"] .view-content",
+    "count": 0
+  },
+  "left: vault-profile": {
+    "selector": ".workspace-sidedock-vault-profile",
+    "count": 1,
+    "classes": [
+      "workspace-sidedock-vault-profile"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgb(40, 40, 40)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace-split.mod-horizontal.mod-sidedock.mod-primary-split.mod-left-split",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "right: tabs.mod-top": {
+    "selector": ".workspace-split.mod-right-split .workspace-tabs.mod-top",
+    "count": 1,
+    "classes": [
+      "workspace-tabs",
+      "mod-top",
+      "mod-top-right-space"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace-split.mod-horizontal.mod-sidedock.mod-secondary-split.mod-right-split",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "right: tab-header-container": {
+    "selector": ".workspace-split.mod-right-split .workspace-tab-header-container",
+    "count": 1,
+    "classes": [
+      "workspace-tab-header-container"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgb(40, 40, 40)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace-tabs.mod-top.mod-top-right-space",
+      "div.workspace-split.mod-horizontal.mod-sidedock.mod-secondary-split.mod-right-split",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "right: leaf": {
+    "selector": ".workspace-split.mod-right-split .workspace-leaf",
+    "count": 5,
+    "classes": [
+      "workspace-leaf"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgb(40, 40, 40)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace-tab-container",
+      "div.workspace-tabs.mod-top.mod-top-right-space",
+      "div.workspace-split.mod-horizontal.mod-sidedock.mod-secondary-split.mod-right-split",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "root: tabs.mod-top": {
+    "selector": ".workspace-split.mod-root .workspace-tabs.mod-top",
+    "count": 1,
+    "classes": [
+      "workspace-tabs",
+      "mod-top"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace-split.mod-vertical.mod-root",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "root: tab-header-container": {
+    "selector": ".workspace-split.mod-root .workspace-tab-header-container",
+    "count": 1,
+    "classes": [
+      "workspace-tab-header-container"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgb(40, 40, 40)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace-tabs.mod-top",
+      "div.workspace-split.mod-vertical.mod-root",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "root: active tab": {
+    "selector": ".workspace-split.mod-root .workspace-tab-header.is-active",
+    "count": 1,
+    "classes": [
+      "workspace-tab-header",
+      "tappable",
+      "is-active"
+    ],
+    "dataType": "markdown",
+    "backgroundColor": "rgb(28, 28, 28)",
+    "color": "rgb(179, 179, 179)",
+    "borderRight": "0px none rgb(179, 179, 179)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace-tab-header-container-inner",
+      "div.workspace-tab-header-container",
+      "div.workspace-tabs.mod-top",
+      "div.workspace-split.mod-vertical.mod-root",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "root: view-header": {
+    "selector": ".workspace-split.mod-root .view-header",
+    "count": 1,
+    "classes": [
+      "view-header"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgb(28, 28, 28)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace-leaf-content",
+      "div.workspace-leaf",
+      "div.workspace-tab-container",
+      "div.workspace-tabs.mod-top",
+      "div.workspace-split.mod-vertical.mod-root",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "root: view-content": {
+    "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-content",
+    "count": 0
+  },
+  "root: cm-editor": {
+    "selector": ".workspace-split.mod-root .cm-editor",
+    "count": 1,
+    "classes": [
+      "cm-editor",
+      "cm-focused",
+      "ͼ1",
+      "ͼ2"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.markdown-source-view.cm-s-obsidian.mod-cm6.node-insert-event.is-readable-line-width.is-live-preview.is-folding.show-properties",
+      "div.view-content",
+      "div.workspace-leaf-content",
+      "div.workspace-leaf",
+      "div.workspace-tab-container",
+      "div.workspace-tabs.mod-top",
+      "div.workspace-split.mod-vertical.mod-root",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open"
+    ]
+  },
+  "root: cm-gutters": {
+    "selector": ".markdown-source-view.mod-cm6 .cm-gutters",
+    "count": 0
+  },
+  "titlebar": {
+    "selector": ".titlebar",
+    "count": 1,
+    "classes": [
+      "titlebar"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgb(40, 40, 40)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": []
+  },
+  "status-bar": {
+    "selector": ".status-bar",
+    "count": 1,
+    "classes": [
+      "status-bar"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgb(40, 40, 40)",
+    "color": "rgb(179, 179, 179)",
+    "borderRight": "0px solid rgb(51, 51, 51)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.app-container"
+    ]
+  },
+  "sidebar-toggle-button(left)": {
+    "selector": ".sidebar-toggle-button.mod-left",
+    "count": 1,
+    "classes": [
+      "sidebar-toggle-button",
+      "mod-primary",
+      "mod-left"
+    ],
+    "dataType": null,
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "color": "rgb(218, 218, 218)",
+    "borderRight": "0px none rgb(218, 218, 218)",
+    "vars": {
+      "--background-primary": "#1C1C1C",
+      "--background-secondary": "#282828",
+      "--ribbon-background": "#282828",
+      "--tab-container-background": "#282828",
+      "--sidebar-tab-container-background": "#282828",
+      "--titlebar-background": "#282828",
+      "--text-faint": "#666666",
+      "--interactive-normal": "#333333",
+      "--interactive-accent": "hsl(258, 88%, 66%)",
+      "--text-selection": "color-mix(in oklch, hsl(258, 88%, 66%) 33%, transparent)",
+      "--canvas-color": "#7e7e7e"
+    },
+    "parents": [
+      "div.workspace-tab-header-container",
+      "div.workspace-tabs.mod-top.mod-top-left-space.mod-active",
+      "div.workspace-split.mod-horizontal.mod-sidedock.mod-primary-split.mod-left-split",
+      "div.workspace.is-primary-sidedock-open.is-left-sidedock-open.is-secondary-sidedock-open.is-right-sidedock-open",
+      "div.horizontal-main-container",
+      "div.app-container"
+    ]
+  },
+  "_modTopGroups": [
+    "workspace-split.mod-horizontal.mod-sidedock.mod-primary-split.mod-left-split",
+    "workspace-split.mod-vertical.mod-root",
+    "workspace-split.mod-horizontal.mod-sidedock.mod-secondary-split.mod-right-split"
+  ],
+  "_fileExplorerChildren": [
+    "nav-header",
+    "nav-files-container.node-insert-event"
+  ],
+  "_fileExplorerViewContentChildren": null
+}

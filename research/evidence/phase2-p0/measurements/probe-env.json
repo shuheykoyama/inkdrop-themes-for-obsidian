@@ -1,0 +1,25 @@
+{
+  "_note": "Output of tools/probe-env.js on 2026-10-10 against the isolated Obsidian 1.14.4 instance, right after launch (empty diagnostic theme). The run printed to the terminal only; this file is the verbatim output copied from that session log.",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) obsidian/1.11.7 Chrome/142.0.7444.265 Electron/39.5.1 Safari/537.36",
+  "obsidianTitle": "New tab - vault - Obsidian 1.14.4",
+  "bodyClasses": [
+    "theme-dark",
+    "mod-macos",
+    "is-frameless",
+    "is-hidden-frameless",
+    "obsidian-app",
+    "show-inline-title",
+    "is-floating-nav",
+    "auto-full-screen",
+    "show-ribbon",
+    "show-view-header",
+    "is-focused"
+  ],
+  "cssTheme": "P2B-Diagnostic",
+  "stylesheetOrder": [
+    { "index": 0, "tag": "link", "href": "app.css", "head": null, "isThemeStyleEl": false },
+    { "index": 1, "tag": "style", "href": null, "head": "/* empty baseline */\n", "isThemeStyleEl": true }
+  ],
+  "devicePixelRatio": 2,
+  "viewport": [1024, 800]
+}

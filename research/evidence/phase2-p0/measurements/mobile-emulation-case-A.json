@@ -1,0 +1,58 @@
+{
+  "bodyClasses": [
+    "theme-dark",
+    "mod-macos",
+    "is-frameless",
+    "is-hidden-frameless",
+    "is-focused",
+    "obsidian-app",
+    "emulate-mobile",
+    "is-tablet",
+    "is-mobile",
+    "show-inline-title",
+    "is-floating-nav",
+    "auto-full-screen",
+    "show-ribbon",
+    "show-view-header"
+  ],
+  "counts": {
+    ".workspace-split.mod-left-split": 0,
+    ".workspace-split.mod-right-split": 0,
+    ".workspace-split.mod-primary-split": 0,
+    ".workspace-split.mod-secondary-split": 0,
+    ".workspace-drawer": 2,
+    ".workspace-drawer.mod-left": 1,
+    ".workspace-drawer.mod-primary": 1,
+    ".workspace-tabs.mod-top": 1,
+    ".workspace-leaf-content[data-type=\"file-explorer\"]": 1,
+    ".nav-header": 2,
+    ".nav-files-container": 1,
+    ".workspace-ribbon": 0,
+    ".titlebar": 1,
+    ".status-bar": 1
+  },
+  "drawerClasses": [
+    [
+      "workspace-drawer",
+      "mod-primary",
+      "mod-left"
+    ],
+    [
+      "workspace-drawer",
+      "mod-secondary",
+      "mod-right"
+    ]
+  ],
+  "drawerChildren": [
+    "workspace-drawer-inner",
+    "workspace-leaf-resize-handle.tappable"
+  ],
+  "drawer_bg": "rgb(0, 51, 0)",
+  "drawer_leaf_bg": "rgba(0, 0, 0, 0)",
+  "navHeader_bg": "rgb(102, 102, 0)",
+  "navFiles_bg": "rgb(102, 0, 102)",
+  "body_bgSecondary": "rgb(0, 51, 0)",
+  "body_colorBase00": "#000",
+  "body_bgPrimary": "rgb(51, 0, 0)",
+  "mobileSidebarBackground": "rgb(0, 51, 0)"
+}

@@ -23,6 +23,8 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 | [08-architecture-options.md](08-architecture-options.md) | 実装方式の選択肢（手書き CSS、素の CSS の連結、Sass、PostCSS、Lightning CSS、トークン生成）と暫定推奨 | 設計判断の材料 |
 | [09-open-questions.md](09-open-questions.md) | ユーザー判断事項 21 件（Q-D）、実機検証項目 28 件（V、優先順位付き）、その他の未確認事項 12 件（U） | **次に決めること** |
 | [10-review-remediation.md](10-review-remediation.md) | 独立レビュー（R-01〜R-12）の判定、根拠、修正内容、残る不確実性、Phase 2 へ進む条件 | 訂正の経緯 |
+| [11-runtime-validation.md](11-runtime-validation.md) | Phase 2B の実機検証（Obsidian 1.14.4 の CSS 優先関係・DOM・背景のスコープ再定義）と、Inkdrop 6.1.5 配布物の静的解析。Q-D1 の選択肢別の技術評価 | **Q-D1 の判断材料** |
+| [evidence/phase2-p0/](evidence/phase2-p0/README.md) | 11 の証拠（スクリーンショット、Computed Style の測定値、診断用 CSS / JS、テスト Vault） | 実測の確認 |
 | [tools/](tools/README.md) | `data/` を再生成するスクリプト、入力ソースの取得手順、検証手順 | 再現性の確認 |
 
 推奨する読み順:
@@ -49,6 +51,8 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 6. **（表現を訂正）Inkdrop テーマの一部は、基盤の既定色（Tailwind 系）を継承している。** Solarized Dark は 94 トークン、Kanagawa Dragon はタグ色など。意図的かどうかは不明で、Inkdrop で実際に表示される色である（02 §13.4、07 R13、09 Q-D9）。
 7. **移植元のリポジトリに LICENSE ファイルがない。** 両テーマとも MIT の宣言は `package.json` だけである（07 §11）。
 8. **（Phase 1B で追加）`data/` は記録済みの SHA から再現できる。** 入力を取り直して再生成した結果、8 ファイルすべてがコミット済みのデータとバイト単位で一致した（00 §6、[tools/README.md](tools/README.md)）。
+9. **（Phase 2B、VERIFIED）Obsidian 1.14.4 の実機で、静的解析の予測どおりのカスケードを確認した。** `.theme-dark` での定義は app.css の `.theme-dark` と `.mod-macos` に勝ち、`body` だけの定義と `body.theme-dark` の規則には負ける。左右ドック、File Explorer の内部、左ドックのタブ帯は、それぞれ別の背景色にできた。モバイル（エミュレーション）ではドロワーの変数 `--mobile-sidebar-background` を使う必要がある（11 §7・§8）。
+10. **（Phase 2B、STATIC）Inkdrop 6.1.5 の本体 CSS で、サイドバー・ノートリスト・エディタは横に並ぶ不透明な面であることと、選択状態の `*-active-background` が塗りではなくフォーカス時の左 5px のバーであることが分かった。** Inkdrop は未インストールのため、実機では未確認（11 §5・§6）。
 
 ### レビューの重点
 
@@ -82,6 +86,7 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 | `obsidian-ui-inventory.csv` | 108 | Obsidian の UI 要素の棚卸し |
 | `mapping-candidates.csv` | 97 | 対応候補（SD / KD の値と「Inkdrop 適用先」はトークン CSV から機械抽出） |
 | `inkdrop-contrast.csv` | 30 | 主要な文字色・背景色の組のコントラスト比 |
+| `inkdrop-consumers-6.1.5.csv` | 277 | （Phase 2B）Inkdrop 6.1.5 配布物の本体 CSS / JS で、06 の非公開・混在 42 行のトークンが使われている箇所（STATIC） |
 
 生成と検証の手順は [tools/README.md](tools/README.md) にある。
 

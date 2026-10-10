@@ -47,6 +47,10 @@ $py "$here/gen_mapping.py" "$out/tmp/research" "$out/tmp/mapping-fragment.md"
 $py "$here/contrast.py" "$out/tmp/research"
 cp "$out/tmp/research/data/mapping-candidates.csv" "$out/tmp/research/data/inkdrop-contrast.csv" "$out/data/"
 
+# Phase 2B: where Inkdrop 6.1.5's own (bundled) CSS / JS consumes the tokens of 06 (static analysis).
+$py "$here/inkdrop_consumers.py" "$work/inkdrop-dist/asar" "$out/data/mapping-candidates.csv" \
+  "$out/data/inkdrop-consumers-6.1.5.csv" > "$out/tmp/inkdrop-consumers-summary.txt"
+
 # Python's csv module writes CRLF; the committed files use LF.
 for f in "$out"/data/*.csv; do
   $py -c 'import sys,pathlib; p=pathlib.Path(sys.argv[1]); p.write_bytes(p.read_bytes().replace(b"\r\n", b"\n"))' "$f"

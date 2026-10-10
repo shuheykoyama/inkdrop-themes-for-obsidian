@@ -1,0 +1,56 @@
+/*
+ * DIAGNOSTIC CSS — NOT THEME CODE.
+ * Phase 2B, V-01 / V-16: sentinel colours to measure what wins in the cascade of Obsidian 1.14.4.
+ * Loaded as the theme of an isolated test vault only. Every colour is an arbitrary marker.
+ */
+
+/* A1: variables declared on .theme-dark (same specificity as app.css .theme-dark / .mod-macos). */
+.theme-dark {
+  --background-primary: rgb(51, 0, 0);
+  --background-secondary: rgb(0, 51, 0);
+  --ribbon-background: rgb(0, 0, 51);
+  --titlebar-background: rgb(51, 51, 0);
+  --tab-container-background: rgb(51, 0, 51);
+  --sidebar-tab-container-background: rgb(0, 51, 51);
+  --interactive-normal: rgb(1, 2, 3);      /* app.css: .theme-dark and .mod-macos also define it */
+  --text-selection: rgb(4, 5, 6);          /* app.css: .theme-dark defines it */
+  --canvas-color: rgb(7, 7, 7);            /* app.css: body.theme-dark (0,1,1) defines it */
+}
+
+/* A2: a variable that app.css redefines on .theme-dark, declared here only on body (0,0,1). */
+body {
+  --text-accent: rgb(8, 8, 8);
+}
+
+/* A3: scope redefinition on the side docks (V-16 method 2). */
+.workspace-split.mod-left-split {
+  --background-secondary: rgb(0, 102, 0);
+}
+.workspace-split.mod-right-split {
+  --background-secondary: rgb(0, 0, 102);
+}
+
+/* A4: File Explorer inner regions (V-16 method 3). */
+.workspace-leaf-content[data-type="file-explorer"] .nav-header {
+  background-color: rgb(102, 102, 0);
+}
+.workspace-leaf-content[data-type="file-explorer"] .nav-files-container {
+  background-color: rgb(102, 0, 102);
+}
+
+/* A5: left dock tab strip separated from the titlebar (V-16 method 4). */
+.workspace-split.mod-left-split .workspace-tabs.mod-top {
+  --sidebar-tab-container-background: rgb(0, 153, 153);
+}
+
+/* A6: line-number gutter, app.css has color: var(--text-faint) !important / border-right: none !important. */
+.markdown-source-view.mod-cm6 .cm-gutters {
+  --text-faint: rgb(153, 0, 0);
+  border-right: 1px solid rgb(0, 153, 0);       /* expected to lose to !important */
+  box-shadow: inset -1px 0 0 rgb(0, 0, 153);    /* alternative without !important */
+}
+
+/* A7: active line (no default style in app.css). */
+.markdown-source-view.mod-cm6 .cm-line.cm-active {
+  background-color: rgb(30, 30, 0);
+}

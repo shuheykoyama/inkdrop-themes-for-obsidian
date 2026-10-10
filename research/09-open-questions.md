@@ -14,6 +14,43 @@
 
 ---
 
+## 0. 状況の更新（Phase 2B、2026-10-10）
+
+### 0.1 ユーザーが確定した項目
+
+次の項目はユーザーが確定した。§1 の表は判断前の材料として残すが、以後はここに書いた決定を前提とする。
+
+| ID | 決定 |
+|---|---|
+| **Q-D20** | Obsidian 1.14.0 以降を正式サポートする |
+| **Q-D10** | デスクトップに加え、iOS・Android のスマートフォン／タブレットも完全対応する |
+| **Q-D6** | 既定では Inkdrop のアクセント色を再現し、ユーザーが Obsidian で明示的に変更した場合はその設定を尊重する |
+| **Q-D9** | Inkdrop が基盤 CSS から継承している色も、実際の表示どおりに再現する |
+| **Q-D15** | WCAG AA を満たさなくても、Inkdrop 公式テーマの元の配色を原則変更しない |
+| **Q-D13** | シンタックスハイライトは言語別の調整を含め、CSS で実現できる範囲で高い忠実度を追求する |
+| **Q-D21** | Vanilla CSS + PostCSS（`postcss-import`）を第一候補とし、小規模な技術検証を経て最終確定する |
+| **Q-D2** | Inkdrop で実際に適用されるコードを正本とし、コメントや上流テーマの値より優先する。HSL の宣言値は原則そのまま保持する |
+
+Q-D1 は未決定。判断材料は [11](11-runtime-validation.md) §9 にある（選択肢 (g)・(h) を追加）。
+
+### 0.2 実機検証の状態
+
+| ID | 状態 | 要旨 | 記録 |
+|---|---|---|---|
+| **V-01** | **VERIFIED**（Obsidian 1.14.4、macOS） | 静的解析の予測どおり。`.theme-dark` は app.css の `.theme-dark` と `.mod-macos` に勝ち、`body` だけの定義と `body.theme-dark` の規則には負ける | 11 §7 |
+| **V-03** | **VERIFIED** | 左右ドックには論理名と物理名の両方のクラスが付く。File Explorer の直下は `.nav-header` と `.nav-files-container`。Hidden frame では `.titlebar` は非表示 | 11 §8.1 |
+| **V-16** | **VERIFIED**（デスクトップ）、VERIFIED（エミュレーション）（モバイル） | 方式 1〜4 はデスクトップで成立。モバイルでは方式 2 に `.workspace-drawer.mod-primary` と `--mobile-sidebar-background` が必要 | 11 §8.2 |
+| **V-07** | **VERIFIED** | `.cm-gutters` の文字色は `--text-faint` の再定義で変わり、`border-right` は負ける。`box-shadow` で線を描ける | 11 §7 |
+| **V-11** | 一部 VERIFIED | `.cm-line.cm-active` が存在し、テーマで塗れる。ほかのクラスは未確認 | 11 §7 |
+| **V-20** | **STATIC**（実機は BLOCKED） | Inkdrop 6.1.5 の配布物の静的解析で、42 行中 41 行の消費箇所を特定。Inkdrop が未インストールのため実機は未確認 | 11 §5 |
+| **V-22** | **STATIC**（実機は BLOCKED） | CodeMirror の外枠のテーマは本体 JS の `EditorView.theme` にある | 11 §6 |
+| **V-30** | **BLOCKED** | Inkdrop が未インストール。インストールとサインインはユーザーの承認が必要 | 11 §4・§13 |
+| **V-31** | 一部進展（STATIC） | Inkdrop 6.1.5 に `@inkdropapp/cm6-theme-common` という名前のパッケージは同梱されていない。トークンの付き方の確認は未着手 | 11 §6 |
+
+U-12 は、tokenHighlighter に相当するコードが本体 JS に含まれることまで確認した（STATIC）。ソースは公開されていない。
+
+---
+
 ## 1. ユーザーが意思決定すべき項目
 
 「判断の時期」は、その判断がないと進められない作業の段階を示す。

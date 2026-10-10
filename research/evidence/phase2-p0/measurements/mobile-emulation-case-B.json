@@ -1,0 +1,13 @@
+{
+  ".workspace-drawer.mod-primary": {
+    "bg": "rgb(0, 51, 0)",
+    "secondary": "rgb(0, 204, 0)",
+    "mobileSidebarBackground": "rgb(0, 51, 0)"
+  },
+  ".workspace-drawer.mod-secondary": {
+    "bg": "rgb(0, 51, 0)",
+    "secondary": "rgb(0, 0, 204)",
+    "mobileSidebarBackground": "rgb(0, 51, 0)"
+  },
+  "isMobile": true
+}

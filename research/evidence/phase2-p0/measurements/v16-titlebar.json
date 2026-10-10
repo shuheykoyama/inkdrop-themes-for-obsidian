@@ -1,0 +1,19 @@
+{
+  "display": "none",
+  "height": "39px",
+  "bg": "rgb(0, 51, 0)",
+  "titlebarFocused": "rgb(0, 51, 0)",
+  "titlebarBg": "rgb(51, 51, 0)",
+  "matchingBackgroundRules": [
+    {
+      "sheet": "app.css",
+      "selector": "body.is-focused .titlebar",
+      "css": "body.is-focused .titlebar { --titlebar-background: var(--titlebar-background-focused); }"
+    },
+    {
+      "sheet": "app.css",
+      "selector": ".titlebar",
+      "css": ".titlebar { app-region: drag; position: fixed; top: 0px; left: 0px; right: 0px; display: flex; background-color: var(--titlebar-background); border-bottom: var("
+    }
+  ]
+}

@@ -35,6 +35,7 @@ python3 -I research/tools/splice_generated.py research/06-mapping-candidates.md 
 | 入力 | 取得元 | 固定の方法 |
 |---|---|---|
 | 30 リポジトリ | GitHub | [`sources.lock`](sources.lock) の SHA（`<dir> <sha> <clone url>`）。`fetch_sources.sh` は各 SHA だけを `--depth 1` で取得する |
+| Inkdrop 6.1.5 の配布物（Phase 2B、静的解析だけに使う。起動・インストールはしない） | `https://dist.inkdrop.app/releases/inkdrop-6.1.5-arm64-mac.zip` | SHA-256 `96c9a1e6…`（`fetch_sources.sh` 内で `shasum -c` により照合） |
 | Obsidian 1.14.4 / 1.13.7 の `app.css` ほか | `obsidianmd/obsidian-releases` の GitHub Releases にある `obsidian-<ver>.asar.gz` | `app.css` の SHA-256 を `research/00-sources.md` §2.1 に記録。`fetch_sources.sh` が最後に表示する値と照合する |
 
 `fetch_sources.sh` は `<work_dir>/repo-shas.txt` も書き出す。`resolve_tokens.py` と `build_palettes.py` は、このファイルから出典表記用の SHA を読む。
@@ -55,6 +56,7 @@ python3 -I research/tools/splice_generated.py research/06-mapping-candidates.md 
 | `gen_mapping.py` | `mapping-candidates.csv`、06 の表の断片 | 06 | **行の内容（分類、根拠、確信度）は人手**。値の列、「Inkdrop 適用先」列、空欄の「SD / KD の差」列は機械的に埋める |
 | `splice_generated.py` | 06 の生成ブロック | 06 | `--check` で一致を確認するだけにできる |
 | `contrast.py` | `inkdrop-contrast.csv` | 07 §14 | WCAG 2.x の相対輝度の式。色は HSL 宣言を 8 ビット sRGB に換算した計算値 |
+| `inkdrop_consumers.py` | `inkdrop-consumers-6.1.5.csv` | 11 §5・§6 | （Phase 2B）展開済みの Inkdrop の asar で、06 の非公開・混在行のトークンを `var()` で参照する宣言を列挙する。抜粋は 1 宣言・140 字まで |
 | `cssstats.py` | 標準出力のみ | 04 §7 | テーマの `theme.css` の `!important` / `:has()` などを数える。引数にファイルを渡す |
 | `xref.py` | 標準出力のみ | — | Phase 1 のレビューで使った相互参照チェック。現在は `final_check.py` が上位互換 |
 | `final_check.py` | 標準出力のみ | — | §手順の 3 |

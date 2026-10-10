@@ -1,0 +1,50 @@
+{
+  "themeHead": "/*\n * DIAGNOSTIC CSS — NOT THEME CODE.\n ",
+  "body_bgPrimary": "rgb(51, 0, 0)",
+  "body_bgSecondary": "rgb(0, 51, 0)",
+  "body_interactiveNormal": "rgb(1, 2, 3)",
+  "body_textSelection": "rgb(4, 5, 6)",
+  "body_canvasColor": "#7e7e7e",
+  "body_textAccent": "hsl(calc(258 - 3), calc(88% * 1.02), calc(66% * 1.15))",
+  "ribbon_bg": "rgb(0, 0, 51)",
+  "ribbon_classes": [
+    "workspace-ribbon",
+    "side-dock-ribbon",
+    "mod-primary"
+  ],
+  "titlebar_bg": "rgb(0, 51, 0)",
+  "statusbar_bg": "rgb(0, 51, 0)",
+  "root_tabHeader_bg": "rgb(51, 51, 0)",
+  "left_tabHeader_bg": "rgb(0, 153, 153)",
+  "right_tabHeader_bg": "rgb(51, 51, 0)",
+  "left_split_bg": "rgb(51, 0, 51)",
+  "left_leaf_bg": "rgb(0, 102, 0)",
+  "right_leaf_bg": "rgb(0, 0, 102)",
+  "root_leaf_bg": "rgb(51, 0, 0)",
+  "root_viewHeader_bg": "rgb(51, 0, 0)",
+  "vaultProfile_bg": "rgb(0, 102, 0)",
+  "navHeader_bg": "rgb(102, 102, 0)",
+  "navFiles_bg": "rgb(102, 0, 102)",
+  "leftOtherLeafContents": [
+    {
+      "type": "file-explorer",
+      "bg": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "type": "search",
+      "bg": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "type": "bookmarks",
+      "bg": "rgba(0, 0, 0, 0)"
+    }
+  ],
+  "gutters_color": "rgb(153, 0, 0)",
+  "gutters_borderRight": "0px none rgb(153, 0, 0)",
+  "gutters_boxShadow": "rgb(0, 0, 153) -1px 0px 0px 0px inset",
+  "activeLine_exists": true,
+  "activeLine_bg": "rgb(30, 30, 0)",
+  "left_split_tabc": "rgb(51, 0, 51)",
+  "left_split_secondary": "rgb(0, 102, 0)",
+  "left_modtop_stabc": "rgb(0, 153, 153)"
+}
