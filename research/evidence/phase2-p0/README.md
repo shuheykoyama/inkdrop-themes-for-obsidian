@@ -18,6 +18,7 @@
 | 外観 | ダーク（`theme-dark`）。`body` のクラスは `mod-macos`、`is-frameless`、`is-hidden-frameless` ほか（[measurements/probe-env.json](measurements/probe-env.json)） |
 | Inkdrop（当初） | 未インストール。公開配布物 6.1.5（arm64 の zip）を展開した静的解析だけを行った（`research/data/inkdrop-consumers-6.1.5.csv`） |
 | Inkdrop（2026-10-10 再開） | 6.1.5（x86_64）をユーザーがインストール・サインイン済み。ユーザーの承認を得て、リモートデバッグ（`127.0.0.1:9334` 限定）付きで再起動し、テーマの読み込み・検証用ノートの作成と削除・設定の一時変更を行った。すべて元に戻した（11 §14.2） |
+| Inkdrop（V-32） | 同じ 6.1.5。実ウィンドウ 1200×700 pt、倍率 2。acrylic と不透明を、`/usr/sbin/screencapture` によるネイティブの画面キャプチャで撮影した。画面収録の権限はユーザーが事前に許可済みのものを使い、権限やシステム設定（壁紙、「透明度を下げる」）は変えていない。すべて元に戻した（11 §15.9） |
 
 ## ファイル
 
@@ -56,7 +57,9 @@
 | `mobile-emulation-case-B.json` | ケース B、同上 | `tools/probe-mobile-drawers.js` |
 | `mobile-emulation-case-C.json` | ケース C、同上 | `tools/probe-mobile-drawers.js` |
 
-### `inkdrop/`（スクリーンショット、Inkdrop 6.1.5 の実機キャプチャ、CDP の `Page.captureScreenshot`）
+### `inkdrop/`（スクリーンショット、Inkdrop 6.1.5 の実機キャプチャ）
+
+#### V-30 の基準画像（CDP の `Page.captureScreenshot`）
 
 すべて不透明表示（acrylic を一時的に無効化）、1024×800 CSS px、`deviceScaleFactor` 1（画像も 1024×800 px）。サイドバーは検証用ノートブックのワークスペースに絞り、写っているのは検証用ノートブック「Theme Validation (Phase 2B)」とノート「Sample note」だけである（目視で確認）。検証用データは撮影後に削除した。
 
@@ -68,7 +71,28 @@
 | `sd-4-editor-selection.png` / `kd-4-editor-selection.png` | 行番号とアクティブ行を一時的に有効化し、「bold」を選択 | `76d786a1d356424d` / `5df7a8374bf51014` |
 | `sd-5-preview.png` / `kd-5-preview.png` | プレビュー | `e568b1862439888a` / `bee7277203826c11` |
 
-対応する Computed Style は `measurements/inkdrop-<sd|kd>-<状態>.json`。acrylic（macOS 既定）表示の Computed Style は `measurements/inkdrop-<sd|kd>-acrylic.json`（スクリーンショットはなし）。静的予測との照合結果は `measurements/inkdrop-static-vs-runtime.csv`。
+対応する Computed Style は `measurements/inkdrop-<sd|kd>-<状態>.json`。acrylic（macOS 既定）表示の Computed Style は `measurements/inkdrop-<sd|kd>-acrylic.json`（この時点ではスクリーンショットなし。下の V-32 で取得）。静的予測との照合結果は `measurements/inkdrop-static-vs-runtime.csv`。
+
+#### V-32 の acrylic / 不透明の対照画像（ネイティブの画面キャプチャ）
+
+`/usr/sbin/screencapture -x -R400,250,1200,700` で撮影した、ウィンドウサーバーの合成結果（ディスプレイの色空間「Color LCD」）。2400×1400 px、無加工。ウィンドウは 1200×700 pt・位置 (400, 250) に固定し、真後ろに検証用の背景ウィンドウ（`tools/backdrop.swift`。`gray` は sRGB (128, 128, 128)、`pattern` は 100 pt 幅の縦縞）を置いた。写っているのは検証用ノートブックとノートだけである（目視で確認）。ファイル名は `<sd|kd>-v32-<acrylic|opaque>-<背景>-<editor|preview>-<active|inactive>.png`。
+
+| ファイル | SHA-256（先頭 16 桁） |
+|---|---|
+| `sd-v32-acrylic-gray-editor-active.png` | `8219d3c1b9901003` |
+| `sd-v32-acrylic-pattern-editor-active.png` | `89b402fbc27dbc0a` |
+| `sd-v32-acrylic-gray-preview-active.png` | `b726181b93b5d53c` |
+| `sd-v32-acrylic-gray-editor-inactive.png` | `b9581894cfbc3aaa` |
+| `sd-v32-opaque-gray-editor-active.png` | `346caa326d87d301` |
+| `sd-v32-opaque-pattern-editor-active.png` | `5f784ce2f847da16` |
+| `kd-v32-acrylic-gray-editor-active.png` | `105d041a77264d29` |
+| `kd-v32-acrylic-pattern-editor-active.png` | `cf565fbd4fb338a1` |
+| `kd-v32-acrylic-gray-preview-active.png` | `879186ae57729253` |
+| `kd-v32-acrylic-gray-editor-inactive.png` | `a0a1751ff3252d13` |
+| `kd-v32-opaque-gray-editor-active.png` | `6bb7e73ce8189fe7` |
+| `kd-v32-opaque-pattern-editor-active.png` | `4e2efb37718fe39f` |
+
+各画像のメタデータ（撮影方法・時刻・画素数・SHA-256 の全桁・矩形・フォーカス）と、撮影直前・直後の Computed Style は `measurements/inkdrop-<画像名>.json`。背景だけの領域の画素の平均と標準偏差は `measurements/inkdrop-v32-pixel-samples.csv`（**ディスプレイの色空間の合成値で、CSS の値ではない**）。
 
 ### `tools/`（診断用スクリプト）
 
@@ -87,6 +111,10 @@
 | `inkdrop-capture-theme.sh` | 1 テーマ分の撮影と測定（5 状態） |
 | `inkdrop-restore.js` | 検証前の状態への復元（テスト用ノート・ノートブックの削除、設定の復元） |
 | `compare-inkdrop.py` | 実機の Computed Style と、02 の宣言値（静的予測）を照合する |
+| `backdrop.swift` | V-32 用の背景ウィンドウ（枠なし、通常ウィンドウより 1 段下。`swiftc` でコンパイルして使う） |
+| `inkdrop-window-geometry.js` | Inkdrop のウィンドウを 1200×700 pt・位置 (400, 250) に固定する |
+| `inkdrop-v32-capture.sh` | V-32 の 1 枚分の撮影（テーマ・状態・位置の設定 → 背景ウィンドウ → ネイティブキャプチャ → 撮影前後の Computed Style → メタデータの JSON） |
+| `sample-pixels.py` | スクリーンショットの背景だけの領域の画素の平均と標準偏差（標準ライブラリだけの PNG デコーダ） |
 
 ## 再現手順（Obsidian）
 
@@ -115,5 +143,6 @@ node tools/cdp.mjs 9333 eval tools/probe-cascade.js
 
 - モバイルの結果は、デスクトップ上の `app.emulateMobile(true)` によるエミュレーション（タブレット判定）である。iOS / Android の実機では検証していない。
 - Inkdrop の実機検証（V-30・V-20・V-22）は、当初は Inkdrop が未インストールのため行えなかった（11 §3・§4）。2026-10-10 にユーザーがインストールしたあと再開し、完了した（11 §14）。
-- Inkdrop の acrylic（macOS 既定の半透明）表示のスクリーンショットは含まれていない（11 §14.8）。
+- Inkdrop の acrylic（macOS 既定の半透明）表示のスクリーンショットは、§14 の時点では取れなかった（11 §14.8）。V-32 でネイティブの画面キャプチャとして取得した（11 §15）。壁紙の影響は確認していない。
+- スクリーンショットの画素値（`inkdrop-v32-pixel-samples.csv`）と Computed Style（`*.json`）は別の種類の証拠である。前者はディスプレイの色空間での合成結果で、CSS の色の値として扱わない。
 - `cdp.mjs` の `eval` は、環境変数 `CDP_VIEWPORT=1024x800` を付けると、スクリーンショットと同じ表示サイズに固定してから評価する。`hovershot <out.png> <x> <y> [w h]` はマウスを移動してから撮影する。

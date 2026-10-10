@@ -21,9 +21,9 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 | [06-mapping-candidates.md](06-mapping-candidates.md) | Inkdrop ↔ Obsidian の UI 対応候補 97 件（Direct / Semantic / Obsidian-native、確信度、Inkdrop 側の適用先の可視性、SD / KD の差） | Phase 2 の配色設計の起点 |
 | [07-technical-risks.md](07-technical-risks.md) | 技術課題とリスク 21 件（忠実度、互換性、保守性、アクセシビリティ、ライセンス）と選択肢 | 設計判断の材料 |
 | [08-architecture-options.md](08-architecture-options.md) | 実装方式の選択肢（手書き CSS、素の CSS の連結、Sass、PostCSS、Lightning CSS、トークン生成）と暫定推奨 | 設計判断の材料 |
-| [09-open-questions.md](09-open-questions.md) | ユーザー判断事項 21 件（Q-D）、実機検証項目 28 件（V、優先順位付き）、その他の未確認事項 12 件（U） | **次に決めること** |
+| [09-open-questions.md](09-open-questions.md) | ユーザー判断事項 23 件（Q-D）、実機検証項目 30 件（V、優先順位付き）、その他の未確認事項 12 件（U） | **次に決めること** |
 | [10-review-remediation.md](10-review-remediation.md) | 独立レビュー（R-01〜R-12）の判定、根拠、修正内容、残る不確実性、Phase 2 へ進む条件 | 訂正の経緯 |
-| [11-runtime-validation.md](11-runtime-validation.md) | Phase 2B の実機検証（Obsidian 1.14.4 の CSS 優先関係・DOM・背景のスコープ再定義、Inkdrop 6.1.5 の背景面・状態色・エディタと基準スクリーンショット）と、Inkdrop 配布物の静的解析。Q-D1 の選択肢別の技術評価 | **Q-D1 の判断材料** |
+| [11-runtime-validation.md](11-runtime-validation.md) | Phase 2B の実機検証（Obsidian 1.14.4 の CSS 優先関係・DOM・背景のスコープ再定義、Inkdrop 6.1.5 の背景面・状態色・エディタと基準スクリーンショット、半透明（acrylic）表示のネイティブキャプチャ）と、Inkdrop 配布物の静的解析。Q-D1 の選択肢別の技術評価 | **Q-D1 の判断材料** |
 | [evidence/phase2-p0/](evidence/phase2-p0/README.md) | 11 の証拠（スクリーンショット、Computed Style の測定値、診断用 CSS / JS、テスト Vault） | 実測の確認 |
 | [tools/](tools/README.md) | `data/` を再生成するスクリプト、入力ソースの取得手順、検証手順 | 再現性の確認 |
 
@@ -54,6 +54,7 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 9. **（Phase 2B、VERIFIED）Obsidian 1.14.4 の実機で、静的解析の予測どおりのカスケードを確認した。** `.theme-dark` での定義は app.css の `.theme-dark` と `.mod-macos` に勝ち、`body` だけの定義と `body.theme-dark` の規則には負ける。左右ドック、File Explorer の内部、左ドックのタブ帯は、それぞれ別の背景色にできた。モバイル（エミュレーション）ではドロワーの変数 `--mobile-sidebar-background` を使う必要がある（11 §7・§8）。
 10. **（Phase 2B、VERIFIED）Inkdrop 6.1.5 の実機で、サイドバー・ノートリスト・エディタが横に並ぶ独立した面であること、選択状態の `*-active-background` が塗りではなくフォーカス時の左 5px のバーであることを確認した。** 主要な背景面・境界線・選択状態の 32 項目で、静的予測と実機の Computed Style が全件一致した。両テーマの基準スクリーンショット（不透明表示）も取得した（11 §14）。
 11. **（Phase 2B、VERIFIED）macOS の Inkdrop の既定は半透明（acrylic）表示で、各面の色が不透明時と変わる。** Solarized Dark ではサイドバーが base03 の 50%、ノートリストが neutral-900 の 70% になる。また、アクティブ行とガターは Inkdrop の既定では表示されない。どちらを忠実度の基準にするかは新しい判断事項（09 Q-D22・Q-D23）。
+12. **（Phase 2B、V-32、VERIFIED）acrylic 表示の実際の見え方をネイティブの画面キャプチャで確認した。** この環境では、合成結果は背後のウィンドウの柄にもフォーカスの有無にも依存せず、各面がほぼ一定の暗い灰色の下地に重なった見た目になった。Solarized Dark は明度の順（サイドバー > ノートリスト > エディタ）を保ったまま差が縮み、Kanagawa Dragon は 3 面がほぼ同じ明るさになる（不透明時の順は崩れる）。画素値はディスプレイの色空間の合成結果で、CSS の値ではない。壁紙の影響は未確認（11 §15）。
 
 ### レビューの重点
 
@@ -70,8 +71,8 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 
 ### Phase 2 で検討すべき事項
 
-1. 09 §1 の Q-D のうち「Phase 2 前半」のもの。とくに Q-D1（サイドドックと帯への色の割り当て）、Q-D2（値の正本は方針から導いた暫定案あり、出力形式は Q-D21 に依存）、Q-D20（`minAppVersion`。Q-D1 の一部の手段が 1.14 以降のみのため）、Q-D9（基盤既定色の継承の扱い）、Q-D13（シンタックスの方式）、Q-D15（コントラスト）、Q-D21（ビルド方式）。Q-D16（directory 配布）は配布前まで保留できる。
-2. 09 §2.1 の P0 の実機検証（V-30、V-20・V-22、V-01）。結果次第で、マッピング層の書き方と共通化の範囲が変わる。
+1. 09 §1 の Q-D のうち「Phase 2 前半」のもの。Q-D2・Q-D6・Q-D9・Q-D10・Q-D13・Q-D15・Q-D20・Q-D21 はユーザーが確定済み（09 §0.1）。未決定で先に必要なのは Q-D22（不透明表示と半透明表示のどちらを基準にするか）と Q-D1（サイドドックと帯への色の割り当て。Q-D22 と同時に判断）。Q-D23（アクティブ行・ガター）は Phase 2 後半。Q-D16（directory 配布）は配布前まで保留できる。
+2. 09 §2.1 の P0 の実機検証（V-30、V-20・V-22、V-01）は完了した（11 §7・§14・§15）。残る P1 は V-10・V-11（一部）・V-12・V-29（一部）・V-31（一部）と、Q-D22 の選択次第で V-04（Obsidian の translucent）。
 3. 06 の候補から配色仕様を確定すること。
 4. 08 の実装方式の確定（案 B と案 C の小さな試作による比較を推奨）。
 
@@ -126,12 +127,12 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 | E 技術課題と実装候補 | 完了 | ディレクトリ構造とビルドツールは未確定（意図どおり） |
 | 独立レビュー対応（Phase 1B） | 完了 | R-01〜R-12 の判定と修正（10） |
 | 再現性 | 完了（スクリプト収録・再生成で一致） | 人手の判断を含む行の内容は再現の対象外（00 §6） |
-| 実機検証 | **未実施** | Inkdrop と Obsidian のどちらも起動していない（09 §2） |
+| 実機検証 | **一部完了**（Phase 2B） | P0（V-01・V-20・V-22・V-30）と V-03・V-16・V-32 は VERIFIED（11）。モバイル実機、V-33 などは未実施（09 §0.2・§2） |
 
 ### 意図的に行っていないこと
 
 - テーマの実装、`theme.css` などの成果物の生成、ビルドシステムや依存関係の導入（`tools/` は調査データの再生成用で、テーマのビルドには使わない）
-- Obsidian の Vault、設定、CSS スニペット、Inkdrop の設定の変更
+- Obsidian の Vault、設定、CSS スニペット、Inkdrop の設定の変更（Phase 2B の Inkdrop 実機検証では、ユーザーの承認を得て設定を一時的に変更し、元に戻した。11 §14.2・§15.9）
 - 外部リポジトリへの変更
 - Phase 2 の設計判断の確定（09 の推奨はすべて「暫定推奨」）
 

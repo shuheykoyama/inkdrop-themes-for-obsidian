@@ -218,7 +218,7 @@
 **事実**
 
 - macOS: `.mod-macos` の変数上書き、信号機ボタン領域（`--traffic-lights-offset-x/y`、app.js が読む）、`.is-translucent` による透過（03 §5、05 Workspace）。
-- Inkdrop 側: `:root:has(body.acrylic-window)` で半透明化、`.platform-win32` の dark 用上書き（01 §3.6、02 §1.4）。
+- Inkdrop 側: `:root:has(body.acrylic-window)` で半透明化、`.platform-win32` の dark 用上書き（01 §3.6、02 §1.4）。（Phase 2B で追加）Inkdrop 6.1.5 の macOS の既定は acrylic 有効で、各面の見た目は不透明表示と異なる（11 §14.4・§15、VERIFIED）。どちらを基準にするかは 09 Q-D22（未決定）。
 - モバイル: `.is-mobile.theme-dark`（0,2,0）が `--color-base-00/10/20` を `#000 / #111 / #1e1e1e` に上書きする。テーマの `.theme-dark` は負ける（03 §2.4）。
 
 **影響**: macOS を最優先にする方針（確定済み）なら、`.mod-macos` と translucent の検証が必須。モバイルを対象外にするなら、モバイルで Obsidian 既定の黒背景が出ることを許容することになる（09 Q-D10）。
