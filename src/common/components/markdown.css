@@ -78,9 +78,11 @@
    Preview marks task lines with data-task (done lines take --checklist-done-color, mapping/markdown.css);
    Source mode does not, so there the text after the [ ] / [x] span is selected, and a done task (whose
    span Obsidian's Markdown mode classes cm-property; an open one is cm-meta) is struck through as Inkdrop's
-   .md-task-done-text is; Obsidian strikes it in Live Preview only. */
+   .md-task-done-text is; Obsidian strikes it in Live Preview only. Marks and marked-up text inside a task
+   (bold, links, code...) keep their own colours, as Inkdrop's later .tok-strong / .tok-link rules win over
+   .tok-list (found in step 7, research/14 §6.15). */
 .theme-dark .markdown-source-view.mod-cm6 .cm-line[data-task],
-.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-task ~ span {
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-task ~ span:not(.cm-formatting, .cm-formatting-link, .cm-strong, .cm-em, .cm-link, .cm-url, .cm-hmd-internal-link, .cm-inline-code, .cm-highlight, .cm-hashtag) {
   color: var(--ink-syntax-list-color);
 }
 
