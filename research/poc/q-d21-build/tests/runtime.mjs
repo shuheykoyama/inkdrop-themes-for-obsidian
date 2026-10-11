@@ -113,7 +113,15 @@ for (const method of methods) {
     }
     // Leak checks: scoped translucent rules must not reach body-level variables or modals.
     check(`T3 ${tag} translucent: body --background-primary unchanged`, trans.bodyBackgroundPrimary === opaque1.bodyBackgroundPrimary, trans.bodyBackgroundPrimary);
-    check(`T3 ${tag} translucent: settings modal unchanged`, trans.regions["settings modal"] === opaque1.regions["settings modal"], `${opaque1.regions["settings modal"]} / ${trans.regions["settings modal"]}`);
+    // A missing element (null) must FAIL: same() rejects null, and the modal must actually be found.
+    const editor = expected(defs, "--ink-editor-background");
+    for (const [phase, p] of [["opaque", opaque1], ["translucent", trans]]) {
+      check(`T3 ${tag} ${phase}: settings modal element found`, p.settingsModal?.found === true, JSON.stringify({ sameDocument: p.settingsModal?.sameDocument }));
+      for (const modal of ["settings modal", "quick switcher"]) {
+        check(`T3 ${tag} ${phase}: ${modal} = --ink-editor-background (opaque)`, same(p.regions[modal], editor), p.regions[modal]);
+      }
+      check(`T3 ${tag} ${phase}: modals closed after probe`, p.modalsLeftOpen === 0, String(p.modalsLeftOpen));
+    }
     // Back to opaque: every region identical to the first opaque probe.
     const diff = Object.keys(opaque2.regions).filter((r) => opaque2.regions[r] !== opaque1.regions[r]);
     check(`T3 ${tag} translucent -> opaque restores every region`, diff.length === 0 && !opaque2.bodyClasses.includes("is-translucent"), diff.join(", "));
@@ -133,28 +141,61 @@ for (const method of methods) {
 }
 
 // Mobile emulation (P1 output only; the CSS is identical for P2 / P3 per the static tests).
+// app.emulateMobile(true) picks tablet or phone from the window size at reload, so the window is
+// resized first (tablet 1024x800, phone 400x860) and restored afterwards. Desktop only, not a device
+// test: .is-ios / .is-android rules and real safe areas are not exercised.
+const winSize = evalJs("(() => electronWindow.getSize())();");
+const floatingBefore = evalJs("(() => app.vault.getConfig('floatingNavigation'))();");
+const MOBILE = [
+  { form: "tablet", size: [1024, 800], floating: [true] },
+  { form: "phone", size: [400, 860], floating: [true, false] },
+];
 for (const theme of ["solarized-dark", "kanagawa-dragon"]) {
   const css = path.join(root, "dist", "p1", `${theme}.css`);
   copyFileSync(css, themeFile);
   const defs = palette(readFileSync(css, "utf8"));
-  evalJs("(() => { app.emulateMobile(true); return 1; })();");
-  await sleep(6000);
-  const mob = evalJs(`(async () => {
-    await app.customCss.loadTheme();
-    app.workspace.leftSplit.expand?.();
-    await new Promise((r) => setTimeout(r, 1000));
-    const bg = (s) => { const e = document.querySelector(s); return e ? getComputedStyle(e).backgroundColor : null; };
-    return { isMobile: document.body.classList.contains("is-mobile"), tablet: document.body.classList.contains("is-tablet"),
-      left: bg(".workspace-drawer.mod-left"), right: bg(".workspace-drawer.mod-right"), navbar: bg(".mobile-navbar") };
-  })();`);
-  record[`mobile ${theme}`] = mob;
   const nl = expected(defs, "--ink-note-list-bar-background");
-  check(`T3 mobile-emulation ${theme} is-mobile`, mob.isMobile === true, `tablet=${mob.tablet}`);
-  check(`T3 mobile-emulation ${theme} left drawer = note list`, same(mob.left, nl), mob.left);
-  check(`T3 mobile-emulation ${theme} right drawer = note list`, same(mob.right, nl), mob.right);
-  evalJs("(() => { app.emulateMobile(false); return 1; })();");
-  await sleep(6000);
+  for (const { form, size, floating } of MOBILE) {
+    evalJs(`(() => { electronWindow.setSize(${size[0]}, ${size[1]}); app.emulateMobile(true); return 1; })();`);
+    await sleep(7000);
+    for (const fl of floating) {
+      // Drawers are measured open; the navigation bar with its own rendered box (0x0 = not displayed).
+      const mob = evalJs(`(async () => {
+        const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+        await app.customCss.loadTheme();
+        app.vault.setConfig("floatingNavigation", ${fl});
+        app.updateFloatingNavigationDisplay();
+        await sleep(500);
+        const st = (s) => { const e = document.querySelector(s); if (!e) return null; const c = getComputedStyle(e); const b = e.getBoundingClientRect();
+          return { bg: c.backgroundColor, display: c.display, size: [Math.round(b.width), Math.round(b.height)] }; };
+        const out = { classes: [...document.body.classList].filter((c) => /^is-(mobile|phone|tablet|floating-nav|ios|android)$/.test(c)), navbar: st(".mobile-navbar") };
+        for (const side of ["left", "right"]) {
+          const split = side === "left" ? app.workspace.leftSplit : app.workspace.rightSplit;
+          split.expand(); await sleep(800);
+          out[side] = st(".workspace-drawer.mod-" + side);
+          split.collapse(); await sleep(800);
+        }
+        return out;
+      })();`);
+      const tag = `T3 mobile-emulation ${form}${form === "phone" ? (fl ? " floating-nav" : " non-floating-nav") : ""} ${theme}`;
+      record[`mobile ${form} floating=${fl} ${theme}`] = mob;
+      check(`${tag} is-mobile + is-${form}`, mob.classes.includes("is-mobile") && mob.classes.includes(`is-${form}`), mob.classes.join(" "));
+      check(`${tag} left drawer = note list`, mob.left?.display !== "none" && same(mob.left?.bg, nl), JSON.stringify(mob.left));
+      check(`${tag} right drawer = note list`, mob.right?.display !== "none" && same(mob.right?.bg, nl), JSON.stringify(mob.right));
+      if (form === "tablet") {
+        // Tablets have no bottom navigation bar; its colour is not observable here.
+        check(`${tag} navbar not displayed`, mob.navbar !== null && mob.navbar.display === "none", JSON.stringify(mob.navbar));
+      } else {
+        const shown = mob.navbar !== null && mob.navbar.display !== "none" && mob.navbar.size[0] > 0 && mob.navbar.size[1] > 0;
+        check(`${tag} navbar displayed`, shown, JSON.stringify(mob.navbar));
+        check(`${tag} navbar = note list`, shown && same(mob.navbar.bg, nl), mob.navbar?.bg);
+      }
+    }
+    evalJs(`(() => { app.vault.setConfig("floatingNavigation", ${JSON.stringify(floatingBefore)}); app.emulateMobile(false); return 1; })();`);
+    await sleep(7000);
+  }
 }
+evalJs(`(() => { electronWindow.setSize(${winSize[0]}, ${winSize[1]}); return 1; })();`);
 
 writeFileSync(outJson, JSON.stringify({ measuredAt: new Date().toISOString(), results, record }, null, 1));
 console.log(failures ? `\n${failures} runtime check(s) FAILED` : "\nall runtime checks passed");

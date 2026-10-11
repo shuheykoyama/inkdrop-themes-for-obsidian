@@ -1,5 +1,5 @@
 // T3 probe (runs inside the isolated Obsidian, test vault only). Caller injects
-// window.__POC = { translucent: bool, settingsModal: bool }.
+// window.__POC = { translucent: bool, settingsModal: bool } (settingsModal also probes the quick switcher).
 // Reloads the theme from disk, sets the layout and translucency, and returns computed backgrounds.
 (async () => {
   const { translucent, settingsModal } = window.__POC;
@@ -42,12 +42,28 @@
     },
   };
   if (settingsModal) {
-    // Leak check: a modal outside the centre split must keep the opaque editor colour.
+    // Leak checks: modals outside the centre split must keep the opaque editor colour.
+    // Obsidian 1.14.4 opens Settings in a separate popout window (body.is-popout-modal), so the
+    // element is not in this document: read it through app.setting.modalEl and its own document.
     app.setting.open();
     await sleep(600);
-    out.regions["settings modal"] = bg(".modal.mod-settings");
+    const m = app.setting.modalEl;
+    const found = !!(m && m.isConnected);
+    out.settingsModal = {
+      found,
+      sameDocument: found ? m.ownerDocument === document : null,
+      popoutBodyClasses: found ? [...m.ownerDocument.body.classList] : null,
+    };
+    out.regions["settings modal"] = found ? m.ownerDocument.defaultView.getComputedStyle(m).backgroundColor : null;
     app.setting.close();
     await sleep(300);
+    // The quick switcher is a modal in this (main) document, so it also covers in-window modals.
+    app.commands.executeCommandById("switcher:open");
+    await sleep(600);
+    out.regions["quick switcher"] = bg(".modal-container .prompt");
+    document.querySelector(".modal-container")?.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+    await sleep(300);
+    out.modalsLeftOpen = document.querySelectorAll(".modal-container").length;
   }
   return out;
 })();

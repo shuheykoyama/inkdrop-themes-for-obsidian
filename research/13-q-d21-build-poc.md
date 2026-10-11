@@ -37,7 +37,7 @@
 | マッピング（共通） | `.theme-dark` で Obsidian の変数に `--ink-*` を割り当てる（Ribbon、`--background-primary/secondary`、タイトルバー、タブ帯、アクティブタブ、View Header、ステータスバー、本文、選択、アクセント） |
 | コンポーネント（共通） | `.workspace-tabs.mod-top` のタブ帯をタイトルバーから切り離す |
 | translucent（共通） | `.is-translucent:not(.is-fullscreen)` で acrylic のトークンに切り替える。ドックは `.workspace-leaf-content`、中央はスコープ変数、タブ帯と Ribbon だけ `!important`（12 §4） |
-| モバイル（共通） | `.is-mobile .workspace-drawer` の `--mobile-sidebar-background`、`.is-tablet.theme-dark` のタイトルバー、フローティングナビの `--raised-background` |
+| モバイル（共通） | `.is-mobile .workspace-drawer` の `--mobile-sidebar-background`、`.is-tablet.theme-dark` のタイトルバー、phone のナビゲーションバー（`.is-mobile .mobile-navbar.mod-raised` の `--raised-background`。§2.1） |
 
 ## 2. テスト結果（実測）
 
@@ -46,7 +46,7 @@
 | **T1 値の忠実度** | パレットの全宣言を `research/data/inkdrop-*-tokens.csv` と照合（三つ組は文字単位、トークンは var() を展開して比較、不透明トークンは 8 ビット値でも照合）。アクセント h/s/l = primary の三つ組。出力に全宣言が字面どおり残る。HEX・`rgb()` が生成されない。他テーマの変数が混ざらない。`--ink-*` の重複定義なし | **PASS**（3 方式 × 2 テーマ） | `results/static-t1-t2.log` |
 | **T2 再現性** | 2 回のビルドがバイト単位で同一。出力がパースできる。`@import` 規則が残らない。`@charset` / BOM なし。空のルールなし。ソースを 1 つ欠くと非ゼロ終了。**P1・P2・P3 の出力の宣言列（セレクタ・プロパティ・値・`!important`・順序）が同一** | **PASS**（静的テスト計 115 件） | 同上 |
 | **T2 クリーン環境** | 一時ディレクトリで `npm ci` → 3 方式のビルド → 静的テスト 115 件 PASS → 出力 6 ファイルがローカルのビルドとバイト単位で一致 | **PASS** | `tests/clean-room.sh` |
-| **T3 CSS の適用** | 隔離した Obsidian 1.14.4（ユーザー環境とは別の `--user-data-dir` とテスト Vault）に各方式の出力を読み込み、Computed Style を確認。不透明時の 10 領域、translucent 時の 14 領域、translucent → 不透明で全領域が元に戻る、`body` の `--background-primary` と設定モーダルが translucent 時も不変（漏れなし）、中央の `.workspace-leaf-content` にドック用の規則が漏れない、ユーザーのアクセント設定（`accentColor`）がテーマの値に勝ち、解除で戻る。P1 の出力でモバイルエミュレーション（`app.emulateMobile`、タブレット判定）の左右ドロワー = ノートリスト色 | **PASS**（198 件） | `results/runtime-t3.json`、`.log` |
+| **T3 CSS の適用** | 隔離した Obsidian 1.14.4（ユーザー環境とは別の `--user-data-dir` とテスト Vault）に各方式の出力を読み込み、Computed Style を確認。不透明時の 10 領域、translucent 時の 14 領域、translucent → 不透明で全領域が元に戻る、`body` の `--background-primary` が translucent 時も不変、モーダル 2 種（設定モーダル、クイックスイッチャー）が不透明時・translucent 時とも不透明のエディタ色（要素が見つからなければ FAIL）、中央の `.workspace-leaf-content` にドック用の規則が漏れない、ユーザーのアクセント設定（`accentColor`）がテーマの値に勝ち、解除で戻る。P1 の出力でモバイルエミュレーション（`app.emulateMobile`）: タブレット判定と phone 判定（フローティングナビの有効・無効）で、開いた左右ドロワー = ノートリスト色、phone のナビゲーションバーが表示されていてノートリスト色、タブレットではナビゲーションバーが表示されない | **PASS**（262 件） | `results/runtime-t3.json`、`.log` |
 | **T4 保守性** | §3 | 実施 | `results/t4.md` |
 
 ### 2.1 テストで見つかった不具合（3 方式に共通）
@@ -54,6 +54,30 @@
 T3 の初回で、translucent 時のタブ帯が塗られなかった（18 件 FAIL）。原因は CSS の詳細度で、app.css はタブ帯を `.is-translucent:not(.is-fullscreen) .mod-top .workspace-tab-header-container` などの **(0,4,0)** で `transparent !important` にしており、PoC の (0,3,0) の `!important` が負けていた。セレクタに `.workspace-tabs` を足して (0,4,0) にし、後から読み込まれるテーマ側が勝つようにした。V-04 の診断用 CSS（12、`.mod-left-split` 付きの (0,4,0)）では起きていなかった。
 
 この修正は P1・P2 では `src/common/translucent.css` の 1 か所、P3 では `_translucent.scss` の 1 か所だった。**ビルド方式はこの種の問題（Obsidian のカスケード）を防がない**。防いだのは実機の Computed Style のテストである。
+
+#### 2.1.1 独立レビュー後の修正（2026-10-11）
+
+独立レビューで 2 点の指摘を受け、隔離した Obsidian 1.14.4 の DOM と Computed Style を調べ直した。
+
+**(1) 設定モーダルの漏れ検査が機能していなかった（テストの不具合）**
+
+- 事実: 初版の T3 は設定モーダルの背景を `document.querySelector(".modal.mod-settings")` で取得しており、全ケースで `null` だった。比較が `null === null` だったため PASS になり、漏れを検出できない状態だった。初版の「設定モーダルが translucent 時も不変」という結果は、**検証になっていなかった**。
+- 原因（実測）: Obsidian 1.14.4 のデスクトップでは、設定は**別のポップアウトウィンドウ**（`body.is-popout-window.is-popout-modal`）に開く。`app.setting.modalEl` は接続済みだが、`ownerDocument` がメインウィンドウの `document` と異なる。
+- 修正: `app.setting.modalEl` をその `ownerDocument` の `getComputedStyle` で測るようにした。要素が見つからない場合と、値が取れない場合は FAIL にした。比較は「不透明時と同じ」ではなく、**期待値（不透明の `--ink-editor-background`）との一致**にした。メインウィンドウ内に開くモーダルとして、クイックスイッチャー（`.modal-container .prompt`）も同じ条件で測るようにした。
+- 結果: 3 方式 × 2 テーマの不透明時・translucent 時とも、設定モーダルとクイックスイッチャーは不透明のエディタ色だった（PASS）。ポップアウト側の `body` にも `is-translucent` が付くことを確認したが、PoC の translucent 規則は `.workspace-split.mod-root` などにスコープしているため、モーダルには届かなかった。
+
+**(2) モバイルのナビゲーションバー（CSS の不具合と測定の不具合）**
+
+- 事実（初版）: `runtime-t3.json` の `.mobile-navbar` はエディタ色だった。ただし、これは**タブレット判定で表示されていない要素**（`display: none`、0×0）の値だった。初版はこの値を検査していなかった。
+- 調査（実測、デスクトップのエミュレーション）:
+  - `app.emulateMobile(true)` は、再読み込み時のウィンドウ幅でタブレットか phone かを判定する。幅 1024 ではタブレット、幅 400 では phone（`is-phone`）になった。
+  - タブレット判定: `.mobile-navbar` は表示されない。ナビゲーションバーの色は観測できない。
+  - phone 判定、フローティングナビ有効（既定、`is-floating-nav`）: `.mobile-navbar.mod-raised` が表示され（316×52）、`.is-phone .mod-raised { background: var(--raised, var(--raised-background)) }` で塗られる。PoC の `--raised-background` の上書きが効き、**ノートリスト色だった**。
+  - phone 判定、フローティングナビ無効（設定 `floatingNavigation: false`）: 下端の全幅のバー（400×80）になり、**エディタ色だった**。app.css の `.is-phone:not(.is-floating-nav) .mobile-navbar { --raised-background: var(--background-primary) }`（0,3,0）が、PoC の `.is-mobile .mobile-navbar`（0,2,0）に勝っていた。
+- 修正: セレクタを `.is-mobile .mobile-navbar.mod-raised`（0,3,0）にした。テーマは app.css より後に読み込まれるので、同じ詳細度で勝つ。P1・P2 は `src/common/mobile.css`、P3 は `_mobile.scss` のそれぞれ 1 か所で、出力の宣言は 3 方式で同一のまま（T2 PASS）。
+- テストの追加: タブレット判定と phone 判定（フローティングナビの有効・無効）のそれぞれで、ドロワーを開いた状態の色と、ナビゲーションバーの表示（`display` と寸法）と色を検査するようにした。修正前のセレクタに戻した出力で同じテストを実行すると、phone のフローティングナビ無効の 2 件（SD・KD）が FAIL することを確認した（SD `rgb(0, 33, 41)`、KD `rgb(30, 29, 26)`）。
+- 判断（仕様の解釈）: 確定仕様の「フローティングナビゲーション = ノートリスト」を、フローティングナビ無効時の下端のバーにも当てはめた。無効時のバーもナビゲーションの同じ要素（`.mobile-navbar`）であるため。
+- 判断（見た目への影響）: Obsidian 既定の `--raised-background` は、半透明の `color-mix()` とグラデーションで、背後が透ける「浮いた」表現である。PoC はこれを不透明のノートリスト色に置き換えたため、フローティングナビの透け感はなくなる（`backdrop-filter` は残るが、不透明の背景では効果が見えない）。この表現を残すか、ノートリスト色を半透明にするかは、完成版の設計判断として残る。
 
 ### 2.2 出力の比較（実測）
 
@@ -99,7 +123,7 @@ T3 の初回で、translucent 時のタブ帯が塗られなかった（18 件 F
 2. PoC の規模では、どの変更も 1 ファイルで済んだ。差が出たのは「同じ条件を複数のセレクタで繰り返す」変更だけ（CSS 6 行 / Sass 1 行）。
 3. P1 が P2 に対して追加で提供したのは、エントリの `@import` から連結順を決めること（順序の二重管理がない）と、欠けたファイルを名前付きのエラーで報告することだけだった。それ以外の変換は行っていない。
 4. P3 は、Sass 特有の出力の癖が 2 つ見つかり、どちらも設定かコメントの位置で回避できた。
-5. 最も重大な不具合（タブ帯の詳細度）はビルド方式と無関係で、実機の Computed Style のテストで見つかった。
+5. 見つかった CSS の不具合（タブ帯の詳細度、phone のナビゲーションバーの詳細度。§2.1・§2.1.1）は、どちらもビルド方式と無関係で、実機の Computed Style のテストで見つかった。テスト側にも、要素が見つからない場合を PASS にしてしまう不具合があった（§2.1.1）。
 
 ### 4.3 設計上の判断（推奨候補。決定ではない）
 
@@ -122,7 +146,11 @@ P3（Sass）を推奨にしない理由:
 
 - **CSS ネスト**: ソースの繰り返し（§3 の 3b）を減らすためにネイティブの CSS ネストを使えるかは、Obsidian のモバイル（iOS / Android の WebView）の最低版が確認できておらず、未検証。使う場合は P1 に `postcss-nesting` を足して展開するのが安全と考えられる（推測）。
 - **公式 stylelint（`stylelint-config-obsidianmd`）**: 3 方式の出力に対して実行していない。
-- **モバイル**: エミュレーション（タブレット判定）でドロワーの色だけを確認した。phone 判定、フローティングナビ（`--raised-background`）、iOS / Android 実機は未確認。
+- **モバイル**: デスクトップの `app.emulateMobile(true)` で、タブレット判定と phone 判定（フローティングナビの有効・無効）のドロワーとナビゲーションバーの Computed Style を確認した（§2.1.1）。次は**エミュレーションでは確認できず、iOS・Android の実機が必要**で、未検証である。
+  - `.is-ios` / `.is-android` に限定した app.css の規則。例えば iOS のフローティングナビには `.is-mobile.is-floating-nav.is-ios .mod-raised::after`（`--raised-mask-background` と `backdrop-filter` の層）が重なる。エミュレーションでは `is-ios` も `is-android` も付かない。
+  - WebView ごとのレンダリング（`backdrop-filter`、`color-mix()` の対応、セーフエリア、キーボード表示時のレイアウト）と、実際の画面上の色（Computed Style ではなくピクセル）。
+  - 実機の画面サイズでの phone / タブレットの判定（エミュレーションはウィンドウ幅で切り替えた）。
+  - モバイルのヘッダー（View Header、ドロワーのヘッダー）の色は、確定仕様との対応を PoC では検査していない。
 - **完成版の規模**: PoC は代表領域だけで、シンタックスハイライト・Mermaid・プラグイン対応などを含む完成版での保守性（ファイル数、連結順の管理、生成の必要性）は推測にとどまる。
 - **パレットの書き写し**: パレットは手で書き写し、T1 で一次データと照合した。一次データからの自動生成はしていない（08 案 F）。T1 のような検査を CI で常に走らせることが前提になる。
 - **P2 の Windows 対応**: bash が前提で、Windows での動作は確認していない。

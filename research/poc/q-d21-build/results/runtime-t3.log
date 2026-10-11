@@ -26,7 +26,14 @@ PASS T3 p1 solarized-dark translucent view header = --ink-editor-background-acry
 PASS T3 p1 solarized-dark translucent centre editor = --ink-editor-background-acrylic -- rgba(0, 33, 41, 0.9)
 PASS T3 p1 solarized-dark translucent status bar = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
 PASS T3 p1 solarized-dark translucent: body --background-primary unchanged -- hsl(192deg 100% 8%)
-PASS T3 p1 solarized-dark translucent: settings modal unchanged -- null / null
+PASS T3 p1 solarized-dark opaque: settings modal element found -- {"sameDocument":false}
+PASS T3 p1 solarized-dark opaque: settings modal = --ink-editor-background (opaque) -- rgb(0, 33, 41)
+PASS T3 p1 solarized-dark opaque: quick switcher = --ink-editor-background (opaque) -- rgb(0, 33, 41)
+PASS T3 p1 solarized-dark opaque: modals closed after probe -- 0
+PASS T3 p1 solarized-dark translucent: settings modal element found -- {"sameDocument":false}
+PASS T3 p1 solarized-dark translucent: settings modal = --ink-editor-background (opaque) -- rgb(0, 33, 41)
+PASS T3 p1 solarized-dark translucent: quick switcher = --ink-editor-background (opaque) -- rgb(0, 33, 41)
+PASS T3 p1 solarized-dark translucent: modals closed after probe -- 0
 PASS T3 p1 solarized-dark translucent -> opaque restores every region
 PASS T3 p1 solarized-dark user accent overrides theme accent -- set 355
 PASS T3 p1 solarized-dark accent reset returns to theme accent -- reset 205
@@ -58,7 +65,14 @@ PASS T3 p1 kanagawa-dragon translucent view header = --ink-editor-background-acr
 PASS T3 p1 kanagawa-dragon translucent centre editor = --ink-editor-background-acrylic -- rgba(30, 29, 26, 0.9)
 PASS T3 p1 kanagawa-dragon translucent status bar = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
 PASS T3 p1 kanagawa-dragon translucent: body --background-primary unchanged -- hsl(45deg 7% 11%)
-PASS T3 p1 kanagawa-dragon translucent: settings modal unchanged -- null / null
+PASS T3 p1 kanagawa-dragon opaque: settings modal element found -- {"sameDocument":false}
+PASS T3 p1 kanagawa-dragon opaque: settings modal = --ink-editor-background (opaque) -- rgb(30, 29, 26)
+PASS T3 p1 kanagawa-dragon opaque: quick switcher = --ink-editor-background (opaque) -- rgb(30, 29, 26)
+PASS T3 p1 kanagawa-dragon opaque: modals closed after probe -- 0
+PASS T3 p1 kanagawa-dragon translucent: settings modal element found -- {"sameDocument":false}
+PASS T3 p1 kanagawa-dragon translucent: settings modal = --ink-editor-background (opaque) -- rgb(30, 29, 26)
+PASS T3 p1 kanagawa-dragon translucent: quick switcher = --ink-editor-background (opaque) -- rgb(30, 29, 26)
+PASS T3 p1 kanagawa-dragon translucent: modals closed after probe -- 0
 PASS T3 p1 kanagawa-dragon translucent -> opaque restores every region
 PASS T3 p1 kanagawa-dragon user accent overrides theme accent -- set 355
 PASS T3 p1 kanagawa-dragon accent reset returns to theme accent -- reset 199
@@ -90,7 +104,14 @@ PASS T3 p2 solarized-dark translucent view header = --ink-editor-background-acry
 PASS T3 p2 solarized-dark translucent centre editor = --ink-editor-background-acrylic -- rgba(0, 33, 41, 0.9)
 PASS T3 p2 solarized-dark translucent status bar = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
 PASS T3 p2 solarized-dark translucent: body --background-primary unchanged -- hsl(192deg 100% 8%)
-PASS T3 p2 solarized-dark translucent: settings modal unchanged -- null / null
+PASS T3 p2 solarized-dark opaque: settings modal element found -- {"sameDocument":false}
+PASS T3 p2 solarized-dark opaque: settings modal = --ink-editor-background (opaque) -- rgb(0, 33, 41)
+PASS T3 p2 solarized-dark opaque: quick switcher = --ink-editor-background (opaque) -- rgb(0, 33, 41)
+PASS T3 p2 solarized-dark opaque: modals closed after probe -- 0
+PASS T3 p2 solarized-dark translucent: settings modal element found -- {"sameDocument":false}
+PASS T3 p2 solarized-dark translucent: settings modal = --ink-editor-background (opaque) -- rgb(0, 33, 41)
+PASS T3 p2 solarized-dark translucent: quick switcher = --ink-editor-background (opaque) -- rgb(0, 33, 41)
+PASS T3 p2 solarized-dark translucent: modals closed after probe -- 0
 PASS T3 p2 solarized-dark translucent -> opaque restores every region
 PASS T3 p2 solarized-dark user accent overrides theme accent -- set 355
 PASS T3 p2 solarized-dark accent reset returns to theme accent -- reset 205
@@ -122,7 +143,14 @@ PASS T3 p2 kanagawa-dragon translucent view header = --ink-editor-background-acr
 PASS T3 p2 kanagawa-dragon translucent centre editor = --ink-editor-background-acrylic -- rgba(30, 29, 26, 0.9)
 PASS T3 p2 kanagawa-dragon translucent status bar = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
 PASS T3 p2 kanagawa-dragon translucent: body --background-primary unchanged -- hsl(45deg 7% 11%)
-PASS T3 p2 kanagawa-dragon translucent: settings modal unchanged -- null / null
+PASS T3 p2 kanagawa-dragon opaque: settings modal element found -- {"sameDocument":false}
+PASS T3 p2 kanagawa-dragon opaque: settings modal = --ink-editor-background (opaque) -- rgb(30, 29, 26)
+PASS T3 p2 kanagawa-dragon opaque: quick switcher = --ink-editor-background (opaque) -- rgb(30, 29, 26)
+PASS T3 p2 kanagawa-dragon opaque: modals closed after probe -- 0
+PASS T3 p2 kanagawa-dragon translucent: settings modal element found -- {"sameDocument":false}
+PASS T3 p2 kanagawa-dragon translucent: settings modal = --ink-editor-background (opaque) -- rgb(30, 29, 26)
+PASS T3 p2 kanagawa-dragon translucent: quick switcher = --ink-editor-background (opaque) -- rgb(30, 29, 26)
+PASS T3 p2 kanagawa-dragon translucent: modals closed after probe -- 0
 PASS T3 p2 kanagawa-dragon translucent -> opaque restores every region
 PASS T3 p2 kanagawa-dragon user accent overrides theme accent -- set 355
 PASS T3 p2 kanagawa-dragon accent reset returns to theme accent -- reset 199
@@ -154,7 +182,14 @@ PASS T3 p3 solarized-dark translucent view header = --ink-editor-background-acry
 PASS T3 p3 solarized-dark translucent centre editor = --ink-editor-background-acrylic -- rgba(0, 33, 41, 0.9)
 PASS T3 p3 solarized-dark translucent status bar = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
 PASS T3 p3 solarized-dark translucent: body --background-primary unchanged -- hsl(192deg 100% 8%)
-PASS T3 p3 solarized-dark translucent: settings modal unchanged -- null / null
+PASS T3 p3 solarized-dark opaque: settings modal element found -- {"sameDocument":false}
+PASS T3 p3 solarized-dark opaque: settings modal = --ink-editor-background (opaque) -- rgb(0, 33, 41)
+PASS T3 p3 solarized-dark opaque: quick switcher = --ink-editor-background (opaque) -- rgb(0, 33, 41)
+PASS T3 p3 solarized-dark opaque: modals closed after probe -- 0
+PASS T3 p3 solarized-dark translucent: settings modal element found -- {"sameDocument":false}
+PASS T3 p3 solarized-dark translucent: settings modal = --ink-editor-background (opaque) -- rgb(0, 33, 41)
+PASS T3 p3 solarized-dark translucent: quick switcher = --ink-editor-background (opaque) -- rgb(0, 33, 41)
+PASS T3 p3 solarized-dark translucent: modals closed after probe -- 0
 PASS T3 p3 solarized-dark translucent -> opaque restores every region
 PASS T3 p3 solarized-dark user accent overrides theme accent -- set 355
 PASS T3 p3 solarized-dark accent reset returns to theme accent -- reset 205
@@ -186,15 +221,44 @@ PASS T3 p3 kanagawa-dragon translucent view header = --ink-editor-background-acr
 PASS T3 p3 kanagawa-dragon translucent centre editor = --ink-editor-background-acrylic -- rgba(30, 29, 26, 0.9)
 PASS T3 p3 kanagawa-dragon translucent status bar = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
 PASS T3 p3 kanagawa-dragon translucent: body --background-primary unchanged -- hsl(45deg 7% 11%)
-PASS T3 p3 kanagawa-dragon translucent: settings modal unchanged -- null / null
+PASS T3 p3 kanagawa-dragon opaque: settings modal element found -- {"sameDocument":false}
+PASS T3 p3 kanagawa-dragon opaque: settings modal = --ink-editor-background (opaque) -- rgb(30, 29, 26)
+PASS T3 p3 kanagawa-dragon opaque: quick switcher = --ink-editor-background (opaque) -- rgb(30, 29, 26)
+PASS T3 p3 kanagawa-dragon opaque: modals closed after probe -- 0
+PASS T3 p3 kanagawa-dragon translucent: settings modal element found -- {"sameDocument":false}
+PASS T3 p3 kanagawa-dragon translucent: settings modal = --ink-editor-background (opaque) -- rgb(30, 29, 26)
+PASS T3 p3 kanagawa-dragon translucent: quick switcher = --ink-editor-background (opaque) -- rgb(30, 29, 26)
+PASS T3 p3 kanagawa-dragon translucent: modals closed after probe -- 0
 PASS T3 p3 kanagawa-dragon translucent -> opaque restores every region
 PASS T3 p3 kanagawa-dragon user accent overrides theme accent -- set 355
 PASS T3 p3 kanagawa-dragon accent reset returns to theme accent -- reset 199
-PASS T3 mobile-emulation solarized-dark is-mobile -- tablet=true
-PASS T3 mobile-emulation solarized-dark left drawer = note list -- rgb(0, 45, 56)
-PASS T3 mobile-emulation solarized-dark right drawer = note list -- rgb(0, 45, 56)
-PASS T3 mobile-emulation kanagawa-dragon is-mobile -- tablet=true
-PASS T3 mobile-emulation kanagawa-dragon left drawer = note list -- rgb(24, 22, 22)
-PASS T3 mobile-emulation kanagawa-dragon right drawer = note list -- rgb(24, 22, 22)
+PASS T3 mobile-emulation tablet solarized-dark is-mobile + is-tablet -- is-tablet is-mobile is-floating-nav
+PASS T3 mobile-emulation tablet solarized-dark left drawer = note list -- {"bg":"rgb(0, 45, 56)","display":"flex","size":[450,752]}
+PASS T3 mobile-emulation tablet solarized-dark right drawer = note list -- {"bg":"rgb(0, 45, 56)","display":"flex","size":[450,752]}
+PASS T3 mobile-emulation tablet solarized-dark navbar not displayed -- {"bg":"rgb(0, 33, 41)","display":"none","size":[0,0]}
+PASS T3 mobile-emulation phone floating-nav solarized-dark is-mobile + is-phone -- is-phone is-mobile is-floating-nav
+PASS T3 mobile-emulation phone floating-nav solarized-dark left drawer = note list -- {"bg":"rgb(0, 45, 56)","display":"flex","size":[336,860]}
+PASS T3 mobile-emulation phone floating-nav solarized-dark right drawer = note list -- {"bg":"rgb(0, 45, 56)","display":"flex","size":[336,860]}
+PASS T3 mobile-emulation phone floating-nav solarized-dark navbar displayed -- {"bg":"rgb(0, 45, 56)","display":"flex","size":[316,52]}
+PASS T3 mobile-emulation phone floating-nav solarized-dark navbar = note list -- rgb(0, 45, 56)
+PASS T3 mobile-emulation phone non-floating-nav solarized-dark is-mobile + is-phone -- is-phone is-mobile
+PASS T3 mobile-emulation phone non-floating-nav solarized-dark left drawer = note list -- {"bg":"rgb(0, 45, 56)","display":"flex","size":[336,860]}
+PASS T3 mobile-emulation phone non-floating-nav solarized-dark right drawer = note list -- {"bg":"rgb(0, 45, 56)","display":"flex","size":[336,860]}
+PASS T3 mobile-emulation phone non-floating-nav solarized-dark navbar displayed -- {"bg":"rgb(0, 45, 56)","display":"flex","size":[400,80]}
+PASS T3 mobile-emulation phone non-floating-nav solarized-dark navbar = note list -- rgb(0, 45, 56)
+PASS T3 mobile-emulation tablet kanagawa-dragon is-mobile + is-tablet -- is-tablet is-mobile is-floating-nav
+PASS T3 mobile-emulation tablet kanagawa-dragon left drawer = note list -- {"bg":"rgb(24, 22, 22)","display":"flex","size":[450,752]}
+PASS T3 mobile-emulation tablet kanagawa-dragon right drawer = note list -- {"bg":"rgb(24, 22, 22)","display":"flex","size":[450,752]}
+PASS T3 mobile-emulation tablet kanagawa-dragon navbar not displayed -- {"bg":"rgb(30, 29, 26)","display":"none","size":[0,0]}
+PASS T3 mobile-emulation phone floating-nav kanagawa-dragon is-mobile + is-phone -- is-phone is-mobile is-floating-nav
+PASS T3 mobile-emulation phone floating-nav kanagawa-dragon left drawer = note list -- {"bg":"rgb(24, 22, 22)","display":"flex","size":[336,860]}
+PASS T3 mobile-emulation phone floating-nav kanagawa-dragon right drawer = note list -- {"bg":"rgb(24, 22, 22)","display":"flex","size":[336,860]}
+PASS T3 mobile-emulation phone floating-nav kanagawa-dragon navbar displayed -- {"bg":"rgb(24, 22, 22)","display":"flex","size":[316,52]}
+PASS T3 mobile-emulation phone floating-nav kanagawa-dragon navbar = note list -- rgb(24, 22, 22)
+PASS T3 mobile-emulation phone non-floating-nav kanagawa-dragon is-mobile + is-phone -- is-phone is-mobile
+PASS T3 mobile-emulation phone non-floating-nav kanagawa-dragon left drawer = note list -- {"bg":"rgb(24, 22, 22)","display":"flex","size":[336,860]}
+PASS T3 mobile-emulation phone non-floating-nav kanagawa-dragon right drawer = note list -- {"bg":"rgb(24, 22, 22)","display":"flex","size":[336,860]}
+PASS T3 mobile-emulation phone non-floating-nav kanagawa-dragon navbar displayed -- {"bg":"rgb(24, 22, 22)","display":"flex","size":[400,80]}
+PASS T3 mobile-emulation phone non-floating-nav kanagawa-dragon navbar = note list -- rgb(24, 22, 22)
 
 all runtime checks passed

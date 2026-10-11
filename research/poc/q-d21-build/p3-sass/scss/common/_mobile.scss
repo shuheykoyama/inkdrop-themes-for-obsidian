@@ -12,7 +12,9 @@
   --titlebar-background-focused: var(--ink-note-list-bar-background);
 }
 
-/* Floating navigation bar (.mod-raised paints var(--raised-background)). */
-.is-mobile .mobile-navbar {
+/* Phone navigation bar (hidden on tablets). .is-phone .mod-raised paints var(--raised-background).
+   app.css resets it with .is-phone:not(.is-floating-nav) .mobile-navbar (0,3,0), so this needs (0,3,0)
+   too; the theme loads later and wins (research/13 §2.1). */
+.is-mobile .mobile-navbar.mod-raised {
   --raised-background: var(--ink-note-list-bar-background);
 }

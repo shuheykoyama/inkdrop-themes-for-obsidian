@@ -1,5 +1,5 @@
 {
- "measuredAt": "2026-10-10T23:57:55.423Z",
+ "measuredAt": "2026-10-11T05:47:11.601Z",
  "results": [
   {
    "name": "T3 p1 solarized-dark opaque: body has no is-translucent",
@@ -142,9 +142,44 @@
    "detail": "hsl(192deg 100% 8%)"
   },
   {
-   "name": "T3 p1 solarized-dark translucent: settings modal unchanged",
+   "name": "T3 p1 solarized-dark opaque: settings modal element found",
    "ok": true,
-   "detail": "null / null"
+   "detail": "{\"sameDocument\":false}"
+  },
+  {
+   "name": "T3 p1 solarized-dark opaque: settings modal = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p1 solarized-dark opaque: quick switcher = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p1 solarized-dark opaque: modals closed after probe",
+   "ok": true,
+   "detail": "0"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent: settings modal element found",
+   "ok": true,
+   "detail": "{\"sameDocument\":false}"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent: settings modal = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent: quick switcher = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent: modals closed after probe",
+   "ok": true,
+   "detail": "0"
   },
   {
    "name": "T3 p1 solarized-dark translucent -> opaque restores every region",
@@ -302,9 +337,44 @@
    "detail": "hsl(45deg 7% 11%)"
   },
   {
-   "name": "T3 p1 kanagawa-dragon translucent: settings modal unchanged",
+   "name": "T3 p1 kanagawa-dragon opaque: settings modal element found",
    "ok": true,
-   "detail": "null / null"
+   "detail": "{\"sameDocument\":false}"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon opaque: settings modal = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon opaque: quick switcher = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon opaque: modals closed after probe",
+   "ok": true,
+   "detail": "0"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent: settings modal element found",
+   "ok": true,
+   "detail": "{\"sameDocument\":false}"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent: settings modal = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent: quick switcher = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent: modals closed after probe",
+   "ok": true,
+   "detail": "0"
   },
   {
    "name": "T3 p1 kanagawa-dragon translucent -> opaque restores every region",
@@ -462,9 +532,44 @@
    "detail": "hsl(192deg 100% 8%)"
   },
   {
-   "name": "T3 p2 solarized-dark translucent: settings modal unchanged",
+   "name": "T3 p2 solarized-dark opaque: settings modal element found",
    "ok": true,
-   "detail": "null / null"
+   "detail": "{\"sameDocument\":false}"
+  },
+  {
+   "name": "T3 p2 solarized-dark opaque: settings modal = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p2 solarized-dark opaque: quick switcher = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p2 solarized-dark opaque: modals closed after probe",
+   "ok": true,
+   "detail": "0"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent: settings modal element found",
+   "ok": true,
+   "detail": "{\"sameDocument\":false}"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent: settings modal = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent: quick switcher = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent: modals closed after probe",
+   "ok": true,
+   "detail": "0"
   },
   {
    "name": "T3 p2 solarized-dark translucent -> opaque restores every region",
@@ -622,9 +727,44 @@
    "detail": "hsl(45deg 7% 11%)"
   },
   {
-   "name": "T3 p2 kanagawa-dragon translucent: settings modal unchanged",
+   "name": "T3 p2 kanagawa-dragon opaque: settings modal element found",
    "ok": true,
-   "detail": "null / null"
+   "detail": "{\"sameDocument\":false}"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon opaque: settings modal = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon opaque: quick switcher = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon opaque: modals closed after probe",
+   "ok": true,
+   "detail": "0"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent: settings modal element found",
+   "ok": true,
+   "detail": "{\"sameDocument\":false}"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent: settings modal = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent: quick switcher = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent: modals closed after probe",
+   "ok": true,
+   "detail": "0"
   },
   {
    "name": "T3 p2 kanagawa-dragon translucent -> opaque restores every region",
@@ -782,9 +922,44 @@
    "detail": "hsl(192deg 100% 8%)"
   },
   {
-   "name": "T3 p3 solarized-dark translucent: settings modal unchanged",
+   "name": "T3 p3 solarized-dark opaque: settings modal element found",
    "ok": true,
-   "detail": "null / null"
+   "detail": "{\"sameDocument\":false}"
+  },
+  {
+   "name": "T3 p3 solarized-dark opaque: settings modal = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p3 solarized-dark opaque: quick switcher = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p3 solarized-dark opaque: modals closed after probe",
+   "ok": true,
+   "detail": "0"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent: settings modal element found",
+   "ok": true,
+   "detail": "{\"sameDocument\":false}"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent: settings modal = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent: quick switcher = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent: modals closed after probe",
+   "ok": true,
+   "detail": "0"
   },
   {
    "name": "T3 p3 solarized-dark translucent -> opaque restores every region",
@@ -942,9 +1117,44 @@
    "detail": "hsl(45deg 7% 11%)"
   },
   {
-   "name": "T3 p3 kanagawa-dragon translucent: settings modal unchanged",
+   "name": "T3 p3 kanagawa-dragon opaque: settings modal element found",
    "ok": true,
-   "detail": "null / null"
+   "detail": "{\"sameDocument\":false}"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon opaque: settings modal = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon opaque: quick switcher = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon opaque: modals closed after probe",
+   "ok": true,
+   "detail": "0"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent: settings modal element found",
+   "ok": true,
+   "detail": "{\"sameDocument\":false}"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent: settings modal = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent: quick switcher = --ink-editor-background (opaque)",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent: modals closed after probe",
+   "ok": true,
+   "detail": "0"
   },
   {
    "name": "T3 p3 kanagawa-dragon translucent -> opaque restores every region",
@@ -962,32 +1172,142 @@
    "detail": "reset 199"
   },
   {
-   "name": "T3 mobile-emulation solarized-dark is-mobile",
+   "name": "T3 mobile-emulation tablet solarized-dark is-mobile + is-tablet",
    "ok": true,
-   "detail": "tablet=true"
+   "detail": "is-tablet is-mobile is-floating-nav"
   },
   {
-   "name": "T3 mobile-emulation solarized-dark left drawer = note list",
+   "name": "T3 mobile-emulation tablet solarized-dark left drawer = note list",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(0, 45, 56)\",\"display\":\"flex\",\"size\":[450,752]}"
+  },
+  {
+   "name": "T3 mobile-emulation tablet solarized-dark right drawer = note list",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(0, 45, 56)\",\"display\":\"flex\",\"size\":[450,752]}"
+  },
+  {
+   "name": "T3 mobile-emulation tablet solarized-dark navbar not displayed",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(0, 33, 41)\",\"display\":\"none\",\"size\":[0,0]}"
+  },
+  {
+   "name": "T3 mobile-emulation phone floating-nav solarized-dark is-mobile + is-phone",
+   "ok": true,
+   "detail": "is-phone is-mobile is-floating-nav"
+  },
+  {
+   "name": "T3 mobile-emulation phone floating-nav solarized-dark left drawer = note list",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(0, 45, 56)\",\"display\":\"flex\",\"size\":[336,860]}"
+  },
+  {
+   "name": "T3 mobile-emulation phone floating-nav solarized-dark right drawer = note list",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(0, 45, 56)\",\"display\":\"flex\",\"size\":[336,860]}"
+  },
+  {
+   "name": "T3 mobile-emulation phone floating-nav solarized-dark navbar displayed",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(0, 45, 56)\",\"display\":\"flex\",\"size\":[316,52]}"
+  },
+  {
+   "name": "T3 mobile-emulation phone floating-nav solarized-dark navbar = note list",
    "ok": true,
    "detail": "rgb(0, 45, 56)"
   },
   {
-   "name": "T3 mobile-emulation solarized-dark right drawer = note list",
+   "name": "T3 mobile-emulation phone non-floating-nav solarized-dark is-mobile + is-phone",
+   "ok": true,
+   "detail": "is-phone is-mobile"
+  },
+  {
+   "name": "T3 mobile-emulation phone non-floating-nav solarized-dark left drawer = note list",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(0, 45, 56)\",\"display\":\"flex\",\"size\":[336,860]}"
+  },
+  {
+   "name": "T3 mobile-emulation phone non-floating-nav solarized-dark right drawer = note list",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(0, 45, 56)\",\"display\":\"flex\",\"size\":[336,860]}"
+  },
+  {
+   "name": "T3 mobile-emulation phone non-floating-nav solarized-dark navbar displayed",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(0, 45, 56)\",\"display\":\"flex\",\"size\":[400,80]}"
+  },
+  {
+   "name": "T3 mobile-emulation phone non-floating-nav solarized-dark navbar = note list",
    "ok": true,
    "detail": "rgb(0, 45, 56)"
   },
   {
-   "name": "T3 mobile-emulation kanagawa-dragon is-mobile",
+   "name": "T3 mobile-emulation tablet kanagawa-dragon is-mobile + is-tablet",
    "ok": true,
-   "detail": "tablet=true"
+   "detail": "is-tablet is-mobile is-floating-nav"
   },
   {
-   "name": "T3 mobile-emulation kanagawa-dragon left drawer = note list",
+   "name": "T3 mobile-emulation tablet kanagawa-dragon left drawer = note list",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(24, 22, 22)\",\"display\":\"flex\",\"size\":[450,752]}"
+  },
+  {
+   "name": "T3 mobile-emulation tablet kanagawa-dragon right drawer = note list",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(24, 22, 22)\",\"display\":\"flex\",\"size\":[450,752]}"
+  },
+  {
+   "name": "T3 mobile-emulation tablet kanagawa-dragon navbar not displayed",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(30, 29, 26)\",\"display\":\"none\",\"size\":[0,0]}"
+  },
+  {
+   "name": "T3 mobile-emulation phone floating-nav kanagawa-dragon is-mobile + is-phone",
+   "ok": true,
+   "detail": "is-phone is-mobile is-floating-nav"
+  },
+  {
+   "name": "T3 mobile-emulation phone floating-nav kanagawa-dragon left drawer = note list",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(24, 22, 22)\",\"display\":\"flex\",\"size\":[336,860]}"
+  },
+  {
+   "name": "T3 mobile-emulation phone floating-nav kanagawa-dragon right drawer = note list",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(24, 22, 22)\",\"display\":\"flex\",\"size\":[336,860]}"
+  },
+  {
+   "name": "T3 mobile-emulation phone floating-nav kanagawa-dragon navbar displayed",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(24, 22, 22)\",\"display\":\"flex\",\"size\":[316,52]}"
+  },
+  {
+   "name": "T3 mobile-emulation phone floating-nav kanagawa-dragon navbar = note list",
    "ok": true,
    "detail": "rgb(24, 22, 22)"
   },
   {
-   "name": "T3 mobile-emulation kanagawa-dragon right drawer = note list",
+   "name": "T3 mobile-emulation phone non-floating-nav kanagawa-dragon is-mobile + is-phone",
+   "ok": true,
+   "detail": "is-phone is-mobile"
+  },
+  {
+   "name": "T3 mobile-emulation phone non-floating-nav kanagawa-dragon left drawer = note list",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(24, 22, 22)\",\"display\":\"flex\",\"size\":[336,860]}"
+  },
+  {
+   "name": "T3 mobile-emulation phone non-floating-nav kanagawa-dragon right drawer = note list",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(24, 22, 22)\",\"display\":\"flex\",\"size\":[336,860]}"
+  },
+  {
+   "name": "T3 mobile-emulation phone non-floating-nav kanagawa-dragon navbar displayed",
+   "ok": true,
+   "detail": "{\"bg\":\"rgb(24, 22, 22)\",\"display\":\"flex\",\"size\":[400,80]}"
+  },
+  {
+   "name": "T3 mobile-emulation phone non-floating-nav kanagawa-dragon navbar = note list",
    "ok": true,
    "detail": "rgb(24, 22, 22)"
   }
@@ -1024,8 +1344,29 @@
      "view header": "rgb(0, 33, 41)",
      "centre editor": "rgb(0, 33, 41)",
      "status bar": "rgb(0, 45, 56)",
-     "settings modal": null
-    }
+     "settings modal": "rgb(0, 33, 41)",
+     "quick switcher": "rgb(0, 33, 41)"
+    },
+    "settingsModal": {
+     "found": true,
+     "sameDocument": false,
+     "popoutBodyClasses": [
+      "theme-dark",
+      "mod-macos",
+      "is-frameless",
+      "is-hidden-frameless",
+      "obsidian-app",
+      "show-inline-title",
+      "is-floating-nav",
+      "auto-full-screen",
+      "show-ribbon",
+      "show-view-header",
+      "is-popout-window",
+      "is-popout-modal",
+      "is-focused"
+     ]
+    },
+    "modalsLeftOpen": 0
    },
    "trans": {
     "bodyClasses": [
@@ -1039,7 +1380,6 @@
      "auto-full-screen",
      "show-ribbon",
      "show-view-header",
-     "is-focused",
      "is-translucent"
     ],
     "accentH": "205",
@@ -1059,8 +1399,30 @@
      "view header": "rgba(0, 33, 41, 0.9)",
      "centre editor": "rgba(0, 33, 41, 0.9)",
      "status bar": "rgba(0, 33, 41, 0.7)",
-     "settings modal": null
-    }
+     "settings modal": "rgb(0, 33, 41)",
+     "quick switcher": "rgb(0, 33, 41)"
+    },
+    "settingsModal": {
+     "found": true,
+     "sameDocument": false,
+     "popoutBodyClasses": [
+      "theme-dark",
+      "mod-macos",
+      "is-frameless",
+      "is-hidden-frameless",
+      "obsidian-app",
+      "show-inline-title",
+      "is-floating-nav",
+      "auto-full-screen",
+      "show-ribbon",
+      "show-view-header",
+      "is-translucent",
+      "is-popout-window",
+      "is-popout-modal",
+      "is-focused"
+     ]
+    },
+    "modalsLeftOpen": 0
    },
    "opaque2": {
     "bodyClasses": [
@@ -1108,8 +1470,7 @@
      "is-floating-nav",
      "auto-full-screen",
      "show-ribbon",
-     "show-view-header",
-     "is-focused"
+     "show-view-header"
     ],
     "accentH": "199",
     "bodyBackgroundPrimary": "hsl(45deg 7% 11%)",
@@ -1128,8 +1489,29 @@
      "view header": "rgb(30, 29, 26)",
      "centre editor": "rgb(30, 29, 26)",
      "status bar": "rgb(24, 22, 22)",
-     "settings modal": null
-    }
+     "settings modal": "rgb(30, 29, 26)",
+     "quick switcher": "rgb(30, 29, 26)"
+    },
+    "settingsModal": {
+     "found": true,
+     "sameDocument": false,
+     "popoutBodyClasses": [
+      "theme-dark",
+      "mod-macos",
+      "is-frameless",
+      "is-hidden-frameless",
+      "obsidian-app",
+      "show-inline-title",
+      "is-floating-nav",
+      "auto-full-screen",
+      "show-ribbon",
+      "show-view-header",
+      "is-popout-window",
+      "is-popout-modal",
+      "is-focused"
+     ]
+    },
+    "modalsLeftOpen": 0
    },
    "trans": {
     "bodyClasses": [
@@ -1143,7 +1525,6 @@
      "auto-full-screen",
      "show-ribbon",
      "show-view-header",
-     "is-focused",
      "is-translucent"
     ],
     "accentH": "199",
@@ -1163,8 +1544,30 @@
      "view header": "rgba(30, 29, 26, 0.9)",
      "centre editor": "rgba(30, 29, 26, 0.9)",
      "status bar": "rgba(24, 22, 22, 0.7)",
-     "settings modal": null
-    }
+     "settings modal": "rgb(30, 29, 26)",
+     "quick switcher": "rgb(30, 29, 26)"
+    },
+    "settingsModal": {
+     "found": true,
+     "sameDocument": false,
+     "popoutBodyClasses": [
+      "theme-dark",
+      "mod-macos",
+      "is-frameless",
+      "is-hidden-frameless",
+      "obsidian-app",
+      "show-inline-title",
+      "is-floating-nav",
+      "auto-full-screen",
+      "show-ribbon",
+      "show-view-header",
+      "is-translucent",
+      "is-popout-window",
+      "is-popout-modal",
+      "is-focused"
+     ]
+    },
+    "modalsLeftOpen": 0
    },
    "opaque2": {
     "bodyClasses": [
@@ -1212,8 +1615,7 @@
      "is-floating-nav",
      "auto-full-screen",
      "show-ribbon",
-     "show-view-header",
-     "is-focused"
+     "show-view-header"
     ],
     "accentH": "205",
     "bodyBackgroundPrimary": "hsl(192deg 100% 8%)",
@@ -1232,8 +1634,29 @@
      "view header": "rgb(0, 33, 41)",
      "centre editor": "rgb(0, 33, 41)",
      "status bar": "rgb(0, 45, 56)",
-     "settings modal": null
-    }
+     "settings modal": "rgb(0, 33, 41)",
+     "quick switcher": "rgb(0, 33, 41)"
+    },
+    "settingsModal": {
+     "found": true,
+     "sameDocument": false,
+     "popoutBodyClasses": [
+      "theme-dark",
+      "mod-macos",
+      "is-frameless",
+      "is-hidden-frameless",
+      "obsidian-app",
+      "show-inline-title",
+      "is-floating-nav",
+      "auto-full-screen",
+      "show-ribbon",
+      "show-view-header",
+      "is-popout-window",
+      "is-popout-modal",
+      "is-focused"
+     ]
+    },
+    "modalsLeftOpen": 0
    },
    "trans": {
     "bodyClasses": [
@@ -1247,7 +1670,6 @@
      "auto-full-screen",
      "show-ribbon",
      "show-view-header",
-     "is-focused",
      "is-translucent"
     ],
     "accentH": "205",
@@ -1267,8 +1689,30 @@
      "view header": "rgba(0, 33, 41, 0.9)",
      "centre editor": "rgba(0, 33, 41, 0.9)",
      "status bar": "rgba(0, 33, 41, 0.7)",
-     "settings modal": null
-    }
+     "settings modal": "rgb(0, 33, 41)",
+     "quick switcher": "rgb(0, 33, 41)"
+    },
+    "settingsModal": {
+     "found": true,
+     "sameDocument": false,
+     "popoutBodyClasses": [
+      "theme-dark",
+      "mod-macos",
+      "is-frameless",
+      "is-hidden-frameless",
+      "obsidian-app",
+      "show-inline-title",
+      "is-floating-nav",
+      "auto-full-screen",
+      "show-ribbon",
+      "show-view-header",
+      "is-translucent",
+      "is-popout-window",
+      "is-popout-modal",
+      "is-focused"
+     ]
+    },
+    "modalsLeftOpen": 0
    },
    "opaque2": {
     "bodyClasses": [
@@ -1281,8 +1725,7 @@
      "is-floating-nav",
      "auto-full-screen",
      "show-ribbon",
-     "show-view-header",
-     "is-focused"
+     "show-view-header"
     ],
     "accentH": "205",
     "bodyBackgroundPrimary": "hsl(192deg 100% 8%)",
@@ -1316,8 +1759,7 @@
      "is-floating-nav",
      "auto-full-screen",
      "show-ribbon",
-     "show-view-header",
-     "is-focused"
+     "show-view-header"
     ],
     "accentH": "199",
     "bodyBackgroundPrimary": "hsl(45deg 7% 11%)",
@@ -1336,8 +1778,29 @@
      "view header": "rgb(30, 29, 26)",
      "centre editor": "rgb(30, 29, 26)",
      "status bar": "rgb(24, 22, 22)",
-     "settings modal": null
-    }
+     "settings modal": "rgb(30, 29, 26)",
+     "quick switcher": "rgb(30, 29, 26)"
+    },
+    "settingsModal": {
+     "found": true,
+     "sameDocument": false,
+     "popoutBodyClasses": [
+      "theme-dark",
+      "mod-macos",
+      "is-frameless",
+      "is-hidden-frameless",
+      "obsidian-app",
+      "show-inline-title",
+      "is-floating-nav",
+      "auto-full-screen",
+      "show-ribbon",
+      "show-view-header",
+      "is-popout-window",
+      "is-popout-modal",
+      "is-focused"
+     ]
+    },
+    "modalsLeftOpen": 0
    },
    "trans": {
     "bodyClasses": [
@@ -1351,7 +1814,6 @@
      "auto-full-screen",
      "show-ribbon",
      "show-view-header",
-     "is-focused",
      "is-translucent"
     ],
     "accentH": "199",
@@ -1371,8 +1833,30 @@
      "view header": "rgba(30, 29, 26, 0.9)",
      "centre editor": "rgba(30, 29, 26, 0.9)",
      "status bar": "rgba(24, 22, 22, 0.7)",
-     "settings modal": null
-    }
+     "settings modal": "rgb(30, 29, 26)",
+     "quick switcher": "rgb(30, 29, 26)"
+    },
+    "settingsModal": {
+     "found": true,
+     "sameDocument": false,
+     "popoutBodyClasses": [
+      "theme-dark",
+      "mod-macos",
+      "is-frameless",
+      "is-hidden-frameless",
+      "obsidian-app",
+      "show-inline-title",
+      "is-floating-nav",
+      "auto-full-screen",
+      "show-ribbon",
+      "show-view-header",
+      "is-translucent",
+      "is-popout-window",
+      "is-popout-modal",
+      "is-focused"
+     ]
+    },
+    "modalsLeftOpen": 0
    },
    "opaque2": {
     "bodyClasses": [
@@ -1440,8 +1924,29 @@
      "view header": "rgb(0, 33, 41)",
      "centre editor": "rgb(0, 33, 41)",
      "status bar": "rgb(0, 45, 56)",
-     "settings modal": null
-    }
+     "settings modal": "rgb(0, 33, 41)",
+     "quick switcher": "rgb(0, 33, 41)"
+    },
+    "settingsModal": {
+     "found": true,
+     "sameDocument": false,
+     "popoutBodyClasses": [
+      "theme-dark",
+      "mod-macos",
+      "is-frameless",
+      "is-hidden-frameless",
+      "obsidian-app",
+      "show-inline-title",
+      "is-floating-nav",
+      "auto-full-screen",
+      "show-ribbon",
+      "show-view-header",
+      "is-popout-window",
+      "is-popout-modal",
+      "is-focused"
+     ]
+    },
+    "modalsLeftOpen": 0
    },
    "trans": {
     "bodyClasses": [
@@ -1475,8 +1980,30 @@
      "view header": "rgba(0, 33, 41, 0.9)",
      "centre editor": "rgba(0, 33, 41, 0.9)",
      "status bar": "rgba(0, 33, 41, 0.7)",
-     "settings modal": null
-    }
+     "settings modal": "rgb(0, 33, 41)",
+     "quick switcher": "rgb(0, 33, 41)"
+    },
+    "settingsModal": {
+     "found": true,
+     "sameDocument": false,
+     "popoutBodyClasses": [
+      "theme-dark",
+      "mod-macos",
+      "is-frameless",
+      "is-hidden-frameless",
+      "obsidian-app",
+      "show-inline-title",
+      "is-floating-nav",
+      "auto-full-screen",
+      "show-ribbon",
+      "show-view-header",
+      "is-translucent",
+      "is-popout-window",
+      "is-popout-modal",
+      "is-focused"
+     ]
+    },
+    "modalsLeftOpen": 0
    },
    "opaque2": {
     "bodyClasses": [
@@ -1544,8 +2071,29 @@
      "view header": "rgb(30, 29, 26)",
      "centre editor": "rgb(30, 29, 26)",
      "status bar": "rgb(24, 22, 22)",
-     "settings modal": null
-    }
+     "settings modal": "rgb(30, 29, 26)",
+     "quick switcher": "rgb(30, 29, 26)"
+    },
+    "settingsModal": {
+     "found": true,
+     "sameDocument": false,
+     "popoutBodyClasses": [
+      "theme-dark",
+      "mod-macos",
+      "is-frameless",
+      "is-hidden-frameless",
+      "obsidian-app",
+      "show-inline-title",
+      "is-floating-nav",
+      "auto-full-screen",
+      "show-ribbon",
+      "show-view-header",
+      "is-popout-window",
+      "is-popout-modal",
+      "is-focused"
+     ]
+    },
+    "modalsLeftOpen": 0
    },
    "trans": {
     "bodyClasses": [
@@ -1579,8 +2127,30 @@
      "view header": "rgba(30, 29, 26, 0.9)",
      "centre editor": "rgba(30, 29, 26, 0.9)",
      "status bar": "rgba(24, 22, 22, 0.7)",
-     "settings modal": null
-    }
+     "settings modal": "rgb(30, 29, 26)",
+     "quick switcher": "rgb(30, 29, 26)"
+    },
+    "settingsModal": {
+     "found": true,
+     "sameDocument": false,
+     "popoutBodyClasses": [
+      "theme-dark",
+      "mod-macos",
+      "is-frameless",
+      "is-hidden-frameless",
+      "obsidian-app",
+      "show-inline-title",
+      "is-floating-nav",
+      "auto-full-screen",
+      "show-ribbon",
+      "show-view-header",
+      "is-translucent",
+      "is-popout-window",
+      "is-popout-modal",
+      "is-focused"
+     ]
+    },
+    "modalsLeftOpen": 0
    },
    "opaque2": {
     "bodyClasses": [
@@ -1616,19 +2186,189 @@
     }
    }
   },
-  "mobile solarized-dark": {
-   "isMobile": true,
-   "tablet": true,
-   "left": "rgb(0, 45, 56)",
-   "right": "rgb(0, 45, 56)",
-   "navbar": "rgb(0, 33, 41)"
+  "mobile tablet floating=true solarized-dark": {
+   "classes": [
+    "is-tablet",
+    "is-mobile",
+    "is-floating-nav"
+   ],
+   "navbar": {
+    "bg": "rgb(0, 33, 41)",
+    "display": "none",
+    "size": [
+     0,
+     0
+    ]
+   },
+   "left": {
+    "bg": "rgb(0, 45, 56)",
+    "display": "flex",
+    "size": [
+     450,
+     752
+    ]
+   },
+   "right": {
+    "bg": "rgb(0, 45, 56)",
+    "display": "flex",
+    "size": [
+     450,
+     752
+    ]
+   }
   },
-  "mobile kanagawa-dragon": {
-   "isMobile": true,
-   "tablet": true,
-   "left": "rgb(24, 22, 22)",
-   "right": "rgb(24, 22, 22)",
-   "navbar": "rgb(30, 29, 26)"
+  "mobile phone floating=true solarized-dark": {
+   "classes": [
+    "is-phone",
+    "is-mobile",
+    "is-floating-nav"
+   ],
+   "navbar": {
+    "bg": "rgb(0, 45, 56)",
+    "display": "flex",
+    "size": [
+     316,
+     52
+    ]
+   },
+   "left": {
+    "bg": "rgb(0, 45, 56)",
+    "display": "flex",
+    "size": [
+     336,
+     860
+    ]
+   },
+   "right": {
+    "bg": "rgb(0, 45, 56)",
+    "display": "flex",
+    "size": [
+     336,
+     860
+    ]
+   }
+  },
+  "mobile phone floating=false solarized-dark": {
+   "classes": [
+    "is-phone",
+    "is-mobile"
+   ],
+   "navbar": {
+    "bg": "rgb(0, 45, 56)",
+    "display": "flex",
+    "size": [
+     400,
+     80
+    ]
+   },
+   "left": {
+    "bg": "rgb(0, 45, 56)",
+    "display": "flex",
+    "size": [
+     336,
+     860
+    ]
+   },
+   "right": {
+    "bg": "rgb(0, 45, 56)",
+    "display": "flex",
+    "size": [
+     336,
+     860
+    ]
+   }
+  },
+  "mobile tablet floating=true kanagawa-dragon": {
+   "classes": [
+    "is-tablet",
+    "is-mobile",
+    "is-floating-nav"
+   ],
+   "navbar": {
+    "bg": "rgb(30, 29, 26)",
+    "display": "none",
+    "size": [
+     0,
+     0
+    ]
+   },
+   "left": {
+    "bg": "rgb(24, 22, 22)",
+    "display": "flex",
+    "size": [
+     450,
+     752
+    ]
+   },
+   "right": {
+    "bg": "rgb(24, 22, 22)",
+    "display": "flex",
+    "size": [
+     450,
+     752
+    ]
+   }
+  },
+  "mobile phone floating=true kanagawa-dragon": {
+   "classes": [
+    "is-phone",
+    "is-mobile",
+    "is-floating-nav"
+   ],
+   "navbar": {
+    "bg": "rgb(24, 22, 22)",
+    "display": "flex",
+    "size": [
+     316,
+     52
+    ]
+   },
+   "left": {
+    "bg": "rgb(24, 22, 22)",
+    "display": "flex",
+    "size": [
+     336,
+     860
+    ]
+   },
+   "right": {
+    "bg": "rgb(24, 22, 22)",
+    "display": "flex",
+    "size": [
+     336,
+     860
+    ]
+   }
+  },
+  "mobile phone floating=false kanagawa-dragon": {
+   "classes": [
+    "is-phone",
+    "is-mobile"
+   ],
+   "navbar": {
+    "bg": "rgb(24, 22, 22)",
+    "display": "flex",
+    "size": [
+     400,
+     80
+    ]
+   },
+   "left": {
+    "bg": "rgb(24, 22, 22)",
+    "display": "flex",
+    "size": [
+     336,
+     860
+    ]
+   },
+   "right": {
+    "bg": "rgb(24, 22, 22)",
+    "display": "flex",
+    "size": [
+     336,
+     860
+    ]
+   }
   }
  }
 }
