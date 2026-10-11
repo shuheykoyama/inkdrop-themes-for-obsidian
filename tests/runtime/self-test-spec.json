@@ -419,6 +419,81 @@
       ],
       "token": "--ink-note-list-bar-background-acrylic",
       "selfTest": "PASS"
+    },
+    {
+      "id": "self.md-wrong-mode",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-content",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-foreground-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.md-view-swap-quote-reading",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view blockquote",
+      "document": "main",
+      "property": "border-left-color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-blockquote-border-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.md-view-swap-quote-editor",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .HyperMD-quote",
+      "pseudo": "::before",
+      "document": "main",
+      "property": "border-left-color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-blockquote-border-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.md-mark-obsidian-default",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-header",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-disabled-text-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.md-scroll",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .footnotes > hr",
+      "document": "main",
+      "property": "border-top-color",
+      "state": "md-reading",
+      "scrollTo": "[^1]: Footnote",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-footnote-border-color",
+      "selfTest": "PASS"
+    },
+    {
+      "id": "self.md-user-font-wrong",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-content",
+      "document": "main",
+      "property": "font-family",
+      "state": "md-user-fonts",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "first-family",
+      "value": "Menlo",
+      "selfTest": "FAIL"
     }
   ]
 }

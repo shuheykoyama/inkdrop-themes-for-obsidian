@@ -1029,3 +1029,126 @@ APPROVE（`52434a5`）。工程 5 に進む指示を受けた。
 **見逃した理由と再発防止**: 工程 4 の撮影の測定領域は各面の中央の平坦な部分だけで、角を含まなかった。また実行時テストは疑似要素を測れず、app.css の強制透明の一覧（L6579–6591）のうち `::before` を対応表から漏らしていた。一覧の残り（`.sidebar-toggle-button`、`.workspace-tabs`、`.workspace-split`、`.workspace-tabs .workspace-leaf`）は、上に塗った面（タブ帯・`.workspace-leaf-content`）に覆われるか、塗りが要らない要素であることを今回の撮影で確かめた（左上の 420 × 120 pt を目視）。
 
 **未検証**: 非アクティブのウィンドウ、柄の背景、右から左への言語（`.mod-rtl`）、Ribbon を非表示にした場合（`--ribbon-width: 0`）は撮っていない。
+
+### 6.11 工程 6: Markdown の編集ビュー・閲覧ビュー（2026-10-12 実装、RV3 待ち）
+
+工程 5 と左上隅の修正は `077b7b4` で APPROVE された。
+
+**方針: ビューのスコープ（Q-D14、07 R03 案 B）**
+
+Inkdrop の値は 2 組ある: エディタ（CodeMirror、`--editor-*`・`--syntax-*`・`--md-*`）とプレビュー（`--mde-preview-*`）。Obsidian では次の 2 つのスコープに変数を置いた（`mapping/markdown.css`）。変数で表せない部分は `components/markdown.css`。
+
+| スコープ | 対象 | 値 |
+|---|---|---|
+| `.markdown-source-view.mod-cm6` | Source mode と Live Preview の本文 | Inkdrop エディタ |
+| `.markdown-rendered` | Reading view と、Live Preview でも HTML として描かれるブロック（表、Callout、埋め込み） | Inkdrop プレビュー |
+
+- Live Preview の中の表・Callout・埋め込みは、それ自身が `.markdown-rendered` なので、エディタのスコープより近い祖先として値が優先される（実測）。Inkdrop のエディタはこれらを描かず記法のまま表示するため、描画結果に対応するのはプレビューと判断した（判断 1）。
+- 本文の色は上位の要素で計算済みの値（UI の文字色）を継承していたため、両スコープで `color: var(--text-normal)` を置いた（KD のエディタの本文が 90% のアルファのままだったことを実測で発見）。
+- UI のリンク（ノートの外）は Inkdrop の `--link-color`（Q-D4）。
+
+**Inkdrop の一次資料**
+
+- プレビュー: `inkdropapp_css@add48d9 markdown.css`（`.mde-preview` の規則）、テーマの `preview.css`（トークンだけ）。
+- エディタ: `syntax.css`（`.tok-*`・`.md-*`）と、Inkdrop 6.1.5 本体の CodeMirror のテーマとトークン表（`renderer/assets/notebook-picker-*.js`。コードブロック・表の枠、引用と GFM alert のバー、画像の背景、Markdown 記号のタグ）。
+- **Markdown 記号の色（V-25）**: HeaderMark・EmphasisMark・StrikethroughMark・CodeMark・LinkMark・TableDelimiter などは `processingInstruction` のタグも持ち、`.tok-processing-instruction` が後に書かれているため、記号は `--syntax-processing-instruction-color`（SD green-500、KD dragonGreen2）になる。リスト記号は `md-list-mark-((n - 1) % 3 + 1)`、引用記号は `--syntax-quote-color`。Obsidian の Markdown モードも記号に `cm-list-((n - 1) % 3 + 1)` を付けるため、同じ循環を再現できた。
+
+**実装した要素とトークン**（06 E01〜E36 の見直し）
+
+| 06 | 要素 | 編集（Source / Live Preview） | 閲覧（Reading・描画ブロック） | 状態 |
+|---|---|---|---|---|
+| E01・E02 | 本文 | `--editor-foreground-color` | `--text-color` | 実装 |
+| E03 | 弱い文字（Q-D3） | 工程 5 の `--text-muted`・`--text-faint`（SD は base3 のアルファ） | 引用文・脚注・h6・kbd の文字（muted） | 実装（工程 5 から継続） |
+| E04〜E07 | キャレット・選択・アクティブ行・ガター | — | — | 工程 7 |
+| E08 | 見出しの色 | `--syntax-heading-N-color` | `--mde-preview-heading-color`（h6 は muted） | 実装 |
+| E09 | 見出しの下線・大きさ | — | h1 2px・h2 1px の下線（`--mde-preview-heading-border-color`）、その上に 0.3em | 下線は実装。大きさは Obsidian のまま |
+| E10 | Markdown 記号 | `--syntax-processing-instruction-color`、URL は `--syntax-url-color` | — | 実装（表の区切り行は対象外、下記） |
+| E11〜E13 | 太字・斜体・取り消し線 | `--syntax-strong-color`・`--syntax-emphasis-color` | `--mde-preview-strong-color`・`-em-color` | 実装（取り消し線は線だけで色なし） |
+| E14・E15・E17 | リンク（外部・内部・未解決） | `--syntax-link-color`、下線あり | `--mde-preview-link-color`、下線は hover のみ | 実装。未解決は同じ色で Obsidian の薄さ |
+| E16 | URL | `--syntax-url-color` | — | 実装 |
+| E18 | ハイライト | `--md-inline-mark-*`（文字・背景・3px の下線） | `--mde-preview-inline-mark-*` | 実装。Obsidian の色付きハイライトは対象外 |
+| E19 | インラインコード | `--md-inline-code-*`、文字は `--syntax-monospace-color` | `--mde-preview-inline-code-*` | 実装 |
+| E20 | コードブロックの枠と背景 | `--md-codeblock-*`、角 0.4em | `--mde-preview-codeblock-*`、角 6px | 実装（シンタックスは工程 8） |
+| E21 | シンタックス | — | — | 工程 8 |
+| E22 | リストの記号 | `--md-list-mark-*`（3 色で循環） | `--mde-preview-list-marker-*`（9 階層） | 実装 |
+| E23 | タスクの完了 | 文字色はそのまま、取り消し線 | 文字色はそのまま、線の色 `--mde-preview-task-list-checked-color` | 実装（チェックボックスは工程 5 のアクセント） |
+| E24 | カスタムタスク | — | — | Obsidian 固有、変更なし |
+| E25 | 引用 | バー `--md-blockquote-border-color` 0.3em（Live Preview）、文字 `--syntax-quote-color` の斜体 | バー 0.25em、muted、斜体なし | 実装 |
+| E26 | Callout（GFM alert） | 描画ブロック | `--gfm-alert-*` の 0.25em の左バーと題名、塗りなし、角なし | 5 種を実装。他の種類は形だけ |
+| E27 | 表 | 描画ブロック（Live Preview） | 見出し行・本体・奇数行・セルの枠 | 実装（Source mode の枠は対象外） |
+| E28 | 水平線 | Source の `---` は `--syntax-content-separator-color`、太字 | 0.25em の帯 | 実装 |
+| E29 | 画像 | `--editor-image-widget-backdrop-*` | `--mde-preview-image-background-color` | 実装（形は違う、下記） |
+| E30 | タグ | 工程 5 | 工程 5 | 工程 5 |
+| E31 | プロパティ | — | — | Obsidian 固有、変更なし（必須項目 `md.properties` は UNVERIFIED） |
+| E32 | 数式 | — | — | Inkdrop にトークンなし、変更なし |
+| E33 | Mermaid | — | — | 工程 9 |
+| E34 | 脚注 | — | 文字 `--mde-preview-footnote-text-color`、区切り 1px | 実装 |
+| E35 | kbd | プレビューの値（描画された HTML） | `--mde-preview-kbd-*` | 実装 |
+| E36 | 埋め込み | 中身はプレビューの値 | 中身はプレビューの値 | Obsidian 固有（枠は Obsidian のまま） |
+
+**表示モードごとの検証**（実行時テスト、両テーマ、Electron 39.5.1・43.7.7）
+
+| モード | 状態 | 検査 | 内容 |
+|---|---|---|---|
+| Live Preview | `md-live` | 51 件 | 本文、見出し、強調、リンク 4 種、ハイライト、インラインコード、kbd、引用のバー（`::before`）と文字、リスト記号 3 階層と黒丸（`::after`）、タスク、表（描画ブロック）、水平線、コードブロック、Callout 5 種と塗り、画像、埋め込み |
+| Source mode | `md-source` | 14 件 | 本文、記号（`#`・`**`・バッククォート・コードフェンス・リンクの括弧・URL の括弧・表の区切り）、URL、リンクの文字、引用記号、リスト記号、`---`、コードブロック |
+| Reading view | `md-reading` | 56 件 | 本文、見出しと下線、強調、リンク、ハイライト、インラインコード、kbd、引用、リストの `::marker` 3 階層と黒丸の色、タスク、表、水平線、コードブロック、Callout 5 種と塗り、画像、埋め込み、脚注 |
+| 利用者のフォント | `md-user-fonts` | 2 件 | 本文とコードのフォント設定が先頭になる（Q-D8） |
+| UI | `default` | 1 件 | ノートの外のリンク色 |
+| モバイル（エミュレーション） | `md-live`・`md-reading` | 6 件 × tablet・phone | 本文、リンク、見出し |
+
+- 不透明・translucent: 本文、リンク、ハイライト、記号、コードブロックの背景を translucent でも測り、不透明に戻した後に全件を再測定した。
+- ビューで値が違う箇所（KD の本文とリンク、両テーマの引用のバーなど）は、ビューごとに別のトークンで検査している。陰性テストで次を確かめた: 閲覧の引用バーをエディタの値で測ると FAIL（逆も FAIL）、モードを取り違えると要素が表示されず FAIL、Source の記号を Obsidian の既定（`--text-faint`）で測ると FAIL、利用者のフォントを別の名前で測ると FAIL。
+- ネイティブの撮影（`evidence/phase3-step6/native-*`）: 両テーマ × 3 モード × 2 か所（不透明）と、Live Preview・Reading（translucent）。画像を目視し、工程 5 の左上隅の回帰検査（`top-left-corner.json`）を全画像に掛けた。色の正確さは Computed Style、表示の崩れや塗り漏れは撮影、と分けて扱った。
+
+**ランナーと撮影の拡張**
+
+- 状態 `md-source`・`md-live`・`md-reading`・`md-user-fonts`: 「Sample note」の leaf に検証用ノート（`tests/fixtures/vault/Markdown elements.md`、画像 `half-transparent.png`）を各モードで開き、描画を待ち、測定後に元へ戻す。
+- 検査の `scrollTo`: CodeMirror は画面外の行を描かず、閲覧ビューも遅延描画のため、指定した行へスクロールしてから測る。
+- 疑似要素 `::marker` を追加した。
+- 撮影スクリプトに `CAPTURE_NOTE`・`CAPTURE_VIEW`・`CAPTURE_SCROLL`・`CAPTURE_TAG` を追加した。
+
+**テスト結果**
+
+| テスト | Electron 39.5.1 | Electron 43.7.7 |
+|---|---|---|
+| 実行時テスト | 1179 件 PASS（うち 124 件 PASS（EMULATED）） | 1179 件 PASS（同） |
+| ランナーの陰性テスト | 301 件すべて宣言どおり | 301 件すべて宣言どおり |
+| 左上隅の画素比較（16 枚） | すべて ΔE2000 0.00 | すべて ΔE2000 0.00 |
+
+静的テストすべて PASS、静的テストの陰性テスト 46 件すべて期待どおり、視覚的テストの陰性テスト 6 件、クリーンルームのビルド一致。公式 lint の warning は `!important` 4 件と `text-decoration` の対応状況 5 件で、すべて理由付きで許可リストにある。
+
+**判断と計画からの変更**
+
+| # | 判断・変更 | 理由 |
+|---|---|---|
+| 1 | Live Preview で HTML として描かれるブロック（表・Callout・埋め込み・kbd・水平線）はプレビューの値 | Inkdrop のエディタは記法のまま表示し、描画結果はプレビューにしかない |
+| 2 | Callout は全種類を Inkdrop の GFM alert の形（左バー、塗りなし、角なし、ブレンドなし）にし、色は 5 種だけ | 同じ部品の見た目をそろえるため。Inkdrop にない種類の色は作らない |
+| 3 | 見出し・太字の大きさと太さは変えていない | 色の移植の範囲。Inkdrop のエディタの見出しの大きさ（2em〜0.67em）・太さ（bold）とプレビューの太さ（600）は差として記録 |
+| 4 | Obsidian の行クラス（`.HyperMD-*`）をテーマのセレクタに使わない | 公式 lint がキャメルケースのクラス名を error にする。リスト記号は `.cm-list-N`、引用は `.cm-quote` で書いた |
+| 5 | `transparent` を `background: none` で書いた | 出力の色リテラルの検査（S1）が `transparent` を数えるため |
+| 6 | 本文の色を各スコープで設定 | 継承された計算済みの色が残る（KD で発見） |
+
+**Inkdrop と Obsidian の差（再現していないもの）**
+
+- Source mode の Callout: Obsidian は 1 行目に `.HyperMD-callout` を付けるだけで種類のクラスがなく、種類ごとの色とバーを付けられない。本文の行は引用として表示される。
+- Source mode の表: Inkdrop のエディタの枠と背景（`--md-table-*`）は、Obsidian に表の最後の行を示すクラスがないため再現していない。区切り行（`| --- |`）は app.css が行クラスで色を付けており、テーマのセレクタに行クラスを使えないため Obsidian の色のまま。
+- Source mode の引用のバー: Obsidian は Live Preview でだけバーを描く。
+- エディタのタスク完了の線の色（Inkdrop は文字色の 60%。パレットのトークンではない既定値）。
+- Live Preview の画像: Inkdrop の背景は行幅いっぱいの箱、Obsidian では画像自身に付けた。
+- コードブロックのメタ行（言語名・ファイル名）: Obsidian にない（言語名の表示は Obsidian のもの）。
+- 脚注の文字の大きさ（12px）、見出し・太字の大きさと太さ（判断 3）。
+- `==text==` の記号: Inkdrop のハイライトは `<mark>` で、`==` の記法がない。ハイライトの見た目だけを移した。
+
+**既存 UI への回帰**: 工程 1〜5 の検査（Q-D1・Q-D22・工程 5 の UI、左上隅）をすべて再実行して PASS。左上隅はネイティブの画素比較でも PASS。
+
+**未検証事項**
+
+- Inkdrop との画像比較（V-30 の状態 1・5 と並べる。計画どおり RV3 で行う）。Inkdrop の操作（検証用ノートの表示）が要るため、実施前にユーザーの承認を得る。V-25 の記号の色は一次資料（JS）から導いたもので、画面上では未確認。
+- Obsidian 固有の要素（プロパティ、埋め込みの枠、数式、カスタムタスク）は Inkdrop に比べる相手がない。
+- モバイルは実機で未確認（工程 10）。Windows・Linux は未確認。
+- 閲覧ビューの黒丸の色は変数（`--list-marker-color`）の値を測った（黒丸の要素の箱が幅 0 のため）。画面上は撮影で確認した。
+
+### 6.12 次の作業
+
+RV3（UI・Markdown の統合レビュー）を待つ。工程 7 には進まない。

@@ -7,7 +7,9 @@
 @import "../common/mapping/borders.css";
 @import "../common/mapping/states.css";
 @import "../common/mapping/ui.css";
+@import "../common/mapping/markdown.css";
 @import "../common/components/navigation.css";
 @import "../common/components/overlays.css";
+@import "../common/components/markdown.css";
 @import "../common/platform/translucent.css";
 @import "../common/platform/mobile.css";

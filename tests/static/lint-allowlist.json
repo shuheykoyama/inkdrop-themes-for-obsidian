@@ -36,6 +36,46 @@
       "overrides": "app.css 1.14.4 L6579-6591: .is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary:before { background-color: transparent !important }",
       "reason": "While translucent, app.css forces the corner above the ribbon (under the macOS window buttons) transparent with !important; opaque it shows --titlebar-background (note list), so the note-list acrylic colour keeps it continuous with the tab strip. Missed in step 4, found in a native capture of the top-left corner.",
       "refs": "research/14 §6.10"
+    },
+    {
+      "rule": "plugin/no-unsupported-browser-features",
+      "theme": "*",
+      "selector": ".markdown-source-view.mod-cm6 .cm-highlight:not(.cm-highlight-red, .cm-highlight-orange, .cm-highlight-yellow, .cm-highlight-green, .cm-highlight-blue, .cm-highlight-purple)",
+      "property": "text-decoration",
+      "reason": "The lint's browser data reports text-decoration as only partially supported by Chrome. The declaration reproduces Inkdrop's .md-inline-mark 3 px underline (syntax.css:723-726); the runtime checks measure it in Obsidian on Electron 39.5.1 and 43.7.7 (research/14 §6.11).",
+      "refs": "research/14 §6.11"
+    },
+    {
+      "rule": "plugin/no-unsupported-browser-features",
+      "theme": "*",
+      "selector": ".markdown-source-view.mod-cm6 .cm-highlight:not(.cm-highlight-red, .cm-highlight-orange, .cm-highlight-yellow, .cm-highlight-green, .cm-highlight-blue, .cm-highlight-purple)",
+      "property": "text-decoration-skip-ink",
+      "reason": "The lint's browser data reports text-decoration as only partially supported by Chrome. The declaration reproduces Inkdrop's .md-inline-mark text-decoration-skip-ink: none (syntax.css:727); the runtime checks measure it in Obsidian on Electron 39.5.1 and 43.7.7 (research/14 §6.11).",
+      "refs": "research/14 §6.11"
+    },
+    {
+      "rule": "plugin/no-unsupported-browser-features",
+      "theme": "*",
+      "selector": ".markdown-rendered mark:not([data-highlight=\"red\"], [data-highlight=\"orange\"], [data-highlight=\"yellow\"], [data-highlight=\"green\"], [data-highlight=\"blue\"], [data-highlight=\"purple\"])",
+      "property": "text-decoration",
+      "reason": "The lint's browser data reports text-decoration as only partially supported by Chrome. The declaration reproduces Inkdrop's .mde-preview mark 3 px underline (markdown.css:194-197); the runtime checks measure it in Obsidian on Electron 39.5.1 and 43.7.7 (research/14 §6.11).",
+      "refs": "research/14 §6.11"
+    },
+    {
+      "rule": "plugin/no-unsupported-browser-features",
+      "theme": "*",
+      "selector": ".markdown-rendered mark:not([data-highlight=\"red\"], [data-highlight=\"orange\"], [data-highlight=\"yellow\"], [data-highlight=\"green\"], [data-highlight=\"blue\"], [data-highlight=\"purple\"])",
+      "property": "text-decoration-skip-ink",
+      "reason": "The lint's browser data reports text-decoration as only partially supported by Chrome. The declaration reproduces Inkdrop's .mde-preview mark text-decoration-skip-ink: none (markdown.css:198); the runtime checks measure it in Obsidian on Electron 39.5.1 and 43.7.7 (research/14 §6.11).",
+      "refs": "research/14 §6.11"
+    },
+    {
+      "rule": "plugin/no-unsupported-browser-features",
+      "theme": "*",
+      "selector": ".markdown-rendered .task-list-item.is-checked",
+      "property": "text-decoration-color",
+      "reason": "The lint's browser data reports text-decoration as only partially supported by Chrome. The declaration reproduces Inkdrop's .task-list-item.checked strike-through colour (markdown.css:954); the runtime checks measure it in Obsidian on Electron 39.5.1 and 43.7.7 (research/14 §6.11).",
+      "refs": "research/14 §6.11"
     }
   ]
 }

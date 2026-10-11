@@ -1,0 +1,134 @@
+/* Mapping: Markdown in the editing and reading views (research/06 E01-E36; Q-D3, Q-D4, Q-D9, Q-D14).
+   Inkdrop has two sets of values: the editor (CodeMirror, --editor-* / --syntax-* / --md-*) and the preview
+   (--mde-preview-*). Q-D14 keeps them apart with two scopes (07 R03 plan B):
+   - .markdown-source-view.mod-cm6: Source mode and Live Preview text = Inkdrop editor;
+   - .markdown-rendered: Reading view and every block Obsidian renders as HTML, also inside Live Preview
+     (tables, callouts, embeds) = Inkdrop preview. It is the nearer ancestor of those blocks, so its
+     variables win over the editor scope there.
+   Shared structure, no colour literals. Components that variables cannot express are in
+   components/markdown.css. */
+
+/* UI links outside notes (Q-D4: Inkdrop's UI link colour). */
+.theme-dark {
+  --link-color: var(--ink-link-color);
+  --link-color-hover: var(--ink-link-color);
+  --link-external-color: var(--ink-link-color);
+  --link-external-color-hover: var(--ink-link-color);
+  --link-unresolved-color: var(--ink-link-color);
+}
+
+/* Editor: Source mode and Live Preview. */
+.markdown-source-view.mod-cm6 {
+  /* Body text (E01): the editor foreground. KD differs from the UI / preview text colour (no 90% alpha). */
+  --text-normal: var(--ink-editor-foreground-color);
+
+  /* Headings (E08): Inkdrop gives every level its --syntax-heading-N colour. */
+  --h1-color: var(--ink-syntax-heading-1-color);
+  --h2-color: var(--ink-syntax-heading-2-color);
+  --h3-color: var(--ink-syntax-heading-3-color);
+  --h4-color: var(--ink-syntax-heading-4-color);
+  --h5-color: var(--ink-syntax-heading-5-color);
+  --h6-color: var(--ink-syntax-heading-6-color);
+
+  /* Strong and emphasis (E11, E12). */
+  --bold-color: var(--ink-syntax-strong-color);
+  --italic-color: var(--ink-syntax-emphasis-color);
+
+  /* Links (E14, E15, Q-D4): the editor link colour, underlined like Inkdrop's .tok-link; no hover colour.
+     Unresolved links (Obsidian only, E17) take the same colour with Obsidian's own fading. */
+  --link-color: var(--ink-syntax-link-color);
+  --link-color-hover: var(--ink-syntax-link-color);
+  --link-external-color: var(--ink-syntax-link-color);
+  --link-external-color-hover: var(--ink-syntax-link-color);
+  --link-unresolved-color: var(--ink-syntax-link-color);
+
+  /* Blockquote (E25): Inkdrop's editor bar (inset 0.3em) and quote text. Obsidian draws the bar in Live
+     Preview only. */
+  --blockquote-border-color: var(--ink-md-blockquote-border-color);
+  --blockquote-border-thickness: 0.3em;
+
+  /* Code blocks (E20): background and 1 px border of Inkdrop's editor code block, text colour, 0.4em
+     corners. Inline code redefines these on itself (components/markdown.css). */
+  --code-background: var(--ink-md-codeblock-background-color);
+  --code-border-width: var(--ink-md-codeblock-border-width);
+  --code-border-color: var(--ink-md-codeblock-border-color);
+  --code-normal: var(--ink-md-codeblock-color);
+  --code-radius: 0.4em;
+
+  /* Highlight (E18): ==text== has no Inkdrop syntax; the closest is <mark>, styled by .md-inline-mark. */
+  --highlight-background: var(--ink-md-inline-mark-background-color);
+
+  /* Done tasks (E23): Inkdrop keeps the text colour and only strikes it through. */
+  --checklist-done-color: var(--ink-editor-foreground-color);
+
+  /* Rendered horizontal rule in Live Preview: Inkdrop's editor shows the --- text only, so the rule takes
+     the preview bar (E28). */
+  --hr-color: var(--ink-mde-preview-hr-background-color);
+  --hr-thickness: 0.25em;
+}
+
+/* Preview: Reading view and rendered blocks. */
+.markdown-rendered {
+  /* Body text (E02): the preview colour (= Inkdrop UI text); resets the editor value for rendered blocks
+     inside Live Preview. */
+  --text-normal: var(--ink-text-color);
+
+  /* Headings (E08): one preview colour, h6 muted. */
+  --h1-color: var(--ink-mde-preview-heading-color);
+  --h2-color: var(--ink-mde-preview-heading-color);
+  --h3-color: var(--ink-mde-preview-heading-color);
+  --h4-color: var(--ink-mde-preview-heading-color);
+  --h5-color: var(--ink-mde-preview-heading-color);
+  --h6-color: var(--ink-mde-preview-heading-muted-text-color);
+
+  /* Strong and emphasis (E11, E12). */
+  --bold-color: var(--ink-mde-preview-strong-color);
+  --italic-color: var(--ink-mde-preview-em-color);
+
+  /* Links (E14, E15, Q-D4): the preview link colour, no underline until hover (Inkdrop's a / a:hover). */
+  --link-color: var(--ink-mde-preview-link-color);
+  --link-color-hover: var(--ink-mde-preview-link-color);
+  --link-external-color: var(--ink-mde-preview-link-color);
+  --link-external-color-hover: var(--ink-mde-preview-link-color);
+  --link-unresolved-color: var(--ink-mde-preview-link-color);
+  --link-decoration: none;
+  --link-decoration-hover: underline;
+  --link-external-decoration: none;
+  --link-external-decoration-hover: underline;
+
+  /* Blockquote (E25): 0.25em bar, muted text, upright. */
+  --blockquote-border-color: var(--ink-mde-preview-blockquote-border-color);
+  --blockquote-border-thickness: 0.25em;
+  --blockquote-color: var(--ink-mde-preview-blockquote-text-color);
+  --blockquote-font-style: normal;
+
+  /* Code blocks (E20): preview background, border and text, 6 px corners. Inline code redefines these on
+     itself (components/markdown.css). */
+  --code-background: var(--ink-mde-preview-codeblock-background-color);
+  --code-border-width: 1px;
+  --code-border-color: var(--ink-mde-preview-codeblock-border-color);
+  --code-normal: var(--ink-mde-preview-codeblock-text-color);
+  --code-radius: 6px;
+
+  /* Highlight (E18). */
+  --highlight-background: var(--ink-mde-preview-inline-mark-background-color);
+
+  /* Done tasks (E23): the text keeps its colour; the strike-through colour is in components/markdown.css. */
+  --checklist-done-color: var(--ink-text-color);
+
+  /* Horizontal rule (E28): Inkdrop's 0.25em bar of --mde-preview-hr-background-color. */
+  --hr-color: var(--ink-mde-preview-hr-background-color);
+  --hr-thickness: 0.25em;
+
+  /* Tables (E27): head row, body rows, odd body rows (Inkdrop stripes tbody tr:nth-child(odd), as Obsidian
+     does), cell borders. Inkdrop has no hover colours, so hover keeps the same colours. */
+  --table-header-background: var(--ink-mde-preview-table-head-background-color);
+  --table-header-background-hover: var(--ink-mde-preview-table-head-background-color);
+  --table-header-color: var(--ink-mde-preview-table-head-text-color);
+  --table-background: var(--ink-mde-preview-table-row-background-color);
+  --table-row-background-hover: var(--ink-mde-preview-table-row-background-color);
+  --table-row-alt-background: var(--ink-mde-preview-table-row-stripe-background-color);
+  --table-row-alt-background-hover: var(--ink-mde-preview-table-row-stripe-background-color);
+  --table-border-color: var(--ink-mde-preview-table-border-color);
+  --table-header-border-color: var(--ink-mde-preview-table-border-color);
+}

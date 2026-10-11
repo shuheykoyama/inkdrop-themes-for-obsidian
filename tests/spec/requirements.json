@@ -387,6 +387,196 @@
         "desktop"
       ],
       "mandatory": true
+    },
+    {
+      "id": "md.body-text",
+      "qd": "Q-D14",
+      "description": "Note text: editor (Source mode, Live Preview) = Inkdrop editor foreground, reading view and rendered blocks = Inkdrop preview / UI text colour (KD differs: no 90% alpha in the editor)",
+      "platforms": [
+        "desktop",
+        "tablet",
+        "phone"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.headings",
+      "qd": "Q-D14",
+      "description": "Headings: editor = --syntax-heading-N colours, reading view = preview heading colour (h6 muted) with Inkdrop's h1 (2 px) and h2 (1 px) rules",
+      "platforms": [
+        "desktop",
+        "tablet",
+        "phone"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.emphasis",
+      "qd": "Q-D14",
+      "description": "Bold and italic = Inkdrop strong / emphasis colours per view; strikethrough stays a line-through",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "qd4.links",
+      "qd": "Q-D4",
+      "description": "Links: UI = Inkdrop --link-color, editor = --syntax-link-color (underlined), reading view = --mde-preview-link-color (underlined on hover only); internal and unresolved links take the same colour per view",
+      "platforms": [
+        "desktop",
+        "tablet",
+        "phone"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.marks",
+      "qd": "Q-D14",
+      "description": "Editor Markdown marks (#, **, backticks, fences, link brackets, URL parentheses, table pipes) = Inkdrop processing-instruction colour, URLs = --syntax-url-color (V-25)",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.blockquote",
+      "qd": "Q-D14",
+      "description": "Blockquote: editor = --md-blockquote-border-color bar (Live Preview), --syntax-quote-color italic text and mark; reading view = preview bar and muted upright text",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.lists",
+      "qd": "Q-D14",
+      "description": "List markers cycle Inkdrop's three marker colours by level, editor (--md-list-mark-*) and reading view (--mde-preview-list-marker-*)",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.tasks",
+      "qd": "Q-D14",
+      "description": "Done tasks keep the text colour and are struck through; reading view strike-through colour = --mde-preview-task-list-checked-color",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.tables",
+      "qd": "Q-D14",
+      "description": "Rendered tables (reading view and Live Preview widget) = Inkdrop preview head text / head row / body rows / odd-row stripe / cell borders",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.hr",
+      "qd": "Q-D14",
+      "description": "Horizontal rule: rendered = Inkdrop's 0.25em preview bar; Source mode --- = --syntax-content-separator-color, bold",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.inline-code",
+      "qd": "Q-D14",
+      "description": "Inline code: editor = --md-inline-code background / border and monospace colour, reading view = preview inline code text / background / border",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.codeblock",
+      "qd": "Q-D14",
+      "description": "Code blocks (frame and background only, syntax colours are step 8): editor = --md-codeblock-*, reading view = --mde-preview-codeblock-* (KD/SD border from the base Tailwind blue-200, Q-D9)",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.highlight",
+      "qd": "Q-D14",
+      "description": "Highlight (==text==) = Inkdrop mark text, background and 3 px underline per view, unblended",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.callouts",
+      "qd": "Q-D9",
+      "description": "Callouts note / tip / important / warning / caution = Inkdrop GFM alert colours (SD important = the base purple, Q-D9) as a 0.25em left bar and title colour, no fill",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.footnotes",
+      "qd": "Q-D14",
+      "description": "Reading view footnotes = Inkdrop preview footnote text colour and 1 px border",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.images",
+      "qd": "Q-D14",
+      "description": "Images: Live Preview = Inkdrop editor image backdrop colour, reading view = preview image background",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.embeds",
+      "qd": "Q-D14",
+      "description": "Embedded notes render with the preview values in every view (Obsidian-only element, E36)",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.kbd",
+      "qd": "Q-D14",
+      "description": "Keyboard keys = Inkdrop preview kbd text, background and border",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "qd8.user-text-fonts",
+      "qd": "Q-D8",
+      "description": "The user's text and monospace font settings win (the theme sets neither)",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "md.properties",
+      "qd": "Q-D14",
+      "description": "Properties (Obsidian-only, E31) keep the UI mapping; no Inkdrop counterpart to compare with",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": false,
+      "unverified": {
+        "reason": "Inkdrop has no in-note property form, so there are no values to check against (06 E31)",
+        "risk": "Property labels and inputs inherit the editor scope's text colour (KD: the editor foreground) and the UI borders; a mismatch with Inkdrop cannot exist, but their look is untested"
+      }
     }
   ]
 }

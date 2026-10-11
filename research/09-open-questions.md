@@ -217,12 +217,12 @@ U-12 は、tokenHighlighter に相当するコードが本体 JS に含まれる
 | V-03 | P1 | 左右サイドドックに `.mod-left-split`（1.13.7 / 1.14.4）と `.mod-primary-split`（1.14.4）が実際に付くか。File Explorer の DOM 階層（`.view-header` / `.view-content` / `.nav-header` / `.nav-files-container` の親子関係）。ドックの最上段のタブグループに `.mod-top` が付き、タブ帯が `--titlebar-background` の色になるか | app.js の静的解析では付与を確認済み（RTL で左右反転）。実機は未確認 | 05 Workspace, 06 W03・W04, 07 R05 |
 | V-04 | P1（当初 P3） | `.is-translucent` 有効時の背景と、Inkdrop の acrylic 時の見え方の比較 | 透過度は環境依存。translucent では各面が `transparent !important` になる。Inkdrop 側の基準画像と画素の計測値は V-32 で揃った（11 §15）。Q-D22 で (b)（Obsidian の translucent を使う場合）または (c) を選ぶなら、優先度を P1 に上げる必要がある（11 §15.7 の検証項目）。**→ 2026-10-10 に P1 として実施し VERIFIED（12）。壁紙・他の macOS 版・フルスクリーン・File Explorer 内部の 2 色化は未確認** | 06 W11, 07 R05, Q-D22, 12 |
 | V-05 | P2 | `color-mix(in oklch, …)` による hover・選択色と、Inkdrop の HSL アルファの見え方の差 | 色空間が違う | 08 §5.2 |
-| V-06 | P2 | ハイライト（`==mark==`）に dark で掛かる `mix-blend-mode: lighten` の下で、指定色がどう見えるか | computed 未検証 | 06 E18 |
+| V-06 | P2 | ハイライト（`==mark==`）に dark で掛かる `mix-blend-mode: lighten` の下で、指定色がどう見えるか | computed 未検証。**→ 2026-10-12（工程 6）に解消**: Obsidian 1.14.4 では `mix-blend-mode` はハイライト（`.cm-highlight`・`mark`）に掛からず（Callout・表の選択・`.is-flashing` だけ）、指定した Inkdrop の色がそのまま Computed Style になる（実行時テスト `md.*.highlight`）。Callout はテーマで `--callout-blend-mode: normal` にした | 06 E18, 14 §6.11 |
 | V-07 | P2 | `.cm-gutters`（L3726）の 2 つの `!important` について確認する。(1) `color: var(--text-faint) !important` は、`.cm-gutters` 上で `--text-faint` を再定義すれば `!important` なしで変えられるか。(2) `border-right: none !important` を使わずに、`box-shadow` など別のプロパティで KD の右線（1px Black4）を描けるか | (1) は変数参照、(2) は固定値の `!important`。仕様上は (1) は可能、(2) は `!important` か迂回が必要と推論した | 06 E07, 07 R17 |
 | V-08 | P2 | macOS で `body.styled-scrollbars` が付かず、スクロールバー変数が効かないこと（効かない場合、Inkdrop のスクロールバー配色を macOS で再現するかは Phase 2 で判断） | app.js の静的解析では「macOS 以外でのみ付与」を確認済み | 03 §2.2, 06 G22 |
 | V-09 | P3 | Graph View が `hsl()`、`color-mix()`、`oklch()` を含む色値を正しく解釈するか | app.js の推測 | 05 Obsidian 固有 |
 | V-10 | P1 | 同梱の Mermaid のバージョン、図種別の DOM、反転フィルタ解除後の描画。要素にインラインの `style` / `fill` があるか | 静的解析では確認できない | 07 R04 |
-| V-11 | P1 | Live Preview・Source mode・Reading View の各要素が、想定したクラスを持つか（特に `.cm-active`、`.HyperMD-list-line-N`、`.cm-formatting-*`） | クラスの存在は app.css のセレクタから推定 | 03 §6, 05 Editor |
+| V-11 | P1 | Live Preview・Source mode・Reading View の各要素が、想定したクラスを持つか（特に `.cm-active`、`.HyperMD-list-line-N`、`.cm-formatting-*`） | クラスの存在は app.css のセレクタから推定。**→ 2026-10-12（工程 6）に Markdown の範囲で確認**: Source mode・Live Preview・Reading view の DOM を実機で調べ、`.cm-formatting-*`、`.cm-list-N`（記号の階層、3 で循環）、`.HyperMD-quote`・`.HyperMD-callout`（Callout は 1 行目だけで、種類のクラスはない）、Live Preview で HTML として描かれるブロック（表・Callout・埋め込みは `.markdown-rendered`）を確認した。`.cm-active` は工程 7 | 03 §6, 05 Editor, 14 §6.11 |
 | V-12 | P1 | 言語別サンプルで、両ビューのトークンクラスの対応表を作る。最低限 JS / TS / Python / CSS / HTML / JSON / Shell / Go / Rust / YAML / SQL / Markdown。03 §6.3 の例 1〜4 が実機の DOM でも成り立つか、編集時に `(` が別の span になるか、Prism の `method` / `maybe-class-name` が付くか、Rust（`defineSimpleMode`）のトークン名 | 静的解析で一部の例は確認したが、全体の粒度は未確認 | 03 §6.3, 07 R02 |
 | V-13 | P3 | ドキュメント記載の `--input-focus-border-color` 等が一般の入力欄に効かないこと | pdf.js 専用の定義と推測 | 03 §11.2 |
 | V-14 | P3 | Slides で `--r-*` の上書きが効くか（対応範囲に含める場合のみ） | 推測 | 05 Obsidian 固有 |
@@ -240,7 +240,7 @@ U-12 は、tokenHighlighter に相当するコードが本体 JS に含まれる
 | V-22 | P0 | `--editor-*` の CodeMirror chrome 変数（アクティブ行、ガター、選択、検索一致など）の実際の適用 | CM 拡張内での消費と推定 | 01 §4.2 |
 | V-23 | P2 | サイドバー項目の hover、`--sidebar-menu-item-inactive-background` の意味（hover か、非フォーカス選択か） | 状態の対応付けの根拠 | 06 N05 |
 | V-24 | P2 | エディタの見出しサイズ、タイトル入力の文字サイズと色 | トークン化されていない | 06 E09・W08 |
-| V-25 | P2 | `.md-header-mark` 等の Markdown 記号の実際の色 | 規則が空 | 06 E10 |
+| V-25 | P2 | `.md-header-mark` 等の Markdown 記号の実際の色 | 規則が空。**→ 2026-10-12（工程 6）に解消（一次資料）**: Inkdrop 6.1.5 の CodeMirror の設定（`renderer/assets/notebook-picker-*.js`）で、HeaderMark・EmphasisMark・StrikethroughMark・CodeMark・LinkMark・TableDelimiter などは `processingInstruction` のタグも持ち、後に書かれた `.tok-processing-instruction`（`--syntax-processing-instruction-color`、SD green-500 / KD dragonGreen2）が優先される。リスト記号と引用記号は専用の色。画面上の確認は RV3 の視覚比較で行う | 06 E10, 14 §6.11 |
 | V-26 | P2 | 右クリックメニューが OS ネイティブか HTML か | `--menu-*` の対応先 | 06 G09 |
 | V-27 | P2 | ノートタブ、目次、エディタドロワーの有無と配色 | Obsidian のタブ・Outline・右サイドドックとの対応 | 06 W04・W06・N11 |
 | V-28 | P3 | `@layer theme` 直下とサブレイヤーの実効的な優先順位 | 仕様と公式ガイドの記述が食い違う。両テーマとも同名変数を重ねないので結果への影響は小さい | 01 §2, 02 §1.2 |

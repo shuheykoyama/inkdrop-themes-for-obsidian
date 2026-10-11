@@ -1052,6 +1052,1582 @@
       ],
       "state": "popover-open",
       "token": "--ink-editor-background-acrylic"
+    },
+    {
+      "id": "md.live.body",
+      "requirement": "md.body-text",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-content",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-editor-foreground-color"
+    },
+    {
+      "id": "md.live.h1",
+      "requirement": "md.headings",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .HyperMD-header-1",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-heading-1-color"
+    },
+    {
+      "id": "md.live.h6",
+      "requirement": "md.headings",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .HyperMD-header-6",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-heading-6-color"
+    },
+    {
+      "id": "md.live.strong",
+      "requirement": "md.emphasis",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-strong:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-strong-color"
+    },
+    {
+      "id": "md.live.em",
+      "requirement": "md.emphasis",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-em:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-emphasis-color"
+    },
+    {
+      "id": "md.live.strikethrough",
+      "requirement": "md.emphasis",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-strikethrough:not(.cm-formatting)",
+      "document": "main",
+      "property": "text-decoration-line",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "line-through"
+    },
+    {
+      "id": "md.live.link",
+      "requirement": "qd4.links",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-link .cm-underline",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-syntax-link-color"
+    },
+    {
+      "id": "md.live.link-underline",
+      "requirement": "qd4.links",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-link .cm-underline",
+      "document": "main",
+      "property": "text-decoration-line",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "underline"
+    },
+    {
+      "id": "md.live.internal-link",
+      "requirement": "qd4.links",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-hmd-internal-link .cm-underline",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-link-color"
+    },
+    {
+      "id": "md.live.unresolved-link",
+      "requirement": "qd4.links",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .is-unresolved .cm-underline",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-link-color"
+    },
+    {
+      "id": "md.live.bare-url",
+      "requirement": "md.marks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-url .cm-underline",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-url-color"
+    },
+    {
+      "id": "md.live.highlight",
+      "requirement": "md.highlight",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-highlight",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-live",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-md-inline-mark-background-color"
+    },
+    {
+      "id": "md.live.highlight-text",
+      "requirement": "md.highlight",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-highlight",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-inline-mark-text-color"
+    },
+    {
+      "id": "md.live.highlight-underline",
+      "requirement": "md.highlight",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-highlight",
+      "document": "main",
+      "property": "text-decoration-color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-inline-mark-underline-color"
+    },
+    {
+      "id": "md.live.highlight-thickness",
+      "requirement": "md.highlight",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-highlight",
+      "document": "main",
+      "property": "text-decoration-thickness",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "3px"
+    },
+    {
+      "id": "md.live.inline-code",
+      "requirement": "md.inline-code",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-inline-code:not(.cm-formatting)",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-inline-code-background-color"
+    },
+    {
+      "id": "md.live.inline-code-border",
+      "requirement": "md.inline-code",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-inline-code:not(.cm-formatting)",
+      "document": "main",
+      "property": "border-top-color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-inline-code-border-color"
+    },
+    {
+      "id": "md.live.inline-code-text",
+      "requirement": "md.inline-code",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-inline-code:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-monospace-color"
+    },
+    {
+      "id": "md.live.kbd",
+      "requirement": "md.kbd",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 kbd",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-kbd-background-color"
+    },
+    {
+      "id": "md.live.quote-bar",
+      "requirement": "md.blockquote",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .HyperMD-quote",
+      "document": "main",
+      "property": "border-left-color",
+      "pseudo": "::before",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-blockquote-border-color"
+    },
+    {
+      "id": "md.live.quote-text",
+      "requirement": "md.blockquote",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-quote:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-quote-color"
+    },
+    {
+      "id": "md.live.quote-style",
+      "requirement": "md.blockquote",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-quote:not(.cm-formatting)",
+      "document": "main",
+      "property": "font-style",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "italic"
+    },
+    {
+      "id": "md.live.list-mark-1",
+      "requirement": "md.lists",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-list.cm-list-1",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-list-mark-color"
+    },
+    {
+      "id": "md.live.list-mark-2",
+      "requirement": "md.lists",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-list.cm-list-2",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-list-mark-2-color"
+    },
+    {
+      "id": "md.live.list-mark-3",
+      "requirement": "md.lists",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-list.cm-list-3",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-list-mark-3-color"
+    },
+    {
+      "id": "md.live.bullet-2",
+      "requirement": "md.lists",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-list-ul.cm-list-2 .list-bullet",
+      "document": "main",
+      "property": "background-color",
+      "pseudo": "::after",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-list-mark-2-color"
+    },
+    {
+      "id": "md.live.task-done",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task=x]",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-foreground-color"
+    },
+    {
+      "id": "md.live.task-done-line",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task=x]",
+      "document": "main",
+      "property": "text-decoration-line",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "line-through"
+    },
+    {
+      "id": "md.live.table-head",
+      "requirement": "md.tables",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-table-widget th",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "scrollTo": "| Head A",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-table-head-text-color"
+    },
+    {
+      "id": "md.live.table-head-row",
+      "requirement": "md.tables",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-table-widget thead tr",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-live",
+      "scrollTo": "| Head A",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-table-head-background-color"
+    },
+    {
+      "id": "md.live.table-row-odd",
+      "requirement": "md.tables",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-table-widget tbody tr",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-live",
+      "scrollTo": "| Head A",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-table-row-stripe-background-color"
+    },
+    {
+      "id": "md.live.table-row-even",
+      "requirement": "md.tables",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-table-widget tbody tr:nth-child(2)",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-live",
+      "scrollTo": "| Head A",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-table-row-background-color"
+    },
+    {
+      "id": "md.live.table-border",
+      "requirement": "md.tables",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-table-widget td",
+      "document": "main",
+      "property": "border-top-color",
+      "state": "md-live",
+      "scrollTo": "| Head A",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-table-border-color"
+    },
+    {
+      "id": "md.live.hr",
+      "requirement": "md.hr",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .hr hr",
+      "document": "main",
+      "property": "border-top-color",
+      "state": "md-live",
+      "scrollTo": "| cell 3",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-hr-background-color"
+    },
+    {
+      "id": "md.live.codeblock",
+      "requirement": "md.codeblock",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .HyperMD-codeblock-bg",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-live",
+      "scrollTo": "const x",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-md-codeblock-background-color"
+    },
+    {
+      "id": "md.live.codeblock-border",
+      "requirement": "md.codeblock",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .HyperMD-codeblock-bg",
+      "document": "main",
+      "property": "border-left-color",
+      "state": "md-live",
+      "scrollTo": "const x",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-codeblock-border-color"
+    },
+    {
+      "id": "md.live.codeblock-border-top",
+      "requirement": "md.codeblock",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .HyperMD-codeblock-begin-bg",
+      "document": "main",
+      "property": "border-top-color",
+      "state": "md-live",
+      "scrollTo": "const x",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-codeblock-border-color"
+    },
+    {
+      "id": "md.live.codeblock-text",
+      "requirement": "md.codeblock",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .HyperMD-codeblock-bg",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "scrollTo": "const x",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-codeblock-color"
+    },
+    {
+      "id": "md.live.callout-note",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .callout[data-callout=note]",
+      "document": "main",
+      "property": "border-left-color",
+      "state": "md-live",
+      "scrollTo": "[!note]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-note"
+    },
+    {
+      "id": "md.live.callout-note-title",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .callout[data-callout=note] .callout-title",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "scrollTo": "[!note]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-note"
+    },
+    {
+      "id": "md.live.callout-tip",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .callout[data-callout=tip]",
+      "document": "main",
+      "property": "border-left-color",
+      "state": "md-live",
+      "scrollTo": "[!tip]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-tip"
+    },
+    {
+      "id": "md.live.callout-tip-title",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .callout[data-callout=tip] .callout-title",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "scrollTo": "[!tip]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-tip"
+    },
+    {
+      "id": "md.live.callout-important",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .callout[data-callout=important]",
+      "document": "main",
+      "property": "border-left-color",
+      "state": "md-live",
+      "scrollTo": "[!important]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-important"
+    },
+    {
+      "id": "md.live.callout-important-title",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .callout[data-callout=important] .callout-title",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "scrollTo": "[!important]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-important"
+    },
+    {
+      "id": "md.live.callout-warning",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .callout[data-callout=warning]",
+      "document": "main",
+      "property": "border-left-color",
+      "state": "md-live",
+      "scrollTo": "[!warning]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-warning"
+    },
+    {
+      "id": "md.live.callout-warning-title",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .callout[data-callout=warning] .callout-title",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "scrollTo": "[!warning]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-warning"
+    },
+    {
+      "id": "md.live.callout-caution",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .callout[data-callout=caution]",
+      "document": "main",
+      "property": "border-left-color",
+      "state": "md-live",
+      "scrollTo": "[!caution]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-caution"
+    },
+    {
+      "id": "md.live.callout-caution-title",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .callout[data-callout=caution] .callout-title",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "scrollTo": "[!caution]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-caution"
+    },
+    {
+      "id": "md.live.callout-fill",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .callout",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-live",
+      "scrollTo": "[!note]",
+      "appearance": [
+        "opaque"
+      ],
+      "value": "transparent"
+    },
+    {
+      "id": "md.live.image",
+      "requirement": "md.images",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .image-embed img",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-live",
+      "scrollTo": "half-transparent",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-image-widget-backdrop-background-color"
+    },
+    {
+      "id": "md.live.embed-heading",
+      "requirement": "md.embeds",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .markdown-embed h1",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "scrollTo": "![[Other note]]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-heading-color"
+    },
+    {
+      "id": "md.source.body",
+      "requirement": "md.body-text",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-content",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-foreground-color"
+    },
+    {
+      "id": "md.source.header-mark",
+      "requirement": "md.marks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-header",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-syntax-processing-instruction-color"
+    },
+    {
+      "id": "md.source.strong-mark",
+      "requirement": "md.marks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-strong",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-processing-instruction-color"
+    },
+    {
+      "id": "md.source.code-mark",
+      "requirement": "md.marks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-code",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-processing-instruction-color"
+    },
+    {
+      "id": "md.source.link-mark",
+      "requirement": "md.marks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-link",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-processing-instruction-color"
+    },
+    {
+      "id": "md.source.url-paren",
+      "requirement": "md.marks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-link-string",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-processing-instruction-color"
+    },
+    {
+      "id": "md.source.url",
+      "requirement": "md.marks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-string.cm-url:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-url-color"
+    },
+    {
+      "id": "md.source.link-text",
+      "requirement": "qd4.links",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-link:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-link-color"
+    },
+    {
+      "id": "md.source.quote-mark",
+      "requirement": "md.blockquote",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-quote",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "> Quote line",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-quote-color"
+    },
+    {
+      "id": "md.source.list-mark-1",
+      "requirement": "md.lists",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-list.cm-list-1",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "1. first",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-list-mark-color"
+    },
+    {
+      "id": "md.source.table-sep",
+      "requirement": "md.marks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-hmd-table-sep",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "| Head A",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-processing-instruction-color"
+    },
+    {
+      "id": "md.source.hr",
+      "requirement": "md.hr",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.HyperMD-hr .cm-hr",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "| cell 3",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-content-separator-color"
+    },
+    {
+      "id": "md.source.fence",
+      "requirement": "md.marks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-code-block",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "const x",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-processing-instruction-color"
+    },
+    {
+      "id": "md.source.codeblock",
+      "requirement": "md.codeblock",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .HyperMD-codeblock-bg",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-source",
+      "scrollTo": "const x",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-codeblock-background-color"
+    },
+    {
+      "id": "md.reading.body",
+      "requirement": "md.body-text",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-text-color"
+    },
+    {
+      "id": "md.reading.h1",
+      "requirement": "md.headings",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view h1",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-heading-color"
+    },
+    {
+      "id": "md.reading.h1-rule",
+      "requirement": "md.headings",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view h1",
+      "document": "main",
+      "property": "border-bottom-color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-heading-border-color"
+    },
+    {
+      "id": "md.reading.h1-rule-width",
+      "requirement": "md.headings",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view h1",
+      "document": "main",
+      "property": "border-bottom-width",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "2px"
+    },
+    {
+      "id": "md.reading.h2-rule-width",
+      "requirement": "md.headings",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view h2",
+      "document": "main",
+      "property": "border-bottom-width",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "1px"
+    },
+    {
+      "id": "md.reading.h6",
+      "requirement": "md.headings",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view h6",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-heading-muted-text-color"
+    },
+    {
+      "id": "md.reading.strong",
+      "requirement": "md.emphasis",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view strong",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-strong-color"
+    },
+    {
+      "id": "md.reading.em",
+      "requirement": "md.emphasis",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view em",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-em-color"
+    },
+    {
+      "id": "md.reading.del",
+      "requirement": "md.emphasis",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view del",
+      "document": "main",
+      "property": "text-decoration-line",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "line-through"
+    },
+    {
+      "id": "md.reading.link",
+      "requirement": "qd4.links",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view a.external-link",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-mde-preview-link-color"
+    },
+    {
+      "id": "md.reading.link-no-underline",
+      "requirement": "qd4.links",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view a.external-link",
+      "document": "main",
+      "property": "text-decoration-line",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "none"
+    },
+    {
+      "id": "md.reading.internal-link",
+      "requirement": "qd4.links",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view a.internal-link",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-link-color"
+    },
+    {
+      "id": "md.reading.unresolved-link",
+      "requirement": "qd4.links",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view a.internal-link.is-unresolved",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-link-color"
+    },
+    {
+      "id": "md.reading.highlight",
+      "requirement": "md.highlight",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view mark",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-inline-mark-background-color"
+    },
+    {
+      "id": "md.reading.highlight-text",
+      "requirement": "md.highlight",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view mark",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-inline-mark-text-color"
+    },
+    {
+      "id": "md.reading.highlight-underline",
+      "requirement": "md.highlight",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view mark",
+      "document": "main",
+      "property": "text-decoration-color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-inline-mark-underline-color"
+    },
+    {
+      "id": "md.reading.inline-code",
+      "requirement": "md.inline-code",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view p > code",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-inline-code-background-color"
+    },
+    {
+      "id": "md.reading.inline-code-border",
+      "requirement": "md.inline-code",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view p > code",
+      "document": "main",
+      "property": "border-top-color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-inline-code-border-color"
+    },
+    {
+      "id": "md.reading.inline-code-text",
+      "requirement": "md.inline-code",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view p > code",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-inline-code-text-color"
+    },
+    {
+      "id": "md.reading.kbd",
+      "requirement": "md.kbd",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view kbd",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-kbd-background-color"
+    },
+    {
+      "id": "md.reading.kbd-text",
+      "requirement": "md.kbd",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view kbd",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-kbd-text-color"
+    },
+    {
+      "id": "md.reading.kbd-border",
+      "requirement": "md.kbd",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view kbd",
+      "document": "main",
+      "property": "border-top-color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-kbd-border-color"
+    },
+    {
+      "id": "md.reading.quote-bar",
+      "requirement": "md.blockquote",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view blockquote",
+      "document": "main",
+      "property": "border-left-color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-blockquote-border-color"
+    },
+    {
+      "id": "md.reading.quote-text",
+      "requirement": "md.blockquote",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view blockquote",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-blockquote-text-color"
+    },
+    {
+      "id": "md.reading.quote-style",
+      "requirement": "md.blockquote",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view blockquote",
+      "document": "main",
+      "property": "font-style",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "normal"
+    },
+    {
+      "id": "md.reading.ol-marker-1",
+      "requirement": "md.lists",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view ol > li",
+      "document": "main",
+      "property": "color",
+      "pseudo": "::marker",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-list-marker-color"
+    },
+    {
+      "id": "md.reading.ol-marker-2",
+      "requirement": "md.lists",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view ol ol > li",
+      "document": "main",
+      "property": "color",
+      "pseudo": "::marker",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-list-marker-2-color"
+    },
+    {
+      "id": "md.reading.ol-marker-3",
+      "requirement": "md.lists",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view ol ol ol > li",
+      "document": "main",
+      "property": "color",
+      "pseudo": "::marker",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-list-marker-3-color"
+    },
+    {
+      "id": "md.reading.bullet-2",
+      "requirement": "md.lists",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view ul ul > li",
+      "document": "main",
+      "property": "--list-marker-color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-list-marker-2-color",
+      "kind": "var"
+    },
+    {
+      "id": "md.reading.task-done",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view li.task-list-item.is-checked",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-text-color"
+    },
+    {
+      "id": "md.reading.task-done-line",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view li.task-list-item.is-checked",
+      "document": "main",
+      "property": "text-decoration-color",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-task-list-checked-color"
+    },
+    {
+      "id": "md.reading.table-head",
+      "requirement": "md.tables",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view th",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "scrollTo": "| Head A",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-table-head-text-color"
+    },
+    {
+      "id": "md.reading.table-head-row",
+      "requirement": "md.tables",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view thead tr",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-reading",
+      "scrollTo": "| Head A",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-table-head-background-color"
+    },
+    {
+      "id": "md.reading.table-row-odd",
+      "requirement": "md.tables",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view tbody tr",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-reading",
+      "scrollTo": "| Head A",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-table-row-stripe-background-color"
+    },
+    {
+      "id": "md.reading.table-row-even",
+      "requirement": "md.tables",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view tbody tr:nth-child(2)",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-reading",
+      "scrollTo": "| Head A",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-table-row-background-color"
+    },
+    {
+      "id": "md.reading.table-border",
+      "requirement": "md.tables",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view td",
+      "document": "main",
+      "property": "border-top-color",
+      "state": "md-reading",
+      "scrollTo": "| Head A",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-table-border-color"
+    },
+    {
+      "id": "md.reading.hr",
+      "requirement": "md.hr",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .el-hr hr",
+      "document": "main",
+      "property": "border-top-color",
+      "state": "md-reading",
+      "scrollTo": "| cell 3",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-hr-background-color"
+    },
+    {
+      "id": "md.reading.hr-width",
+      "requirement": "md.hr",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .el-hr hr",
+      "document": "main",
+      "property": "border-top-width",
+      "state": "md-reading",
+      "scrollTo": "| cell 3",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "4px"
+    },
+    {
+      "id": "md.reading.codeblock",
+      "requirement": "md.codeblock",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view pre.language-js",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-reading",
+      "scrollTo": "const x",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-mde-preview-codeblock-background-color"
+    },
+    {
+      "id": "md.reading.codeblock-border",
+      "requirement": "md.codeblock",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view pre.language-js",
+      "document": "main",
+      "property": "border-top-color",
+      "state": "md-reading",
+      "scrollTo": "const x",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-codeblock-border-color"
+    },
+    {
+      "id": "md.reading.codeblock-text",
+      "requirement": "md.codeblock",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view pre.language-js",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "scrollTo": "const x",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-codeblock-text-color"
+    },
+    {
+      "id": "md.reading.callout-note",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .callout[data-callout=note]",
+      "document": "main",
+      "property": "border-left-color",
+      "state": "md-reading",
+      "scrollTo": "[!note]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-note"
+    },
+    {
+      "id": "md.reading.callout-note-title",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .callout[data-callout=note] .callout-title",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "scrollTo": "[!note]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-note"
+    },
+    {
+      "id": "md.reading.callout-tip",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .callout[data-callout=tip]",
+      "document": "main",
+      "property": "border-left-color",
+      "state": "md-reading",
+      "scrollTo": "[!tip]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-tip"
+    },
+    {
+      "id": "md.reading.callout-tip-title",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .callout[data-callout=tip] .callout-title",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "scrollTo": "[!tip]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-tip"
+    },
+    {
+      "id": "md.reading.callout-important",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .callout[data-callout=important]",
+      "document": "main",
+      "property": "border-left-color",
+      "state": "md-reading",
+      "scrollTo": "[!important]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-important"
+    },
+    {
+      "id": "md.reading.callout-important-title",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .callout[data-callout=important] .callout-title",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "scrollTo": "[!important]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-important"
+    },
+    {
+      "id": "md.reading.callout-warning",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .callout[data-callout=warning]",
+      "document": "main",
+      "property": "border-left-color",
+      "state": "md-reading",
+      "scrollTo": "[!warning]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-warning"
+    },
+    {
+      "id": "md.reading.callout-warning-title",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .callout[data-callout=warning] .callout-title",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "scrollTo": "[!warning]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-warning"
+    },
+    {
+      "id": "md.reading.callout-caution",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .callout[data-callout=caution]",
+      "document": "main",
+      "property": "border-left-color",
+      "state": "md-reading",
+      "scrollTo": "[!caution]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-caution"
+    },
+    {
+      "id": "md.reading.callout-caution-title",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .callout[data-callout=caution] .callout-title",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "scrollTo": "[!caution]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-gfm-alert-caution"
+    },
+    {
+      "id": "md.reading.callout-fill",
+      "requirement": "md.callouts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .callout",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-reading",
+      "scrollTo": "[!note]",
+      "appearance": [
+        "opaque"
+      ],
+      "value": "transparent"
+    },
+    {
+      "id": "md.reading.image",
+      "requirement": "md.images",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .image-embed img",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-reading",
+      "scrollTo": "half-transparent",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-image-background-color"
+    },
+    {
+      "id": "md.reading.embed-heading",
+      "requirement": "md.embeds",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .markdown-embed h1",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "scrollTo": "![[Other note]]",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-heading-color"
+    },
+    {
+      "id": "md.reading.footnotes",
+      "requirement": "md.footnotes",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .footnotes",
+      "document": "main",
+      "property": "color",
+      "state": "md-reading",
+      "scrollTo": "[^1]: Footnote",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-footnote-text-color"
+    },
+    {
+      "id": "md.reading.footnotes-rule",
+      "requirement": "md.footnotes",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view .footnotes > hr",
+      "document": "main",
+      "property": "border-top-color",
+      "state": "md-reading",
+      "scrollTo": "[^1]: Footnote",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-footnote-border-color"
+    },
+    {
+      "id": "md.ui-link.var",
+      "requirement": "qd4.links",
+      "selector": "body",
+      "document": "main",
+      "property": "--link-color",
+      "state": "default",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-link-color"
+    },
+    {
+      "id": "md.user-text-font",
+      "requirement": "qd8.user-text-fonts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-content",
+      "document": "main",
+      "property": "font-family",
+      "state": "md-user-fonts",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "first-family",
+      "value": "Courier New"
+    },
+    {
+      "id": "md.user-code-font",
+      "requirement": "qd8.user-text-fonts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-inline-code:not(.cm-formatting)",
+      "document": "main",
+      "property": "font-family",
+      "state": "md-user-fonts",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "first-family",
+      "value": "Menlo"
     }
   ]
 }
