@@ -18,7 +18,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 import postcss from "postcss";
 import stylelint from "stylelint";
-import { darkBranch, declarations, hexToRgb, hslToRgb, isTriplet, norm, paletteName, readCsv, sameColor, substitute } from "../lib/css.mjs";
+import { darkBranch, declarations, denotation, hasLightDark, hexToRgb, hslToRgb, isTriplet, norm, normalizeNotation, paletteName, readCsv, sameColor, substitute } from "../lib/css.mjs";
 import { checkErrors, loadChecks, loadRequirements, requirementErrors, runtimeSpecFiles } from "../lib/spec.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
@@ -30,6 +30,12 @@ const THEMES = {
   // KD; mixing is caught by S1 instead (every KD palette value must equal KD's own primary data).
   "kanagawa-dragon": { csv: "inkdrop-kanagawa-dragon-tokens.csv", foreign: null },
 };
+
+// Tokens the palette must contain (research/14 §6.2): every Inkdrop token named by the mapping candidates
+// (research/data/mapping-candidates.csv), these families, and these extras; plus whatever they reference
+// (checked by S3). --mermaid-* waits for V-10 (step 9).
+const REQUIRED_FAMILIES = ["--editor-", "--syntax-", "--mde-preview-", "--md-", "--gfm-alert-", "--tag-default-"];
+const REQUIRED_EXTRA = ["--page-font", "--inline-dropdown-menu-background", "--vertical-menu-background"];
 
 let failures = 0;
 const check = (name, ok, detail = "") => {
@@ -81,6 +87,10 @@ try {
   check("S2 missing source -> error names the file", /workspace\.css/.test(res.stderr), res.stderr.trim().split("\n")[0] ?? "");
 
   // ---------- S1: palette vs Inkdrop's primary data ----------
+  // One aggregated PASS/FAIL line per theme and aspect; a FAIL lists the offending declarations.
+  const COLOUR_LITERAL = /#[0-9a-f]{3,8}\b|\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color|color-mix)\(|\b(?:transparent|currentcolor|white|black)\b/gi;
+  const literals = (v) => (v.match(COLOUR_LITERAL) ?? []).map((x) => x.toLowerCase()).sort().join(" ");
+  const tokenCounts = {};
   for (const [theme, info] of Object.entries(THEMES)) {
     const rows = readCsv(path.join(root, "research/data", info.csv));
     // A token can have a base row and a theme row; the theme's declaration is the one Inkdrop applies.
@@ -88,56 +98,101 @@ try {
     for (const r of rows) if (!byToken.has(r.token) || r.source === "theme") byToken.set(r.token, r);
     // Our palette name -> CSV row, by the naming rule of research/14 §1.5.
     const byPaletteName = new Map([...byToken.values()].map((r) => [paletteName(r.token, r.raw_value), r]));
-    // Rename the var() references of an Inkdrop value to our palette names.
-    const rename = (v) => v.replace(/var\((--[\w-]+)\)/g, (m, n) => (byToken.has(n) ? `var(${paletteName(n, byToken.get(n).raw_value)})` : m));
+    // Rename the var() references of an Inkdrop value to our palette names (with or without a fallback).
+    const rename = (v) => v.replace(/var\(\s*(--[\w-]+)/g, (m, n) => (byToken.has(n) ? `var(${paletteName(n, byToken.get(n).raw_value)}` : m));
     // Inkdrop's definitions under our names (dark branch), to resolve both sides to the same form.
     const inkDefs = new Map([...byToken.values()].map((r) => [paletteName(r.token, r.raw_value), rename(darkBranch(r.raw_value))]));
+    const themeRepo = byToken.get("--editor-background")["file:line"].split(" ")[0];
 
-    const palettePath = path.join(root, "src/palette", `${theme}.css`);
-    const palette = declarations(readFileSync(palettePath, "utf8"));
+    const palette = declarations(readFileSync(path.join(root, "src/palette", `${theme}.css`), "utf8"));
     const defs = new Map(palette.map((d) => [d.prop, d.value]));
-    check(`S1 ${theme} palette is not empty`, palette.length > 0);
+    const bad = { unknown: [], declared: [], notation: [], denotes: [], comment: [], resolved: [], hex: [] };
+    let acrylicCount = 0, lightDarkCount = 0, notationCount = 0, hexChecked = 0;
     for (const d of palette) {
       const acrylic = d.prop.endsWith("-acrylic");
       const row = byPaletteName.get(acrylic ? d.prop.replace(/-acrylic$/, "") : d.prop);
-      if (!row) { check(`S1 ${theme} ${d.prop} is an Inkdrop token`, false, "no CSV row under the naming rule"); continue; }
-      let expected, source;
+      if (!row) { bad.unknown.push(d.prop); continue; }
+      let declared, source;
       if (acrylic) {
-        // Theme's own acrylic override: ":root:has(body.acrylic-window) @<path>:<line> = <value>" in the notes.
-        const m = /:root:has\(body\.acrylic-window\) @((?:styles|packages\/dragon\/styles)\/ui\.css:\d+) = ([^|;]+)/.exec(row.notes);
-        expected = m && rename(norm(m[2]));
-        source = m && `${row["file:line"].split(" ")[0]} ${m[1]}`;
+        acrylicCount++;
+        // The theme's own acrylic override: ":root:has(body.acrylic-window) @<path>:<line> = <value>" in the notes.
+        const m = /:root:has\(body\.acrylic-window\) @((?:styles|packages\/dragon\/styles)\/(?:ui|syntax)\.css:\d+) = ([^|;]+)/.exec(row.notes);
+        declared = m ? norm(m[2]) : null;
+        source = m && `${themeRepo} ${m[1]} | acrylic`;
       } else {
-        expected = rename(darkBranch(row.raw_value));
+        declared = row.raw_value;
         source = row["file:line"];
       }
-      // Written as declared (after renaming the references): no conversion, no flattening.
-      check(`S1 ${theme} ${d.prop} = Inkdrop ${row.token}${acrylic ? " (acrylic)" : ""} as declared`, expected !== null && d.value === expected, `${d.value} vs ${expected}`);
-      check(`S1 ${theme} ${d.prop} source comment = ${source}`, d.comment === source, `${d.comment}`);
-      if (isTriplet(row.raw_value)) continue;
-      // Resolved value equal on both sides, and equal to the CSV's 8-bit value within 1/255.
+      // The two intentional rewrites, each declared in the comment (research/14 §1.5, §1.9):
+      //   light-dark(): dark branch only (Q-D11);  notation: spelling required by the official lint, same value.
+      const ld = declared !== null && hasLightDark(declared);
+      if (ld) { lightDarkCount++; source += " | light-dark(): dark branch"; }
+      const asDeclared = declared === null ? null : rename(ld ? darkBranch(declared) : norm(declared));
+      const expected = asDeclared === null ? null : normalizeNotation(asDeclared);
+      if (expected !== asDeclared) {
+        notationCount++;
+        source += " | notation (official lint)";
+        // Independent of normalizeNotation: same colours (r, g, b, alpha) and the same font names.
+        if (denotation(expected) !== denotation(asDeclared)) bad.denotes.push(`${d.prop}: ${expected} vs ${asDeclared}`);
+      }
+      // 1. Written as declared (after renaming the references): no conversion, no flattening, same references.
+      if (expected === null || d.value !== expected) bad.declared.push(`${d.prop}: ${d.value} vs ${expected}`);
+      // 2. Colour notation: exactly the colour literals Inkdrop declared (HEX / rgb() / transparent ... are
+      //    allowed where Inkdrop wrote them, and nowhere else).
+      if (expected !== null && literals(d.value) !== literals(expected)) bad.notation.push(`${d.prop}: [${literals(d.value)}] vs [${literals(expected)}]`);
+      // 3. Source comment = research/data file:line (+ markers).
+      if (d.comment !== source) bad.comment.push(`${d.prop}: ${d.comment} vs ${source}`);
+      if (isTriplet(row.raw_value) || expected === null) continue;
+      // 4. Resolved through our palette = resolved through Inkdrop's definitions.
+      // (Compared by denotation, so a lint-notation value somewhere in the chain still counts as equal.)
       const ours = substitute(d.value, defs);
-      const theirs = substitute(expected ?? "", inkDefs);
-      check(`S1 ${theme} ${d.prop} resolves like Inkdrop`, ours === theirs, `${ours} vs ${theirs}`);
-      if (!acrylic && /^#[0-9a-f]{6,8}$/i.test(row.resolved_value)) {
-        check(`S1 ${theme} ${d.prop} = ${row.resolved_value} (+-1/255)`, sameColor(hslToRgb(ours), hexToRgb(row.resolved_value)), ours);
+      const theirs = substitute(expected, inkDefs);
+      if (ours !== theirs && denotation(ours) !== denotation(theirs)) bad.resolved.push(`${d.prop}: ${ours} vs ${theirs}`);
+      // 5. Equal to the CSV's 8-bit resolved value within 1/255 (where the CSV has one and ours is one hsl()).
+      if (!acrylic && /^#[0-9a-f]{6,8}$/i.test(row.resolved_value) && hslToRgb(ours)) {
+        hexChecked++;
+        if (!sameColor(hslToRgb(ours), hexToRgb(row.resolved_value))) bad.hex.push(`${d.prop}: ${ours} vs ${row.resolved_value}`);
       }
     }
-    // The output carries every palette declaration unchanged and no converted colour.
+    const n = palette.length;
+    tokenCounts[theme] = { declarations: n, acrylic: acrylicCount, lightDark: lightDarkCount, notation: notationCount, hexChecked };
+    const list = (xs) => xs.slice(0, 8).join(" | ") + (xs.length > 8 ? ` | ... (${xs.length})` : "");
+    check(`S1 ${theme} palette is not empty`, n > 0, `${n} declarations`);
+    check(`S1 ${theme} every declaration is an Inkdrop token (naming rule)`, bad.unknown.length === 0, list(bad.unknown));
+    check(`S1 ${theme} ${n} declarations = Inkdrop's declaration (values, alpha, references)`, bad.declared.length === 0, list(bad.declared));
+    check(`S1 ${theme} colour notation as Inkdrop declared it, except the marked lint notation (no conversion)`, bad.notation.length === 0, list(bad.notation));
+    check(`S1 ${theme} ${notationCount} lint-notation values denote the same colours / font names as Inkdrop's`, bad.denotes.length === 0, list(bad.denotes));
+    check(`S1 ${theme} source comments = research/data (${lightDarkCount} light-dark, ${notationCount} notation, ${acrylicCount} acrylic marked)`, bad.comment.length === 0, list(bad.comment));
+    check(`S1 ${theme} resolved values = Inkdrop's resolved values`, bad.resolved.length === 0, list(bad.resolved));
+    check(`S1 ${theme} ${hexChecked} opaque colours = research/data 8-bit values (+-1/255)`, bad.hex.length === 0, list(bad.hex));
+
+    // Selection (research/14 §6.2): the tokens later steps need must all be present.
+    const named = new Set(readCsv(path.join(root, "research/data/mapping-candidates.csv")).flatMap((r) => r.inkdrop_tokens.match(/--[\w-]+/g) ?? []));
+    const required = [...byToken.keys()].filter((t) => named.has(t) || REQUIRED_FAMILIES.some((f) => t.startsWith(f)) || REQUIRED_EXTRA.includes(t));
+    const absent = required.filter((t) => !defs.has(paletteName(t, byToken.get(t).raw_value)));
+    check(`S1 ${theme} all ${required.length} required tokens present (mapping candidates + families)`, absent.length === 0, list(absent));
+    const acrylicRequired = required.filter((t) => /:root:has\(body\.acrylic-window\) @(?:styles|packages\/dragon\/styles)\//.test(byToken.get(t).notes));
+    const acrylicAbsent = acrylicRequired.filter((t) => !defs.has(`${paletteName(t, byToken.get(t).raw_value)}-acrylic`));
+    check(`S1 ${theme} all ${acrylicRequired.length} theme acrylic overrides present`, acrylicAbsent.length === 0, list(acrylicAbsent));
+
+    // The output carries every palette declaration unchanged; outside the palette no colour literal at all.
     const out = declarations(outputs[theme]);
     const missing = palette.filter((p) => !out.some((d) => d.selector === p.selector && d.prop === p.prop && d.value === p.value));
-    check(`S1 ${theme} output keeps every palette declaration verbatim`, outputs[theme] !== "" && missing.length === 0, missing.map((x) => x.prop).join(", "));
-    const converted = out.filter((d) => /#[0-9a-f]{3,8}\b/i.test(d.value) || /\b(?:rgba?|hwb|lab|lch|oklab|oklch|color)\(/.test(d.value));
-    check(`S1 ${theme} no HEX / rgb() / other colour functions in output`, converted.length === 0, converted.map((d) => `${d.prop}: ${d.value}`).join("; "));
+    check(`S1 ${theme} output keeps every palette declaration verbatim`, outputs[theme] !== "" && missing.length === 0, list(missing.map((x) => x.prop)));
+    const paletteKeys = new Set(palette.map((p) => `${p.selector}|${p.prop}|${p.value}`));
+    const converted = out.filter((d) => !paletteKeys.has(`${d.selector}|${d.prop}|${d.value}`) && literals(d.value) !== "");
+    check(`S1 ${theme} no colour literal outside the palette in the output`, converted.length === 0, list(converted.map((d) => `${d.prop}: ${d.value}`)));
   }
+  console.log(`token counts: ${JSON.stringify(tokenCounts)}`);
 
   // ---------- S3: references ----------
   const obsidianVars = new Set(readCsv(path.join(root, "research/data/obsidian-css-variables-1.14.4.csv")).map((r) => r.variable));
   for (const [theme, info] of Object.entries(THEMES)) {
     const decls = declarations(outputs[theme]);
     const defined = new Set(decls.map((d) => d.prop));
-    const undefinedRefs = [...new Set(decls.flatMap((d) => [...d.value.matchAll(/var\((--ink-[\w-]+)\)/g)].map((m) => m[1])))].filter((n) => !defined.has(n));
-    check(`S3 ${theme} every var(--ink-*) is defined`, undefinedRefs.length === 0, undefinedRefs.join(", "));
+    const palettePrefixes = /^--(?:ink-|hsl-|kanagawa-)/;
+    const undefinedRefs = [...new Set(decls.flatMap((d) => [...d.value.matchAll(/var\(\s*(--[\w-]+)/g)].map((m) => m[1])))].filter((n) => palettePrefixes.test(n) && !defined.has(n));
+    check(`S3 ${theme} every var() reference to a palette name is defined`, undefinedRefs.length === 0, undefinedRefs.join(", "));
     if (info.foreign) check(`S3 ${theme} no variable of the other theme`, outputs[theme] !== "" && !info.foreign.test(outputs[theme]));
     const inkDefs = decls.filter((d) => d.prop.startsWith("--ink-"));
     const dup = inkDefs.filter((d, i) => inkDefs.findIndex((x) => x.prop === d.prop) !== i);

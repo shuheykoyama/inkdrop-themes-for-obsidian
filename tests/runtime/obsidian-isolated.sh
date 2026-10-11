@@ -35,7 +35,7 @@ if [ "$cmd" = start ]; then
 elif [ "$cmd" = stop ]; then
   pid="$(cat "$work/obsidian.pid")"
   kill "$pid"
-  for _ in $(seq 1 15); do kill -0 "$pid" 2>/dev/null || break; sleep 1; done
+  for _ in $(seq 1 30); do kill -0 "$pid" 2>/dev/null || break; sleep 1; done
   if kill -0 "$pid" 2>/dev/null; then echo "isolated Obsidian still running (pid $pid)"; exit 1; fi
   echo "stopped isolated Obsidian (pid $pid)"
 else

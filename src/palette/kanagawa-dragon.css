@@ -1,19 +1,474 @@
 /* Palette: Kanagawa Dragon. Theme-specific VALUES only (structure lives in ../common).
-   Every declaration copies Inkdrop's declaration as written (research/14 §1.5): Inkdrop tokens get
-   the --ink- prefix, HSL triplets keep their names, and the trailing comment is the source
-   (repo@sha path:line, as in research/data/inkdrop-kanagawa-dragon-tokens.csv).
-   Inkdrop's camelCase triplet names are written in kebab-case for the official lint rule
-   custom-property-pattern (--kanagawa-dragonBlack1 -> --kanagawa-dragon-black1); values are unchanged.
-   Step 1 (build and test infrastructure) holds only the tokens the runtime runner needs;
-   the full palette is step 2. tests/static/run.mjs (S1) checks every value against the CSV. */
+   Every declaration copies the declaration Inkdrop applies (research/14 §1.5; Q-D2, Q-D3, Q-D9):
+   - Inkdrop tokens get the --ink- prefix; HSL triplets keep their names (camelCase written in kebab-case
+     for the lint rule custom-property-pattern); var() references are renamed the same way.
+   - The comment after each declaration is its source (repo@sha path:line, = research/data "file:line").
+   - "light-dark(): dark branch": Inkdrop declares light-dark(light, dark); only the dark value is kept
+     (both themes are dark-only, Q-D11).
+   - "notation (official lint)": legacy rgba(r, g, b, a) written as rgb(r g b / A%) and capitalised font
+     names quoted, as stylelint-config-obsidianmd requires; the value is the same (user decision
+     2026-10-11; S1 checks the colours and names). These two are the only rewrites.
+   - "acrylic": the theme's override under :root:has(body.acrylic-window), kept as <name>-acrylic (Q-D22).
+   Selection (research/14 §6.2): the tokens named by the mapping candidates (research/06), the families
+   --editor-* --syntax-* --mde-preview-* --md-* --gfm-alert-* --tag-default-*, --page-font (Q-D8), the
+   acrylic menu surfaces, and every token these reference. Not included yet: --mermaid-* (step 9, after
+   V-10) and the tokens of Inkdrop components without an Obsidian counterpart.
+   tests/static/run.mjs (S1) checks every declaration against research/data/inkdrop-kanagawa-dragon-tokens.csv. */
 .theme-dark {
-  /* HSL triplets */
+  /* inkdropapp_css@add48d9 markdown.css (Inkdrop base CSS, inherited by the theme: Q-D9) */
+  --ink-gfm-alert-note: var(--ink-blue, hsl(var(--hsl-blue-500))); /* inkdropapp_css@add48d9 markdown.css:3 */
+  --ink-gfm-alert-tip: var(--ink-green, hsl(var(--hsl-green-500))); /* inkdropapp_css@add48d9 markdown.css:4 */
+  --ink-gfm-alert-important: var(--ink-purple, hsl(var(--hsl-purple-500))); /* inkdropapp_css@add48d9 markdown.css:5 */
+  --ink-gfm-alert-warning: var(--ink-orange, hsl(var(--hsl-orange-500))); /* inkdropapp_css@add48d9 markdown.css:6 */
+  --ink-gfm-alert-caution: var(--ink-red, hsl(var(--hsl-red-500))); /* inkdropapp_css@add48d9 markdown.css:7 */
+  --ink-mde-preview-line-height: 1.5; /* inkdropapp_css@add48d9 markdown.css:9 */
+  --ink-mde-preview-inline-code-padding: 0.2em 0.4em; /* inkdropapp_css@add48d9 markdown.css:15 */
+  --ink-mde-preview-inline-code-font-size: 85%; /* inkdropapp_css@add48d9 markdown.css:16 */
+  --ink-mde-preview-input-placeholder-color: var(--ink-dark-text-color); /* inkdropapp_css@add48d9 markdown.css:28 | light-dark(): dark branch */
+  --ink-mde-preview-heading-border-color: var(--ink-border-color); /* inkdropapp_css@add48d9 markdown.css:35 */
+  --ink-mde-preview-heading-muted-text-color: var(--ink-muted-text-color); /* inkdropapp_css@add48d9 markdown.css:36 */
+  --ink-mde-preview-h1-border-width: 2px; /* inkdropapp_css@add48d9 markdown.css:37 */
+  --ink-mde-preview-heading-border-width: 1px; /* inkdropapp_css@add48d9 markdown.css:38 */
+  --ink-mde-preview-hr-border-color: var(--ink-border-color); /* inkdropapp_css@add48d9 markdown.css:45 */
+  --ink-mde-preview-hr-background-color: var(--ink-solid-border-color); /* inkdropapp_css@add48d9 markdown.css:46 */
+  --ink-mde-preview-blockquote-text-color: var(--ink-muted-text-color); /* inkdropapp_css@add48d9 markdown.css:49 */
+  --ink-mde-preview-blockquote-border-color: var(--ink-solid-border-color); /* inkdropapp_css@add48d9 markdown.css:50 */
+  --ink-mde-preview-kbd-text-color: var(--ink-kbd-color); /* inkdropapp_css@add48d9 markdown.css:59 */
+  --ink-mde-preview-kbd-background-color: var(--ink-kbd-background); /* inkdropapp_css@add48d9 markdown.css:60 */
+  --ink-mde-preview-kbd-border-color: var(--ink-kbd-border-color); /* inkdropapp_css@add48d9 markdown.css:61 */
+  --ink-mde-preview-kbd-shadow-color: var(--ink-mde-preview-kbd-border-color); /* inkdropapp_css@add48d9 markdown.css:62 */
+  --ink-mde-preview-table-border-color: var(--ink-solid-border-color); /* inkdropapp_css@add48d9 markdown.css:70 */
+  --ink-mde-preview-table-row-border-color: var(--ink-border-color); /* inkdropapp_css@add48d9 markdown.css:75 */
+  --ink-mde-preview-footnote-text-color: var(--ink-muted-text-color); /* inkdropapp_css@add48d9 markdown.css:82 */
+  --ink-mde-preview-footnote-border-color: var(--ink-solid-border-color); /* inkdropapp_css@add48d9 markdown.css:83 */
+  --ink-mde-preview-footnote-highlight-border-color: var(--ink-primary-color-active); /* inkdropapp_css@add48d9 markdown.css:84 */
+  --ink-mde-preview-task-list-checked-color: var(--ink-muted-text-color); /* inkdropapp_css@add48d9 markdown.css:92 */
+  --ink-mde-preview-codeblock-meta-font-size: 80%; /* inkdropapp_css@add48d9 markdown.css:95 */
+  --ink-mde-preview-codeblock-meta-text-color: var(--ink-muted-text-color); /* inkdropapp_css@add48d9 markdown.css:96 */
+  --ink-mde-preview-codeblock-text-color: var(--ink-text-color); /* inkdropapp_css@add48d9 markdown.css:101 */
+  --ink-mde-preview-codeblock-border-color: hsl(var(--hsl-blue-200) / 10%); /* inkdropapp_css@add48d9 markdown.css:106 | light-dark(): dark branch */
+
+  /* inkdropapp_css@add48d9 mermaid.css (Inkdrop base CSS, inherited by the theme: Q-D9) */
+  --ink-mermaid-text-color: var(--ink-text-color); /* inkdropapp_css@add48d9 mermaid.css:25 */
+
+  /* inkdropapp_css@add48d9 syntax.css (Inkdrop base CSS, inherited by the theme: Q-D9) */
+  --ink-editor-gutter-border-right-color: hsl(var(--hsl-neutral-800)); /* inkdropapp_css@add48d9 syntax.css:35 | light-dark(): dark branch */
+  --ink-syntax-content-separator-font-weight: bold; /* inkdropapp_css@add48d9 syntax.css:261 */
+
+  /* inkdropapp_css@add48d9 tags.css (Inkdrop base CSS, inherited by the theme: Q-D9) */
+  --ink-tag-dark-default-border-color: hsl(var(--hsl-slate-400) / 20%); /* inkdropapp_css@add48d9 tags.css:135 */
+  --ink-tag-dark-default-background-color: hsl(var(--hsl-gray-400) / 10%); /* inkdropapp_css@add48d9 tags.css:136 */
+  --ink-tag-dark-default-text-color: hsl(var(--hsl-gray-400)); /* inkdropapp_css@add48d9 tags.css:137 */
+  --ink-tag-dark-default-active-background-color: hsl(var(--hsl-slate-400) / 20%); /* inkdropapp_css@add48d9 tags.css:138 */
+  --ink-tag-dark-default-active-border-color: hsl(var(--hsl-slate-400) / 30%); /* inkdropapp_css@add48d9 tags.css:139 */
+  --ink-tag-dark-default-active-text-color: hsl(var(--hsl-slate-300)); /* inkdropapp_css@add48d9 tags.css:140 */
+  --ink-tag-dark-default-circular-background-color: hsl(var(--hsl-slate-400) / 30%); /* inkdropapp_css@add48d9 tags.css:141 */
+  --ink-tag-dark-default-circular-border-color: hsl(var(--hsl-slate-400)); /* inkdropapp_css@add48d9 tags.css:142 */
+  --ink-tag-default-border-color: var(--ink-tag-dark-default-border-color); /* inkdropapp_css@add48d9 tags.css:262 | light-dark(): dark branch */
+  --ink-tag-default-background-color: var(--ink-tag-dark-default-background-color); /* inkdropapp_css@add48d9 tags.css:266 | light-dark(): dark branch */
+  --ink-tag-default-text-color: var(--ink-tag-dark-default-text-color); /* inkdropapp_css@add48d9 tags.css:270 | light-dark(): dark branch */
+  --ink-tag-default-active-background-color: var(--ink-tag-dark-default-active-background-color); /* inkdropapp_css@add48d9 tags.css:274 | light-dark(): dark branch */
+  --ink-tag-default-active-border-color: var(--ink-tag-dark-default-active-border-color); /* inkdropapp_css@add48d9 tags.css:278 | light-dark(): dark branch */
+  --ink-tag-default-active-text-color: var(--ink-tag-dark-default-active-text-color); /* inkdropapp_css@add48d9 tags.css:282 | light-dark(): dark branch */
+  --ink-tag-default-circular-background-color: var(--ink-tag-dark-default-circular-background-color); /* inkdropapp_css@add48d9 tags.css:286 | light-dark(): dark branch */
+  --ink-tag-default-circular-border-color: var(--ink-tag-dark-default-circular-border-color); /* inkdropapp_css@add48d9 tags.css:290 | light-dark(): dark branch */
+
+  /* inkdropapp_css@add48d9 tokens.css (Inkdrop base CSS, inherited by the theme: Q-D9) */
+  --hsl-black: 0deg 0% 0%; /* inkdropapp_css@add48d9 tokens.css:16 */
+  --hsl-purple-500: 271deg 91% 65%; /* inkdropapp_css@add48d9 tokens.css:56 */
+  --hsl-blue-200: 213deg 97% 87%; /* inkdropapp_css@add48d9 tokens.css:86 */
+  --hsl-blue-500: 217deg 91% 60%; /* inkdropapp_css@add48d9 tokens.css:89 */
+  --hsl-green-500: 142deg 71% 45%; /* inkdropapp_css@add48d9 tokens.css:144 */
+  --hsl-orange-500: 25deg 95% 53%; /* inkdropapp_css@add48d9 tokens.css:188 */
+  --hsl-red-500: 0deg 84% 60%; /* inkdropapp_css@add48d9 tokens.css:199 */
+  --hsl-neutral-800: 0deg 0% 15%; /* inkdropapp_css@add48d9 tokens.css:213 */
+  --hsl-gray-400: 218deg 11% 65%; /* inkdropapp_css@add48d9 tokens.css:242 */
+  --hsl-slate-300: 213deg 27% 84%; /* inkdropapp_css@add48d9 tokens.css:252 */
+  --hsl-slate-400: 215deg 20% 65%; /* inkdropapp_css@add48d9 tokens.css:253 */
+
+  /* inkdropapp_css@add48d9 ui.css (Inkdrop base CSS, inherited by the theme: Q-D9) */
+  --ink-font-name: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Lato'; /* inkdropapp_css@add48d9 ui.css:10 | notation (official lint) */
+  --ink-page-font: var(--ink-font-name), 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; /* inkdropapp_css@add48d9 ui.css:16 | notation (official lint) */
+  --ink-subtle-transparent-white: rgb(255 255 255 / 2%); /* inkdropapp_css@add48d9 ui.css:264 | notation (official lint) */
+  --ink-transparent-white: rgb(255 255 255 / 8%); /* inkdropapp_css@add48d9 ui.css:265 | notation (official lint) */
+  --ink-subtle-gradient: linear-gradient(transparent, rgb(0 0 0 / 5%)); /* inkdropapp_css@add48d9 ui.css:273 | light-dark(): dark branch | notation (official lint) */
+  --ink-subtle-shadow: 0px 1px 2px 0 var(--ink-black); /* inkdropapp_css@add48d9 ui.css:279 | light-dark(): dark branch */
+  --ink-floating-shadow: 0px 2px 4px 0px hsl(var(--hsl-black) / 20%), 0px 2px 10px 0px hsl(var(--hsl-black) / 30%); /* inkdropapp_css@add48d9 ui.css:280 | light-dark(): dark branch */
+  --ink-primary-button-background-color: var(--ink-primary-color); /* inkdropapp_css@add48d9 ui.css:811 */
+  --ink-primary-button-text-color: var(--ink-inverted-text-color); /* inkdropapp_css@add48d9 ui.css:812 */
+  --ink-primary-button-hover-background-color: var(--ink-primary-color-hover); /* inkdropapp_css@add48d9 ui.css:817 */
+  --ink-negative-button-background-color: var(--ink-negative-color); /* inkdropapp_css@add48d9 ui.css:874 */
+  --ink-negative-button-hover-background-color: var(--ink-negative-color-hover); /* inkdropapp_css@add48d9 ui.css:880 */
+  --ink-kbd-color: var(--ink-muted-text-color); /* inkdropapp_css@add48d9 ui.css:910 */
+  --ink-kbd-border-color: var(--ink-border-color); /* inkdropapp_css@add48d9 ui.css:912 */
+  --ink-input-border-width: 1px; /* inkdropapp_css@add48d9 ui.css:952 */
+  --ink-input-border: var(--ink-input-border-width) solid var(--ink-border-color); /* inkdropapp_css@add48d9 ui.css:953 */
+  --ink-selection-list-hover-background: var(--ink-subtle-transparent-white); /* inkdropapp_css@add48d9 ui.css:1014 | light-dark(): dark branch */
+  --ink-selection-list-active-background: var(--ink-transparent-white); /* inkdropapp_css@add48d9 ui.css:1024 | light-dark(): dark branch */
+  --ink-menu-item-text-color: var(--ink-text-color); /* inkdropapp_css@add48d9 ui.css:1132 */
+  --ink-menu-hover-item-background: var(--ink-subtle-transparent-white); /* inkdropapp_css@add48d9 ui.css:1135 | light-dark(): dark branch */
+  --ink-tooltip-background: var(--ink-popup-background); /* inkdropapp_css@add48d9 ui.css:1253 */
+  --ink-checkbox-active-background: var(--ink-primary-color); /* inkdropapp_css@add48d9 ui.css:1317 */
+  --ink-checkbox-active-check-color: var(--ink-inverted-text-color); /* inkdropapp_css@add48d9 ui.css:1320 */
+  --ink-toggle-lane-background: var(--ink-transparent-white); /* inkdropapp_css@add48d9 ui.css:1338 | light-dark(): dark branch */
+  --ink-toggle-on-lane-color: var(--ink-primary-color); /* inkdropapp_css@add48d9 ui.css:1350 */
+  --ink-modal-box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 6.7%), 0 6.7px 5.3px rgb(0 0 0 / 9.7%), 0 12.5px 10px rgb(0 0 0 / 12%), 0 22.3px 17.9px rgb(0 0 0 / 14.3%), 0 41.8px 33.4px rgb(0 0 0 / 17.3%), 0 100px 80px rgb(0 0 0 / 24%); /* inkdropapp_css@add48d9 ui.css:1408 | notation (official lint) */
+  --ink-sidebar-menu-action-color: var(--ink-disabled-text-color); /* inkdropapp_css@add48d9 ui.css:1445 | light-dark(): dark branch */
+  --ink-sidebar-menu-action-hover-color: var(--ink-light-text-color); /* inkdropapp_css@add48d9 ui.css:1446 */
+  --ink-scrollbar-width: 6px; /* inkdropapp_css@add48d9 ui.css:1466 */
+  --ink-scrollbar-track-background: rgb(255 255 255 / 2%); /* inkdropapp_css@add48d9 ui.css:1467 | light-dark(): dark branch | notation (official lint) */
+  --ink-scrollbar-thumb-background: rgb(255 255 255 / 20%); /* inkdropapp_css@add48d9 ui.css:1468 | light-dark(): dark branch | notation (official lint) */
+  --ink-editor-header-title-input-background: transparent; /* inkdropapp_css@add48d9 ui.css:1520 */
+  --ink-editor-drawer-border-left: 1px solid var(--ink-border-color); /* inkdropapp_css@add48d9 ui.css:1529 */
+  --ink-note-tags-bar-input-background: transparent; /* inkdropapp_css@add48d9 ui.css:1530 */
+  --ink-header-note-menu-background: transparent; /* inkdropapp_css@add48d9 ui.css:1535 */
+  --ink-header-note-menu-action-item-active-background: var(--ink-info-background-color); /* inkdropapp_css@add48d9 ui.css:1537 */
+
+  /* inkdropapp_css@add48d9 utilities.css (Inkdrop base CSS, inherited by the theme: Q-D9) */
+  --ink-absolute-border-radius: var(--ink-7px); /* inkdropapp_css@add48d9 utilities.css:17 */
+  --ink-default-border-radius: var(--ink-absolute-border-radius); /* inkdropapp_css@add48d9 utilities.css:18 */
+  --ink-7px: 0.5rem; /* inkdropapp_css@add48d9 utilities.css:115 */
+
+  /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css */
+  --kanagawa-dragon-black0: 0deg 4% 5%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:16 */
   --kanagawa-dragon-black1: 60deg 9% 6%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:17 */
   --kanagawa-dragon-black2: 0deg 4% 9%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:18 */
   --kanagawa-dragon-black3: 45deg 7% 11%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:19 */
+  --kanagawa-dragon-black4: 0deg 1% 15%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:20 */
+  --kanagawa-dragon-black5: 40deg 3% 22%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:21 */
+  --kanagawa-dragon-black6: 30deg 4% 37%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:22 */
+  --kanagawa-dragon-white: 120deg 4% 78%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:25 */
+  --kanagawa-dragon-green2: 91deg 13% 54%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:27 */
+  --kanagawa-dragon-pink: 296deg 8% 61%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:28 */
+  --kanagawa-dragon-orange: 23deg 29% 60%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:29 */
+  --kanagawa-dragon-gray2: 44deg 5% 60%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:32 */
+  --kanagawa-dragon-gray3: 173deg 4% 50%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:33 */
+  --kanagawa-dragon-blue2: 199deg 19% 62%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:34 */
+  --kanagawa-dragon-violet: 222deg 15% 60%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:35 */
+  --kanagawa-dragon-red: 4deg 42% 60%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:36 */
+  --kanagawa-dragon-aqua: 175deg 11% 60%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:37 */
+  --kanagawa-dragon-ash: 120deg 4% 47%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:38 */
+  --kanagawa-dragon-teal: 220deg 18% 65%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:39 */
+  --kanagawa-dragon-yellow: 41deg 33% 65%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:40 */
+  --kanagawa-old-white: 51deg 33% 68%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:43 */
+  --kanagawa-wave-blue1: 215deg 36% 21%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:44 */
+  --kanagawa-wave-blue2: 205deg 39% 29%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:45 */
+  --kanagawa-samurai-red: 0deg 81% 53%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:49 */
+  --kanagawa-ronin-yellow: 30deg 100% 62%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:50 */
+  --kanagawa-wave-aqua1: 163deg 17% 50%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:52 */
+  --kanagawa-spring-green: 87deg 37% 58%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:53 */
+  --kanagawa-autumn-green: 103deg 17% 50%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:62 */
+  --kanagawa-autumn-red: 359deg 52% 51%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:63 */
+  --kanagawa-autumn-yellow: 33deg 64% 62%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:64 */
 
-  /* Surfaces, opaque */
+  /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css */
+  --ink-kanagawa-preview-surface: hsl(var(--kanagawa-dragon-black4) / 60%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:13 */
+  --ink-kanagawa-preview-surface-subtle: hsl(var(--kanagawa-dragon-black2) / 50%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:14 */
+  --ink-mde-preview-link-color: hsl(var(--kanagawa-dragon-green2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:17 */
+  --ink-mde-preview-list-marker-color: hsl(var(--kanagawa-dragon-teal)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:20 */
+  --ink-mde-preview-list-marker-2-color: hsl(var(--kanagawa-ronin-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:21 */
+  --ink-mde-preview-list-marker-3-color: hsl(var(--kanagawa-spring-green)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:22 */
+  --ink-mde-preview-codeblock-background-color: var(--ink-kanagawa-preview-surface-subtle ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:25 */
+  --ink-mde-preview-codeblock-meta-background-color: var(--ink-kanagawa-preview-surface ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:28 */
+  --ink-mde-preview-inline-code-text-color: hsl(var(--kanagawa-old-white)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:31 */
+  --ink-mde-preview-inline-code-border-width: 1px; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:32 */
+  --ink-mde-preview-inline-code-border-color: hsl( var(--kanagawa-dragon-black6) / 50% ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:33 */
+  --ink-mde-preview-inline-code-background-color: hsl( var(--kanagawa-dragon-black4) / 50% ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:36 */
+  --ink-mde-preview-table-head-text-color: hsl(var(--kanagawa-dragon-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:41 */
+  --ink-mde-preview-table-head-background-color: var(--ink-kanagawa-preview-surface); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:42 */
+  --ink-mde-preview-table-row-background-color: var(--ink-kanagawa-preview-surface); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:43 */
+  --ink-mde-preview-table-row-stripe-background-color: var(--ink-kanagawa-preview-surface-subtle ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:44 */
+  --ink-mde-preview-image-background-color: var(--ink-kanagawa-preview-surface); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:49 */
+  --ink-mde-preview-inline-mark-text-color: hsl(var(--kanagawa-dragon-white)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:52 */
+  --ink-mde-preview-inline-mark-background-color: hsl( var(--kanagawa-dragon-yellow) / 22% ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:53 */
+  --ink-mde-preview-inline-mark-underline-color: hsl(var(--kanagawa-ronin-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:56 */
+  --ink-mde-preview-heading-color: hsl(var(--kanagawa-dragon-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:59 */
+  --ink-mde-preview-strong-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:60 */
+  --ink-mde-preview-em-color: hsl(var(--kanagawa-dragon-green2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:61 */
+  --ink-mermaid-line-color: hsl(var(--kanagawa-dragon-green2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:69 */
+  --ink-mermaid-node-background-color: hsl(var(--kanagawa-wave-blue1) / 55%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:70 */
+  --ink-mermaid-node-border-color: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:71 */
+
+  /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css */
+  --ink-editor-foreground-color: hsl(var(--kanagawa-dragon-white)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:16 */
+  --ink-editor-background-color: hsl(var(--kanagawa-dragon-black3)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:17 */
+  --ink-editor-caret-color: hsl(var(--kanagawa-dragon-white)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:18 */
+  --ink-editor-selection-background: hsl( var(--kanagawa-dragon-black5) ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:19 */
+  --ink-editor-focused-selection-background: hsl( var(--kanagawa-wave-blue1) ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:22 */
+  --ink-editor-active-line-background-color: hsl( var(--kanagawa-dragon-black4) / 30% ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:25 */
+  --ink-editor-special-char-color: hsl( var(--kanagawa-dragon-black6) ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:28 */
+  --ink-editor-spelling-error-color: var(--ink-negative-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:31 */
+  --ink-editor-gutter-border-right: 1px solid hsl(var(--kanagawa-dragon-black4)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:33 */
+  --ink-editor-gutter-color: hsl(var(--kanagawa-dragon-black6)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:34 */
+  --ink-editor-gutter-background-color: transparent; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:35 */
+  --ink-editor-gutter-background-solid-color: hsl( var(--kanagawa-dragon-black4) ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:36 */
+  --ink-editor-active-line-gutter-background-color: hsl( var(--kanagawa-dragon-black4) / 30% ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:39 */
+  --ink-editor-panel-background-color: hsl(var(--kanagawa-dragon-black1)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:43 */
+  --ink-editor-panel-color: hsl(var(--kanagawa-old-white)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:44 */
+  --ink-editor-panel-border-color: var(--ink-border-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:45 */
+  --ink-editor-tooltip-border-style: solid; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:47 */
+  --ink-editor-tooltip-border-width: 1px; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:48 */
+  --ink-editor-tooltip-border-color: hsl(var(--kanagawa-dragon-black5)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:49 */
+  --ink-editor-tooltip-border-radius: 0.8em; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:50 */
+  --ink-editor-tooltip-background-color: hsl( var(--kanagawa-dragon-black3) ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:51 */
+  --ink-editor-tooltip-box-shadow: 0px 1px 2px 0 hsl(var(--kanagawa-dragon-black0)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:54 */
+  --ink-editor-tooltip-autocomplete-padding: 0.2em; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:55 */
+  --ink-editor-tooltip-autocomplete-item-border-radius: 0.2em; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:56 */
+  --ink-editor-tooltip-autocomplete-item-padding: 0 0.8em; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:57 */
+  --ink-editor-tooltip-autocomplete-item-selected-background-color: hsl( var(--kanagawa-wave-blue2) ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:58 */
+  --ink-editor-tooltip-autocomplete-section-border-color: hsl( var(--kanagawa-dragon-black6) ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:61 */
+  --ink-editor-tooltip-autocomplete-item-selected-color: hsl( var(--kanagawa-dragon-white) ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:64 */
+  --ink-editor-inline-tooltip-color: hsl(var(--kanagawa-old-white)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:67 */
+  --ink-editor-inline-tooltip-background-color: hsl(var(--kanagawa-dragon-black1)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:68 */
+  --ink-editor-inline-tooltip-outline: 1px solid hsl(var(--kanagawa-dragon-black5)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:69 */
+  --ink-editor-completion-label: hsl(var(--kanagawa-old-white)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:71 */
+  --ink-editor-completion-matched-text-color: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:72 */
+  --ink-editor-completion-matched-text-decoration: none; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:73 */
+  --ink-editor-completion-matched-text-font-style: normal; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:74 */
+  --ink-editor-completion-matched-text-font-weight: bold; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:75 */
+  --ink-editor-completion-detail-color: hsl(var(--kanagawa-dragon-ash)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:76 */
+  --ink-editor-completion-detail-text-decoration: none; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:77 */
+  --ink-editor-completion-detail-font-style: normal; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:78 */
+  --ink-editor-completion-detail-font-weight: normal; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:79 */
+  --ink-editor-matching-bracket-outline: 1px solid hsl(var(--kanagawa-dragon-teal) / 90%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:81 */
+  --ink-editor-matching-bracket-background-color: hsl( var(--kanagawa-dragon-teal) / 20% ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:83 */
+  --ink-editor-nonmatching-bracket-outline: 1px solid hsl(var(--kanagawa-autumn-red) / 60%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:86 */
+  --ink-editor-nonmatching-bracket-background-color: transparent; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:88 */
+  --ink-editor-selection-match-background-color: hsl( var(--kanagawa-wave-aqua1) / 35% ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:90 */
+  --ink-editor-selection-match-outline: none; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:93 */
+  --ink-editor-search-match-background-color: hsl( var(--kanagawa-wave-blue2) ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:94 */
+  --ink-editor-search-match-outline: none; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:97 */
+  --ink-editor-search-match-selected-background-color: hsl( var(--kanagawa-dragon-yellow) / 40% ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:98 */
+  --ink-editor-search-match-selected-outline: 1px solid hsl(var(--kanagawa-dragon-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:101 */
+  --ink-editor-placeholder-color: hsl(var(--kanagawa-dragon-black6)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:104 */
+  --ink-editor-nes-ghost-color: hsl(var(--kanagawa-dragon-black6)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:105 */
+  --ink-editor-highlight-space-color: hsl( var(--kanagawa-dragon-black6) ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:107 */
+  --ink-editor-highlight-tab-background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="20"><path stroke="%23888" stroke-width="1" fill="none" d="M1 10H196L190 5M190 15L196 10M197 4L197 16"/></svg>'); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:110 */
+  --ink-editor-highlight-tab-filter: "none"; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:111 */
+  --ink-editor-highlight-tab-opacity: 0.3; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:112 */
+  --ink-editor-trailing-space-background-color: hsl( var(--kanagawa-dragon-pink) / 35% ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:113 */
+  --ink-editor-fold-placeholder-border-radius: 0.2em; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:117 */
+  --ink-editor-fold-placeholder-color: hsl(var(--kanagawa-dragon-black0)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:118 */
+  --ink-editor-fold-placeholder-border: 1px solid hsl(var(--kanagawa-dragon-black6)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:119 */
+  --ink-editor-fold-placeholder-background-color: hsl( var(--kanagawa-dragon-black6) ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:121 */
+  --ink-editor-image-widget-backdrop-background-color: hsl( var(--kanagawa-dragon-black5) / 40% ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:125 */
+  --ink-editor-image-widget-backdrop-border: 1px solid hsl(var(--kanagawa-dragon-black5)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:128 */
+  --ink-md-inline-code-padding: 1px; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:132 */
+  --ink-md-inline-code-border-color: hsl(var(--kanagawa-dragon-black6) / 50%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:133 */
+  --ink-md-inline-code-border-width: 1px; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:134 */
+  --ink-md-inline-code-background-color: hsl(var(--kanagawa-dragon-black4) / 50%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:135 */
+  --ink-md-codeblock-color: var(--ink-editor-foreground-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:136 */
+  --ink-md-codeblock-border-color: hsl(var(--kanagawa-dragon-black4)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:137 */
+  --ink-md-codeblock-border-width: 1px; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:138 */
+  --ink-md-codeblock-background-color: hsl(var(--kanagawa-dragon-black2) / 50%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:139 */
+  --ink-md-inline-mark-text-color: hsl(var(--kanagawa-dragon-white)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:141 */
+  --ink-md-inline-mark-background-color: hsl(var(--kanagawa-dragon-yellow) / 22%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:142 */
+  --ink-md-inline-mark-underline-color: hsl(var(--kanagawa-ronin-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:143 */
+  --ink-md-table-border-color: hsl(var(--kanagawa-dragon-black4)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:145 */
+  --ink-md-table-border-width: 1px; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:146 */
+  --ink-md-table-background-color: hsl(var(--kanagawa-dragon-black2) / 40%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:147 */
+  --ink-md-blockquote-border-color: hsl(var(--kanagawa-dragon-black6)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:149 */
+  --ink-md-list-mark-color: hsl(var(--kanagawa-dragon-teal)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:151 */
+  --ink-md-list-mark-2-color: hsl(var(--kanagawa-ronin-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:152 */
+  --ink-md-list-mark-3-color: hsl(var(--kanagawa-spring-green)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:153 */
+  --ink-md-task-marker-font-weight: bold; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:154 */
+  --ink-syntax-comment-color: hsl(var(--kanagawa-dragon-ash)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:157 */
+  --ink-syntax-comment-font-style: italic; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:158 */
+  --ink-syntax-line-comment-color: var(--ink-syntax-comment-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:159 */
+  --ink-syntax-line-comment-font-style: var(--ink-syntax-comment-font-style); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:160 */
+  --ink-syntax-block-comment-color: var(--ink-syntax-comment-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:161 */
+  --ink-syntax-block-comment-font-style: var(--ink-syntax-comment-font-style); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:162 */
+  --ink-syntax-doc-comment-color: var(--ink-syntax-comment-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:163 */
+  --ink-syntax-doc-comment-font-style: var(--ink-syntax-comment-font-style); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:164 */
+  --ink-syntax-name-color: var(--ink-editor-foreground-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:167 */
+  --ink-syntax-name-constant-color: hsl(var(--kanagawa-dragon-orange)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:168 */
+  --ink-syntax-name-standard-color: hsl(var(--kanagawa-dragon-teal)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:169 */
+  --ink-syntax-name-definition-color: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:170 */
+  --ink-syntax-name-function-color: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:171 */
+  --ink-syntax-name-special-color: hsl(var(--kanagawa-dragon-teal)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:172 */
+  --ink-syntax-name-local-color: var(--ink-editor-foreground-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:173 */
+  --ink-syntax-variable-name-color: var(--ink-editor-foreground-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:176 */
+  --ink-syntax-variable-name-constant-color: hsl(var(--kanagawa-dragon-orange)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:177 */
+  --ink-syntax-variable-name-standard-color: var(--ink-syntax-variable-name-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:178 */
+  --ink-syntax-variable-name-definition-color: var(--ink-syntax-variable-name-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:179 */
+  --ink-syntax-variable-name-function-color: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:180 */
+  --ink-syntax-variable-name-special-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:181 */
+  --ink-syntax-variable-name-local-color: var(--ink-syntax-variable-name-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:182 */
+  --ink-syntax-property-name-color: hsl(var(--kanagawa-dragon-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:185 */
+  --ink-syntax-property-name-constant-color: var(--ink-syntax-property-name-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:186 */
+  --ink-syntax-property-name-standard-color: var(--ink-syntax-property-name-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:187 */
+  --ink-syntax-property-name-definition-color: var(--ink-syntax-property-name-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:188 */
+  --ink-syntax-property-name-function-color: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:189 */
+  --ink-syntax-property-name-special-color: var(--ink-syntax-property-name-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:190 */
+  --ink-syntax-property-name-local-color: var(--ink-syntax-property-name-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:191 */
+  --ink-syntax-tag-name-color: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:194 */
+  --ink-syntax-attribute-name-color: hsl(var(--kanagawa-dragon-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:195 */
+  --ink-syntax-class-name-color: hsl(var(--kanagawa-dragon-aqua)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:196 */
+  --ink-syntax-label-name-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:197 */
+  --ink-syntax-namespace-color: hsl(var(--kanagawa-dragon-aqua)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:198 */
+  --ink-syntax-macro-name-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:199 */
+  --ink-syntax-string-color: hsl(var(--kanagawa-dragon-green2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:202 */
+  --ink-syntax-string-special-color: var(--ink-syntax-string-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:203 */
+  --ink-syntax-string-constant-color: var(--ink-syntax-string-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:204 */
+  --ink-syntax-string-standard-color: var(--ink-syntax-string-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:205 */
+  --ink-syntax-number-color: hsl(var(--kanagawa-dragon-pink)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:208 */
+  --ink-syntax-literal-color: var(--ink-editor-foreground-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:209 */
+  --ink-syntax-character-color: hsl(var(--kanagawa-dragon-green2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:210 */
+  --ink-syntax-integer-color: hsl(var(--kanagawa-dragon-pink)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:211 */
+  --ink-syntax-float-color: hsl(var(--kanagawa-dragon-pink)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:212 */
+  --ink-syntax-bool-color: hsl(var(--kanagawa-dragon-orange)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:213 */
+  --ink-syntax-regexp-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:214 */
+  --ink-syntax-color-color: hsl(var(--kanagawa-dragon-orange)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:215 */
+  --ink-syntax-url-color: hsl(var(--kanagawa-dragon-teal)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:216 */
+  --ink-syntax-attribute-value-color: hsl(var(--kanagawa-dragon-green2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:217 */
+  --ink-syntax-self-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:220 */
+  --ink-syntax-null-color: hsl(var(--kanagawa-dragon-orange)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:221 */
+  --ink-syntax-atom-color: hsl(var(--kanagawa-dragon-orange)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:222 */
+  --ink-syntax-unit-color: hsl(var(--kanagawa-dragon-orange)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:223 */
+  --ink-syntax-modifier-color: hsl(var(--kanagawa-dragon-violet)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:224 */
+  --ink-syntax-operator-keyword-color: var(--ink-syntax-keyword-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:225 */
+  --ink-syntax-control-keyword-color: var(--ink-syntax-keyword-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:226 */
+  --ink-syntax-definition-keyword-color: var(--ink-syntax-keyword-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:227 */
+  --ink-syntax-module-keyword-color: var(--ink-syntax-keyword-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:228 */
+  --ink-syntax-keyword-color: hsl(var(--kanagawa-dragon-violet)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:229 */
+  --ink-syntax-operator-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:232 */
+  --ink-syntax-deref-operator-color: var(--ink-syntax-operator-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:233 */
+  --ink-syntax-arithmetic-operator-color: var(--ink-syntax-operator-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:234 */
+  --ink-syntax-logic-operator-color: var(--ink-syntax-operator-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:235 */
+  --ink-syntax-bitwise-operator-color: var(--ink-syntax-operator-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:236 */
+  --ink-syntax-compare-operator-color: var(--ink-syntax-operator-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:237 */
+  --ink-syntax-update-operator-color: var(--ink-syntax-operator-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:238 */
+  --ink-syntax-definition-operator-color: var(--ink-syntax-operator-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:239 */
+  --ink-syntax-type-operator-color: var(--ink-syntax-operator-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:240 */
+  --ink-syntax-control-operator-color: var(--ink-syntax-operator-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:241 */
+  --ink-syntax-separator-color: hsl(var(--kanagawa-dragon-gray2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:244 */
+  --ink-syntax-angle-bracket-color: hsl(var(--kanagawa-dragon-gray2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:245 */
+  --ink-syntax-square-bracket-color: hsl(var(--kanagawa-dragon-gray2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:246 */
+  --ink-syntax-paren-color: hsl(var(--kanagawa-dragon-gray2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:247 */
+  --ink-syntax-brace-color: hsl(var(--kanagawa-dragon-gray2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:248 */
+  --ink-syntax-bracket-color: hsl(var(--kanagawa-dragon-gray2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:249 */
+  --ink-syntax-punctuation-color: hsl(var(--kanagawa-dragon-gray2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:250 */
+  --ink-syntax-heading-color: hsl(var(--kanagawa-dragon-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:253 */
+  --ink-syntax-heading-font-weight: bold; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:254 */
+  --ink-syntax-heading-1-color: var(--ink-syntax-heading-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:255 */
+  --ink-syntax-heading-1-font-weight: var(--ink-syntax-heading-font-weight); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:256 */
+  --ink-syntax-heading-2-color: var(--ink-syntax-heading-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:257 */
+  --ink-syntax-heading-2-font-weight: var(--ink-syntax-heading-font-weight); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:258 */
+  --ink-syntax-heading-3-color: var(--ink-syntax-heading-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:259 */
+  --ink-syntax-heading-3-font-weight: var(--ink-syntax-heading-font-weight); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:260 */
+  --ink-syntax-heading-4-color: var(--ink-syntax-heading-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:261 */
+  --ink-syntax-heading-4-font-weight: var(--ink-syntax-heading-font-weight); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:262 */
+  --ink-syntax-heading-5-color: var(--ink-syntax-heading-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:263 */
+  --ink-syntax-heading-5-font-weight: var(--ink-syntax-heading-font-weight); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:264 */
+  --ink-syntax-heading-6-color: var(--ink-syntax-heading-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:265 */
+  --ink-syntax-heading-6-font-weight: var(--ink-syntax-heading-font-weight); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:266 */
+  --ink-syntax-content-separator-color: hsl(var(--kanagawa-autumn-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:267 */
+  --ink-syntax-list-color: hsl(var(--kanagawa-dragon-teal)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:268 */
+  --ink-syntax-quote-color: hsl(var(--kanagawa-old-white)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:269 */
+  --ink-syntax-quote-font-style: italic; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:270 */
+  --ink-syntax-emphasis-color: hsl(var(--kanagawa-dragon-green2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:271 */
+  --ink-syntax-emphasis-font-style: italic; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:272 */
+  --ink-syntax-strong-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:273 */
+  --ink-syntax-strong-font-weight: bold; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:274 */
+  --ink-syntax-link-color: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:275 */
+  --ink-syntax-link-text-decoration: underline; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:276 */
+  --ink-syntax-strikethrough-text-decoration: line-through; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:277 */
+  --ink-syntax-monospace-color: hsl(var(--kanagawa-old-white)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:278 */
+  --ink-syntax-content-color: var(--ink-editor-foreground-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:279 */
+  --ink-syntax-inserted-color: hsl(var(--kanagawa-autumn-green)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:282 */
+  --ink-syntax-deleted-color: hsl(var(--kanagawa-autumn-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:283 */
+  --ink-syntax-changed-color: hsl(var(--kanagawa-autumn-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:284 */
+  --ink-syntax-document-meta-color: var(--ink-editor-foreground-color); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:285 */
+  --ink-syntax-annotation-color: hsl(var(--kanagawa-dragon-orange)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:286 */
+  --ink-syntax-processing-instruction-color: hsl(var(--kanagawa-dragon-green2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:287 */
+  --ink-syntax-meta-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:288 */
+  --ink-syntax-invalid-color: hsl(var(--kanagawa-dragon-black6)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:291 */
+  --ink-syntax-invalid-border-bottom: 1px dotted hsl(var(--kanagawa-samurai-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:292 */
+
+  /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css */
+  --ink-primary-color: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:16 */
+  --ink-input-background: hsl(var(--kanagawa-dragon-black0)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:24 */
+  --ink-input-color: hsl(var(--kanagawa-dragon-white) / 90%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:25 */
+  --ink-focused-form-border-color: hsl(var(--kanagawa-dragon-blue2) / 70%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:32 */
+  --ink-focused-outline-color: hsl(var(--kanagawa-dragon-blue2) / 30%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:34 */
+  --ink-page-background: hsl(var(--kanagawa-dragon-black0)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:39 */
+  --ink-text-color: hsl(var(--kanagawa-dragon-white) / 90%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:40 */
+  --ink-link-color: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:45 */
+  --ink-highlight-background: hsl(var(--kanagawa-wave-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:51 */
+  --ink-red: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:64 */
+  --ink-orange: hsl(var(--kanagawa-dragon-orange)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:65 */
+  --ink-yellow: hsl(var(--kanagawa-dragon-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:66 */
+  --ink-green: hsl(var(--kanagawa-dragon-green2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:68 */
+  --ink-teal: hsl(var(--kanagawa-dragon-aqua)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:69 */
+  --ink-blue: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:70 */
+  --ink-violet: hsl(var(--kanagawa-dragon-violet)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:71 */
+  --ink-purple: hsl(var(--kanagawa-dragon-violet)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:72 */
+  --ink-pink: hsl(var(--kanagawa-dragon-pink)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:73 */
+  --ink-positive-color: hsl(var(--kanagawa-dragon-green2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:80 */
+  --ink-negative-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:81 */
+  --ink-warning-color: hsl(var(--kanagawa-ronin-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:83 */
+  --ink-dark-text-color: hsl(var(--kanagawa-dragon-white) / 90%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:88 */
+  --ink-muted-text-color: hsl(var(--kanagawa-old-white) / 70%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:89 */
+  --ink-light-text-color: hsl(var(--kanagawa-dragon-gray3) / 90%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:90 */
+  --ink-border-color: hsl(var(--kanagawa-dragon-black6) / 40%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:98 */
+  --ink-strong-border-color: hsl(var(--kanagawa-dragon-black6) / 60%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:99 */
+  --ink-solid-border-color: hsl(var(--kanagawa-dragon-black5)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:102 */
+  --ink-button-background: hsl(var(--kanagawa-dragon-black4)) none; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:109 */
+  --ink-button-text-color: hsl(var(--kanagawa-dragon-white) / 75%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:110 */
+  --ink-button-hover-background-color: hsl(var(--kanagawa-dragon-black5)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:111 */
+  --ink-kbd-background: hsl(var(--kanagawa-dragon-black4)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:119 */
+  --ink-input-focus-border-color: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:132 */
+  --ink-form-select-background: hsl(var(--kanagawa-dragon-black0)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:145 */
+  --ink-menu-background: hsl(var(--kanagawa-dragon-black0)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:151 */
+  --ink-vertical-menu-background: hsl(var(--kanagawa-dragon-black0) / 70%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:152 */
+  --ink-popup-background: hsl(var(--kanagawa-dragon-black2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:163 */
+  --ink-checkbox-background: hsl(var(--kanagawa-dragon-black4)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:173 */
+  --ink-dropdown-menu-background: hsl(var(--kanagawa-dragon-black0)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:180 */
+  --ink-inline-dropdown-menu-background: hsl(var(--kanagawa-dragon-black0) / 70%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:181 */
+  --ink-modal-box-header-background: hsl(var(--kanagawa-dragon-black4)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:186 */
+  --ink-modal-box-content-background: hsl(var(--kanagawa-dragon-black3)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:187 */
+  --ink-modal-box-actions-background: hsl(var(--kanagawa-dragon-black3)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:188 */
   --ink-sidebar-background: hsl(var(--kanagawa-dragon-black1)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:193 */
+  --ink-sidebar-border-right: 1px solid hsl(var(--kanagawa-dragon-black4)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:194 */
+  --ink-sidebar-menu-item-inactive-background: hsl( var(--kanagawa-dragon-blue2) / 20% ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:195 */
+  --ink-sidebar-menu-item-active-background: hsl(var(--kanagawa-wave-blue2) / 60%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:198 */
+  --ink-sidebar-menu-section-color: hsl(var(--kanagawa-dragon-violet) / 80%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:199 */
+  --ink-sidebar-menu-item-color: hsl(var(--kanagawa-old-white) / 80%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:200 */
+  --ink-sidebar-menu-active-item-color: hsl(var(--kanagawa-dragon-white)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:201 */
+  --ink-sidebar-sync-status-view-background: hsl( var(--kanagawa-dragon-black4) / 40% ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:202 */
+  --ink-sidebar-sync-status-view-text-color: hsl(var(--kanagawa-old-white) / 70%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:205 */
   --ink-note-list-bar-background: hsl(var(--kanagawa-dragon-black2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:212 */
+  --ink-note-list-bar-border-right: 1px solid hsl(var(--kanagawa-dragon-black4) / 75%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:213 */
+  --ink-note-list-view-item-header-color: hsl(var(--kanagawa-dragon-white)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:216 */
+  --ink-note-list-view-item-color: hsl(var(--kanagawa-old-white) / 70%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:217 */
+  --ink-note-list-view-item-selected-background: hsl( var(--kanagawa-wave-blue1) / 70% ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:221 */
+  --ink-note-list-view-item-active-background: hsl(var(--kanagawa-wave-blue2) / 80%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:224 */
+  --ink-note-search-bar-input-background: hsl(var(--kanagawa-dragon-black0)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:225 */
   --ink-editor-background: hsl(var(--kanagawa-dragon-black3)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:230 */
+  --ink-editor-floating-actions-background: hsl(var(--kanagawa-dragon-black3) / 70%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:231 */
+  --ink-editor-drawer-background: hsl(var(--kanagawa-dragon-black1) / 70%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:232 */
+  --ink-header-note-menu-color: hsl(var(--kanagawa-dragon-gray3) / 90%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:237 */
+  --ink-notification-item-background: hsl(var(--kanagawa-dragon-black0) / 80%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:242 */
+  --ink-preferences-sidebar-background: hsl(var(--kanagawa-dragon-black0)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:247 */
+  --ink-preferences-view-background: hsl(var(--kanagawa-dragon-black3)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:248 */
+  --ink-black: hsl(var(--kanagawa-dragon-black2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:280 */
+  --ink-inverted-text-color: hsl(var(--kanagawa-dragon-black1) / 90%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:330 */
+  --ink-disabled-text-color: hsl(var(--kanagawa-dragon-white) / 30%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:341 */
+  --ink-toggle-handle-background: hsl(var(--kanagawa-dragon-white)) var(--ink-subtle-gradient); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:352 */
+  --ink-note-list-bar-pinned-section-header-background: hsl( var(--kanagawa-dragon-black4) ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:354 */
+  --ink-info-background-color: hsl(var(--kanagawa-dragon-teal) / 15%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:431 */
+  --ink-primary-color-hover: hsl(var(--kanagawa-dragon-teal)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:440 */
+  --ink-negative-color-hover: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:464 */
+  --ink-primary-color-active: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:518 */
+  --ink-preferences-sidebar-item-active-background: hsl( var(--kanagawa-dragon-blue2) / 20% ); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:548 */
+
+  /* Acrylic values (Inkdrop: :root:has(body.acrylic-window), theme layer). Used only under Obsidian's
+     translucent window by src/common/platform/translucent.css (step 4, Q-D22). */
+  --ink-editor-background-acrylic: hsl(var(--kanagawa-dragon-black3) / 90%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:561 | acrylic */
+  --ink-editor-background-color-acrylic: transparent; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:296 | acrylic */
+  --ink-inline-dropdown-menu-background-acrylic: hsl(var(--kanagawa-dragon-black1)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:562 | acrylic */
+  --ink-note-list-bar-background-acrylic: hsl(var(--kanagawa-dragon-black2) / 70%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:560 | acrylic */
+  --ink-page-background-acrylic: transparent; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:558 | acrylic */
+  --ink-sidebar-background-acrylic: hsl(var(--kanagawa-dragon-black1) / 50%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:559 | acrylic */
+  --ink-vertical-menu-background-acrylic: hsl(var(--kanagawa-dragon-black1)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:563 | acrylic */
 }

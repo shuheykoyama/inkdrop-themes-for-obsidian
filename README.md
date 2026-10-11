@@ -1,7 +1,7 @@
 # inkdrop-themes-for-obsidian
 Faithful ports of Inkdrop's Solarized Dark and Kanagawa Dragon themes for Obsidian.
 
-**Status: in development (Phase 3, step 1: build and test infrastructure).** There is no usable theme yet,
+**Status: in development (Phase 3, step 2: palettes; no UI mapping yet).** There is no usable theme yet,
 and the theme names and licence/attribution text are not decided. The research and the implementation plan
 are in [`research/`](research/README.md) (plan: [`research/14-implementation-plan.md`](research/14-implementation-plan.md)).
 

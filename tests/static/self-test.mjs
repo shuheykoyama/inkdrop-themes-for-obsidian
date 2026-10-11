@@ -10,7 +10,7 @@ import os from "node:os";
 import path from "node:path";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
-const DATA = ["inkdrop-solarized-dark-tokens.csv", "inkdrop-kanagawa-dragon-tokens.csv", "obsidian-css-variables-1.14.4.csv"];
+const DATA = ["inkdrop-solarized-dark-tokens.csv", "inkdrop-kanagawa-dragon-tokens.csv", "obsidian-css-variables-1.14.4.csv", "mapping-candidates.csv"];
 
 // Replace exactly one occurrence of `from` in a file of the temporary root (fails loudly if absent,
 // so a case cannot silently stop mutating anything when the sources change).
@@ -32,14 +32,39 @@ const IMPORTANT_ENTRY = {
 
 const CASES = [
   { name: "baseline (no mutation) passes", mutate: () => {}, pass: true },
-  { name: "palette value changed (KD dragonBlack3 lightness 11% -> 12%)", fail: /^FAIL S1 kanagawa-dragon --kanagawa-dragon-black3 = /m,
-    mutate: (r) => edit(r, "src/palette/kanagawa-dragon.css", "45deg 7% 11%", "45deg 7% 12%") },
-  { name: "palette colour converted to HEX (SD editor background)", fail: /^FAIL S1 solarized-dark --ink-editor-background = Inkdrop/m,
+  // --- S1: values, references and notation (RV1-A) ---
+  { name: "palette value changed (KD dragonBlack3 lightness 11% -> 12%)", fail: /^FAIL S1 kanagawa-dragon \d+ declarations = Inkdrop's declaration/m,
+    mutate: (r) => edit(r, "src/palette/kanagawa-dragon.css", "--kanagawa-dragon-black3: 45deg 7% 11%;", "--kanagawa-dragon-black3: 45deg 7% 12%;") },
+  { name: "alpha changed (SD active line 50% -> 40%)", fail: /^FAIL S1 solarized-dark \d+ declarations = Inkdrop's declaration/m,
+    mutate: (r) => edit(r, "src/palette/solarized-dark.css", "hsl( var(--hsl-neutral-800) / 50% ); /* inkdropapp_solarized-dark@4337f6e styles/syntax.css:13", "hsl( var(--hsl-neutral-800) / 40% ); /* inkdropapp_solarized-dark@4337f6e styles/syntax.css:13") },
+  { name: "Inkdrop hsl() converted to HEX (SD editor background)", fail: /^FAIL S1 solarized-dark colour notation as Inkdrop declared it/m,
     mutate: (r) => edit(r, "src/palette/solarized-dark.css", "--ink-editor-background: var(--ink-color-neutral-900);", "--ink-editor-background: #002129;") },
-  { name: "palette value flattened (reference replaced by its resolved hsl())", fail: /^FAIL S1 solarized-dark --ink-sidebar-background = Inkdrop/m,
+  { name: "Inkdrop rgb() converted to hsl() (SD transparent white)", fail: /^FAIL S1 solarized-dark colour notation as Inkdrop declared it/m,
+    mutate: (r) => edit(r, "src/palette/solarized-dark.css", "--ink-transparent-white: rgb(255 255 255 / 8%);", "--ink-transparent-white: hsl(0deg 0% 100% / 8%);") },
+  { name: "lint-notation value changed (8% -> 9%)", fail: /^FAIL S1 solarized-dark \d+ declarations = Inkdrop's declaration/m,
+    mutate: (r) => edit(r, "src/palette/solarized-dark.css", "--ink-transparent-white: rgb(255 255 255 / 8%);", "--ink-transparent-white: rgb(255 255 255 / 9%);") },
+  { name: "reference changed to another token with the same resolved colour", fail: /^FAIL S1 solarized-dark \d+ declarations = Inkdrop's declaration/m,
+    mutate: (r) => edit(r, "src/palette/solarized-dark.css", "--ink-editor-background: var(--ink-color-neutral-900);", "--ink-editor-background: var(--ink-editor-background-color);") },
+  { name: "palette value flattened (reference replaced by its resolved hsl())", fail: /^FAIL S1 solarized-dark \d+ declarations = Inkdrop's declaration/m,
     mutate: (r) => edit(r, "src/palette/solarized-dark.css", "--ink-sidebar-background: var(--ink-color-neutral-700);", "--ink-sidebar-background: hsl(var(--hsl-neutral-700));") },
-  { name: "wrong source comment", fail: /^FAIL S1 kanagawa-dragon --ink-editor-background source comment/m,
-    mutate: (r) => edit(r, "src/palette/kanagawa-dragon.css", "styles/ui.css:230", "styles/ui.css:231") },
+  { name: "KD value replaced by SD's (theme mixing)", fail: /^FAIL S1 kanagawa-dragon \d+ declarations = Inkdrop's declaration/m,
+    mutate: (r) => edit(r, "src/palette/kanagawa-dragon.css", "--ink-editor-background: hsl(var(--kanagawa-dragon-black3));", "--ink-editor-background: hsl(var(--hsl-neutral-900));") },
+  { name: "acrylic value changed (KD sidebar 50% -> 60%)", fail: /^FAIL S1 kanagawa-dragon \d+ declarations = Inkdrop's declaration/m,
+    mutate: (r) => edit(r, "src/palette/kanagawa-dragon.css", "--ink-sidebar-background-acrylic: hsl(var(--kanagawa-dragon-black1) / 50%);", "--ink-sidebar-background-acrylic: hsl(var(--kanagawa-dragon-black1) / 60%);") },
+  { name: "acrylic token removed", fail: /^FAIL S1 kanagawa-dragon all \d+ theme acrylic overrides present/m,
+    mutate: (r) => edit(r, "src/palette/kanagawa-dragon.css", "  --ink-sidebar-background-acrylic: hsl(var(--kanagawa-dragon-black1) / 50%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:559 | acrylic */\n", "") },
+  { name: "required token removed (Q-D23 active line)", fail: /^FAIL S1 solarized-dark all \d+ required tokens present/m,
+    mutate: (r) => edit(r, "src/palette/solarized-dark.css", "  --ink-editor-active-line-background-color: hsl( var(--hsl-neutral-800) / 50% ); /* inkdropapp_solarized-dark@4337f6e styles/syntax.css:13 */\n", "") },
+  { name: "referenced token removed (dangling var())", fail: /^FAIL S3 solarized-dark every var\(\) reference to a palette name is defined/m,
+    mutate: (r) => edit(r, "src/palette/solarized-dark.css", "  --ink-transparent-white: rgb(255 255 255 / 8%); /* inkdropapp_css@add48d9 ui.css:265 | notation (official lint) */\n", "") },
+  { name: "wrong source line", fail: /^FAIL S1 kanagawa-dragon source comments/m,
+    mutate: (r) => edit(r, "src/palette/kanagawa-dragon.css", "styles/ui.css:230 */", "styles/ui.css:231 */") },
+  { name: "light-dark() marker missing", fail: /^FAIL S1 solarized-dark source comments/m,
+    mutate: (r) => edit(r, "src/palette/solarized-dark.css", "markdown.css:28 | light-dark(): dark branch */", "markdown.css:28 */") },
+  { name: "notation marker on a value that was not rewritten", fail: /^FAIL S1 solarized-dark source comments/m,
+    mutate: (r) => edit(r, "src/palette/solarized-dark.css", "styles/ui.css:126 */", "styles/ui.css:126 | notation (official lint) */") },
+  { name: "Inkdrop's legacy rgba() kept without the lint notation", fail: /^FAIL S5 solarized-dark stylelint errors = 0/m,
+    mutate: (r) => edit(r, "src/palette/solarized-dark.css", "--ink-transparent-white: rgb(255 255 255 / 8%); /* inkdropapp_css@add48d9 ui.css:265 | notation (official lint) */", "--ink-transparent-white: rgba(255, 255, 255, 0.08); /* inkdropapp_css@add48d9 ui.css:265 */") },
   { name: "missing source file", fail: /^FAIL S2 build run a exits 0/m,
     mutate: (r) => rmSync(path.join(r, "src/common/mapping/workspace.css")) },
   { name: "colour literal outside the palette", fail: /^FAIL S4 src\/common\/mapping\/workspace\.css no colour literals/m,
@@ -60,7 +85,7 @@ const CASES = [
     mutate: (r) => { appendTo(r, "src/common/mapping/workspace.css", IMPORTANT_RULE); setAllowlist(r, [{ ...IMPORTANT_ENTRY, overrides: "" }]); } },
   { name: "SD palette uses a Kanagawa variable", fail: /^FAIL S3 solarized-dark no variable of the other theme/m,
     mutate: (r) => appendTo(r, "src/common/mapping/workspace.css", "\n.theme-dark {\n  --text-faint: var(--kanagawa-dragon-black1);\n}\n") },
-  { name: "reference to an undefined --ink-* token", fail: /^FAIL S3 solarized-dark every var\(--ink-\*\) is defined/m,
+  { name: "reference to an undefined --ink-* token", fail: /^FAIL S3 solarized-dark every var\(\) reference to a palette name is defined/m,
     mutate: (r) => edit(r, "src/common/mapping/workspace.css", "var(--ink-editor-background)", "var(--ink-editor-backgruond)") },
   { name: "check expects absence without a reason", fail: /^FAIL S6 runtime checks are well formed/m,
     mutate: (r) => edit(r, "tests/spec/runtime/desktop.json", '"token": "--ink-sidebar-background"', '"expect": "absent"') },
