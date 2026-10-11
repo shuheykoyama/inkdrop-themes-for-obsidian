@@ -480,11 +480,15 @@
   --ink-derived-accent-s: 19%; /* derived: --ink-primary-color saturation */
   --ink-derived-accent-l: 62%; /* derived: --ink-primary-color lightness */
 
-  /* Derived, not Inkdrop tokens: the colour part of Inkdrop shorthands (a border `1px solid <colour>`, a
-     background `<colour> <image>`), for Obsidian variables that take a colour only. tests/static/run.mjs (S1)
-     checks each against the shorthand it is taken from. */
+  /* Derived, not Inkdrop tokens: the colour part of Inkdrop shorthands (a border or outline `1px solid
+     <colour>`, a background `<colour> <image>`), for Obsidian variables that take a colour only and for the
+     runtime checks of shorthand values. tests/static/run.mjs (S1) checks each against the shorthand it is
+     taken from. */
   --ink-derived-sidebar-border-color: hsl(var(--kanagawa-dragon-black4)); /* derived: border color of --ink-sidebar-border-right */
   --ink-derived-note-list-bar-border-color: hsl(var(--kanagawa-dragon-black4) / 75%); /* derived: border color of --ink-note-list-bar-border-right */
   --ink-derived-button-background-color: hsl(var(--kanagawa-dragon-black4)); /* derived: background color of --ink-button-background */
   --ink-derived-toggle-handle-color: hsl(var(--kanagawa-dragon-white)); /* derived: background color of --ink-toggle-handle-background */
+  --ink-derived-search-match-selected-outline-color: hsl(var(--kanagawa-dragon-yellow)); /* derived: outline color of --ink-editor-search-match-selected-outline */
+  --ink-derived-fold-placeholder-border-color: hsl(var(--kanagawa-dragon-black6)); /* derived: border color of --ink-editor-fold-placeholder-border */
+  --ink-derived-gutter-border-color: hsl(var(--kanagawa-dragon-black4)); /* derived: border color of --ink-editor-gutter-border-right */
 }

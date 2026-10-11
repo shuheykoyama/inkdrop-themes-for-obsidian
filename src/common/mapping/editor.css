@@ -1,0 +1,12 @@
+/* Mapping: editor chrome of Source mode and Live Preview (research/06 E04-E05; step 7). Shared structure, no
+   colour literals. The rules that need direct selectors (active line, gutter, search match, fold
+   placeholder, suggestions, panel) are in components/editor.css. */
+.theme-dark .markdown-source-view.mod-cm6 {
+  /* Caret (E04): Obsidian draws the CodeMirror cursor and the native caret with --caret-color. */
+  --caret-color: var(--ink-editor-caret-color);
+
+  /* Selection (E05): Obsidian draws the editor selection with the native ::selection and --text-selection,
+     and only while the editor has focus (V-34: no selection is drawn after blur), so Inkdrop's focused
+     selection colour is the one that applies. */
+  --text-selection: var(--ink-editor-focused-selection-background);
+}

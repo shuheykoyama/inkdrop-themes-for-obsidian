@@ -1,0 +1,5528 @@
+{
+ "measuredAt": "2026-10-11T20:02:17.230Z",
+ "environment": {
+  "appVersion": "1.14.4",
+  "electron": "43.7.7"
+ },
+ "selfTest": true,
+ "results": [
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.positive-control.editor",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgb(0, 33, 41)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     380,
+     722
+    ],
+    "value": "rgb(0, 33, 41)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.missing-element",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.hidden-element",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not displayed (size [0,0])",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": false,
+    "size": [
+     0,
+     0
+    ],
+    "value": "rgb(0, 45, 56)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.wrong-expectation",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "rgb(0, 33, 41) != rgba(6.8,53.1,64.6, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     380,
+     722
+    ],
+    "value": "rgb(0, 33, 41)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.unparseable-value",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "value not a colour: \"none\"",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     366,
+     27
+    ],
+    "value": "none"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.unknown-token",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "expected colour unresolved (--ink-token-that-does-not-exist)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     366,
+     27
+    ],
+    "value": "rgb(0, 45, 56)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.declared-hidden",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "hidden: Hidden frame (default): .titlebar is display:none (research/11 §7)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": false,
+    "size": [
+     0,
+     0
+    ],
+    "value": "rgb(0, 45, 56)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.declared-hidden-but-missing",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "expected hidden (a hidden expectation must not accept a missing element), element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.declared-absent",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "absent: self-test: no such element",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.declared-absent-but-present",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "expected absent (self-test: an absent expectation must not accept a present element), found 1",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     366,
+     27
+    ],
+    "value": "rgb(0, 45, 56)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.settings-popout",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgb(0, 33, 41)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     900,
+     670
+    ],
+    "value": "rgb(0, 33, 41)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.settings-popout-missing-element",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.main-document-does-not-see-popout",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.text-kind-correct",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "205",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": "205"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.text-kind-wrong-value",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "\"205\" != \"1\"",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": "205"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.text-kind-unset-property",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "value not readable",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.first-color-none",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "no colour in value: \"none\"",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     276,
+     25
+    ],
+    "value": "none"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.var-wrong",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "hsl(218deg 11% 65% / 10%) != rgba(155.9,163.1,175.6, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": "hsl(218deg 11% 65% / 10%)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.var-unset",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "no colour in value: null",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.menu-needs-pointer",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.popover-needs-pointer",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.pseudo-wrong-token",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "rgb(0, 45, 56) != rgba(6.8,53.1,64.6, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     44,
+     760
+    ],
+    "value": "rgb(0, 45, 56)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.pseudo-ignored",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "rgb(7, 53, 65) != rgba(0.0,44.9,56.1, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     44,
+     760
+    ],
+    "value": "rgb(7, 53, 65)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "user-font",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "user-font",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "user-font",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.first-family-wrong",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "user-font",
+   "status": "FAIL",
+   "detail": "Courier New != Helvetica",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     86,
+     17
+    ],
+    "value": "\"Courier New\", -apple-system, \"system-ui\", \"Segoe UI\", Lato, \"Helvetica Neue\", Arial, Helvetica, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"??\", ui-sans-serif, -apple-system, \"system-ui\", system-ui, \"Segoe UI\", \"Google Sans Flex\", Roboto, \"Inter Variable\", Inter, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "file-explorer-focused",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "file-explorer-focused",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "file-explorer-focused",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.first-color-wrong",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "file-explorer-focused",
+   "status": "FAIL",
+   "detail": "rgba(39, 139, 211, 0.4) 5px 0px 0px 0px inset != rgba(38.7,139.3,211.2, 0.2)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     276,
+     25
+    ],
+    "value": "rgba(39, 139, 211, 0.4) 5px 0px 0px 0px inset"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.pointer-released",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "0 overlay(s) still open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.menu-wrong-token",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "menu-open",
+   "status": "FAIL",
+   "detail": "rgb(0, 20, 26) != rgba(0.0,32.6,40.8, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     193,
+     403
+    ],
+    "value": "rgb(0, 20, 26)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.pointer-released",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "0 overlay(s) still open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.popover-open",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "rgb(0, 20, 26)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     452,
+     147
+    ],
+    "value": "rgb(0, 20, 26)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-mark-obsidian-default",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "rgb(133, 153, 0) != rgba(253.0,245.9,226.4, 0.3)",
+   "measured": {
+    "found": true,
+    "count": 6,
+    "displayed": true,
+    "size": [
+     22,
+     31
+    ],
+    "value": "rgb(133, 153, 0)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-wrong-token",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "rgb(173, 184, 184) != rgba(132.6,153.0,0.0, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     33,
+     19
+    ],
+    "value": "rgb(173, 184, 184)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-live-only-element",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-task-marker-default",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "rgb(211, 54, 130) != rgba(253.0,245.9,226.4, 0.6)",
+   "measured": {
+    "found": true,
+    "count": 2,
+    "displayed": true,
+    "size": [
+     30,
+     19
+    ],
+    "value": "rgb(211, 54, 130)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-heading-text",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "rgb(179, 134, 0)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     116,
+     31
+    ],
+    "value": "rgb(179, 134, 0)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-live",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-live",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-live",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-view-swap-quote-editor",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-live",
+   "status": "FAIL",
+   "detail": "rgb(88, 110, 116) != rgba(6.8,53.1,64.6, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     269,
+     24
+    ],
+    "value": "rgb(88, 110, 116)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-wrong-mode",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-reading",
+   "status": "FAIL",
+   "detail": "element not displayed (size [0,0])",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": false,
+    "size": [
+     0,
+     0
+    ],
+    "value": "rgb(131, 148, 149)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-view-swap-quote-reading",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-reading",
+   "status": "FAIL",
+   "detail": "rgb(7, 53, 65) != rgba(87.7,109.6,116.3, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     316,
+     24
+    ],
+    "value": "rgb(7, 53, 65)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-scroll",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "rgb(7, 53, 65)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     316,
+     1
+    ],
+    "value": "rgb(7, 53, 65)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-user-fonts",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-user-fonts",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-user-fonts",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-user-font-wrong",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-user-fonts",
+   "status": "FAIL",
+   "detail": "Courier New != Menlo",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     270,
+     2037
+    ],
+    "value": "\"Courier New\", \"??\", ui-sans-serif, -apple-system, \"system-ui\", system-ui, \"Segoe UI\", \"Google Sans Flex\", Roboto, \"Inter Variable\", Inter, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.ed-active-wrong-token",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source",
+   "status": "FAIL",
+   "detail": "linear-gradient(rgba(0, 45, 56, 0.5), rgba(0, 45, 56, 0.5)) != rgba(87.7,109.6,116.3, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     269,
+     48
+    ],
+    "value": "linear-gradient(rgba(0, 45, 56, 0.5), rgba(0, 45, 56, 0.5))"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.ed-border-wrong-theme",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source",
+   "status": "FAIL",
+   "detail": "\"0px\" != \"1px\"",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     23,
+     1268
+    ],
+    "value": "0px"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.ed-task-strong-as-list",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source",
+   "status": "FAIL",
+   "detail": "rgb(173, 184, 184) != rgba(131.1,147.6,149.4, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     33,
+     19
+    ],
+    "value": "rgb(173, 184, 184)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.ed-suggest-needs-typing",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source-no-lines",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source-no-lines",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source-no-lines",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.ed-no-lines-gutter",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source-no-lines",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-search",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-search",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-search",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.ed-search-other-match-colour",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-search",
+   "status": "FAIL",
+   "detail": "rgba(202, 76, 22, 0.45) != rgba(178.5,133.9,0.0, 0.35)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     39,
+     19
+    ],
+    "value": "rgba(202, 76, 22, 0.45)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-translucent",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.translucent-switch",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgba(0, 45, 56, 0.5)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     44,
+     760
+    ],
+    "value": "rgba(0, 45, 56, 0.5)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.translucent-not-opaque-token",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "rgba(0, 33, 41, 0.7) != rgba(0.0,44.9,56.1, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     381,
+     27
+    ],
+    "value": "rgba(0, 33, 41, 0.7)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.pseudo-corner-translucent",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgba(0, 33, 41, 0.7)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     44,
+     760
+    ],
+    "value": "rgba(0, 33, 41, 0.7)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "fullscreen-class",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "fullscreen-class",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-translucent is-fullscreen",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "fullscreen-class",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.fullscreen-not-acrylic",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "fullscreen-class",
+   "status": "FAIL",
+   "detail": "rgb(0, 45, 56) != rgba(0.0,32.6,40.8, 0.7)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     377,
+     27
+    ],
+    "value": "rgb(0, 45, 56)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.positive-control.editor",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgb(0, 33, 41)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     380,
+     722
+    ],
+    "value": "rgb(0, 33, 41)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.missing-element",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.hidden-element",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not displayed (size [0,0])",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": false,
+    "size": [
+     0,
+     0
+    ],
+    "value": "rgb(0, 45, 56)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.wrong-expectation",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "rgb(0, 33, 41) != rgba(6.8,53.1,64.6, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     380,
+     722
+    ],
+    "value": "rgb(0, 33, 41)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.unparseable-value",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "value not a colour: \"none\"",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     381,
+     27
+    ],
+    "value": "none"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.unknown-token",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "expected colour unresolved (--ink-token-that-does-not-exist)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     381,
+     27
+    ],
+    "value": "rgb(0, 45, 56)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.declared-hidden",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "hidden: Hidden frame (default): .titlebar is display:none (research/11 §7)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": false,
+    "size": [
+     0,
+     0
+    ],
+    "value": "rgb(0, 45, 56)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.declared-hidden-but-missing",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "expected hidden (a hidden expectation must not accept a missing element), element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.declared-absent",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "absent: self-test: no such element",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.declared-absent-but-present",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "expected absent (self-test: an absent expectation must not accept a present element), found 1",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     381,
+     27
+    ],
+    "value": "rgb(0, 45, 56)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.settings-popout",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgb(0, 33, 41)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     900,
+     670
+    ],
+    "value": "rgb(0, 33, 41)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.settings-popout-missing-element",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.main-document-does-not-see-popout",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.text-kind-correct",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "205",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": "205"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.text-kind-wrong-value",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "\"205\" != \"1\"",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": "205"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.text-kind-unset-property",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "value not readable",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.first-color-none",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "no colour in value: \"none\"",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     276,
+     25
+    ],
+    "value": "none"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.var-wrong",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "hsl(218deg 11% 65% / 10%) != rgba(155.9,163.1,175.6, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": "hsl(218deg 11% 65% / 10%)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.var-unset",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "no colour in value: null",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.menu-needs-pointer",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.popover-needs-pointer",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.pseudo-wrong-token",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "rgb(0, 45, 56) != rgba(6.8,53.1,64.6, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     44,
+     760
+    ],
+    "value": "rgb(0, 45, 56)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.pseudo-ignored",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "rgb(7, 53, 65) != rgba(0.0,44.9,56.1, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     44,
+     760
+    ],
+    "value": "rgb(7, 53, 65)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "user-font",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "user-font",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "user-font",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.first-family-wrong",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "user-font",
+   "status": "FAIL",
+   "detail": "Courier New != Helvetica",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     86,
+     17
+    ],
+    "value": "\"Courier New\", -apple-system, \"system-ui\", \"Segoe UI\", Lato, \"Helvetica Neue\", Arial, Helvetica, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"??\", ui-sans-serif, -apple-system, \"system-ui\", system-ui, \"Segoe UI\", \"Google Sans Flex\", Roboto, \"Inter Variable\", Inter, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "file-explorer-focused",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "file-explorer-focused",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "file-explorer-focused",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.first-color-wrong",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "file-explorer-focused",
+   "status": "FAIL",
+   "detail": "rgba(39, 139, 211, 0.4) 5px 0px 0px 0px inset != rgba(38.7,139.3,211.2, 0.2)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     276,
+     25
+    ],
+    "value": "rgba(39, 139, 211, 0.4) 5px 0px 0px 0px inset"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.pointer-released",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "0 overlay(s) still open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.menu-wrong-token",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "menu-open",
+   "status": "FAIL",
+   "detail": "rgb(0, 20, 26) != rgba(0.0,32.6,40.8, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     193,
+     403
+    ],
+    "value": "rgb(0, 20, 26)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.pointer-released",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "0 overlay(s) still open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.popover-open",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "rgb(0, 20, 26)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     452,
+     147
+    ],
+    "value": "rgb(0, 20, 26)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-mark-obsidian-default",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "rgb(133, 153, 0) != rgba(253.0,245.9,226.4, 0.3)",
+   "measured": {
+    "found": true,
+    "count": 6,
+    "displayed": true,
+    "size": [
+     22,
+     31
+    ],
+    "value": "rgb(133, 153, 0)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-wrong-token",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "rgb(173, 184, 184) != rgba(132.6,153.0,0.0, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     33,
+     19
+    ],
+    "value": "rgb(173, 184, 184)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-live-only-element",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-task-marker-default",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "rgb(211, 54, 130) != rgba(253.0,245.9,226.4, 0.6)",
+   "measured": {
+    "found": true,
+    "count": 2,
+    "displayed": true,
+    "size": [
+     30,
+     19
+    ],
+    "value": "rgb(211, 54, 130)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-heading-text",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "rgb(179, 134, 0)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     116,
+     31
+    ],
+    "value": "rgb(179, 134, 0)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-live",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-live",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-live",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-view-swap-quote-editor",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-live",
+   "status": "FAIL",
+   "detail": "rgb(88, 110, 116) != rgba(6.8,53.1,64.6, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     269,
+     24
+    ],
+    "value": "rgb(88, 110, 116)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-wrong-mode",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-reading",
+   "status": "FAIL",
+   "detail": "element not displayed (size [0,0])",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": false,
+    "size": [
+     0,
+     0
+    ],
+    "value": "rgb(131, 148, 149)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-view-swap-quote-reading",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-reading",
+   "status": "FAIL",
+   "detail": "rgb(7, 53, 65) != rgba(87.7,109.6,116.3, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     316,
+     24
+    ],
+    "value": "rgb(7, 53, 65)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-scroll",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "rgb(7, 53, 65)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     316,
+     1
+    ],
+    "value": "rgb(7, 53, 65)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-user-fonts",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-user-fonts",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-user-fonts",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-user-font-wrong",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-user-fonts",
+   "status": "FAIL",
+   "detail": "Courier New != Menlo",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     270,
+     2037
+    ],
+    "value": "\"Courier New\", \"??\", ui-sans-serif, -apple-system, \"system-ui\", system-ui, \"Segoe UI\", \"Google Sans Flex\", Roboto, \"Inter Variable\", Inter, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.ed-active-wrong-token",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source",
+   "status": "FAIL",
+   "detail": "linear-gradient(rgba(0, 45, 56, 0.5), rgba(0, 45, 56, 0.5)) != rgba(87.7,109.6,116.3, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     269,
+     48
+    ],
+    "value": "linear-gradient(rgba(0, 45, 56, 0.5), rgba(0, 45, 56, 0.5))"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.ed-border-wrong-theme",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source",
+   "status": "FAIL",
+   "detail": "\"0px\" != \"1px\"",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     23,
+     1268
+    ],
+    "value": "0px"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.ed-task-strong-as-list",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source",
+   "status": "FAIL",
+   "detail": "rgb(173, 184, 184) != rgba(131.1,147.6,149.4, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     33,
+     19
+    ],
+    "value": "rgb(173, 184, 184)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.ed-suggest-needs-typing",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source-no-lines",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source-no-lines",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source-no-lines",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.ed-no-lines-gutter",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source-no-lines",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-search",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-search",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-search",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.ed-search-other-match-colour",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-search",
+   "status": "FAIL",
+   "detail": "rgba(202, 76, 22, 0.45) != rgba(178.5,133.9,0.0, 0.35)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     39,
+     19
+    ],
+    "value": "rgba(202, 76, 22, 0.45)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.positive-control.editor",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgb(30, 29, 26)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     380,
+     722
+    ],
+    "value": "rgb(30, 29, 26)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.missing-element",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.hidden-element",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not displayed (size [0,0])",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": false,
+    "size": [
+     0,
+     0
+    ],
+    "value": "rgb(24, 22, 22)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.wrong-expectation",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "rgb(30, 29, 26) != rgba(16.7,16.7,13.9, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     380,
+     722
+    ],
+    "value": "rgb(30, 29, 26)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.unparseable-value",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "value not a colour: \"none\"",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     381,
+     27
+    ],
+    "value": "none"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.unknown-token",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "expected colour unresolved (--ink-token-that-does-not-exist)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     381,
+     27
+    ],
+    "value": "rgb(24, 22, 22)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.declared-hidden",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "hidden: Hidden frame (default): .titlebar is display:none (research/11 §7)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": false,
+    "size": [
+     0,
+     0
+    ],
+    "value": "rgb(24, 22, 22)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.declared-hidden-but-missing",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "expected hidden (a hidden expectation must not accept a missing element), element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.declared-absent",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "absent: self-test: no such element",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.declared-absent-but-present",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "expected absent (self-test: an absent expectation must not accept a present element), found 1",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     381,
+     27
+    ],
+    "value": "rgb(24, 22, 22)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.settings-popout",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgb(30, 29, 26)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     900,
+     670
+    ],
+    "value": "rgb(30, 29, 26)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.settings-popout-missing-element",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.main-document-does-not-see-popout",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.text-kind-correct",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "199",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": "199"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.text-kind-wrong-value",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "\"199\" != \"1\"",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": "199"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.text-kind-unset-property",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "value not readable",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.first-color-none",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "no colour in value: \"none\"",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     276,
+     25
+    ],
+    "value": "none"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.var-wrong",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "hsl(218deg 11% 65% / 10%) != rgba(155.9,163.1,175.6, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": "hsl(218deg 11% 65% / 10%)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.var-unset",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "no colour in value: null",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.menu-needs-pointer",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.popover-needs-pointer",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.pseudo-wrong-token",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "rgb(24, 22, 22) != rgba(16.7,16.7,13.9, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     44,
+     760
+    ],
+    "value": "rgb(24, 22, 22)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.pseudo-ignored",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "rgb(17, 17, 14) != rgba(23.9,22.0,22.0, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     44,
+     760
+    ],
+    "value": "rgb(17, 17, 14)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "user-font",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "user-font",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "user-font",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.first-family-wrong",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "user-font",
+   "status": "FAIL",
+   "detail": "Courier New != Helvetica",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     86,
+     17
+    ],
+    "value": "\"Courier New\", -apple-system, \"system-ui\", \"Segoe UI\", Lato, \"Helvetica Neue\", Arial, Helvetica, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"??\", ui-sans-serif, -apple-system, \"system-ui\", system-ui, \"Segoe UI\", \"Google Sans Flex\", Roboto, \"Inter Variable\", Inter, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "file-explorer-focused",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "file-explorer-focused",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "file-explorer-focused",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.first-color-wrong",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "file-explorer-focused",
+   "status": "FAIL",
+   "detail": "rgba(45, 79, 103, 0.8) 5px 0px 0px 0px inset != rgba(34.3,50.3,72.8, 0.7)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     276,
+     25
+    ],
+    "value": "rgba(45, 79, 103, 0.8) 5px 0px 0px 0px inset"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.pointer-released",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "0 overlay(s) still open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.menu-wrong-token",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "menu-open",
+   "status": "FAIL",
+   "detail": "rgb(13, 12, 12) != rgba(30.0,29.0,26.1, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     193,
+     403
+    ],
+    "value": "rgb(13, 12, 12)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.pointer-released",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "0 overlay(s) still open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.popover-open",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "rgb(24, 22, 22)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     452,
+     147
+    ],
+    "value": "rgb(24, 22, 22)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-mark-obsidian-default",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "rgb(137, 153, 122) != rgba(196.7,201.1,196.7, 0.3)",
+   "measured": {
+    "found": true,
+    "count": 6,
+    "displayed": true,
+    "size": [
+     22,
+     31
+    ],
+    "value": "rgb(137, 153, 122)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-wrong-token",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "rgb(196, 116, 110) != rgba(137.2,152.9,122.5, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     33,
+     19
+    ],
+    "value": "rgb(196, 116, 110)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-live-only-element",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-task-marker-default",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "rgb(183, 146, 123) != rgba(200.3,192.2,146.5, 0.7)",
+   "measured": {
+    "found": true,
+    "count": 2,
+    "displayed": true,
+    "size": [
+     30,
+     19
+    ],
+    "value": "rgb(183, 146, 123)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-heading-text",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "rgb(195, 177, 136)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     116,
+     31
+    ],
+    "value": "rgb(195, 177, 136)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-live",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-live",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-live",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-view-swap-quote-editor",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-live",
+   "status": "FAIL",
+   "detail": "rgb(98, 94, 91) != rgba(57.8,56.7,54.4, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     316,
+     24
+    ],
+    "value": "rgb(98, 94, 91)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-wrong-mode",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-reading",
+   "status": "FAIL",
+   "detail": "element not displayed (size [0,0])",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": false,
+    "size": [
+     0,
+     0
+    ],
+    "value": "rgb(197, 201, 197)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-view-swap-quote-reading",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-reading",
+   "status": "FAIL",
+   "detail": "rgb(58, 57, 54) != rgba(98.1,94.3,90.6, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     316,
+     24
+    ],
+    "value": "rgb(58, 57, 54)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-scroll",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "rgb(58, 57, 54)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     316,
+     1
+    ],
+    "value": "rgb(58, 57, 54)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-user-fonts",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-user-fonts",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-user-fonts",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-user-font-wrong",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "md-user-fonts",
+   "status": "FAIL",
+   "detail": "Courier New != Menlo",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     316,
+     2013
+    ],
+    "value": "\"Courier New\", \"??\", ui-sans-serif, -apple-system, \"system-ui\", system-ui, \"Segoe UI\", \"Google Sans Flex\", Roboto, \"Inter Variable\", Inter, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.ed-active-wrong-token",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source",
+   "status": "FAIL",
+   "detail": "linear-gradient(rgba(39, 38, 38, 0.3), rgba(39, 38, 38, 0.3)) != rgba(98.1,94.3,90.6, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     268,
+     48
+    ],
+    "value": "linear-gradient(rgba(39, 38, 38, 0.3), rgba(39, 38, 38, 0.3))"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.ed-border-right-theme",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source",
+   "status": "PASS",
+   "detail": "1px",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     24,
+     1268
+    ],
+    "value": "1px"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.ed-task-strong-as-list",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source",
+   "status": "FAIL",
+   "detail": "rgb(196, 116, 110) != rgba(149.7,160.4,181.8, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     33,
+     19
+    ],
+    "value": "rgb(196, 116, 110)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.ed-suggest-needs-typing",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source-no-lines",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source-no-lines",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source-no-lines",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.ed-no-lines-gutter",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-source-no-lines",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-search",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-search",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-search",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.ed-search-other-match-colour",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "ed-search",
+   "status": "FAIL",
+   "detail": "rgba(195, 177, 136, 0.4) != rgba(45.1,78.8,102.8, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     39,
+     19
+    ],
+    "value": "rgba(195, 177, 136, 0.4)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-translucent",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.translucent-switch",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgba(17, 17, 14, 0.5)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     44,
+     760
+    ],
+    "value": "rgba(17, 17, 14, 0.5)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.translucent-not-opaque-token",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "rgba(24, 22, 22, 0.7) != rgba(23.9,22.0,22.0, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     381,
+     27
+    ],
+    "value": "rgba(24, 22, 22, 0.7)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.pseudo-corner-translucent",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgba(24, 22, 22, 0.7)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     44,
+     760
+    ],
+    "value": "rgba(24, 22, 22, 0.7)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "fullscreen-class",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "fullscreen-class",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-translucent is-fullscreen",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "fullscreen-class",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.fullscreen-not-acrylic",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "fullscreen-class",
+   "status": "FAIL",
+   "detail": "rgb(24, 22, 22) != rgba(23.9,22.0,22.0, 0.7)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     377,
+     27
+    ],
+    "value": "rgb(24, 22, 22)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.positive-control.editor",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgb(30, 29, 26)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     380,
+     722
+    ],
+    "value": "rgb(30, 29, 26)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.missing-element",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.hidden-element",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not displayed (size [0,0])",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": false,
+    "size": [
+     0,
+     0
+    ],
+    "value": "rgb(24, 22, 22)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.wrong-expectation",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "rgb(30, 29, 26) != rgba(16.7,16.7,13.9, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     380,
+     722
+    ],
+    "value": "rgb(30, 29, 26)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.unparseable-value",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "value not a colour: \"none\"",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     381,
+     27
+    ],
+    "value": "none"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.unknown-token",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "expected colour unresolved (--ink-token-that-does-not-exist)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     381,
+     27
+    ],
+    "value": "rgb(24, 22, 22)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.declared-hidden",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "hidden: Hidden frame (default): .titlebar is display:none (research/11 §7)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": false,
+    "size": [
+     0,
+     0
+    ],
+    "value": "rgb(24, 22, 22)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.declared-hidden-but-missing",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "expected hidden (a hidden expectation must not accept a missing element), element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.declared-absent",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "absent: self-test: no such element",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.declared-absent-but-present",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "expected absent (self-test: an absent expectation must not accept a present element), found 1",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     381,
+     27
+    ],
+    "value": "rgb(24, 22, 22)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.settings-popout",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgb(30, 29, 26)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     900,
+     670
+    ],
+    "value": "rgb(30, 29, 26)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.settings-popout-missing-element",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.main-document-does-not-see-popout",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.text-kind-correct",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "199",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": "199"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.text-kind-wrong-value",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "\"199\" != \"1\"",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": "199"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.text-kind-unset-property",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "value not readable",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.first-color-none",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "no colour in value: \"none\"",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     276,
+     25
+    ],
+    "value": "none"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.var-wrong",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "hsl(218deg 11% 65% / 10%) != rgba(155.9,163.1,175.6, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": "hsl(218deg 11% 65% / 10%)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.var-unset",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "no colour in value: null",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     800
+    ],
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.menu-needs-pointer",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.popover-needs-pointer",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.pseudo-wrong-token",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "rgb(24, 22, 22) != rgba(16.7,16.7,13.9, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     44,
+     760
+    ],
+    "value": "rgb(24, 22, 22)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.pseudo-ignored",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "rgb(17, 17, 14) != rgba(23.9,22.0,22.0, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     44,
+     760
+    ],
+    "value": "rgb(17, 17, 14)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "user-font",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "user-font",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "user-font",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.first-family-wrong",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "user-font",
+   "status": "FAIL",
+   "detail": "Courier New != Helvetica",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     86,
+     17
+    ],
+    "value": "\"Courier New\", -apple-system, \"system-ui\", \"Segoe UI\", Lato, \"Helvetica Neue\", Arial, Helvetica, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"??\", ui-sans-serif, -apple-system, \"system-ui\", system-ui, \"Segoe UI\", \"Google Sans Flex\", Roboto, \"Inter Variable\", Inter, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "file-explorer-focused",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "file-explorer-focused",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "file-explorer-focused",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.first-color-wrong",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "file-explorer-focused",
+   "status": "FAIL",
+   "detail": "rgba(45, 79, 103, 0.8) 5px 0px 0px 0px inset != rgba(34.3,50.3,72.8, 0.7)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     276,
+     25
+    ],
+    "value": "rgba(45, 79, 103, 0.8) 5px 0px 0px 0px inset"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.pointer-released",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "0 overlay(s) still open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "menu-open",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.menu-wrong-token",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "menu-open",
+   "status": "FAIL",
+   "detail": "rgb(13, 12, 12) != rgba(30.0,29.0,26.1, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     193,
+     403
+    ],
+    "value": "rgb(13, 12, 12)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.pointer-released",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "0 overlay(s) still open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.popover-open",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "popover-open",
+   "status": "PASS",
+   "detail": "rgb(24, 22, 22)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     452,
+     147
+    ],
+    "value": "rgb(24, 22, 22)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-mark-obsidian-default",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "rgb(137, 153, 122) != rgba(196.7,201.1,196.7, 0.3)",
+   "measured": {
+    "found": true,
+    "count": 6,
+    "displayed": true,
+    "size": [
+     22,
+     31
+    ],
+    "value": "rgb(137, 153, 122)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-wrong-token",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "rgb(196, 116, 110) != rgba(137.2,152.9,122.5, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     33,
+     19
+    ],
+    "value": "rgb(196, 116, 110)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-live-only-element",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-task-marker-default",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "FAIL",
+   "detail": "rgb(183, 146, 123) != rgba(200.3,192.2,146.5, 0.7)",
+   "measured": {
+    "found": true,
+    "count": 2,
+    "displayed": true,
+    "size": [
+     30,
+     19
+    ],
+    "value": "rgb(183, 146, 123)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-source-heading-text",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-source",
+   "status": "PASS",
+   "detail": "rgb(195, 177, 136)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     116,
+     31
+    ],
+    "value": "rgb(195, 177, 136)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-live",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-live",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-live",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-view-swap-quote-editor",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-live",
+   "status": "FAIL",
+   "detail": "rgb(98, 94, 91) != rgba(57.8,56.7,54.4, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     316,
+     24
+    ],
+    "value": "rgb(98, 94, 91)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-wrong-mode",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-reading",
+   "status": "FAIL",
+   "detail": "element not displayed (size [0,0])",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": false,
+    "size": [
+     0,
+     0
+    ],
+    "value": "rgb(197, 201, 197)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-view-swap-quote-reading",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-reading",
+   "status": "FAIL",
+   "detail": "rgb(58, 57, 54) != rgba(98.1,94.3,90.6, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     316,
+     24
+    ],
+    "value": "rgb(58, 57, 54)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.md-scroll",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-reading",
+   "status": "PASS",
+   "detail": "rgb(58, 57, 54)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     316,
+     1
+    ],
+    "value": "rgb(58, 57, 54)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-user-fonts",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-user-fonts",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-user-fonts",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.md-user-font-wrong",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "md-user-fonts",
+   "status": "FAIL",
+   "detail": "Courier New != Menlo",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     316,
+     2013
+    ],
+    "value": "\"Courier New\", \"??\", ui-sans-serif, -apple-system, \"system-ui\", system-ui, \"Segoe UI\", \"Google Sans Flex\", Roboto, \"Inter Variable\", Inter, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.ed-active-wrong-token",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source",
+   "status": "FAIL",
+   "detail": "linear-gradient(rgba(39, 38, 38, 0.3), rgba(39, 38, 38, 0.3)) != rgba(98.1,94.3,90.6, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     268,
+     48
+    ],
+    "value": "linear-gradient(rgba(39, 38, 38, 0.3), rgba(39, 38, 38, 0.3))"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.ed-border-right-theme",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source",
+   "status": "PASS",
+   "detail": "1px",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     24,
+     1268
+    ],
+    "value": "1px"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.ed-task-strong-as-list",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source",
+   "status": "FAIL",
+   "detail": "rgb(196, 116, 110) != rgba(149.7,160.4,181.8, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     33,
+     19
+    ],
+    "value": "rgb(196, 116, 110)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "self.ed-suggest-needs-typing",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source-no-lines",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source-no-lines",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source-no-lines",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.ed-no-lines-gutter",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-source-no-lines",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-search",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-search",
+   "status": "PASS",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-search",
+   "status": "PASS",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.ed-search-other-match-colour",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "ed-search",
+   "status": "FAIL",
+   "detail": "rgba(195, 177, 136, 0.4) != rgba(45.1,78.8,102.8, 1)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     39,
+     19
+    ],
+    "value": "rgba(195, 177, 136, 0.4)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS (EMULATED)",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS (EMULATED)",
+   "detail": "is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS (EMULATED)",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.emulated-drawer-closed",
+   "theme": "solarized-dark",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not displayed (size [0,0])",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": false,
+    "size": [
+     0,
+     0
+    ],
+    "value": "rgb(0, 45, 56)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "left-drawer-open",
+   "status": "PASS (EMULATED)",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "left-drawer-open",
+   "status": "PASS (EMULATED)",
+   "detail": "is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "left-drawer-open",
+   "status": "PASS (EMULATED)",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.emulated-drawer-open",
+   "theme": "solarized-dark",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "left-drawer-open",
+   "status": "PASS (EMULATED)",
+   "detail": "rgb(0, 45, 56)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     450,
+     752
+    ],
+    "value": "rgb(0, 45, 56)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "self-test-translucent-leak",
+   "status": "PASS (EMULATED)",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "self-test-translucent-leak",
+   "status": "FAIL",
+   "detail": "is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav is-translucent",
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "self-test-translucent-leak",
+   "status": "PASS (EMULATED)",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.mobile-translucent-leak",
+   "theme": "solarized-dark",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "self-test-translucent-leak",
+   "status": "PASS (EMULATED)",
+   "detail": "absent: the check itself is trivial; this case exists so that runner.environment must FAIL when a mobile opaque probe runs translucent",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS (EMULATED)",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS (EMULATED)",
+   "detail": "is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS (EMULATED)",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.emulated-drawer-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not displayed (size [0,0])",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": false,
+    "size": [
+     0,
+     0
+    ],
+    "value": "rgb(24, 22, 22)"
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "left-drawer-open",
+   "status": "PASS (EMULATED)",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "left-drawer-open",
+   "status": "PASS (EMULATED)",
+   "detail": "is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "left-drawer-open",
+   "status": "PASS (EMULATED)",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.emulated-drawer-open",
+   "theme": "kanagawa-dragon",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "left-drawer-open",
+   "status": "PASS (EMULATED)",
+   "detail": "rgb(24, 22, 22)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     450,
+     752
+    ],
+    "value": "rgb(24, 22, 22)"
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "self-test-translucent-leak",
+   "status": "PASS (EMULATED)",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "self-test-translucent-leak",
+   "status": "FAIL",
+   "detail": "is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav is-translucent",
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "self-test-translucent-leak",
+   "status": "PASS (EMULATED)",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.mobile-translucent-leak",
+   "theme": "kanagawa-dragon",
+   "platform": "tablet",
+   "appearance": "opaque",
+   "state": "self-test-translucent-leak",
+   "status": "PASS (EMULATED)",
+   "detail": "absent: the check itself is trivial; this case exists so that runner.environment must FAIL when a mobile opaque probe runs translucent",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "phone",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS (EMULATED)",
+   "detail": "DEV solarized-dark (unnamed), 101391 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "phone",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS (EMULATED)",
+   "detail": "is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "phone",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS (EMULATED)",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.emulated-desktop-only-element",
+   "theme": "solarized-dark",
+   "platform": "phone",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "phone",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS (EMULATED)",
+   "detail": "DEV kanagawa-dragon (unnamed), 104160 chars",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "phone",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS (EMULATED)",
+   "detail": "is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "phone",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS (EMULATED)",
+   "detail": "0 open",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "self.emulated-desktop-only-element",
+   "theme": "kanagawa-dragon",
+   "platform": "phone",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "FAIL",
+   "detail": "element not found",
+   "measured": {
+    "found": false,
+    "count": 0,
+    "displayed": false,
+    "size": null,
+    "value": null
+   },
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "runner.restore",
+   "theme": "-",
+   "platform": "desktop",
+   "appearance": "-",
+   "state": "-",
+   "status": "PASS",
+   "detail": "size 1024,800 (was 1024,800), floating true, no mobile / translucent classes",
+   "selfTest": "PASS"
+  }
+ ]
+}

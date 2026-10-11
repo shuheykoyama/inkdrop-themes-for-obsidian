@@ -44,6 +44,18 @@
     { "id": "mobile.md.reading.h1", "requirement": "md.headings",
       "selector": ".workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view h1", "document": "main", "property": "color",
       "platform": ["tablet", "phone"], "state": "md-reading",
-      "appearance": ["opaque"], "token": "--ink-mde-preview-heading-color" }
+      "appearance": ["opaque"], "token": "--ink-mde-preview-heading-color" },
+    { "id": "mobile.ed.live.active-line", "requirement": "qd23.active-line",
+      "selector": ".workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.cm-active", "document": "main", "property": "background-image",
+      "platform": ["tablet", "phone"], "state": "ed-live",
+      "appearance": ["opaque"], "kind": "first-color", "token": "--ink-editor-active-line-background-color" },
+    { "id": "mobile.ed.live.active-gutter", "requirement": "qd23.active-gutter",
+      "selector": ".workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters .cm-gutterElement.cm-active", "document": "main", "property": "background-color",
+      "platform": ["tablet", "phone"], "state": "ed-live",
+      "appearance": ["opaque"], "token": "--ink-editor-active-line-gutter-background-color" },
+    { "id": "mobile.ed.live.gutter-color", "requirement": "qd23.gutter",
+      "selector": ".workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters", "document": "main", "property": "color",
+      "platform": ["tablet", "phone"], "state": "ed-live",
+      "appearance": ["opaque"], "token": "--ink-editor-gutter-color" }
   ]
 }

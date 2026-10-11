@@ -2917,6 +2917,806 @@
       ],
       "kind": "first-family",
       "value": "Menlo"
+    },
+    {
+      "id": "ed.source.active-line",
+      "requirement": "qd23.active-line",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.cm-active",
+      "document": "main",
+      "property": "background-image",
+      "state": "ed-source",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "kind": "first-color",
+      "token": "--ink-editor-active-line-background-color"
+    },
+    {
+      "id": "ed.source.active-gutter",
+      "requirement": "qd23.active-gutter",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters .cm-gutterElement.cm-active",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-source",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-editor-active-line-gutter-background-color"
+    },
+    {
+      "id": "ed.source.gutter-color",
+      "requirement": "qd23.gutter",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "color",
+      "state": "ed-source",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-editor-gutter-color"
+    },
+    {
+      "id": "ed.source.gutter-background",
+      "requirement": "qd23.gutter",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-source",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-editor-gutter-background-color"
+    },
+    {
+      "id": "ed.source.gutter-border-kd",
+      "requirement": "qd23.gutter-border",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "border-right-color",
+      "themes": [
+        "kanagawa-dragon"
+      ],
+      "state": "ed-source",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-derived-gutter-border-color"
+    },
+    {
+      "id": "ed.source.gutter-border-kd-width",
+      "requirement": "qd23.gutter-border",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "border-right-width",
+      "themes": [
+        "kanagawa-dragon"
+      ],
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "1px"
+    },
+    {
+      "id": "ed.source.gutter-border-kd-style",
+      "requirement": "qd23.gutter-border",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "border-right-style",
+      "themes": [
+        "kanagawa-dragon"
+      ],
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "solid"
+    },
+    {
+      "id": "ed.source.gutter-border-sd",
+      "requirement": "qd23.gutter-border",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "border-right-style",
+      "themes": [
+        "solarized-dark"
+      ],
+      "state": "ed-source",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "kind": "text",
+      "value": "none"
+    },
+    {
+      "id": "ed.source.gap-fill",
+      "requirement": "qd23.continuity",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.cm-active",
+      "document": "main",
+      "property": "box-shadow",
+      "state": "ed-source",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "kind": "first-color",
+      "token": "--ink-editor-active-line-background-color"
+    },
+    {
+      "id": "ed.source.inactive-line",
+      "requirement": "qd23.active-line",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line:not(.cm-active):not(.HyperMD-codeblock)",
+      "document": "main",
+      "property": "background-image",
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "none"
+    },
+    {
+      "id": "ed.source.no-lines.gutter",
+      "requirement": "qd23.no-lines",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "color",
+      "state": "ed-source-no-lines",
+      "appearance": [
+        "opaque"
+      ],
+      "expect": "absent",
+      "reason": "With the user's line numbers off Obsidian creates no gutter (V-34); the theme must not show one"
+    },
+    {
+      "id": "ed.source.no-lines.active-line",
+      "requirement": "qd23.no-lines",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.cm-active",
+      "document": "main",
+      "property": "background-image",
+      "state": "ed-source-no-lines",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "first-color",
+      "token": "--ink-editor-active-line-background-color"
+    },
+    {
+      "id": "ed.source.no-lines.no-gap-fill",
+      "requirement": "qd23.no-lines",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.cm-active",
+      "document": "main",
+      "property": "box-shadow",
+      "state": "ed-source-no-lines",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "none"
+    },
+    {
+      "id": "ed.live.active-line",
+      "requirement": "qd23.active-line",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.cm-active",
+      "document": "main",
+      "property": "background-image",
+      "state": "ed-live",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "kind": "first-color",
+      "token": "--ink-editor-active-line-background-color"
+    },
+    {
+      "id": "ed.live.active-gutter",
+      "requirement": "qd23.active-gutter",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters .cm-gutterElement.cm-active",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-live",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-editor-active-line-gutter-background-color"
+    },
+    {
+      "id": "ed.live.gutter-color",
+      "requirement": "qd23.gutter",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "color",
+      "state": "ed-live",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-editor-gutter-color"
+    },
+    {
+      "id": "ed.live.gutter-background",
+      "requirement": "qd23.gutter",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-live",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-editor-gutter-background-color"
+    },
+    {
+      "id": "ed.live.gutter-border-kd",
+      "requirement": "qd23.gutter-border",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "border-right-color",
+      "themes": [
+        "kanagawa-dragon"
+      ],
+      "state": "ed-live",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-derived-gutter-border-color"
+    },
+    {
+      "id": "ed.live.gutter-border-kd-width",
+      "requirement": "qd23.gutter-border",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "border-right-width",
+      "themes": [
+        "kanagawa-dragon"
+      ],
+      "state": "ed-live",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "1px"
+    },
+    {
+      "id": "ed.live.gutter-border-kd-style",
+      "requirement": "qd23.gutter-border",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "border-right-style",
+      "themes": [
+        "kanagawa-dragon"
+      ],
+      "state": "ed-live",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "solid"
+    },
+    {
+      "id": "ed.live.gutter-border-sd",
+      "requirement": "qd23.gutter-border",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "border-right-style",
+      "themes": [
+        "solarized-dark"
+      ],
+      "state": "ed-live",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "kind": "text",
+      "value": "none"
+    },
+    {
+      "id": "ed.live.gap-fill",
+      "requirement": "qd23.continuity",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.cm-active",
+      "document": "main",
+      "property": "box-shadow",
+      "state": "ed-live",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "kind": "first-color",
+      "token": "--ink-editor-active-line-background-color"
+    },
+    {
+      "id": "ed.live.inactive-line",
+      "requirement": "qd23.active-line",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line:not(.cm-active):not(.HyperMD-codeblock)",
+      "document": "main",
+      "property": "background-image",
+      "state": "ed-live",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "none"
+    },
+    {
+      "id": "ed.live.no-lines.gutter",
+      "requirement": "qd23.no-lines",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "color",
+      "state": "ed-live-no-lines",
+      "appearance": [
+        "opaque"
+      ],
+      "expect": "absent",
+      "reason": "With the user's line numbers off Obsidian creates no gutter (V-34); the theme must not show one"
+    },
+    {
+      "id": "ed.live.no-lines.active-line",
+      "requirement": "qd23.no-lines",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.cm-active",
+      "document": "main",
+      "property": "background-image",
+      "state": "ed-live-no-lines",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "first-color",
+      "token": "--ink-editor-active-line-background-color"
+    },
+    {
+      "id": "ed.live.no-lines.no-gap-fill",
+      "requirement": "qd23.no-lines",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.cm-active",
+      "document": "main",
+      "property": "box-shadow",
+      "state": "ed-live-no-lines",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "none"
+    },
+    {
+      "id": "ed.task.plain-text",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-task ~ span.cm-list-1:not(.cm-formatting):not(.cm-strong)",
+      "document": "main",
+      "property": "color",
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-list-color"
+    },
+    {
+      "id": "ed.task.strong",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-task ~ .cm-strong:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-strong-color"
+    },
+    {
+      "id": "ed.task.strong-mark",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-task ~ .cm-formatting-strong",
+      "document": "main",
+      "property": "color",
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-processing-instruction-color"
+    },
+    {
+      "id": "ed.task.link",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-task ~ .cm-link:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-link-color"
+    },
+    {
+      "id": "ed.task.url",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-task ~ .cm-string.cm-url:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-url-color"
+    },
+    {
+      "id": "ed.task.internal-link",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-task ~ .cm-hmd-internal-link",
+      "document": "main",
+      "property": "color",
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-link-color"
+    },
+    {
+      "id": "ed.task.inline-code",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-task ~ .cm-inline-code:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-monospace-color"
+    },
+    {
+      "id": "ed.task.live-strong",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line[data-task] .cm-strong:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "ed-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-strong-color"
+    },
+    {
+      "id": "ed.task.live-text",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line[data-task]",
+      "document": "main",
+      "property": "color",
+      "state": "ed-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-list-color"
+    },
+    {
+      "id": "ed.caret",
+      "requirement": "ed.caret",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-content",
+      "document": "main",
+      "property": "caret-color",
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-caret-color"
+    },
+    {
+      "id": "ed.code-line.active",
+      "requirement": "qd23.special-lines",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.cm-active",
+      "document": "main",
+      "property": "background-image",
+      "state": "ed-code-line",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "first-color",
+      "token": "--ink-editor-active-line-background-color"
+    },
+    {
+      "id": "ed.code-line.code-background",
+      "requirement": "qd23.special-lines",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.cm-active",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-code-line",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-codeblock-background-color"
+    },
+    {
+      "id": "ed.code-line.gutter",
+      "requirement": "qd23.special-lines",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters .cm-gutterElement.cm-active",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-code-line",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-active-line-gutter-background-color"
+    },
+    {
+      "id": "ed.widget-line.active",
+      "requirement": "qd23.special-lines",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.cm-active",
+      "document": "main",
+      "property": "background-image",
+      "state": "ed-widget-line",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "first-color",
+      "token": "--ink-editor-active-line-background-color"
+    },
+    {
+      "id": "ed.widget-line.gutter",
+      "requirement": "qd23.special-lines",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters .cm-gutterElement.cm-active",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-widget-line",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-active-line-gutter-background-color"
+    },
+    {
+      "id": "ed.widget-line.table-not-active",
+      "requirement": "qd23.special-lines",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-table-widget",
+      "document": "main",
+      "property": "background-image",
+      "state": "ed-widget-line",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "none"
+    },
+    {
+      "id": "ed.selection",
+      "requirement": "ed.selection",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-content",
+      "document": "main",
+      "property": "background-color",
+      "pseudo": "::selection",
+      "state": "ed-selection",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-focused-selection-background"
+    },
+    {
+      "id": "ed.selection.active-line",
+      "requirement": "qd23.overlap",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.cm-active",
+      "document": "main",
+      "property": "background-image",
+      "state": "ed-selection",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "first-color",
+      "token": "--ink-editor-active-line-background-color"
+    },
+    {
+      "id": "ed.search.match",
+      "requirement": "ed.search",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 span.obsidian-search-match-highlight",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-search",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-editor-search-match-selected-background-color"
+    },
+    {
+      "id": "ed.search.outline",
+      "requirement": "ed.search",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 span.obsidian-search-match-highlight",
+      "document": "main",
+      "property": "outline-color",
+      "state": "ed-search",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-derived-search-match-selected-outline-color"
+    },
+    {
+      "id": "ed.search.no-ring",
+      "requirement": "ed.search",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 span.obsidian-search-match-highlight",
+      "document": "main",
+      "property": "box-shadow",
+      "state": "ed-search",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "none"
+    },
+    {
+      "id": "ed.search.unblended",
+      "requirement": "ed.search",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 span.obsidian-search-match-highlight",
+      "document": "main",
+      "property": "mix-blend-mode",
+      "state": "ed-search",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "normal"
+    },
+    {
+      "id": "ed.search.active-line",
+      "requirement": "qd23.overlap",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.cm-active",
+      "document": "main",
+      "property": "background-image",
+      "state": "ed-search",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "first-color",
+      "token": "--ink-editor-active-line-background-color"
+    },
+    {
+      "id": "ed.panel.background",
+      "requirement": "ed.panel",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .document-search-container",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-search",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-editor-panel-background-color"
+    },
+    {
+      "id": "ed.panel.color",
+      "requirement": "ed.panel",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .document-search-container",
+      "document": "main",
+      "property": "color",
+      "state": "ed-search",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-panel-color"
+    },
+    {
+      "id": "ed.panel.border",
+      "requirement": "ed.panel",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .document-search-container",
+      "document": "main",
+      "property": "border-bottom-color",
+      "state": "ed-search",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-panel-border-color"
+    },
+    {
+      "id": "ed.fold.background",
+      "requirement": "ed.fold",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-foldPlaceholder",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-fold",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-fold-placeholder-background-color"
+    },
+    {
+      "id": "ed.fold.color",
+      "requirement": "ed.fold",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-foldPlaceholder",
+      "document": "main",
+      "property": "color",
+      "state": "ed-fold",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-fold-placeholder-color"
+    },
+    {
+      "id": "ed.fold.border",
+      "requirement": "ed.fold",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-foldPlaceholder",
+      "document": "main",
+      "property": "border-top-color",
+      "state": "ed-fold",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-derived-fold-placeholder-border-color"
+    },
+    {
+      "id": "ed.source.always-wrapped",
+      "requirement": "qd23.hscroll",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-content",
+      "document": "main",
+      "property": "white-space",
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "break-spaces"
+    },
+    {
+      "id": "ed.suggest.background",
+      "requirement": "qd7.suggest",
+      "selector": ".suggestion-container",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-suggest",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-editor-tooltip-background-color"
+    },
+    {
+      "id": "ed.suggest.border",
+      "requirement": "qd7.suggest",
+      "selector": ".suggestion-container",
+      "document": "main",
+      "property": "border-top-color",
+      "state": "ed-suggest",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-tooltip-border-color"
+    },
+    {
+      "id": "ed.suggest.selected",
+      "requirement": "qd7.suggest",
+      "selector": ".suggestion-container .suggestion-item.is-selected",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-suggest",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-tooltip-autocomplete-item-selected-background-color"
+    },
+    {
+      "id": "ed.suggest.selected-text",
+      "requirement": "qd7.suggest",
+      "selector": ".suggestion-container .suggestion-item.is-selected",
+      "document": "main",
+      "property": "color",
+      "state": "ed-suggest",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-tooltip-autocomplete-item-selected-color"
+    },
+    {
+      "id": "ed.suggest.popover-unchanged",
+      "requirement": "qd7.popover",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-content",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-suggest",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-background"
     }
   ]
 }

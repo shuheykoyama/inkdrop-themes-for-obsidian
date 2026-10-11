@@ -1,0 +1,85 @@
+/* Components: editor chrome of Source mode and Live Preview (Q-D23, research/09 §0.1.2; step 7). Measured in
+   V-34 (research/14 §6.15): Obsidian sets .cm-active on the line and on its line-number gutter element in
+   both views; .cm-gutters exists only while the user's "Show line numbers" is on (the theme never turns it
+   on) and holds only the line numbers. */
+
+/* Active line (Q-D23): Inkdrop's .cm-activeLine background. Drawn as a layer on top of the line's own
+   background so that a code block line (Obsidian paints its background on the same element) keeps it under
+   the active line, as in Inkdrop, where the code block background sits behind the line. */
+.theme-dark .markdown-source-view.mod-cm6 .cm-line.cm-active {
+  background-image: linear-gradient(var(--ink-editor-active-line-background-color), var(--ink-editor-active-line-background-color));
+}
+
+/* The gap between the line numbers and the text (Q23-5): Obsidian keeps a --file-folding-offset (24 px) margin
+   after .cm-gutters for its fold icons, so the active line and its gutter element would be two pieces with
+   the editor between them (V-34); Inkdrop's gutter touches the text. An outer box-shadow of the same colour,
+   shifted by that offset, paints exactly the gap (an outer shadow is not drawn under the line itself). Only
+   while line numbers are shown: without them the line starts at the editor's edge. */
+.theme-dark .markdown-source-view.mod-cm6 .cm-gutters + .cm-content .cm-line.cm-active {
+  box-shadow: calc(-1 * var(--file-folding-offset)) 0 0 0 var(--ink-editor-active-line-background-color);
+}
+
+/* Line numbers (Q-D23): text colour, background and right border of Inkdrop's .cm-gutters. app.css sets the
+   colour as var(--text-faint) !important, so redefining --text-faint here changes it without !important
+   (V-07). The border is `none !important` in app.css; Inkdrop's declaration (SD none, KD 1 px solid
+   dragonBlack4) is used as is, so it needs !important. */
+.theme-dark .markdown-source-view.mod-cm6 .cm-gutters {
+  --text-faint: var(--ink-editor-gutter-color);
+
+  border-right: var(--ink-editor-gutter-border-right) !important;
+  background-color: var(--ink-editor-gutter-background-color);
+}
+
+/* Active line's gutter (Q-D23): Inkdrop's .cm-activeLineGutter background, on Obsidian's
+   .cm-gutterElement.cm-active (selected as the .cm-active inside the gutters: the official lint rejects
+   CodeMirror's camel-case class names in a selector). */
+.theme-dark .markdown-source-view.mod-cm6 .cm-gutters .cm-active {
+  background-color: var(--ink-editor-active-line-gutter-background-color);
+}
+
+/* Search (E38): Obsidian marks only the current match (.obsidian-search-match-highlight, an accent ring
+   blended with the editor); the other matches are not drawn (V-34). It takes Inkdrop's current-match
+   colours, unblended. */
+.theme-dark .markdown-source-view.mod-cm6 span.obsidian-search-match-highlight {
+  border-radius: 0.4em;
+  outline: var(--ink-editor-search-match-selected-outline);
+  background-color: var(--ink-editor-search-match-selected-background-color);
+  box-shadow: none;
+  mix-blend-mode: normal;
+}
+
+/* Fold placeholder (E37): Inkdrop's .cm-foldPlaceholder. Written as [class~=...] (the same match and
+   specificity as the class) because the official lint rejects camel-case class names; the element has no
+   other stable hook (its title is localised). */
+.theme-dark .markdown-source-view.mod-cm6 [class~="cm-foldPlaceholder"] {
+  border: var(--ink-editor-fold-placeholder-border);
+  border-radius: var(--ink-editor-fold-placeholder-border-radius);
+  color: var(--ink-editor-fold-placeholder-color);
+  background-color: var(--ink-editor-fold-placeholder-background-color);
+}
+
+/* Editor panel: Obsidian's find / replace bar in the editor stands where Inkdrop shows its CodeMirror search
+   panel (.cm-panels); CodeMirror panels themselves take the same colours. */
+.theme-dark .markdown-source-view.mod-cm6 .document-search-container,
+.theme-dark .markdown-source-view.mod-cm6 .cm-panels {
+  border-bottom: 1px solid var(--ink-editor-panel-border-color);
+  color: var(--ink-editor-panel-color);
+  background-color: var(--ink-editor-panel-background-color);
+}
+
+/* Suggestions while typing (E41, Q-D7): Obsidian's editor suggestions ([[, #, ...) are a .suggestion-container
+   on the body, the same component as the other suggestion lists of Obsidian; CodeMirror's autocomplete
+   tooltip shares app.css's rule. Both take Inkdrop's editor tooltip and its selected item. */
+.theme-dark .suggestion-container,
+.theme-dark .cm-tooltip.cm-tooltip-autocomplete {
+  border: var(--ink-editor-tooltip-border-width) var(--ink-editor-tooltip-border-style) var(--ink-editor-tooltip-border-color);
+  border-radius: var(--ink-editor-tooltip-border-radius);
+  background-color: var(--ink-editor-tooltip-background-color);
+  box-shadow: var(--ink-editor-tooltip-box-shadow);
+}
+
+.theme-dark .suggestion-container .suggestion-item.is-selected,
+.theme-dark .cm-tooltip.cm-tooltip-autocomplete > ul > li[aria-selected] {
+  color: var(--ink-editor-tooltip-autocomplete-item-selected-color);
+  background-color: var(--ink-editor-tooltip-autocomplete-item-selected-background-color);
+}

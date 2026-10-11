@@ -1,7 +1,7 @@
 # inkdrop-themes-for-obsidian
 Faithful ports of Inkdrop's Solarized Dark and Kanagawa Dragon themes for Obsidian.
 
-**Status: in development (Phase 3, step 6: workspace backgrounds, UI details and Markdown in the editing and reading views; no active line, gutter, syntax colours or Mermaid yet).** There is no usable theme yet,
+**Status: in development (Phase 3, step 7: workspace backgrounds, UI details, Markdown in the editing and reading views, and editor chrome with the active line and line numbers; no syntax colours or Mermaid yet).** There is no usable theme yet,
 and the theme names and licence/attribution text are not decided. The research and the implementation plan
 are in [`research/`](research/README.md) (plan: [`research/14-implementation-plan.md`](research/14-implementation-plan.md)).
 
@@ -44,7 +44,9 @@ Native screenshots under the V-04 / V-32 conditions (macOS, screen-recording per
 then `python3 -I tests/visual/sample-regions.py --config tests/visual/configs/step4-*.json ...`
 (research/evidence/phase3-step4/README.md). The top-left corner under the window buttons:
 `python3 -I tests/visual/sample-regions.py --config tests/visual/configs/top-left-corner.json --out <csv> <png> ...`
-(research/evidence/phase3-corner/README.md).
+(research/evidence/phase3-corner/README.md). Active line and line numbers (Q-D23) on captures taken with
+`CAPTURE_NOTE="Editor chrome.md" CAPTURE_LINES=on CAPTURE_CURSOR="Second paragraph"`:
+`nu tests/visual/q23-check.nu <out_dir> <measurement.json> ...` (Nushell; research/evidence/phase3-step7/README.md).
 
 | Path | Contents |
 |---|---|

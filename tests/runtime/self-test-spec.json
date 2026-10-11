@@ -545,6 +545,99 @@
       ],
       "token": "--ink-syntax-heading-1-color",
       "selfTest": "PASS"
+    },
+    {
+      "id": "self.ed-active-wrong-token",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line.cm-active",
+      "document": "main",
+      "property": "background-image",
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "first-color",
+      "token": "--ink-editor-gutter-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.ed-no-lines-gutter",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "color",
+      "state": "ed-source-no-lines",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-gutter-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.ed-border-wrong-theme",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "border-right-width",
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "1px",
+      "themes": [
+        "solarized-dark"
+      ],
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.ed-border-right-theme",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "border-right-width",
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "1px",
+      "themes": [
+        "kanagawa-dragon"
+      ],
+      "selfTest": "PASS"
+    },
+    {
+      "id": "self.ed-search-other-match-colour",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 span.obsidian-search-match-highlight",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-search",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-search-match-background-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.ed-task-strong-as-list",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-task ~ .cm-strong:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-list-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.ed-suggest-needs-typing",
+      "selector": ".suggestion-container",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-source",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-tooltip-background-color",
+      "selfTest": "FAIL"
     }
   ]
 }

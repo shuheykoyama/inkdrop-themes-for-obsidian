@@ -1229,3 +1229,137 @@ Source mode の DOM を実機で確かめ、存在する要素だけを追加し
 ### 6.14 次の作業
 
 RV3 の再レビューを待つ。工程 7 には進まない。
+
+### 6.15 工程 7: エディタ周辺 UI と Q-D23（2026-10-12 実装、RV4 待ち）
+
+RV3 は `414d64d` で APPROVE された。
+
+**V-34（Obsidian 1.14.4、隔離インスタンス、検証用ノート `tests/fixtures/vault/Editor chrome.md`）**
+
+| 項目 | 実測 |
+|---|---|
+| `.cm-line.cm-active` | Source mode・Live Preview とも、カーソルのある行に付く。既定の背景なし |
+| `.cm-gutterElement.cm-active` | 行番号が有効なら両モードで付き、行と同じ高さ（コードブロックの行も） |
+| `.cm-gutters` | 行番号が有効なときだけ存在し、中身は `cm-lineNumbers` の 1 列（折り畳みのガターはない）。無効なら要素がない |
+| ガターと本文の間 | `.cm-gutters` に `margin-inline-end: var(--file-folding-offset)`（24 px、見出しの折り畳みアイコンの場所）。アクティブ行の背景はここで途切れる |
+| app.css の競合 | `.cm-gutters` の `color: var(--text-faint) !important`、`border-right: none !important`、`background-color: transparent` |
+| 選択 | フォーカス中はネイティブの `::selection`（`--text-selection`）。`.cm-selectionLayer` は空。フォーカスが外れると選択は描かれない |
+| 層の順 | `.cm-selectionLayer` は z-index -2（本文の下）、カーソルの層は 150。アクティブ行の背景は選択の上に重なる（Inkdrop の CodeMirror と同じ並び） |
+| 検索 | 現在の一致だけが `.obsidian-search-match-highlight`（accent の輪、ブレンドあり）。他の一致は描かれない。検索バーは `.document-search-container` |
+| 対応括弧・選択一致 | `.cm-matchingBracket`・`.cm-selectionMatch` はコードブロックの中でも付かない（フォーカス中に確認） |
+| 折り畳み | `.cm-foldPlaceholder`（`title="unfold"` は言語で変わる） |
+| 補完 | 入力中の候補（`[[` など）は body 直下の `.suggestion-container`。専用のクラスはない |
+| 横スクロール | 1.14.4 の設定に折り返しの切り替えがなく（app.js の設定キーに該当なし）、本文は常に `cm-lineWrapping`。エディタは横にスクロールしない |
+| キャレット | `--caret-color`（CodeMirror の描画カーソルと `caret-color`） |
+
+**実装**（`mapping/editor.css`、`components/editor.css`。すべて `.theme-dark .markdown-source-view.mod-cm6` の下）
+
+| 要素 | Inkdrop のトークン | 方法 |
+|---|---|---|
+| アクティブ行 | `--editor-active-line-background-color` | `.cm-line.cm-active` に `background-image: linear-gradient(色, 色)`。コードブロックの行は同じ要素に背景色があるため、背景色の上に重ねる（Inkdrop でもコードブロックの背景は行の下にある） |
+| ガターと本文の隙間 | 同上 | 行番号があるとき（`.cm-gutters + .cm-content`）だけ、アクティブ行に `box-shadow: calc(-1 * var(--file-folding-offset)) 0 0 0 色`。外側の影は要素の下に描かれないので、隙間だけを塗る（Q23-5b のため。下記） |
+| アクティブ行のガター | `--editor-active-line-gutter-background-color` | `.cm-gutters .cm-active` の背景（`.cm-gutterElement` は lint のため使わない） |
+| 行番号の文字色 | `--editor-gutter-color` | `.cm-gutters` で `--text-faint` を再定義（app.css の `!important` は変数を参照しているため、`!important` なし。V-07） |
+| ガターの背景 | `--editor-gutter-background-color` | `.cm-gutters` の背景（両テーマとも透明） |
+| ガターの右線 | `--editor-gutter-border-right` | `border-right: var(...) !important`。app.css の `none !important` に勝つには `!important` が要る。宣言値をそのまま使う（SD `none`、KD `1px solid dragonBlack4`）。許可リストに理由を登録した |
+| キャレット | `--editor-caret-color` | `--caret-color` |
+| 選択（フォーカス時） | `--editor-focused-selection-background` | `--text-selection` |
+| 検索の現在の一致 | `--editor-search-match-selected-background-color`・`-outline` | `.obsidian-search-match-highlight` の背景と輪郭、accent の輪とブレンドを消す、角 0.4em |
+| 折り畳みのプレースホルダ | `--editor-fold-placeholder-*` | `[class~="cm-foldPlaceholder"]`（lint のため属性で書く。クラスと同じ一致と詳細度） |
+| エディタのパネル | `--editor-panel-background-color`・`-color`・`-border-color` | 検索バー（`.document-search-container`）と CodeMirror の `.cm-panels` |
+| 補完（Q-D7） | `--editor-tooltip-*`、`--editor-tooltip-autocomplete-item-selected-*` | `.suggestion-container` と `.cm-tooltip-autocomplete`、選択中の項目 |
+
+- 行番号の表示はテーマから変えない（テスト Vault の `showLineNumber` で切り替えて検証し、元に戻す）。
+- Inkdrop に値があっても Obsidian が描かないもの（対応括弧、選択一致、現在以外の検索一致、非フォーカス時の選択）は規則を作らず、必須項目 `ed.unrendered` を UNVERIFIED（理由とリスク付き）とした。
+- 補完の `.suggestion-container` は Obsidian の他の候補リスト（入力欄の候補など）と同じ部品のため、それらも Inkdrop のエディタのツールチップの色になる。
+
+**Q-D23 の検査結果**
+
+実行時テスト（Computed Style、両テーマ、Electron 39.5.1・43.7.7、不透明 → translucent → 不透明）:
+
+| 検査 | 状態 | 結果 |
+|---|---|---|
+| Q23-1 アクティブ行 | `ed-source`・`ed-live`（行番号あり）、`ed-*-no-lines`（なし） | PASS（不透明・translucent）。アクティブでない行は塗らない |
+| Q23-2 アクティブ行のガター | `ed-source`・`ed-live` | PASS |
+| Q23-3 行番号の文字色・ガターの背景 | 同上 | PASS |
+| Q23-4 右線 | 同上（テーマ別の検査） | SD は `none`、KD は 1px・solid・dragonBlack4。PASS |
+| Q23-6 行番号なし | `ed-source-no-lines`・`ed-live-no-lines` | ガターの要素がない（`expect: absent`）、アクティブ行は塗られ、隙間を塗る影はない。PASS |
+| Q23-7 重なり | `ed-selection`・`ed-search` | 選択（`::selection`）と現在の一致がそれぞれのトークンの色で、アクティブ行は色を保つ。PASS |
+| 特殊な行 | `ed-code-line`・`ed-widget-line` | コードブロックの行はコードの背景の上にアクティブ行、画像の行もアクティブ行とガター、表のウィジェットは塗られない。PASS |
+| Q23-8 translucent | 全状態 | PASS |
+| Q23-9 横スクロール | — | 該当なし（常に折り返す。本文の `white-space` が `break-spaces` であることを検査） |
+| Q23-10 モバイル | `ed-live`（tablet・phone のエミュレーション） | PASS（EMULATED）。実機は工程 10 |
+
+ネイティブの撮影（色の一致と表示の連続性を別々に。`tests/visual/q23-check.nu`）:
+
+- 撮影時にアクティブ行・ガターの要素・行番号の文字・ガターの位置を DOM から取り、文字と境界から離れた平坦な 3 領域（ガターの要素、隙間、行）を作って `sample-regions.py` で測る。平坦でない領域（標準偏差 1.0 超）は FAIL。
+- Q23-5a: 各領域がエディタの面にアクティブ行の色を重ねた期待色から ΔE2000 1.0 以内（不透明だけ。translucent は面がウィンドウの素材で決まるため期待色を計算できない）。
+- Q23-5b: ガター｜隙間、隙間｜行の ΔE2000 が 1.0 以内。
+
+| 撮影（Electron 39.5.1） | Q23-5a | Q23-5b |
+|---|---|---|
+| SD Source・Live Preview、不透明 | PASS（ΔE2000 0.22〜0.26） | PASS（0.00 / 0.32） |
+| SD Source・Live Preview、translucent | — | PASS |
+| KD Source、不透明 | PASS（0.22〜0.77） | PASS（0.00 / 0.56） |
+| 陰性: 隙間を塗る規則を外した CSS（SD・KD） | **FAIL**（隙間 1.09〜2.04） | **FAIL**（1.12〜1.97） |
+
+**隙間の発見**: 隙間を塗る前は、SD・KD とも隙間の色がアクティブ行と ΔE2000 1.1〜2.0 違い、帯が途切れて見えた（陰性の撮影がその状態）。Inkdrop（V-30 の状態 4）ではガターが本文に接している。
+
+**撮影できなかった分**: 早朝の通しの実行の途中でディスプレイがスリープし（`displaysleep 20`）、`screencapture` が「could not create image from rect」で失敗した。KD の Live Preview と translucent、選択・検索・行番号なしの撮影、Electron 43.7.7 の撮影は未実施。ディスプレイを起こす・ロックを解く操作はしていない。Computed Style の検査は両 Electron で完了している。失敗時に背景ウィンドウが残って後続の撮影を壊す不具合が撮影スクリプトにあり、`trap` で必ず閉じるように直した。
+
+**V-35**: 未実施（Inkdrop の設定変更が要るため、承認を得ていない）。V-30 の状態 4（選択あり、CDP の撮影）と V-22 の Computed Style（V-22 の実測値は、今回測ったアクティブ行・ガター・選択の値と一致）だけを基準にした。V-30 の状態 4 と並べた画像: `evidence/phase3-step7/v30-compare/`（アクティブ行の帯がガターから本文まで続き、KD は右線が見える構造が一致）。
+
+V-35 を行う場合の内容（承認が必要）:
+
+| 項目 | 内容 |
+|---|---|
+| 変える設定 | Inkdrop の `editor.lineNumbers` と `editor.styleActiveLine` を一時的に有効にする（V-22 と同じ。11 §14.2 の手順: 終了 → 127.0.0.1:9334 限定のデバッグで起動 → 設定 → 撮影 → `config.json` を終了直後の控えで書き戻して通常起動） |
+| 撮影 | 既存のサンプルノートを表示（作成・編集なし）。SD・KD × (1) 選択のないアクティブ行 (2) 検索バーで一致がある行 (3) コードブロック内の行 (4) acrylic 表示。ネイティブの撮影と Computed Style |
+| 復元 | 設定を戻し、テーマを Solarized Dark に戻して通常起動。`updatedAt` が変わらないことを確認 |
+
+**RV3 からの引き継ぎ**
+
+- タスク行の装飾（6 の確認項目）: 工程 6 の Source mode の `.cm-formatting-task ~ span` が、タスク内の太字・リンク・URL・内部リンク・インラインコード・記号の色をリストの色で上書きしていた（実測で発見）。Inkdrop では `.tok-strong` などが `.tok-list` より後に書かれて勝つため、記号と装飾付きの span を除外した。検査 `ed.task.*`（太字・記号・リンク・URL・内部リンク・コード・本文、Live Preview の太字）と陰性テストを追加した。
+- その他の既知の差（Reading view のチェックボックス、Source mode の表・Wiki リンク・引用のバー、V-30 にない Markdown 要素、プロパティ）は §6.13 のまま追跡する。
+
+**テスト結果**
+
+| テスト | Electron 39.5.1 | Electron 43.7.7 |
+|---|---|---|
+| 実行時テスト | 1699 件 PASS（うち 148 件 PASS（EMULATED）） | 1699 件 PASS（同） |
+| ランナーの陰性テスト | 377 件すべて宣言どおり | 同 |
+| Q23-5（ネイティブ） | 上表（一部のみ） | 未実施 |
+
+静的テストすべて PASS、静的テストの陰性テスト 47 件、視覚的テストの陰性テスト 6 件、クリーンルームのビルド一致、Dark のみのスコープの検査（S4）も PASS。
+
+**計画からの変更と判断**
+
+| # | 変更・判断 | 理由 |
+|---|---|---|
+| 1 | ガターと本文の隙間をアクティブ行の影で塗る | Obsidian だけにある 24 px の余白で帯が途切れる（撮影で確認、陰性で再現） |
+| 2 | アクティブ行を `background-image` で塗る | コードブロックの行の背景色を消さずに重ねるため |
+| 3 | 右線は `border-right` + `!important` | 宣言値をそのまま使える（`box-shadow` だと書き換えが要る）。許可リストに理由付きで登録 |
+| 4 | 対応括弧・選択一致・現在以外の検索一致・非フォーカス時の選択は実装しない | Obsidian 1.14.4 が描かない（V-34）。必須項目 `ed.unrendered` を UNVERIFIED |
+| 5 | Q23-9（横スクロール）は該当なし | 1.14.4 は常に折り返す |
+| 6 | 検査に `themes`（テーマを限定）と疑似要素 `::selection`、パレットに派生エントリ（ガターの右線・検索の輪郭・折り畳みの枠の色）を追加 | テーマで値が違う検査と、一括指定の値の色を検査するため（S1 が一括指定との一致を検査） |
+
+**スクリプトの言語**
+
+| スクリプト | 言語 | 理由 |
+|---|---|---|
+| `tests/visual/q23-check.nu`（新規） | Nushell | 撮影の測定 JSON から領域の設定 JSON を作り、結果を集計する構造化データの処理が中心。CI では使わない macOS ローカル専用 |
+| `tests/visual/capture-obsidian.sh`（`trap` の追加、撮影の項目の追加） | POSIX 系の bash のまま | 既存のスクリプトの小さな修正で、書き直す理由がない |
+| `tests/runtime/*.mjs`・`probe.js` | Node（既存） | CDP のクライアントと Obsidian の中で動くコードが JavaScript |
+| 作業用の通しの実行（リポジトリには入れていない） | fish | macOS ローカルの操作補助 |
+
+**未検証事項とリスク**
+
+- Q23-5 のネイティブ撮影の残り（KD の Live Preview・translucent、選択・検索・行番号なしの撮影、Electron 43.7.7）。画面が使える時間に撮る必要がある。
+- V-35（Inkdrop 側の追加の基準）。
+- 対応括弧などの未描画の要素（`ed.unrendered`）。
+- 補完の `.suggestion-container` が他の候補リストにも当たること（Obsidian の同じ部品のため）。
+- モバイル実機、Windows・Linux。
+
+### 6.16 次の作業
+
+RV4 を待つ。工程 8 には進まない。

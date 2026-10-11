@@ -577,6 +577,167 @@
         "reason": "Inkdrop has no in-note property form, so there are no values to check against (06 E31)",
         "risk": "Property labels and inputs inherit the editor scope's text colour (KD: the editor foreground) and the UI borders; a mismatch with Inkdrop cannot exist, but their look is untested"
       }
+    },
+    {
+      "id": "qd23.active-line",
+      "qd": "Q-D23",
+      "description": "Active line (Source mode and Live Preview, line numbers on or off) = Inkdrop --editor-active-line-background-color, layered over the line's own background; other lines unpainted",
+      "platforms": [
+        "desktop",
+        "tablet",
+        "phone"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "qd23.active-gutter",
+      "qd": "Q-D23",
+      "description": "The active line's line-number element = Inkdrop --editor-active-line-gutter-background-color",
+      "platforms": [
+        "desktop",
+        "tablet",
+        "phone"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "qd23.gutter",
+      "qd": "Q-D23",
+      "description": "Line numbers = Inkdrop --editor-gutter-color on --editor-gutter-background-color",
+      "platforms": [
+        "desktop",
+        "tablet",
+        "phone"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "qd23.gutter-border",
+      "qd": "Q-D23",
+      "description": "Gutter right border = Inkdrop --editor-gutter-border-right: none on Solarized Dark, 1 px solid dragonBlack4 on Kanagawa Dragon",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "qd23.no-lines",
+      "qd": "Q-D23",
+      "description": "With the user's line numbers off there is no gutter and the active line still shows; the theme never turns line numbers on",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "qd23.special-lines",
+      "qd": "Q-D23",
+      "description": "Active line on a code block line keeps the code background under it; active line next to Live Preview widgets (image) works and widgets are not painted",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "qd23.overlap",
+      "qd": "Q-D23",
+      "description": "Selection and the current search match show on the active line, which keeps its colour",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "qd23.continuity",
+      "qd": "Q-D23",
+      "description": "Native captures: the active line body and its gutter element have flat backgrounds of the expected colour (Q23-5a) and no visible seam (dE2000 <= 1.0 across the boundary, Q23-5b), opaque and translucent",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true,
+      "verifiedBy": [
+        {
+          "method": "Native captures (tests/visual/capture-obsidian.sh, CAPTURE_LINES=on, CAPTURE_CURSOR) measured by tests/visual/q23-check.nu: flat regions of the gutter element, the gap and the line; Q23-5a against the opaque composite, Q23-5b across both boundaries, dE2000 <= 1.0",
+          "evidence": "research/evidence/phase3-step7/native-39.5.1, native-39.5.1-trial, native-39.5.1-no-gap-fill",
+          "result": "PASS on 2026-10-12, Electron 39.5.1: Solarized Dark Source and Live Preview, opaque and translucent; Kanagawa Dragon Source mode, opaque. Without the gap fill both themes FAIL (negative). Not captured: Kanagawa Dragon Live Preview and translucent, and Electron 43.7.7 (the display slept; research/14 §6.15)"
+        }
+      ]
+    },
+    {
+      "id": "qd23.hscroll",
+      "qd": "Q-D23",
+      "description": "Horizontal scroll of the gutter (Inkdrop switches the gutter to an opaque colour while its editor scrolls sideways): Obsidian 1.14.4 always wraps editor lines, so the case does not arise; checked that the editor content wraps",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": false
+    },
+    {
+      "id": "ed.caret",
+      "qd": "Q-D14",
+      "description": "Caret = Inkdrop --editor-caret-color",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "ed.selection",
+      "qd": "Q-D14",
+      "description": "Editor selection (drawn while focused only) = Inkdrop --editor-focused-selection-background",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "ed.search",
+      "qd": "Q-D14",
+      "description": "Current search match = Inkdrop current-match background and outline, unblended (Obsidian does not draw the other matches)",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "ed.fold",
+      "qd": "Q-D14",
+      "description": "Fold placeholder = Inkdrop fold placeholder colour, background and border",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "ed.panel",
+      "qd": "Q-D14",
+      "description": "Find / replace bar in the editor = Inkdrop editor panel background, text and border",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "qd7.suggest",
+      "qd": "Q-D7",
+      "description": "Editor suggestions = Inkdrop editor tooltip background and border, selected item = Inkdrop autocomplete selected item; the page preview popover is unaffected",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "ed.unrendered",
+      "qd": "Q-D14",
+      "description": "Matching brackets, selection matches, non-current search matches and the unfocused selection have Inkdrop colours but no element in Obsidian 1.14.4's editor",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": false,
+      "unverified": {
+        "reason": "V-34: Obsidian 1.14.4 does not create .cm-matchingBracket or .cm-selectionMatch, marks only the current search match and draws no selection after blur, so there is nothing to style or measure",
+        "risk": "A plugin or a later Obsidian version that adds these elements shows Obsidian's own colours for them"
+      }
     }
   ]
 }
