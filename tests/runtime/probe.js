@@ -1,5 +1,5 @@
 // Runtime probe: runs inside the ISOLATED Obsidian (test vault only), injected by tests/runtime/run.mjs
-// after `window.__INK = { theme, translucent, platform, state, deferMeasure, checks: [{ id, selector, pseudo, document, property }] }`.
+// after `window.__INK = { theme, translucent, platform, state, deferMeasure, checks: [{ id, selector, pseudo, scrollTo, document, property }] }`.
 // With deferMeasure the probe only prepares the state and leaves window.__INK_MEASURE() for the runner,
 // which first drives a real pointer (menus, link previews, tooltips) through CDP.
 // Selects the theme, prepares the layout for the platform and state, and reports for every check what was
@@ -63,6 +63,20 @@
   if (state === "fullscreen-class") document.body.classList.add("is-fullscreen");
   if (state === "quick-switcher-open") app.commands.executeCommandById("switcher:open");
   if (state === "user-font") app.vault.setConfig("interfaceFontFamily", "Courier New");
+  // Markdown states (step 6): "Markdown elements" in the leaf of "Sample note" (restored afterwards), in one
+  // view mode. The text and code fonts of md-user-fonts are the user's settings that must win (Q-D8).
+  const MD_MODES = { "md-source": { mode: "source", source: true }, "md-live": { mode: "source", source: false }, "md-reading": { mode: "preview" }, "md-user-fonts": { mode: "source", source: false } };
+  const mdLeaf = MD_MODES[state] ? leafOf("Sample note") : null;
+  if (mdLeaf) {
+    if (state === "md-user-fonts") { app.vault.setConfig("textFontFamily", "Courier New"); app.vault.setConfig("monospaceFontFamily", "Menlo"); }
+    await mdLeaf.setViewState({ type: "markdown", state: { file: "Markdown elements.md", ...MD_MODES[state] }, active: true });
+    ws.setActiveLeaf(mdLeaf, { focus: true });
+    // Wait (up to 5 s) until the view has drawn the note: the reading view renders its sections lazily.
+    const drawn = () => (mdLeaf.view.getMode() === "preview"
+      ? mdLeaf.view.previewMode.containerEl.querySelectorAll(".markdown-preview-sizer h1").length > 0
+      : mdLeaf.view.contentEl.querySelectorAll(".cm-content .HyperMD-header-1").length > 0);
+    for (let i = 0; i < 25 && !drawn(); i++) await sleep(200);
+  }
   // DOM menus: macOS defaults to native OS menus, which no theme can style; the test vault switches them off.
   const nativeMenusBefore = app.vault.getConfig("nativeMenus") ?? null;
   if (state === "menu-open") app.vault.setConfig("nativeMenus", false);
@@ -76,7 +90,7 @@
     if (!el) return { found: false, count: 0, displayed: false, size: null, value: null };
     const r = el.getBoundingClientRect();
     const visible = el.checkVisibility({ visibilityProperty: true, checkVisibilityCSS: true });
-    // c.pseudo ("::before" / "::after"): the property of that pseudo-element of the element (e.g. the
+    // c.pseudo ("::before" / "::after" / "::marker"): the property of that pseudo-element of the element (e.g. the
     // corner app.css paints with .workspace-ribbon.mod-primary::before).
     const value = doc.defaultView.getComputedStyle(el, c.pseudo ?? null).getPropertyValue(c.property).trim();
     return { found: true, count: all.length, displayed: visible && r.width > 0 && r.height > 0, size: [Math.round(r.width), Math.round(r.height)], value: value === "" ? null : value };
@@ -92,7 +106,18 @@
     bodyClasses: [...document.body.classList],
     results: {},
   };
-  for (const c of checks.filter((x) => x.document === "main")) out.results[c.id] = measure(document, c);
+  for (const c of checks.filter((x) => x.document === "main")) {
+    // c.scrollTo: text of a line of the Markdown note to scroll into view first (CodeMirror draws only the
+    // lines near the viewport; the reading view renders sections lazily).
+    if (c.scrollTo && mdLeaf) {
+      const v = mdLeaf.view;
+      const line = v.editor.getValue().split("\n").findIndex((l) => l.includes(c.scrollTo));
+      if (v.getMode() === "preview") v.previewMode.applyScroll(Math.max(0, line));
+      else v.editor.scrollIntoView({ from: { line: Math.max(0, line), ch: 0 }, to: { line: Math.max(0, line), ch: 0 } }, true);
+      await sleep(400);
+    }
+    out.results[c.id] = measure(document, c);
+  }
 
   const settingsChecks = checks.filter((x) => x.document === "settings");
   if (settingsChecks.length) {
@@ -118,6 +143,12 @@
   if (state === "user-font") { app.vault.setConfig("interfaceFontFamily", ""); await sleep(300); }
   if (state === "menu-open") { document.querySelectorAll(".menu").forEach((m) => m.remove()); app.vault.setConfig("nativeMenus", nativeMenusBefore); }
   if (state === "file-explorer-focused") ws.setActiveLeaf(leafOf("Sample note"), { focus: true });
+  if (mdLeaf) {
+    if (state === "md-user-fonts") { app.vault.setConfig("textFontFamily", ""); app.vault.setConfig("monospaceFontFamily", ""); }
+    await mdLeaf.setViewState({ type: "markdown", state: { file: "Sample note.md", mode: "source", source: false }, active: true });
+    ws.setActiveLeaf(mdLeaf, { focus: true });
+    await sleep(300);
+  }
   out.modalsLeftOpen = document.querySelectorAll(".modal-container").length;
   return out;
   };

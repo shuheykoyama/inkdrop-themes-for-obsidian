@@ -204,7 +204,7 @@ try {
           const todo = forPlatform.filter((c) => c.appearance.includes(appearance) && (c.state ?? "default") === state);
           if (!todo.length) continue;
           const deferMeasure = POINTER_STATES.includes(state);
-          const input = { theme: manifest.name, translucent: appearance === "translucent", platform, state, deferMeasure, checks: todo.map(({ id, selector, pseudo, document, property }) => ({ id, selector, pseudo, document, property })) };
+          const input = { theme: manifest.name, translucent: appearance === "translucent", platform, state, deferMeasure, checks: todo.map(({ id, selector, pseudo, scrollTo, document, property }) => ({ id, selector, pseudo, scrollTo, document, property })) };
           let overlaysLeft = 0;
           let page = await evaluate(args.port, `window.__INK = ${JSON.stringify(input)};\n${probe}`);
           if (deferMeasure) {

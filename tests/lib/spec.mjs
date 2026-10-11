@@ -21,8 +21,12 @@ export const PLATFORMS = ["desktop", "tablet", "phone", "phone-nonfloating"];
 // the test vault's settings), and three states the runner opens with a real pointer through CDP:
 // "menu-open" (right-click a file, pointer on the first item; DOM menus), "popover-open" (Cmd + hover on an
 // internal link), "tooltip-open" (hover on a ribbon button).
+// Step 6: "md-source", "md-live", "md-reading" open tests/fixtures/vault/Markdown elements.md in the active
+// centre leaf in Source mode, Live Preview or Reading view; "md-user-fonts" is Live Preview with a text and a
+// monospace font in the test vault's settings.
 export const STATES = ["default", "user-accent", "user-font", "quick-switcher-open", "fullscreen-class", "file-explorer-focused",
-  "menu-open", "popover-open", "tooltip-open", "left-drawer-open", "right-drawer-open", "self-test-translucent-leak"];
+  "menu-open", "popover-open", "tooltip-open", "md-source", "md-live", "md-reading", "md-user-fonts",
+  "left-drawer-open", "right-drawer-open", "self-test-translucent-leak"];
 export const POINTER_STATES = ["menu-open", "popover-open", "tooltip-open"];
 // color: a computed colour property; text: exact string (e.g. --accent-h); first-color: the first rgb()/rgba()
 // in the value (e.g. the colour of a box-shadow); var: a custom property whose computed value is a colour
@@ -53,7 +57,8 @@ export function checkErrors(c, requirementIds) {
   if (c.appearance?.includes("translucent") && platforms.some((p) => p !== "desktop")) e.push(`${where}: translucent exists on desktop (macOS) only`);
   if (!STATES.includes(c.state ?? "default")) e.push(`${where}: state must be one of ${STATES.join("/")}`);
   if (requirementIds && c.state === "self-test-translucent-leak") e.push(`${where}: state self-test-translucent-leak is for the runner's self-test only`);
-  if (c.pseudo !== undefined && !["::before", "::after"].includes(c.pseudo)) e.push(`${where}: pseudo must be ::before or ::after`);
+  if (c.scrollTo !== undefined && !(typeof c.scrollTo === "string" && c.scrollTo && String(c.state).startsWith("md-"))) e.push(`${where}: scrollTo is a non-empty line text and needs an md-* state`);
+  if (c.pseudo !== undefined && !["::before", "::after", "::marker"].includes(c.pseudo)) e.push(`${where}: pseudo must be ::before, ::after or ::marker`);
   if (!KINDS.includes(c.kind ?? "color")) e.push(`${where}: kind must be one of ${KINDS.join("/")}`);
   const expect = c.expect ?? "match";
   if (!EXPECTS.includes(expect)) e.push(`${where}: expect must be one of ${EXPECTS.join("/")}`);

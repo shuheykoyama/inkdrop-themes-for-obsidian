@@ -13,7 +13,10 @@ theme="$1"; mode="$2"; bg="$3"; focus="$4"; vault="$5"; out="$6"; tmp="$7"
 root="$(cd "$(dirname "$0")/../.." && pwd)"
 v04="$root/research/evidence/phase2-v04/tools"
 cdp() { node "$root/research/evidence/phase2-p0/tools/cdp.mjs" 9333 "$@"; }
-name="obsidian-$theme-$mode-$bg-$focus"
+# CAPTURE_NOTE / CAPTURE_VIEW / CAPTURE_SCROLL (optional, step 6): open that note in that view ("source",
+# "live", "reading"), scrolled to the line containing CAPTURE_SCROLL; the file name gets "-<view>[-<tag>]"
+# (CAPTURE_TAG).
+name="obsidian-$theme-$mode-$bg-$focus${CAPTURE_VIEW:+-$CAPTURE_VIEW}${CAPTURE_TAG:+-$CAPTURE_TAG}"
 mkdir -p "$out/screenshots" "$out/measurements" "$tmp/bin"
 [ -x "$tmp/bin/backdrop" ] || swiftc -O "$root/research/evidence/phase2-p0/tools/backdrop.swift" -o "$tmp/bin/backdrop"
 
@@ -23,7 +26,7 @@ src="${CAPTURE_THEME_DIR:-$root/dist/$theme}"
 manifest_name="$(node -e 'console.log(JSON.parse(require("fs").readFileSync(process.argv[1], "utf8")).name)' "$src/manifest.json")"
 mkdir -p "$vault/.obsidian/themes/$manifest_name"
 cp "$src/theme.css" "$src/manifest.json" "$vault/.obsidian/themes/$manifest_name/"
-{ printf 'window.__CAP = %s;\n' "$(node -e 'console.log(JSON.stringify({ theme: process.argv[1], translucent: process.argv[2] === "translucent" }))' "$manifest_name" "$mode")"; cat "$root/tests/visual/obsidian-capture-setup.js"; } > "$tmp/setup.js"
+{ printf 'window.__CAP = %s;\n' "$(node -e 'console.log(JSON.stringify({ theme: process.argv[1], translucent: process.argv[2] === "translucent", note: process.argv[3] || undefined, view: process.argv[4] || undefined, scrollTo: process.argv[5] || undefined }))' "$manifest_name" "$mode" "${CAPTURE_NOTE:-}" "${CAPTURE_VIEW:-}" "${CAPTURE_SCROLL:-}")"; cat "$root/tests/visual/obsidian-capture-setup.js"; } > "$tmp/setup.js"
 cdp eval "$tmp/setup.js" > "$tmp/setup.json"
 
 # V-38: the Inkdrop window (if one is running with its DevTools endpoint) uses the same rectangle; hide it.
