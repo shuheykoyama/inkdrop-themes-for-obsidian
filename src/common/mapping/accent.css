@@ -1,0 +1,7 @@
+/* Mapping: accent (Q-D6). Inkdrop's primary colour by default. A user who picks an accent colour in
+   Obsidian gets it as an inline style on body, which wins over this stylesheet (research/03 §2.5). */
+.theme-dark {
+  --accent-h: var(--ink-derived-accent-h);
+  --accent-s: var(--ink-derived-accent-s);
+  --accent-l: var(--ink-derived-accent-l);
+}

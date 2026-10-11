@@ -1,103 +1,242 @@
 {
-  "_comment": "Negative tests of the runtime runner (research/14 §3.2). `selfTest` is the outcome the runner MUST produce; cases marked FAIL prove that a missing, hidden, unreadable or wrongly expected element cannot pass. Not product requirements.",
+  "_comment": "Negative tests of the runtime runner (research/14 §3.2). `selfTest` is the outcome the runner MUST produce; cases marked FAIL prove that a missing, hidden, unreadable or wrongly expected element cannot pass. Not product requirements. Mobile cases run under app.emulateMobile(true); an emulated pass is reported as PASS (EMULATED) and compared as PASS here.",
   "checks": [
     {
       "id": "self.positive-control.editor",
       "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-content",
-      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
       "token": "--ink-editor-background",
       "selfTest": "PASS"
     },
     {
       "id": "self.missing-element",
       "selector": ".ink-self-test-element-that-does-not-exist",
-      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
       "token": "--ink-editor-background",
       "selfTest": "FAIL"
     },
     {
       "id": "self.hidden-element",
       "selector": ".titlebar",
-      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
       "token": "--ink-editor-background",
       "selfTest": "FAIL"
     },
     {
       "id": "self.wrong-expectation",
       "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-content",
-      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
       "token": "--ink-sidebar-background",
       "selfTest": "FAIL"
     },
     {
       "id": "self.unparseable-value",
       "selector": ".status-bar",
-      "document": "main", "property": "background-image", "appearance": ["opaque"],
+      "document": "main",
+      "property": "background-image",
+      "appearance": [
+        "opaque"
+      ],
       "token": "--ink-note-list-bar-background",
       "selfTest": "FAIL"
     },
     {
       "id": "self.unknown-token",
       "selector": ".status-bar",
-      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
       "token": "--ink-token-that-does-not-exist",
       "selfTest": "FAIL"
     },
     {
       "id": "self.declared-hidden",
       "selector": ".titlebar",
-      "document": "main", "property": "background-color", "appearance": ["opaque"],
-      "expect": "hidden", "reason": "Hidden frame (default): .titlebar is display:none (research/11 §7)",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "expect": "hidden",
+      "reason": "Hidden frame (default): .titlebar is display:none (research/11 §7)",
       "selfTest": "PASS"
     },
     {
       "id": "self.declared-hidden-but-missing",
       "selector": ".ink-self-test-element-that-does-not-exist",
-      "document": "main", "property": "background-color", "appearance": ["opaque"],
-      "expect": "hidden", "reason": "a hidden expectation must not accept a missing element",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "expect": "hidden",
+      "reason": "a hidden expectation must not accept a missing element",
       "selfTest": "FAIL"
     },
     {
       "id": "self.declared-absent",
       "selector": ".ink-self-test-element-that-does-not-exist",
-      "document": "main", "property": "background-color", "appearance": ["opaque"],
-      "expect": "absent", "reason": "self-test: no such element",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "expect": "absent",
+      "reason": "self-test: no such element",
       "selfTest": "PASS"
     },
     {
       "id": "self.declared-absent-but-present",
       "selector": ".status-bar",
-      "document": "main", "property": "background-color", "appearance": ["opaque"],
-      "expect": "absent", "reason": "self-test: an absent expectation must not accept a present element",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "expect": "absent",
+      "reason": "self-test: an absent expectation must not accept a present element",
       "selfTest": "FAIL"
     },
     {
       "id": "self.settings-popout",
       "selector": ".modal.mod-settings",
-      "document": "settings", "property": "background-color", "appearance": ["opaque"],
+      "document": "settings",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
       "token": "--ink-editor-background",
       "selfTest": "PASS"
     },
     {
       "id": "self.settings-popout-missing-element",
       "selector": ".ink-self-test-element-that-does-not-exist",
-      "document": "settings", "property": "background-color", "appearance": ["opaque"],
+      "document": "settings",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
       "token": "--ink-editor-background",
       "selfTest": "FAIL"
     },
     {
       "id": "self.main-document-does-not-see-popout",
       "selector": ".modal.mod-settings",
-      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
       "token": "--ink-editor-background",
       "selfTest": "FAIL"
     },
     {
       "id": "self.translucent-switch",
       "selector": ".workspace-ribbon.mod-primary",
-      "document": "main", "property": "background-color", "appearance": ["translucent"],
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
       "value": "transparent",
       "selfTest": "PASS"
+    },
+    {
+      "id": "self.text-kind-correct",
+      "selector": "body",
+      "document": "main",
+      "property": "--accent-h",
+      "kind": "text",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-derived-accent-h",
+      "selfTest": "PASS"
+    },
+    {
+      "id": "self.text-kind-wrong-value",
+      "selector": "body",
+      "document": "main",
+      "property": "--accent-h",
+      "kind": "text",
+      "appearance": [
+        "opaque"
+      ],
+      "value": "1",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.text-kind-unset-property",
+      "selector": "body",
+      "document": "main",
+      "property": "--ink-self-test-unset",
+      "kind": "text",
+      "appearance": [
+        "opaque"
+      ],
+      "value": "",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.emulated-drawer-closed",
+      "selector": ".workspace-drawer.mod-left",
+      "document": "main",
+      "property": "background-color",
+      "platform": [
+        "tablet"
+      ],
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-note-list-bar-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.emulated-drawer-open",
+      "selector": ".workspace-drawer.mod-left",
+      "document": "main",
+      "property": "background-color",
+      "platform": [
+        "tablet"
+      ],
+      "state": "left-drawer-open",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-note-list-bar-background",
+      "selfTest": "PASS"
+    },
+    {
+      "id": "self.emulated-desktop-only-element",
+      "selector": ".workspace-ribbon.mod-primary",
+      "document": "main",
+      "property": "background-color",
+      "platform": [
+        "phone"
+      ],
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-sidebar-background",
+      "selfTest": "FAIL"
     }
   ]
 }

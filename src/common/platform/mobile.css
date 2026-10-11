@@ -1,0 +1,23 @@
+/* Platform: mobile (Q-D10; Q-D1 drawers and navigation = Inkdrop note list). Mobile has drawers instead
+   of .workspace-split (research/11 §8, §10). Selectors and specificity as proven in the Q-D21 PoC
+   (research/13 §2.1.1). Checked with app.emulateMobile(true) on desktop only (PASS (EMULATED));
+   iOS / Android devices are step 10. */
+
+/* Left / right drawers paint --mobile-sidebar-background. */
+.is-mobile .workspace-drawer {
+  --mobile-sidebar-background: var(--ink-note-list-bar-background);
+}
+
+/* Tablets: app.css sets .is-tablet.theme-dark { --titlebar-background: var(--background-primary) }. */
+.is-tablet.theme-dark {
+  --titlebar-background: var(--ink-note-list-bar-background);
+  --titlebar-background-focused: var(--ink-note-list-bar-background);
+}
+
+/* Phone navigation bar (not displayed on tablets). .is-phone .mod-raised paints var(--raised-background);
+   app.css resets it with .is-phone:not(.is-floating-nav) .mobile-navbar (0,3,0), so this needs (0,3,0)
+   too and wins by loading later. Whether Obsidian's translucent look of the floating bar is kept is an
+   open decision (research/09 §0.1.3); this keeps the confirmed colour. */
+.is-mobile .mobile-navbar.mod-raised {
+  --raised-background: var(--ink-note-list-bar-background);
+}

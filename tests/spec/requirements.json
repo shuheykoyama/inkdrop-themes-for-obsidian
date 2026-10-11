@@ -1,33 +1,24 @@
 {
-  "_comment": "Required visual roles and display states of the confirmed Q-D decisions (research/14 §3.3). Each item is verified by the checks that name it in tests/spec/runtime/*.json, or carries `unverified` with a reason and the risk. Step 1 lists only what the step-1 checks cover; later steps add items.",
+  "_comment": "Required visual roles and display states of the confirmed Q-D decisions (research/14 §3.3). Each item is verified by the checks that name it in tests/spec/runtime/*.json, or carries `unverified` with a reason and the risk. platforms: where the role applies (desktop = macOS for release purposes; Windows / Linux are not guaranteed until verified, research/14 §2.3). Mobile checks are emulated until step 10, so a mandatory mobile role stays below the release bar until a device PASS exists.",
   "requirements": [
-    {
-      "id": "qd1.editor-background",
-      "qd": "Q-D1",
-      "description": "Centre editor background = Inkdrop editor background",
-      "platforms": ["desktop"],
-      "mandatory": true
-    },
-    {
-      "id": "qd1.ribbon-background",
-      "qd": "Q-D1",
-      "description": "Ribbon background = Inkdrop sidebar background",
-      "platforms": ["desktop"],
-      "mandatory": true
-    },
-    {
-      "id": "qd1.status-bar-background",
-      "qd": "Q-D1",
-      "description": "Status bar background = Inkdrop note list background",
-      "platforms": ["desktop"],
-      "mandatory": true
-    },
-    {
-      "id": "overlay.settings-modal-background",
-      "qd": "Q-D1",
-      "description": "Settings modal (a popout window in Obsidian 1.14.4) keeps the opaque editor background; guards against scoped rules leaking (research/13 §2.1.1)",
-      "platforms": ["desktop"],
-      "mandatory": false
-    }
+    { "id": "qd1.ribbon-background", "qd": "Q-D1", "description": "Ribbon background = Inkdrop sidebar background", "platforms": ["desktop"], "mandatory": true },
+    { "id": "qd1.dock-background", "qd": "Q-D1", "description": "Left and right dock bodies = Inkdrop note list background", "platforms": ["desktop"], "mandatory": true },
+    { "id": "qd1.dock-tab-strip", "qd": "Q-D1", "description": "Left and right dock tab strips = Inkdrop note list background", "platforms": ["desktop"], "mandatory": true },
+    { "id": "qd1.centre-tab-strip", "qd": "Q-D1", "description": "Centre tab strip = Inkdrop note list background", "platforms": ["desktop"], "mandatory": true },
+    { "id": "qd1.centre-inactive-tab", "qd": "Q-D1", "description": "Inactive centre tabs paint nothing of their own, so they show the note-list tab strip", "platforms": ["desktop"], "mandatory": true },
+    { "id": "qd1.centre-active-tab", "qd": "Q-D1", "description": "Active centre tab = Inkdrop editor background", "platforms": ["desktop"], "mandatory": true },
+    { "id": "qd1.view-header", "qd": "Q-D1", "description": "View Header = Inkdrop editor background", "platforms": ["desktop"], "mandatory": true },
+    { "id": "qd1.editor-background", "qd": "Q-D1", "description": "Centre editor background = Inkdrop editor background", "platforms": ["desktop", "tablet", "phone"], "mandatory": true },
+    { "id": "qd1.status-bar-background", "qd": "Q-D1", "description": "Status bar background = Inkdrop note list background", "platforms": ["desktop"], "mandatory": true },
+    { "id": "qd1.titlebar-hidden-frame", "qd": "Q-D1", "description": "With the default Hidden frame the title bar is not displayed; the title-bar colour (note list) reaches the screen through the top tab strips", "platforms": ["desktop"], "mandatory": false },
+    { "id": "qd1.titlebar-visible-frame", "qd": "Q-D1", "description": "Title bar = Inkdrop note list background where a frame style displays it", "platforms": ["desktop"], "mandatory": true,
+      "unverified": { "reason": "The default Hidden frame does not display .titlebar. Displaying it needs another window-frame setting and a restart of the isolated instance, not automated yet (step 5 or 11).", "risk": "Users of a frame style that shows the title bar could see a colour other than the note list if a rule outranks --titlebar-background there." } },
+    { "id": "qd1.mobile-drawers", "qd": "Q-D1", "description": "Mobile left and right drawers = Inkdrop note list background", "platforms": ["tablet", "phone"], "mandatory": true },
+    { "id": "qd1.mobile-navigation", "qd": "Q-D1", "description": "Phone navigation bar = Inkdrop note list background (floating and non-floating); tablets have none", "platforms": ["phone", "tablet"], "mandatory": true },
+    { "id": "qd1.mobile-drawer-header", "qd": "Q-D1", "description": "Mobile drawer header shows the note list background", "platforms": ["tablet", "phone"], "mandatory": true,
+      "unverified": { "reason": "The header paints no background of its own (transparent in the PoC measurement), so its visible colour is the drawer's; a Computed Style check cannot show that. Needs a pixel check on a device (step 10).", "risk": "A raised or blurred header layer on iOS / Android could change the visible colour." } },
+    { "id": "qd6.accent-default", "qd": "Q-D6", "description": "Accent h/s/l = Inkdrop primary colour by default", "platforms": ["desktop"], "mandatory": true },
+    { "id": "qd6.accent-user-setting", "qd": "Q-D6", "description": "An accent colour picked in Obsidian wins over the theme", "platforms": ["desktop"], "mandatory": true },
+    { "id": "overlay.settings-modal-background", "qd": "Q-D1", "description": "Settings modal (a popout window in Obsidian 1.14.4) keeps the opaque editor background; guards against scoped rules leaking (research/13 §2.1.1)", "platforms": ["desktop"], "mandatory": false }
   ]
 }

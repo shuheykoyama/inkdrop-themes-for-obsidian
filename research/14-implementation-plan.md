@@ -220,11 +220,13 @@ dist/                             # 生成物（Git には入れない）: <them
 - 完了条件: translucent 時の領域がすべて PASS。translucent → 不透明で全領域が元に戻る。スコープ変数がモーダル・ポップアウトに漏れない。ネイティブのスクリーンショットで、アクティブ時の各面が V-32 と ΔE2000 1.0 以下（V-04 では 0.4 未満だった。環境差の余裕を見て 1.0 とする）。
 - 検証: 実行時テスト、ネイティブのスクリーンショット（V-04 と同じ手順）。非アクティブ時の差（V-04 で約 1.5）は記録するが、合否には使わない（Obsidian の vibrancy の仕様による差で、テーマでは直せない）。
 - リスク: 壁紙・他の macOS 版・「透明度を下げる」の影響は未確認（12 §10）。これらの確認はユーザーの承認が必要な操作を伴うため、工程 11 でまとめて判断する。
+- 追加の検証項目（工程 2 のレビュー指摘、2026-10-11）: 基盤 CSS だけに acrylic の上書きがある `--editor-drawer-background` について、acrylic 表示の Inkdrop で実際に効いている値を Computed Style で確認し、それを正本とする（09 V-37）。工程 2 では「テーマの上位のレイヤの宣言に負ける」と推論して `-acrylic` を持たせていない（§1.5）。実測が推論と違えば、パレットに追加する。Inkdrop の設定と画面を使うため、実施前にユーザーの承認が必要。
 
 #### 工程 5: UI の詳細
 
-- 範囲: 状態色（選択の塗りとフォーカス時の左 5px バー、hover）、UI フォントスタック（Q-D8。Lato などのフォントファイルは同梱しない。`--font-interface-theme` に Inkdrop のスタックを入れ、利用者の設定が勝つことを確認する）、Popover（Q-D7、Inkdrop の popup 色）、メニュー、モーダル、ツールチップ、入力欄、ボタン、トグル、タグ（Q-D5、default タグ色）、スクロールバー（macOS では変数が効かない見込み。V-08）。
+- 範囲: 状態色（選択の塗りとフォーカス時の左 5px バー、hover）、UI フォントスタック（Q-D8。Lato などのフォントファイルは同梱しない。`--font-interface-theme` に Inkdrop のスタックを入れ、利用者の設定が勝つことを確認する）、工程 3 から移した基本の文字色と境界線（§6.3）、Popover（Q-D7、Inkdrop の popup 色）、メニュー、モーダル、ツールチップ、入力欄、ボタン、トグル、タグ（Q-D5、default タグ色）、スクロールバー（macOS では変数が効かない見込み。V-08）。
 - 正本: 02 §6・§10、06 General UI、11 §14.4。
+- **UI フォントを適用する前の確認**（工程 2 のレビュー指摘、2026-10-11。09 V-36）: lint のために引用符で囲んだフォント名（`--ink-font-name`・`--ink-page-font`）が、Inkdrop の引用符なしの宣言と同じフォントに解決されるかを確かめる。Computed Style の文字列だけでなく、CDP の `CSS.getPlatformFontsForNode` などで実際に使われたフォントを、引用符あり・なしの 2 つの宣言で比べる。特に `BlinkMacSystemFont` がシステムフォントとして扱われるかと、フォールバックの順序を確認する。差がある場合は、別のフォントへ独断で置き換えず、対応案を示して判断を仰ぐ。それまで Q-D8 の忠実度は UNVERIFIED とする。
 - 完了条件: 検査仕様の該当項目が PASS。フォントの上書き（テスト Vault で本文・UI・コードのフォントを設定。設定キーの名前は工程 5 の最初に実機で確認する）で利用者の設定が勝つ。
 - 検証: 実行時テスト。Inkdrop のオーバーレイ（メニュー、モーダル、コマンドパレット、ポップアップ）の基準画像は未取得（V-33）。比較が必要になったら、ユーザーの承認を得て取得する。
 - リスク: Obsidian の `--background-primary` は Modal・Prompt・Popover・補完ポップアップが共有する（06 §2）。Popover だけを popup 色にするには直接セレクタでの再代入が要り、スコープの漏れに注意する。
@@ -440,7 +442,7 @@ dist/                             # 生成物（Git には入れない）: <them
 | R-macos | translucent の見え方の環境依存（壁紙、macOS の版、透明度を下げる） | 合否はアクティブ時の比較だけにし、環境の違いは記録する。追加の確認はユーザーの承認を得て行う | 工程 4、工程 11 |
 | R-lint | 公式 stylelint の規則と、必要な書き方（`!important`、未掲載クラス）の衝突 | §1.9 の方針（error は修正、warning は個別の許可リスト）。修正できない error が出たら工程を止めて判断を仰ぐ | 工程 1（方針の確定）、以後は毎回の静的テスト |
 | R-desktop-os | Windows・Linux の実機での表示（2026-10-11 に Q-D10 の範囲が確定し、保証対象外とされた） | OS に依存しない CSS を保つ（§2.3）。実機で確認できる環境が得られたら、検査仕様をそのまま流して記録する。それまでは「未検証・保証しない」と表記する | 各工程（書き方）、環境が得られた時点（実機） |
-| R-electron | 実行時テストの Electron の版が古い（RV1-C）。この Mac の隔離環境はインストーラ 1.11.7 の Electron（CDP の `/json/version` で Electron 39.5.1、Chrome 142.0.7444.265。2026-10-11 確認）の上でアプリ本体 1.14.4 を動かしている。レビューでは、現行のインストーラは Electron 43.7.5 とされた（本書では未確認） | §6.2 の手順で、現行インストーラの隔離環境を**追加**する（既存の環境とユーザーの Obsidian は変えない）。以後の実行時テストは両方の環境で行う | 工程 3 の開始まで |
+| R-electron | 実行時テストの Electron の版が古い（RV1-C）。この Mac の既存の隔離環境はインストーラ 1.11.7 の Electron（Electron 39.5.1、Chrome 142.0.7444.265）の上でアプリ本体 1.14.4 を動かしている | **対応済み（2026-10-11）**: 現行インストーラ（1.14.4、Electron 43.7.7、Chrome 150.0.7871.250）の隔離環境を追加した（§6.3）。以後の実行時テストは両方の環境で行う。レビューで挙げられた 43.7.5 ではなく、配布物の実際の版は 43.7.7 だった | 工程 3（実施済み）、Obsidian の更新ごと |
 
 ---
 
@@ -607,7 +609,7 @@ RV1 の結果: APPROVE（2026-10-11、`3c78a90`）。指摘 RV1-A〜C は §6.2 
 | Q-D5（default タグ色） | `--tag-default-*` | S1「必須トークン」 | PASS |
 | Q-D6（アクセント） | `--primary-color` とその参照先 | S1「必須トークン」 | PASS（h/s/l の割り当ては工程 3） |
 | Q-D7（popup・補完） | `--popup-background`、`--editor-tooltip-*` | S1「必須トークン」 | PASS |
-| Q-D8（UI フォント） | `--page-font`、`--font-name`（引用符の正規化あり） | S1「必須トークン」「同値性」 | 値は PASS。引用符付きの名前で同じフォントに解決されるかは UNVERIFIED（工程 5） |
+| Q-D8（UI フォント） | `--page-font`、`--font-name`（引用符の正規化あり） | S1「必須トークン」「同値性」（文字列上の同値性だけ） | 値の文字列は PASS。**Q-D8 の忠実度は UNVERIFIED**（工程 2 のレビュー指摘）: 引用符付きの名前で同じフォントに解決されるかを、工程 5 で UI フォントを適用する前に `CSS.getPlatformFontsForNode` などで確認する（09 V-36） |
 | Q-D12（Mermaid） | 対応候補が挙げる 4 件だけ | S1「必須トークン」 | 残り 146 件は未実装（工程 9） |
 | Q-D13（シンタックス） | `--syntax-*` の全体 | S1「必須トークン」 | PASS（言語別の調整は工程 8） |
 | Q-D10（OS の範囲） | パレットに OS 依存の宣言はない | 目視（パレットは `.theme-dark` の変数だけ） | — |
@@ -640,6 +642,89 @@ RV1 の結果: APPROVE（2026-10-11、`3c78a90`）。指摘 RV1-A〜C は §6.2 
 - 引用符付きのフォント名の解決（上記 Q-D8）。
 - KD は基盤の `--hsl-*` を正当に使うため、名前の形で SD の値の混入を検出できない。混入は S1（KD の各宣言が KD の一次データと一致すること）で検出する（陰性テストで確認）。
 
-### 6.3 次の作業
+工程 2 のレビューの結果: 条件付き APPROVE（2026-10-11、`43cc974`）。条件は次の 3 点で、§6.3 で扱った。(1) 引用符付きのフォント名は文字列上の同値性しか確かめていないので、Q-D8 の忠実度を UNVERIFIED とし、工程 5 の前に実際のフォントを比べる。(2) `--editor-drawer-background` の acrylic を工程 4 の検証対象にする。(3) 現行インストーラの隔離環境を準備する。
 
-工程 2 のレビューの後、工程 3 に進む。工程 3 の開始までに、RV1-C の隔離環境を追加する（ユーザーの承認が必要な手順を含む）。
+### 6.3 工程 3: デスクトップの基本 UI と背景マッピング（2026-10-11 実装、レビュー待ち）
+
+**工程 2 のレビュー条件への対応**
+
+| 条件 | 対応 |
+|---|---|
+| (1) フォント名の等価性 | 工程 5 に「UI フォントを適用する前の確認」を追加し（CDP の `CSS.getPlatformFontsForNode` で引用符あり・なしを比べる。`BlinkMacSystemFont` の扱いとフォールバックの順序。差があれば対応案を示す）、09 に V-36 として登録した。§6.2 の表の Q-D8 を UNVERIFIED と明記した |
+| (2) acrylic の継承関係 | 工程 4 の検証項目に追加し、09 に V-37（Inkdrop の acrylic 表示での実測が正本）として登録した |
+| (3) 現行インストーラの隔離環境 | 下の「現行インストーラの隔離環境」のとおり準備し、ユーザーの承認を得て初回起動した |
+
+**実装した UI マッピング**（`src/common/mapping/workspace.css`、`accent.css`、`src/common/platform/mobile.css`）
+
+| Obsidian 側 | 割り当て | Inkdrop のトークン | Q-D |
+|---|---|---|---|
+| `--ribbon-background`、`--ribbon-background-collapsed` | Ribbon | `--ink-sidebar-background` | Q-D1 |
+| `--background-secondary` | 左右ドックの本体 | `--ink-note-list-bar-background` | Q-D1 |
+| `--tab-container-background` | 中央のタブ帯（非アクティブのタブは透明で帯の色になる） | `--ink-note-list-bar-background` | Q-D1 |
+| `--titlebar-background`、`--titlebar-background-focused` | タイトルバー。Hidden frame では最上段のタブ帯（左右ドックを含む）を通じて画面に出る | `--ink-note-list-bar-background` | Q-D1 |
+| `--tab-background-active` | 中央のアクティブタブ | `--ink-editor-background` | Q-D1 |
+| `--file-header-background`、`--file-header-background-focused` | View Header | `--ink-editor-background` | Q-D1 |
+| `--background-primary` | 中央のエディタ（Modal・Prompt なども共有。工程 5 で個別に扱う） | `--ink-editor-background` | Q-D1 |
+| `--status-bar-background` | ステータスバー | `--ink-note-list-bar-background` | Q-D1 |
+| `--accent-h`・`-s`・`-l` | アクセント（利用者の設定が inline style で勝つ） | `--ink-derived-accent-*`（`--ink-primary-color` の HSL 三つ組） | Q-D6 |
+| `.is-mobile .workspace-drawer { --mobile-sidebar-background }` | モバイルの左右ドロワー | `--ink-note-list-bar-background` | Q-D1 |
+| `.is-tablet.theme-dark { --titlebar-background(-focused) }` | タブレットのタイトルバー | `--ink-note-list-bar-background` | Q-D1 |
+| `.is-mobile .mobile-navbar.mod-raised { --raised-background }` | phone のナビゲーションバー（フローティング・非フローティング） | `--ink-note-list-bar-background` | Q-D1 |
+
+- アクセントの h/s/l は Inkdrop のトークンではないため、パレットに「導出値」（`--ink-derived-accent-h/s/l`、印 `derived:`）として置き、S1 が `--ink-primary-color` の三つ組と一致することを検査する。SD の primary のアルファ（90%）は Obsidian のアクセントに対応先がなく、反映されない（工程 5 で、アクセントを使う要素ごとに Inkdrop との差を確認する）。
+- PoC にあったコンポーネントの規則（`.workspace-tabs.mod-top` でタブ帯の色をタイトルバーから切り離す）は入れていない。タイトルバーもノートリスト色に確定したため不要で、実行時テストで左右ドックのタブ帯がノートリスト色になることを確認した。
+
+**必須項目の一覧（`tests/spec/requirements.json`）への追加**: 4 項目から 17 項目にした。
+
+- 検査で確認するもの（15）: Ribbon、左右ドックの本体、左右ドックのタブ帯、中央のタブ帯、中央の非アクティブタブ、中央のアクティブタブ、View Header、エディタ（デスクトップ・tablet・phone）、ステータスバー、Hidden frame でのタイトルバー、モバイルのドロワー、モバイルのナビゲーション、アクセントの既定値、アクセントの利用者の設定、設定モーダル（漏れの番人）。
+- UNVERIFIED として理由とリスクを記録したもの（2）: タイトルバーが表示される frame 設定でのタイトルバーの色（設定の変更と再起動の自動化が未実装）、モバイルのドロワーのヘッダー（自身は透明で、見える色はドロワーの色。Computed Style では示せず、実機の画素で確認する）。
+
+**検査とランナーの拡張**
+
+- 検査仕様に `platform`（`desktop` / `tablet` / `phone` / `phone-nonfloating`）、`state`（`default` / `user-accent` / `left-drawer-open` / `right-drawer-open`）、`kind`（`color` / `text`）を追加した（§3.3 の書式の、工程 3 で必要になった部分）。translucent はデスクトップでだけ指定できる。
+- ランナーは、デスクトップのあと `app.emulateMobile(true)` で tablet・phone（フローティングナビの有効・無効）を順に再現し、最後にウィンドウの大きさとエミュレーションを元に戻す。モバイルの結果は **PASS（EMULATED）** と表示し、実機の確認には数えない。
+- S7 を追加した: Q-D1 で使う不透明の面の色（サイドバー、ノートリスト、エディタの外枠、`.cm-editor`）が、Inkdrop 6.1.5 で実測した Computed Style（V-20、`evidence/phase2-p0/measurements/inkdrop-*-1-default.json`）と一致すること。実行時テストは「Obsidian の色 = パレットのトークン」を、S1 は「トークン = Inkdrop の宣言」を、S7 は「トークン = Inkdrop の実測値」を確かめるので、合わせて「Obsidian の色 = Inkdrop の実測値」になる。
+
+**テスト結果**（すべて期待どおり）
+
+| テスト | 既存の環境（インストーラ 1.11.7、Electron 39.5.1） | 現行インストーラの環境（1.14.4、Electron 43.7.7） |
+|---|---|---|
+| 実行時テスト | 110 件 PASS（うち 58 件は PASS（EMULATED）） | 110 件 PASS（同） |
+| ランナーの陰性テスト | 60 件すべて宣言どおり（モバイル・文字列比較のケースを追加） | 同 |
+
+| テスト | 結果 |
+|---|---|
+| 静的テスト（S1〜S7） | すべて PASS（S7 は 8 件） |
+| 静的テストの陰性テスト | 37 件すべて期待どおり（導出値、Inkdrop の実測値との不一致・欠落、検査仕様の不正な platform・translucent を追加） |
+| クリーン環境、CI | §6.3 の末尾のコミットで確認 |
+
+**現行インストーラの隔離環境**（`tests/runtime/current-installer.sh`、2026-10-11）
+
+1. 取得: GitHub の公式リリース `obsidianmd/obsidian-releases` v1.14.4 の `Obsidian-1.14.4.dmg` を `~/.cache/inkdrop-themes-for-obsidian/obsidian-1.14.4/` に取得した。SHA-256 はリリースのダイジェスト（`dcf818dd…f59f70`）と一致した。
+2. 検証: dmg 自体には署名がない（`codesign` は "no usable signature"）。中の `Obsidian.app` は Developer ID Application: Dynalist Inc.（Team ID `6JSW4SJWN9`、`/Applications/Obsidian.app` と同じ）で署名され、`codesign --verify --deep --strict` が通り、Gatekeeper の評価（起動しない `spctl -a`）は "Notarized Developer ID" だった。公証のチケットも添付されていた。
+3. 配置: 読み取り専用・Finder に出さない設定でマウントし、`ditto` で上記のディレクトリにコピーして取り外した。`/Applications/Obsidian.app` は変えていない。版: アプリ 1.14.4、Electron **43.7.7**（`Electron Framework` の `Info.plist`）。
+4. 起動: `OBSIDIAN_APP=<コピー> OBSIDIAN_ASAR=none bash tests/runtime/obsidian-isolated.sh start <work>`。既存の隔離環境（既定）はそのまま使える。CDP の待受は `127.0.0.1:9333` だけ（`lsof` で確認）。
+5. **LaunchServices への影響（実測）**: コピーしただけで（起動の前に）、別コピーが `obsidian://` の 2 つ目の候補として登録された（マウント中の dmg の中のアプリも記録された）。起動の後も同じく 2 つ目の候補になった。**既定のアプリはどの時点でも `/Applications/Obsidian.app` のままだった**（`NSWorkspace.urlForApplication(toOpen:)` で確認）。
+6. 復旧手順（実施済み）: `bash tests/runtime/current-installer.sh restore`（`lsregister -u <コピー>`）で登録を外し、`check` で候補が `/Applications/Obsidian.app` だけに戻ったことを確認した。既定のアプリが変わった場合は、`lsregister -f /Applications/Obsidian.app` で登録し直し、`check` で確かめる。それでも戻らなければ、コピーを削除してから同じ手順を行う。取り外し済みの dmg のボリュームの記録が 1 件残っている（アプリの記録ではなく、URL の関連付けには関わらない）。
+7. 起動前後の比較は毎回行う（`check` を実行時テストの前後に実行）。
+
+**計画からの変更と理由**
+
+| # | 変更 | 理由 |
+|---|---|---|
+| 1 | 工程 3 に予定していた基本の文字色と境界線を工程 5 に移した | 工程 3 の範囲をレビューの指示（Q-D1 の背景マッピング）に合わせた。文字色（Q-D3・Q-D9 に関わる段数の多い対応）と境界線は、状態色と同じ工程で扱う方がまとまる |
+| 2 | パレットに「導出値」の区分を設けた（アクセントの h/s/l） | Obsidian のアクセントは h/s/l を別々の数値で受け取るが、Inkdrop にはその形のトークンがない。値は Inkdrop の primary から導き、S1 で照合する |
+| 3 | 隔離 Obsidian の停止を「TERM、待機、TERM、待機、最後に KILL（このスクリプトが起動したプロセスだけ）」にした | モバイルのエミュレーションでウィンドウを再読み込みした後、最初の TERM が無視されることがあった（2 回とも 2 回目の TERM で終了した） |
+
+**新たな未検証事項**
+
+- Q-D8 の UI フォントの忠実度（V-36、工程 5 の前）。
+- `--editor-drawer-background` の acrylic（V-37、工程 4）。
+- タイトルバーが表示される frame 設定でのタイトルバーの色（必須項目、UNVERIFIED）。
+- モバイルのドロワーのヘッダーの見え方（必須項目、UNVERIFIED、工程 10）。
+- モバイル全般は PASS（EMULATED）だけで、実機は工程 10（リリースの合格条件には数えない）。
+- SD のアクセントは primary のアルファ（90%）を失う。アクセントを使う要素での Inkdrop との差は工程 5 で確認する。
+
+### 6.4 次の作業
+
+工程 3 のレビューを待つ。工程 4（translucent）と RV2 には、レビューの後に進む。

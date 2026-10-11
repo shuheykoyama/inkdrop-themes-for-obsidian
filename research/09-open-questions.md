@@ -228,6 +228,7 @@ U-12 は、tokenHighlighter に相当するコードが本体 JS に含まれる
 | V-14 | P3 | Slides で `--r-*` の上書きが効くか（対応範囲に含める場合のみ） | 推測 | 05 Obsidian 固有 |
 | V-15 | P3 | `theme.css` 内の相対 `@import` が、テーマフォルダではなく `index.html` を基準に解決されること | HTML Standard と CSS Values 4 からの推論（08 §1） | 08 §1 |
 | V-34 | P1 | （2026-10-11 追加、Q-D23）Source mode と Live Preview のそれぞれで、`.cm-line.cm-active` と `.cm-gutterElement.cm-active` の付与条件、アクティブ行とそのガターの背景の連続性、KD のガターの右境界線の描き方（`!important` 付きの `border-right` か `box-shadow` か）、選択範囲・検索ハイライトなどとの重なり、行番号の無効時、translucent 時、横スクロール時（§0.1.2 の 1〜7） | Q-D23 の確定で必須になった。V-07・V-11 は編集モードの別とガター側のクラスを確認していない | §0.1.2, 14 工程 7 |
+| V-36 | P1 | （2026-10-11 追加、工程 2 のレビュー）lint のために引用符で囲んだ UI フォント名（`--ink-font-name`・`--ink-page-font`）が、Inkdrop の引用符なしの宣言と同じフォントに解決されるか。CDP の `CSS.getPlatformFontsForNode` などで実際に使われたフォントを比べ、`BlinkMacSystemFont` のシステムフォントとしての扱いとフォールバックの順序を確認する。差があれば対応案を示して判断を仰ぐ | 静的テストは文字列上の同値性しか確かめていない。それまで Q-D8 の忠実度は UNVERIFIED | 14 工程 5、§6.2 |
 | V-16 | P1 | `.workspace-split.mod-left-split { --background-secondary: X }`（1.14.4 では `.mod-primary-split` も）のようなスコープ再定義を当て、左ドック本体だけが変わり、タブ帯・Ribbon・ステータスバー・Menu・Modal が変わらないこと。ドック内の Search / Bookmarks / Outline / Graph / Bases の継ぎ目、ドラッグ中のオーバーレイ、モバイルの drawer での挙動 | CSS 仕様と app.css からの推論で、実機は未確認（Phase 1B で追加） | 07 R05, Q-D1 |
 
 ### 2.3 Inkdrop（v6、macOS。Development Mode の Inspect Element を使用）
@@ -248,6 +249,7 @@ U-12 は、tokenHighlighter に相当するコードが本体 JS に含まれる
 | V-32 | P1 | （Phase 2B で追加）Inkdrop の acrylic（半透明）表示の実際の見え方のスクリーンショット | CDP のスクリーンショットでは背後のデスクトップが合成されない。macOS の画面キャプチャは権限確認ダイアログが重なったため中止した。画面収録の権限がある状態でウィンドウ単位のキャプチャが必要。**→ 2026-10-10 に VERIFIED（11 §15）。壁紙・「透明度を下げる」・他の macOS 版の影響は未確認** | 11 §14.8・§15, Q-D22 |
 | V-33 | P2 | （Phase 2B で追加）Inkdrop のオーバーレイ（メニュー、モーダル、コマンドパレット、ポップアップ）と、ノートリストの未選択項目・ボタン類の hover | 今回は撮影していない（検証用ノートが 1 件で、未選択の項目がなかった） | 11 §14.8 |
 | V-35 | P1 | （2026-10-11 追加、Q-D23）Inkdrop で行番号とアクティブ行を有効にした状態の追加の基準画像と Computed Style: 選択のないアクティブ行、検索一致がある行、コードブロック内の行、acrylic 表示。V-30 の状態 4 は選択ありの 1 枚だけで、CDP のスクリーンショット（不透明）である | Q-D23 の比較基準。Inkdrop の設定を一時的に変えるため、**実施前にユーザーの承認が必要**（11 §14.2 と同じ復元手順） | §0.1.2, 11 §14.3, 14 工程 7 |
+| V-37 | P2 | （2026-10-11 追加、工程 2 のレビュー）基盤 CSS だけに acrylic の上書き（`ui.css:1586`）がある `--editor-drawer-background` が、acrylic 表示の Inkdrop で実際にどの値になるか（Computed Style を正本とする）。工程 2 では、テーマの上位のレイヤの宣言に負けると推論した | 推論であり実測していない。Inkdrop の設定を使うため、実施前にユーザーの承認が必要 | 14 §1.5、工程 4 |
 | V-31 | P1 | エディタとプレビューのコードブロックで、各 Lezer タグがどの `tok-*` クラスになるか（例: `t.function(t.variableName)` が `tok-variable-name tok-function` になるか） | tokenHighlighter（`@inkdropapp/cm6-theme-common`）は npm でも公開されておらず（Phase 1B で確認）、対応は `syntax.css` の構造からの推定（Phase 1B で追加） | 03 §6.3, 07 R02 |
 
 ---

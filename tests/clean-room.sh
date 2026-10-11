@@ -13,6 +13,8 @@ trap 'rm -rf "$work"' EXIT
 cd "$root"
 mkdir -p "$work/research"
 cp -R research/data "$work/research/data"
+mkdir -p "$work/research/evidence/phase2-p0/measurements"
+cp research/evidence/phase2-p0/measurements/inkdrop-sd-1-default.json research/evidence/phase2-p0/measurements/inkdrop-kd-1-default.json "$work/research/evidence/phase2-p0/measurements/"
 tar -cf - package.json package-lock.json .stylelintrc.json scripts src tests | (cd "$work" && tar -xf -)
 
 cd "$work"

@@ -491,4 +491,12 @@
   --ink-page-background-acrylic: transparent; /* inkdropapp_solarized-dark@4337f6e styles/ui.css:177 | acrylic */
   --ink-sidebar-background-acrylic: hsl(var(--hsl-neutral-800) / 50%); /* inkdropapp_solarized-dark@4337f6e styles/ui.css:178 | acrylic */
   --ink-vertical-menu-background-acrylic: hsl(var(--hsl-neutral-900)); /* inkdropapp_solarized-dark@4337f6e styles/ui.css:182 | acrylic */
+
+  /* Derived, not Inkdrop tokens: Obsidian's accent takes hue, saturation and lightness separately
+     (--accent-h/-s/-l; the hue is unitless because app.css computes calc(var(--accent-h) - 1)). The three
+     numbers are the HSL triplet of --ink-primary-color (Q-D6); its alpha (SD 90%) has no counterpart in
+     Obsidian's accent. tests/static/run.mjs (S1) checks them against --ink-primary-color. */
+  --ink-derived-accent-h: 205; /* derived: --ink-primary-color hue */
+  --ink-derived-accent-s: 69%; /* derived: --ink-primary-color saturation */
+  --ink-derived-accent-l: 49%; /* derived: --ink-primary-color lightness */
 }

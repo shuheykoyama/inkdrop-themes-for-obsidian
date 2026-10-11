@@ -10,6 +10,8 @@ import os from "node:os";
 import path from "node:path";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
+const MEASURED_DIR = "research/evidence/phase2-p0/measurements";
+const MEASURED = ["inkdrop-sd-1-default.json", "inkdrop-kd-1-default.json"];
 const DATA = ["inkdrop-solarized-dark-tokens.csv", "inkdrop-kanagawa-dragon-tokens.csv", "obsidian-css-variables-1.14.4.csv", "mapping-candidates.csv"];
 
 // Replace exactly one occurrence of `from` in a file of the temporary root (fails loudly if absent,
@@ -65,6 +67,19 @@ const CASES = [
     mutate: (r) => edit(r, "src/palette/solarized-dark.css", "styles/ui.css:126 */", "styles/ui.css:126 | notation (official lint) */") },
   { name: "Inkdrop's legacy rgba() kept without the lint notation", fail: /^FAIL S5 solarized-dark stylelint errors = 0/m,
     mutate: (r) => edit(r, "src/palette/solarized-dark.css", "--ink-transparent-white: rgb(255 255 255 / 8%); /* inkdropapp_css@add48d9 ui.css:265 | notation (official lint) */", "--ink-transparent-white: rgba(255, 255, 255, 0.08); /* inkdropapp_css@add48d9 ui.css:265 */") },
+  // --- step 3: derived accent, Inkdrop measurements, spec fields ---
+  { name: "derived accent hue differs from the primary colour", fail: /^FAIL S1 solarized-dark derived accent h\/s\/l/m,
+    mutate: (r) => edit(r, "src/palette/solarized-dark.css", "--ink-derived-accent-h: 205;", "--ink-derived-accent-h: 206;") },
+  { name: "undocumented derived entry", fail: /^FAIL S1 kanagawa-dragon derived entries are only the documented ones/m,
+    mutate: (r) => edit(r, "src/palette/kanagawa-dragon.css", "  --ink-derived-accent-l: 62%;", "  --ink-derived-extra: 1; /* derived: test */\n  --ink-derived-accent-l: 62%;") },
+  { name: "Inkdrop measured background differs (S7)", fail: /^FAIL S7 kanagawa-dragon --ink-sidebar-background = Inkdrop sidebar/m,
+    mutate: (r) => edit(r, `${MEASURED_DIR}/inkdrop-kd-1-default.json`, '"backgroundColor": "rgb(17, 17, 14)"', '"backgroundColor": "rgb(17, 17, 15)"') },
+  { name: "Inkdrop measured region missing (S7)", fail: /^FAIL S7 solarized-dark --ink-note-list-bar-background = Inkdrop note-list background \(missing\)/m,
+    mutate: (r) => edit(r, `${MEASURED_DIR}/inkdrop-sd-1-default.json`, '"note-list":', '"note-list-renamed":') },
+  { name: "translucent check on an emulated platform", fail: /^FAIL S6 runtime checks are well formed -- .*translucent exists on desktop/m,
+    mutate: (r) => edit(r, "tests/spec/runtime/mobile.json", '"platform": ["tablet", "phone"],\n      "appearance": ["opaque"]', '"platform": ["tablet", "phone"],\n      "appearance": ["opaque", "translucent"]') },
+  { name: "unknown platform", fail: /^FAIL S6 runtime checks are well formed -- .*platform must list/m,
+    mutate: (r) => edit(r, "tests/spec/runtime/mobile.json", '"platform": ["phone", "phone-nonfloating"],', '"platform": ["watch"],') },
   { name: "missing source file", fail: /^FAIL S2 build run a exits 0/m,
     mutate: (r) => rmSync(path.join(r, "src/common/mapping/workspace.css")) },
   { name: "colour literal outside the palette", fail: /^FAIL S4 src\/common\/mapping\/workspace\.css no colour literals/m,
@@ -105,6 +120,8 @@ for (const c of CASES) {
     cpSync(path.join(repo, "tests/static/lint-allowlist.json"), path.join(root, "tests/static/lint-allowlist.json"));
     mkdirSync(path.join(root, "research/data"), { recursive: true });
     for (const f of DATA) cpSync(path.join(repo, "research/data", f), path.join(root, "research/data", f));
+    mkdirSync(path.join(root, MEASURED_DIR), { recursive: true });
+    for (const f of MEASURED) cpSync(path.join(repo, MEASURED_DIR, f), path.join(root, MEASURED_DIR, f));
     c.mutate(root);
     const res = spawnSync(process.execPath, [path.join(repo, "tests/static/run.mjs"), "--root", root], { encoding: "utf8" });
     const ok = c.pass ? res.status === 0 : res.status !== 0 && c.fail.test(res.stdout);

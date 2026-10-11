@@ -8,6 +8,13 @@ import path from "node:path";
 const DOCUMENTS = ["main", "settings"];
 const APPEARANCES = ["opaque", "translucent"];
 const EXPECTS = ["match", "absent", "hidden"];
+// desktop = the real macOS app; the others are app.emulateMobile(true) on desktop (PASS (EMULATED)).
+export const PLATFORMS = ["desktop", "tablet", "phone", "phone-nonfloating"];
+// Probe states: desktop "default" has both docks expanded and two notes open in the centre (the other one
+// is an inactive tab); "user-accent" sets an accent colour in the test vault's settings for the measurement;
+// on mobile "default" has both drawers closed.
+const STATES = ["default", "user-accent", "left-drawer-open", "right-drawer-open"];
+const KINDS = ["color", "text"];
 
 export function loadRequirements(specDir) {
   return JSON.parse(readFileSync(path.join(specDir, "requirements.json"), "utf8")).requirements;
@@ -27,6 +34,11 @@ export function checkErrors(c, requirementIds) {
   for (const k of ["id", "selector", "property"]) if (typeof c[k] !== "string" || !c[k]) e.push(`${where}: missing ${k}`);
   if (!DOCUMENTS.includes(c.document)) e.push(`${where}: document must be one of ${DOCUMENTS.join("/")}`);
   if (!Array.isArray(c.appearance) || !c.appearance.length || c.appearance.some((a) => !APPEARANCES.includes(a))) e.push(`${where}: appearance must list ${APPEARANCES.join("/")}`);
+  const platforms = c.platform ?? ["desktop"];
+  if (!Array.isArray(platforms) || !platforms.length || platforms.some((p) => !PLATFORMS.includes(p))) e.push(`${where}: platform must list ${PLATFORMS.join("/")}`);
+  if (c.appearance?.includes("translucent") && platforms.some((p) => p !== "desktop")) e.push(`${where}: translucent exists on desktop (macOS) only`);
+  if (!STATES.includes(c.state ?? "default")) e.push(`${where}: state must be one of ${STATES.join("/")}`);
+  if (!KINDS.includes(c.kind ?? "color")) e.push(`${where}: kind must be one of ${KINDS.join("/")}`);
   const expect = c.expect ?? "match";
   if (!EXPECTS.includes(expect)) e.push(`${where}: expect must be one of ${EXPECTS.join("/")}`);
   if (expect === "match" && !(typeof c.token === "string") === !(typeof c.value === "string")) e.push(`${where}: expect match needs exactly one of token / value`);

@@ -2,3 +2,5 @@
    (palette -> common mapping -> components -> platform -> theme-specific exceptions). */
 @import "../palette/kanagawa-dragon.css";
 @import "../common/mapping/workspace.css";
+@import "../common/mapping/accent.css";
+@import "../common/platform/mobile.css";

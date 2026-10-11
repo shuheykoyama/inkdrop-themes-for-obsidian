@@ -1,0 +1,25 @@
+{
+  "_comment": "Minimal mobile checks with app.emulateMobile(true) on desktop: results are PASS (EMULATED), never device checks (research/14 §2.3; devices are step 10). Selectors as in the Q-D21 PoC (research/13 §2.1.1).",
+  "checks": [
+    { "id": "mobile.left-drawer.background", "requirement": "qd1.mobile-drawers",
+      "selector": ".workspace-drawer.mod-left", "document": "main", "property": "background-color",
+      "platform": ["tablet", "phone", "phone-nonfloating"], "state": "left-drawer-open",
+      "appearance": ["opaque"], "token": "--ink-note-list-bar-background" },
+    { "id": "mobile.right-drawer.background", "requirement": "qd1.mobile-drawers",
+      "selector": ".workspace-drawer.mod-right", "document": "main", "property": "background-color",
+      "platform": ["tablet", "phone", "phone-nonfloating"], "state": "right-drawer-open",
+      "appearance": ["opaque"], "token": "--ink-note-list-bar-background" },
+    { "id": "mobile.navbar.background", "requirement": "qd1.mobile-navigation",
+      "selector": ".mobile-navbar", "document": "main", "property": "background-color",
+      "platform": ["phone", "phone-nonfloating"],
+      "appearance": ["opaque"], "token": "--ink-note-list-bar-background" },
+    { "id": "mobile.navbar.tablet-not-displayed", "requirement": "qd1.mobile-navigation",
+      "selector": ".mobile-navbar", "document": "main", "property": "background-color",
+      "platform": ["tablet"],
+      "appearance": ["opaque"], "expect": "hidden", "reason": "Tablets have no bottom navigation bar (display: none, research/13 §2.1.1)" },
+    { "id": "mobile.editor.background", "requirement": "qd1.editor-background",
+      "selector": ".workspace-leaf.mod-active .view-content", "document": "main", "property": "background-color",
+      "platform": ["tablet", "phone"],
+      "appearance": ["opaque"], "token": "--ink-editor-background" }
+  ]
+}

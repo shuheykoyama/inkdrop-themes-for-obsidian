@@ -1,4 +1,4 @@
-// Static tests S1-S6 (research/14 §3.1). Node only; run in CI on every push.
+// Static tests S1-S7 (research/14 §3.1). Node only; run in CI on every push.
 //   S1 value fidelity: palette vs research/data (Inkdrop's primary data), outputs keep the declarations
 //   S2 build reproducibility and output hygiene (deterministic, parses, no @import / @charset / empty rules,
 //      missing source -> non-zero exit)
@@ -6,9 +6,11 @@
 //   S4 layer rules: colour literals only in the palette, no nesting, every !important allow-listed
 //   S5 official lint (stylelint-config-obsidianmd): 0 errors, warnings == allow-list
 //   S6 spec: requirement / check files are well formed and every requirement is covered or UNVERIFIED
+//   S7 the opaque surfaces of Q-D1 resolve to the colours Inkdrop 6.1.5 painted (V-20 measurements)
 //
 // usage: node tests/static/run.mjs [--root <dir>]
-//   --root: project root holding src/, tests/spec/, tests/static/lint-allowlist.json and research/data
+//   --root: project root holding src/, tests/spec/, tests/static/lint-allowlist.json, research/data and
+//           research/evidence/phase2-p0/measurements/inkdrop-*-1-default.json
 //           (default: this repository). tests/static/self-test.mjs points it at mutated copies.
 // Prints one PASS / FAIL line per check; exit status 1 if any check fails.
 import { spawnSync } from "node:child_process";
@@ -18,7 +20,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 import postcss from "postcss";
 import stylelint from "stylelint";
-import { darkBranch, declarations, denotation, hasLightDark, hexToRgb, hslToRgb, isTriplet, norm, normalizeNotation, paletteName, readCsv, sameColor, substitute } from "../lib/css.mjs";
+import { darkBranch, declarations, denotation, hasLightDark, hexToRgb, hslToRgb, isTriplet, norm, normalizeNotation, paletteName, parseComputedColor, readCsv, sameColor, substitute } from "../lib/css.mjs";
 import { checkErrors, loadChecks, loadRequirements, requirementErrors, runtimeSpecFiles } from "../lib/spec.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
@@ -109,6 +111,7 @@ try {
     const bad = { unknown: [], declared: [], notation: [], denotes: [], comment: [], resolved: [], hex: [] };
     let acrylicCount = 0, lightDarkCount = 0, notationCount = 0, hexChecked = 0;
     for (const d of palette) {
+      if (d.prop.startsWith("--ink-derived-")) continue; // not Inkdrop tokens: checked below
       const acrylic = d.prop.endsWith("-acrylic");
       const row = byPaletteName.get(acrylic ? d.prop.replace(/-acrylic$/, "") : d.prop);
       if (!row) { bad.unknown.push(d.prop); continue; }
@@ -154,6 +157,14 @@ try {
         if (!sameColor(hslToRgb(ours), hexToRgb(row.resolved_value))) bad.hex.push(`${d.prop}: ${ours} vs ${row.resolved_value}`);
       }
     }
+    // Derived entries (research/14 §6.3): the accent h/s/l are the HSL triplet of --ink-primary-color.
+    const derived = palette.filter((d) => d.prop.startsWith("--ink-derived-"));
+    const primary = substitute("var(--ink-primary-color)", defs);
+    const tri = /^hsl\((-?[\d.]+)deg ([\d.]+%) ([\d.]+%)/.exec(primary);
+    const accentOk = tri && defs.get("--ink-derived-accent-h") === tri[1] && defs.get("--ink-derived-accent-s") === tri[2] && defs.get("--ink-derived-accent-l") === tri[3];
+    check(`S1 ${theme} derived accent h/s/l = HSL triplet of --ink-primary-color`, Boolean(accentOk), `${defs.get("--ink-derived-accent-h")} ${defs.get("--ink-derived-accent-s")} ${defs.get("--ink-derived-accent-l")} vs ${primary}`);
+    const unknownDerived = derived.filter((d) => !/^--ink-derived-accent-[hsl]$/.test(d.prop) || !/^derived: /.test(d.comment ?? ""));
+    check(`S1 ${theme} derived entries are only the documented ones, each marked "derived:"`, unknownDerived.length === 0, unknownDerived.map((d) => d.prop).join(", "));
     const n = palette.length;
     tokenCounts[theme] = { declarations: n, acrylic: acrylicCount, lightDark: lightDarkCount, notation: notationCount, hexChecked };
     const list = (xs) => xs.slice(0, 8).join(" | ") + (xs.length > 8 ? ` | ... (${xs.length})` : "");
@@ -184,6 +195,26 @@ try {
     check(`S1 ${theme} no colour literal outside the palette in the output`, converted.length === 0, list(converted.map((d) => `${d.prop}: ${d.value}`)));
   }
   console.log(`token counts: ${JSON.stringify(tokenCounts)}`);
+
+  // ---------- S7: opaque surfaces = Inkdrop's measured Computed Style (V-20, research/11 §14.4) ----------
+  // The palette is checked against Inkdrop's declarations (S1); this ties the resolved colours of the
+  // surfaces Q-D1 maps to what Inkdrop 6.1.5 actually painted (research/evidence/phase2-p0/measurements).
+  const MEASURED = {
+    "--ink-sidebar-background": "sidebar",
+    "--ink-note-list-bar-background": "note-list",
+    "--ink-editor-background": "editor-layout",
+    "--ink-editor-background-color": "cm-editor",
+  };
+  for (const [theme, short] of [["solarized-dark", "sd"], ["kanagawa-dragon", "kd"]]) {
+    const measured = JSON.parse(readFileSync(path.join(root, `research/evidence/phase2-p0/measurements/inkdrop-${short}-1-default.json`), "utf8"));
+    const defs = new Map(declarations(readFileSync(path.join(root, "src/palette", `${theme}.css`), "utf8")).map((d) => [d.prop, d.value]));
+    for (const [token, region] of Object.entries(MEASURED)) {
+      const m = measured[region];
+      const ours = hslToRgb(substitute(`var(${token})`, defs));
+      const theirs = parseComputedColor(m?.found ? m.backgroundColor : null);
+      check(`S7 ${theme} ${token} = Inkdrop ${region} background (${m?.backgroundColor ?? "missing"})`, sameColor(ours, theirs), ours ? `rgba(${ours.rgb.map((x) => x.toFixed(1))}, ${ours.a})` : "unresolved");
+    }
+  }
 
   // ---------- S3: references ----------
   const obsidianVars = new Set(readCsv(path.join(root, "research/data/obsidian-css-variables-1.14.4.csv")).map((r) => r.variable));
