@@ -42,7 +42,9 @@ in front of the `start` command above. The copy gets registered with LaunchServi
 Native screenshots under the V-04 / V-32 conditions (macOS, screen-recording permission already granted):
 `bash tests/visual/capture-obsidian.sh <theme> <translucent|opaque> <gray|pattern> <active|inactive> <vault> <out> <tmp>`,
 then `python3 -I tests/visual/sample-regions.py --config tests/visual/configs/step4-*.json ...`
-(research/evidence/phase3-step4/README.md).
+(research/evidence/phase3-step4/README.md). The top-left corner under the window buttons:
+`python3 -I tests/visual/sample-regions.py --config tests/visual/configs/top-left-corner.json --out <csv> <png> ...`
+(research/evidence/phase3-corner/README.md).
 
 | Path | Contents |
 |---|---|

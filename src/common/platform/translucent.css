@@ -48,6 +48,14 @@
   background-color: var(--ink-note-list-bar-background-acrylic) !important;
 }
 
+/* Corner above the ribbon, under the window buttons on macOS (Hidden frame): app.css paints
+   .workspace-ribbon.mod-primary::before (44 x --header-height) with --titlebar-background, i.e. the note list
+   like the tab strip next to it (mapping/workspace.css), and forces it to transparent !important while
+   translucent (0,4,1). Same specificity, loaded later, so !important is enough. */
+.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary::before {
+  background-color: var(--ink-note-list-bar-background-acrylic) !important;
+}
+
 /* Ribbon: sidebar (Q-D1). app.css forces .is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary
    (0,4,0) to transparent !important; same specificity, loaded later, so !important is enough. */
 .is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary {

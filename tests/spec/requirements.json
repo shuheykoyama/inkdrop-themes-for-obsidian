@@ -94,6 +94,15 @@
       "mandatory": false
     },
     {
+      "id": "qd1.ribbon-corner",
+      "qd": "Q-D1",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true,
+      "description": "Hidden frame (macOS): the corner above the ribbon, under the window buttons (.workspace-ribbon.mod-primary::before), shows the title-bar colour (note list), continuous with the left dock's tab strip"
+    },
+    {
       "id": "qd1.titlebar-visible-frame",
       "qd": "Q-D1",
       "description": "Title bar = Inkdrop note list background where a frame style displays it",
@@ -184,6 +193,15 @@
         "desktop"
       ],
       "mandatory": true
+    },
+    {
+      "id": "qd22.ribbon-corner-acrylic",
+      "qd": "Q-D22",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true,
+      "description": "Translucent: the corner above the ribbon = Inkdrop note list acrylic, continuous with the tab strip (app.css forces it transparent); checked in Computed Style and in native captures (tests/visual/configs/top-left-corner.json)"
     },
     {
       "id": "qd22.dock-acrylic",

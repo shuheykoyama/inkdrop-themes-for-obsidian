@@ -1,0 +1,15 @@
+image,region,"rect_points(x,y,w,h)",mean_r,mean_g,mean_b,sd_r,sd_g,sd_b,dE76_vs_inkdrop_v32,dE2000_vs_inkdrop_v32
+obsidian-kanagawa-dragon-translucent-gray-active.png,ribbon,"6,280,32,360",37.0,37.0,36.0,0.0,0.0,0.0,3.75,2.48
+obsidian-kanagawa-dragon-translucent-gray-active.png,left-tabstrip,"180,6,80,28",35.0,33.0,32.0,0.0,0.0,0.0,2.61,1.86
+obsidian-kanagawa-dragon-translucent-gray-active.png,left-dock,"60,200,220,420",35.0,33.0,32.0,0.0,0.0,0.0,2.61,1.86
+obsidian-kanagawa-dragon-translucent-gray-active.png,vault-profile,"130,668,110,18",35.0,33.0,32.0,0.0,0.0,0.0,2.61,1.86
+obsidian-kanagawa-dragon-translucent-gray-active.png,root-tabstrip,"560,6,330,28",36.3,34.3,33.0,11.07,10.71,8.08,3.25,2.3
+obsidian-kanagawa-dragon-translucent-gray-active.png,editor,"850,260,80,390",33.0,32.0,30.0,0.0,0.0,0.0,0.79,0.5
+obsidian-kanagawa-dragon-translucent-gray-active.png,right-dock,"960,240,220,400",35.0,33.0,32.0,0.0,0.0,0.0,2.61,1.86
+obsidian-solarized-dark-translucent-gray-active.png,ribbon,"6,280,32,360",30.0,52.0,56.0,0.0,0.0,0.0,3.76,2.61
+obsidian-solarized-dark-translucent-gray-active.png,left-tabstrip,"180,6,80,28",18.0,40.0,45.0,0.0,0.0,0.0,2.02,1.31
+obsidian-solarized-dark-translucent-gray-active.png,left-dock,"60,200,220,420",18.0,40.0,45.0,0.0,0.0,0.0,2.02,1.31
+obsidian-solarized-dark-translucent-gray-active.png,vault-profile,"130,668,110,18",18.0,40.0,45.0,0.0,0.0,0.0,2.02,1.31
+obsidian-solarized-dark-translucent-gray-active.png,root-tabstrip,"560,6,330,28",19.6,41.4,46.3,13.55,11.93,10.57,2.69,1.75
+obsidian-solarized-dark-translucent-gray-active.png,editor,"850,260,80,390",7.0,35.0,43.0,0.0,0.0,0.0,0.82,0.52
+obsidian-solarized-dark-translucent-gray-active.png,right-dock,"960,240,220,400",18.0,40.0,45.0,0.0,0.0,0.0,2.02,1.31

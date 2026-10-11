@@ -974,3 +974,58 @@ APPROVE（`52434a5`）。工程 5 に進む指示を受けた。
 ### 6.9 次の作業
 
 工程 5 のレビューを待つ。工程 6 には、レビューの後に進む。
+
+### 6.10 工程 5 のレビュー前の指摘: translucent 時のウィンドウ左上隅（2026-10-12）
+
+指摘: SD で translucent を有効にすると、ウィンドウ左上の一部だけが意図した色にならない（KD では見た目上目立たない）。V-38 の比較は左上隅をサンプリングしておらず、工程 5 ではネイティブの撮影をしていなかった。
+
+**再現と位置**（隔離した Obsidian、Hidden frame、灰色の背景、アクティブ。証拠: `evidence/phase3-corner/`）
+
+- 再現できた。位置はウィンドウの左上、幅 44 pt（`--ribbon-width`）× 高さ 40 pt（`--header-height`）の矩形で、macOS のウィンドウ操作ボタンの下地にあたる。Ribbon の上、左ドックのタブ帯の左。
+- DOM: `.workspace-ribbon.mod-primary::before`。Ribbon 本体は `margin-top: var(--header-height)` で y = 40 から始まり、その上の角を app.css が `::before`（`position: absolute; top: 0; height: var(--header-height); width: var(--ribbon-width)`）で塗る（app.css 1.14.4 の「Add background to top corner space above ribbon」）。`elementsFromPoint` は (10, 10) で Ribbon を返すが、Ribbon の矩形は y = 40 から始まり、描いているのは疑似要素である。
+- Computed Style: 不透明時は `--titlebar-background`（このテーマではノートリストの色、§6.3）で、タブ帯と同じ色。translucent 時は app.css が `.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary:before { background-color: transparent !important }`（L6579–6591）とし、工程 4 ではこの疑似要素を上書きしていなかったため `rgba(0, 0, 0, 0)` だった。下には `.app-container` の `--workspace-background-translucent`（Inkdrop の acrylic のページ背景 = `transparent`）しかないため、ウィンドウの素材がそのまま見えていた。
+- 描画の画素（2 倍の画面、角の下部の平坦な領域とタブ帯の同じ行）:
+
+| 撮影 | 角 | タブ帯 | ΔE2000 |
+|---|---|---|---|
+| SD translucent（修正前、39.5.1） | (61, 61, 60) | (18, 41, 46) | 12.34 |
+| KD translucent（修正前、39.5.1） | (61, 61, 60) | (35, 33, 33) | 8.95 |
+| SD / KD 不透明（修正前） | タブ帯と同じ | — | 0.00 |
+| 両テーマ translucent（修正後、両 Electron） | タブ帯と同じ | — | 0.00 |
+
+**SD だけで目立つ理由**: 同じ CSS 構造の問題が両テーマにある（どちらも角は素材の灰色 (61, 61, 60)）。KD の acrylic のタブ帯 (35, 33, 33) はほぼ無彩色で、角との差は明るさだけ（ΔE2000 9.0）。SD のタブ帯 (18, 41, 46) は青緑で、無彩色の灰色の角とは色相も違う（12.3）ため、色の違いとして目立つ。KD も閾値 1.0 を大きく超えており、同じく不具合である。
+
+**どの面に対応させるか（判断）**: ノートリスト（タブ帯と同じ）の acrylic にした。理由: (1) 不透明時は工程 3 で承認された対応（タイトルバー = ノートリスト、Q-D1）によりすでにタブ帯と同じ色で、translucent でも同じ対応を保つのが Q-D22 の方針（各面が不透明時と同じ Inkdrop の面の acrylic を使う）に合う。(2) 角は下端の境界線で Ribbon と区切られ、タブ帯と同じ行にあるので、タブ帯と続いて見える。代案は Ribbon と同じサイドバーの acrylic（Inkdrop ではウィンドウ操作ボタンがサイドバーの上にあるため）だが、不透明時の対応も変えることになり、タブ帯との間に段差ができるため採らなかった。
+
+**修正**（`src/common/platform/translucent.css`）
+
+```css
+.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary::before {
+  background-color: var(--ink-note-list-bar-background-acrylic) !important;
+}
+```
+
+- app.css の規則と同じ詳細度 (0,4,1) で、後から読み込む。`!important` は app.css の `!important` に勝つために必要で、許可リスト（`tests/static/lint-allowlist.json`）に上書き対象の規則と理由を登録した（公式 lint の warning が 4 件になった）。
+- `.is-translucent:not(.is-fullscreen)` の下にあり、フルスクリーンと不透明時には効かない。親要素は塗っていない。
+
+**回帰テストの追加**
+
+- 実行時テスト: 検査に `pseudo`（`::before` / `::after`）を指定できるようにした（S6 が値を検査）。追加した検査: 角が不透明時はノートリストの色（`qd1.ribbon-corner`）、translucent 時はノートリストの acrylic（`qd22.ribbon-corner-acrylic`）、`is-fullscreen` の translucent では不透明の色。修正前のビルド（Electron 43.7.7）で translucent の 2 件が FAIL することを確かめた（`runtime/runtime-prefix-build-electron-43.7.7.json`）。
+- ランナーの陰性テスト: 疑似要素を間違ったトークンで測ると FAIL、疑似要素を指定しないと Ribbon 本体（サイドバーの色）を測って FAIL になること。
+- ネイティブの撮影: `tests/visual/configs/top-left-corner.json`。角の下部とタブ帯の同じ行の平坦な領域を比べ、ΔE2000 1.0 を超えたら FAIL（テーマ・外観によらない、同じ撮影の中での連続性）。修正前の撮影では両テーマの translucent が FAIL、修正後はすべて 0.00。
+
+**結果**
+
+| テスト | Electron 39.5.1 | Electron 43.7.7 |
+|---|---|---|
+| 実行時テスト | 553 件 PASS（うち 76 件 PASS（EMULATED）） | 553 件 PASS（同） |
+| ランナーの陰性テスト | 229 件すべて宣言どおり | 同 |
+| 左上隅の画素比較（両テーマ × 不透明・translucent、アクティブ） | 修正前: translucent が FAIL（SD 12.34、KD 8.95）。修正後: すべて 0.00 | 修正前: SD 11.71、KD 7.96 で FAIL。修正後: すべて 0.00 |
+| 工程 4 の 14 領域（Ribbon・左右ドック・Vault 名の領域・タブ帯・エディタ）の修正前後の差 | 各チャンネル 2.0 以内 | 1.7 以内 |
+
+- 工程 4 の 14 領域の差は撮影ごとのばらつきの範囲（CSS を変えていない不透明時の撮影でも 1.7 の差がある）で、Ribbon・タブ帯・左右ドックへの副作用はない。ウィンドウ操作ボタンは修正前後とも同じように表示されている（目視）。
+- Q-D1・Q-D22 の検査はすべて再実行して PASS。静的テストすべて PASS、静的テストの陰性テスト 46 件すべて期待どおり（疑似要素の名前の誤り 1 件を追加）。
+
+**見逃した理由と再発防止**: 工程 4 の撮影の測定領域は各面の中央の平坦な部分だけで、角を含まなかった。また実行時テストは疑似要素を測れず、app.css の強制透明の一覧（L6579–6591）のうち `::before` を対応表から漏らしていた。一覧の残り（`.sidebar-toggle-button`、`.workspace-tabs`、`.workspace-split`、`.workspace-tabs .workspace-leaf`）は、上に塗った面（タブ帯・`.workspace-leaf-content`）に覆われるか、塗りが要らない要素であることを今回の撮影で確かめた（左上の 420 × 120 pt を目視）。
+
+**未検証**: 非アクティブのウィンドウ、柄の背景、右から左への言語（`.mod-rtl`）、Ribbon を非表示にした場合（`--ribbon-width: 0`）は撮っていない。

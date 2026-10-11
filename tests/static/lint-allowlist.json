@@ -27,6 +27,15 @@
       "overrides": "app.css 1.14.4 L6579-6591: .is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile { background-color: transparent !important }",
       "reason": "While translucent, app.css forces the vault profile at the bottom of the left dock transparent with !important; Q-D1/Q-D22 need the note-list acrylic colour there, as on the dock above it. Found in the step-4 native captures.",
       "refs": "research/14 §6.4"
+    },
+    {
+      "rule": "declaration-no-important",
+      "theme": "*",
+      "selector": ".is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary::before",
+      "property": "background-color",
+      "overrides": "app.css 1.14.4 L6579-6591: .is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary:before { background-color: transparent !important }",
+      "reason": "While translucent, app.css forces the corner above the ribbon (under the macOS window buttons) transparent with !important; opaque it shows --titlebar-background (note list), so the note-list acrylic colour keeps it continuous with the tab strip. Missed in step 4, found in a native capture of the top-left corner.",
+      "refs": "research/14 §6.10"
     }
   ]
 }

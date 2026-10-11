@@ -1,0 +1,12 @@
+{
+  "_comment": "Top-left corner regression (research/14 §6.10): on macOS with the Hidden frame, the corner above the ribbon and under the window buttons (.workspace-ribbon.mod-primary::before, 44 x 40 pt) must show the same colour as the left dock's tab strip next to it (both the note list: --titlebar-background opaque, the note-list acrylic while translucent). Regions are background-only rectangles in window points of tests/visual/capture-obsidian.sh captures: corner-low is between the window buttons and the corner's bottom border, tabstrip-low the same rows of the tab strip between its icons and the sidebar toggle. No Inkdrop reference: the check is continuity within one capture, any theme, opaque or translucent.",
+  "window_width_points": 1200,
+  "max_sd": 1.0,
+  "regions": {
+    "corner-low": [6, 30, 32, 7],
+    "tabstrip-low": [180, 30, 80, 7]
+  },
+  "pairs": [
+    { "a": "corner-low", "b": "tabstrip-low", "max_de2000": 1.0 }
+  ]
+}

@@ -384,6 +384,41 @@
       "state": "menu-open",
       "token": "--ink-editor-background",
       "selfTest": "FAIL"
+    },
+    {
+      "id": "self.pseudo-wrong-token",
+      "selector": ".workspace-ribbon.mod-primary",
+      "pseudo": "::before",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-sidebar-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.pseudo-ignored",
+      "selector": ".workspace-ribbon.mod-primary",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-note-list-bar-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.pseudo-corner-translucent",
+      "selector": ".workspace-ribbon.mod-primary",
+      "pseudo": "::before",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "token": "--ink-note-list-bar-background-acrylic",
+      "selfTest": "PASS"
     }
   ]
 }

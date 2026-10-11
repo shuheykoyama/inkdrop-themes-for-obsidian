@@ -135,6 +135,43 @@
       "reason": "Hidden frame (the macOS default) does not display .titlebar (research/11 §7); its colour shows through the top tab strips, checked above"
     },
     {
+      "id": "desktop.ribbon-corner.background",
+      "requirement": "qd1.ribbon-corner",
+      "selector": ".workspace-ribbon.mod-primary",
+      "pseudo": "::before",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-note-list-bar-background"
+    },
+    {
+      "id": "translucent.ribbon-corner.background",
+      "requirement": "qd22.ribbon-corner-acrylic",
+      "selector": ".workspace-ribbon.mod-primary",
+      "pseudo": "::before",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "token": "--ink-note-list-bar-background-acrylic"
+    },
+    {
+      "id": "translucent.ribbon-corner.fullscreen",
+      "requirement": "qd22.not-in-fullscreen",
+      "selector": ".workspace-ribbon.mod-primary",
+      "pseudo": "::before",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "state": "fullscreen-class",
+      "token": "--ink-note-list-bar-background"
+    },
+    {
       "id": "desktop.settings-modal.background",
       "requirement": "ui.settings-modal",
       "selector": ".modal.mod-settings",
