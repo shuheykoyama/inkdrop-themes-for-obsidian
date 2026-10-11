@@ -1,0 +1,18 @@
+/* Mobile layer (shared). Mobile uses drawers instead of .workspace-split (research/11 §8, §10).
+   Checked only with app.emulateMobile(true) on desktop; not verified on iOS / Android devices. */
+
+/* Left / right drawers and their headers paint --mobile-sidebar-background. */
+.is-mobile .workspace-drawer {
+  --mobile-sidebar-background: var(--ink-note-list-bar-background);
+}
+
+/* Tablets: app.css sets .is-tablet.theme-dark { --titlebar-background: var(--background-primary) }. */
+.is-tablet.theme-dark {
+  --titlebar-background: var(--ink-note-list-bar-background);
+  --titlebar-background-focused: var(--ink-note-list-bar-background);
+}
+
+/* Floating navigation bar (.mod-raised paints var(--raised-background)). */
+.is-mobile .mobile-navbar {
+  --raised-background: var(--ink-note-list-bar-background);
+}

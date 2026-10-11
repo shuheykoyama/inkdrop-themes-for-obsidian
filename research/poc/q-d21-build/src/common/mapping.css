@@ -1,0 +1,25 @@
+/* Mapping layer (shared by both themes): Obsidian variables <- Inkdrop surface tokens (--ink-*).
+   Background mapping decided for the project: ribbon = sidebar; docks, tab strips, status bar,
+   title bar = note list; centre editor, view header, active tab = editor.
+   Accent: Inkdrop primary by default. Obsidian injects the user's accent setting as an inline style
+   on body, which wins over this stylesheet. Fonts are not set (user settings stay in effect). */
+.theme-dark {
+  --accent-h: var(--ink-accent-h);
+  --accent-s: var(--ink-accent-s);
+  --accent-l: var(--ink-accent-l);
+
+  --background-primary: var(--ink-editor-background);
+  --background-secondary: var(--ink-note-list-bar-background);
+  --ribbon-background: var(--ink-sidebar-background);
+  --ribbon-background-collapsed: var(--ink-sidebar-background);
+  --titlebar-background: var(--ink-note-list-bar-background);
+  --titlebar-background-focused: var(--ink-note-list-bar-background);
+  --tab-container-background: var(--ink-note-list-bar-background);
+  --tab-background-active: var(--ink-editor-background);
+  --file-header-background: var(--ink-editor-background);
+  --file-header-background-focused: var(--ink-editor-background);
+  --status-bar-background: var(--ink-note-list-bar-background);
+
+  --text-normal: var(--ink-text-color);
+  --nav-item-background-active: var(--ink-note-list-view-item-selected-background);
+}

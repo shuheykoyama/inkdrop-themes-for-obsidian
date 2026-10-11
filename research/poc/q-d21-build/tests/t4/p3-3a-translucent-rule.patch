@@ -1,0 +1,11 @@
+--- a/p3-sass/scss/common/_translucent.scss
++++ b/p3-sass/scss/common/_translucent.scss
+@@ -9,7 +9,7 @@
+ .theme-dark#{$on} {
+   /* Inkdrop acrylic has --page-background: transparent; Obsidian tints .app-container with this. */
+   --workspace-background-translucent: transparent;
+-  --status-bar-background: var(--ink-note-list-bar-background-acrylic);
++  --status-bar-background: var(--ink-editor-background-acrylic);
+ }
+ 
+ #{$on} {

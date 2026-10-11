@@ -1,0 +1,6 @@
+/* Theme entry: solarized-dark (PoC, Q-D21, P3 Sass). Modules are emitted in @use order. */
+@use "../palette/solarized-dark";
+@use "../common/mapping";
+@use "../common/components";
+@use "../common/translucent";
+@use "../common/mobile";

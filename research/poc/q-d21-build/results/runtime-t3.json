@@ -1,0 +1,1634 @@
+{
+ "measuredAt": "2026-10-10T23:57:55.423Z",
+ "results": [
+  {
+   "name": "T3 p1 solarized-dark opaque: body has no is-translucent",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p1 solarized-dark opaque ribbon = --ink-sidebar-background",
+   "ok": true,
+   "detail": "rgb(7, 53, 65)"
+  },
+  {
+   "name": "T3 p1 solarized-dark opaque left tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p1 solarized-dark opaque left leaf = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p1 solarized-dark opaque right tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p1 solarized-dark opaque right leaf = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p1 solarized-dark opaque centre tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p1 solarized-dark opaque centre active tab = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p1 solarized-dark opaque view header = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p1 solarized-dark opaque centre editor = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p1 solarized-dark opaque status bar = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p1 solarized-dark opaque accent-h = 205",
+   "ok": true,
+   "detail": "205"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent: body has is-translucent",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent app-container = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent ribbon = --ink-sidebar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 45, 56, 0.5)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent left tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent left leaf = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent left leaf-content = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent right tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent right leaf = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent right leaf-content = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent centre tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent centre active tab = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.9)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent centre leaf-content = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent view header = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.9)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent centre editor = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.9)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent status bar = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent: body --background-primary unchanged",
+   "ok": true,
+   "detail": "hsl(192deg 100% 8%)"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent: settings modal unchanged",
+   "ok": true,
+   "detail": "null / null"
+  },
+  {
+   "name": "T3 p1 solarized-dark translucent -> opaque restores every region",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p1 solarized-dark user accent overrides theme accent",
+   "ok": true,
+   "detail": "set 355"
+  },
+  {
+   "name": "T3 p1 solarized-dark accent reset returns to theme accent",
+   "ok": true,
+   "detail": "reset 205"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon opaque: body has no is-translucent",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon opaque ribbon = --ink-sidebar-background",
+   "ok": true,
+   "detail": "rgb(17, 17, 14)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon opaque left tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon opaque left leaf = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon opaque right tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon opaque right leaf = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon opaque centre tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon opaque centre active tab = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon opaque view header = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon opaque centre editor = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon opaque status bar = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon opaque accent-h = 199",
+   "ok": true,
+   "detail": "199"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent: body has is-translucent",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent app-container = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent ribbon = --ink-sidebar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(17, 17, 14, 0.5)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent left tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent left leaf = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent left leaf-content = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent right tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent right leaf = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent right leaf-content = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent centre tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent centre active tab = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(30, 29, 26, 0.9)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent centre leaf-content = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent view header = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(30, 29, 26, 0.9)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent centre editor = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(30, 29, 26, 0.9)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent status bar = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent: body --background-primary unchanged",
+   "ok": true,
+   "detail": "hsl(45deg 7% 11%)"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent: settings modal unchanged",
+   "ok": true,
+   "detail": "null / null"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon translucent -> opaque restores every region",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon user accent overrides theme accent",
+   "ok": true,
+   "detail": "set 355"
+  },
+  {
+   "name": "T3 p1 kanagawa-dragon accent reset returns to theme accent",
+   "ok": true,
+   "detail": "reset 199"
+  },
+  {
+   "name": "T3 p2 solarized-dark opaque: body has no is-translucent",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p2 solarized-dark opaque ribbon = --ink-sidebar-background",
+   "ok": true,
+   "detail": "rgb(7, 53, 65)"
+  },
+  {
+   "name": "T3 p2 solarized-dark opaque left tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p2 solarized-dark opaque left leaf = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p2 solarized-dark opaque right tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p2 solarized-dark opaque right leaf = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p2 solarized-dark opaque centre tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p2 solarized-dark opaque centre active tab = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p2 solarized-dark opaque view header = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p2 solarized-dark opaque centre editor = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p2 solarized-dark opaque status bar = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p2 solarized-dark opaque accent-h = 205",
+   "ok": true,
+   "detail": "205"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent: body has is-translucent",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent app-container = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent ribbon = --ink-sidebar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 45, 56, 0.5)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent left tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent left leaf = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent left leaf-content = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent right tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent right leaf = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent right leaf-content = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent centre tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent centre active tab = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.9)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent centre leaf-content = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent view header = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.9)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent centre editor = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.9)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent status bar = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent: body --background-primary unchanged",
+   "ok": true,
+   "detail": "hsl(192deg 100% 8%)"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent: settings modal unchanged",
+   "ok": true,
+   "detail": "null / null"
+  },
+  {
+   "name": "T3 p2 solarized-dark translucent -> opaque restores every region",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p2 solarized-dark user accent overrides theme accent",
+   "ok": true,
+   "detail": "set 355"
+  },
+  {
+   "name": "T3 p2 solarized-dark accent reset returns to theme accent",
+   "ok": true,
+   "detail": "reset 205"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon opaque: body has no is-translucent",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon opaque ribbon = --ink-sidebar-background",
+   "ok": true,
+   "detail": "rgb(17, 17, 14)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon opaque left tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon opaque left leaf = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon opaque right tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon opaque right leaf = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon opaque centre tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon opaque centre active tab = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon opaque view header = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon opaque centre editor = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon opaque status bar = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon opaque accent-h = 199",
+   "ok": true,
+   "detail": "199"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent: body has is-translucent",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent app-container = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent ribbon = --ink-sidebar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(17, 17, 14, 0.5)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent left tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent left leaf = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent left leaf-content = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent right tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent right leaf = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent right leaf-content = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent centre tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent centre active tab = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(30, 29, 26, 0.9)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent centre leaf-content = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent view header = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(30, 29, 26, 0.9)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent centre editor = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(30, 29, 26, 0.9)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent status bar = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent: body --background-primary unchanged",
+   "ok": true,
+   "detail": "hsl(45deg 7% 11%)"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent: settings modal unchanged",
+   "ok": true,
+   "detail": "null / null"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon translucent -> opaque restores every region",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon user accent overrides theme accent",
+   "ok": true,
+   "detail": "set 355"
+  },
+  {
+   "name": "T3 p2 kanagawa-dragon accent reset returns to theme accent",
+   "ok": true,
+   "detail": "reset 199"
+  },
+  {
+   "name": "T3 p3 solarized-dark opaque: body has no is-translucent",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p3 solarized-dark opaque ribbon = --ink-sidebar-background",
+   "ok": true,
+   "detail": "rgb(7, 53, 65)"
+  },
+  {
+   "name": "T3 p3 solarized-dark opaque left tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p3 solarized-dark opaque left leaf = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p3 solarized-dark opaque right tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p3 solarized-dark opaque right leaf = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p3 solarized-dark opaque centre tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p3 solarized-dark opaque centre active tab = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p3 solarized-dark opaque view header = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p3 solarized-dark opaque centre editor = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(0, 33, 41)"
+  },
+  {
+   "name": "T3 p3 solarized-dark opaque status bar = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 p3 solarized-dark opaque accent-h = 205",
+   "ok": true,
+   "detail": "205"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent: body has is-translucent",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent app-container = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent ribbon = --ink-sidebar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 45, 56, 0.5)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent left tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent left leaf = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent left leaf-content = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent right tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent right leaf = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent right leaf-content = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent centre tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent centre active tab = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.9)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent centre leaf-content = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent view header = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.9)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent centre editor = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.9)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent status bar = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent: body --background-primary unchanged",
+   "ok": true,
+   "detail": "hsl(192deg 100% 8%)"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent: settings modal unchanged",
+   "ok": true,
+   "detail": "null / null"
+  },
+  {
+   "name": "T3 p3 solarized-dark translucent -> opaque restores every region",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p3 solarized-dark user accent overrides theme accent",
+   "ok": true,
+   "detail": "set 355"
+  },
+  {
+   "name": "T3 p3 solarized-dark accent reset returns to theme accent",
+   "ok": true,
+   "detail": "reset 205"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon opaque: body has no is-translucent",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon opaque ribbon = --ink-sidebar-background",
+   "ok": true,
+   "detail": "rgb(17, 17, 14)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon opaque left tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon opaque left leaf = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon opaque right tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon opaque right leaf = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon opaque centre tab strip = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon opaque centre active tab = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon opaque view header = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon opaque centre editor = --ink-editor-background",
+   "ok": true,
+   "detail": "rgb(30, 29, 26)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon opaque status bar = --ink-note-list-bar-background",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon opaque accent-h = 199",
+   "ok": true,
+   "detail": "199"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent: body has is-translucent",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent app-container = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent ribbon = --ink-sidebar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(17, 17, 14, 0.5)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent left tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent left leaf = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent left leaf-content = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent right tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent right leaf = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent right leaf-content = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent centre tab strip = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent centre active tab = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(30, 29, 26, 0.9)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent centre leaf-content = transparent",
+   "ok": true,
+   "detail": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent view header = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(30, 29, 26, 0.9)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent centre editor = --ink-editor-background-acrylic",
+   "ok": true,
+   "detail": "rgba(30, 29, 26, 0.9)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent status bar = --ink-note-list-bar-background-acrylic",
+   "ok": true,
+   "detail": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent: body --background-primary unchanged",
+   "ok": true,
+   "detail": "hsl(45deg 7% 11%)"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent: settings modal unchanged",
+   "ok": true,
+   "detail": "null / null"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon translucent -> opaque restores every region",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon user accent overrides theme accent",
+   "ok": true,
+   "detail": "set 355"
+  },
+  {
+   "name": "T3 p3 kanagawa-dragon accent reset returns to theme accent",
+   "ok": true,
+   "detail": "reset 199"
+  },
+  {
+   "name": "T3 mobile-emulation solarized-dark is-mobile",
+   "ok": true,
+   "detail": "tablet=true"
+  },
+  {
+   "name": "T3 mobile-emulation solarized-dark left drawer = note list",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 mobile-emulation solarized-dark right drawer = note list",
+   "ok": true,
+   "detail": "rgb(0, 45, 56)"
+  },
+  {
+   "name": "T3 mobile-emulation kanagawa-dragon is-mobile",
+   "ok": true,
+   "detail": "tablet=true"
+  },
+  {
+   "name": "T3 mobile-emulation kanagawa-dragon left drawer = note list",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  },
+  {
+   "name": "T3 mobile-emulation kanagawa-dragon right drawer = note list",
+   "ok": true,
+   "detail": "rgb(24, 22, 22)"
+  }
+ ],
+ "record": {
+  "p1 solarized-dark": {
+   "opaque1": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header"
+    ],
+    "accentH": "205",
+    "bodyBackgroundPrimary": "hsl(192deg 100% 8%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgb(7, 53, 65)",
+     "left tab strip": "rgb(0, 45, 56)",
+     "left leaf": "rgb(0, 45, 56)",
+     "left leaf-content": "rgba(0, 0, 0, 0)",
+     "right tab strip": "rgb(0, 45, 56)",
+     "right leaf": "rgb(0, 45, 56)",
+     "right leaf-content": "rgba(0, 0, 0, 0)",
+     "centre tab strip": "rgb(0, 45, 56)",
+     "centre active tab": "rgb(0, 33, 41)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgb(0, 33, 41)",
+     "centre editor": "rgb(0, 33, 41)",
+     "status bar": "rgb(0, 45, 56)",
+     "settings modal": null
+    }
+   },
+   "trans": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused",
+     "is-translucent"
+    ],
+    "accentH": "205",
+    "bodyBackgroundPrimary": "hsl(192deg 100% 8%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgba(0, 45, 56, 0.5)",
+     "left tab strip": "rgba(0, 33, 41, 0.7)",
+     "left leaf": "rgba(0, 0, 0, 0)",
+     "left leaf-content": "rgba(0, 33, 41, 0.7)",
+     "right tab strip": "rgba(0, 33, 41, 0.7)",
+     "right leaf": "rgba(0, 0, 0, 0)",
+     "right leaf-content": "rgba(0, 33, 41, 0.7)",
+     "centre tab strip": "rgba(0, 33, 41, 0.7)",
+     "centre active tab": "rgba(0, 33, 41, 0.9)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgba(0, 33, 41, 0.9)",
+     "centre editor": "rgba(0, 33, 41, 0.9)",
+     "status bar": "rgba(0, 33, 41, 0.7)",
+     "settings modal": null
+    }
+   },
+   "opaque2": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused"
+    ],
+    "accentH": "205",
+    "bodyBackgroundPrimary": "hsl(192deg 100% 8%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgb(7, 53, 65)",
+     "left tab strip": "rgb(0, 45, 56)",
+     "left leaf": "rgb(0, 45, 56)",
+     "left leaf-content": "rgba(0, 0, 0, 0)",
+     "right tab strip": "rgb(0, 45, 56)",
+     "right leaf": "rgb(0, 45, 56)",
+     "right leaf-content": "rgba(0, 0, 0, 0)",
+     "centre tab strip": "rgb(0, 45, 56)",
+     "centre active tab": "rgb(0, 33, 41)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgb(0, 33, 41)",
+     "centre editor": "rgb(0, 33, 41)",
+     "status bar": "rgb(0, 45, 56)"
+    }
+   }
+  },
+  "p1 kanagawa-dragon": {
+   "opaque1": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused"
+    ],
+    "accentH": "199",
+    "bodyBackgroundPrimary": "hsl(45deg 7% 11%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgb(17, 17, 14)",
+     "left tab strip": "rgb(24, 22, 22)",
+     "left leaf": "rgb(24, 22, 22)",
+     "left leaf-content": "rgba(0, 0, 0, 0)",
+     "right tab strip": "rgb(24, 22, 22)",
+     "right leaf": "rgb(24, 22, 22)",
+     "right leaf-content": "rgba(0, 0, 0, 0)",
+     "centre tab strip": "rgb(24, 22, 22)",
+     "centre active tab": "rgb(30, 29, 26)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgb(30, 29, 26)",
+     "centre editor": "rgb(30, 29, 26)",
+     "status bar": "rgb(24, 22, 22)",
+     "settings modal": null
+    }
+   },
+   "trans": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused",
+     "is-translucent"
+    ],
+    "accentH": "199",
+    "bodyBackgroundPrimary": "hsl(45deg 7% 11%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgba(17, 17, 14, 0.5)",
+     "left tab strip": "rgba(24, 22, 22, 0.7)",
+     "left leaf": "rgba(0, 0, 0, 0)",
+     "left leaf-content": "rgba(24, 22, 22, 0.7)",
+     "right tab strip": "rgba(24, 22, 22, 0.7)",
+     "right leaf": "rgba(0, 0, 0, 0)",
+     "right leaf-content": "rgba(24, 22, 22, 0.7)",
+     "centre tab strip": "rgba(24, 22, 22, 0.7)",
+     "centre active tab": "rgba(30, 29, 26, 0.9)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgba(30, 29, 26, 0.9)",
+     "centre editor": "rgba(30, 29, 26, 0.9)",
+     "status bar": "rgba(24, 22, 22, 0.7)",
+     "settings modal": null
+    }
+   },
+   "opaque2": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused"
+    ],
+    "accentH": "199",
+    "bodyBackgroundPrimary": "hsl(45deg 7% 11%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgb(17, 17, 14)",
+     "left tab strip": "rgb(24, 22, 22)",
+     "left leaf": "rgb(24, 22, 22)",
+     "left leaf-content": "rgba(0, 0, 0, 0)",
+     "right tab strip": "rgb(24, 22, 22)",
+     "right leaf": "rgb(24, 22, 22)",
+     "right leaf-content": "rgba(0, 0, 0, 0)",
+     "centre tab strip": "rgb(24, 22, 22)",
+     "centre active tab": "rgb(30, 29, 26)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgb(30, 29, 26)",
+     "centre editor": "rgb(30, 29, 26)",
+     "status bar": "rgb(24, 22, 22)"
+    }
+   }
+  },
+  "p2 solarized-dark": {
+   "opaque1": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused"
+    ],
+    "accentH": "205",
+    "bodyBackgroundPrimary": "hsl(192deg 100% 8%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgb(7, 53, 65)",
+     "left tab strip": "rgb(0, 45, 56)",
+     "left leaf": "rgb(0, 45, 56)",
+     "left leaf-content": "rgba(0, 0, 0, 0)",
+     "right tab strip": "rgb(0, 45, 56)",
+     "right leaf": "rgb(0, 45, 56)",
+     "right leaf-content": "rgba(0, 0, 0, 0)",
+     "centre tab strip": "rgb(0, 45, 56)",
+     "centre active tab": "rgb(0, 33, 41)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgb(0, 33, 41)",
+     "centre editor": "rgb(0, 33, 41)",
+     "status bar": "rgb(0, 45, 56)",
+     "settings modal": null
+    }
+   },
+   "trans": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused",
+     "is-translucent"
+    ],
+    "accentH": "205",
+    "bodyBackgroundPrimary": "hsl(192deg 100% 8%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgba(0, 45, 56, 0.5)",
+     "left tab strip": "rgba(0, 33, 41, 0.7)",
+     "left leaf": "rgba(0, 0, 0, 0)",
+     "left leaf-content": "rgba(0, 33, 41, 0.7)",
+     "right tab strip": "rgba(0, 33, 41, 0.7)",
+     "right leaf": "rgba(0, 0, 0, 0)",
+     "right leaf-content": "rgba(0, 33, 41, 0.7)",
+     "centre tab strip": "rgba(0, 33, 41, 0.7)",
+     "centre active tab": "rgba(0, 33, 41, 0.9)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgba(0, 33, 41, 0.9)",
+     "centre editor": "rgba(0, 33, 41, 0.9)",
+     "status bar": "rgba(0, 33, 41, 0.7)",
+     "settings modal": null
+    }
+   },
+   "opaque2": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused"
+    ],
+    "accentH": "205",
+    "bodyBackgroundPrimary": "hsl(192deg 100% 8%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgb(7, 53, 65)",
+     "left tab strip": "rgb(0, 45, 56)",
+     "left leaf": "rgb(0, 45, 56)",
+     "left leaf-content": "rgba(0, 0, 0, 0)",
+     "right tab strip": "rgb(0, 45, 56)",
+     "right leaf": "rgb(0, 45, 56)",
+     "right leaf-content": "rgba(0, 0, 0, 0)",
+     "centre tab strip": "rgb(0, 45, 56)",
+     "centre active tab": "rgb(0, 33, 41)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgb(0, 33, 41)",
+     "centre editor": "rgb(0, 33, 41)",
+     "status bar": "rgb(0, 45, 56)"
+    }
+   }
+  },
+  "p2 kanagawa-dragon": {
+   "opaque1": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused"
+    ],
+    "accentH": "199",
+    "bodyBackgroundPrimary": "hsl(45deg 7% 11%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgb(17, 17, 14)",
+     "left tab strip": "rgb(24, 22, 22)",
+     "left leaf": "rgb(24, 22, 22)",
+     "left leaf-content": "rgba(0, 0, 0, 0)",
+     "right tab strip": "rgb(24, 22, 22)",
+     "right leaf": "rgb(24, 22, 22)",
+     "right leaf-content": "rgba(0, 0, 0, 0)",
+     "centre tab strip": "rgb(24, 22, 22)",
+     "centre active tab": "rgb(30, 29, 26)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgb(30, 29, 26)",
+     "centre editor": "rgb(30, 29, 26)",
+     "status bar": "rgb(24, 22, 22)",
+     "settings modal": null
+    }
+   },
+   "trans": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused",
+     "is-translucent"
+    ],
+    "accentH": "199",
+    "bodyBackgroundPrimary": "hsl(45deg 7% 11%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgba(17, 17, 14, 0.5)",
+     "left tab strip": "rgba(24, 22, 22, 0.7)",
+     "left leaf": "rgba(0, 0, 0, 0)",
+     "left leaf-content": "rgba(24, 22, 22, 0.7)",
+     "right tab strip": "rgba(24, 22, 22, 0.7)",
+     "right leaf": "rgba(0, 0, 0, 0)",
+     "right leaf-content": "rgba(24, 22, 22, 0.7)",
+     "centre tab strip": "rgba(24, 22, 22, 0.7)",
+     "centre active tab": "rgba(30, 29, 26, 0.9)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgba(30, 29, 26, 0.9)",
+     "centre editor": "rgba(30, 29, 26, 0.9)",
+     "status bar": "rgba(24, 22, 22, 0.7)",
+     "settings modal": null
+    }
+   },
+   "opaque2": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused"
+    ],
+    "accentH": "199",
+    "bodyBackgroundPrimary": "hsl(45deg 7% 11%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgb(17, 17, 14)",
+     "left tab strip": "rgb(24, 22, 22)",
+     "left leaf": "rgb(24, 22, 22)",
+     "left leaf-content": "rgba(0, 0, 0, 0)",
+     "right tab strip": "rgb(24, 22, 22)",
+     "right leaf": "rgb(24, 22, 22)",
+     "right leaf-content": "rgba(0, 0, 0, 0)",
+     "centre tab strip": "rgb(24, 22, 22)",
+     "centre active tab": "rgb(30, 29, 26)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgb(30, 29, 26)",
+     "centre editor": "rgb(30, 29, 26)",
+     "status bar": "rgb(24, 22, 22)"
+    }
+   }
+  },
+  "p3 solarized-dark": {
+   "opaque1": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused"
+    ],
+    "accentH": "205",
+    "bodyBackgroundPrimary": "hsl(192deg 100% 8%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgb(7, 53, 65)",
+     "left tab strip": "rgb(0, 45, 56)",
+     "left leaf": "rgb(0, 45, 56)",
+     "left leaf-content": "rgba(0, 0, 0, 0)",
+     "right tab strip": "rgb(0, 45, 56)",
+     "right leaf": "rgb(0, 45, 56)",
+     "right leaf-content": "rgba(0, 0, 0, 0)",
+     "centre tab strip": "rgb(0, 45, 56)",
+     "centre active tab": "rgb(0, 33, 41)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgb(0, 33, 41)",
+     "centre editor": "rgb(0, 33, 41)",
+     "status bar": "rgb(0, 45, 56)",
+     "settings modal": null
+    }
+   },
+   "trans": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused",
+     "is-translucent"
+    ],
+    "accentH": "205",
+    "bodyBackgroundPrimary": "hsl(192deg 100% 8%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgba(0, 45, 56, 0.5)",
+     "left tab strip": "rgba(0, 33, 41, 0.7)",
+     "left leaf": "rgba(0, 0, 0, 0)",
+     "left leaf-content": "rgba(0, 33, 41, 0.7)",
+     "right tab strip": "rgba(0, 33, 41, 0.7)",
+     "right leaf": "rgba(0, 0, 0, 0)",
+     "right leaf-content": "rgba(0, 33, 41, 0.7)",
+     "centre tab strip": "rgba(0, 33, 41, 0.7)",
+     "centre active tab": "rgba(0, 33, 41, 0.9)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgba(0, 33, 41, 0.9)",
+     "centre editor": "rgba(0, 33, 41, 0.9)",
+     "status bar": "rgba(0, 33, 41, 0.7)",
+     "settings modal": null
+    }
+   },
+   "opaque2": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused"
+    ],
+    "accentH": "205",
+    "bodyBackgroundPrimary": "hsl(192deg 100% 8%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgb(7, 53, 65)",
+     "left tab strip": "rgb(0, 45, 56)",
+     "left leaf": "rgb(0, 45, 56)",
+     "left leaf-content": "rgba(0, 0, 0, 0)",
+     "right tab strip": "rgb(0, 45, 56)",
+     "right leaf": "rgb(0, 45, 56)",
+     "right leaf-content": "rgba(0, 0, 0, 0)",
+     "centre tab strip": "rgb(0, 45, 56)",
+     "centre active tab": "rgb(0, 33, 41)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgb(0, 33, 41)",
+     "centre editor": "rgb(0, 33, 41)",
+     "status bar": "rgb(0, 45, 56)"
+    }
+   }
+  },
+  "p3 kanagawa-dragon": {
+   "opaque1": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused"
+    ],
+    "accentH": "199",
+    "bodyBackgroundPrimary": "hsl(45deg 7% 11%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgb(17, 17, 14)",
+     "left tab strip": "rgb(24, 22, 22)",
+     "left leaf": "rgb(24, 22, 22)",
+     "left leaf-content": "rgba(0, 0, 0, 0)",
+     "right tab strip": "rgb(24, 22, 22)",
+     "right leaf": "rgb(24, 22, 22)",
+     "right leaf-content": "rgba(0, 0, 0, 0)",
+     "centre tab strip": "rgb(24, 22, 22)",
+     "centre active tab": "rgb(30, 29, 26)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgb(30, 29, 26)",
+     "centre editor": "rgb(30, 29, 26)",
+     "status bar": "rgb(24, 22, 22)",
+     "settings modal": null
+    }
+   },
+   "trans": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused",
+     "is-translucent"
+    ],
+    "accentH": "199",
+    "bodyBackgroundPrimary": "hsl(45deg 7% 11%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgba(17, 17, 14, 0.5)",
+     "left tab strip": "rgba(24, 22, 22, 0.7)",
+     "left leaf": "rgba(0, 0, 0, 0)",
+     "left leaf-content": "rgba(24, 22, 22, 0.7)",
+     "right tab strip": "rgba(24, 22, 22, 0.7)",
+     "right leaf": "rgba(0, 0, 0, 0)",
+     "right leaf-content": "rgba(24, 22, 22, 0.7)",
+     "centre tab strip": "rgba(24, 22, 22, 0.7)",
+     "centre active tab": "rgba(30, 29, 26, 0.9)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgba(30, 29, 26, 0.9)",
+     "centre editor": "rgba(30, 29, 26, 0.9)",
+     "status bar": "rgba(24, 22, 22, 0.7)",
+     "settings modal": null
+    }
+   },
+   "opaque2": {
+    "bodyClasses": [
+     "theme-dark",
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-focused"
+    ],
+    "accentH": "199",
+    "bodyBackgroundPrimary": "hsl(45deg 7% 11%)",
+    "regions": {
+     "app-container": "rgba(0, 0, 0, 0)",
+     "ribbon": "rgb(17, 17, 14)",
+     "left tab strip": "rgb(24, 22, 22)",
+     "left leaf": "rgb(24, 22, 22)",
+     "left leaf-content": "rgba(0, 0, 0, 0)",
+     "right tab strip": "rgb(24, 22, 22)",
+     "right leaf": "rgb(24, 22, 22)",
+     "right leaf-content": "rgba(0, 0, 0, 0)",
+     "centre tab strip": "rgb(24, 22, 22)",
+     "centre active tab": "rgb(30, 29, 26)",
+     "centre leaf-content": "rgba(0, 0, 0, 0)",
+     "view header": "rgb(30, 29, 26)",
+     "centre editor": "rgb(30, 29, 26)",
+     "status bar": "rgb(24, 22, 22)"
+    }
+   }
+  },
+  "mobile solarized-dark": {
+   "isMobile": true,
+   "tablet": true,
+   "left": "rgb(0, 45, 56)",
+   "right": "rgb(0, 45, 56)",
+   "navbar": "rgb(0, 33, 41)"
+  },
+  "mobile kanagawa-dragon": {
+   "isMobile": true,
+   "tablet": true,
+   "left": "rgb(24, 22, 22)",
+   "right": "rgb(24, 22, 22)",
+   "navbar": "rgb(30, 29, 26)"
+  }
+ }
+}

@@ -1,0 +1,23 @@
+// Helpers that turn palette maps into custom properties (P3 only).
+@use "sass:list";
+@use "sass:map";
+@use "sass:string";
+
+// Each map entry is name: (declaration, "source file:line"). The declaration is a string and is
+// written out verbatim (interpolation, no colour parsing), followed by its source as a comment.
+@mixin custom-properties($map) {
+  @each $name, $entry in $map {
+    --#{$name}: #{list.nth($entry, 1)}; /* #{list.nth($entry, 2)} */
+  }
+}
+
+// Obsidian's accent is three separate variables and is used as calc(var(--accent-h) - 1), so the
+// hue must be unitless. Derive them from an HSL triplet such as "205deg 69% 49%" instead of
+// copying the numbers by hand.
+@mixin accent($primitives, $name) {
+  $parts: string.split(list.nth(map.get($primitives, $name), 1), " ");
+  $hue: list.nth($parts, 1);
+  --ink-accent-h: #{string.slice($hue, 1, -4)}; /* --#{$name} hue, unitless */
+  --ink-accent-s: #{list.nth($parts, 2)}; /* --#{$name} */
+  --ink-accent-l: #{list.nth($parts, 3)}; /* --#{$name} */
+}

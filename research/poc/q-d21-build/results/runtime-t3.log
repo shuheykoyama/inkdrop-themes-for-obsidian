@@ -1,0 +1,200 @@
+PASS T3 p1 solarized-dark opaque: body has no is-translucent
+PASS T3 p1 solarized-dark opaque ribbon = --ink-sidebar-background -- rgb(7, 53, 65)
+PASS T3 p1 solarized-dark opaque left tab strip = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p1 solarized-dark opaque left leaf = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p1 solarized-dark opaque right tab strip = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p1 solarized-dark opaque right leaf = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p1 solarized-dark opaque centre tab strip = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p1 solarized-dark opaque centre active tab = --ink-editor-background -- rgb(0, 33, 41)
+PASS T3 p1 solarized-dark opaque view header = --ink-editor-background -- rgb(0, 33, 41)
+PASS T3 p1 solarized-dark opaque centre editor = --ink-editor-background -- rgb(0, 33, 41)
+PASS T3 p1 solarized-dark opaque status bar = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p1 solarized-dark opaque accent-h = 205 -- 205
+PASS T3 p1 solarized-dark translucent: body has is-translucent
+PASS T3 p1 solarized-dark translucent app-container = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p1 solarized-dark translucent ribbon = --ink-sidebar-background-acrylic -- rgba(0, 45, 56, 0.5)
+PASS T3 p1 solarized-dark translucent left tab strip = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p1 solarized-dark translucent left leaf = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p1 solarized-dark translucent left leaf-content = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p1 solarized-dark translucent right tab strip = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p1 solarized-dark translucent right leaf = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p1 solarized-dark translucent right leaf-content = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p1 solarized-dark translucent centre tab strip = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p1 solarized-dark translucent centre active tab = --ink-editor-background-acrylic -- rgba(0, 33, 41, 0.9)
+PASS T3 p1 solarized-dark translucent centre leaf-content = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p1 solarized-dark translucent view header = --ink-editor-background-acrylic -- rgba(0, 33, 41, 0.9)
+PASS T3 p1 solarized-dark translucent centre editor = --ink-editor-background-acrylic -- rgba(0, 33, 41, 0.9)
+PASS T3 p1 solarized-dark translucent status bar = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p1 solarized-dark translucent: body --background-primary unchanged -- hsl(192deg 100% 8%)
+PASS T3 p1 solarized-dark translucent: settings modal unchanged -- null / null
+PASS T3 p1 solarized-dark translucent -> opaque restores every region
+PASS T3 p1 solarized-dark user accent overrides theme accent -- set 355
+PASS T3 p1 solarized-dark accent reset returns to theme accent -- reset 205
+PASS T3 p1 kanagawa-dragon opaque: body has no is-translucent
+PASS T3 p1 kanagawa-dragon opaque ribbon = --ink-sidebar-background -- rgb(17, 17, 14)
+PASS T3 p1 kanagawa-dragon opaque left tab strip = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p1 kanagawa-dragon opaque left leaf = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p1 kanagawa-dragon opaque right tab strip = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p1 kanagawa-dragon opaque right leaf = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p1 kanagawa-dragon opaque centre tab strip = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p1 kanagawa-dragon opaque centre active tab = --ink-editor-background -- rgb(30, 29, 26)
+PASS T3 p1 kanagawa-dragon opaque view header = --ink-editor-background -- rgb(30, 29, 26)
+PASS T3 p1 kanagawa-dragon opaque centre editor = --ink-editor-background -- rgb(30, 29, 26)
+PASS T3 p1 kanagawa-dragon opaque status bar = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p1 kanagawa-dragon opaque accent-h = 199 -- 199
+PASS T3 p1 kanagawa-dragon translucent: body has is-translucent
+PASS T3 p1 kanagawa-dragon translucent app-container = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p1 kanagawa-dragon translucent ribbon = --ink-sidebar-background-acrylic -- rgba(17, 17, 14, 0.5)
+PASS T3 p1 kanagawa-dragon translucent left tab strip = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p1 kanagawa-dragon translucent left leaf = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p1 kanagawa-dragon translucent left leaf-content = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p1 kanagawa-dragon translucent right tab strip = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p1 kanagawa-dragon translucent right leaf = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p1 kanagawa-dragon translucent right leaf-content = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p1 kanagawa-dragon translucent centre tab strip = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p1 kanagawa-dragon translucent centre active tab = --ink-editor-background-acrylic -- rgba(30, 29, 26, 0.9)
+PASS T3 p1 kanagawa-dragon translucent centre leaf-content = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p1 kanagawa-dragon translucent view header = --ink-editor-background-acrylic -- rgba(30, 29, 26, 0.9)
+PASS T3 p1 kanagawa-dragon translucent centre editor = --ink-editor-background-acrylic -- rgba(30, 29, 26, 0.9)
+PASS T3 p1 kanagawa-dragon translucent status bar = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p1 kanagawa-dragon translucent: body --background-primary unchanged -- hsl(45deg 7% 11%)
+PASS T3 p1 kanagawa-dragon translucent: settings modal unchanged -- null / null
+PASS T3 p1 kanagawa-dragon translucent -> opaque restores every region
+PASS T3 p1 kanagawa-dragon user accent overrides theme accent -- set 355
+PASS T3 p1 kanagawa-dragon accent reset returns to theme accent -- reset 199
+PASS T3 p2 solarized-dark opaque: body has no is-translucent
+PASS T3 p2 solarized-dark opaque ribbon = --ink-sidebar-background -- rgb(7, 53, 65)
+PASS T3 p2 solarized-dark opaque left tab strip = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p2 solarized-dark opaque left leaf = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p2 solarized-dark opaque right tab strip = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p2 solarized-dark opaque right leaf = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p2 solarized-dark opaque centre tab strip = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p2 solarized-dark opaque centre active tab = --ink-editor-background -- rgb(0, 33, 41)
+PASS T3 p2 solarized-dark opaque view header = --ink-editor-background -- rgb(0, 33, 41)
+PASS T3 p2 solarized-dark opaque centre editor = --ink-editor-background -- rgb(0, 33, 41)
+PASS T3 p2 solarized-dark opaque status bar = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p2 solarized-dark opaque accent-h = 205 -- 205
+PASS T3 p2 solarized-dark translucent: body has is-translucent
+PASS T3 p2 solarized-dark translucent app-container = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p2 solarized-dark translucent ribbon = --ink-sidebar-background-acrylic -- rgba(0, 45, 56, 0.5)
+PASS T3 p2 solarized-dark translucent left tab strip = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p2 solarized-dark translucent left leaf = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p2 solarized-dark translucent left leaf-content = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p2 solarized-dark translucent right tab strip = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p2 solarized-dark translucent right leaf = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p2 solarized-dark translucent right leaf-content = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p2 solarized-dark translucent centre tab strip = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p2 solarized-dark translucent centre active tab = --ink-editor-background-acrylic -- rgba(0, 33, 41, 0.9)
+PASS T3 p2 solarized-dark translucent centre leaf-content = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p2 solarized-dark translucent view header = --ink-editor-background-acrylic -- rgba(0, 33, 41, 0.9)
+PASS T3 p2 solarized-dark translucent centre editor = --ink-editor-background-acrylic -- rgba(0, 33, 41, 0.9)
+PASS T3 p2 solarized-dark translucent status bar = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p2 solarized-dark translucent: body --background-primary unchanged -- hsl(192deg 100% 8%)
+PASS T3 p2 solarized-dark translucent: settings modal unchanged -- null / null
+PASS T3 p2 solarized-dark translucent -> opaque restores every region
+PASS T3 p2 solarized-dark user accent overrides theme accent -- set 355
+PASS T3 p2 solarized-dark accent reset returns to theme accent -- reset 205
+PASS T3 p2 kanagawa-dragon opaque: body has no is-translucent
+PASS T3 p2 kanagawa-dragon opaque ribbon = --ink-sidebar-background -- rgb(17, 17, 14)
+PASS T3 p2 kanagawa-dragon opaque left tab strip = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p2 kanagawa-dragon opaque left leaf = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p2 kanagawa-dragon opaque right tab strip = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p2 kanagawa-dragon opaque right leaf = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p2 kanagawa-dragon opaque centre tab strip = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p2 kanagawa-dragon opaque centre active tab = --ink-editor-background -- rgb(30, 29, 26)
+PASS T3 p2 kanagawa-dragon opaque view header = --ink-editor-background -- rgb(30, 29, 26)
+PASS T3 p2 kanagawa-dragon opaque centre editor = --ink-editor-background -- rgb(30, 29, 26)
+PASS T3 p2 kanagawa-dragon opaque status bar = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p2 kanagawa-dragon opaque accent-h = 199 -- 199
+PASS T3 p2 kanagawa-dragon translucent: body has is-translucent
+PASS T3 p2 kanagawa-dragon translucent app-container = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p2 kanagawa-dragon translucent ribbon = --ink-sidebar-background-acrylic -- rgba(17, 17, 14, 0.5)
+PASS T3 p2 kanagawa-dragon translucent left tab strip = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p2 kanagawa-dragon translucent left leaf = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p2 kanagawa-dragon translucent left leaf-content = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p2 kanagawa-dragon translucent right tab strip = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p2 kanagawa-dragon translucent right leaf = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p2 kanagawa-dragon translucent right leaf-content = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p2 kanagawa-dragon translucent centre tab strip = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p2 kanagawa-dragon translucent centre active tab = --ink-editor-background-acrylic -- rgba(30, 29, 26, 0.9)
+PASS T3 p2 kanagawa-dragon translucent centre leaf-content = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p2 kanagawa-dragon translucent view header = --ink-editor-background-acrylic -- rgba(30, 29, 26, 0.9)
+PASS T3 p2 kanagawa-dragon translucent centre editor = --ink-editor-background-acrylic -- rgba(30, 29, 26, 0.9)
+PASS T3 p2 kanagawa-dragon translucent status bar = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p2 kanagawa-dragon translucent: body --background-primary unchanged -- hsl(45deg 7% 11%)
+PASS T3 p2 kanagawa-dragon translucent: settings modal unchanged -- null / null
+PASS T3 p2 kanagawa-dragon translucent -> opaque restores every region
+PASS T3 p2 kanagawa-dragon user accent overrides theme accent -- set 355
+PASS T3 p2 kanagawa-dragon accent reset returns to theme accent -- reset 199
+PASS T3 p3 solarized-dark opaque: body has no is-translucent
+PASS T3 p3 solarized-dark opaque ribbon = --ink-sidebar-background -- rgb(7, 53, 65)
+PASS T3 p3 solarized-dark opaque left tab strip = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p3 solarized-dark opaque left leaf = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p3 solarized-dark opaque right tab strip = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p3 solarized-dark opaque right leaf = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p3 solarized-dark opaque centre tab strip = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p3 solarized-dark opaque centre active tab = --ink-editor-background -- rgb(0, 33, 41)
+PASS T3 p3 solarized-dark opaque view header = --ink-editor-background -- rgb(0, 33, 41)
+PASS T3 p3 solarized-dark opaque centre editor = --ink-editor-background -- rgb(0, 33, 41)
+PASS T3 p3 solarized-dark opaque status bar = --ink-note-list-bar-background -- rgb(0, 45, 56)
+PASS T3 p3 solarized-dark opaque accent-h = 205 -- 205
+PASS T3 p3 solarized-dark translucent: body has is-translucent
+PASS T3 p3 solarized-dark translucent app-container = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p3 solarized-dark translucent ribbon = --ink-sidebar-background-acrylic -- rgba(0, 45, 56, 0.5)
+PASS T3 p3 solarized-dark translucent left tab strip = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p3 solarized-dark translucent left leaf = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p3 solarized-dark translucent left leaf-content = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p3 solarized-dark translucent right tab strip = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p3 solarized-dark translucent right leaf = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p3 solarized-dark translucent right leaf-content = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p3 solarized-dark translucent centre tab strip = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p3 solarized-dark translucent centre active tab = --ink-editor-background-acrylic -- rgba(0, 33, 41, 0.9)
+PASS T3 p3 solarized-dark translucent centre leaf-content = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p3 solarized-dark translucent view header = --ink-editor-background-acrylic -- rgba(0, 33, 41, 0.9)
+PASS T3 p3 solarized-dark translucent centre editor = --ink-editor-background-acrylic -- rgba(0, 33, 41, 0.9)
+PASS T3 p3 solarized-dark translucent status bar = --ink-note-list-bar-background-acrylic -- rgba(0, 33, 41, 0.7)
+PASS T3 p3 solarized-dark translucent: body --background-primary unchanged -- hsl(192deg 100% 8%)
+PASS T3 p3 solarized-dark translucent: settings modal unchanged -- null / null
+PASS T3 p3 solarized-dark translucent -> opaque restores every region
+PASS T3 p3 solarized-dark user accent overrides theme accent -- set 355
+PASS T3 p3 solarized-dark accent reset returns to theme accent -- reset 205
+PASS T3 p3 kanagawa-dragon opaque: body has no is-translucent
+PASS T3 p3 kanagawa-dragon opaque ribbon = --ink-sidebar-background -- rgb(17, 17, 14)
+PASS T3 p3 kanagawa-dragon opaque left tab strip = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p3 kanagawa-dragon opaque left leaf = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p3 kanagawa-dragon opaque right tab strip = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p3 kanagawa-dragon opaque right leaf = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p3 kanagawa-dragon opaque centre tab strip = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p3 kanagawa-dragon opaque centre active tab = --ink-editor-background -- rgb(30, 29, 26)
+PASS T3 p3 kanagawa-dragon opaque view header = --ink-editor-background -- rgb(30, 29, 26)
+PASS T3 p3 kanagawa-dragon opaque centre editor = --ink-editor-background -- rgb(30, 29, 26)
+PASS T3 p3 kanagawa-dragon opaque status bar = --ink-note-list-bar-background -- rgb(24, 22, 22)
+PASS T3 p3 kanagawa-dragon opaque accent-h = 199 -- 199
+PASS T3 p3 kanagawa-dragon translucent: body has is-translucent
+PASS T3 p3 kanagawa-dragon translucent app-container = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p3 kanagawa-dragon translucent ribbon = --ink-sidebar-background-acrylic -- rgba(17, 17, 14, 0.5)
+PASS T3 p3 kanagawa-dragon translucent left tab strip = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p3 kanagawa-dragon translucent left leaf = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p3 kanagawa-dragon translucent left leaf-content = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p3 kanagawa-dragon translucent right tab strip = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p3 kanagawa-dragon translucent right leaf = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p3 kanagawa-dragon translucent right leaf-content = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p3 kanagawa-dragon translucent centre tab strip = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p3 kanagawa-dragon translucent centre active tab = --ink-editor-background-acrylic -- rgba(30, 29, 26, 0.9)
+PASS T3 p3 kanagawa-dragon translucent centre leaf-content = transparent -- rgba(0, 0, 0, 0)
+PASS T3 p3 kanagawa-dragon translucent view header = --ink-editor-background-acrylic -- rgba(30, 29, 26, 0.9)
+PASS T3 p3 kanagawa-dragon translucent centre editor = --ink-editor-background-acrylic -- rgba(30, 29, 26, 0.9)
+PASS T3 p3 kanagawa-dragon translucent status bar = --ink-note-list-bar-background-acrylic -- rgba(24, 22, 22, 0.7)
+PASS T3 p3 kanagawa-dragon translucent: body --background-primary unchanged -- hsl(45deg 7% 11%)
+PASS T3 p3 kanagawa-dragon translucent: settings modal unchanged -- null / null
+PASS T3 p3 kanagawa-dragon translucent -> opaque restores every region
+PASS T3 p3 kanagawa-dragon user accent overrides theme accent -- set 355
+PASS T3 p3 kanagawa-dragon accent reset returns to theme accent -- reset 199
+PASS T3 mobile-emulation solarized-dark is-mobile -- tablet=true
+PASS T3 mobile-emulation solarized-dark left drawer = note list -- rgb(0, 45, 56)
+PASS T3 mobile-emulation solarized-dark right drawer = note list -- rgb(0, 45, 56)
+PASS T3 mobile-emulation kanagawa-dragon is-mobile -- tablet=true
+PASS T3 mobile-emulation kanagawa-dragon left drawer = note list -- rgb(24, 22, 22)
+PASS T3 mobile-emulation kanagawa-dragon right drawer = note list -- rgb(24, 22, 22)
+
+all runtime checks passed

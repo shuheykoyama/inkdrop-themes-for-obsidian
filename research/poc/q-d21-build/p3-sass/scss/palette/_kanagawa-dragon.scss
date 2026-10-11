@@ -1,0 +1,38 @@
+/* Palette: Kanagawa Dragon (PoC, Q-D21, P3). Same values and sources as src/palette/kanagawa-dragon.css:
+   inkdropapp/kanagawa@f9c14a5 packages/dragon as applied by Inkdrop 6.1.5. */
+@use "../common/emit";
+
+// name: (declaration as written by Inkdrop, "source file:line")
+$primitives: (
+  "kanagawa-dragonBlack1": ("60deg 9% 6%", "styles/palette.css:17"),
+  "kanagawa-dragonBlack2": ("0deg 4% 9%", "styles/palette.css:18"),
+  "kanagawa-dragonBlack3": ("45deg 7% 11%", "styles/palette.css:19"),
+  "kanagawa-dragonWhite": ("120deg 4% 78%", "styles/palette.css:25"),
+  "kanagawa-dragonBlue2": ("199deg 19% 62%", "styles/palette.css:34"),
+  "kanagawa-waveBlue1": ("215deg 36% 21%", "styles/palette.css:44"),
+);
+
+$surfaces: (
+  "ink-sidebar-background": ("hsl(var(--kanagawa-dragonBlack1))", "styles/ui.css:193"),
+  "ink-note-list-bar-background": ("hsl(var(--kanagawa-dragonBlack2))", "styles/ui.css:212"),
+  "ink-editor-background": ("hsl(var(--kanagawa-dragonBlack3))", "styles/ui.css:230"),
+  "ink-sidebar-background-acrylic": ("hsl(var(--kanagawa-dragonBlack1) / 50%)", "styles/ui.css:559"),
+  "ink-note-list-bar-background-acrylic": ("hsl(var(--kanagawa-dragonBlack2) / 70%)", "styles/ui.css:560"),
+  "ink-editor-background-acrylic": ("hsl(var(--kanagawa-dragonBlack3) / 90%)", "styles/ui.css:561"),
+  "ink-primary-color": ("hsl(var(--kanagawa-dragonBlue2))", "styles/ui.css:16"),
+);
+
+$accent-from: "kanagawa-dragonBlue2";
+
+$text-and-states: (
+  "ink-text-color": ("hsl(var(--kanagawa-dragonWhite) / 90%)", "styles/ui.css:40"),
+  "ink-note-list-view-item-selected-background": ("hsl( var(--kanagawa-waveBlue1) / 70% )", "styles/ui.css:221"),
+  "ink-sidebar-menu-item-inactive-background": ("hsl( var(--kanagawa-dragonBlue2) / 20% )", "styles/ui.css:195"),
+);
+
+.theme-dark {
+  @include emit.custom-properties($primitives);
+  @include emit.custom-properties($surfaces);
+  @include emit.accent($primitives, $accent-from);
+  @include emit.custom-properties($text-and-states);
+}

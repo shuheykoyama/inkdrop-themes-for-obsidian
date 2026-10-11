@@ -1,0 +1,6 @@
+/* Theme entry: kanagawa-dragon (PoC, Q-D21, P3 Sass). Modules are emitted in @use order. */
+@use "../palette/kanagawa-dragon";
+@use "../common/mapping";
+@use "../common/components";
+@use "../common/translucent";
+@use "../common/mobile";

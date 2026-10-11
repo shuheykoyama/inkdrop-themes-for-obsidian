@@ -1,0 +1,9 @@
+/* Component layer (shared): rules that variables alone cannot express. */
+
+/* Tab strips. app.css binds the top tab strips to the title bar
+   (.workspace-tabs.mod-top { --tab-container-background: var(--titlebar-background) }, research/11 §8.2);
+   decouple them so every strip takes the note-list surface regardless of the title bar. */
+.workspace-tabs.mod-top {
+  --tab-container-background: var(--ink-note-list-bar-background);
+  --sidebar-tab-container-background: var(--ink-note-list-bar-background);
+}

@@ -1,0 +1,11 @@
+--- a/src/palette/solarized-dark.css
++++ b/src/palette/solarized-dark.css
+@@ -7,7 +7,7 @@
+   --hsl-neutral-400: 186deg 8% 55%; /* styles/tokens.css:8 */
+   --hsl-neutral-700: 192deg 81% 14%; /* styles/tokens.css:11 */
+   --hsl-neutral-800: 192deg 100% 11%; /* styles/tokens.css:12 */
+-  --hsl-neutral-900: 192deg 100% 8%; /* styles/tokens.css:13 */
++  --hsl-neutral-900: 192deg 100% 9%; /* styles/tokens.css:13 */
+   --hsl-blue-300: 205deg 90% 62%; /* styles/tokens.css:20 */
+   --hsl-blue-500: 205deg 69% 49%; /* styles/tokens.css:22 */
+ 

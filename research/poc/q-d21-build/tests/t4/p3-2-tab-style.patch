@@ -1,0 +1,8 @@
+--- a/p3-sass/scss/common/_components.scss
++++ b/p3-sass/scss/common/_components.scss
+@@ -6,4 +6,5 @@
+ .workspace-tabs.mod-top {
+   --tab-container-background: var(--ink-note-list-bar-background);
+   --sidebar-tab-container-background: var(--ink-note-list-bar-background);
++  --tab-outline-width: 0px;
+ }

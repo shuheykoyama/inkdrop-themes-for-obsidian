@@ -1,0 +1,34 @@
+/* Translucent layer (shared): Inkdrop acrylic colours while Obsidian's "Translucent window" is on
+   (macOS only; the theme never turns it on). Methods verified in research/12 (V-04). */
+
+/* Inkdrop acrylic has --page-background: transparent; Obsidian tints .app-container with this. */
+.theme-dark.is-translucent:not(.is-fullscreen) {
+  --workspace-background-translucent: transparent;
+  --status-bar-background: var(--ink-note-list-bar-background-acrylic);
+}
+
+/* Docks: .workspace-split / .workspace-leaf are forced transparent !important by app.css,
+   .workspace-leaf-content is not (research/12 §4, case C4). */
+.is-translucent:not(.is-fullscreen) .workspace-split.mod-left-split .workspace-leaf-content,
+.is-translucent:not(.is-fullscreen) .workspace-split.mod-right-split .workspace-leaf-content {
+  background-color: var(--ink-note-list-bar-background-acrylic);
+}
+
+/* Centre: scoped variables (scoped, so popovers and modals keep the opaque editor colour). */
+.is-translucent:not(.is-fullscreen) .workspace-split.mod-root {
+  --background-primary: var(--ink-editor-background-acrylic);
+  --file-header-background: var(--ink-editor-background-acrylic);
+  --file-header-background-focused: var(--ink-editor-background-acrylic);
+  --tab-background-active: var(--ink-editor-background-acrylic);
+}
+
+/* Tab strips and ribbon: app.css sets them `transparent !important` while translucent
+   (app.css 1.14.4 L6579-6591). Specificity cannot beat that, so !important is required here.
+   app.css uses (0,4,0) selectors for the strips (.mod-top / .mod-primary-split ...
+   .workspace-tab-header-container), so this one needs (0,4,0) too; the theme loads later and wins. */
+.is-translucent:not(.is-fullscreen) .workspace-tabs .workspace-tab-header-container {
+  background-color: var(--ink-note-list-bar-background-acrylic) !important;
+}
+.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary {
+  background-color: var(--ink-sidebar-background-acrylic) !important;
+}

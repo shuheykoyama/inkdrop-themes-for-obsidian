@@ -1,0 +1,117 @@
+PASS T2 p1 build run a exits 0
+PASS T2 p1 build run b exits 0
+PASS T2 p1 solarized-dark deterministic (two builds byte-identical)
+PASS T2 p1 kanagawa-dragon deterministic (two builds byte-identical)
+PASS T2 p2 build run a exits 0
+PASS T2 p2 build run b exits 0
+PASS T2 p2 solarized-dark deterministic (two builds byte-identical)
+PASS T2 p2 kanagawa-dragon deterministic (two builds byte-identical)
+PASS T2 p3 build run a exits 0
+PASS T2 p3 build run b exits 0
+PASS T2 p3 solarized-dark deterministic (two builds byte-identical)
+PASS T2 p3 kanagawa-dragon deterministic (two builds byte-identical)
+PASS T1 solarized-dark primitive --hsl-neutral-400 verbatim -- 186deg 8% 55% vs 186deg 8% 55%
+PASS T1 solarized-dark primitive --hsl-neutral-700 verbatim -- 192deg 81% 14% vs 192deg 81% 14%
+PASS T1 solarized-dark primitive --hsl-neutral-800 verbatim -- 192deg 100% 11% vs 192deg 100% 11%
+PASS T1 solarized-dark primitive --hsl-neutral-900 verbatim -- 192deg 100% 8% vs 192deg 100% 8%
+PASS T1 solarized-dark primitive --hsl-blue-300 verbatim -- 205deg 90% 62% vs 205deg 90% 62%
+PASS T1 solarized-dark primitive --hsl-blue-500 verbatim -- 205deg 69% 49% vs 205deg 69% 49%
+PASS T1 solarized-dark --ink-sidebar-background = Inkdrop --sidebar-background -- hsl(192deg 81% 14%) vs hsl(192deg 81% 14%)
+PASS T1 solarized-dark --ink-sidebar-background resolves to #073541 (+-1/255) -- rgba(7,53,65,255)
+PASS T1 solarized-dark --ink-note-list-bar-background = Inkdrop --note-list-bar-background -- hsl(192deg 100% 11%) vs hsl(192deg 100% 11%)
+PASS T1 solarized-dark --ink-note-list-bar-background resolves to #002d38 (+-1/255) -- rgba(0,45,56,255)
+PASS T1 solarized-dark --ink-editor-background = Inkdrop --editor-background -- hsl(192deg 100% 8%) vs hsl(192deg 100% 8%)
+PASS T1 solarized-dark --ink-editor-background resolves to #002129 (+-1/255) -- rgba(0,33,41,255)
+PASS T1 solarized-dark --ink-sidebar-background-acrylic = Inkdrop --sidebar-background (acrylic) -- hsl(192deg 100% 11% / 50%) vs hsl(192deg 100% 11% / 50%)
+PASS T1 solarized-dark --ink-note-list-bar-background-acrylic = Inkdrop --note-list-bar-background (acrylic) -- hsl(192deg 100% 8% / 70%) vs hsl(192deg 100% 8% / 70%)
+PASS T1 solarized-dark --ink-editor-background-acrylic = Inkdrop --editor-background (acrylic) -- hsl(192deg 100% 8% / 90%) vs hsl(192deg 100% 8% / 90%)
+PASS T1 solarized-dark --ink-primary-color = Inkdrop --primary-color -- hsl(205deg 69% 49% / 90%) vs hsl(205deg 69% 49% / 90%)
+PASS T1 solarized-dark --ink-primary-color resolves to #278bd3e6 (+-1/255) -- rgba(39,139,211,230)
+PASS T1 solarized-dark --ink-text-color = Inkdrop --text-color -- hsl(186deg 8% 55%) vs hsl(186deg 8% 55%)
+PASS T1 solarized-dark --ink-text-color resolves to #839495 (+-1/255) -- rgba(131,148,149,255)
+PASS T1 solarized-dark --ink-note-list-view-item-selected-background = Inkdrop --note-list-view-item-selected-background -- hsl(205deg 69% 49% / 20%) vs hsl(205deg 69% 49% / 20%)
+PASS T1 solarized-dark --ink-note-list-view-item-selected-background resolves to #278bd333 (+-1/255) -- rgba(39,139,211,51)
+PASS T1 solarized-dark --ink-sidebar-menu-item-inactive-background = Inkdrop --sidebar-menu-item-inactive-background -- hsl(205deg 90% 62% / 20%) vs hsl(205deg 90% 62% / 20%)
+PASS T1 solarized-dark --ink-sidebar-menu-item-inactive-background resolves to #47adf533 (+-1/255) -- rgba(71,173,245,51)
+PASS T1 solarized-dark accent h/s/l = primary triplet -- 205 69% 49% vs hsl(205deg 69% 49% / 90%)
+PASS T1 kanagawa-dragon primitive --kanagawa-dragonBlack1 verbatim -- 60deg 9% 6% vs 60deg 9% 6%
+PASS T1 kanagawa-dragon primitive --kanagawa-dragonBlack2 verbatim -- 0deg 4% 9% vs 0deg 4% 9%
+PASS T1 kanagawa-dragon primitive --kanagawa-dragonBlack3 verbatim -- 45deg 7% 11% vs 45deg 7% 11%
+PASS T1 kanagawa-dragon primitive --kanagawa-dragonWhite verbatim -- 120deg 4% 78% vs 120deg 4% 78%
+PASS T1 kanagawa-dragon primitive --kanagawa-dragonBlue2 verbatim -- 199deg 19% 62% vs 199deg 19% 62%
+PASS T1 kanagawa-dragon primitive --kanagawa-waveBlue1 verbatim -- 215deg 36% 21% vs 215deg 36% 21%
+PASS T1 kanagawa-dragon --ink-sidebar-background = Inkdrop --sidebar-background -- hsl(60deg 9% 6%) vs hsl(60deg 9% 6%)
+PASS T1 kanagawa-dragon --ink-sidebar-background resolves to #11110e (+-1/255) -- rgba(17,17,14,255)
+PASS T1 kanagawa-dragon --ink-note-list-bar-background = Inkdrop --note-list-bar-background -- hsl(0deg 4% 9%) vs hsl(0deg 4% 9%)
+PASS T1 kanagawa-dragon --ink-note-list-bar-background resolves to #181616 (+-1/255) -- rgba(24,22,22,255)
+PASS T1 kanagawa-dragon --ink-editor-background = Inkdrop --editor-background -- hsl(45deg 7% 11%) vs hsl(45deg 7% 11%)
+PASS T1 kanagawa-dragon --ink-editor-background resolves to #1e1d1a (+-1/255) -- rgba(30,29,26,255)
+PASS T1 kanagawa-dragon --ink-sidebar-background-acrylic = Inkdrop --sidebar-background (acrylic) -- hsl(60deg 9% 6% / 50%) vs hsl(60deg 9% 6% / 50%)
+PASS T1 kanagawa-dragon --ink-note-list-bar-background-acrylic = Inkdrop --note-list-bar-background (acrylic) -- hsl(0deg 4% 9% / 70%) vs hsl(0deg 4% 9% / 70%)
+PASS T1 kanagawa-dragon --ink-editor-background-acrylic = Inkdrop --editor-background (acrylic) -- hsl(45deg 7% 11% / 90%) vs hsl(45deg 7% 11% / 90%)
+PASS T1 kanagawa-dragon --ink-primary-color = Inkdrop --primary-color -- hsl(199deg 19% 62%) vs hsl(199deg 19% 62%)
+PASS T1 kanagawa-dragon --ink-primary-color resolves to #8ca5b1 (+-1/255) -- rgba(140,165,177,255)
+PASS T1 kanagawa-dragon --ink-text-color = Inkdrop --text-color -- hsl(120deg 4% 78% / 90%) vs hsl(120deg 4% 78% / 90%)
+PASS T1 kanagawa-dragon --ink-text-color resolves to #c5c9c5e6 (+-1/255) -- rgba(197,201,197,230)
+PASS T1 kanagawa-dragon --ink-note-list-view-item-selected-background = Inkdrop --note-list-view-item-selected-background -- hsl(215deg 36% 21% / 70%) vs hsl(215deg 36% 21% / 70%)
+PASS T1 kanagawa-dragon --ink-note-list-view-item-selected-background resolves to #223249b2 (+-1/255) -- rgba(34,50,73,179)
+PASS T1 kanagawa-dragon --ink-sidebar-menu-item-inactive-background = Inkdrop --sidebar-menu-item-inactive-background -- hsl(199deg 19% 62% / 20%) vs hsl(199deg 19% 62% / 20%)
+PASS T1 kanagawa-dragon --ink-sidebar-menu-item-inactive-background resolves to #8ca5b133 (+-1/255) -- rgba(140,165,177,51)
+PASS T1 kanagawa-dragon accent h/s/l = primary triplet -- 199 19% 62% vs hsl(199deg 19% 62%)
+PASS T1 p1 solarized-dark every palette declaration present verbatim
+PASS T1 p1 solarized-dark no HEX / rgb() produced
+PASS T1 p1 solarized-dark no variables of the other theme
+PASS T1 p1 solarized-dark each --ink-* token defined once
+PASS T1 p2 solarized-dark every palette declaration present verbatim
+PASS T1 p2 solarized-dark no HEX / rgb() produced
+PASS T1 p2 solarized-dark no variables of the other theme
+PASS T1 p2 solarized-dark each --ink-* token defined once
+PASS T1 p3 solarized-dark every palette declaration present verbatim
+PASS T1 p3 solarized-dark no HEX / rgb() produced
+PASS T1 p3 solarized-dark no variables of the other theme
+PASS T1 p3 solarized-dark each --ink-* token defined once
+PASS T1 p1 kanagawa-dragon every palette declaration present verbatim
+PASS T1 p1 kanagawa-dragon no HEX / rgb() produced
+PASS T1 p1 kanagawa-dragon no variables of the other theme
+PASS T1 p1 kanagawa-dragon each --ink-* token defined once
+PASS T1 p2 kanagawa-dragon every palette declaration present verbatim
+PASS T1 p2 kanagawa-dragon no HEX / rgb() produced
+PASS T1 p2 kanagawa-dragon no variables of the other theme
+PASS T1 p2 kanagawa-dragon each --ink-* token defined once
+PASS T1 p3 kanagawa-dragon every palette declaration present verbatim
+PASS T1 p3 kanagawa-dragon no HEX / rgb() produced
+PASS T1 p3 kanagawa-dragon no variables of the other theme
+PASS T1 p3 kanagawa-dragon each --ink-* token defined once
+PASS T2 p1 solarized-dark output parses as CSS
+PASS T2 p1 solarized-dark no @import rule left in output -- 0 @import rule(s)
+PASS T2 p1 solarized-dark no @charset / BOM
+PASS T2 p1 solarized-dark no empty / comment-only rules
+PASS T2 p2 solarized-dark output parses as CSS
+PASS T2 p2 solarized-dark no @import rule left in output -- 0 @import rule(s)
+PASS T2 p2 solarized-dark no @charset / BOM
+PASS T2 p2 solarized-dark no empty / comment-only rules
+PASS T2 p3 solarized-dark output parses as CSS
+PASS T2 p3 solarized-dark no @import rule left in output -- 0 @import rule(s)
+PASS T2 p3 solarized-dark no @charset / BOM
+PASS T2 p3 solarized-dark no empty / comment-only rules
+PASS T2 solarized-dark P1 and P2 declarations identical (selector, property, value, !important, order)
+PASS T2 solarized-dark P1 and P3 declarations identical (selector, property, value, !important, order)
+PASS T2 p1 kanagawa-dragon output parses as CSS
+PASS T2 p1 kanagawa-dragon no @import rule left in output -- 0 @import rule(s)
+PASS T2 p1 kanagawa-dragon no @charset / BOM
+PASS T2 p1 kanagawa-dragon no empty / comment-only rules
+PASS T2 p2 kanagawa-dragon output parses as CSS
+PASS T2 p2 kanagawa-dragon no @import rule left in output -- 0 @import rule(s)
+PASS T2 p2 kanagawa-dragon no @charset / BOM
+PASS T2 p2 kanagawa-dragon no empty / comment-only rules
+PASS T2 p3 kanagawa-dragon output parses as CSS
+PASS T2 p3 kanagawa-dragon no @import rule left in output -- 0 @import rule(s)
+PASS T2 p3 kanagawa-dragon no @charset / BOM
+PASS T2 p3 kanagawa-dragon no empty / comment-only rules
+PASS T2 kanagawa-dragon P1 and P2 declarations identical (selector, property, value, !important, order)
+PASS T2 kanagawa-dragon P1 and P3 declarations identical (selector, property, value, !important, order)
+PASS T2 p1 missing source -> non-zero exit -- status 1
+PASS T2 p2 missing source -> non-zero exit -- status 1
+PASS T2 p3 missing source -> non-zero exit -- status 65
+
+all checks passed

@@ -1,0 +1,38 @@
+/* Palette: Solarized Dark (PoC, Q-D21, P3). Same values and sources as src/palette/solarized-dark.css:
+   inkdropapp/solarized-dark@4337f6e as applied by Inkdrop 6.1.5. */
+@use "../common/emit";
+
+// name: (declaration as written by Inkdrop, "source file:line")
+$primitives: (
+  "hsl-neutral-400": ("186deg 8% 55%", "styles/tokens.css:8"),
+  "hsl-neutral-700": ("192deg 81% 14%", "styles/tokens.css:11"),
+  "hsl-neutral-800": ("192deg 100% 11%", "styles/tokens.css:12"),
+  "hsl-neutral-900": ("192deg 100% 8%", "styles/tokens.css:13"),
+  "hsl-blue-300": ("205deg 90% 62%", "styles/tokens.css:20"),
+  "hsl-blue-500": ("205deg 69% 49%", "styles/tokens.css:22"),
+);
+
+$surfaces: (
+  "ink-sidebar-background": ("hsl(var(--hsl-neutral-700))", "styles/ui.css:126"),
+  "ink-note-list-bar-background": ("hsl(var(--hsl-neutral-800))", "styles/ui.css:135"),
+  "ink-editor-background": ("hsl(var(--hsl-neutral-900))", "styles/ui.css:148"),
+  "ink-sidebar-background-acrylic": ("hsl(var(--hsl-neutral-800) / 50%)", "styles/ui.css:178"),
+  "ink-note-list-bar-background-acrylic": ("hsl(var(--hsl-neutral-900) / 70%)", "styles/ui.css:179"),
+  "ink-editor-background-acrylic": ("hsl(var(--hsl-neutral-900) / 90%)", "styles/ui.css:180"),
+  "ink-primary-color": ("hsl(var(--hsl-blue-500) / 90%)", "styles/ui.css:10"),
+);
+
+$accent-from: "hsl-blue-500";
+
+$text-and-states: (
+  "ink-text-color": ("hsl(var(--hsl-neutral-400))", "styles/ui.css:26"),
+  "ink-note-list-view-item-selected-background": ("hsl(var(--hsl-blue-500) / 20%)", "styles/ui.css:141"),
+  "ink-sidebar-menu-item-inactive-background": ("hsl(var(--hsl-blue-300) / 20%)", "base ui.css:1430, dark branch of light-dark()"),
+);
+
+.theme-dark {
+  @include emit.custom-properties($primitives);
+  @include emit.custom-properties($surfaces);
+  @include emit.accent($primitives, $accent-from);
+  @include emit.custom-properties($text-and-states);
+}

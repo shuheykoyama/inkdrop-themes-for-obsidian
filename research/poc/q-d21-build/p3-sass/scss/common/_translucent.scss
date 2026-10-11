@@ -1,0 +1,41 @@
+/* Translucent layer (shared): Inkdrop acrylic colours while Obsidian's "Translucent window" is on
+   (macOS only; the theme never turns it on). Methods verified in research/12 (V-04). */
+
+// The condition is written once and reused through nesting.
+// Note: a /* comment */ placed directly inside the `#{$on} { }` block would be emitted as a rule that
+// contains only that comment, so the comments are kept inside the nested blocks.
+$on: ".is-translucent:not(.is-fullscreen)";
+
+.theme-dark#{$on} {
+  /* Inkdrop acrylic has --page-background: transparent; Obsidian tints .app-container with this. */
+  --workspace-background-translucent: transparent;
+  --status-bar-background: var(--ink-note-list-bar-background-acrylic);
+}
+
+#{$on} {
+  .workspace-split.mod-left-split .workspace-leaf-content,
+  .workspace-split.mod-right-split .workspace-leaf-content {
+    /* Docks: .workspace-split / .workspace-leaf are forced transparent !important by app.css,
+       .workspace-leaf-content is not (research/12 §4, case C4). */
+    background-color: var(--ink-note-list-bar-background-acrylic);
+  }
+
+  .workspace-split.mod-root {
+    /* Centre: scoped variables (scoped, so popovers and modals keep the opaque editor colour). */
+    --background-primary: var(--ink-editor-background-acrylic);
+    --file-header-background: var(--ink-editor-background-acrylic);
+    --file-header-background-focused: var(--ink-editor-background-acrylic);
+    --tab-background-active: var(--ink-editor-background-acrylic);
+  }
+
+  .workspace-tabs .workspace-tab-header-container {
+    /* Tab strips and ribbon: app.css sets them `transparent !important` while translucent
+       (app.css 1.14.4 L6579-6591). Specificity cannot beat that, so !important is required here.
+       app.css uses (0,4,0) selectors for the strips (.mod-top / .mod-primary-split ...
+       .workspace-tab-header-container), so this one needs (0,4,0) too; the theme loads later and wins. */
+    background-color: var(--ink-note-list-bar-background-acrylic) !important;
+  }
+  .workspace-ribbon.mod-primary {
+    background-color: var(--ink-sidebar-background-acrylic) !important;
+  }
+}

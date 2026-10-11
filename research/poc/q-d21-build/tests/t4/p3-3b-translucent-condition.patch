@@ -1,0 +1,11 @@
+--- a/p3-sass/scss/common/_translucent.scss
++++ b/p3-sass/scss/common/_translucent.scss
+@@ -4,7 +4,7 @@
+ // The condition is written once and reused through nesting.
+ // Note: a /* comment */ placed directly inside the `#{$on} { }` block would be emitted as a rule that
+ // contains only that comment, so the comments are kept inside the nested blocks.
+-$on: ".is-translucent:not(.is-fullscreen)";
++$on: ".is-translucent";
+ 
+ .theme-dark#{$on} {
+   /* Inkdrop acrylic has --page-background: transparent; Obsidian tints .app-container with this. */

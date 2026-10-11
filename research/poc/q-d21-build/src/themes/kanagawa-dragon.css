@@ -1,0 +1,7 @@
+/* Theme entry: kanagawa-dragon (PoC, Q-D21). P1 resolves these @import rules with postcss-import;
+   P2 concatenates the same files in the same order (p2-concat/build.sh). */
+@import "../palette/kanagawa-dragon.css";
+@import "../common/mapping.css";
+@import "../common/components.css";
+@import "../common/translucent.css";
+@import "../common/mobile.css";

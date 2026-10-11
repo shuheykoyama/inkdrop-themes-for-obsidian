@@ -25,6 +25,8 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 | [10-review-remediation.md](10-review-remediation.md) | 独立レビュー（R-01〜R-12）の判定、根拠、修正内容、残る不確実性、Phase 2 へ進む条件 | 訂正の経緯 |
 | [11-runtime-validation.md](11-runtime-validation.md) | Phase 2B の実機検証（Obsidian 1.14.4 の CSS 優先関係・DOM・背景のスコープ再定義、Inkdrop 6.1.5 の背景面・状態色・エディタと基準スクリーンショット、半透明（acrylic）表示のネイティブキャプチャ）と、Inkdrop 配布物の静的解析。Q-D1 の選択肢別の技術評価 | **Q-D1 の判断材料** |
 | [12-obsidian-translucency-validation.md](12-obsidian-translucency-validation.md) | V-04: Obsidian 1.14.4 の translucent の仕組み、translucent 時の CSS 優先関係、Inkdrop の acrylic 宣言値を当てた合成結果と V-32 との比較、Q-D22 の各案の技術評価 | **Q-D22 の判断材料** |
+| [13-q-d21-build-poc.md](13-q-d21-build-poc.md) | Q-D21: ビルド方式（PostCSS / 素の CSS の連結 / Sass）の比較 PoC。同じ仕様を 3 方式で実装し、値の忠実度・再現性・Obsidian での適用・変更容易性を実測 | **Q-D21 の判断材料** |
+| [poc/q-d21-build/](poc/q-d21-build/README.md) | 13 の PoC（ソース、ビルド、テスト、実行結果）。完成版のテーマではない | 実測の確認 |
 | [evidence/phase2-p0/](evidence/phase2-p0/README.md) | 11 の証拠（スクリーンショット、Computed Style の測定値、診断用 CSS / JS、テスト Vault） | 実測の確認 |
 | [evidence/phase2-v04/](evidence/phase2-v04/README.md) | 12 の証拠（ネイティブキャプチャ、Computed Style、画素の計測値、診断用 CSS、ツール） | 実測の確認 |
 | [tools/](tools/README.md) | `data/` を再生成するスクリプト、入力ソースの取得手順、検証手順 | 再現性の確認 |
@@ -77,7 +79,7 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 1. 09 §1 の Q-D のうち「Phase 2 前半」のもの。Q-D2・Q-D6・Q-D9・Q-D10・Q-D13・Q-D15・Q-D20・Q-D21 はユーザーが確定済み（09 §0.1）。未決定で先に必要なのは Q-D22（不透明表示と半透明表示のどちらを基準にするか）と Q-D1（サイドドックと帯への色の割り当て。Q-D22 と同時に判断）。Q-D23（アクティブ行・ガター）は Phase 2 後半。Q-D16（directory 配布）は配布前まで保留できる。
 2. 09 §2.1 の P0 の実機検証（V-30、V-20・V-22、V-01）は完了した（11 §7・§14・§15）。V-04（Obsidian の translucent）も P1 として実施した（12）。残る P1 は V-10・V-11（一部）・V-12・V-29（一部）・V-31（一部）。
 3. 06 の候補から配色仕様を確定すること。
-4. 実装方式の最終確定。Q-D21 で「Vanilla CSS + PostCSS（`postcss-import`）を第一候補とし、小規模な技術検証で最終確定する」ことがユーザーにより決まっている（09 §0.1）。次に必要なのはこの第一候補の小規模な技術検証である（08 の比較表は判断材料として残す）。
+4. 実装方式の最終確定。Q-D21 で「Vanilla CSS + PostCSS（`postcss-import`）を第一候補とし、小規模な技術検証で最終確定する」ことがユーザーにより決まっている（09 §0.1）。次に必要なのはこの第一候補の小規模な技術検証である（08 の比較表は判断材料として残す）。→ 2026-10-11 に PoC を実施した（13）。最終判断はユーザーが行う。
 
 ### 機械可読データ（`data/`）
 
