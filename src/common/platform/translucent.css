@@ -21,20 +21,20 @@
 }
 
 /* Docks: note list (Q-D1). */
-.is-translucent:not(.is-fullscreen) .workspace-split.mod-left-split .workspace-leaf-content,
-.is-translucent:not(.is-fullscreen) .workspace-split.mod-right-split .workspace-leaf-content {
+.theme-dark.is-translucent:not(.is-fullscreen) .workspace-split.mod-left-split .workspace-leaf-content,
+.theme-dark.is-translucent:not(.is-fullscreen) .workspace-split.mod-right-split .workspace-leaf-content {
   background-color: var(--ink-note-list-bar-background-acrylic);
 }
 
 /* Vault profile at the bottom of the left dock: note list like the dock (Q-D1). app.css forces
    .is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile (0,3,0) to transparent !important;
-   when opaque it paints --background-secondary. Same specificity, loaded later, so !important is enough. */
-.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
+   when opaque it paints --background-secondary. One class more (.theme-dark) and !important win. */
+.theme-dark.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
   background-color: var(--ink-note-list-bar-background-acrylic) !important;
 }
 
 /* Centre: editor (Q-D1), scoped to the root split. */
-.is-translucent:not(.is-fullscreen) .workspace-split.mod-root {
+.theme-dark.is-translucent:not(.is-fullscreen) .workspace-split.mod-root {
   --background-primary: var(--ink-editor-background-acrylic);
   --file-header-background: var(--ink-editor-background-acrylic);
   --file-header-background-focused: var(--ink-editor-background-acrylic);
@@ -43,21 +43,21 @@
 
 /* Tab strips: note list (Q-D1). app.css uses (0,4,0) selectors such as
    .is-translucent:not(.is-fullscreen) .mod-top .workspace-tab-header-container with !important, so this
-   needs (0,4,0) and !important; it wins by loading later (research/13 §2.1). */
-.is-translucent:not(.is-fullscreen) .workspace-tabs .workspace-tab-header-container {
+   needs at least (0,4,0) and !important (research/13 §2.1); with .theme-dark it has (0,5,0). */
+.theme-dark.is-translucent:not(.is-fullscreen) .workspace-tabs .workspace-tab-header-container {
   background-color: var(--ink-note-list-bar-background-acrylic) !important;
 }
 
 /* Corner above the ribbon, under the window buttons on macOS (Hidden frame): app.css paints
    .workspace-ribbon.mod-primary::before (44 x --header-height) with --titlebar-background, i.e. the note list
    like the tab strip next to it (mapping/workspace.css), and forces it to transparent !important while
-   translucent (0,4,1). Same specificity, loaded later, so !important is enough. */
-.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary::before {
+   translucent (0,4,1). One class more (.theme-dark) and !important win. */
+.theme-dark.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary::before {
   background-color: var(--ink-note-list-bar-background-acrylic) !important;
 }
 
 /* Ribbon: sidebar (Q-D1). app.css forces .is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary
-   (0,4,0) to transparent !important; same specificity, loaded later, so !important is enough. */
-.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary {
+   (0,4,0) to transparent !important; one class more (.theme-dark) and !important win. */
+.theme-dark.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary {
   background-color: var(--ink-sidebar-background-acrylic) !important;
 }

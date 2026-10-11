@@ -18,7 +18,7 @@
 }
 
 /* Editor: Source mode and Live Preview. */
-.markdown-source-view.mod-cm6 {
+.theme-dark .markdown-source-view.mod-cm6 {
   /* Body text (E01): the editor foreground. KD differs from the UI / preview text colour (no 90% alpha). */
   --text-normal: var(--ink-editor-foreground-color);
 
@@ -68,7 +68,7 @@
 }
 
 /* Preview: Reading view and rendered blocks. */
-.markdown-rendered {
+.theme-dark .markdown-rendered {
   /* Body text (E02): the preview colour (= Inkdrop UI text); resets the editor value for rendered blocks
      inside Live Preview. */
   --text-normal: var(--ink-text-color);

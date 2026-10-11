@@ -273,7 +273,7 @@ try {
   // full screen (the condition app.css uses), and every rule of mobile.css only on mobile.
   const SCOPES = {
     "src/common/platform/translucent.css": /^(?:\.theme-dark)?\.is-translucent:not\(\.is-fullscreen\)(?:[ .]|$)/,
-    "src/common/platform/mobile.css": /^\.is-(?:mobile|tablet|phone)(?:[ .]|$)/,
+    "src/common/platform/mobile.css": /^(?:\.theme-dark)?\.is-(?:mobile|tablet|phone)(?:[ .]|$)/,
   };
   for (const [rel, re] of Object.entries(SCOPES)) {
     const f = path.join(root, rel);
@@ -281,6 +281,16 @@ try {
     const outside = [];
     postcss.parse(readFileSync(f, "utf8")).walkRules((r) => { for (const sel of r.selectors) if (!re.test(sel.trim())) outside.push(sel.trim()); });
     check(`S4 ${rel} every selector is inside its platform scope`, outside.length === 0, outside.join(" | "));
+  }
+  // Dark only (Q-D11): the palette exists under .theme-dark only, so every rule of the shared structure is
+  // under .theme-dark too (descendant or the same element). A rule outside it would apply in the light mode
+  // with undefined --ink-* variables and blank out Obsidian's own colours there (RV3).
+  const DARK = /^(?:\.theme-dark(?:[ .:[]|$)|\.is-[a-z-]+(?::not\([^)]*\))?\.theme-dark(?:[ .:[]|$))/;
+  for (const f of filesUnder(path.join(root, "src/common"))) {
+    const rel = path.relative(root, f);
+    const outside = [];
+    postcss.parse(readFileSync(f, "utf8")).walkRules((r) => { for (const sel of r.selectors) if (!DARK.test(sel.trim())) outside.push(sel.trim()); });
+    check(`S4 ${rel} every selector is under .theme-dark`, outside.length === 0, outside.join(" | "));
   }
   for (const a of allowlist.filter((x) => x.rule === "declaration-no-important")) {
     check(`S4 allow-list !important ${a.selector} { ${a.property} } names the app.css rule it overrides`, typeof a.overrides === "string" && a.overrides.trim() !== "");

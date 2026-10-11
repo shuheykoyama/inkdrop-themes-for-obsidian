@@ -7,15 +7,15 @@
 /* Text colour of each view (E01, E02). The text inherits a colour computed above these scopes (the UI text),
    so each scope sets its own from --text-normal (mapping/markdown.css): the editor foreground in the editor,
    the preview text in the reading view and in rendered blocks inside Live Preview. */
-.markdown-source-view.mod-cm6,
-.markdown-rendered {
+.theme-dark .markdown-source-view.mod-cm6,
+.theme-dark .markdown-rendered {
   color: var(--text-normal);
 }
 
 /* URLs (E16): Inkdrop's .tok-url colour, for the URL of [text](url) in Source mode and bare URLs (Live Preview
    draws those through .cm-url .cm-underline with --link-external-color). Before the mark rule below, which
    gives the parentheses around the URL the mark colour. */
-.markdown-source-view.mod-cm6 .cm-url {
+.theme-dark .markdown-source-view.mod-cm6 .cm-url {
   --link-external-color: var(--ink-syntax-url-color);
   --link-external-color-hover: var(--ink-syntax-url-color);
 
@@ -29,17 +29,17 @@
    brackets, tags, footnotes, math and escapes have no Inkdrop mark and keep Obsidian's colours. The delimiter
    row of a table (| --- |) is coloured through its line class in app.css, which the official lint does not
    accept in a selector; it keeps Obsidian's colour. */
-.markdown-source-view.mod-cm6 .cm-formatting-header,
-.markdown-source-view.mod-cm6 .cm-formatting-strong,
-.markdown-source-view.mod-cm6 .cm-formatting-em,
-.markdown-source-view.mod-cm6 .cm-formatting-strikethrough,
-.markdown-source-view.mod-cm6 .cm-formatting-code,
-.markdown-source-view.mod-cm6 .cm-formatting-code-block,
-.markdown-source-view.mod-cm6 .cm-formatting-link:not(.cm-footref),
-.markdown-source-view.mod-cm6 .cm-formatting-link-string,
-.markdown-source-view.mod-cm6 .cm-formatting-image,
-.markdown-source-view.mod-cm6 .cm-formatting-embed,
-.markdown-source-view.mod-cm6 span.cm-hmd-table-sep {
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-header,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-strong,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-em,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-strikethrough,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-code,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-code-block,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-link:not(.cm-footref),
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-link-string,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-image,
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-embed,
+.theme-dark .markdown-source-view.mod-cm6 span.cm-hmd-table-sep {
   color: var(--ink-syntax-processing-instruction-color);
 }
 
@@ -48,33 +48,33 @@
    its own colour, as in Inkdrop, so those spans are left out of the colour. Obsidian has no per-line class
    for callout bodies, so in Source mode a callout's lines look like a quote (Live Preview renders callouts).
    The line class (.HyperMD-quote) is not used: the official lint rejects Obsidian's camel-case class names. */
-.markdown-source-view.mod-cm6 .cm-quote {
+.theme-dark .markdown-source-view.mod-cm6 .cm-quote {
   font-style: var(--ink-syntax-quote-font-style);
 }
 
-.markdown-source-view.mod-cm6 .cm-quote:not(.cm-strong, .cm-em, .cm-link, .cm-url, .cm-hmd-internal-link, .cm-inline-code, .cm-highlight, .cm-hashtag),
-.markdown-source-view.mod-cm6 .cm-formatting-quote {
+.theme-dark .markdown-source-view.mod-cm6 .cm-quote:not(.cm-strong, .cm-em, .cm-link, .cm-url, .cm-hmd-internal-link, .cm-inline-code, .cm-highlight, .cm-hashtag),
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-quote {
   color: var(--ink-syntax-quote-color);
 }
 
 /* List marks by level (E22): Inkdrop decorates the ListMark of level n with md-list-mark-((n - 1) % 3 + 1);
    Obsidian's Markdown mode gives the mark of level n the class cm-list-((n - 1) % 3 + 1), the same cycle.
    Obsidian paints .cm-formatting-list and the Live Preview bullet inside it with --list-marker-color. */
-.markdown-source-view.mod-cm6 .cm-formatting-list.cm-list-1 {
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-list.cm-list-1 {
   --list-marker-color: var(--ink-md-list-mark-color);
 }
 
-.markdown-source-view.mod-cm6 .cm-formatting-list.cm-list-2 {
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-list.cm-list-2 {
   --list-marker-color: var(--ink-md-list-mark-2-color);
 }
 
-.markdown-source-view.mod-cm6 .cm-formatting-list.cm-list-3 {
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-list.cm-list-3 {
   --list-marker-color: var(--ink-md-list-mark-3-color);
 }
 
 /* Inline code (E19): Inkdrop's .md-inline-code background and 1 px outline, text = .tok-monospace. Obsidian
    draws the box across the backtick spans with --code-* (border instead of outline). */
-.markdown-source-view.mod-cm6 .cm-inline-code {
+.theme-dark .markdown-source-view.mod-cm6 .cm-inline-code {
   --code-background: var(--ink-md-inline-code-background-color);
   --code-border-width: var(--ink-md-inline-code-border-width);
   --code-border-color: var(--ink-md-inline-code-border-color);
@@ -83,7 +83,7 @@
 
 /* Highlight (E18): .md-inline-mark text colour and 3 px underline. Obsidian's coloured highlights
    (==red:...== etc.) have no Inkdrop counterpart and keep their own look. */
-.markdown-source-view.mod-cm6 .cm-highlight:not(.cm-highlight-red, .cm-highlight-orange, .cm-highlight-yellow, .cm-highlight-green, .cm-highlight-blue, .cm-highlight-purple) {
+.theme-dark .markdown-source-view.mod-cm6 .cm-highlight:not(.cm-highlight-red, .cm-highlight-orange, .cm-highlight-yellow, .cm-highlight-green, .cm-highlight-blue, .cm-highlight-purple) {
   color: var(--ink-md-inline-mark-text-color);
   text-decoration: underline solid var(--ink-md-inline-mark-underline-color) 3px;
   text-decoration-skip-ink: none;
@@ -91,7 +91,7 @@
 }
 
 /* Horizontal rule text in Source mode (E28): .tok-content-separator, bold. */
-.markdown-source-view.mod-cm6 .cm-hr {
+.theme-dark .markdown-source-view.mod-cm6 .cm-hr {
   color: var(--ink-syntax-content-separator-color);
   font-weight: var(--ink-syntax-content-separator-font-weight);
 }
@@ -99,65 +99,65 @@
 /* ---------- Preview ---------- */
 
 /* Heading rules (E09): h1 2 px and h2 1 px underline, 0.3em above it. */
-.markdown-rendered h1 {
+.theme-dark .markdown-rendered h1 {
   padding-bottom: 0.3em;
   border-bottom: var(--ink-mde-preview-h1-border-width) solid var(--ink-mde-preview-heading-border-color);
 }
 
-.markdown-rendered h2 {
+.theme-dark .markdown-rendered h2 {
   padding-bottom: 0.3em;
   border-bottom: var(--ink-mde-preview-heading-border-width) solid var(--ink-mde-preview-heading-border-color);
 }
 
 /* List markers by depth (E22): Inkdrop's li::marker rules cycle the three colours over nine levels. Obsidian
    paints bullets with --list-marker-color; numbers are ::marker. */
-.markdown-rendered li {
+.theme-dark .markdown-rendered li {
   --list-marker-color: var(--ink-mde-preview-list-marker-color);
 }
 
-.markdown-rendered li li {
+.theme-dark .markdown-rendered li li {
   --list-marker-color: var(--ink-mde-preview-list-marker-2-color);
 }
 
-.markdown-rendered li li li {
+.theme-dark .markdown-rendered li li li {
   --list-marker-color: var(--ink-mde-preview-list-marker-3-color);
 }
 
-.markdown-rendered li li li li {
+.theme-dark .markdown-rendered li li li li {
   --list-marker-color: var(--ink-mde-preview-list-marker-color);
 }
 
-.markdown-rendered li li li li li {
+.theme-dark .markdown-rendered li li li li li {
   --list-marker-color: var(--ink-mde-preview-list-marker-2-color);
 }
 
-.markdown-rendered li li li li li li {
+.theme-dark .markdown-rendered li li li li li li {
   --list-marker-color: var(--ink-mde-preview-list-marker-3-color);
 }
 
-.markdown-rendered li li li li li li li {
+.theme-dark .markdown-rendered li li li li li li li {
   --list-marker-color: var(--ink-mde-preview-list-marker-color);
 }
 
-.markdown-rendered li li li li li li li li {
+.theme-dark .markdown-rendered li li li li li li li li {
   --list-marker-color: var(--ink-mde-preview-list-marker-2-color);
 }
 
-.markdown-rendered li li li li li li li li li {
+.theme-dark .markdown-rendered li li li li li li li li li {
   --list-marker-color: var(--ink-mde-preview-list-marker-3-color);
 }
 
-.markdown-rendered li::marker {
+.theme-dark .markdown-rendered li::marker {
   color: var(--list-marker-color);
 }
 
 /* Done tasks (E23): the strike-through takes --mde-preview-task-list-checked-color. */
-.markdown-rendered .task-list-item.is-checked {
+.theme-dark .markdown-rendered .task-list-item.is-checked {
   text-decoration-color: var(--ink-mde-preview-task-list-checked-color);
 }
 
 /* Inline code (E19): the preview's inline code text, background and 1 px border. */
-.markdown-rendered :not(pre) > code {
+.theme-dark .markdown-rendered :not(pre) > code {
   --code-background: var(--ink-mde-preview-inline-code-background-color);
   --code-border-width: var(--ink-mde-preview-inline-code-border-width);
   --code-border-color: var(--ink-mde-preview-inline-code-border-color);
@@ -166,15 +166,15 @@
 
 /* Highlight (E18): mark text colour and 3 px underline. A plain ==text== has data-highlight=""; Obsidian's
    coloured highlights keep their look. */
-.markdown-rendered mark:not([data-highlight="red"], [data-highlight="orange"], [data-highlight="yellow"], [data-highlight="green"], [data-highlight="blue"], [data-highlight="purple"]) {
+.theme-dark .markdown-rendered mark:not([data-highlight="red"], [data-highlight="orange"], [data-highlight="yellow"], [data-highlight="green"], [data-highlight="blue"], [data-highlight="purple"]) {
   color: var(--ink-mde-preview-inline-mark-text-color);
   text-decoration: underline solid var(--ink-mde-preview-inline-mark-underline-color) 3px;
   text-decoration-skip-ink: none;
 }
 
 /* Keyboard keys (E35), also the rendered HTML in Live Preview: Inkdrop's preview kbd. */
-.markdown-rendered kbd,
-.markdown-source-view.mod-cm6 kbd {
+.theme-dark .markdown-rendered kbd,
+.theme-dark .markdown-source-view.mod-cm6 kbd {
   border: 1px solid var(--ink-mde-preview-kbd-border-color);
   border-radius: 6px;
   color: var(--ink-mde-preview-kbd-text-color);
@@ -183,28 +183,28 @@
 }
 
 /* Images (E29): the preview's image background, none inside tables. */
-.markdown-rendered img {
+.theme-dark .markdown-rendered img {
   background-color: var(--ink-mde-preview-image-background-color);
 }
 
-.markdown-rendered table img {
+.theme-dark .markdown-rendered table img {
   background: none;
 }
 
 /* Images in Live Preview (E29): Inkdrop's editor image widget backdrop and border. Inkdrop's backdrop spans
    the line; Obsidian's embed is as wide as the image, so they sit on the image itself. Placed after the
    preview image rules because the official lint wants the less specific selectors first. */
-.markdown-source-view.mod-cm6 .image-embed img {
+.theme-dark .markdown-source-view.mod-cm6 .image-embed img {
   border: var(--ink-editor-image-widget-backdrop-border);
   background-color: var(--ink-editor-image-widget-backdrop-background-color);
 }
 
 /* Footnotes (E34): muted text; Obsidian's separator rule stands for Inkdrop's 1 px top border. */
-.markdown-rendered .footnotes {
+.theme-dark .markdown-rendered .footnotes {
   color: var(--ink-mde-preview-footnote-text-color);
 }
 
-.markdown-rendered .footnotes > hr {
+.theme-dark .markdown-rendered .footnotes > hr {
   --hr-color: var(--ink-mde-preview-footnote-border-color);
   --hr-thickness: 1px;
 }
@@ -215,7 +215,7 @@
    fill, square corners, colours unblended. Applied to every callout so they share one shape; only the five
    GFM types have Inkdrop colours, the other Obsidian types keep Obsidian's. Callouts render as HTML in every
    view, so there is one rule for both. */
-.callout {
+.theme-dark .callout {
   --callout-border-width: 0 0 0 0.25em;
   --callout-radius: 0;
   --callout-blend-mode: normal;
@@ -224,22 +224,22 @@
   background: none;
 }
 
-.callout[data-callout="note"] {
+.theme-dark .callout[data-callout="note"] {
   --callout-color: var(--ink-gfm-alert-note);
 }
 
-.callout[data-callout="tip"] {
+.theme-dark .callout[data-callout="tip"] {
   --callout-color: var(--ink-gfm-alert-tip);
 }
 
-.callout[data-callout="important"] {
+.theme-dark .callout[data-callout="important"] {
   --callout-color: var(--ink-gfm-alert-important);
 }
 
-.callout[data-callout="warning"] {
+.theme-dark .callout[data-callout="warning"] {
   --callout-color: var(--ink-gfm-alert-warning);
 }
 
-.callout[data-callout="caution"] {
+.theme-dark .callout[data-callout="caution"] {
   --callout-color: var(--ink-gfm-alert-caution);
 }
