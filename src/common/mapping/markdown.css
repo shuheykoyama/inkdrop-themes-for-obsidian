@@ -58,8 +58,9 @@
   /* Highlight (E18): ==text== has no Inkdrop syntax; the closest is <mark>, styled by .md-inline-mark. */
   --highlight-background: var(--ink-md-inline-mark-background-color);
 
-  /* Done tasks (E23): Inkdrop keeps the text colour and only strikes it through. */
-  --checklist-done-color: var(--ink-editor-foreground-color);
+  /* Done tasks (E23): Inkdrop keeps the task's text colour (list content, components/markdown.css) and only
+     strikes it through. */
+  --checklist-done-color: var(--ink-syntax-list-color);
 
   /* Rendered horizontal rule in Live Preview: Inkdrop's editor shows the --- text only, so the rule takes
      the preview bar (E28). */

@@ -494,6 +494,57 @@
       "kind": "first-family",
       "value": "Menlo",
       "selfTest": "FAIL"
+    },
+    {
+      "id": "self.md-source-wrong-token",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-strong:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-emphasis-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.md-source-live-only-element",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-table-widget th",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "| Head A",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-mde-preview-table-head-text-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.md-source-task-marker-default",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-task",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "- [ ] open task",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-muted-text-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.md-source-heading-text",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-header-1:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-heading-1-color",
+      "selfTest": "PASS"
     }
   ]
 }

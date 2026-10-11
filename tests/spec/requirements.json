@@ -460,7 +460,7 @@
     {
       "id": "md.tasks",
       "qd": "Q-D14",
-      "description": "Done tasks keep the text colour and are struck through; reading view strike-through colour = --mde-preview-task-list-checked-color",
+      "description": "Tasks: editor task marker ([ ], [x]) = --syntax-atom-color, bold; editor task text = --syntax-list-color (done: struck through, also in Source mode); reading view text keeps its colour, strike-through colour = --mde-preview-task-list-checked-color",
       "platforms": [
         "desktop"
       ],

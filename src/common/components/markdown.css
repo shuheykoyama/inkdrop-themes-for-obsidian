@@ -72,6 +72,27 @@
   --list-marker-color: var(--ink-md-list-mark-3-color);
 }
 
+/* Tasks (E23): Inkdrop's TaskMarker ([ ], [x]) is tagged atom and bold (--md-task-marker-font-weight); a
+   task's text is list content without a paragraph (Task is styled list), so it takes --syntax-list-color
+   (KD dragonTeal; in SD the editor foreground). Found in the V-30 comparison (research/14 §6.13). Live
+   Preview marks task lines with data-task (done lines take --checklist-done-color, mapping/markdown.css);
+   Source mode does not, so there the text after the [ ] / [x] span is selected, and a done task (whose
+   span Obsidian's Markdown mode classes cm-property; an open one is cm-meta) is struck through as Inkdrop's
+   .md-task-done-text is; Obsidian strikes it in Live Preview only. */
+.theme-dark .markdown-source-view.mod-cm6 .cm-line[data-task],
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-task ~ span {
+  color: var(--ink-syntax-list-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-formatting-task.cm-property ~ span {
+  text-decoration-line: line-through;
+}
+
+.theme-dark .markdown-source-view.mod-cm6 span.cm-formatting-task {
+  color: var(--ink-syntax-atom-color);
+  font-weight: var(--ink-md-task-marker-font-weight);
+}
+
 /* Inline code (E19): Inkdrop's .md-inline-code background and 1 px outline, text = .tok-monospace. Obsidian
    draws the box across the backtick spans with --code-* (border instead of outline). */
 .theme-dark .markdown-source-view.mod-cm6 .cm-inline-code {

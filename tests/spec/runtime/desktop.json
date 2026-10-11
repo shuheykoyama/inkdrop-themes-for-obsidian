@@ -1375,6 +1375,18 @@
       "token": "--ink-md-list-mark-2-color"
     },
     {
+      "id": "md.live.task-text",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-line[data-task=' '] .cm-list-1",
+      "document": "main",
+      "property": "color",
+      "state": "md-live",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-list-color"
+    },
+    {
       "id": "md.live.task-done",
       "requirement": "md.tasks",
       "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task=x]",
@@ -1384,7 +1396,7 @@
       "appearance": [
         "opaque"
       ],
-      "token": "--ink-editor-foreground-color"
+      "token": "--ink-syntax-list-color"
     },
     {
       "id": "md.live.task-done-line",
@@ -1881,6 +1893,283 @@
       "token": "--ink-md-codeblock-background-color"
     },
     {
+      "id": "md.source.h1",
+      "requirement": "md.headings",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-header-1:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-heading-1-color"
+    },
+    {
+      "id": "md.source.h6",
+      "requirement": "md.headings",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-header-6:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-heading-6-color"
+    },
+    {
+      "id": "md.source.strong",
+      "requirement": "md.emphasis",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-strong:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-strong-color"
+    },
+    {
+      "id": "md.source.em",
+      "requirement": "md.emphasis",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-em:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-emphasis-color"
+    },
+    {
+      "id": "md.source.strikethrough",
+      "requirement": "md.emphasis",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-strikethrough:not(.cm-formatting)",
+      "document": "main",
+      "property": "text-decoration-line",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "line-through"
+    },
+    {
+      "id": "md.source.inline-code",
+      "requirement": "md.inline-code",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-inline-code:not(.cm-formatting)",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-inline-code-background-color"
+    },
+    {
+      "id": "md.source.inline-code-border",
+      "requirement": "md.inline-code",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-inline-code:not(.cm-formatting)",
+      "document": "main",
+      "property": "border-top-color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-inline-code-border-color"
+    },
+    {
+      "id": "md.source.inline-code-text",
+      "requirement": "md.inline-code",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-inline-code:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-monospace-color"
+    },
+    {
+      "id": "md.source.highlight",
+      "requirement": "md.highlight",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-highlight:not(.cm-formatting)",
+      "document": "main",
+      "property": "background-color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-inline-mark-background-color"
+    },
+    {
+      "id": "md.source.highlight-text",
+      "requirement": "md.highlight",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-highlight:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-inline-mark-text-color"
+    },
+    {
+      "id": "md.source.highlight-underline",
+      "requirement": "md.highlight",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-highlight:not(.cm-formatting)",
+      "document": "main",
+      "property": "text-decoration-color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-md-inline-mark-underline-color"
+    },
+    {
+      "id": "md.source.highlight-thickness",
+      "requirement": "md.highlight",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-highlight:not(.cm-formatting)",
+      "document": "main",
+      "property": "text-decoration-thickness",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "3px"
+    },
+    {
+      "id": "md.source.internal-link",
+      "requirement": "qd4.links",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-hmd-internal-link:not(.cm-hmd-embed)",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-link-color"
+    },
+    {
+      "id": "md.source.quote-text",
+      "requirement": "md.blockquote",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-quote:not(.cm-formatting)",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "> Quote line",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-quote-color"
+    },
+    {
+      "id": "md.source.quote-style",
+      "requirement": "md.blockquote",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-quote:not(.cm-formatting)",
+      "document": "main",
+      "property": "font-style",
+      "state": "md-source",
+      "scrollTo": "> Quote line",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "italic"
+    },
+    {
+      "id": "md.source.task-marker",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-task",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "- [ ] open task",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-atom-color"
+    },
+    {
+      "id": "md.source.task-marker-weight",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-task",
+      "document": "main",
+      "property": "font-weight",
+      "state": "md-source",
+      "scrollTo": "- [ ] open task",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "700"
+    },
+    {
+      "id": "md.source.task-text",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-task.cm-meta ~ .cm-list-1",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "- [ ] open task",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-list-color"
+    },
+    {
+      "id": "md.source.task-done",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-task.cm-property ~ .cm-list-1",
+      "document": "main",
+      "property": "color",
+      "state": "md-source",
+      "scrollTo": "- [ ] open task",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-syntax-list-color"
+    },
+    {
+      "id": "md.source.task-done-line",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-task.cm-property ~ .cm-list-1",
+      "document": "main",
+      "property": "text-decoration-line",
+      "state": "md-source",
+      "scrollTo": "- [ ] open task",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "line-through"
+    },
+    {
+      "id": "md.source.task-open-no-line",
+      "requirement": "md.tasks",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-task.cm-meta ~ .cm-list-1",
+      "document": "main",
+      "property": "text-decoration-line",
+      "state": "md-source",
+      "scrollTo": "- [ ] open task",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "none"
+    },
+    {
       "id": "md.reading.body",
       "requirement": "md.body-text",
       "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view",
@@ -2236,8 +2525,8 @@
       "appearance": [
         "opaque"
       ],
-      "token": "--ink-mde-preview-list-marker-2-color",
-      "kind": "var"
+      "kind": "var",
+      "token": "--ink-mde-preview-list-marker-2-color"
     },
     {
       "id": "md.reading.task-done",

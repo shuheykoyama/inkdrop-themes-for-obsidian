@@ -76,6 +76,14 @@
       "property": "text-decoration-color",
       "reason": "The lint's browser data reports text-decoration as only partially supported by Chrome. The declaration reproduces Inkdrop's .task-list-item.checked strike-through colour (markdown.css:954); the runtime checks measure it in Obsidian on Electron 39.5.1 and 43.7.7 (research/14 §6.11).",
       "refs": "research/14 §6.11"
+    },
+    {
+      "rule": "plugin/no-unsupported-browser-features",
+      "theme": "*",
+      "selector": ".theme-dark .markdown-source-view.mod-cm6 .cm-formatting-task.cm-property ~ span",
+      "property": "text-decoration-line",
+      "reason": "The lint's browser data reports text-decoration as only partially supported by Chrome. The declaration reproduces Inkdrop's .md-task-done-text line-through (syntax.css:734) in Source mode; the runtime checks measure it in Obsidian on Electron 39.5.1 and 43.7.7 (research/14 §6.13).",
+      "refs": "research/14 §6.13"
     }
   ]
 }
