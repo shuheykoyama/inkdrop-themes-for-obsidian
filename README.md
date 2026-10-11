@@ -1,7 +1,7 @@
 # inkdrop-themes-for-obsidian
 Faithful ports of Inkdrop's Solarized Dark and Kanagawa Dragon themes for Obsidian.
 
-**Status: in development (Phase 3, step 4: workspace backgrounds, opaque and translucent; no UI details yet).** There is no usable theme yet,
+**Status: in development (Phase 3, step 5: workspace backgrounds and UI details such as text, borders, states, overlays, controls, tags and the UI font; no Markdown styling yet).** There is no usable theme yet,
 and the theme names and licence/attribution text are not decided. The research and the implementation plan
 are in [`research/`](research/README.md) (plan: [`research/14-implementation-plan.md`](research/14-implementation-plan.md)).
 
@@ -26,6 +26,7 @@ W="$(mktemp -d)"
 V="$(bash tests/runtime/obsidian-isolated.sh start "$W" | tail -1)"
 node tests/runtime/run.mjs --vault "$V" --self-test   # the runner's negative tests
 node tests/runtime/run.mjs --vault "$V"               # tests/spec/runtime/*.json
+node tests/runtime/font-check.mjs                     # V-36: quoted vs unquoted UI font names
 bash tests/runtime/obsidian-isolated.sh stop "$W"
 ```
 

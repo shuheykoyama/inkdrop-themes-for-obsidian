@@ -1,0 +1,11 @@
+/* Mapping: borders and dividers (research/06 G04, W10). Shared structure, no colour literals.
+   --divider-color draws the ribbon edge, the dock/editor edges, the tab-strip bottoms and the status-bar
+   edge. Q-D1 puts Inkdrop's note list where the docks are, so the dock/editor edge is Inkdrop's
+   note-list|editor border (--note-list-bar-border-right); the ribbon edge, which stands where Inkdrop's
+   sidebar|note-list border is, takes --sidebar-border-right (components/workspace.css). */
+.theme-dark {
+  --background-modifier-border: var(--ink-border-color);
+  --background-modifier-border-hover: var(--ink-strong-border-color);
+  --background-modifier-border-focus: var(--ink-focused-form-border-color);
+  --divider-color: var(--ink-derived-note-list-bar-border-color);
+}

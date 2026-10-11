@@ -1,0 +1,14 @@
+/* Mapping: navigation items, headings and icons (research/06 N01-N06, G23; research/11 §14.4).
+   Q-D1 makes the docks the note list, so File Explorer items follow Inkdrop's note-list items:
+   - item text: the note-list title colour (--note-list-view-item-header-color);
+   - the open file: the selected-item fill (--note-list-view-item-selected-background), which Inkdrop
+     shows whether or not the list has focus; the 5 px focus bar is components/navigation.css.
+   Hover: Inkdrop's sidebar rows do not change on hover (V-20); note-list hover was not observed (V-33),
+   so Obsidian's own hover is kept. */
+.theme-dark {
+  --nav-item-color: var(--ink-note-list-view-item-header-color);
+  --nav-item-background-active: var(--ink-note-list-view-item-selected-background);
+  --nav-heading-color: var(--ink-sidebar-menu-section-color);
+  --icon-color: var(--ink-sidebar-menu-action-color);
+  --icon-color-hover: var(--ink-sidebar-menu-action-hover-color);
+}

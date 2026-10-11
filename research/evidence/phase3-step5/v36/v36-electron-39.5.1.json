@@ -1,0 +1,434 @@
+{
+ "measuredAt": "2026-10-11T12:04:09.316Z",
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) obsidian/1.11.7 Chrome/142.0.7444.265 Electron/39.5.1 Safari/537.36",
+ "results": [
+  {
+   "case": "font-name",
+   "sample": "latin",
+   "same": true,
+   "inkdropDeclaration": "-apple-system, BlinkMacSystemFont, Segoe UI, 'Lato'",
+   "oursDeclaration": "-apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Lato'",
+   "inkdropComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato",
+   "oursComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato",
+   "inkdropFonts": [
+    ".SF NS (.SFNS-Regular_wdth_opsz110000_GRAD_wght) x47"
+   ],
+   "oursFonts": [
+    ".SF NS (.SFNS-Regular_wdth_opsz110000_GRAD_wght) x47"
+   ]
+  },
+  {
+   "case": "font-name",
+   "sample": "japanese",
+   "same": true,
+   "inkdropDeclaration": "-apple-system, BlinkMacSystemFont, Segoe UI, 'Lato'",
+   "oursDeclaration": "-apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Lato'",
+   "inkdropComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato",
+   "oursComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato",
+   "inkdropFonts": [
+    ".Hiragino Kaku Gothic Interface (.HiraKakuInterface-W4) x8"
+   ],
+   "oursFonts": [
+    ".Hiragino Kaku Gothic Interface (.HiraKakuInterface-W4) x8"
+   ]
+  },
+  {
+   "case": "font-name",
+   "sample": "emoji",
+   "same": true,
+   "inkdropDeclaration": "-apple-system, BlinkMacSystemFont, Segoe UI, 'Lato'",
+   "oursDeclaration": "-apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Lato'",
+   "inkdropComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato",
+   "oursComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato",
+   "inkdropFonts": [
+    "Apple Color Emoji (AppleColorEmoji) x3"
+   ],
+   "oursFonts": [
+    "Apple Color Emoji (AppleColorEmoji) x3"
+   ]
+  },
+  {
+   "case": "font-name",
+   "sample": "symbols",
+   "same": true,
+   "inkdropDeclaration": "-apple-system, BlinkMacSystemFont, Segoe UI, 'Lato'",
+   "oursDeclaration": "-apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Lato'",
+   "inkdropComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato",
+   "oursComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato",
+   "inkdropFonts": [
+    ".SF NS (.SFNS-Regular_wdth_opsz110000_GRAD_wght) x9"
+   ],
+   "oursFonts": [
+    ".SF NS (.SFNS-Regular_wdth_opsz110000_GRAD_wght) x9"
+   ]
+  },
+  {
+   "case": "page-font",
+   "sample": "latin",
+   "same": true,
+   "inkdropDeclaration": "-apple-system, BlinkMacSystemFont, Segoe UI, 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+   "oursDeclaration": "-apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Lato', 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+   "inkdropComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato, \"Helvetica Neue\", Arial, Helvetica, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+   "oursComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato, \"Helvetica Neue\", Arial, Helvetica, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+   "inkdropFonts": [
+    ".SF NS (.SFNS-Regular_wdth_opsz110000_GRAD_wght) x47"
+   ],
+   "oursFonts": [
+    ".SF NS (.SFNS-Regular_wdth_opsz110000_GRAD_wght) x47"
+   ]
+  },
+  {
+   "case": "page-font",
+   "sample": "japanese",
+   "same": true,
+   "inkdropDeclaration": "-apple-system, BlinkMacSystemFont, Segoe UI, 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+   "oursDeclaration": "-apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Lato', 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+   "inkdropComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato, \"Helvetica Neue\", Arial, Helvetica, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+   "oursComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato, \"Helvetica Neue\", Arial, Helvetica, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+   "inkdropFonts": [
+    ".Hiragino Kaku Gothic Interface (.HiraKakuInterface-W4) x8"
+   ],
+   "oursFonts": [
+    ".Hiragino Kaku Gothic Interface (.HiraKakuInterface-W4) x8"
+   ]
+  },
+  {
+   "case": "page-font",
+   "sample": "emoji",
+   "same": true,
+   "inkdropDeclaration": "-apple-system, BlinkMacSystemFont, Segoe UI, 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+   "oursDeclaration": "-apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Lato', 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+   "inkdropComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato, \"Helvetica Neue\", Arial, Helvetica, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+   "oursComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato, \"Helvetica Neue\", Arial, Helvetica, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+   "inkdropFonts": [
+    "Apple Color Emoji (AppleColorEmoji) x3"
+   ],
+   "oursFonts": [
+    "Apple Color Emoji (AppleColorEmoji) x3"
+   ]
+  },
+  {
+   "case": "page-font",
+   "sample": "symbols",
+   "same": true,
+   "inkdropDeclaration": "-apple-system, BlinkMacSystemFont, Segoe UI, 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+   "oursDeclaration": "-apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Lato', 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+   "inkdropComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato, \"Helvetica Neue\", Arial, Helvetica, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+   "oursComputed": "-apple-system, \"system-ui\", \"Segoe UI\", Lato, \"Helvetica Neue\", Arial, Helvetica, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+   "inkdropFonts": [
+    ".SF NS (.SFNS-Regular_wdth_opsz110000_GRAD_wght) x9"
+   ],
+   "oursFonts": [
+    ".SF NS (.SFNS-Regular_wdth_opsz110000_GRAD_wght) x9"
+   ]
+  },
+  {
+   "case": "only-BlinkMacSystemFont",
+   "sample": "latin",
+   "same": true,
+   "inkdropDeclaration": "BlinkMacSystemFont, monospace",
+   "oursDeclaration": "'BlinkMacSystemFont', monospace",
+   "inkdropComputed": "\"system-ui\", monospace",
+   "oursComputed": "\"system-ui\", monospace",
+   "inkdropFonts": [
+    ".SF NS (.SFNS-Regular_wdth_opsz110000_GRAD_wght) x47"
+   ],
+   "oursFonts": [
+    ".SF NS (.SFNS-Regular_wdth_opsz110000_GRAD_wght) x47"
+   ]
+  },
+  {
+   "case": "only-BlinkMacSystemFont",
+   "sample": "japanese",
+   "same": true,
+   "inkdropDeclaration": "BlinkMacSystemFont, monospace",
+   "oursDeclaration": "'BlinkMacSystemFont', monospace",
+   "inkdropComputed": "\"system-ui\", monospace",
+   "oursComputed": "\"system-ui\", monospace",
+   "inkdropFonts": [
+    ".Hiragino Kaku Gothic Interface (.HiraKakuInterface-W4) x8"
+   ],
+   "oursFonts": [
+    ".Hiragino Kaku Gothic Interface (.HiraKakuInterface-W4) x8"
+   ]
+  },
+  {
+   "case": "only-BlinkMacSystemFont",
+   "sample": "emoji",
+   "same": true,
+   "inkdropDeclaration": "BlinkMacSystemFont, monospace",
+   "oursDeclaration": "'BlinkMacSystemFont', monospace",
+   "inkdropComputed": "\"system-ui\", monospace",
+   "oursComputed": "\"system-ui\", monospace",
+   "inkdropFonts": [
+    "Apple Color Emoji (AppleColorEmoji) x3"
+   ],
+   "oursFonts": [
+    "Apple Color Emoji (AppleColorEmoji) x3"
+   ]
+  },
+  {
+   "case": "only-BlinkMacSystemFont",
+   "sample": "symbols",
+   "same": true,
+   "inkdropDeclaration": "BlinkMacSystemFont, monospace",
+   "oursDeclaration": "'BlinkMacSystemFont', monospace",
+   "inkdropComputed": "\"system-ui\", monospace",
+   "oursComputed": "\"system-ui\", monospace",
+   "inkdropFonts": [
+    ".SF NS (.SFNS-Regular_wdth_opsz110000_GRAD_wght) x9"
+   ],
+   "oursFonts": [
+    ".SF NS (.SFNS-Regular_wdth_opsz110000_GRAD_wght) x9"
+   ]
+  },
+  {
+   "case": "only-Segoe-UI",
+   "sample": "latin",
+   "same": true,
+   "inkdropDeclaration": "Segoe UI, monospace",
+   "oursDeclaration": "'Segoe UI', monospace",
+   "inkdropComputed": "\"Segoe UI\", monospace",
+   "oursComputed": "\"Segoe UI\", monospace",
+   "inkdropFonts": [
+    "Menlo (Menlo-Regular) x47"
+   ],
+   "oursFonts": [
+    "Menlo (Menlo-Regular) x47"
+   ]
+  },
+  {
+   "case": "only-Segoe-UI",
+   "sample": "japanese",
+   "same": true,
+   "inkdropDeclaration": "Segoe UI, monospace",
+   "oursDeclaration": "'Segoe UI', monospace",
+   "inkdropComputed": "\"Segoe UI\", monospace",
+   "oursComputed": "\"Segoe UI\", monospace",
+   "inkdropFonts": [
+    "Hiragino Sans (HiraginoSans-W3) x8"
+   ],
+   "oursFonts": [
+    "Hiragino Sans (HiraginoSans-W3) x8"
+   ]
+  },
+  {
+   "case": "only-Segoe-UI",
+   "sample": "emoji",
+   "same": true,
+   "inkdropDeclaration": "Segoe UI, monospace",
+   "oursDeclaration": "'Segoe UI', monospace",
+   "inkdropComputed": "\"Segoe UI\", monospace",
+   "oursComputed": "\"Segoe UI\", monospace",
+   "inkdropFonts": [
+    "Apple Color Emoji (AppleColorEmoji) x3"
+   ],
+   "oursFonts": [
+    "Apple Color Emoji (AppleColorEmoji) x3"
+   ]
+  },
+  {
+   "case": "only-Segoe-UI",
+   "sample": "symbols",
+   "same": true,
+   "inkdropDeclaration": "Segoe UI, monospace",
+   "oursDeclaration": "'Segoe UI', monospace",
+   "inkdropComputed": "\"Segoe UI\", monospace",
+   "oursComputed": "\"Segoe UI\", monospace",
+   "inkdropFonts": [
+    "Menlo (Menlo-Regular) x9"
+   ],
+   "oursFonts": [
+    "Menlo (Menlo-Regular) x9"
+   ]
+  },
+  {
+   "case": "only-Arial",
+   "sample": "latin",
+   "same": true,
+   "inkdropDeclaration": "Arial, monospace",
+   "oursDeclaration": "'Arial', monospace",
+   "inkdropComputed": "Arial, monospace",
+   "oursComputed": "Arial, monospace",
+   "inkdropFonts": [
+    "Arial (ArialMT) x47"
+   ],
+   "oursFonts": [
+    "Arial (ArialMT) x47"
+   ]
+  },
+  {
+   "case": "only-Arial",
+   "sample": "japanese",
+   "same": true,
+   "inkdropDeclaration": "Arial, monospace",
+   "oursDeclaration": "'Arial', monospace",
+   "inkdropComputed": "Arial, monospace",
+   "oursComputed": "Arial, monospace",
+   "inkdropFonts": [
+    "Hiragino Sans (HiraginoSans-W3) x8"
+   ],
+   "oursFonts": [
+    "Hiragino Sans (HiraginoSans-W3) x8"
+   ]
+  },
+  {
+   "case": "only-Arial",
+   "sample": "emoji",
+   "same": true,
+   "inkdropDeclaration": "Arial, monospace",
+   "oursDeclaration": "'Arial', monospace",
+   "inkdropComputed": "Arial, monospace",
+   "oursComputed": "Arial, monospace",
+   "inkdropFonts": [
+    "Apple Color Emoji (AppleColorEmoji) x3"
+   ],
+   "oursFonts": [
+    "Apple Color Emoji (AppleColorEmoji) x3"
+   ]
+  },
+  {
+   "case": "only-Arial",
+   "sample": "symbols",
+   "same": true,
+   "inkdropDeclaration": "Arial, monospace",
+   "oursDeclaration": "'Arial', monospace",
+   "inkdropComputed": "Arial, monospace",
+   "oursComputed": "Arial, monospace",
+   "inkdropFonts": [
+    "Arial (ArialMT) x5",
+    "Menlo (Menlo-Regular) x4"
+   ],
+   "oursFonts": [
+    "Arial (ArialMT) x5",
+    "Menlo (Menlo-Regular) x4"
+   ]
+  },
+  {
+   "case": "only-Helvetica",
+   "sample": "latin",
+   "same": true,
+   "inkdropDeclaration": "Helvetica, monospace",
+   "oursDeclaration": "'Helvetica', monospace",
+   "inkdropComputed": "Helvetica, monospace",
+   "oursComputed": "Helvetica, monospace",
+   "inkdropFonts": [
+    "Helvetica (Helvetica) x47"
+   ],
+   "oursFonts": [
+    "Helvetica (Helvetica) x47"
+   ]
+  },
+  {
+   "case": "only-Helvetica",
+   "sample": "japanese",
+   "same": true,
+   "inkdropDeclaration": "Helvetica, monospace",
+   "oursDeclaration": "'Helvetica', monospace",
+   "inkdropComputed": "Helvetica, monospace",
+   "oursComputed": "Helvetica, monospace",
+   "inkdropFonts": [
+    "Hiragino Sans (HiraginoSans-W3) x8"
+   ],
+   "oursFonts": [
+    "Hiragino Sans (HiraginoSans-W3) x8"
+   ]
+  },
+  {
+   "case": "only-Helvetica",
+   "sample": "emoji",
+   "same": true,
+   "inkdropDeclaration": "Helvetica, monospace",
+   "oursDeclaration": "'Helvetica', monospace",
+   "inkdropComputed": "Helvetica, monospace",
+   "oursComputed": "Helvetica, monospace",
+   "inkdropFonts": [
+    "Apple Color Emoji (AppleColorEmoji) x3"
+   ],
+   "oursFonts": [
+    "Apple Color Emoji (AppleColorEmoji) x3"
+   ]
+  },
+  {
+   "case": "only-Helvetica",
+   "sample": "symbols",
+   "same": true,
+   "inkdropDeclaration": "Helvetica, monospace",
+   "oursDeclaration": "'Helvetica', monospace",
+   "inkdropComputed": "Helvetica, monospace",
+   "oursComputed": "Helvetica, monospace",
+   "inkdropFonts": [
+    "Menlo (Menlo-Regular) x5",
+    "Helvetica (Helvetica) x4"
+   ],
+   "oursFonts": [
+    "Menlo (Menlo-Regular) x5",
+    "Helvetica (Helvetica) x4"
+   ]
+  },
+  {
+   "case": "only-Apple-Color-Emoji",
+   "sample": "latin",
+   "same": true,
+   "inkdropDeclaration": "Apple Color Emoji, monospace",
+   "oursDeclaration": "'Apple Color Emoji', monospace",
+   "inkdropComputed": "\"Apple Color Emoji\", monospace",
+   "oursComputed": "\"Apple Color Emoji\", monospace",
+   "inkdropFonts": [
+    "Menlo (Menlo-Regular) x30",
+    "Apple Color Emoji (AppleColorEmoji) x17"
+   ],
+   "oursFonts": [
+    "Menlo (Menlo-Regular) x30",
+    "Apple Color Emoji (AppleColorEmoji) x17"
+   ]
+  },
+  {
+   "case": "only-Apple-Color-Emoji",
+   "sample": "japanese",
+   "same": true,
+   "inkdropDeclaration": "Apple Color Emoji, monospace",
+   "oursDeclaration": "'Apple Color Emoji', monospace",
+   "inkdropComputed": "\"Apple Color Emoji\", monospace",
+   "oursComputed": "\"Apple Color Emoji\", monospace",
+   "inkdropFonts": [
+    "Hiragino Sans (HiraginoSans-W3) x8"
+   ],
+   "oursFonts": [
+    "Hiragino Sans (HiraginoSans-W3) x8"
+   ]
+  },
+  {
+   "case": "only-Apple-Color-Emoji",
+   "sample": "emoji",
+   "same": true,
+   "inkdropDeclaration": "Apple Color Emoji, monospace",
+   "oursDeclaration": "'Apple Color Emoji', monospace",
+   "inkdropComputed": "\"Apple Color Emoji\", monospace",
+   "oursComputed": "\"Apple Color Emoji\", monospace",
+   "inkdropFonts": [
+    "Apple Color Emoji (AppleColorEmoji) x3"
+   ],
+   "oursFonts": [
+    "Apple Color Emoji (AppleColorEmoji) x3"
+   ]
+  },
+  {
+   "case": "only-Apple-Color-Emoji",
+   "sample": "symbols",
+   "same": true,
+   "inkdropDeclaration": "Apple Color Emoji, monospace",
+   "oursDeclaration": "'Apple Color Emoji', monospace",
+   "inkdropComputed": "\"Apple Color Emoji\", monospace",
+   "oursComputed": "\"Apple Color Emoji\", monospace",
+   "inkdropFonts": [
+    "Menlo (Menlo-Regular) x5",
+    "Apple Color Emoji (AppleColorEmoji) x4"
+   ],
+   "oursFonts": [
+    "Menlo (Menlo-Regular) x5",
+    "Apple Color Emoji (AppleColorEmoji) x4"
+   ]
+  }
+ ]
+}

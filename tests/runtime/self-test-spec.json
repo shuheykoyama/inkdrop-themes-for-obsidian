@@ -276,6 +276,114 @@
       "state": "fullscreen-class",
       "token": "--ink-note-list-bar-background-acrylic",
       "selfTest": "FAIL"
+    },
+    {
+      "id": "self.first-color-wrong",
+      "selector": ".workspace-split.mod-left-split .nav-file-title.is-active",
+      "document": "main",
+      "property": "box-shadow",
+      "appearance": [
+        "opaque"
+      ],
+      "state": "file-explorer-focused",
+      "kind": "first-color",
+      "token": "--ink-note-list-view-item-selected-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.first-color-none",
+      "selector": ".workspace-split.mod-left-split .nav-file-title.is-active",
+      "document": "main",
+      "property": "box-shadow",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "first-color",
+      "token": "--ink-note-list-view-item-active-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.var-wrong",
+      "selector": "body",
+      "document": "main",
+      "property": "--tag-background",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-tag-default-text-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.var-unset",
+      "selector": "body",
+      "document": "main",
+      "property": "--ink-self-test-unset",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-tag-default-text-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.first-family-wrong",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-header-title",
+      "document": "main",
+      "property": "font-family",
+      "appearance": [
+        "opaque"
+      ],
+      "state": "user-font",
+      "kind": "first-family",
+      "value": "Helvetica",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.menu-needs-pointer",
+      "selector": ".menu",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-menu-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.popover-needs-pointer",
+      "selector": ".popover.hover-popover",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-popup-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.popover-open",
+      "selector": ".popover.hover-popover",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "state": "popover-open",
+      "token": "--ink-popup-background",
+      "selfTest": "PASS"
+    },
+    {
+      "id": "self.menu-wrong-token",
+      "selector": ".menu",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "state": "menu-open",
+      "token": "--ink-editor-background",
+      "selfTest": "FAIL"
     }
   ]
 }

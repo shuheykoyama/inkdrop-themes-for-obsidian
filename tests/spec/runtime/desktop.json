@@ -136,7 +136,7 @@
     },
     {
       "id": "desktop.settings-modal.background",
-      "requirement": "overlay.settings-modal-background",
+      "requirement": "ui.settings-modal",
       "selector": ".modal.mod-settings",
       "document": "settings",
       "property": "background-color",
@@ -144,7 +144,7 @@
         "opaque",
         "translucent"
       ],
-      "token": "--ink-editor-background"
+      "token": "--ink-preferences-view-background"
     },
     {
       "id": "desktop.accent.default-h",
@@ -362,7 +362,7 @@
     },
     {
       "id": "leak.quick-switcher.opaque",
-      "requirement": "leak.in-window-modal",
+      "requirement": "ui.prompt",
       "selector": ".modal-container .prompt",
       "document": "main",
       "property": "background-color",
@@ -370,11 +370,11 @@
         "opaque"
       ],
       "state": "quick-switcher-open",
-      "token": "--ink-editor-background"
+      "token": "--ink-modal-box-content-background"
     },
     {
       "id": "leak.quick-switcher.translucent",
-      "requirement": "leak.in-window-modal",
+      "requirement": "ui.prompt",
       "selector": ".modal-container .prompt",
       "document": "main",
       "property": "background-color",
@@ -382,7 +382,7 @@
         "translucent"
       ],
       "state": "quick-switcher-open",
-      "token": "--ink-editor-background"
+      "token": "--ink-modal-box-content-background"
     },
     {
       "id": "fullscreen.status-bar",
@@ -453,6 +453,568 @@
         "translucent"
       ],
       "token": "--ink-note-list-bar-background-acrylic"
+    },
+    {
+      "id": "ui.text.normal",
+      "requirement": "ui.text-colors",
+      "selector": "body",
+      "document": "main",
+      "property": "color",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-text-color"
+    },
+    {
+      "id": "ui.text.muted",
+      "requirement": "ui.text-colors",
+      "selector": ".workspace-ribbon.mod-primary",
+      "document": "main",
+      "property": "color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-muted-text-color"
+    },
+    {
+      "id": "ui.text.faint",
+      "requirement": "ui.text-colors",
+      "selector": ".workspace-split.mod-left-split .tree-item-icon.collapse-icon",
+      "document": "main",
+      "property": "color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-disabled-text-color"
+    },
+    {
+      "id": "ui.text.error.var",
+      "requirement": "ui.text-colors",
+      "selector": "body",
+      "document": "main",
+      "property": "--text-error",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-negative-color"
+    },
+    {
+      "id": "ui.text.success.var",
+      "requirement": "ui.text-colors",
+      "selector": "body",
+      "document": "main",
+      "property": "--text-success",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-positive-color"
+    },
+    {
+      "id": "ui.text.warning.var",
+      "requirement": "ui.text-colors",
+      "selector": "body",
+      "document": "main",
+      "property": "--text-warning",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-warning-color"
+    },
+    {
+      "id": "ui.divider.tab-strip",
+      "requirement": "ui.dividers",
+      "selector": ".workspace-split.mod-root .workspace-tab-header-container",
+      "document": "main",
+      "property": "border-bottom-color",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-derived-note-list-bar-border-color"
+    },
+    {
+      "id": "ui.divider.status-bar",
+      "requirement": "ui.dividers",
+      "selector": ".status-bar",
+      "document": "main",
+      "property": "border-top-color",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-derived-note-list-bar-border-color"
+    },
+    {
+      "id": "ui.divider.dock-edge",
+      "requirement": "ui.dividers",
+      "selector": ".workspace-split.mod-left-split > .workspace-leaf-resize-handle",
+      "document": "main",
+      "property": "border-right-color",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-derived-note-list-bar-border-color"
+    },
+    {
+      "id": "ui.divider.ribbon-edge",
+      "requirement": "ui.dividers",
+      "selector": ".workspace-ribbon.mod-primary",
+      "document": "main",
+      "property": "border-right-color",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-derived-sidebar-border-color"
+    },
+    {
+      "id": "ui.border.var",
+      "requirement": "ui.dividers",
+      "selector": "body",
+      "document": "main",
+      "property": "--background-modifier-border",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-border-color"
+    },
+    {
+      "id": "ui.border-hover.prompt",
+      "requirement": "ui.dividers",
+      "selector": ".modal-container .prompt",
+      "document": "main",
+      "property": "border-top-color",
+      "appearance": [
+        "opaque"
+      ],
+      "state": "quick-switcher-open",
+      "token": "--ink-strong-border-color"
+    },
+    {
+      "id": "ui.border-focus.var",
+      "requirement": "ui.dividers",
+      "selector": "body",
+      "document": "main",
+      "property": "--background-modifier-border-focus",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-focused-form-border-color"
+    },
+    {
+      "id": "ui.nav.item-color",
+      "requirement": "ui.nav-states",
+      "selector": ".workspace-split.mod-left-split .nav-file-title:not(.is-active)",
+      "document": "main",
+      "property": "color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-note-list-view-item-header-color"
+    },
+    {
+      "id": "ui.nav.active-fill",
+      "requirement": "ui.nav-states",
+      "selector": ".workspace-split.mod-left-split .nav-file-title.is-active",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-note-list-view-item-selected-background"
+    },
+    {
+      "id": "ui.nav.focus-bar.unfocused",
+      "requirement": "ui.nav-states",
+      "selector": ".workspace-split.mod-left-split .nav-file-title.is-active",
+      "document": "main",
+      "property": "box-shadow",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "none"
+    },
+    {
+      "id": "ui.nav.focus-bar.focused",
+      "requirement": "ui.nav-states",
+      "selector": ".workspace-split.mod-left-split .nav-file-title.is-active",
+      "document": "main",
+      "property": "box-shadow",
+      "appearance": [
+        "opaque"
+      ],
+      "state": "file-explorer-focused",
+      "kind": "first-color",
+      "token": "--ink-note-list-view-item-active-background"
+    },
+    {
+      "id": "ui.nav.active-fill.focused",
+      "requirement": "ui.nav-states",
+      "selector": ".workspace-split.mod-left-split .nav-file-title.is-active",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "state": "file-explorer-focused",
+      "token": "--ink-note-list-view-item-selected-background"
+    },
+    {
+      "id": "ui.icon.color",
+      "requirement": "ui.icons",
+      "selector": ".workspace-ribbon.mod-primary .side-dock-ribbon-action",
+      "document": "main",
+      "property": "color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-sidebar-menu-action-color"
+    },
+    {
+      "id": "ui.icon.hover.var",
+      "requirement": "ui.icons",
+      "selector": "body",
+      "document": "main",
+      "property": "--icon-color-hover",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-sidebar-menu-action-hover-color"
+    },
+    {
+      "id": "ui.nav.heading.var",
+      "requirement": "ui.icons",
+      "selector": "body",
+      "document": "main",
+      "property": "--nav-heading-color",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-sidebar-menu-section-color"
+    },
+    {
+      "id": "ui.popover.background",
+      "requirement": "qd7.popover",
+      "selector": ".popover.hover-popover",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "state": "popover-open",
+      "token": "--ink-popup-background"
+    },
+    {
+      "id": "ui.tooltip.background",
+      "requirement": "ui.tooltip",
+      "selector": ".tooltip",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "state": "tooltip-open",
+      "token": "--ink-tooltip-background"
+    },
+    {
+      "id": "ui.menu.background",
+      "requirement": "ui.menu",
+      "selector": ".menu",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "state": "menu-open",
+      "token": "--ink-menu-background"
+    },
+    {
+      "id": "ui.menu.hover",
+      "requirement": "ui.menu",
+      "selector": ".menu .menu-item.selected",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "state": "menu-open",
+      "token": "--ink-menu-hover-item-background"
+    },
+    {
+      "id": "ui.prompt.selected",
+      "requirement": "ui.prompt",
+      "selector": ".prompt .suggestion-item.is-selected",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "state": "quick-switcher-open",
+      "token": "--ink-selection-list-active-background"
+    },
+    {
+      "id": "ui.settings.sidebar",
+      "requirement": "ui.settings-modal",
+      "selector": ".modal.mod-settings .vertical-tab-header",
+      "document": "settings",
+      "property": "background-color",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-preferences-sidebar-background"
+    },
+    {
+      "id": "ui.settings.active-item",
+      "requirement": "ui.settings-modal",
+      "selector": ".modal.mod-settings .vertical-tab-nav-item.is-active",
+      "document": "settings",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-preferences-sidebar-item-active-background"
+    },
+    {
+      "id": "ui.notice.var",
+      "requirement": "ui.tooltip",
+      "selector": "body",
+      "document": "main",
+      "property": "--notice-background",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-notification-item-background"
+    },
+    {
+      "id": "ui.button.background",
+      "requirement": "ui.controls",
+      "selector": ".modal.mod-settings .vertical-tab-content button:not(.mod-cta):not(.clickable-icon)",
+      "document": "settings",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-derived-button-background-color"
+    },
+    {
+      "id": "ui.button.hover.var",
+      "requirement": "ui.controls",
+      "selector": "body",
+      "document": "main",
+      "property": "--interactive-hover",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-button-hover-background-color"
+    },
+    {
+      "id": "ui.dropdown.background",
+      "requirement": "ui.controls",
+      "selector": ".modal.mod-settings .vertical-tab-content select.dropdown",
+      "document": "settings",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-form-select-background"
+    },
+    {
+      "id": "ui.toggle.off-lane",
+      "requirement": "ui.controls",
+      "selector": ".modal.mod-settings .vertical-tab-content .checkbox-container:not(.is-enabled)",
+      "document": "settings",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-toggle-lane-background"
+    },
+    {
+      "id": "ui.toggle.on-user-accent",
+      "requirement": "ui.controls",
+      "selector": ".modal.mod-settings .vertical-tab-content .checkbox-container.is-enabled",
+      "document": "settings",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "state": "user-accent",
+      "value": "rgb(224, 108, 117)"
+    },
+    {
+      "id": "ui.input.var",
+      "requirement": "ui.controls",
+      "selector": "body",
+      "document": "main",
+      "property": "--background-modifier-form-field",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-input-background"
+    },
+    {
+      "id": "ui.checkbox-marker.var",
+      "requirement": "ui.controls",
+      "selector": "body",
+      "document": "main",
+      "property": "--checkbox-marker-color",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-checkbox-active-check-color"
+    },
+    {
+      "id": "ui.toggle-thumb.var",
+      "requirement": "ui.controls",
+      "selector": "body",
+      "document": "main",
+      "property": "--toggle-thumb-color",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-derived-toggle-handle-color"
+    },
+    {
+      "id": "ui.scrollbar-thumb.var",
+      "requirement": "ui.controls",
+      "selector": "body",
+      "document": "main",
+      "property": "--scrollbar-thumb-bg",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-scrollbar-thumb-background"
+    },
+    {
+      "id": "ui.scrollbar-track.var",
+      "requirement": "ui.controls",
+      "selector": "body",
+      "document": "main",
+      "property": "--scrollbar-bg",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-scrollbar-track-background"
+    },
+    {
+      "id": "ui.tag.background.var",
+      "requirement": "qd5.tags",
+      "selector": "body",
+      "document": "main",
+      "property": "--tag-background",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-tag-default-background-color"
+    },
+    {
+      "id": "ui.tag.color.var",
+      "requirement": "qd5.tags",
+      "selector": "body",
+      "document": "main",
+      "property": "--tag-color",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-tag-default-text-color"
+    },
+    {
+      "id": "ui.tag.hover.var",
+      "requirement": "qd5.tags",
+      "selector": "body",
+      "document": "main",
+      "property": "--tag-background-hover",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-tag-default-background-color"
+    },
+    {
+      "id": "ui.font.theme",
+      "requirement": "qd8.ui-font",
+      "selector": "body",
+      "document": "main",
+      "property": "--font-interface-theme",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "token": "--ink-page-font"
+    },
+    {
+      "id": "ui.font.user-override",
+      "requirement": "qd8.user-font",
+      "selector": "body",
+      "document": "main",
+      "property": "--font-interface-override",
+      "appearance": [
+        "opaque"
+      ],
+      "state": "user-font",
+      "kind": "text",
+      "value": "\"Courier New\""
+    },
+    {
+      "id": "ui.font.user-override-first",
+      "requirement": "qd8.user-font",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-header-title",
+      "document": "main",
+      "property": "font-family",
+      "appearance": [
+        "opaque"
+      ],
+      "state": "user-font",
+      "kind": "first-family",
+      "value": "\"Courier New\""
+    },
+    {
+      "id": "leak.popover.editor",
+      "requirement": "qd7.popover",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-content",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "state": "popover-open",
+      "token": "--ink-editor-background"
+    },
+    {
+      "id": "leak.popover.editor-translucent",
+      "requirement": "qd7.popover",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-content",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "state": "popover-open",
+      "token": "--ink-editor-background-acrylic"
     }
   ]
 }

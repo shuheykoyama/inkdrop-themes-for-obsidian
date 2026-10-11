@@ -1,0 +1,15 @@
+/* Components: workspace edges and navigation states that variables alone cannot express. */
+
+/* Ribbon edge (Q-D1: ribbon = Inkdrop sidebar, left dock = note list): the boundary that stands where
+   Inkdrop's sidebar|note-list border is takes --sidebar-border-right. Scoped to the ribbon so the other
+   dividers keep the note-list border colour (mapping/borders.css). */
+.workspace-ribbon.mod-primary {
+  --divider-color: var(--ink-derived-sidebar-border-color);
+}
+
+/* Focused list: Inkdrop draws a 5 px bar on the left of the selected note while the note list has
+   focus (--note-list-view-item-active-background, research/11 §14.4). In Obsidian the list has focus when
+   its leaf is the active one. No app.css rule sets box-shadow on .tree-item-self.is-active. */
+.workspace-leaf.mod-active .tree-item-self.is-active {
+  box-shadow: inset 5px 0 0 0 var(--ink-note-list-view-item-active-background);
+}

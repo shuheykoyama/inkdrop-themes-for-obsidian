@@ -843,6 +843,134 @@ RV1 の結果: APPROVE（2026-10-11、`3c78a90`）。指摘 RV1-A〜C は §6.2 
 - フルスクリーンは KD だけで確認した。
 - 別の時刻・別の Mac・別の壁紙での見え方。
 
-### 6.7 次の作業
+### 6.7 RV2 の再レビュー（2026-10-11）
 
-RV2 の再レビューを待つ。工程 5 には、RV2 の後に進む。
+APPROVE（`52434a5`）。工程 5 に進む指示を受けた。
+
+### 6.8 工程 5: UI の詳細（2026-10-11 実装、レビュー待ち）
+
+**V-36（引用符で囲んだ UI フォント名）: PASS（macOS、Electron 39.5.1・43.7.7）**
+
+- 方法（`tests/runtime/font-check.mjs`）: 隔離した Obsidian の中に、Inkdrop の引用符なしの宣言と、このテーマの引用符付きの宣言を当てた見えない span を並べ、CDP の `CSS.getPlatformFontsForNode` で、実際に描画に使われたフォント（family 名・PostScript 名・グリフ数）を比べた。宣言は `--font-name`、`--page-font`、各フォント名を単独で指定したもの（`<名前>, monospace`。未インストールなら monospace に落ちることで、名前の扱いの違いが見える）。文字は英字・和文・絵文字・記号の 4 種。
+- 結果: 28 / 28 組がすべて同じ。両 Electron とも同じ結果。
+  - `BlinkMacSystemFont` は引用符あり・なしとも Computed Style では `system-ui` に置き換えられ、`.SF NS` に解決した（システムフォントとして扱われる）。
+  - フォールバックの順序: 先頭の `-apple-system` で英字・記号は `.SF NS`、和文は `.Hiragino Kaku Gothic Interface`、絵文字は `Apple Color Emoji`。`Segoe UI` はこの Mac にないため、引用符の有無にかかわらず次の候補に進む。`Lato` もない。
+- 判断: Q-D8 の忠実度を PASS（macOS）とし、UI フォントを適用した。Windows・Linux（`Segoe UI` がある環境など）は未確認。
+- 証拠: `evidence/phase3-step5/v36/`。
+
+**実装（マッピング）**
+
+新しいファイル: `mapping/text.css`・`borders.css`・`states.css`・`ui.css`（`.theme-dark` の変数だけ）、`components/navigation.css`・`overlays.css`（変数だけでは表せないもの）。両テーマのエントリから、`mapping` → `components` → `platform` の順に読み込む。
+
+| Obsidian | Inkdrop のトークン | 場所 |
+|---|---|---|
+| `--text-normal` / `--text-muted` / `--text-faint` | `--text-color` / `--muted-text-color` / `--disabled-text-color` | `mapping/text.css` |
+| `--text-error` / `--text-success` / `--text-warning` | `--negative-color` / `--positive-color` / `--warning-color` | 同上 |
+| `--background-modifier-border` / `-hover` / `-focus` | `--border-color` / `--strong-border-color` / `--focused-form-border-color` | `mapping/borders.css` |
+| `--divider-color`（ドックの境界、タブ帯の下、ステータスバーの上） | `--note-list-bar-border-right` の色部分（派生） | 同上。translucent 時も同じ（`platform/translucent.css`） |
+| Ribbon の右境界（`.workspace-ribbon.mod-primary` の `--divider-color`） | `--sidebar-border-right` の色部分（派生） | `components/navigation.css` |
+| `--nav-item-color` / `--nav-item-background-active` | `--note-list-view-item-header-color` / `--note-list-view-item-selected-background` | `mapping/states.css` |
+| File Explorer にフォーカスがあるときの左 5px のバー | `--note-list-view-item-active-background` | `components/navigation.css`（`box-shadow: inset 5px 0 0 0`） |
+| `--nav-heading-color`、`--icon-color` / `-hover` | `--sidebar-menu-section-color`、`--sidebar-menu-action-color` / `-hover-color` | `mapping/states.css` |
+| Popover（ページのプレビュー） | `--popup-background`（Q-D7） | `components/overlays.css`（`.popover.hover-popover` の中だけ `--background-primary` を再定義） |
+| `--modal-background`、`--prompt-background` | `--modal-box-content-background` | `mapping/ui.css` |
+| Settings の本体・サイドバー・選択中の項目 | `--preferences-view-background`・`--preferences-sidebar-background`・`--preferences-sidebar-item-active-background` | `components/overlays.css` |
+| クイックスイッチャーの選択行 | `--selection-list-active-background` | 同上 |
+| `--menu-background`、メニューのポインタ下の行 | `--menu-background`、`--menu-hover-item-background` | `mapping/ui.css`、`components/overlays.css`（`.menu` の中だけ `--background-modifier-hover`） |
+| `--tooltip-background`、`--notice-background` | `--tooltip-background`、`--notification-item-background` | `mapping/ui.css` |
+| `--interactive-normal` / `--interactive-hover`（ボタン） | `--button-background` の色部分（派生） / `--button-hover-background-color` | 同上 |
+| `--background-modifier-form-field`、`--dropdown-background` | `--input-background`、`--form-select-background` | 同上。Settings の中は `components/overlays.css`（下記） |
+| `--checkbox-marker-color`、`--toggle-thumb-color`、トグルの OFF のレーン | `--checkbox-active-check-color`、`--toggle-handle-background` の色部分（派生）、`--toggle-lane-background` | `mapping/ui.css`、`components/overlays.css`（`.checkbox-container` の中だけ） |
+| `--scrollbar-thumb-bg` / `--scrollbar-bg` | `--scrollbar-thumb-background` / `--scrollbar-track-background` | `mapping/ui.css` |
+| `--tag-*`（通常・hover） | `--tag-default-background-color`・`-text-color`・`-border-color`（Q-D5） | 同上 |
+| `--font-interface-theme` | `--page-font`（Q-D8） | 同上 |
+
+- **派生エントリ**（パレット）: Inkdrop の 4 つのトークン（`--sidebar-border-right`、`--note-list-bar-border-right`、`--button-background`、`--toggle-handle-background`）は `border`・`background` の一括指定で、Obsidian の色の変数には入らない。色の部分だけを `--ink-derived-*-color` として書き、コメントに `derived: border color of <トークン>` などと記した。S1 が、一括指定から取り出した色と同じ値であることを検査する（陰性テスト 3 件）。パレットの既存の値と出典は変えていない。
+- `!important` は追加していない。Settings のドロップダウンだけは、macOS の app.css が `.mod-macos:not(.is-mobile) .mod-settings { --dropdown-background: transparent }`（(0,3,0)）としているため、同じ詳細度の `.theme-dark .modal.mod-settings` を後から読み込んで勝たせた。
+
+**状態**
+
+| 状態 | 実装 | 検査（状態） |
+|---|---|---|
+| 選択（開いているファイル） | Inkdrop の選択行の塗り | `ui.nav.active-fill`（既定・フォーカス時、不透明・translucent） |
+| フォーカス | 左 5px のバーは File Explorer の leaf がアクティブなときだけ | `ui.nav.focus-bar.unfocused`（`none`）・`.focused`（`file-explorer-focused`） |
+| hover | メニューの行（実際のポインタ）、アイコン、ボタンの変数。File Explorer の行の hover は Obsidian の既定のまま（下記） | `ui.menu.hover`（`menu-open`）、`ui.icon.hover.var`、`ui.button.hover.var` |
+| active / pressed | Settings の選択中の項目、クイックスイッチャーの選択行 | `ui.settings.active-item`、`ui.prompt.selected` |
+| disabled | `--text-faint` に Inkdrop の disabled の文字色。Obsidian に disabled 専用の変数はない | `ui.text.faint` |
+
+**モーダルと Popover のスコープ（漏れの確認）**
+
+- Popover の色は `.popover.hover-popover` の中だけで `--background-primary` を再定義した。全体の `--background-primary` は変えていない。Popover を開いた状態で、エディタ（不透明・translucent）が変わらないこと（`leak.popover.editor`・`-translucent`）を検査した。クイックスイッチャー（`ui.prompt`）と Settings（`ui.settings-modal`）はそれぞれの色であることを、各状態で検査した。補完ポップアップ（同じ app.css の規則を共有）は工程 7。
+- メニューの hover と Settings の色も、それぞれの要素の中だけで変数を再定義した。
+- Settings は 1.14.4 では popout window（独自の document）で開く。その document の中で、本体・サイドバー・選択中の項目・ボタン・ドロップダウン・トグル（OFF、利用者のアクセントでの ON）を測った（translucent 時にも本体とサイドバーが不透明の色のまま）。
+- Q-D1・Q-D22 の回帰: 工程 3・4 の検査をすべて再実行し、PASS（不透明 → translucent → 不透明）。translucent 時の `--divider-color` は app.css の `rgba(0, 0, 0, 0.15)` から Inkdrop の境界線の色に戻した（Inkdrop の acrylic の規則は境界線を変えない）。
+
+**利用者の設定との互換性**
+
+- アクセント: 利用者がアクセント色を設定すると、Settings のトグル（ON）がその色になる（`ui.toggle.on-user-accent`、`#e06c75` → `rgb(224, 108, 117)`）。チェックボックスの塗り・トグルの ON・強調ボタンは Obsidian のアクセントの変数のまま（テーマのアクセントは Q-D6 で Inkdrop の primary）。
+- フォント: 設定キーは実機で `interfaceFontFamily`・`textFontFamily`・`monospaceFontFamily` と確認した。`interfaceFontFamily` を設定すると `--font-interface-override` が設定され、Obsidian の `--font-interface` で先頭になる（`ui.font.user-override`、View Header の `font-family` の先頭が `Courier New`: `ui.font.user-override-first`）。テーマは本文とコードのフォントを設定していない。フォントのファイルは同梱していない。
+
+**ランナーの拡張**
+
+- 実際のポインタが要る状態（`menu-open`・`popover-open`・`tooltip-open`）: プローブが状態を準備し、ランナーが CDP の Input で右クリック・hover（Popover は Meta + hover）をしてから測る（測定をプローブの後に遅らせる）。測定後はポインタをステータスバーに移して Escape を押し、オーバーレイが閉じたことを `runner.pointer-released` で確かめる（エディタの中央に戻すと Popover の上に乗って閉じないことがあり、次の状態の測定に混ざっていたのを陰性テストで見つけた）。
+- macOS は既定でネイティブのメニューを使うため、`menu-open` の間だけテスト Vault の `nativeMenus` を無効にし、測定後に戻す。セッションで最初の DOM メニューはポインタ下の行に `selected` が付かない（テーマと無関係）ため、一度開いて閉じてから測る。
+- 新しい判定の種類: `first-color`（`box-shadow` の最初の色）、`var`（カスタムプロパティの色）、`first-family`（`font-family` の先頭）。色の読み取りは新しい `rgb()` の書式にも対応した（`parseColor`）。
+- 新しい状態: `user-font`、`file-explorer-focused`、`menu-open`、`popover-open`、`tooltip-open`。
+- 陰性テストを追加: 間違ったトークン（`first-color`・`var`・メニュー）、ないもの（バーなし、未定義の変数）、間違ったフォント、ポインタ操作なしでのメニュー・Popover。
+
+**テスト結果**
+
+| テスト | Electron 39.5.1 | Electron 43.7.7 |
+|---|---|---|
+| 実行時テスト | 545 件 PASS（うち 76 件 PASS（EMULATED）） | 545 件 PASS（同） |
+| ランナーの陰性テスト | 219 件すべて宣言どおり | 同 |
+| V-36 | 28 / 28 同じ | 同 |
+
+| テスト | 結果 |
+|---|---|
+| 静的テスト | すべて PASS |
+| 静的テストの陰性テスト | 45 件すべて期待どおり |
+| 視覚的テストの陰性テスト | 6 件すべて期待どおり |
+| クリーンルームのビルド | 両テーマの `theme.css`・`manifest.json` がローカルのビルドと一致 |
+
+モバイルのエミュレーション（tablet・phone・phone-nonfloating）も上の実行時テストに含まれ、PASS（EMULATED）。証拠: `evidence/phase3-step5/`。
+
+**判断と計画からの変更**
+
+| # | 判断・変更 | 理由 |
+|---|---|---|
+| 1 | 一括指定のトークンから色の部分を派生エントリとしてパレットに追加し、S1 で一致を検査する | 色リテラルをパレットの外に書かず、Inkdrop の値から離れないようにするため |
+| 2 | File Explorer の行の hover は Obsidian の既定のまま | Inkdrop のノートリストの未選択の行の hover を観測していない（V-33）。サイドバーの行は hover で背景が変わらない（11 §14.4）が、ノートリストと同じとは言えないため、色を作らない |
+| 3 | タグの hover を通常の色と同じにした | Inkdrop にタグの hover の色がない。Obsidian の既定はアクセント由来の色で、Inkdrop にない色になる |
+| 4 | disabled は `--text-faint` だけ | Obsidian に disabled の状態の変数がない。Inkdrop にない色は作らない |
+| 5 | DOM のメニューだけを対象にした | macOS の既定のネイティブメニューはテーマから変えられない（要件の説明に明記） |
+| 6 | Settings のドロップダウンを Settings の中で再定義した | macOS の app.css が Settings の中だけ透明にしており、Inkdrop の preferences は `--form-select-background` を使うため |
+| 7 | 拡張された色の変数（`--color-red` などと `-rgb`）は工程 6 に回した | Markdown の色（コールアウトなど）と合わせて対応表を作るため |
+| 8 | 影と角の丸みは対応していない | 計画の範囲外（Inkdrop の値の調査をしていない） |
+
+**未検証事項とリスク**
+
+- Windows・Linux: UI フォントの解決（`Segoe UI` がある環境）とスクロールバー（`body.styled-scrollbars` の下でだけ効く。macOS では付かないため、変数の値だけを検査した）は実機で確認していない（Q-D10）。
+- Inkdrop のオーバーレイとの画像比較（V-33）: していない。値はすべて Inkdrop の一次資料のトークンからたどれ、Computed Style で確認したが、見た目（影、角、余白）の比較はない。
+- ネイティブメニュー: 既定の macOS では Obsidian のメニューは OS の描画になり、テーマの色にならない。
+- hover の実測: メニューの行だけ実際のポインタで測った。アイコン・ボタン・タグの hover は変数の値だけ。
+- popout window で開いたノートのウィンドウ（Settings 以外）は測っていない。同じテーマの CSS が読み込まれるが、未確認。
+- ツールチップは不透明だけで測った。
+
+**V-33 の要否**: 工程 5 の完了には不要と判断した。工程 5 の判定は Inkdrop の宣言値（一次資料）と Obsidian の Computed Style の一致で行い、色を推定した箇所はない。V-33 で得られるのは影・角・余白の見た目と、ノートリストの hover の色（判断 2）で、どちらも工程 11 の視覚的比較で扱うのが適切。取得には Inkdrop の操作（検証用ノートなど）が要るため、そのときにユーザーの承認を得る。
+
+**トレーサビリティ表（工程 5 が担当する確定事項）**
+
+| Q-D | 工程 5 での実装 | 検証 | 状態 |
+|---|---|---|---|
+| Q-D5（default タグ色） | `--tag-*` を default タグ色に、hover も同じ | `ui.tag.*`（`qd5.tags`） | PASS |
+| Q-D6（アクセント） | アクセントの色のコントロールは Obsidian のアクセントの変数のまま | `ui.toggle.on-user-accent`、`desktop.accent.user-setting-wins` | PASS |
+| Q-D7（popup） | Popover だけに popup 色 | `ui.popover.background`、`leak.popover.*`（`qd7.popover`） | PASS（補完ポップアップは工程 7） |
+| Q-D8（UI フォント） | `--font-interface-theme` に `--page-font` | V-36、`ui.font.theme`（`qd8.ui-font`）、`ui.font.user-override*`（`qd8.user-font`） | PASS（macOS） |
+| Q-D1（面の割り当て） | 境界線を同じ割り当てで（Ribbon = サイドバー、ドック = ノートリスト） | `ui.divider.*`（`ui.dividers`）と工程 3 の検査の再実行 | PASS |
+| Q-D22（不透明と acrylic） | translucent 時も境界線を Inkdrop の色に | `ui.divider.*`（translucent）、工程 4 の検査の再実行 | PASS |
+| Q-D10（OS の範囲） | OS 依存の規則は追加していない | — | Windows・Linux は未確認 |
+
+### 6.9 次の作業
+
+工程 5 のレビューを待つ。工程 6 には、レビューの後に進む。

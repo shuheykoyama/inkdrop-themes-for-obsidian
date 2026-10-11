@@ -1,0 +1,47 @@
+/* Mapping: overlays, controls, tags and the UI font (research/06 G06-G22, E30; Q-D5, Q-D7, Q-D8).
+   Shared structure, no colour literals. Accent-coloured controls (checkbox fill, toggle on, primary
+   buttons) keep Obsidian's accent variables: the theme's accent is Inkdrop's primary colour (Q-D6) and a
+   user's accent must still win. */
+.theme-dark {
+  /* Modal and prompt bodies (G06, G08). The Settings modal is set apart in components/overlays.css. */
+  --modal-background: var(--ink-modal-box-content-background);
+  --prompt-background: var(--ink-modal-box-content-background);
+
+  /* Menus (G09). Only DOM menus: with the macOS default of native menus, Obsidian draws OS menus. */
+  --menu-background: var(--ink-menu-background);
+
+  /* Tooltip and notice (G11, G12). */
+  --tooltip-background: var(--ink-tooltip-background);
+  --notice-background: var(--ink-notification-item-background);
+
+  /* Buttons (G13): Inkdrop's button background is a shorthand; its colour part is derived in the palette. */
+  --interactive-normal: var(--ink-derived-button-background-color);
+  --interactive-hover: var(--ink-button-hover-background-color);
+
+  /* Text inputs and dropdowns (G16, G18). */
+  --background-modifier-form-field: var(--ink-input-background);
+  --dropdown-background: var(--ink-form-select-background);
+
+  /* Checkbox mark and toggle thumb (G19, G20). */
+  --checkbox-marker-color: var(--ink-checkbox-active-check-color);
+  --toggle-thumb-color: var(--ink-derived-toggle-handle-color);
+
+  /* Scrollbars (G22). Obsidian applies these only under body.styled-scrollbars, which it does not set on
+     macOS; they matter on Windows and Linux (not verified there, research/14 §2.3). */
+  --scrollbar-thumb-bg: var(--ink-scrollbar-thumb-background);
+  --scrollbar-bg: var(--ink-scrollbar-track-background);
+
+  /* Tags (Q-D5: Inkdrop's default tag colours only). Inkdrop has no hover colours for tags, so hover keeps
+     the same colours instead of Obsidian's accent-based hover. */
+  --tag-background: var(--ink-tag-default-background-color);
+  --tag-background-hover: var(--ink-tag-default-background-color);
+  --tag-color: var(--ink-tag-default-text-color);
+  --tag-color-hover: var(--ink-tag-default-text-color);
+  --tag-border-color: var(--ink-tag-default-border-color);
+  --tag-border-color-hover: var(--ink-tag-default-border-color);
+
+  /* UI font (Q-D8): Inkdrop's UI font stack. The user's interface font (--font-interface-override) still
+     comes first in Obsidian's --font-interface; text and code fonts are not set. V-36: the lint-quoted
+     names resolve to the same fonts as Inkdrop's declaration. */
+  --font-interface-theme: var(--ink-page-font);
+}

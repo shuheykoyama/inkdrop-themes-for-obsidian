@@ -3,5 +3,11 @@
 @import "../palette/kanagawa-dragon.css";
 @import "../common/mapping/workspace.css";
 @import "../common/mapping/accent.css";
+@import "../common/mapping/text.css";
+@import "../common/mapping/borders.css";
+@import "../common/mapping/states.css";
+@import "../common/mapping/ui.css";
+@import "../common/components/navigation.css";
+@import "../common/components/overlays.css";
 @import "../common/platform/translucent.css";
 @import "../common/platform/mobile.css";

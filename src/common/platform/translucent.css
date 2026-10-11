@@ -14,6 +14,10 @@
 .theme-dark.is-translucent:not(.is-fullscreen) {
   --workspace-background-translucent: var(--ink-page-background-acrylic);
   --status-bar-background: var(--ink-note-list-bar-background-acrylic);
+
+  /* app.css sets --divider-color: rgba(0, 0, 0, 0.15) here (0,2,0); Inkdrop's acrylic rules keep its borders,
+     so the opaque border colour stays (step 5). */
+  --divider-color: var(--ink-derived-note-list-bar-border-color);
 }
 
 /* Docks: note list (Q-D1). */

@@ -1,0 +1,12 @@
+/* Mapping: UI text colours (research/06 E01, E03, G03; Q-D3, Q-D9). Shared structure, no colour literals.
+   Inkdrop's weak text has several steps (muted 60%, dark 40%, disabled 30%, light 85% -- "light" is the
+   stronger one). Obsidian has two: --text-muted <- muted, --text-faint <- disabled (the weakest step,
+   which Inkdrop also uses for inactive icons). The editor and preview body text are step 6 (Q-D14). */
+.theme-dark {
+  --text-normal: var(--ink-text-color);
+  --text-muted: var(--ink-muted-text-color);
+  --text-faint: var(--ink-disabled-text-color);
+  --text-error: var(--ink-negative-color);
+  --text-success: var(--ink-positive-color);
+  --text-warning: var(--ink-warning-color);
+}

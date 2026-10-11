@@ -1,0 +1,44 @@
+/* Components: overlays (research/06 G06-G10, G20; Q-D7). Each rule is scoped to its own element so no
+   other overlay or the workspace changes (no global --background-primary or --background-modifier-hover). */
+
+/* Popover / page preview (Q-D7): Inkdrop's popup colour. app.css paints .popover with --background-primary;
+   redefining it on the popover also colours the preview inside it. Autocomplete (.suggestion-container,
+   .cm-tooltip-autocomplete) shares that app.css rule but is a separate element (Q-D7, step 7). */
+.popover.hover-popover {
+  --background-primary: var(--ink-popup-background);
+}
+
+/* Settings (G07): Inkdrop's preferences view and sidebar. The active section uses Inkdrop's active
+   sidebar item; app.css paints it with body:not(.is-phone) .vertical-tab-nav-item.is-active (0,3,1). */
+.modal.mod-settings {
+  --modal-background: var(--ink-preferences-view-background);
+  --modal-sidebar-background: var(--ink-preferences-sidebar-background);
+}
+
+/* Dropdowns in Settings (G18): on macOS app.css makes them transparent there
+   (.mod-macos:not(.is-mobile) .mod-settings { --dropdown-background: transparent }, (0,3,0)); Inkdrop's
+   preferences use --form-select-background. Same specificity, loaded later. */
+.theme-dark .modal.mod-settings {
+  --dropdown-background: var(--ink-form-select-background);
+}
+
+.modal.mod-settings .vertical-tab-nav-item.is-active {
+  background-color: var(--ink-preferences-sidebar-item-active-background);
+}
+
+/* Quick switcher / command palette (G06): the selected row uses Inkdrop's active selection-list colour;
+   app.css paints .suggestion-item.is-selected (0,2,0) with --background-modifier-hover. */
+.prompt .suggestion-item.is-selected {
+  background-color: var(--ink-selection-list-active-background);
+}
+
+/* Menu rows under the pointer (G09): Inkdrop's menu hover colour, scoped to menus. */
+.menu {
+  --background-modifier-hover: var(--ink-menu-hover-item-background);
+}
+
+/* Toggle, off (G20): app.css paints .checkbox-container with --background-modifier-border-hover; Inkdrop's
+   lane is --toggle-lane-background. The on state stays on the accent (.checkbox-container.is-enabled). */
+.checkbox-container {
+  --background-modifier-border-hover: var(--ink-toggle-lane-background);
+}

@@ -159,9 +159,9 @@
       "mandatory": true
     },
     {
-      "id": "overlay.settings-modal-background",
+      "id": "ui.settings-modal",
       "qd": "Q-D1",
-      "description": "Settings modal (a popout window in Obsidian 1.14.4) keeps the opaque editor background; guards against scoped rules leaking (research/13 §2.1.1)",
+      "description": "Settings modal (a popout window in Obsidian 1.14.4) = Inkdrop preferences view and sidebar colours, active section = Inkdrop active sidebar item; translucent rules do not reach it",
       "platforms": [
         "desktop"
       ],
@@ -231,9 +231,9 @@
       "mandatory": true
     },
     {
-      "id": "leak.in-window-modal",
+      "id": "ui.prompt",
       "qd": "Q-D22",
-      "description": "The quick switcher (an in-window modal) keeps the opaque editor colour while translucent: the centre variables are scoped to the root split",
+      "description": "Quick switcher = Inkdrop modal box colour, selected row = Inkdrop active selection-list colour, border = strong border; unchanged while translucent",
       "platforms": [
         "desktop"
       ],
@@ -270,6 +270,105 @@
           "result": "PASS on 2026-10-11: gray backdrop, active window, 14 of 14 pairs (both themes x ribbon, docks, vault profile, tab strips, editor) at dE2000 0.00"
         }
       ]
+    },
+    {
+      "id": "ui.text-colors",
+      "qd": "Q-D3",
+      "description": "UI text = Inkdrop text colour, weak text = muted / disabled colours (SD base3-derived), error/success/warning = Inkdrop negative/positive/warning",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "ui.dividers",
+      "qd": "Q-D1",
+      "description": "Dividers: dock/editor, tab strips and status bar = Inkdrop note-list border; ribbon edge = Inkdrop sidebar border; general borders = Inkdrop border / strong / focused colours; also while translucent",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "ui.nav-states",
+      "qd": "Q-D1",
+      "description": "File Explorer: item text = Inkdrop note-list title colour; open file = Inkdrop selected fill; 5 px left bar (Inkdrop active colour) only while the explorer has focus",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "ui.icons",
+      "qd": "Q-D1",
+      "description": "Clickable icons = Inkdrop sidebar action colours; navigation headings = Inkdrop section colour",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": false
+    },
+    {
+      "id": "qd7.popover",
+      "qd": "Q-D7",
+      "description": "Page preview popover = Inkdrop popup colour, scoped to the popover (no other overlay changes)",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "ui.tooltip",
+      "qd": "Q-D7",
+      "description": "Tooltip = Inkdrop tooltip colour; notice = Inkdrop notification colour",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": false
+    },
+    {
+      "id": "ui.menu",
+      "qd": "Q-D7",
+      "description": "DOM menus = Inkdrop menu colour, row under the pointer = Inkdrop menu hover colour (macOS shows native OS menus by default, which no theme can style)",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": false
+    },
+    {
+      "id": "ui.controls",
+      "qd": "Q-D9",
+      "description": "Buttons, dropdowns, inputs, checkbox mark, toggle (off lane, thumb) and scrollbars = Inkdrop control colours; accent-coloured states stay on the (user-overridable) accent",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": false
+    },
+    {
+      "id": "qd5.tags",
+      "qd": "Q-D5",
+      "description": "Tags = Inkdrop default tag colours, no accent-based hover",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "qd8.ui-font",
+      "qd": "Q-D8",
+      "description": "UI font = Inkdrop UI font stack (lint-quoted names resolve to the same fonts, V-36)",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
+    },
+    {
+      "id": "qd8.user-font",
+      "qd": "Q-D8",
+      "description": "A user's interface font setting wins over the theme's UI font",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": true
     }
   ]
 }
