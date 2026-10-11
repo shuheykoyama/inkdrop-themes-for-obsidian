@@ -21,11 +21,12 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 | [06-mapping-candidates.md](06-mapping-candidates.md) | Inkdrop ↔ Obsidian の UI 対応候補 97 件（Direct / Semantic / Obsidian-native、確信度、Inkdrop 側の適用先の可視性、SD / KD の差） | Phase 2 の配色設計の起点 |
 | [07-technical-risks.md](07-technical-risks.md) | 技術課題とリスク 21 件（忠実度、互換性、保守性、アクセシビリティ、ライセンス）と選択肢 | 設計判断の材料 |
 | [08-architecture-options.md](08-architecture-options.md) | 実装方式の選択肢（手書き CSS、素の CSS の連結、Sass、PostCSS、Lightning CSS、トークン生成）と暫定推奨 | 設計判断の材料 |
-| [09-open-questions.md](09-open-questions.md) | ユーザー判断事項 23 件（Q-D）、実機検証項目 30 件（V、優先順位付き）、その他の未確認事項 12 件（U） | **次に決めること** |
+| [09-open-questions.md](09-open-questions.md) | ユーザー判断事項 23 件（Q-D。2026-10-11 時点で 20 件が確定、§0.1）、実機検証項目（V、優先順位付き）、その他の未確認事項 12 件（U） | **確定した設計判断と残る判断** |
 | [10-review-remediation.md](10-review-remediation.md) | 独立レビュー（R-01〜R-12）の判定、根拠、修正内容、残る不確実性、Phase 2 へ進む条件 | 訂正の経緯 |
 | [11-runtime-validation.md](11-runtime-validation.md) | Phase 2B の実機検証（Obsidian 1.14.4 の CSS 優先関係・DOM・背景のスコープ再定義、Inkdrop 6.1.5 の背景面・状態色・エディタと基準スクリーンショット、半透明（acrylic）表示のネイティブキャプチャ）と、Inkdrop 配布物の静的解析。Q-D1 の選択肢別の技術評価 | **Q-D1 の判断材料** |
 | [12-obsidian-translucency-validation.md](12-obsidian-translucency-validation.md) | V-04: Obsidian 1.14.4 の translucent の仕組み、translucent 時の CSS 優先関係、Inkdrop の acrylic 宣言値を当てた合成結果と V-32 との比較、Q-D22 の各案の技術評価 | **Q-D22 の判断材料** |
 | [13-q-d21-build-poc.md](13-q-d21-build-poc.md) | Q-D21: ビルド方式（PostCSS / 素の CSS の連結 / Sass）の比較 PoC。同じ仕様を 3 方式で実装し、値の忠実度・再現性・Obsidian での適用・変更容易性を実測 | **Q-D21 の判断材料** |
+| [14-implementation-plan.md](14-implementation-plan.md) | Phase 3 の実装計画（アーキテクチャ、12 工程と完了条件、テスト戦略、リスク管理、実装前の自己レビュー）。確定した設計判断（09 §0.1）が前提 | **次の作業** |
 | [poc/q-d21-build/](poc/q-d21-build/README.md) | 13 の PoC（ソース、ビルド、テスト、実行結果）。完成版のテーマではない | 実測の確認 |
 | [evidence/phase2-p0/](evidence/phase2-p0/README.md) | 11 の証拠（スクリーンショット、Computed Style の測定値、診断用 CSS / JS、テスト Vault） | 実測の確認 |
 | [evidence/phase2-v04/](evidence/phase2-v04/README.md) | 12 の証拠（ネイティブキャプチャ、Computed Style、画素の計測値、診断用 CSS、ツール） | 実測の確認 |
@@ -76,10 +77,12 @@ Inkdrop の公式テーマ **Solarized Dark** と **Kanagawa Dragon** を Obsidi
 
 ### Phase 2 で検討すべき事項
 
+> **2026-10-11 更新**: Q-D16・Q-D18・Q-D19 を除くすべての Q-D が確定し、Q-D21 は Vanilla CSS + PostCSS（`postcss-import`）で正式確定した。Q-D23 は仕様が変わり、アクティブ行のハイライトと行番号の両方を ON として Inkdrop の配色を再現する（09 §0.1・§0.1.2）。実装計画は [14](14-implementation-plan.md)。以下は Phase 2 時点の記録である。
+
 1. 09 §1 の Q-D のうち「Phase 2 前半」のもの。Q-D2・Q-D6・Q-D9・Q-D10・Q-D13・Q-D15・Q-D20・Q-D21 はユーザーが確定済み（09 §0.1）。未決定で先に必要なのは Q-D22（不透明表示と半透明表示のどちらを基準にするか）と Q-D1（サイドドックと帯への色の割り当て。Q-D22 と同時に判断）。Q-D23（アクティブ行・ガター）は Phase 2 後半。Q-D16（directory 配布）は配布前まで保留できる。
 2. 09 §2.1 の P0 の実機検証（V-30、V-20・V-22、V-01）は完了した（11 §7・§14・§15）。V-04（Obsidian の translucent）も P1 として実施した（12）。残る P1 は V-10・V-11（一部）・V-12・V-29（一部）・V-31（一部）。
 3. 06 の候補から配色仕様を確定すること。
-4. 実装方式の最終確定。Q-D21 で「Vanilla CSS + PostCSS（`postcss-import`）を第一候補とし、小規模な技術検証で最終確定する」ことがユーザーにより決まっている（09 §0.1）。次に必要なのはこの第一候補の小規模な技術検証である（08 の比較表は判断材料として残す）。→ 2026-10-11 に PoC を実施した（13）。最終判断はユーザーが行う。
+4. 実装方式の最終確定。Q-D21 で「Vanilla CSS + PostCSS（`postcss-import`）を第一候補とし、小規模な技術検証で最終確定する」ことがユーザーにより決まっている（09 §0.1）。次に必要なのはこの第一候補の小規模な技術検証である（08 の比較表は判断材料として残す）。→ 2026-10-11 に PoC を実施し（13）、独立レビューを経て正式確定した（09 §0.1）。
 
 ### 機械可読データ（`data/`）
 

@@ -5,6 +5,7 @@
 - 対象: 09 Q-D21（ビルド方式）。第一候補は Vanilla CSS + PostCSS（`postcss-import`）で、小規模な技術検証を経て最終確定する（09 §0.1）
 - PoC: [`poc/q-d21-build/`](poc/q-d21-build/README.md)
 - **本書は Q-D21 を最終確定しない。** PoC は完成版のテーマではなく、生成物は配布用の `theme.css` ではない。
+- **2026-10-11 追記**: 本書と独立レビュー（`5b730b4` の修正を含む）を経て、ユーザーが Q-D21 を Vanilla CSS + PostCSS（`postcss-import`）で正式確定した（09 §0.1）。本書の §4.3 の推奨（P1）が採用された。本実装の計画は [14](14-implementation-plan.md)。
 
 ## 0. 前提（2026-10-11 にユーザーから示された確定事項）
 
