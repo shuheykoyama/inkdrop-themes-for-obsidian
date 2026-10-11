@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-11 (captures 11:44:54Z-11:49Z; Inkdrop and Obsidian about 10 s apart per pair)",
+  "macOS": "26.5.2 (25F84)",
+  "hardware_display": {
+    "display": "Built-in Retina LCD, 3072x1920, 24-bit (ARGB8888), main display, no mirroring",
+    "screen_points": [
+      2048,
+      1280
+    ],
+    "backingScaleFactor": 2.0,
+    "colorSpace": "Color LCD (display profile; captures are in this space, not converted)"
+  },
+  "accessibility": {
+    "reduceTransparency": false,
+    "increaseContrast": "not set (default off)"
+  },
+  "appearance": {
+    "AppleInterfaceStyle": "Dark",
+    "automaticSwitching": "not set",
+    "wallpaperTintingInWindows": "on (AppleReduceDesktopTinting = 0)",
+    "desktopPicture": "a macOS system picture in HEIC format (possibly time-of-day dynamic); path not recorded"
+  },
+  "apps": {
+    "inkdrop": {
+      "version": "6.1.5",
+      "electron": "43.7.1",
+      "chrome": "150.0.7871.250",
+      "themes": "solarized-dark 2.2.1, kanagawa-dragon 1.2.1 (installed by the user)",
+      "acrylic": "enabled (default)",
+      "window": "vibrancy under-window, visualEffectState active (research/11 §15.5)",
+      "content": "existing sample note 'Basic writing and formatting syntax' in the existing 'Learn' notebook, sidebar limited to that notebook; not created or edited (updatedAt unchanged)",
+      "editor_settings": "left as the user has them (line numbers and active line on)"
+    },
+    "obsidian": {
+      "version": "1.14.4",
+      "electron": "43.7.7",
+      "chrome": "150.0.7871.250",
+      "instance": "isolated: current-installer copy, own --user-data-dir, copy of tests/fixtures/vault",
+      "theme": "dist/<theme>/theme.css of this repository",
+      "translucency": "on",
+      "window": "vibrancy sidebar, visualEffectState not set (followWindow) (research/12 §3.1)"
+    }
+  },
+  "geometry": {
+    "window_points": [
+      400,
+      250,
+      1200,
+      700
+    ],
+    "backdrop_points": [
+      300,
+      150,
+      1400,
+      900
+    ],
+    "backdrop": "gray or pattern (research/evidence/phase2-p0/tools/backdrop.swift)",
+    "other_app_window": "hidden during each capture (tests/visual/other-window.sh)"
+  },
+  "focus": {
+    "active": "captured app active and focused",
+    "inactive": "the backdrop app activated (the window stays in front)"
+  },
+  "capture": {
+    "method": "/usr/sbin/screencapture -x -R400,250,1200,700",
+    "format": "PNG, 2400x1400 px, display colour space, no post-processing",
+    "same_for_both_apps": true
+  },
+  "regions": {
+    "inkdrop": "tests/visual/configs/v38-inkdrop.json",
+    "obsidian": "tests/visual/configs/v38-obsidian.json",
+    "flatness": "max per-channel standard deviation 1.0 (otherwise the measurement is invalid)",
+    "pairing": "tests/visual/v38-compare.py (Q-D1)",
+    "threshold": "CIEDE2000 <= 1.0 (research/14 step 4)"
+  }
+}

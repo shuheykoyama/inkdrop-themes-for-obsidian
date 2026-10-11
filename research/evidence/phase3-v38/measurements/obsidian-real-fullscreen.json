@@ -1,0 +1,42 @@
+{
+  "before": {
+    "classes": [
+      "is-translucent"
+    ],
+    "isFullScreen": false,
+    "theme": "DEV kanagawa-dragon (unnamed)",
+    "ribbon": "rgba(17, 17, 14, 0.5)",
+    "statusBar": "rgba(24, 22, 22, 0.7)",
+    "editor": "rgba(30, 29, 26, 0.9)",
+    "leftLeafContent": "rgba(24, 22, 22, 0.7)",
+    "leftTabStrip": "rgba(24, 22, 22, 0.7)",
+    "vaultProfile": "rgba(24, 22, 22, 0.7)"
+  },
+  "during": {
+    "classes": [
+      "is-translucent",
+      "is-fullscreen"
+    ],
+    "isFullScreen": true,
+    "theme": "DEV kanagawa-dragon (unnamed)",
+    "ribbon": "rgb(17, 17, 14)",
+    "statusBar": "rgb(24, 22, 22)",
+    "editor": "rgb(30, 29, 26)",
+    "leftLeafContent": "rgba(0, 0, 0, 0)",
+    "leftTabStrip": "rgb(24, 22, 22)",
+    "vaultProfile": "rgb(24, 22, 22)"
+  },
+  "after": {
+    "classes": [
+      "is-translucent"
+    ],
+    "isFullScreen": false,
+    "theme": "DEV kanagawa-dragon (unnamed)",
+    "ribbon": "rgba(17, 17, 14, 0.5)",
+    "statusBar": "rgba(24, 22, 22, 0.7)",
+    "editor": "rgba(30, 29, 26, 0.9)",
+    "leftLeafContent": "rgba(24, 22, 22, 0.7)",
+    "leftTabStrip": "rgba(24, 22, 22, 0.7)",
+    "vaultProfile": "rgba(24, 22, 22, 0.7)"
+  }
+}

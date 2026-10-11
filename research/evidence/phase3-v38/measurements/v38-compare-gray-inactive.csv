@@ -1,0 +1,15 @@
+theme,capture,inkdrop_region,inkdrop_mean_rgb,inkdrop_max_sd,obsidian_region,obsidian_mean_rgb,obsidian_max_sd,dE2000,limit,result
+solarized-dark,gray-inactive,sidebar,"[32.0, 53.0, 58.0]",0.0,ribbon,"[26.0, 46.0, 51.0]",0.0,2.19,1.0,FAIL
+solarized-dark,gray-inactive,note-list,"[19.0, 41.0, 46.0]",0.0,left-dock,"[15.0, 37.0, 42.0]",0.0,1.23,1.0,FAIL
+solarized-dark,gray-inactive,note-list,"[19.0, 41.0, 46.0]",0.0,right-dock,"[15.0, 37.0, 42.0]",0.0,1.23,1.0,FAIL
+solarized-dark,gray-inactive,note-list,"[19.0, 41.0, 46.0]",0.0,vault-profile,"[15.0, 37.0, 42.0]",0.0,1.23,1.0,FAIL
+solarized-dark,gray-inactive,note-list,"[19.0, 41.0, 46.0]",0.0,left-tabstrip,"[15.0, 37.0, 42.0]",0.0,1.23,1.0,FAIL
+solarized-dark,gray-inactive,note-list,"[19.0, 41.0, 46.0]",0.0,root-tabstrip,"[15.0, 37.0, 42.0]",0.0,1.23,1.0,FAIL
+solarized-dark,gray-inactive,editor,"[7.0, 35.0, 43.0]",0.0,editor,"[6.0, 34.0, 42.0]",0.0,0.31,1.0,PASS
+kanagawa-dragon,gray-inactive,sidebar,"[39.0, 39.0, 37.0]",0.0,ribbon,"[33.0, 32.0, 30.0]",0.0,2.25,1.0,FAIL
+kanagawa-dragon,gray-inactive,note-list,"[36.0, 33.0, 33.0]",0.0,left-dock,"[32.0, 29.0, 29.0]",0.0,1.26,1.0,FAIL
+kanagawa-dragon,gray-inactive,note-list,"[36.0, 33.0, 33.0]",0.0,right-dock,"[32.0, 29.0, 29.0]",0.0,1.26,1.0,FAIL
+kanagawa-dragon,gray-inactive,note-list,"[36.0, 33.0, 33.0]",0.0,vault-profile,"[32.0, 29.0, 29.0]",0.0,1.26,1.0,FAIL
+kanagawa-dragon,gray-inactive,note-list,"[36.0, 33.0, 33.0]",0.0,left-tabstrip,"[32.0, 29.0, 29.0]",0.0,1.26,1.0,FAIL
+kanagawa-dragon,gray-inactive,note-list,"[36.0, 33.0, 33.0]",0.0,root-tabstrip,"[32.0, 29.0, 29.0]",0.0,1.26,1.0,FAIL
+kanagawa-dragon,gray-inactive,editor,"[33.0, 32.0, 30.0]",0.0,editor,"[32.0, 31.0, 29.0]",0.0,0.31,1.0,PASS

@@ -1,0 +1,71 @@
+{
+ "capture": {
+  "method": "/usr/sbin/screencapture -x -R400,250,1200,700 (native window-server composite, display colour space)",
+  "capturedAt": "2026-10-11T11:46:11Z",
+  "file": "screenshots/inkdrop-kanagawa-dragon-acrylic-gray-inactive.png",
+  "pixels": [
+   2400,
+   1400
+  ],
+  "sha256": "ce10458871cdbea35a0f5c9f004cf54d645edcfa3a042ec452f79446e8e466cb",
+  "windowRectPoints": [
+   400,
+   250,
+   1200,
+   700
+  ],
+  "backdrop": "gray",
+  "backdropRectPoints": [
+   300,
+   150,
+   1400,
+   900
+  ],
+  "requestedFocus": "inactive",
+  "theme": "kanagawa-dragon"
+ },
+ "theme": {
+  "requested": "kanagawa-dragon",
+  "active": [
+   "kanagawa-dragon"
+  ],
+  "bodyClasses": [
+   "dark-mode",
+   "platform-darwin",
+   "acrylic-window",
+   "theme-kanagawa-dragon"
+  ]
+ },
+ "geometry": {
+  "screen": [
+   400,
+   250,
+   1200,
+   700
+  ],
+  "viewport": [
+   1200,
+   700,
+   2
+  ]
+ },
+ "before": {
+  "bodyClasses": [
+   "dark-mode",
+   "platform-darwin",
+   "acrylic-window",
+   "theme-kanagawa-dragon",
+   "is-blurred"
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) inkdrop/6.1.5 Chrome/150.0.7871.250 Electron/43.7.1 Safari/537.36"
+ },
+ "after": {
+  "bodyClasses": [
+   "dark-mode",
+   "platform-darwin",
+   "acrylic-window",
+   "theme-kanagawa-dragon",
+   "is-blurred"
+  ]
+ }
+}

@@ -63,7 +63,12 @@ export function requirementErrors(requirements, checks) {
     for (const k of ["id", "qd", "description"]) if (typeof r[k] !== "string" || !r[k]) e.push(`${r.id}: missing ${k}`);
     if (typeof r.mandatory !== "boolean") e.push(`${r.id}: mandatory must be true or false`);
     if (!Array.isArray(r.platforms) || !r.platforms.length) e.push(`${r.id}: platforms must be a non-empty list`);
-    const covered = checks.some((c) => c.requirement === r.id);
+    // Coverage: a runtime check names the requirement, or `verifiedBy` records a verification that is not a
+    // runtime check (a native-capture comparison, a manual measurement), each with method, evidence and result.
+    const vb = r.verifiedBy;
+    if (vb !== undefined && (!Array.isArray(vb) || !vb.length || vb.some((v) => !["method", "evidence", "result"].every((k) => typeof v?.[k] === "string" && v[k].trim()))))
+      e.push(`${r.id}: verifiedBy needs method, evidence and result for every entry`);
+    const covered = checks.some((c) => c.requirement === r.id) || (Array.isArray(vb) && vb.length > 0);
     const unverified = r.unverified && typeof r.unverified.reason === "string" && r.unverified.reason.trim() && typeof r.unverified.risk === "string" && r.unverified.risk.trim();
     if (r.unverified && !unverified) e.push(`${r.id}: unverified needs both reason and risk`);
     if (!covered && !unverified) e.push(`${r.id}: no check and no UNVERIFIED record (reason + risk)`);

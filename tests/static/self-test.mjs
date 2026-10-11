@@ -95,6 +95,8 @@ const CASES = [
     mutate: (r) => edit(r, "src/common/platform/translucent.css", ".is-translucent:not(.is-fullscreen) .workspace-split.mod-root {", ".workspace-split.mod-root {") },
   { name: "mobile rule outside the mobile scope", fail: /^FAIL S4 src\/common\/platform\/mobile\.css every selector is inside its platform scope/m,
     mutate: (r) => edit(r, "src/common/platform/mobile.css", ".is-mobile .workspace-drawer {", ".workspace-drawer {") },
+  { name: "verifiedBy without evidence", fail: /^FAIL S6 every requirement is covered .*verifiedBy needs method, evidence and result/m,
+    mutate: (r) => edit(r, "tests/spec/requirements.json", '"evidence": "research/evidence/phase3-v38/measurements/obsidian-real-fullscreen.json"', '"evidence": ""') },
   { name: "missing source file", fail: /^FAIL S2 build run a exits 0/m,
     mutate: (r) => rmSync(path.join(r, "src/common/mapping/workspace.css")) },
   { name: "colour literal outside the palette", fail: /^FAIL S4 src\/common\/mapping\/workspace\.css no colour literals/m,

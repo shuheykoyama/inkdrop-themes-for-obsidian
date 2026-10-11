@@ -1,0 +1,35 @@
+{
+  "_comment": "V-38: background-only regions of the Inkdrop capture (window points). sidebar and note-list are the V-32 regions. The V-32 editor region (600,640,550,50) lies on body text with the existing sample note used for V-38, and the band right under the cover image carries the image's shadow (not flat), so the editor is sampled on the empty line 2, right of the gutter. No references: the same-session Obsidian capture is the counterpart (tests/visual/v38-compare.py).",
+  "window_width_points": 1200,
+  "theme_from_name": [
+    [
+      "-solarized-dark-",
+      "sd"
+    ],
+    [
+      "-kanagawa-dragon-",
+      "kd"
+    ]
+  ],
+  "regions": {
+    "sidebar": [
+      20,
+      470,
+      130,
+      160
+    ],
+    "note-list": [
+      220,
+      300,
+      260,
+      380
+    ],
+    "editor": [
+      700,
+      590,
+      450,
+      12
+    ]
+  },
+  "max_sd": 1.0
+}

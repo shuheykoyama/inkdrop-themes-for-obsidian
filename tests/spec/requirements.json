@@ -247,10 +247,13 @@
         "desktop"
       ],
       "mandatory": true,
-      "unverified": {
-        "reason": "Entering macOS full screen moves the window to its own Space on the user's desktop; the runner only simulates the class (qd22.not-in-fullscreen). Needs a manual check with the user's agreement (step 11).",
-        "risk": "If Obsidian did not set is-fullscreen in some full-screen path, the acrylic colours would show over an opaque full-screen window."
-      }
+      "verifiedBy": [
+        {
+          "method": "Real macOS full screen of the isolated Obsidian window (Electron 43.7.7, translucency on) with the user's approval; computed styles before, during and after",
+          "evidence": "research/evidence/phase3-v38/measurements/obsidian-real-fullscreen.json",
+          "result": "PASS on 2026-10-11 for Kanagawa Dragon: during full screen body has is-fullscreen and every surface shows the opaque Inkdrop colour; acrylic again after leaving. Solarized Dark was not put in full screen (the rules are shared; only the values differ)"
+        }
+      ]
     },
     {
       "id": "qd22.visual-active-vs-inkdrop",
@@ -260,10 +263,13 @@
         "desktop"
       ],
       "mandatory": true,
-      "unverified": {
-        "reason": "The step-4 captures (2026-10-11) differ from the Inkdrop V-32 references of 2026-10-10 by up to dE2000 3.2, but the V-04 diagnostic stylesheet re-captured the same day differs in exactly the same way (same-token pixels match within 1/255), so the capture environment changed between the two days. No same-day Inkdrop composite exists (V-38 needs the user's approval). research/evidence/phase3-step4/README.md §2.2.",
-        "risk": "The acrylic look could differ from Inkdrop by more than the threshold on this Mac or others; the theme itself reproduces the V-04-verified configuration, so a remaining difference would come from the window material (Obsidian sidebar vibrancy vs Inkdrop under-window), which the theme cannot change."
-      }
+      "verifiedBy": [
+        {
+          "method": "V-38: native captures of Inkdrop 6.1.5 (acrylic) and the isolated Obsidian 1.14.4 / Electron 43.7.7 (translucent), same session (about 10 s apart per pair), same geometry, backdrop and capture method; flat regions paired by Q-D1 (tests/visual/v38-compare.py)",
+          "evidence": "research/evidence/phase3-v38/ (measurements/v38-compare-gray-active.csv)",
+          "result": "PASS on 2026-10-11: gray backdrop, active window, 14 of 14 pairs (both themes x ribbon, docks, vault profile, tab strips, editor) at dE2000 0.00"
+        }
+      ]
     }
   ]
 }

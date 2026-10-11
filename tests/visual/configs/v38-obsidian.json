@@ -1,0 +1,59 @@
+{
+  "_comment": "V-38: background-only regions of the Obsidian capture (same as step 4, window points). No references: compared with the same-session Inkdrop capture by tests/visual/v38-compare.py.",
+  "window_width_points": 1200,
+  "theme_from_name": [
+    [
+      "-solarized-dark-",
+      "sd"
+    ],
+    [
+      "-kanagawa-dragon-",
+      "kd"
+    ]
+  ],
+  "regions": {
+    "ribbon": [
+      6,
+      280,
+      32,
+      360
+    ],
+    "left-tabstrip": [
+      180,
+      6,
+      80,
+      28
+    ],
+    "left-dock": [
+      60,
+      200,
+      220,
+      420
+    ],
+    "vault-profile": [
+      130,
+      668,
+      110,
+      18
+    ],
+    "root-tabstrip": [
+      560,
+      6,
+      330,
+      28
+    ],
+    "editor": [
+      850,
+      260,
+      80,
+      390
+    ],
+    "right-dock": [
+      960,
+      240,
+      220,
+      400
+    ]
+  },
+  "max_sd": 1.0
+}

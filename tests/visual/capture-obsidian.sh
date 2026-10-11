@@ -26,6 +26,8 @@ cp "$src/theme.css" "$src/manifest.json" "$vault/.obsidian/themes/$manifest_name
 { printf 'window.__CAP = %s;\n' "$(node -e 'console.log(JSON.stringify({ theme: process.argv[1], translucent: process.argv[2] === "translucent" }))' "$manifest_name" "$mode")"; cat "$root/tests/visual/obsidian-capture-setup.js"; } > "$tmp/setup.js"
 cdp eval "$tmp/setup.js" > "$tmp/setup.json"
 
+# V-38: the Inkdrop window (if one is running with its DevTools endpoint) uses the same rectangle; hide it.
+bash "$root/tests/visual/other-window.sh" hide inkdrop
 cdp eval "$v04/obsidian-focus.js" > /dev/null
 "$tmp/bin/backdrop" "$bg" 300 150 1400 900 $([ "$focus" = inactive ] && echo activate) &
 bpid=$!
@@ -38,6 +40,7 @@ shot_time="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo '(() => ({ focused: electronWindow.isFocused(), cls: [...document.body.classList].filter((c) => /^is-(translucent|focused|fullscreen)$/.test(c)) }))()' > "$tmp/after.js"
 cdp eval "$tmp/after.js" > "$tmp/after.json"
 kill "$bpid"; wait "$bpid" 2>/dev/null || true
+bash "$root/tests/visual/other-window.sh" show inkdrop
 
 python3 -I - "$tmp/setup.json" "$tmp/focus.json" "$tmp/after.json" "$shot" "$shot_time" "$theme" "$mode" "$bg" "$focus" > "$out/measurements/$name.json" <<'EOF'
 import hashlib, json, subprocess, sys
