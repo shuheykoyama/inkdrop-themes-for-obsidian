@@ -1,7 +1,7 @@
 # inkdrop-themes-for-obsidian
 Faithful ports of Inkdrop's Solarized Dark and Kanagawa Dragon themes for Obsidian.
 
-**Status: in development (Phase 3, step 2: palettes; no UI mapping yet).** There is no usable theme yet,
+**Status: in development (Phase 3, step 3: workspace backgrounds; no UI details yet).** There is no usable theme yet,
 and the theme names and licence/attribution text are not decided. The research and the implementation plan
 are in [`research/`](research/README.md) (plan: [`research/14-implementation-plan.md`](research/14-implementation-plan.md)).
 
@@ -28,6 +28,15 @@ node tests/runtime/run.mjs --vault "$V" --self-test   # the runner's negative te
 node tests/runtime/run.mjs --vault "$V"               # tests/spec/runtime/*.json
 bash tests/runtime/obsidian-isolated.sh stop "$W"
 ```
+
+The default environment is `/Applications/Obsidian.app` (its installer's Electron) running the 1.14.4 app.
+A second environment uses the current installer's own Electron: `bash tests/runtime/current-installer.sh prepare`
+downloads the official release, checks its digest and code signature, and copies the app to
+`~/.cache/inkdrop-themes-for-obsidian/` without launching it. Start it with
+`OBSIDIAN_APP="$HOME/.cache/inkdrop-themes-for-obsidian/obsidian-1.14.4/Obsidian.app" OBSIDIAN_ASAR=none`
+in front of the `start` command above. The copy gets registered with LaunchServices (as a second
+`obsidian://` candidate), so run `bash tests/runtime/current-installer.sh check` before and after, and
+`... restore` afterwards (research/14 §6.3).
 
 | Path | Contents |
 |---|---|
