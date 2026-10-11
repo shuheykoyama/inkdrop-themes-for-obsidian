@@ -1152,3 +1152,80 @@ Inkdrop の値は 2 組ある: エディタ（CodeMirror、`--editor-*`・`--syn
 ### 6.12 次の作業
 
 RV3（UI・Markdown の統合レビュー）を待つ。工程 7 には進まない。
+
+### 6.13 RV3 の追加対応: V-30 との視覚比較、Source mode の検査、CSS のスコープ（2026-10-12、RV3 の再レビュー待ち）
+
+RV3 の判定: 工程 6 は条件付き APPROVE（`e6d5b84`）、RV3 は最終判定保留。指示は、保存済みの V-30 画像との視覚比較、Source mode の検査の補強、CSS のスコープの確認。
+
+**1. V-30 との視覚比較**（Inkdrop の再起動・状態変更なし）
+
+- 比較元: `evidence/phase2-p0/inkdrop/{sd,kd}-1-default.png`（エディタ）と `{sd,kd}-5-preview.png`（プレビュー）。比較先: 今回撮り直した Obsidian のネイティブの撮影（`evidence/phase3-rv3/native-*`）。
+- 並べた画像: `evidence/phase3-rv3/v30-compare/`（`tests/visual/side-by-side.py`。撮影方式が違う（Inkdrop は CDP の 1 倍、Obsidian はネイティブの 2 倍）ため、色の数値の比較はせず、構造・重なり・装飾・不自然さだけを見た。色の値は一次資料と Computed Style で検証済み）。
+- ノートの内容（Obsidian 側は要素が多い）と、エディタの字体（Inkdrop は等幅、Obsidian は利用者のフォント設定。Q-D8）の違いは CSS の問題として扱わない。
+- 記号の色の判別のためだけに、Inkdrop の画像のいくつかの文字の画素を拾った（どのトークンの色に近いかの判別。Obsidian との比較には使っていない）。
+
+| 観点 | 対象 | 結果 | 根拠 |
+|---|---|---|---|
+| 本文・見出しの色（Q-D14） | 編集・閲覧 | PASS | 編集は見出しの色、閲覧は見出しの色と h1・h2 の下線。構造が一致 |
+| Markdown 記号（V-25） | Source mode | PASS | Inkdrop の `#`・`**`・`*`・バッククォート・`[`・`(`・`)`・表の `|` は processing instruction の緑（画素 (133, 153, 29) = SD green-500）。Obsidian も同じ構造。V-25 を画面でも確認できた |
+| リンク（Q-D4） | 編集・閲覧 | PASS | 編集はリンクの文字が下線付きのリンク色、URL は URL 色（SD 黄）。閲覧は下線なしのプレビューのリンク色（KD は dragonGreen2） |
+| 強調 | 編集・閲覧 | PASS | 太字・斜体の色（KD の太字は赤） |
+| 引用 | 編集（Live Preview）・閲覧 | PASS | バーと斜体の文字（エディタ）、細いバーと muted の文字（プレビュー）。Source mode のバーは DIFF（下記） |
+| リスト記号 | 編集・閲覧 | PASS | 階層で色が変わる（SD 緑→橙、KD 灰青→橙） |
+| タスク | 編集 | **DIFF → 修正** | Inkdrop の `[ ]`・`[x]` はピンク（SD）／橙（KD）の太字、タスクの本文は KD で青灰色。工程 6 では未対応だった（下記 3） |
+| タスク | 閲覧 | DIFF（判断どおり） | チェックボックスの見た目（Inkdrop は既定の灰色、Obsidian は工程 5 で決めたアクセント色）。取り消し線は一致 |
+| インラインコード | 編集・閲覧 | PASS | 枠付きの背景（エディタは枠がバッククォートの内側、Obsidian はバッククォートを含む。形の差は小さい） |
+| コードブロック | 編集・閲覧 | PASS | 枠と背景。シンタックスの色は工程 8 |
+| 表 | 閲覧 | PASS | 見出し行の色と背景、セルの枠 |
+| 表 | Source mode | DIFF | Inkdrop は区切り行（`|---|`）も緑、見出し行が太字、表全体に枠。Obsidian は区切り行の色が行クラスで付き（lint で使えない）、見出し行の太さと枠がない |
+| コードフェンスの言語名 | Source mode | DIFF | Inkdrop は `js` が labelName（SD ピンク）、Obsidian は「```js」が 1 つの span で塗り分けられない |
+| Wiki リンクの括弧 | Source mode | DIFF（小） | Inkdrop は `[[` を知らず外側の `[` が本文色、内側の `[` が記号色。Obsidian は `[[` 全体が記号色 |
+| 引用のバー | Source mode | DIFF | Obsidian は Source mode でバーを描かない |
+| Callout | 閲覧・Live Preview | UNVERIFIED | V-30 のノートに GFM alert がない |
+| ハイライト・kbd・脚注・画像・埋め込み・水平線 | 全モード | UNVERIFIED | V-30 のノートにない |
+
+既存の画像で確認できなかったのは最後の 2 行。色の値はすでに一次資料と Computed Style で検証しており、比較で得られるのは装飾の形だけなので、Inkdrop を操作する追加の撮影は必須ではないと判断した。必要なら、Inkdrop で検証用ノートを表示する操作が要るため、実施前にユーザーの承認を得る。
+
+**2. Source mode の検査の補強**（14 件 → 35 件）
+
+Source mode の DOM を実機で確かめ、存在する要素だけを追加した: 見出しの本文（記号ではない `.cm-header-N`）、太字・斜体・取り消し線の文字、インラインコードの文字・背景・枠、ハイライトの文字・背景・下線の色と太さ、内部リンク、引用の文字と斜体、タスクの記号（色・太さ）、タスクの本文、完了タスクの色と取り消し線、未完了タスクに線がないこと。
+
+- Source mode では、タスクの行に `data-task` 属性が付かない（Live Preview にはある）。行のクラス（`.HyperMD-task-line`）は lint のためセレクタに使えないので、`[ ]`・`[x]` の span（`.cm-formatting-task`、未完了は `cm-meta`、完了は `cm-property`）の後ろの兄弟で選んだ。
+- 陰性テスト: 太字を斜体のトークンで測ると FAIL、Live Preview にしかない要素（表の描画）を Source mode で測ると要素なしで FAIL、タスクの記号を Obsidian の既定（muted）で測ると FAIL、を確認した（ランナーの陰性テスト 317 件すべて宣言どおり）。
+
+**3. 新たに見つけて直した不具合**
+
+| 不具合 | 原因 | 修正 |
+|---|---|---|
+| タスクの記号の色と太さ（編集） | Inkdrop の TaskMarker は `atom` のタグ（本体の JS で確認）で、`--md-task-marker-font-weight: bold`。工程 6 では対象外にしていた | `.cm-formatting-task` に `--syntax-atom-color` と太字 |
+| タスクの本文の色（編集、KD で見える） | Inkdrop の Task はリストのスタイルで段落を持たないため、本文が `--syntax-list-color`（KD dragonTeal、SD はエディタの本文色）になる | Live Preview は `.cm-line[data-task]`、Source mode は記号の後ろの span。完了タスクの `--checklist-done-color` も同じ色に |
+| 完了タスクの取り消し線（Source mode） | Obsidian は Live Preview でだけ線を引く。Inkdrop は `.md-task-done-text` に線 | Source mode の完了タスクの本文に `line-through` |
+| ライト表示への漏れ（工程 4〜6） | `src/common` の components・platform・Markdown の規則の多くが `.theme-dark` の下になかった。パレットは `.theme-dark` にしかないため、ライト表示では `--ink-*` が未定義になり、コードの背景・ハイライト・Callout の色などが Obsidian の色ごと消える | すべての規則を `.theme-dark` の下に置いた（詳細度は 1 クラス上がるだけで、上書きの関係は変わらない）。静的テストに「`src/common` の全セレクタが `.theme-dark` の下にある」検査を追加（陰性テスト付き） |
+
+**4. CSS のスコープの確認**
+
+- `.markdown-rendered` は Reading view と Live Preview の描画ブロックのほかに、Obsidian の次の場所で使われる（1.14.4 の app.js で確認）: ページのプレビュー（Popover）、見出しの埋め込みの題名、Bases・プロパティのファイルリンクと Markdown の値、コミュニティプラグインの README、ファイル復元のプレビュー、quicklook、プラグインのコードブロックの描画。どれも Markdown を HTML に描いたもので、Inkdrop のプレビューの値（リンク色、見出しの下線、リストの記号など）が当たるのは方針どおりとした。
+- `.callout` は Callout の要素にしかない（Canvas の Callout を含む）。
+- `.markdown-source-view.mod-cm6` は Canvas のカードの編集にも使われ、エディタの値になる（方針どおり）。
+- ライト表示は上記 3 の修正で、テーマの規則がどれも当たらなくなった（静的に検査）。
+
+**テスト結果**
+
+| テスト | Electron 39.5.1 | Electron 43.7.7 |
+|---|---|---|
+| 実行時テスト | 1267 件 PASS（うち 124 件 PASS（EMULATED）） | 1267 件 PASS（同） |
+| ランナーの陰性テスト | 317 件すべて宣言どおり | 同 |
+| 左上隅の画素比較（16 枚） | すべて ΔE2000 0.00 | すべて ΔE2000 0.00 |
+
+静的テストすべて PASS、静的テストの陰性テスト 47 件すべて期待どおり、視覚的テストの陰性テスト 6 件、クリーンルームのビルド一致。工程 1〜6 の検査をすべて再実行して PASS。
+
+**RV3 に残る事項**
+
+- Callout・ハイライト・kbd・脚注・画像・埋め込み・水平線は、Inkdrop の画面との比較がない（V-30 のノートにない）。色の値は検証済み。
+- Source mode の表（区切り行の色、見出し行の太さ、枠）、コードフェンスの言語名、Wiki リンクの外側の括弧、引用のバーは、Obsidian の DOM（クラス）か lint の制約で再現していない。
+- 閲覧ビューのチェックボックスの見た目（工程 5 の判断）。
+- 字体・大きさ・太さ（工程 6 の判断 3）。
+
+### 6.14 次の作業
+
+RV3 の再レビューを待つ。工程 7 には進まない。
