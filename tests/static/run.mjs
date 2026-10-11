@@ -255,6 +255,19 @@ try {
     check(`S4 ${rel} no CSS nesting`, nested.length === 0, nested.join(", "));
     check(`S4 ${rel} every !important is allow-listed`, important.length === 0, important.join("; "));
   }
+  // Platform scopes (Q-D22, Q-D10): every rule of translucent.css applies only while translucent and not in
+  // full screen (the condition app.css uses), and every rule of mobile.css only on mobile.
+  const SCOPES = {
+    "src/common/platform/translucent.css": /^(?:\.theme-dark)?\.is-translucent:not\(\.is-fullscreen\)(?:[ .]|$)/,
+    "src/common/platform/mobile.css": /^\.is-(?:mobile|tablet|phone)(?:[ .]|$)/,
+  };
+  for (const [rel, re] of Object.entries(SCOPES)) {
+    const f = path.join(root, rel);
+    if (!existsSync(f)) { check(`S4 ${rel} exists`, false); continue; }
+    const outside = [];
+    postcss.parse(readFileSync(f, "utf8")).walkRules((r) => { for (const sel of r.selectors) if (!re.test(sel.trim())) outside.push(sel.trim()); });
+    check(`S4 ${rel} every selector is inside its platform scope`, outside.length === 0, outside.join(" | "));
+  }
   for (const a of allowlist.filter((x) => x.rule === "declaration-no-important")) {
     check(`S4 allow-list !important ${a.selector} { ${a.property} } names the app.css rule it overrides`, typeof a.overrides === "string" && a.overrides.trim() !== "");
   }
