@@ -1,0 +1,136 @@
+{
+  "_comment": "Step 4 (research/14 \u00a76.4): Obsidian native captures (tests/visual/capture-obsidian.sh) against the Inkdrop V-32 native captures (research/evidence/phase2-p0/measurements/inkdrop-v32-pixel-samples.csv), regions mapped by Q-D1: ribbon = Inkdrop sidebar; dock bodies, vault profile and tab strips = note list; centre editor = editor. Regions are background-only rectangles in window points. Judged: max dE2000 1.0 against the reference (research/14 \u5de5\u7a0b 4).",
+  "window_width_points": 1200,
+  "theme_from_name": [
+    [
+      "-solarized-dark-",
+      "sd"
+    ],
+    [
+      "-kanagawa-dragon-",
+      "kd"
+    ]
+  ],
+  "regions": {
+    "ribbon": [
+      6,
+      280,
+      32,
+      360
+    ],
+    "left-tabstrip": [
+      180,
+      6,
+      80,
+      28
+    ],
+    "left-dock": [
+      60,
+      200,
+      220,
+      420
+    ],
+    "vault-profile": [
+      130,
+      668,
+      110,
+      18
+    ],
+    "root-tabstrip": [
+      560,
+      6,
+      330,
+      28
+    ],
+    "editor": [
+      850,
+      260,
+      80,
+      390
+    ],
+    "right-dock": [
+      960,
+      240,
+      220,
+      400
+    ]
+  },
+  "references": {
+    "sd": {
+      "ribbon": [
+        8,
+        53,
+        64
+      ],
+      "left-tabstrip": [
+        1,
+        45,
+        56
+      ],
+      "left-dock": [
+        1,
+        45,
+        56
+      ],
+      "vault-profile": [
+        1,
+        45,
+        56
+      ],
+      "root-tabstrip": [
+        1,
+        45,
+        56
+      ],
+      "editor": [
+        1,
+        33,
+        41
+      ],
+      "right-dock": [
+        1,
+        45,
+        56
+      ]
+    },
+    "kd": {
+      "ribbon": [
+        16,
+        16,
+        14
+      ],
+      "left-tabstrip": [
+        24,
+        22,
+        22
+      ],
+      "left-dock": [
+        24,
+        22,
+        22
+      ],
+      "vault-profile": [
+        24,
+        22,
+        22
+      ],
+      "root-tabstrip": [
+        24,
+        22,
+        22
+      ],
+      "editor": [
+        30,
+        29,
+        26
+      ],
+      "right-dock": [
+        24,
+        22,
+        22
+      ]
+    }
+  },
+  "max_sd": 1.0,
+  "max_de2000_vs_reference": 1.0
+}

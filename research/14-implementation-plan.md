@@ -725,6 +725,70 @@ RV1 の結果: APPROVE（2026-10-11、`3c78a90`）。指摘 RV1-A〜C は §6.2 
 - モバイル全般は PASS（EMULATED）だけで、実機は工程 10（リリースの合格条件には数えない）。
 - SD のアクセントは primary のアルファ（90%）を失う。アクセントを使う要素での Inkdrop との差は工程 5 で確認する。
 
-### 6.4 次の作業
+工程 3 のレビューの結果: APPROVE（2026-10-11、`b2e581a`）。
 
-工程 3 のレビューを待つ。工程 4（translucent）と RV2 には、レビューの後に進む。
+### 6.4 工程 4: 不透明・translucent の切り替え（2026-10-11 実装、RV2 待ち）
+
+**実装**（`src/common/platform/translucent.css`、両テーマのエントリから読み込む）
+
+| Obsidian の要素（translucent 時） | 方法 | Inkdrop の acrylic トークン | `!important` |
+|---|---|---|---|
+| ワークスペースの地（`.app-container`） | `--workspace-background-translucent` | `--ink-page-background-acrylic`（`transparent`） | なし |
+| Ribbon | `.workspace-ribbon.mod-primary` の背景 | `--ink-sidebar-background-acrylic` | あり（app.css が `transparent !important`） |
+| 左右ドックの本体 | `.workspace-leaf-content` の背景（leaf 自体は app.css が透明に強制） | `--ink-note-list-bar-background-acrylic` | なし |
+| 左ドック下端の Vault 名の領域 | `.workspace-sidedock-vault-profile` の背景 | `--ink-note-list-bar-background-acrylic` | あり（同上） |
+| タブ帯（左右ドック・中央） | `.workspace-tabs .workspace-tab-header-container`（(0,4,0)） | `--ink-note-list-bar-background-acrylic` | あり（同上） |
+| 中央のエディタ・View Header・アクティブタブ | `.workspace-split.mod-root` にスコープした変数 | `--ink-editor-background-acrylic` | なし |
+| ステータスバー | `--status-bar-background` | `--ink-note-list-bar-background-acrylic` | なし |
+
+- すべての規則は `.is-translucent:not(.is-fullscreen)`（app.css と同じ条件）の下にあり、テーマから translucent を有効にすることはない。中央の変数は `.mod-root` にスコープし、モーダル・ポップアウト・プロンプトには及ばない。
+- `!important` の 3 件は、上書き対象の app.css の規則と理由を許可リスト（`tests/static/lint-allowlist.json`）に登録した（公式 lint の warning 3 件）。
+- **Vault 名の領域**は計画になかった。ネイティブの撮影で、translucent 時にここだけ素材がそのまま見えていることに気づき、app.css の強制透明の一覧（1.14.4 L6579–6591）を確かめて追加した。不透明時（`--background-secondary` = ノートリスト）の検査も工程 3 の範囲の不足として追加した。
+- `--editor-drawer-background` の acrylic（V-37）: ユーザーの承認を得て Inkdrop で実測し、推論どおり基盤の上書きは効かないことを確認した（09 V-37）。パレットは変えていない。
+
+**ランナーの修正（レビューの指摘）**
+
+- モバイルのエミュレーションに切り替える前に translucent を明示的に無効にする。モバイルの不透明の検査では、`is-translucent` が付いていないことを環境の検査（`runner.environment`）で確かめる。
+- 陰性テスト: モバイルの探査中にわざと translucent を有効にする状態（`self-test-translucent-leak`、ランナーの自己テスト専用。製品の検査仕様では使えないことを S6 が検査）で、`runner.environment` が FAIL になることを確認した。
+- デスクトップは「不透明 → translucent → 不透明」の 3 回を測り、2 回目の不透明で工程 3 のすべての検査を再実行する（切り替えで元に戻ることの確認）。
+- 終了時の復元（デスクトップ、元のウィンドウの大きさ、translucent なし、フローティングナビの設定）を `runner.restore` として検査する。
+- 漏れの番人としてクイックスイッチャー（ウィンドウ内のモーダル）を追加した。フルスクリーンは、Obsidian が付ける `is-fullscreen` クラスを付けて測る（`fullscreen-class`。実際の macOS のフルスクリーンは利用者のデスクトップを動かすため行わない。必須項目 `qd22.real-fullscreen` は UNVERIFIED）。
+- モバイルへの切り替え直後に、Obsidian 自身の前のテーマの読み込みが後から上書きする競合があり、`runner.theme-applied` が検出した（工程 3 では表面化しなかった）。プローブが、選んだテーマと読み込まれた CSS が安定するまで繰り返すようにした。
+
+**テスト結果**
+
+| テスト | Electron 39.5.1 | Electron 43.7.7 |
+|---|---|---|
+| 実行時テスト | 251 件 PASS（うち 76 件 PASS（EMULATED）） | 251 件 PASS（同） |
+| ランナーの陰性テスト | 127 件すべて宣言どおり | 同 |
+
+| テスト | 結果 |
+|---|---|
+| 静的テスト | すべて PASS |
+| 静的テストの陰性テスト | 40 件すべて期待どおり（tab 帯の `!important` を外す、フルスクリーンの除外を外す、acrylic の色をリテラルで書く、を追加） |
+| ネイティブのスクリーンショット（不透明、両テーマ） | Inkdrop の V-32（不透明）と全領域で ΔE2000 0.00（PASS） |
+| ネイティブのスクリーンショット（translucent・灰色・アクティブ） | エディタ 0.5（基準内）、ノートリスト系の面 1.6、Ribbon 2.9〜3.2 で、閾値 1.0 を超えた（FAIL）。ただし下記のとおり撮影環境の変化による |
+| 同じトークンの面どうしの比較（今日撮り直した V-04 の診断用 CSS と） | アクティブ・非アクティブ、両 Electron とも各チャンネルの差 1 以内（PASS） |
+
+証拠と測定条件: `evidence/phase3-step4/`（README に撮影条件、各画像の SHA-256、フォーカス、ドック幅、Electron の版を記録）。
+
+**translucent の視覚比較の扱い（判断）**: 閾値の判定は FAIL だが、V-04 で ΔE2000 0.4 未満だった診断用 CSS を同じ日に撮り直すと、テーマとまったく同じ値になり、V-32 との差も同じだった。つまりテーマは V-04 で検証した構成を再現しており、差は撮影日の間に変わったアクティブ時のウィンドウ素材の下地によるもの（原因は調べていない）。今日の Inkdrop の合成値がないため、Inkdrop との絶対比較は **UNVERIFIED**（必須項目 `qd22.visual-active-vs-inkdrop`、V-38）とし、PASS にはしない。非アクティブ時の差（0.4〜1.1）と、柄の背景で Obsidian に縞が透けること（Inkdrop では透けない、素材の違い）は記録のみとした。
+
+**計画からの変更と理由**
+
+| # | 変更 | 理由 |
+|---|---|---|
+| 1 | Vault 名の領域の translucent 用の規則と、その不透明時の検査を追加した | 撮影で見つかった塗り漏れ（Q-D1 のドックの一部） |
+| 2 | 視覚比較の判定基準（アクティブ時に V-32 と ΔE2000 1.0 以下）に、同日撮影の V-04 の診断用 CSS との一致を補助の判定として加えた | 撮影環境が日によって変わることが分かり、基準画像が別の日のものだと、テーマの差と環境の差を区別できないため。絶対比較は V-38 で同日の基準を取るまで UNVERIFIED |
+| 3 | 撮影スクリプトが撮影時のドック幅を記録し、ウィンドウの大きさを決めた後にドック幅を設定し直すようにした | 1 枚でドック幅が設定どおりにならず、測定領域が境界にかかった |
+
+**未検証事項（理由とリスク）**
+
+- `qd22.visual-active-vs-inkdrop`（Inkdrop との絶対比較、アクティブ時）: 上記。V-38 で同日の Inkdrop を撮れば判定できる（Inkdrop の設定変更と検証用ノートの作成が要るため、ユーザーの承認が必要）。
+- `qd22.real-fullscreen`（実際の macOS のフルスクリーン）: クラスを付けて測っただけ。利用者のデスクトップの Space を動かすため、確認には同意が要る（工程 11）。
+- 撮影環境が変わった原因（壁紙、外観の設定など）: 調べていない。設定の変更を伴う調査はユーザーの承認が要る。
+- Windows・Linux には translucent がない（Q-D10・Q-D22）。規則はすべて `.is-translucent` の下にあり、他の OS の表示には影響しない（実機では未確認）。
+
+### 6.5 次の作業
+
+工程 4 の完了。RV2（背景・acrylic の統合レビュー）を待つ。工程 5 には、RV2 の後に進む。

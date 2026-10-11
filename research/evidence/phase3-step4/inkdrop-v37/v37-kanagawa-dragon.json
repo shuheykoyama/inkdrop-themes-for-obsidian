@@ -1,0 +1,19 @@
+{
+  "theme": "kanagawa-dragon",
+  "activeThemes": [
+    "kanagawa-dragon"
+  ],
+  "acrylic": true,
+  "acrylicConfig": true,
+  "inkdropVersion": null,
+  "vars": {
+    "--editor-drawer-background": "hsl(60deg 9% 6% / 70%)",
+    "--page-background": "transparent",
+    "--sidebar-background": "hsl(60deg 9% 6% / 50%)",
+    "--note-list-bar-background": "hsl(0deg 4% 9% / 70%)",
+    "--editor-background": "hsl(45deg 7% 11% / 90%)",
+    "--editor-background-color": "transparent",
+    "--inline-dropdown-menu-background": "hsl(60deg 9% 6%)",
+    "--vertical-menu-background": "hsl(60deg 9% 6%)"
+  }
+}

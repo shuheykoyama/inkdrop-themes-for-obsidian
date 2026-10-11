@@ -1,0 +1,57 @@
+{
+ "capture": {
+  "method": "/usr/sbin/screencapture -x -R400,250,1200,700 (native window-server composite, display colour space)",
+  "capturedAt": "2026-10-11T11:12:43Z",
+  "file": "screenshots/obsidian-solarized-dark-translucent-pattern-active.png",
+  "pixels": [
+   2400,
+   1400
+  ],
+  "sha256": "1389065d59d6af8095a8c11b4994cd25e5e65cceea7cd92b0fead9fe54a1d203",
+  "windowRectPoints": [
+   400,
+   250,
+   1200,
+   700
+  ],
+  "backdrop": "pattern",
+  "backdropRectPoints": [
+   300,
+   150,
+   1400,
+   900
+  ],
+  "requestedFocus": "active",
+  "translucency": "translucent",
+  "theme": "solarized-dark"
+ },
+ "setup": {
+  "theme": "DEV solarized-dark (unnamed)",
+  "themeCssLength": 65193,
+  "isTranslucent": true,
+  "bounds": {
+   "x": 400,
+   "y": 250,
+   "width": 1200,
+   "height": 700
+  },
+  "dockWidths": [
+   260,
+   260
+  ],
+  "electron": "39.5.1",
+  "appVersion": "1.14.4"
+ },
+ "focusStep": {
+  "focused": true,
+  "hasFocus": true,
+  "bodyFocusedClass": true
+ },
+ "afterShot": {
+  "focused": true,
+  "cls": [
+   "is-translucent",
+   "is-focused"
+  ]
+ }
+}

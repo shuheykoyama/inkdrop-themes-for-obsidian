@@ -1,7 +1,7 @@
 # inkdrop-themes-for-obsidian
 Faithful ports of Inkdrop's Solarized Dark and Kanagawa Dragon themes for Obsidian.
 
-**Status: in development (Phase 3, step 3: workspace backgrounds; no UI details yet).** There is no usable theme yet,
+**Status: in development (Phase 3, step 4: workspace backgrounds, opaque and translucent; no UI details yet).** There is no usable theme yet,
 and the theme names and licence/attribution text are not decided. The research and the implementation plan
 are in [`research/`](research/README.md) (plan: [`research/14-implementation-plan.md`](research/14-implementation-plan.md)).
 
@@ -37,6 +37,11 @@ downloads the official release, checks its digest and code signature, and copies
 in front of the `start` command above. The copy gets registered with LaunchServices (as a second
 `obsidian://` candidate), so run `bash tests/runtime/current-installer.sh check` before and after, and
 `... restore` afterwards (research/14 §6.3).
+
+Native screenshots under the V-04 / V-32 conditions (macOS, screen-recording permission already granted):
+`bash tests/visual/capture-obsidian.sh <theme> <translucent|opaque> <gray|pattern> <active|inactive> <vault> <out> <tmp>`,
+then `python3 -I tests/visual/sample-regions.py --config tests/visual/configs/step4-*.json ...`
+(research/evidence/phase3-step4/README.md).
 
 | Path | Contents |
 |---|---|

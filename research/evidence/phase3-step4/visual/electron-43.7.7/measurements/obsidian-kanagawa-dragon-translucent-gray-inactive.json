@@ -1,0 +1,54 @@
+{
+ "capture": {
+  "method": "/usr/sbin/screencapture -x -R400,250,1200,700 (native window-server composite, display colour space)",
+  "capturedAt": "2026-10-11T11:18:01Z",
+  "file": "screenshots/obsidian-kanagawa-dragon-translucent-gray-inactive.png",
+  "pixels": [
+   2400,
+   1400
+  ],
+  "sha256": "8baaa136a9296902a725a028261c2e4d86ba7bdacd6659deca1c7d85b363d601",
+  "windowRectPoints": [
+   400,
+   250,
+   1200,
+   700
+  ],
+  "backdrop": "gray",
+  "backdropRectPoints": [
+   300,
+   150,
+   1400,
+   900
+  ],
+  "requestedFocus": "inactive",
+  "translucency": "translucent",
+  "theme": "kanagawa-dragon"
+ },
+ "setup": {
+  "theme": "DEV kanagawa-dragon (unnamed)",
+  "themeCssLength": 67786,
+  "isTranslucent": true,
+  "bounds": {
+   "x": 400,
+   "y": 250,
+   "width": 1200,
+   "height": 700
+  },
+  "dockWidths": [
+   260,
+   260
+  ],
+  "electron": "43.7.7",
+  "appVersion": "1.14.4"
+ },
+ "focusStep": {
+  "focused": false
+ },
+ "afterShot": {
+  "focused": false,
+  "cls": [
+   "is-translucent"
+  ]
+ }
+}

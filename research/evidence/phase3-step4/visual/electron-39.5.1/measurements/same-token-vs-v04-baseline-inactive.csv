@@ -1,0 +1,7 @@
+theme,focus,token,theme_region,theme_mean_rgb,v04_case_d_region,v04_case_d_mean_rgb,max_channel_diff,result
+solarized-dark,inactive,--ink-sidebar-background-acrylic,ribbon,"[26.0, 46.0, 51.0]",left-dock,"[26.0, 46.0, 51.0]",0.0,PASS
+solarized-dark,inactive,--ink-note-list-bar-background-acrylic,right-dock,"[15.0, 37.0, 42.0]",right-dock,"[15.0, 37.0, 42.0]",0.0,PASS
+solarized-dark,inactive,--ink-editor-background-acrylic,editor,"[6.0, 34.0, 41.0]",editor,"[6.0, 34.0, 41.0]",0.0,PASS
+kanagawa-dragon,inactive,--ink-sidebar-background-acrylic,ribbon,"[33.0, 32.0, 30.0]",left-dock,"[33.0, 32.0, 30.0]",0.0,PASS
+kanagawa-dragon,inactive,--ink-note-list-bar-background-acrylic,right-dock,"[32.0, 29.0, 29.0]",right-dock,"[32.0, 29.0, 29.0]",0.0,PASS
+kanagawa-dragon,inactive,--ink-editor-background-acrylic,editor,"[32.0, 31.0, 28.0]",editor,"[32.0, 31.0, 28.0]",0.0,PASS

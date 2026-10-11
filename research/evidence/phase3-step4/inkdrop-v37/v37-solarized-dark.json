@@ -1,0 +1,19 @@
+{
+  "theme": "solarized-dark",
+  "activeThemes": [
+    "solarized-dark"
+  ],
+  "acrylic": true,
+  "acrylicConfig": true,
+  "inkdropVersion": null,
+  "vars": {
+    "--editor-drawer-background": "hsl(192deg 100% 11% / 70%)",
+    "--page-background": "transparent",
+    "--sidebar-background": "hsl(192deg 100% 11% / 50%)",
+    "--note-list-bar-background": "hsl(192deg 100% 8% / 70%)",
+    "--editor-background": "hsl(192deg 100% 8% / 90%)",
+    "--editor-background-color": "transparent",
+    "--inline-dropdown-menu-background": "hsl(192deg 100% 8%)",
+    "--vertical-menu-background": "hsl(192deg 100% 8%)"
+  }
+}
