@@ -1,4 +1,32 @@
 {
   "_comment": "Accepted warnings of stylelint-config-obsidianmd on dist/<theme>/theme.css (research/14 §1.9). Errors are never listed: they are fixed. Each entry: rule, selector, property, theme (\"*\" or a theme), reason, refs; for declaration-no-important also `overrides` (the app.css rule being overridden). Every !important in the output must have an entry here (S4). An entry that no longer matches any warning fails S5 (stale entry).",
-  "warnings": []
+  "warnings": [
+    {
+      "rule": "declaration-no-important",
+      "theme": "*",
+      "selector": ".is-translucent:not(.is-fullscreen) .workspace-tabs .workspace-tab-header-container",
+      "property": "background-color",
+      "overrides": "app.css 1.14.4 L6579-6591: .is-translucent:not(.is-fullscreen) .mod-top .workspace-tab-header-container (and the other strip selectors) { background-color: transparent !important }",
+      "reason": "While translucent, app.css forces the tab strips transparent with !important; Q-D1/Q-D22 need the note-list acrylic colour there. Specificity alone cannot beat an !important declaration.",
+      "refs": "research/12 §4 (V-04), research/13 §2.1, research/14 §6.4"
+    },
+    {
+      "rule": "declaration-no-important",
+      "theme": "*",
+      "selector": ".is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary",
+      "property": "background-color",
+      "overrides": "app.css 1.14.4 L6579-6591: .is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary { background-color: transparent !important }",
+      "reason": "While translucent, app.css forces the ribbon transparent with !important; Q-D1/Q-D22 need the sidebar acrylic colour there.",
+      "refs": "research/12 §4 (V-04), research/14 §6.4"
+    },
+    {
+      "rule": "declaration-no-important",
+      "theme": "*",
+      "selector": ".is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile",
+      "property": "background-color",
+      "overrides": "app.css 1.14.4 L6579-6591: .is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile { background-color: transparent !important }",
+      "reason": "While translucent, app.css forces the vault profile at the bottom of the left dock transparent with !important; Q-D1/Q-D22 need the note-list acrylic colour there, as on the dock above it. Found in the step-4 native captures.",
+      "refs": "research/14 §6.4"
+    }
+  ]
 }

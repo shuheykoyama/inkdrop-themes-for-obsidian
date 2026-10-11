@@ -1,0 +1,51 @@
+/* Platform: translucent window (Q-D22, macOS only). While the user has Obsidian's "Translucent window"
+   on, the surfaces take Inkdrop's acrylic declarations; the theme never turns translucency on itself.
+   Method as verified in V-04 (research/12 §4, §5) and the Q-D21 PoC (research/13):
+   - every rule is under .is-translucent:not(.is-fullscreen), the same condition app.css uses, so a
+     full-screen window keeps the opaque mapping;
+   - app.css forces .workspace-split / .workspace-tabs / .workspace-leaf, the tab strips and the ribbon to
+     `transparent !important` while translucent (app.css 1.14.4 L6579-6591). Dock surfaces are painted on
+     .workspace-leaf-content, which is not forced; the centre uses variables scoped to .mod-root so modals,
+     popouts and prompts keep the opaque editor colour; only the tab strips and the ribbon need !important;
+   - the centre .view-content / .view-header and the status bar stay opaque in app.css and take their
+     acrylic colours through variables. */
+
+/* Inkdrop acrylic has --page-background: transparent; Obsidian tints .app-container with this variable. */
+.theme-dark.is-translucent:not(.is-fullscreen) {
+  --workspace-background-translucent: var(--ink-page-background-acrylic);
+  --status-bar-background: var(--ink-note-list-bar-background-acrylic);
+}
+
+/* Docks: note list (Q-D1). */
+.is-translucent:not(.is-fullscreen) .workspace-split.mod-left-split .workspace-leaf-content,
+.is-translucent:not(.is-fullscreen) .workspace-split.mod-right-split .workspace-leaf-content {
+  background-color: var(--ink-note-list-bar-background-acrylic);
+}
+
+/* Vault profile at the bottom of the left dock: note list like the dock (Q-D1). app.css forces
+   .is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile (0,3,0) to transparent !important;
+   when opaque it paints --background-secondary. Same specificity, loaded later, so !important is enough. */
+.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile {
+  background-color: var(--ink-note-list-bar-background-acrylic) !important;
+}
+
+/* Centre: editor (Q-D1), scoped to the root split. */
+.is-translucent:not(.is-fullscreen) .workspace-split.mod-root {
+  --background-primary: var(--ink-editor-background-acrylic);
+  --file-header-background: var(--ink-editor-background-acrylic);
+  --file-header-background-focused: var(--ink-editor-background-acrylic);
+  --tab-background-active: var(--ink-editor-background-acrylic);
+}
+
+/* Tab strips: note list (Q-D1). app.css uses (0,4,0) selectors such as
+   .is-translucent:not(.is-fullscreen) .mod-top .workspace-tab-header-container with !important, so this
+   needs (0,4,0) and !important; it wins by loading later (research/13 §2.1). */
+.is-translucent:not(.is-fullscreen) .workspace-tabs .workspace-tab-header-container {
+  background-color: var(--ink-note-list-bar-background-acrylic) !important;
+}
+
+/* Ribbon: sidebar (Q-D1). app.css forces .is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary
+   (0,4,0) to transparent !important; same specificity, loaded later, so !important is enough. */
+.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary {
+  background-color: var(--ink-sidebar-background-acrylic) !important;
+}

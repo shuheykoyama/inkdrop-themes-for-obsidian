@@ -10,10 +10,19 @@
   const ws = app.workspace;
   const mobile = platform !== "desktop";
 
-  // Theme: the theme folder must be known to Obsidian before setTheme / loadTheme accept it.
+  // Theme: the theme folder must be known to Obsidian before setTheme / loadTheme accept it. Right after a
+  // reload (mobile emulation) Obsidian's own load of the previously selected theme can still be queued and
+  // overwrite ours, so repeat until the selected theme and its stylesheet stay the same for a moment.
   await app.customCss.readThemes();
-  if (app.customCss.theme !== theme) app.customCss.setTheme(theme);
-  await app.customCss.loadTheme();
+  let last = -1;
+  for (let i = 0; i < 20; i++) {
+    if (app.customCss.theme !== theme) app.customCss.setTheme(theme);
+    await app.customCss.loadTheme();
+    await sleep(300);
+    const len = app.customCss.styleEl.textContent.length;
+    if (app.customCss.theme === theme && len > 0 && len === last) break;
+    last = len;
+  }
 
   // Notes: "Sample note" active; on desktop also "Other note" in a second centre tab (an inactive tab).
   const leafOf = (name) => ws.getLeavesOfType("markdown").find((l) => l.view?.file?.basename === name);
@@ -25,6 +34,9 @@
   ws.setActiveLeaf(leafOf("Sample note"), { focus: true });
 
   if (mobile) {
+    // Translucency exists on macOS desktop only: an opaque mobile probe must not run in a translucent window.
+    // The runner turns it off before switching to emulation; the self-test state turns it on on purpose.
+    app.customCss.setTranslucency(state === "self-test-translucent-leak");
     // Floating navigation is a vault setting (app.json floatingNavigation) applied by this method.
     app.vault.setConfig("floatingNavigation", platform !== "phone-nonfloating");
     app.updateFloatingNavigationDisplay();
@@ -44,6 +56,8 @@
     app.customCss.setTranslucency(!!translucent);
   }
   if (state === "user-accent") app.vault.setConfig("accentColor", "#e06c75");
+  if (state === "fullscreen-class") document.body.classList.add("is-fullscreen");
+  if (state === "quick-switcher-open") app.commands.executeCommandById("switcher:open");
   await sleep(800);
 
   // Measure one element in a given document. Visibility = checkVisibility() (display, content-visibility,
@@ -85,5 +99,11 @@
 
   // Undo the per-state settings so the next probe starts from the same vault state.
   if (state === "user-accent") { app.vault.setConfig("accentColor", ""); await sleep(300); }
+  if (state === "fullscreen-class") document.body.classList.remove("is-fullscreen");
+  if (state === "quick-switcher-open") {
+    document.querySelector(".modal-container")?.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+    await sleep(300);
+  }
+  out.modalsLeftOpen = document.querySelectorAll(".modal-container").length;
   return out;
 })();

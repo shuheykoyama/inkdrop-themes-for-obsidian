@@ -1,5 +1,5 @@
 {
-  "_comment": "Negative tests of the runtime runner (research/14 §3.2). `selfTest` is the outcome the runner MUST produce; cases marked FAIL prove that a missing, hidden, unreadable or wrongly expected element cannot pass. Not product requirements. Mobile cases run under app.emulateMobile(true); an emulated pass is reported as PASS (EMULATED) and compared as PASS here.",
+  "_comment": "Negative tests of the runtime runner (research/14 §3.2). `selfTest` is the outcome the runner MUST produce; cases marked FAIL prove that a missing, hidden, unreadable or wrongly expected element cannot pass. Not product requirements. Mobile cases run under app.emulateMobile(true); an emulated pass is reported as PASS (EMULATED) and compared as PASS here. self.mobile-translucent-leak turns translucency on during a mobile probe on purpose: its runner.environment row must be FAIL.",
   "checks": [
     {
       "id": "self.positive-control.editor",
@@ -156,8 +156,8 @@
       "appearance": [
         "translucent"
       ],
-      "value": "transparent",
-      "selfTest": "PASS"
+      "selfTest": "PASS",
+      "token": "--ink-sidebar-background-acrylic"
     },
     {
       "id": "self.text-kind-correct",
@@ -236,6 +236,45 @@
         "opaque"
       ],
       "token": "--ink-sidebar-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.mobile-translucent-leak",
+      "selector": ".ink-self-test-element-that-does-not-exist",
+      "document": "main",
+      "property": "background-color",
+      "platform": [
+        "tablet"
+      ],
+      "state": "self-test-translucent-leak",
+      "appearance": [
+        "opaque"
+      ],
+      "expect": "absent",
+      "reason": "the check itself is trivial; this case exists so that runner.environment must FAIL when a mobile opaque probe runs translucent",
+      "selfTest": "PASS"
+    },
+    {
+      "id": "self.translucent-not-opaque-token",
+      "selector": ".status-bar",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "token": "--ink-note-list-bar-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.fullscreen-not-acrylic",
+      "selector": ".status-bar",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "state": "fullscreen-class",
+      "token": "--ink-note-list-bar-background-acrylic",
       "selfTest": "FAIL"
     }
   ]

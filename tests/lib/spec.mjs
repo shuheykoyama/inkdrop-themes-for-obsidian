@@ -12,8 +12,12 @@ const EXPECTS = ["match", "absent", "hidden"];
 export const PLATFORMS = ["desktop", "tablet", "phone", "phone-nonfloating"];
 // Probe states: desktop "default" has both docks expanded and two notes open in the centre (the other one
 // is an inactive tab); "user-accent" sets an accent colour in the test vault's settings for the measurement;
+// "quick-switcher-open" opens the quick switcher (an in-window modal); "fullscreen-class" adds the
+// is-fullscreen class to body for the measurement (simulates only the class Obsidian sets in full screen);
 // on mobile "default" has both drawers closed.
-const STATES = ["default", "user-accent", "left-drawer-open", "right-drawer-open"];
+// "self-test-translucent-leak" turns translucency on in a mobile probe: allowed only in the runner's own
+// negative spec, to prove that an opaque mobile check refuses a translucent window.
+export const STATES = ["default", "user-accent", "quick-switcher-open", "fullscreen-class", "left-drawer-open", "right-drawer-open", "self-test-translucent-leak"];
 const KINDS = ["color", "text"];
 
 export function loadRequirements(specDir) {
@@ -38,6 +42,7 @@ export function checkErrors(c, requirementIds) {
   if (!Array.isArray(platforms) || !platforms.length || platforms.some((p) => !PLATFORMS.includes(p))) e.push(`${where}: platform must list ${PLATFORMS.join("/")}`);
   if (c.appearance?.includes("translucent") && platforms.some((p) => p !== "desktop")) e.push(`${where}: translucent exists on desktop (macOS) only`);
   if (!STATES.includes(c.state ?? "default")) e.push(`${where}: state must be one of ${STATES.join("/")}`);
+  if (requirementIds && c.state === "self-test-translucent-leak") e.push(`${where}: state self-test-translucent-leak is for the runner's self-test only`);
   if (!KINDS.includes(c.kind ?? "color")) e.push(`${where}: kind must be one of ${KINDS.join("/")}`);
   const expect = c.expect ?? "match";
   if (!EXPECTS.includes(expect)) e.push(`${where}: expect must be one of ${EXPECTS.join("/")}`);

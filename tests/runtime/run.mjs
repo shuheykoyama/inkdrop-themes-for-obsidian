@@ -22,7 +22,7 @@ import { cpSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 import { declarations, hslToRgb, parseComputedColor, sameColor, substitute } from "../lib/css.mjs";
-import { checkErrors, loadChecks, loadRequirements, PLATFORMS, runtimeSpecFiles } from "../lib/spec.mjs";
+import { checkErrors, loadChecks, loadRequirements, PLATFORMS, runtimeSpecFiles, STATES } from "../lib/spec.mjs";
 import { evaluate } from "./lib/cdp.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
@@ -101,6 +101,9 @@ async function setPlatform(platform, original) {
     if (emulated) { await evaluate(args.port, `(() => { electronWindow.setSize(${original[0]}, ${original[1]}); app.emulateMobile(false); return 1; })()`); await sleep(1500); await waitReady(); }
     return;
   }
+  // Translucency is macOS-desktop only: turn it off before any mobile emulation (an opaque mobile check
+  // must never run in a translucent window; the environment check below asserts it).
+  await evaluate(args.port, "(() => { app.customCss.setTranslucency(false); return 1; })()");
   const [w, h] = SIZES[platform];
   const cur = await evaluate(args.port, "(() => electronWindow.getSize())()");
   const want = platform === "tablet" ? "is-tablet" : "is-phone";
@@ -129,27 +132,31 @@ try {
       const manifest = JSON.parse(readFileSync(path.join(repo, "dist", theme, "manifest.json"), "utf8"));
       const css = readFileSync(path.join(repo, "dist", theme, "theme.css"), "utf8");
       const defs = new Map(declarations(css).filter((d) => d.selector === ".theme-dark").map((d) => [d.prop, d.value]));
-      for (const appearance of ["opaque", "translucent"]) {
-        for (const state of ["default", "user-accent", "left-drawer-open", "right-drawer-open"]) {
+      // Desktop: opaque -> translucent -> opaque again; the second opaque pass proves the switch back restores
+      // every opaque value. Mobile: opaque only.
+      const passes = platform === "desktop" ? [["opaque", 1], ["translucent", 1], ["opaque", 2]] : [["opaque", 1]];
+      for (const [appearance, pass] of passes) {
+        for (const state of STATES) {
           const todo = forPlatform.filter((c) => c.appearance.includes(appearance) && (c.state ?? "default") === state);
           if (!todo.length) continue;
           const input = { theme: manifest.name, translucent: appearance === "translucent", platform, state, checks: todo.map(({ id, selector, document, property }) => ({ id, selector, document, property })) };
           const page = await evaluate(args.port, `window.__INK = ${JSON.stringify(input)};\n${probe}`);
           environment.appVersion ??= page.appVersion;
           environment.electron ??= page.electron;
-          const where = { theme, platform, appearance, state };
-          const pass = platform === "desktop" ? "PASS" : "PASS (EMULATED)";
+          const where = { theme, platform, appearance: pass === 2 ? "opaque (after translucent)" : appearance, state };
+          const ok = platform === "desktop" ? "PASS" : "PASS (EMULATED)";
           // The theme must really be applied; otherwise every colour check would measure Obsidian's defaults.
           const applied = page.theme === manifest.name && page.themeCssLength === css.length;
-          results.push({ id: "runner.theme-applied", ...where, status: applied ? pass : "FAIL", detail: `${page.theme}, ${page.themeCssLength} chars`, selfTest: selfTest ? "PASS" : undefined });
+          results.push({ id: "runner.theme-applied", ...where, status: applied ? ok : "FAIL", detail: `${page.theme}, ${page.themeCssLength} chars`, selfTest: selfTest ? "PASS" : undefined });
           const cls = page.bodyClasses;
           const envOk = platform === "desktop"
             ? !cls.includes("is-mobile") && cls.includes("is-translucent") === (appearance === "translucent")
-            : cls.includes("is-mobile") && cls.includes(platform === "tablet" ? "is-tablet" : "is-phone") && cls.includes("is-floating-nav") === (platform !== "phone-nonfloating");
-          results.push({ id: "runner.environment", ...where, status: envOk ? pass : "FAIL", detail: cls.filter((x) => /^(is-|emulate-)/.test(x)).join(" "), selfTest: selfTest ? "PASS" : undefined });
+            : cls.includes("is-mobile") && cls.includes(platform === "tablet" ? "is-tablet" : "is-phone") && cls.includes("is-floating-nav") === (platform !== "phone-nonfloating") && !cls.includes("is-translucent");
+          results.push({ id: "runner.environment", ...where, status: envOk ? ok : "FAIL", detail: cls.filter((x) => /^(is-|emulate-)/.test(x)).join(" "), selfTest: selfTest ? (state === "self-test-translucent-leak" ? "FAIL" : "PASS") : undefined });
+          results.push({ id: "runner.modals-closed", ...where, status: page.modalsLeftOpen === 0 ? ok : "FAIL", detail: `${page.modalsLeftOpen} open`, selfTest: selfTest ? "PASS" : undefined });
           for (const c of todo) {
             const [status, detail] = judge(c, page.results[c.id], defs);
-            results.push({ id: c.id, requirement: c.requirement, ...where, status: status === "PASS" ? pass : status, detail, measured: page.results[c.id], selfTest: c.selfTest });
+            results.push({ id: c.id, requirement: c.requirement, ...where, status: status === "PASS" ? ok : status, detail, measured: page.results[c.id], selfTest: c.selfTest });
           }
         }
       }
@@ -159,6 +166,14 @@ try {
   // Restore the isolated window: desktop, original size, opaque, original floating-navigation setting.
   await setPlatform("desktop", original);
   await evaluate(args.port, `(() => { app.customCss.setTranslucency(false); app.vault.setConfig("floatingNavigation", ${JSON.stringify(floatingBefore)}); return 1; })()`);
+}
+// The restore itself is checked: desktop, original size, not translucent, original floating-navigation setting.
+{
+  const st = await evaluate(args.port, "(() => ({ cls: [...document.body.classList], size: electronWindow.getSize(), floating: app.vault.getConfig('floatingNavigation') ?? null }))()");
+  const restored = !st.cls.includes("emulate-mobile") && !st.cls.includes("is-mobile") && !st.cls.includes("is-translucent")
+    && st.size[0] === original[0] && st.size[1] === original[1] && st.floating === floatingBefore;
+  results.push({ id: "runner.restore", theme: "-", platform: "desktop", appearance: "-", state: "-", status: restored ? "PASS" : "FAIL",
+    detail: `size ${st.size} (was ${original}), floating ${st.floating}, ${st.cls.filter((x) => /^(is-mobile|is-translucent|emulate-mobile)$/.test(x)).join(" ") || "no mobile / translucent classes"}`, selfTest: selfTest ? "PASS" : undefined });
 }
 
 // ---------- report ----------

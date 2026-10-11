@@ -1,56 +1,458 @@
 {
-  "_comment": "Runtime checks on the real desktop app (macOS). Format: research/14 §3.3. Selectors follow the Q-D21 PoC (research/13 T3). Translucent rows only check what step 3 must not break (the centre stays opaque; modals keep the editor colour); the acrylic surfaces are step 4.",
+  "_comment": "Runtime checks on the real desktop app (macOS). Format: research/14 §3.3. Selectors follow the Q-D21 PoC (research/13 T3) and V-04 (research/12). The runner measures opaque, then translucent, then opaque again (the second pass re-runs every opaque check).",
   "checks": [
-    { "id": "desktop.ribbon.background", "requirement": "qd1.ribbon-background",
-      "selector": ".workspace-ribbon.mod-primary", "document": "main", "property": "background-color",
-      "appearance": ["opaque"], "token": "--ink-sidebar-background" },
-    { "id": "desktop.left-dock.background", "requirement": "qd1.dock-background",
-      "selector": ".workspace-split.mod-left-split .workspace-leaf:has(> [data-type=\"file-explorer\"])", "document": "main", "property": "background-color",
-      "appearance": ["opaque"], "token": "--ink-note-list-bar-background" },
-    { "id": "desktop.right-dock.background", "requirement": "qd1.dock-background",
-      "selector": ".workspace-split.mod-right-split .workspace-leaf:has(> [data-type=\"outline\"])", "document": "main", "property": "background-color",
-      "appearance": ["opaque"], "token": "--ink-note-list-bar-background" },
-    { "id": "desktop.left-dock.tab-strip", "requirement": "qd1.dock-tab-strip",
-      "selector": ".workspace-split.mod-left-split .workspace-tab-header-container", "document": "main", "property": "background-color",
-      "appearance": ["opaque"], "token": "--ink-note-list-bar-background" },
-    { "id": "desktop.right-dock.tab-strip", "requirement": "qd1.dock-tab-strip",
-      "selector": ".workspace-split.mod-right-split .workspace-tab-header-container", "document": "main", "property": "background-color",
-      "appearance": ["opaque"], "token": "--ink-note-list-bar-background" },
-    { "id": "desktop.centre.tab-strip", "requirement": "qd1.centre-tab-strip",
-      "selector": ".workspace-split.mod-root .workspace-tab-header-container", "document": "main", "property": "background-color",
-      "appearance": ["opaque"], "token": "--ink-note-list-bar-background" },
-    { "id": "desktop.centre.inactive-tab", "requirement": "qd1.centre-inactive-tab",
-      "selector": ".workspace-split.mod-root .workspace-tab-header:not(.is-active)", "document": "main", "property": "background-color",
-      "appearance": ["opaque"], "value": "transparent" },
-    { "id": "desktop.centre.active-tab", "requirement": "qd1.centre-active-tab",
-      "selector": ".workspace-split.mod-root .workspace-tab-header.is-active", "document": "main", "property": "background-color",
-      "appearance": ["opaque"], "token": "--ink-editor-background" },
-    { "id": "desktop.centre.view-header", "requirement": "qd1.view-header",
-      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-header", "document": "main", "property": "background-color",
-      "appearance": ["opaque", "translucent"], "token": "--ink-editor-background" },
-    { "id": "desktop.editor.background", "requirement": "qd1.editor-background",
-      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-content", "document": "main", "property": "background-color",
-      "appearance": ["opaque", "translucent"], "token": "--ink-editor-background" },
-    { "id": "desktop.status-bar.background", "requirement": "qd1.status-bar-background",
-      "selector": ".status-bar", "document": "main", "property": "background-color",
-      "appearance": ["opaque"], "token": "--ink-note-list-bar-background" },
-    { "id": "desktop.titlebar.hidden-frame", "requirement": "qd1.titlebar-hidden-frame",
-      "selector": ".titlebar", "document": "main", "property": "background-color",
-      "appearance": ["opaque"], "expect": "hidden", "reason": "Hidden frame (the macOS default) does not display .titlebar (research/11 §7); its colour shows through the top tab strips, checked above" },
-    { "id": "desktop.settings-modal.background", "requirement": "overlay.settings-modal-background",
-      "selector": ".modal.mod-settings", "document": "settings", "property": "background-color",
-      "appearance": ["opaque", "translucent"], "token": "--ink-editor-background" },
-    { "id": "desktop.accent.default-h", "requirement": "qd6.accent-default",
-      "selector": "body", "document": "main", "property": "--accent-h", "kind": "text",
-      "appearance": ["opaque"], "token": "--ink-derived-accent-h" },
-    { "id": "desktop.accent.default-s", "requirement": "qd6.accent-default",
-      "selector": "body", "document": "main", "property": "--accent-s", "kind": "text",
-      "appearance": ["opaque"], "token": "--ink-derived-accent-s" },
-    { "id": "desktop.accent.default-l", "requirement": "qd6.accent-default",
-      "selector": "body", "document": "main", "property": "--accent-l", "kind": "text",
-      "appearance": ["opaque"], "token": "--ink-derived-accent-l" },
-    { "id": "desktop.accent.user-setting-wins", "requirement": "qd6.accent-user-setting",
-      "selector": "body", "document": "main", "property": "--accent-h", "kind": "text", "state": "user-accent",
-      "appearance": ["opaque"], "value": "355" }
+    {
+      "id": "desktop.ribbon.background",
+      "requirement": "qd1.ribbon-background",
+      "selector": ".workspace-ribbon.mod-primary",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-sidebar-background"
+    },
+    {
+      "id": "desktop.left-dock.background",
+      "requirement": "qd1.dock-background",
+      "selector": ".workspace-split.mod-left-split .workspace-leaf:has(> [data-type=\"file-explorer\"])",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-note-list-bar-background"
+    },
+    {
+      "id": "desktop.right-dock.background",
+      "requirement": "qd1.dock-background",
+      "selector": ".workspace-split.mod-right-split .workspace-leaf:has(> [data-type=\"outline\"])",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-note-list-bar-background"
+    },
+    {
+      "id": "desktop.left-dock.tab-strip",
+      "requirement": "qd1.dock-tab-strip",
+      "selector": ".workspace-split.mod-left-split .workspace-tab-header-container",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-note-list-bar-background"
+    },
+    {
+      "id": "desktop.right-dock.tab-strip",
+      "requirement": "qd1.dock-tab-strip",
+      "selector": ".workspace-split.mod-right-split .workspace-tab-header-container",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-note-list-bar-background"
+    },
+    {
+      "id": "desktop.centre.tab-strip",
+      "requirement": "qd1.centre-tab-strip",
+      "selector": ".workspace-split.mod-root .workspace-tab-header-container",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-note-list-bar-background"
+    },
+    {
+      "id": "desktop.centre.inactive-tab",
+      "requirement": "qd1.centre-inactive-tab",
+      "selector": ".workspace-split.mod-root .workspace-tab-header:not(.is-active)",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "value": "transparent"
+    },
+    {
+      "id": "desktop.centre.active-tab",
+      "requirement": "qd1.centre-active-tab",
+      "selector": ".workspace-split.mod-root .workspace-tab-header.is-active",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-background"
+    },
+    {
+      "id": "desktop.centre.view-header",
+      "requirement": "qd1.view-header",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-header",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-background"
+    },
+    {
+      "id": "desktop.editor.background",
+      "requirement": "qd1.editor-background",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-content",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-background"
+    },
+    {
+      "id": "desktop.status-bar.background",
+      "requirement": "qd1.status-bar-background",
+      "selector": ".status-bar",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-note-list-bar-background"
+    },
+    {
+      "id": "desktop.titlebar.hidden-frame",
+      "requirement": "qd1.titlebar-hidden-frame",
+      "selector": ".titlebar",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "expect": "hidden",
+      "reason": "Hidden frame (the macOS default) does not display .titlebar (research/11 §7); its colour shows through the top tab strips, checked above"
+    },
+    {
+      "id": "desktop.settings-modal.background",
+      "requirement": "overlay.settings-modal-background",
+      "selector": ".modal.mod-settings",
+      "document": "settings",
+      "property": "background-color",
+      "appearance": [
+        "opaque",
+        "translucent"
+      ],
+      "token": "--ink-editor-background"
+    },
+    {
+      "id": "desktop.accent.default-h",
+      "requirement": "qd6.accent-default",
+      "selector": "body",
+      "document": "main",
+      "property": "--accent-h",
+      "kind": "text",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-derived-accent-h"
+    },
+    {
+      "id": "desktop.accent.default-s",
+      "requirement": "qd6.accent-default",
+      "selector": "body",
+      "document": "main",
+      "property": "--accent-s",
+      "kind": "text",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-derived-accent-s"
+    },
+    {
+      "id": "desktop.accent.default-l",
+      "requirement": "qd6.accent-default",
+      "selector": "body",
+      "document": "main",
+      "property": "--accent-l",
+      "kind": "text",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-derived-accent-l"
+    },
+    {
+      "id": "desktop.accent.user-setting-wins",
+      "requirement": "qd6.accent-user-setting",
+      "selector": "body",
+      "document": "main",
+      "property": "--accent-h",
+      "kind": "text",
+      "state": "user-accent",
+      "appearance": [
+        "opaque"
+      ],
+      "value": "355"
+    },
+    {
+      "id": "translucent.app-container",
+      "requirement": "qd22.page-transparent",
+      "selector": ".app-container",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "value": "transparent"
+    },
+    {
+      "id": "translucent.ribbon",
+      "requirement": "qd22.ribbon-acrylic",
+      "selector": ".workspace-ribbon.mod-primary",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "token": "--ink-sidebar-background-acrylic"
+    },
+    {
+      "id": "translucent.left-dock.leaf",
+      "requirement": "qd22.dock-acrylic",
+      "selector": ".workspace-split.mod-left-split .workspace-leaf:has(> [data-type=\"file-explorer\"])",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "value": "transparent"
+    },
+    {
+      "id": "translucent.left-dock.leaf-content",
+      "requirement": "qd22.dock-acrylic",
+      "selector": ".workspace-split.mod-left-split .workspace-leaf-content[data-type=\"file-explorer\"]",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "token": "--ink-note-list-bar-background-acrylic"
+    },
+    {
+      "id": "translucent.right-dock.leaf",
+      "requirement": "qd22.dock-acrylic",
+      "selector": ".workspace-split.mod-right-split .workspace-leaf:has(> [data-type=\"outline\"])",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "value": "transparent"
+    },
+    {
+      "id": "translucent.right-dock.leaf-content",
+      "requirement": "qd22.dock-acrylic",
+      "selector": ".workspace-split.mod-right-split .workspace-leaf-content[data-type=\"outline\"]",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "token": "--ink-note-list-bar-background-acrylic"
+    },
+    {
+      "id": "translucent.left-dock.tab-strip",
+      "requirement": "qd22.tab-strip-acrylic",
+      "selector": ".workspace-split.mod-left-split .workspace-tab-header-container",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "token": "--ink-note-list-bar-background-acrylic"
+    },
+    {
+      "id": "translucent.right-dock.tab-strip",
+      "requirement": "qd22.tab-strip-acrylic",
+      "selector": ".workspace-split.mod-right-split .workspace-tab-header-container",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "token": "--ink-note-list-bar-background-acrylic"
+    },
+    {
+      "id": "translucent.centre.tab-strip",
+      "requirement": "qd22.tab-strip-acrylic",
+      "selector": ".workspace-split.mod-root .workspace-tab-header-container",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "token": "--ink-note-list-bar-background-acrylic"
+    },
+    {
+      "id": "translucent.centre.inactive-tab",
+      "requirement": "qd22.tab-strip-acrylic",
+      "selector": ".workspace-split.mod-root .workspace-tab-header:not(.is-active)",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "value": "transparent"
+    },
+    {
+      "id": "translucent.centre.active-tab",
+      "requirement": "qd22.centre-acrylic",
+      "selector": ".workspace-split.mod-root .workspace-tab-header.is-active",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "token": "--ink-editor-background-acrylic"
+    },
+    {
+      "id": "translucent.centre.leaf-content",
+      "requirement": "qd22.centre-acrylic",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .workspace-leaf-content",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "value": "transparent"
+    },
+    {
+      "id": "translucent.centre.view-header",
+      "requirement": "qd22.centre-acrylic",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-header",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "token": "--ink-editor-background-acrylic"
+    },
+    {
+      "id": "translucent.centre.editor",
+      "requirement": "qd22.centre-acrylic",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-content",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "token": "--ink-editor-background-acrylic"
+    },
+    {
+      "id": "translucent.status-bar",
+      "requirement": "qd22.status-bar-acrylic",
+      "selector": ".status-bar",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "token": "--ink-note-list-bar-background-acrylic"
+    },
+    {
+      "id": "leak.quick-switcher.opaque",
+      "requirement": "leak.in-window-modal",
+      "selector": ".modal-container .prompt",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "state": "quick-switcher-open",
+      "token": "--ink-editor-background"
+    },
+    {
+      "id": "leak.quick-switcher.translucent",
+      "requirement": "leak.in-window-modal",
+      "selector": ".modal-container .prompt",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "state": "quick-switcher-open",
+      "token": "--ink-editor-background"
+    },
+    {
+      "id": "fullscreen.status-bar",
+      "requirement": "qd22.not-in-fullscreen",
+      "selector": ".status-bar",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "state": "fullscreen-class",
+      "token": "--ink-note-list-bar-background"
+    },
+    {
+      "id": "fullscreen.ribbon",
+      "requirement": "qd22.not-in-fullscreen",
+      "selector": ".workspace-ribbon.mod-primary",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "state": "fullscreen-class",
+      "token": "--ink-sidebar-background"
+    },
+    {
+      "id": "fullscreen.centre.editor",
+      "requirement": "qd22.not-in-fullscreen",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-content",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "state": "fullscreen-class",
+      "token": "--ink-editor-background"
+    },
+    {
+      "id": "fullscreen.left-dock.leaf-content",
+      "requirement": "qd22.not-in-fullscreen",
+      "selector": ".workspace-split.mod-left-split .workspace-leaf-content[data-type=\"file-explorer\"]",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "state": "fullscreen-class",
+      "value": "transparent"
+    },
+    {
+      "id": "desktop.vault-profile.background",
+      "requirement": "qd1.dock-background",
+      "selector": ".workspace-split.mod-left-split .workspace-sidedock-vault-profile",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-note-list-bar-background"
+    },
+    {
+      "id": "translucent.vault-profile",
+      "requirement": "qd22.dock-acrylic",
+      "selector": ".workspace-split.mod-left-split .workspace-sidedock-vault-profile",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "token": "--ink-note-list-bar-background-acrylic"
+    }
   ]
 }

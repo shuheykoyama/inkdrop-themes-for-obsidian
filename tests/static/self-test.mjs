@@ -22,8 +22,12 @@ const edit = (root, rel, from, to) => {
   if (!s.includes(from)) throw new Error(`mutation target not found in ${rel}: ${from}`);
   writeFileSync(f, s.replace(from, to));
 };
-const setAllowlist = (root, warnings) =>
-  writeFileSync(path.join(root, "tests/static/lint-allowlist.json"), JSON.stringify({ warnings }, null, 2));
+// Adds entries to the copied allow-list (the real entries stay, so only the case's own entry is under test).
+const setAllowlist = (root, warnings) => {
+  const f = path.join(root, "tests/static/lint-allowlist.json");
+  const current = JSON.parse(readFileSync(f, "utf8")).warnings;
+  writeFileSync(f, JSON.stringify({ warnings: [...current, ...warnings] }, null, 2));
+};
 const appendTo = (root, rel, text) => writeFileSync(path.join(root, rel), readFileSync(path.join(root, rel), "utf8") + text);
 
 const IMPORTANT_RULE = "\n.theme-dark .status-bar {\n  background-color: var(--ink-note-list-bar-background) !important;\n}\n";
@@ -80,6 +84,13 @@ const CASES = [
     mutate: (r) => edit(r, "tests/spec/runtime/mobile.json", '"platform": ["tablet", "phone"],\n      "appearance": ["opaque"]', '"platform": ["tablet", "phone"],\n      "appearance": ["opaque", "translucent"]') },
   { name: "unknown platform", fail: /^FAIL S6 runtime checks are well formed -- .*platform must list/m,
     mutate: (r) => edit(r, "tests/spec/runtime/mobile.json", '"platform": ["phone", "phone-nonfloating"],', '"platform": ["watch"],') },
+  // --- step 4: translucent ---
+  { name: "!important removed from the tab-strip override (would lose to app.css)", fail: /^FAIL S5 solarized-dark no stale allow-list entries/m,
+    mutate: (r) => edit(r, "src/common/platform/translucent.css", "background-color: var(--ink-note-list-bar-background-acrylic) !important;", "background-color: var(--ink-note-list-bar-background-acrylic);") },
+  { name: "translucent rule without the fullscreen exclusion", fail: /^FAIL S4 src\/common\/platform\/translucent\.css every !important is allow-listed/m,
+    mutate: (r) => edit(r, "src/common/platform/translucent.css", ".is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary {", ".is-translucent .workspace-ribbon.mod-primary {") },
+  { name: "acrylic colour written as a literal in translucent.css", fail: /^FAIL S4 src\/common\/platform\/translucent\.css no colour literals/m,
+    mutate: (r) => edit(r, "src/common/platform/translucent.css", "--background-primary: var(--ink-editor-background-acrylic);", "--background-primary: hsl(192deg 100% 8% / 90%);") },
   { name: "missing source file", fail: /^FAIL S2 build run a exits 0/m,
     mutate: (r) => rmSync(path.join(r, "src/common/mapping/workspace.css")) },
   { name: "colour literal outside the palette", fail: /^FAIL S4 src\/common\/mapping\/workspace\.css no colour literals/m,
