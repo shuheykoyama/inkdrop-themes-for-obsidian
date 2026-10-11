@@ -1,5 +1,5 @@
 // Runtime probe: runs inside the ISOLATED Obsidian (test vault only), injected by tests/runtime/run.mjs
-// after `window.__INK = { theme, translucent, platform, state, deferMeasure, checks: [{ id, selector, document, property }] }`.
+// after `window.__INK = { theme, translucent, platform, state, deferMeasure, checks: [{ id, selector, pseudo, document, property }] }`.
 // With deferMeasure the probe only prepares the state and leaves window.__INK_MEASURE() for the runner,
 // which first drives a real pointer (menus, link previews, tooltips) through CDP.
 // Selects the theme, prepares the layout for the platform and state, and reports for every check what was
@@ -76,7 +76,9 @@
     if (!el) return { found: false, count: 0, displayed: false, size: null, value: null };
     const r = el.getBoundingClientRect();
     const visible = el.checkVisibility({ visibilityProperty: true, checkVisibilityCSS: true });
-    const value = doc.defaultView.getComputedStyle(el).getPropertyValue(c.property).trim();
+    // c.pseudo ("::before" / "::after"): the property of that pseudo-element of the element (e.g. the
+    // corner app.css paints with .workspace-ribbon.mod-primary::before).
+    const value = doc.defaultView.getComputedStyle(el, c.pseudo ?? null).getPropertyValue(c.property).trim();
     return { found: true, count: all.length, displayed: visible && r.width > 0 && r.height > 0, size: [Math.round(r.width), Math.round(r.height)], value: value === "" ? null : value };
   };
 

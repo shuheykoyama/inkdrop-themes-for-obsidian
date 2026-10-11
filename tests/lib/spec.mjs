@@ -53,6 +53,7 @@ export function checkErrors(c, requirementIds) {
   if (c.appearance?.includes("translucent") && platforms.some((p) => p !== "desktop")) e.push(`${where}: translucent exists on desktop (macOS) only`);
   if (!STATES.includes(c.state ?? "default")) e.push(`${where}: state must be one of ${STATES.join("/")}`);
   if (requirementIds && c.state === "self-test-translucent-leak") e.push(`${where}: state self-test-translucent-leak is for the runner's self-test only`);
+  if (c.pseudo !== undefined && !["::before", "::after"].includes(c.pseudo)) e.push(`${where}: pseudo must be ::before or ::after`);
   if (!KINDS.includes(c.kind ?? "color")) e.push(`${where}: kind must be one of ${KINDS.join("/")}`);
   const expect = c.expect ?? "match";
   if (!EXPECTS.includes(expect)) e.push(`${where}: expect must be one of ${EXPECTS.join("/")}`);

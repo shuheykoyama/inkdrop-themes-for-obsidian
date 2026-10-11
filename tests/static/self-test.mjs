@@ -129,6 +129,8 @@ const CASES = [
     mutate: (r) => edit(r, "tests/spec/runtime/desktop.json", '"requirement": "qd1.status-bar-background"', '"requirement": "qd1.ribbon-background"') },
   { name: "check names an undefined token", fail: /^FAIL S6 solarized-dark every token named by a check is defined/m,
     mutate: (r) => edit(r, "tests/spec/runtime/desktop.json", '"token": "--ink-note-list-bar-background"', '"token": "--ink-note-list-background"') },
+  { name: "check names an unknown pseudo-element", fail: /^FAIL S6 runtime checks are well formed/m,
+    mutate: (r) => edit(r, "tests/spec/runtime/desktop.json", '"pseudo": "::before"', '"pseudo": ":before"') },
 ];
 
 let failures = 0;
