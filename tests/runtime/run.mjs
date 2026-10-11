@@ -22,13 +22,12 @@ import { cpSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 import { declarations, norm, parseColor, parseComputedColor, sameColor, substitute } from "../lib/css.mjs";
-import { checkErrors, loadChecks, loadRequirements, PLATFORMS, POINTER_STATES, runtimeSpecFiles, STATES } from "../lib/spec.mjs";
-import { escape, evaluate, pointer } from "./lib/cdp.mjs";
+import { checkErrors, loadChecks, loadRequirements, PLATFORMS, POINTER_STATES, runtimeSpecFiles, STATES, THEMES } from "../lib/spec.mjs";
+import { escape, evaluate, pointer, typeText } from "./lib/cdp.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
 const { values: args } = parseArgs({ options: { vault: { type: "string" }, out: { type: "string" }, port: { type: "string", default: "9333" }, "self-test": { type: "boolean", default: false } } });
 if (!args.vault) { console.error("usage: node tests/runtime/run.mjs --vault <vault> [--out <json>] [--self-test]"); process.exit(2); }
-const THEMES = ["solarized-dark", "kanagawa-dragon"];
 
 // ---------- spec ----------
 const selfTest = args["self-test"];
@@ -156,6 +155,11 @@ async function interact(state) {
   } else if (state === "popover-open") {
     const link = await center(".workspace-leaf.mod-active .cm-hmd-internal-link, .workspace-leaf.mod-active .internal-link");
     if (link) { await pointer(args.port, { x: link[0], y: link[1], modifiers: 4 }); await sleep(1500); }
+  } else if (state === "ed-suggest") {
+    // The probe put the cursor at the end of the last line of "Editor chrome"; typing "[[" opens Obsidian's
+    // link suggestions (a .suggestion-container on the body).
+    await typeText(args.port, " [[Oth");
+    await sleep(800);
   } else if (state === "tooltip-open") {
     const button = await center(".workspace-ribbon.mod-primary .side-dock-ribbon-action");
     if (button) { await pointer(args.port, { x: button[0], y: button[1] }); await sleep(1500); }
@@ -201,7 +205,9 @@ try {
       const passes = platform === "desktop" ? [["opaque", 1], ["translucent", 1], ["opaque", 2]] : [["opaque", 1]];
       for (const [appearance, pass] of passes) {
         for (const state of STATES) {
-          const todo = forPlatform.filter((c) => c.appearance.includes(appearance) && (c.state ?? "default") === state);
+          // c.themes (optional): the check applies to these themes only (a value that differs by theme, e.g. the
+          // gutter border, which Solarized Dark does not have).
+          const todo = forPlatform.filter((c) => c.appearance.includes(appearance) && (c.state ?? "default") === state && (!c.themes || c.themes.includes(theme)));
           if (!todo.length) continue;
           const deferMeasure = POINTER_STATES.includes(state);
           const input = { theme: manifest.name, translucent: appearance === "translucent", platform, state, deferMeasure, checks: todo.map(({ id, selector, pseudo, scrollTo, document, property }) => ({ id, selector, pseudo, scrollTo, document, property })) };

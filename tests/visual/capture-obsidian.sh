@@ -15,7 +15,8 @@ v04="$root/research/evidence/phase2-v04/tools"
 cdp() { node "$root/research/evidence/phase2-p0/tools/cdp.mjs" 9333 "$@"; }
 # CAPTURE_NOTE / CAPTURE_VIEW / CAPTURE_SCROLL (optional, step 6): open that note in that view ("source",
 # "live", "reading"), scrolled to the line containing CAPTURE_SCROLL; the file name gets "-<view>[-<tag>]"
-# (CAPTURE_TAG).
+# (CAPTURE_TAG). CAPTURE_LINES (on / off), CAPTURE_CURSOR (line text) and CAPTURE_ACTION (select / search)
+# prepare the Q23-5 and overlap captures (step 7).
 name="obsidian-$theme-$mode-$bg-$focus${CAPTURE_VIEW:+-$CAPTURE_VIEW}${CAPTURE_TAG:+-$CAPTURE_TAG}"
 mkdir -p "$out/screenshots" "$out/measurements" "$tmp/bin"
 [ -x "$tmp/bin/backdrop" ] || swiftc -O "$root/research/evidence/phase2-p0/tools/backdrop.swift" -o "$tmp/bin/backdrop"
@@ -26,7 +27,7 @@ src="${CAPTURE_THEME_DIR:-$root/dist/$theme}"
 manifest_name="$(node -e 'console.log(JSON.parse(require("fs").readFileSync(process.argv[1], "utf8")).name)' "$src/manifest.json")"
 mkdir -p "$vault/.obsidian/themes/$manifest_name"
 cp "$src/theme.css" "$src/manifest.json" "$vault/.obsidian/themes/$manifest_name/"
-{ printf 'window.__CAP = %s;\n' "$(node -e 'console.log(JSON.stringify({ theme: process.argv[1], translucent: process.argv[2] === "translucent", note: process.argv[3] || undefined, view: process.argv[4] || undefined, scrollTo: process.argv[5] || undefined }))' "$manifest_name" "$mode" "${CAPTURE_NOTE:-}" "${CAPTURE_VIEW:-}" "${CAPTURE_SCROLL:-}")"; cat "$root/tests/visual/obsidian-capture-setup.js"; } > "$tmp/setup.js"
+{ printf 'window.__CAP = %s;\n' "$(node -e 'console.log(JSON.stringify({ theme: process.argv[1], translucent: process.argv[2] === "translucent", note: process.argv[3] || undefined, view: process.argv[4] || undefined, scrollTo: process.argv[5] || undefined, lines: process.argv[6] ? process.argv[6] === "on" : undefined, cursorAt: process.argv[7] || undefined, action: process.argv[8] || undefined }))' "$manifest_name" "$mode" "${CAPTURE_NOTE:-}" "${CAPTURE_VIEW:-}" "${CAPTURE_SCROLL:-}" "${CAPTURE_LINES:-}" "${CAPTURE_CURSOR:-}" "${CAPTURE_ACTION:-}")"; cat "$root/tests/visual/obsidian-capture-setup.js"; } > "$tmp/setup.js"
 cdp eval "$tmp/setup.js" > "$tmp/setup.json"
 
 # V-38: the Inkdrop window (if one is running with its DevTools endpoint) uses the same rectangle; hide it.
@@ -34,6 +35,9 @@ bash "$root/tests/visual/other-window.sh" hide inkdrop
 cdp eval "$v04/obsidian-focus.js" > /dev/null
 "$tmp/bin/backdrop" "$bg" 300 150 1400 900 $([ "$focus" = inactive ] && echo activate) &
 bpid=$!
+# Close the backdrop window even if a later step fails (set -e): a leftover backdrop covers the capture
+# rectangle and spoils every following capture (found in step 7).
+trap 'kill "$bpid" 2>/dev/null || true' EXIT
 sleep 1.8  # the backdrop activates itself 1 s after start (inactive case)
 if [ "$focus" = active ]; then cdp eval "$v04/obsidian-focus.js" > "$tmp/focus.json"; else cdp eval "$v04/obsidian-raise.js" > "$tmp/focus.json"; fi
 sleep 2.5

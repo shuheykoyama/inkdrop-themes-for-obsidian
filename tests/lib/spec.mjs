@@ -9,6 +9,7 @@ const DOCUMENTS = ["main", "settings"];
 const APPEARANCES = ["opaque", "translucent"];
 const EXPECTS = ["match", "absent", "hidden"];
 // desktop = the real macOS app; the others are app.emulateMobile(true) on desktop (PASS (EMULATED)).
+export const THEMES = ["solarized-dark", "kanagawa-dragon"];
 export const PLATFORMS = ["desktop", "tablet", "phone", "phone-nonfloating"];
 // Probe states: desktop "default" has both docks expanded and two notes open in the centre (the other one
 // is an inactive tab); "user-accent" sets an accent colour in the test vault's settings for the measurement;
@@ -24,10 +25,15 @@ export const PLATFORMS = ["desktop", "tablet", "phone", "phone-nonfloating"];
 // Step 6: "md-source", "md-live", "md-reading" open tests/fixtures/vault/Markdown elements.md in the active
 // centre leaf in Source mode, Live Preview or Reading view; "md-user-fonts" is Live Preview with a text and a
 // monospace font in the test vault's settings.
+// Step 7: "ed-*" open tests/fixtures/vault/Editor chrome.md with the test vault's line numbers on (off for
+// "-no-lines"), the cursor on a line and one action (selection, search, fold);
+// "ed-suggest" has the runner type "[[" through CDP so that Obsidian opens its suggestions.
 export const STATES = ["default", "user-accent", "user-font", "quick-switcher-open", "fullscreen-class", "file-explorer-focused",
   "menu-open", "popover-open", "tooltip-open", "md-source", "md-live", "md-reading", "md-user-fonts",
+  "ed-source", "ed-live", "ed-source-no-lines", "ed-live-no-lines", "ed-code-line", "ed-widget-line", "ed-selection",
+  "ed-search", "ed-fold", "ed-suggest",
   "left-drawer-open", "right-drawer-open", "self-test-translucent-leak"];
-export const POINTER_STATES = ["menu-open", "popover-open", "tooltip-open"];
+export const POINTER_STATES = ["menu-open", "popover-open", "tooltip-open", "ed-suggest"];
 // color: a computed colour property; text: exact string (e.g. --accent-h); first-color: the first rgb()/rgba()
 // in the value (e.g. the colour of a box-shadow); var: a custom property whose computed value is a colour
 // (checks a variable where no visible element uses it in the test, e.g. hover-only colours).
@@ -58,7 +64,8 @@ export function checkErrors(c, requirementIds) {
   if (!STATES.includes(c.state ?? "default")) e.push(`${where}: state must be one of ${STATES.join("/")}`);
   if (requirementIds && c.state === "self-test-translucent-leak") e.push(`${where}: state self-test-translucent-leak is for the runner's self-test only`);
   if (c.scrollTo !== undefined && !(typeof c.scrollTo === "string" && c.scrollTo && String(c.state).startsWith("md-"))) e.push(`${where}: scrollTo is a non-empty line text and needs an md-* state`);
-  if (c.pseudo !== undefined && !["::before", "::after", "::marker"].includes(c.pseudo)) e.push(`${where}: pseudo must be ::before, ::after or ::marker`);
+  if (c.pseudo !== undefined && !["::before", "::after", "::marker", "::selection"].includes(c.pseudo)) e.push(`${where}: pseudo must be ::before, ::after, ::marker or ::selection`);
+  if (c.themes !== undefined && !(Array.isArray(c.themes) && c.themes.length && c.themes.every((t) => THEMES.includes(t)))) e.push(`${where}: themes must list ${THEMES.join("/")}`);
   if (!KINDS.includes(c.kind ?? "color")) e.push(`${where}: kind must be one of ${KINDS.join("/")}`);
   const expect = c.expect ?? "match";
   if (!EXPECTS.includes(expect)) e.push(`${where}: expect must be one of ${EXPECTS.join("/")}`);

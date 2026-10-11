@@ -77,6 +77,43 @@
       : mdLeaf.view.contentEl.querySelectorAll(".cm-content .HyperMD-header-1").length > 0);
     for (let i = 0; i < 25 && !drawn(); i++) await sleep(200);
   }
+  // Editor chrome states (step 7): "Editor chrome" in the leaf of "Sample note" with line numbers on (the
+  // test vault's showLineNumber; "-no-lines" turns them off), the cursor on a given line, and one action.
+  // Every setting is restored afterwards.
+  const ED_STATES = {
+    "ed-source": { source: true, lines: true, at: "Second paragraph" },
+    "ed-live": { source: false, lines: true, at: "Second paragraph" },
+    "ed-source-no-lines": { source: true, lines: false, at: "Second paragraph" },
+    "ed-live-no-lines": { source: false, lines: false, at: "Second paragraph" },
+    "ed-code-line": { source: false, lines: true, at: "function call" },
+    "ed-widget-line": { source: false, lines: true, at: "half-transparent" },
+    "ed-selection": { source: true, lines: true, at: "Second paragraph", select: 6 },
+    "ed-search": { source: true, lines: true, at: "Second paragraph", search: "alpha" },
+    "ed-fold": { source: true, lines: true, at: "## Folded", fold: true },
+    "ed-suggest": { source: true, lines: true, at: "Last line." },
+  };
+  const ed = ED_STATES[state];
+  const edLeaf = ed ? leafOf("Sample note") : null;
+  const edBefore = ed ? { lines: app.vault.getConfig("showLineNumber") ?? false } : null;
+  if (edLeaf) {
+    app.vault.setConfig("showLineNumber", ed.lines);
+    await edLeaf.setViewState({ type: "markdown", state: { file: "Editor chrome.md", mode: "source", source: ed.source }, active: true });
+    ws.setActiveLeaf(edLeaf, { focus: true });
+    for (let i = 0; i < 25 && !edLeaf.view.contentEl.querySelector(".cm-content .cm-line"); i++) await sleep(200);
+    const editor = edLeaf.view.editor;
+    editor.focus();
+    const line = editor.getValue().split("\n").findIndex((l) => l.includes(ed.at));
+    if (ed.select) editor.setSelection({ line, ch: 0 }, { line, ch: ed.select });
+    else editor.setCursor({ line, ch: state === "ed-suggest" ? editor.getLine(line).length : 1 });
+    if (ed.fold) app.commands.executeCommandById("editor:toggle-fold");
+    if (ed.search) {
+      app.commands.executeCommandById("editor:open-search");
+      await sleep(300);
+      const input = edLeaf.view.containerEl.querySelector(".document-search-input input");
+      if (input) { input.value = ed.search; input.dispatchEvent(new Event("input", { bubbles: true })); }
+    }
+    await sleep(500);
+  }
   // DOM menus: macOS defaults to native OS menus, which no theme can style; the test vault switches them off.
   const nativeMenusBefore = app.vault.getConfig("nativeMenus") ?? null;
   if (state === "menu-open") app.vault.setConfig("nativeMenus", false);
@@ -143,6 +180,21 @@
   if (state === "user-font") { app.vault.setConfig("interfaceFontFamily", ""); await sleep(300); }
   if (state === "menu-open") { document.querySelectorAll(".menu").forEach((m) => m.remove()); app.vault.setConfig("nativeMenus", nativeMenusBefore); }
   if (state === "file-explorer-focused") ws.setActiveLeaf(leafOf("Sample note"), { focus: true });
+  if (edLeaf) {
+    const editor = edLeaf.view.editor;
+    if (ed.search) edLeaf.view.containerEl.querySelectorAll(".document-search-close-button").forEach((b) => b.click());
+    if (ed.fold) { editor.setCursor({ line: editor.getValue().split("\n").findIndex((l) => l.includes(ed.at)), ch: 1 }); app.commands.executeCommandById("editor:toggle-fold"); }
+    if (state === "ed-suggest") {
+      // The runner typed " [[Oth" at the end of the last line; close the suggestions and restore the line.
+      document.querySelectorAll(".suggestion-container").forEach((s) => s.remove());
+      const last = editor.lineCount() - 1;
+      editor.setLine(last, "Last line.");
+    }
+    app.vault.setConfig("showLineNumber", edBefore.lines);
+    await edLeaf.setViewState({ type: "markdown", state: { file: "Sample note.md", mode: "source", source: false }, active: true });
+    ws.setActiveLeaf(edLeaf, { focus: true });
+    await sleep(300);
+  }
   if (mdLeaf) {
     if (state === "md-user-fonts") { app.vault.setConfig("textFontFamily", ""); app.vault.setConfig("monospaceFontFamily", ""); }
     await mdLeaf.setViewState({ type: "markdown", state: { file: "Sample note.md", mode: "source", source: false }, active: true });

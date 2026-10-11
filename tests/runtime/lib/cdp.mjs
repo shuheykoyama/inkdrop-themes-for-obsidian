@@ -53,6 +53,20 @@ export async function pointer(port, { x, y, click = false, button = "left", modi
   }
 }
 
+// Type text into the focused element of the main window (CDP Input.insertText), one character at a time
+// so that editor extensions (e.g. Obsidian's link suggestions after "[[") react as to real typing.
+export async function typeText(port, text, delayMs = 120) {
+  const s = await connect(port);
+  try {
+    for (const ch of text) {
+      await s.send("Input.insertText", { text: ch });
+      await new Promise((r) => setTimeout(r, delayMs));
+    }
+  } finally {
+    s.close();
+  }
+}
+
 // Press Escape in the main window (closes menus and prompts; a hover popover closes when the pointer leaves).
 export async function escape(port) {
   const s = await connect(port);
