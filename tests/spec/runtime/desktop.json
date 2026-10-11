@@ -1,0 +1,41 @@
+{
+  "_comment": "Runtime checks for the isolated desktop Obsidian (research/14 §3.3, minimal step-1 format). expect: match (default; needs token or value) | absent | hidden (both need reason). document: main | settings (the Settings popout).",
+  "checks": [
+    {
+      "id": "desktop.editor.background",
+      "requirement": "qd1.editor-background",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-content",
+      "document": "main",
+      "property": "background-color",
+      "appearance": ["opaque", "translucent"],
+      "token": "--ink-editor-background"
+    },
+    {
+      "id": "desktop.ribbon.background",
+      "requirement": "qd1.ribbon-background",
+      "selector": ".workspace-ribbon.mod-primary",
+      "document": "main",
+      "property": "background-color",
+      "appearance": ["opaque"],
+      "token": "--ink-sidebar-background"
+    },
+    {
+      "id": "desktop.status-bar.background",
+      "requirement": "qd1.status-bar-background",
+      "selector": ".status-bar",
+      "document": "main",
+      "property": "background-color",
+      "appearance": ["opaque"],
+      "token": "--ink-note-list-bar-background"
+    },
+    {
+      "id": "desktop.settings-modal.background",
+      "requirement": "overlay.settings-modal-background",
+      "selector": ".modal.mod-settings",
+      "document": "settings",
+      "property": "background-color",
+      "appearance": ["opaque", "translucent"],
+      "token": "--ink-editor-background"
+    }
+  ]
+}

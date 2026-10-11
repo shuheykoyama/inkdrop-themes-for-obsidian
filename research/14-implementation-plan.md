@@ -469,6 +469,58 @@ dist/                             # 生成物（Git には入れない）: <them
 | PR-3 | `declaration-no-important` は warning。error は原則修正、warning は個別評価、`!important` は最小限、ルールの一括無効化はしない。公式設定と実際の lint 結果を確認して文書化 | 公式設定の内容と PoC の出力への実際の結果を確認し、§1.9 に事実と方針を書いた。lint の結果を受けて、camelCase のプリミティブ名を kebab-case に正規化する（§1.5）。`!important` の許可リストと lint の warning の許可リストを 1 つにまとめた（§1.8） |
 | PR-4 | Q-D23 の色差は背景の平坦な部分で測り、文字・境界線・アンチエイリアスを除く。色の一致と表示の連続性を別々に検証する。宣言値と仕様は変えない | Q23-5 を 5a（色の一致）と 5b（連続性）に分け、平坦性の判定（標準偏差の閾値、超えたら FAIL）を追加した（§3.4、工程 7、§3.7） |
 
-## 6. 次の作業
+## 6. 工程の記録
 
-本書のレビュー後、工程 1 に着手する。工程ごとにレビュー（§2.1 の RV1〜RV7）を受けてから次へ進む。
+### 6.1 工程 1: ビルドシステム・検証基盤（2026-10-11 実装、RV1 待ち）
+
+**実装したもの**（リポジトリ直下。使い方はルートの `README.md`）
+
+| 対象 | 内容 | PoC からの再利用 |
+|---|---|---|
+| `package.json`、`package-lock.json` | 依存は版を固定: `postcss` 8.5.29、`postcss-import` 17.0.0、`stylelint` 17.16.0、`stylelint-config-obsidianmd` 0.1.0。取得元はすべて `registry.npmjs.org`。Node 22 以上 | PoC の版をそのまま使用 |
+| `scripts/build.mjs` | `postcss-import` だけで連結し、`dist/<theme>/theme.css` と `manifest.json` を出力。警告・欠落は非ゼロ終了 | P1 の `build.mjs` を拡張 |
+| `src/` | §1.1 の骨組み。パレットは各テーマの面の色 3 つ（不透明）とその参照先だけ、マッピングは 3 変数（エディタ・Ribbon・ステータスバー）だけ。ランナーの動作確認に必要な最小限で、本格的な配色は工程 2 以降 | 値と出典の書式を踏襲（§1.5 に合わせて書き直し） |
+| `src/manifests/` | 開発用の仮名称（`DEV solarized-dark (unnamed)` など）。正式名称ではない（Q-D18 は未決定） | — |
+| `tests/static/run.mjs` | S1〜S6 | T1・T2 の照合・決定性・衛生の検査を再利用し、S3〜S6 を追加 |
+| `tests/static/self-test.mjs` | 静的テストの陰性テスト 19 件（値の変更、HEX への変換、参照の平坦化、出典の誤り、ソースの欠落、色のリテラル、ネスト、未登録の `!important`、lint の error と warning、古い許可リスト、検査仕様の誤り、陽性対照 2 件） | 新規 |
+| `tests/static/lint-allowlist.json` | lint の warning と `!important` の共通の許可リスト（現在は空） | 新規 |
+| `tests/clean-room.sh` | 一時ディレクトリで `npm ci` → ビルド → 静的テスト → 出力のバイト比較 | PoC の `clean-room.sh` を改変 |
+| `tests/lib/` | CSV の読み込み、宣言の抽出、`var()` の展開、名前の規則、色の計算（`css.mjs`）、検査仕様の検証（`spec.mjs`） | PoC の補助関数を移設 |
+| `tests/spec/` | 必須項目の一覧（4 項目）と実行時の検査仕様（4 検査）。§3.3 の最小の書式 | 新規 |
+| `tests/runtime/` | 隔離 Obsidian の起動・停止、CDP、プローブ、判定ランナー、ランナーの陰性テスト用の仕様（14 ケース × 2 テーマ） | `obsidian-isolated.sh`・`cdp.mjs`・プローブのレイアウト操作を再利用。判定は作り直し |
+| `tests/fixtures/vault/` | Phase 2B のテスト Vault の複製（診断用テーマを除く） | `evidence/phase2-p0` から複製 |
+| `tests/visual/` | 領域の平均・標準偏差・ΔE と、平坦性・連続性・基準色の判定。V-04 の再現確認と合成画像での陰性テスト | V-04 の `sample-regions.py` の関数を変更せずに使い、定数を設定ファイルに移した |
+| `.github/workflows/static.yml` | `npm ci` → ビルド → S1〜S6 → 陰性テスト。実行時・視覚比較は含めない（macOS のデスクトップが必要なため） | 新規 |
+
+PoC（`research/poc/q-d21-build/`）と研究資料の証拠は変更していない（読み取りと複製のみ）。
+
+**計画からの変更と理由**
+
+| # | 変更 | 理由 |
+|---|---|---|
+| 1 | KD のプリミティブ名を kebab-case に正規化した（§1.5） | 公式 lint の `custom-property-pattern` が error になった（§1.9）。値は変えていない |
+| 2 | ビルドで、連結したファイルの最上位の要素の間に空行を 1 つ入れる（要素の `raws.before` だけを変える） | 公式 lint の `rule-empty-line-before` と `comment-empty-line-before` の error を、値・セレクタ・順序に触れずに解消するため。S1 が出力の宣言が元のままであることを検査する |
+| 3 | `!important` の許可リストと lint の warning の許可リストを 1 つのファイルにした（§1.8・§1.9） | 二重管理を避けるため |
+| 4 | §1.8 の「app.css を上書きするセレクタに対象規則のコメントを付ける」は、`!important` については許可リストの `overrides` 欄で機械的に検査し、同じ詳細度で勝たせる規則はレビューで確認する | 同じ詳細度での上書きかどうかは、app.css と照合しないと静的には判定できない。照合の自動化は工程 3 で必要性を判断する |
+| 5 | 実行時ランナーのモバイルのエミュレーション（PASS（EMULATED）、UNVERIFIED、N/A の区分）は工程 3 で追加する。工程 1 の区分は PASS / FAIL だけ | 工程 1 の範囲はデスクトップの判定の基盤まで。PoC で実証済みの方法を工程 3 で移す |
+| 6 | 実行時ランナーに「テーマが実際に適用されたか」（読み込まれた CSS の長さとテーマ名の一致）と「translucent の状態が期待どおりか」の検査を加えた | テーマが読み込まれていないと、色の検査が Obsidian の既定色を測ることになるため |
+| 7 | 視覚比較の代表色は中央値ではなく平均とし、標準偏差で平坦性を判定する（§3.7） | V-04 の実証済みの方法を変えずに再利用するため。平坦性の判定があれば平均で足りる |
+| 8 | ランナーの陰性テスト用の仕様は `tests/runtime/self-test-spec.json` に置いた（`tests/spec/` ではない） | 製品の必須項目ではないため、S6 の対象から外す |
+
+**新たに判明したリスク**
+
+- 隔離インスタンスの Electron（Chromium）は**インストーラの版**で決まる。この Mac のインストーラは 1.11.7（UA は `obsidian/1.11.7`）で、アプリ本体（asar）は 1.14.4。利用者の環境の Electron が新しい場合、描画や `checkVisibility` などの挙動が違う可能性がある（R-compat に関係）。
+- 公式 lint の `plugin/no-unsupported-browser-features` は `electron >= 43` を対象にしている。Obsidian 1.14 系の実際の Electron の版は確認していない。
+- `stylelint-config-obsidianmd` は 0.1.0 しかない新しいパッケージで、更新で規則が変わりうる。版を固定し、更新は許可リストとともに見直す。
+- ランナーの陰性テストは「存在しない」「`display: none`・寸法 0」を確認したが、`visibility: hidden` の要素は隔離インスタンスの既定の画面で見つからず、確認していない（`checkVisibility` の `visibilityProperty` で判定する実装はある）。
+- CI（GitHub Actions）の実行結果は、push 後に確認する（ローカルでは同じ手順が成功している）。
+
+**RV1 の前に確認してほしいこと**
+
+1. Q-D10 の「デスクトップ」に Windows・Linux を含めるか（R-desktop-os）。リリースの合格条件と検証環境に影響する。
+2. 実行時テストで使う Obsidian のインストーラの版（上記の Electron のリスク）。最新のインストーラに更新するかは利用者の環境に関わるため、判断を仰ぐ。
+3. パレットを一次データから自動生成するか（工程 2 の最初に決める。09 §0.1.3）。
+
+### 6.2 次の作業
+
+RV1（基盤レビュー）の後、工程 2 に進む。工程ごとにレビュー（§2.1 の RV1〜RV7）を受けてから次へ進む。

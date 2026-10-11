@@ -1,0 +1,26 @@
+{
+  "name": "inkdrop-themes-for-obsidian",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Build and test tooling for porting Inkdrop's Solarized Dark and Kanagawa Dragon themes to Obsidian (development, not released)",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "npm run test:static && npm run test:static-self",
+    "test:static": "node tests/static/run.mjs",
+    "test:static-self": "node tests/static/self-test.mjs",
+    "test:clean-room": "bash tests/clean-room.sh",
+    "test:runtime": "node tests/runtime/run.mjs",
+    "test:visual-self": "python3 -I tests/visual/self-test.py",
+    "test:visual-v04": "bash tests/visual/check-v04.sh"
+  },
+  "devDependencies": {
+    "postcss": "8.5.29",
+    "postcss-import": "17.0.0",
+    "stylelint": "17.16.0",
+    "stylelint-config-obsidianmd": "0.1.0"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "_comment": "Required visual roles and display states of the confirmed Q-D decisions (research/14 §3.3). Each item is verified by the checks that name it in tests/spec/runtime/*.json, or carries `unverified` with a reason and the risk. Step 1 lists only what the step-1 checks cover; later steps add items.",
+  "requirements": [
+    {
+      "id": "qd1.editor-background",
+      "qd": "Q-D1",
+      "description": "Centre editor background = Inkdrop editor background",
+      "platforms": ["desktop"],
+      "mandatory": true
+    },
+    {
+      "id": "qd1.ribbon-background",
+      "qd": "Q-D1",
+      "description": "Ribbon background = Inkdrop sidebar background",
+      "platforms": ["desktop"],
+      "mandatory": true
+    },
+    {
+      "id": "qd1.status-bar-background",
+      "qd": "Q-D1",
+      "description": "Status bar background = Inkdrop note list background",
+      "platforms": ["desktop"],
+      "mandatory": true
+    },
+    {
+      "id": "overlay.settings-modal-background",
+      "qd": "Q-D1",
+      "description": "Settings modal (a popout window in Obsidian 1.14.4) keeps the opaque editor background; guards against scoped rules leaking (research/13 §2.1.1)",
+      "platforms": ["desktop"],
+      "mandatory": false
+    }
+  ]
+}

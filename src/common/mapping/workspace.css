@@ -1,0 +1,8 @@
+/* Mapping: workspace backgrounds (shared structure, no colour literals).
+   Q-D1: ribbon = Inkdrop sidebar, status bar = note list, centre editor = editor.
+   Step 1 maps only the three surfaces the runtime runner checks; the rest of Q-D1 is step 3. */
+.theme-dark {
+  --background-primary: var(--ink-editor-background);
+  --ribbon-background: var(--ink-sidebar-background);
+  --status-bar-background: var(--ink-note-list-bar-background);
+}

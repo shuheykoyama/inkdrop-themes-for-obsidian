@@ -1,0 +1,17 @@
+{
+  "_comment": "The constants of research/evidence/phase2-v04/tools/sample-regions.py, as a config. Used by tests/visual/check-v04.sh to show that the reused script reproduces research/evidence/phase2-v04/measurements/obsidian-v04-pixel-samples.csv byte for byte. No flatness or pair limits, so the output is the V-04 output.",
+  "window_width_points": 1200,
+  "theme_from_name": [["-sd", "sd"], ["-kd", "kd"]],
+  "regions": {
+    "ribbon": [6, 280, 32, 360],
+    "left-tabstrip": [180, 6, 80, 28],
+    "left-dock": [60, 200, 220, 420],
+    "root-tabstrip": [550, 6, 350, 28],
+    "editor": [850, 130, 80, 520],
+    "right-dock": [960, 240, 220, 400]
+  },
+  "references": {
+    "sd": { "left-dock": [22.5, 43.8, 48.5], "right-dock": [13.3, 35.8, 40.8], "editor": [5.4, 33.3, 41.3] },
+    "kd": { "left-dock": [30.1, 29.2, 28.2], "right-dock": [30.3, 27.8, 27.9], "editor": [31.4, 30.4, 28.4] }
+  }
+}

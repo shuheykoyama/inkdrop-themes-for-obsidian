@@ -1,0 +1,22 @@
+/* Palette: Solarized Dark. Theme-specific VALUES only (structure lives in ../common).
+   Every declaration copies Inkdrop's declaration as written (research/14 §1.5): Inkdrop tokens get
+   the --ink- prefix, HSL triplets keep their names, and the trailing comment is the source
+   (repo@sha path:line, as in research/data/inkdrop-solarized-dark-tokens.csv).
+   Step 1 (build and test infrastructure) holds only the tokens the runtime runner needs;
+   the full palette is step 2. tests/static/run.mjs (S1) checks every value against the CSV. */
+.theme-dark {
+  /* HSL triplets */
+  --hsl-neutral-700: 192deg 81% 14%; /* inkdropapp_solarized-dark@4337f6e styles/tokens.css:11 */
+  --hsl-neutral-800: 192deg 100% 11%; /* inkdropapp_solarized-dark@4337f6e styles/tokens.css:12 */
+  --hsl-neutral-900: 192deg 100% 8%; /* inkdropapp_solarized-dark@4337f6e styles/tokens.css:13 */
+
+  /* Colour tokens */
+  --ink-color-neutral-700: hsl(var(--hsl-neutral-700)); /* inkdropapp_solarized-dark@4337f6e styles/tokens.css:133 */
+  --ink-color-neutral-800: hsl(var(--hsl-neutral-800)); /* inkdropapp_solarized-dark@4337f6e styles/tokens.css:134 */
+  --ink-color-neutral-900: hsl(var(--hsl-neutral-900)); /* inkdropapp_solarized-dark@4337f6e styles/tokens.css:135 */
+
+  /* Surfaces, opaque */
+  --ink-sidebar-background: var(--ink-color-neutral-700); /* inkdropapp_solarized-dark@4337f6e styles/ui.css:126 */
+  --ink-note-list-bar-background: var(--ink-color-neutral-800); /* inkdropapp_solarized-dark@4337f6e styles/ui.css:135 */
+  --ink-editor-background: var(--ink-color-neutral-900); /* inkdropapp_solarized-dark@4337f6e styles/ui.css:148 */
+}

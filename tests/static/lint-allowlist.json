@@ -1,0 +1,4 @@
+{
+  "_comment": "Accepted warnings of stylelint-config-obsidianmd on dist/<theme>/theme.css (research/14 §1.9). Errors are never listed: they are fixed. Each entry: rule, selector, property, theme (\"*\" or a theme), reason, refs; for declaration-no-important also `overrides` (the app.css rule being overridden). Every !important in the output must have an entry here (S4). An entry that no longer matches any warning fails S5 (stale entry).",
+  "warnings": []
+}

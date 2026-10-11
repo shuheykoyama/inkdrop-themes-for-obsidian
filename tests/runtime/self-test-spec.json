@@ -1,0 +1,103 @@
+{
+  "_comment": "Negative tests of the runtime runner (research/14 §3.2). `selfTest` is the outcome the runner MUST produce; cases marked FAIL prove that a missing, hidden, unreadable or wrongly expected element cannot pass. Not product requirements.",
+  "checks": [
+    {
+      "id": "self.positive-control.editor",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-content",
+      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "token": "--ink-editor-background",
+      "selfTest": "PASS"
+    },
+    {
+      "id": "self.missing-element",
+      "selector": ".ink-self-test-element-that-does-not-exist",
+      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "token": "--ink-editor-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.hidden-element",
+      "selector": ".titlebar",
+      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "token": "--ink-editor-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.wrong-expectation",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-content",
+      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "token": "--ink-sidebar-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.unparseable-value",
+      "selector": ".status-bar",
+      "document": "main", "property": "background-image", "appearance": ["opaque"],
+      "token": "--ink-note-list-bar-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.unknown-token",
+      "selector": ".status-bar",
+      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "token": "--ink-token-that-does-not-exist",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.declared-hidden",
+      "selector": ".titlebar",
+      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "expect": "hidden", "reason": "Hidden frame (default): .titlebar is display:none (research/11 §7)",
+      "selfTest": "PASS"
+    },
+    {
+      "id": "self.declared-hidden-but-missing",
+      "selector": ".ink-self-test-element-that-does-not-exist",
+      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "expect": "hidden", "reason": "a hidden expectation must not accept a missing element",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.declared-absent",
+      "selector": ".ink-self-test-element-that-does-not-exist",
+      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "expect": "absent", "reason": "self-test: no such element",
+      "selfTest": "PASS"
+    },
+    {
+      "id": "self.declared-absent-but-present",
+      "selector": ".status-bar",
+      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "expect": "absent", "reason": "self-test: an absent expectation must not accept a present element",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.settings-popout",
+      "selector": ".modal.mod-settings",
+      "document": "settings", "property": "background-color", "appearance": ["opaque"],
+      "token": "--ink-editor-background",
+      "selfTest": "PASS"
+    },
+    {
+      "id": "self.settings-popout-missing-element",
+      "selector": ".ink-self-test-element-that-does-not-exist",
+      "document": "settings", "property": "background-color", "appearance": ["opaque"],
+      "token": "--ink-editor-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.main-document-does-not-see-popout",
+      "selector": ".modal.mod-settings",
+      "document": "main", "property": "background-color", "appearance": ["opaque"],
+      "token": "--ink-editor-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.translucent-switch",
+      "selector": ".workspace-ribbon.mod-primary",
+      "document": "main", "property": "background-color", "appearance": ["translucent"],
+      "value": "transparent",
+      "selfTest": "PASS"
+    }
+  ]
+}

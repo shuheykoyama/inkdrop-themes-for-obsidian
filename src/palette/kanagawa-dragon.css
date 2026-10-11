@@ -1,0 +1,19 @@
+/* Palette: Kanagawa Dragon. Theme-specific VALUES only (structure lives in ../common).
+   Every declaration copies Inkdrop's declaration as written (research/14 §1.5): Inkdrop tokens get
+   the --ink- prefix, HSL triplets keep their names, and the trailing comment is the source
+   (repo@sha path:line, as in research/data/inkdrop-kanagawa-dragon-tokens.csv).
+   Inkdrop's camelCase triplet names are written in kebab-case for the official lint rule
+   custom-property-pattern (--kanagawa-dragonBlack1 -> --kanagawa-dragon-black1); values are unchanged.
+   Step 1 (build and test infrastructure) holds only the tokens the runtime runner needs;
+   the full palette is step 2. tests/static/run.mjs (S1) checks every value against the CSV. */
+.theme-dark {
+  /* HSL triplets */
+  --kanagawa-dragon-black1: 60deg 9% 6%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:17 */
+  --kanagawa-dragon-black2: 0deg 4% 9%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:18 */
+  --kanagawa-dragon-black3: 45deg 7% 11%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:19 */
+
+  /* Surfaces, opaque */
+  --ink-sidebar-background: hsl(var(--kanagawa-dragon-black1)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:193 */
+  --ink-note-list-bar-background: hsl(var(--kanagawa-dragon-black2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:212 */
+  --ink-editor-background: hsl(var(--kanagawa-dragon-black3)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:230 */
+}

@@ -1,0 +1,4 @@
+/* Theme entry: Solarized Dark. Only @import rules; scripts/build.mjs inlines them in this order
+   (palette -> common mapping -> components -> platform -> theme-specific exceptions). */
+@import "../palette/solarized-dark.css";
+@import "../common/mapping/workspace.css";

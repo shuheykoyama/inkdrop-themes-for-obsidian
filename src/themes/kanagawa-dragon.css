@@ -1,0 +1,4 @@
+/* Theme entry: Kanagawa Dragon. Only @import rules; scripts/build.mjs inlines them in this order
+   (palette -> common mapping -> components -> platform -> theme-specific exceptions). */
+@import "../palette/kanagawa-dragon.css";
+@import "../common/mapping/workspace.css";

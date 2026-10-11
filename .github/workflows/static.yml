@@ -1,0 +1,25 @@
+# Static tests only (research/14 §3.1): build reproducibility, value fidelity against research/data,
+# layer rules, the official stylelint config, spec validation, and the negative self-tests.
+# The runtime (isolated Obsidian on macOS) and visual checks need a local desktop and are not run here.
+name: static
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci --no-audit --no-fund --ignore-scripts
+      - run: npm run build
+      - run: npm run test:static
+      - run: npm run test:static-self
