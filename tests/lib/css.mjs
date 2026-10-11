@@ -169,6 +169,18 @@ export function parseComputedColor(s) {
   return { rgb: [Number(m[1]), Number(m[2]), Number(m[3])], a: m[4] === undefined ? 1 : Number(m[4]) };
 }
 
+// Any colour expression the palette uses, after var() substitution: hsl(H S% L% [/ A%]), rgb() / rgba() in
+// the legacy (commas) or modern (spaces, "/ A%") syntax, or transparent. null if anything else.
+export function parseColor(expr) {
+  const v = norm(String(expr ?? ""));
+  if (v === "transparent") return { rgb: [0, 0, 0], a: 0 };
+  const legacy = parseComputedColor(v);
+  if (legacy) return legacy;
+  const m = /^rgba?\(([\d.]+) ([\d.]+) ([\d.]+)(?: \/ ([\d.]+)(%?))?\)$/.exec(v);
+  if (m) return { rgb: [Number(m[1]), Number(m[2]), Number(m[3])], a: m[4] === undefined ? 1 : m[5] ? Number(m[4]) / 100 : Number(m[4]) };
+  return hslToRgb(v);
+}
+
 // Same colour within +-1 per 8-bit channel and +-0.01 alpha. Both sides must be parsed colours.
 export function sameColor(a, b) {
   if (!a || !b) return false;

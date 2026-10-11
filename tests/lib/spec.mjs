@@ -17,8 +17,18 @@ export const PLATFORMS = ["desktop", "tablet", "phone", "phone-nonfloating"];
 // on mobile "default" has both drawers closed.
 // "self-test-translucent-leak" turns translucency on in a mobile probe: allowed only in the runner's own
 // negative spec, to prove that an opaque mobile check refuses a translucent window.
-export const STATES = ["default", "user-accent", "quick-switcher-open", "fullscreen-class", "left-drawer-open", "right-drawer-open", "self-test-translucent-leak"];
-const KINDS = ["color", "text"];
+// Step 5: "file-explorer-focused" (the File Explorer leaf is the active one), "user-font" (an interface font in
+// the test vault's settings), and three states the runner opens with a real pointer through CDP:
+// "menu-open" (right-click a file, pointer on the first item; DOM menus), "popover-open" (Cmd + hover on an
+// internal link), "tooltip-open" (hover on a ribbon button).
+export const STATES = ["default", "user-accent", "user-font", "quick-switcher-open", "fullscreen-class", "file-explorer-focused",
+  "menu-open", "popover-open", "tooltip-open", "left-drawer-open", "right-drawer-open", "self-test-translucent-leak"];
+export const POINTER_STATES = ["menu-open", "popover-open", "tooltip-open"];
+// color: a computed colour property; text: exact string (e.g. --accent-h); first-color: the first rgb()/rgba()
+// in the value (e.g. the colour of a box-shadow); var: a custom property whose computed value is a colour
+// (checks a variable where no visible element uses it in the test, e.g. hover-only colours).
+// first-family: the first family name of a font-family value, quotes removed.
+const KINDS = ["color", "text", "first-color", "var", "first-family"];
 
 export function loadRequirements(specDir) {
   return JSON.parse(readFileSync(path.join(specDir, "requirements.json"), "utf8")).requirements;

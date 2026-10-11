@@ -21,9 +21,9 @@ import { spawnSync } from "node:child_process";
 import { cpSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
-import { declarations, hslToRgb, parseComputedColor, sameColor, substitute } from "../lib/css.mjs";
-import { checkErrors, loadChecks, loadRequirements, PLATFORMS, runtimeSpecFiles, STATES } from "../lib/spec.mjs";
-import { evaluate } from "./lib/cdp.mjs";
+import { declarations, norm, parseColor, parseComputedColor, sameColor, substitute } from "../lib/css.mjs";
+import { checkErrors, loadChecks, loadRequirements, PLATFORMS, POINTER_STATES, runtimeSpecFiles, STATES } from "../lib/spec.mjs";
+import { escape, evaluate, pointer } from "./lib/cdp.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
 const { values: args } = parseArgs({ options: { vault: { type: "string" }, out: { type: "string" }, port: { type: "string", default: "9333" }, "self-test": { type: "boolean", default: false } } });
@@ -47,12 +47,10 @@ if (built.status !== 0) { console.error(built.stderr); process.exit(1); }
 
 // Expected colour of a check in one theme: a palette token resolved through the theme's own
 // declarations, or a literal value. null if it cannot be resolved (which makes the check FAIL).
-const TRANSPARENT = { rgb: [0, 0, 0], a: 0 };
 function expectedColor(c, defs) {
-  if (c.value !== undefined) return c.value === "transparent" ? TRANSPARENT : parseComputedColor(c.value);
+  if (c.value !== undefined) return parseColor(c.value);
   if (!defs.has(c.token)) return null;
-  const v = substitute(defs.get(c.token), defs);
-  return v === "transparent" ? TRANSPARENT : hslToRgb(v);
+  return parseColor(substitute(defs.get(c.token), defs));
 }
 
 function judge(c, m, defs) {
@@ -65,11 +63,27 @@ function judge(c, m, defs) {
   }
   if (!m.found) return ["FAIL", `element not found${m.error ? ` (${m.error})` : ""}`];
   if (!m.displayed) return ["FAIL", `element not displayed (size ${JSON.stringify(m.size)})`];
-  if ((c.kind ?? "color") === "text") {
+  const kind = c.kind ?? "color";
+  if (kind === "first-color" || kind === "var") {
+    // first-color: the first rgb()/rgba() in the value (box-shadow); var: a custom property holding a colour,
+    // parsed as rgb()/rgba() or, as Chromium keeps custom properties as written, as hsl().
+    const raw = m.value ?? "";
+    const got = kind === "first-color" ? parseComputedColor((/rgba?\([^)]*\)/.exec(raw) || [""])[0]) : parseColor(raw);
+    if (!got) return ["FAIL", `no colour in value: ${JSON.stringify(m.value)}`];
+    const exp = expectedColor(c, defs);
+    if (!exp) return ["FAIL", `expected colour unresolved (${c.token ?? c.value})`];
+    return sameColor(got, exp) ? ["PASS", m.value] : ["FAIL", `${m.value} != rgba(${exp.rgb.map((x) => x.toFixed(1))}, ${exp.a})`];
+  }
+  if (kind === "first-family") {
+    const first = (m.value ?? "").split(",")[0].trim().replace(/^["']|["']$/g, "");
+    const want = (c.value ?? "").replace(/^["']|["']$/g, "");
+    return first === want ? ["PASS", m.value.slice(0, 60)] : ["FAIL", `${first} != ${want}`];
+  }
+  if (kind === "text") {
     const exp = c.value !== undefined ? c.value : defs.has(c.token) ? substitute(defs.get(c.token), defs) : null;
     if (exp === null) return ["FAIL", `expected value unresolved (${c.token})`];
     if (m.value === null) return ["FAIL", "value not readable"];
-    return m.value === exp ? ["PASS", m.value] : ["FAIL", `${JSON.stringify(m.value)} != ${JSON.stringify(exp)}`];
+    return norm(m.value) === norm(exp) ? ["PASS", m.value] : ["FAIL", `${JSON.stringify(m.value)} != ${JSON.stringify(exp)}`];
   }
   const got = parseComputedColor(m.value);
   if (!got) return ["FAIL", `value not a colour: ${JSON.stringify(m.value)}`];
@@ -114,6 +128,56 @@ async function setPlatform(platform, original) {
   await waitReady();
 }
 
+// States that need a genuine pointer (research/14 §6.8): the probe prepares the state and the runner moves /
+// clicks through CDP Input, measures, then puts the pointer back on a neutral spot, presses Escape and
+// waits for the overlay to close.
+const center = (sel) => evaluate(args.port, `(() => { const e = document.querySelector(${JSON.stringify(sel)}); if (!e) return null; const r = e.getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; })()`);
+let menuWarmedUp = false;
+async function interact(state) {
+  if (state === "menu-open") {
+    // The first DOM menu of a session never marks a row as selected under the pointer (Obsidian behaviour,
+    // independent of the theme: observed with and without retries); open and close one menu once first.
+    if (!menuWarmedUp) {
+      const f = await center(".workspace-split.mod-left-split .nav-file-title");
+      if (f) { await pointer(args.port, { x: f[0], y: f[1], click: true, button: "right" }); await sleep(700); await escape(args.port); await sleep(400); }
+      menuWarmedUp = true;
+    }
+    const file = await center(".workspace-split.mod-left-split .nav-file-title");
+    if (file) { await pointer(args.port, { x: file[0], y: file[1], click: true, button: "right" }); await sleep(700); }
+    const item = await center(".menu .menu-item:not(.is-label)");
+    // Move onto the first row until it gets its "selected" class: the very first menu of a session ignored
+    // the first pointer moves (later menus react at once). At most 4 attempts; the check itself still
+    // fails if the row never becomes selected.
+    for (let i = 0; item && i < 4; i++) {
+      await pointer(args.port, { x: item[0] - 2 + (i % 2) * 4, y: item[1] });
+      await sleep(400);
+      if (await evaluate(args.port, "!!document.querySelector('.menu .menu-item.selected')")) break;
+    }
+  } else if (state === "popover-open") {
+    const link = await center(".workspace-leaf.mod-active .cm-hmd-internal-link, .workspace-leaf.mod-active .internal-link");
+    if (link) { await pointer(args.port, { x: link[0], y: link[1], modifiers: 4 }); await sleep(1500); }
+  } else if (state === "tooltip-open") {
+    const button = await center(".workspace-ribbon.mod-primary .side-dock-ribbon-action");
+    if (button) { await pointer(args.port, { x: button[0], y: button[1] }); await sleep(1500); }
+  }
+}
+// Returns how many pointer overlays are still open after up to 4 s: a hover popover closes on its own a
+// moment after the pointer leaves, and one left behind would colour the next state's measurements. The
+// neutral spot is the status bar: the middle of the editor can lie under the popover, which keeps it open.
+const OVERLAYS = ".popover.hover-popover, .menu, .tooltip";
+async function releasePointer() {
+  const spot = await center(".status-bar");
+  if (spot) await pointer(args.port, { x: spot[0], y: spot[1] });
+  await escape(args.port);
+  let left = 0;
+  for (let i = 0; i < 8; i++) {
+    await sleep(500);
+    left = await evaluate(args.port, `document.querySelectorAll(${JSON.stringify(OVERLAYS)}).length`);
+    if (!left) break;
+  }
+  return left;
+}
+
 const original = await evaluate(args.port, "(() => electronWindow.getSize())()");
 const floatingBefore = await evaluate(args.port, "(() => app.vault.getConfig('floatingNavigation') ?? null)()");
 for (const theme of THEMES) {
@@ -139,8 +203,15 @@ try {
         for (const state of STATES) {
           const todo = forPlatform.filter((c) => c.appearance.includes(appearance) && (c.state ?? "default") === state);
           if (!todo.length) continue;
-          const input = { theme: manifest.name, translucent: appearance === "translucent", platform, state, checks: todo.map(({ id, selector, document, property }) => ({ id, selector, document, property })) };
-          const page = await evaluate(args.port, `window.__INK = ${JSON.stringify(input)};\n${probe}`);
+          const deferMeasure = POINTER_STATES.includes(state);
+          const input = { theme: manifest.name, translucent: appearance === "translucent", platform, state, deferMeasure, checks: todo.map(({ id, selector, document, property }) => ({ id, selector, document, property })) };
+          let overlaysLeft = 0;
+          let page = await evaluate(args.port, `window.__INK = ${JSON.stringify(input)};\n${probe}`);
+          if (deferMeasure) {
+            await interact(state);
+            page = await evaluate(args.port, "window.__INK_MEASURE()");
+            overlaysLeft = await releasePointer();
+          }
           environment.appVersion ??= page.appVersion;
           environment.electron ??= page.electron;
           const where = { theme, platform, appearance: pass === 2 ? "opaque (after translucent)" : appearance, state };
@@ -153,6 +224,7 @@ try {
             ? !cls.includes("is-mobile") && cls.includes("is-translucent") === (appearance === "translucent")
             : cls.includes("is-mobile") && cls.includes(platform === "tablet" ? "is-tablet" : "is-phone") && cls.includes("is-floating-nav") === (platform !== "phone-nonfloating") && !cls.includes("is-translucent");
           results.push({ id: "runner.environment", ...where, status: envOk ? ok : "FAIL", detail: cls.filter((x) => /^(is-|emulate-)/.test(x)).join(" "), selfTest: selfTest ? (state === "self-test-translucent-leak" ? "FAIL" : "PASS") : undefined });
+          if (deferMeasure) results.push({ id: "runner.pointer-released", ...where, status: overlaysLeft === 0 ? ok : "FAIL", detail: `${overlaysLeft} overlay(s) still open`, selfTest: selfTest ? "PASS" : undefined });
           results.push({ id: "runner.modals-closed", ...where, status: page.modalsLeftOpen === 0 ? ok : "FAIL", detail: `${page.modalsLeftOpen} open`, selfTest: selfTest ? "PASS" : undefined });
           for (const c of todo) {
             const [status, detail] = judge(c, page.results[c.id], defs);

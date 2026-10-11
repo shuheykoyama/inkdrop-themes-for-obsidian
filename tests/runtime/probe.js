@@ -1,5 +1,7 @@
 // Runtime probe: runs inside the ISOLATED Obsidian (test vault only), injected by tests/runtime/run.mjs
-// after `window.__INK = { theme, translucent, platform, state, checks: [{ id, selector, document, property }] }`.
+// after `window.__INK = { theme, translucent, platform, state, deferMeasure, checks: [{ id, selector, document, property }] }`.
+// With deferMeasure the probe only prepares the state and leaves window.__INK_MEASURE() for the runner,
+// which first drives a real pointer (menus, link previews, tooltips) through CDP.
 // Selects the theme, prepares the layout for the platform and state, and reports for every check what was
 // found, never a judgement: { found, count, displayed, size, value, error }. The judgement (and the rule
 // that a missing / hidden / unreadable element can never pass a "match") lives in run.mjs.
@@ -54,10 +56,16 @@
     ws.revealLeaf(outline);
     ws.setActiveLeaf(leafOf("Sample note"), { focus: true });
     app.customCss.setTranslucency(!!translucent);
+    // The File Explorer's leaf becomes the active one: its list "has focus" (Inkdrop's 5 px bar state).
+    if (state === "file-explorer-focused" && fe) ws.setActiveLeaf(fe, { focus: true });
   }
   if (state === "user-accent") app.vault.setConfig("accentColor", "#e06c75");
   if (state === "fullscreen-class") document.body.classList.add("is-fullscreen");
   if (state === "quick-switcher-open") app.commands.executeCommandById("switcher:open");
+  if (state === "user-font") app.vault.setConfig("interfaceFontFamily", "Courier New");
+  // DOM menus: macOS defaults to native OS menus, which no theme can style; the test vault switches them off.
+  const nativeMenusBefore = app.vault.getConfig("nativeMenus") ?? null;
+  if (state === "menu-open") app.vault.setConfig("nativeMenus", false);
   await sleep(800);
 
   // Measure one element in a given document. Visibility = checkVisibility() (display, content-visibility,
@@ -72,6 +80,7 @@
     return { found: true, count: all.length, displayed: visible && r.width > 0 && r.height > 0, size: [Math.round(r.width), Math.round(r.height)], value: value === "" ? null : value };
   };
 
+  window.__INK_MEASURE = async () => {
   const ua = navigator.userAgent;
   const out = {
     appVersion: window.require("electron").ipcRenderer.sendSync("version"),
@@ -104,6 +113,11 @@
     document.querySelector(".modal-container")?.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
     await sleep(300);
   }
+  if (state === "user-font") { app.vault.setConfig("interfaceFontFamily", ""); await sleep(300); }
+  if (state === "menu-open") { document.querySelectorAll(".menu").forEach((m) => m.remove()); app.vault.setConfig("nativeMenus", nativeMenusBefore); }
+  if (state === "file-explorer-focused") ws.setActiveLeaf(leafOf("Sample note"), { focus: true });
   out.modalsLeftOpen = document.querySelectorAll(".modal-container").length;
   return out;
+  };
+  return window.__INK.deferMeasure ? { deferred: true } : await window.__INK_MEASURE();
 })();
