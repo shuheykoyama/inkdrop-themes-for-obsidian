@@ -1485,7 +1485,7 @@ Inkdrop はこれらすべてを色付けする。色付けされないブロッ
 
 静的テストすべて PASS、静的テストの陰性テスト 47 件、視覚的テストの陰性テスト 6 件、クリーンルームのビルド一致。NOT REPRODUCIBLE は `syn.<view>.<lang>.fidelity` だけで、PASS には数えていない。
 
-**撮影（未実施）**: シンタックスの表示のネイティブの撮影（両テーマ × 3 ビュー × 6 か所の不透明と、translucent の Source mode・Reading view。撮影の手順は用意した）は、ディスプレイのスリープ中で `screencapture` が「could not create image from rect」となり、撮れなかった（両 Electron とも未実施）。ディスプレイを起こす・ロックを解く操作はしていない。画面が点いている時間に撮る。Computed Style の検査（`syn.*`）は両 Electron で完了している。
+**撮影**: `evidence/phase3-step8/native-39.5.1/`・`native-43.7.7/`。両テーマ × Source mode・Live Preview・Reading view × 6 か所（JS・Python・CSS・Shell・Rust・SQL のブロックを先頭に）の不透明と、translucent の Source mode・Reading view（JS）の計 40 枚ずつ。全 80 枚を目視で確認し（テスト Vault の内容だけ、色の後処理なし）、左上隅の検査は全枚 PASS。最初の撮影はディスプレイのスリープとロックで失敗した。ユーザーの許可を得てディスプレイを起こし（`caffeinate -u`）、ユーザーがロックを解除したあと、撮影の間だけスクリーンセーバーの開始を無効にして（`idleTime` 600 → 0）`caffeinate -d` で画面のスリープを止め、撮影後に `idleTime` を 600 に戻し `caffeinate` を止めた。
 
 **実装中に見つけて直したテストの不具合**
 
@@ -1509,7 +1509,6 @@ Inkdrop はこれらすべてを色付けする。色付けされないブロッ
 **未検証事項とリスク**
 
 - V-39（Inkdrop でのコードブロックの表示の撮影）と描画色の実機確認。承認が必要。
-- Obsidian のシンタックスの表示のネイティブの撮影（ディスプレイのスリープで未実施）。
 - 12 言語以外（C・Java・PHP など）は共通規則だけで、検査していない。
 - Obsidian の更新による CM5 モード・Prism の変更（クラスが変わると共通規則が外れる）。
 - 再現できないトークン（`qd13.not-reproducible`、上の表）。

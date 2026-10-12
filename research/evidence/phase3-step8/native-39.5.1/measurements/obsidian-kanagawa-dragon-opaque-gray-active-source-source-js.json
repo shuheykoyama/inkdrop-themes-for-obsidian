@@ -1,0 +1,57 @@
+{
+ "capture": {
+  "method": "/usr/sbin/screencapture -x -R400,250,1200,700 (native window-server composite, display colour space)",
+  "capturedAt": "2026-10-12T11:29:24Z",
+  "file": "screenshots/obsidian-kanagawa-dragon-opaque-gray-active-source-source-js.png",
+  "pixels": [
+   2400,
+   1400
+  ],
+  "sha256": "8666676d87fc4e3de8aee74b3ba1cc34e5ac523e72923c972c28c138f06f849d",
+  "windowRectPoints": [
+   400,
+   250,
+   1200,
+   700
+  ],
+  "backdrop": "gray",
+  "backdropRectPoints": [
+   300,
+   150,
+   1400,
+   900
+  ],
+  "requestedFocus": "active",
+  "translucency": "opaque",
+  "theme": "kanagawa-dragon"
+ },
+ "setup": {
+  "theme": "DEV kanagawa-dragon (unnamed)",
+  "themeCssLength": 123157,
+  "isTranslucent": false,
+  "bounds": {
+   "x": 400,
+   "y": 250,
+   "width": 1200,
+   "height": 700
+  },
+  "dockWidths": [
+   260,
+   260
+  ],
+  "electron": "39.5.1",
+  "appVersion": "1.14.4",
+  "q23": null
+ },
+ "focusStep": {
+  "focused": true,
+  "hasFocus": true,
+  "bodyFocusedClass": true
+ },
+ "afterShot": {
+  "focused": true,
+  "cls": [
+   "is-focused"
+  ]
+ }
+}

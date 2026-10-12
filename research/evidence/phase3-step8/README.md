@@ -1,6 +1,6 @@
 # 工程 8（コードブロック・シンタックスハイライト）の証拠（2026-10-12）
 
-[14](../../14-implementation-plan.md) §6.17 の証拠。Obsidian はすべて隔離したインスタンス（専用の `--user-data-dir` とテスト Vault の複製）で取得した。ユーザーの Vault・設定は開いていない。Inkdrop は起動していない（V-31 は展開済みの Inkdrop 6.1.5 の app.asar に同梱のコードを Node で読み込んで実行した）。この工程の証拠に画像はない（下記）。
+[14](../../14-implementation-plan.md) §6.17 の証拠。Obsidian はすべて隔離したインスタンス（専用の `--user-data-dir` とテスト Vault の複製）で取得した。ユーザーの Vault・設定は開いていない。Inkdrop は起動していない（V-31 は展開済みの Inkdrop 6.1.5 の app.asar に同梱のコードを Node で読み込んで実行した）。画像はテスト Vault の内容だけで、すべて目視で確認した。色の後処理はしていない。
 
 ## 環境
 
@@ -18,9 +18,6 @@
 | `not-reproducible.csv` | Inkdrop の色にならないランの一覧（ビュー・言語・テキスト・Inkdrop のトークン・Obsidian の要素・テーマが選んだトークン・差の出るテーマ） |
 | `runtime/runtime-electron-*.json` | 実行時テスト（`syn.*` を含む全検査） |
 | `runtime/self-test-electron-*.json` | ランナーの陰性テスト（`syn.self-test` を含む） |
+| `native-39.5.1/`、`native-43.7.7/` | ネイティブの撮影（各 40 枚）: 両テーマ × Source mode・Live Preview・Reading view × 6 か所（JS・Python・CSS・Shell・Rust・SQL のブロックを先頭に）の不透明、translucent の Source mode・Reading view（JS）。`top-left-corner.csv` に左上隅の検査（全枚 PASS）。撮影時にユーザーの許可でディスプレイを起こし、撮影の間だけスクリーンセーバーの開始を無効にした（撮影後に元の 600 秒へ戻した） |
 
 `fidelity.csv` と `not-reproducible.csv` は Electron 43.7.7 の結果から作った（39.5.1 と同じ値）。
-
-## 撮れなかったもの
-
-ネイティブの撮影（両テーマ × Source mode・Live Preview・Reading view × 6 か所の不透明、translucent の Source mode・Reading view）は、ディスプレイのスリープ中で `screencapture` が「could not create image from rect」となり、撮れなかった。ディスプレイを起こす・ロックを解く操作はしていない。画面が点いている時間に撮り、`native-<Electron>/` に置く。
