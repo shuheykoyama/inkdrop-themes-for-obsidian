@@ -71,6 +71,14 @@
     v.editor.focus();
     v.editor.setCursor({ line, ch: 0 });
     const word = v.editor.getLine(line).split(" ")[0];
+    // The find bar stays open from an earlier "search" capture in the same window: close it for the other
+    // captures, and fail rather than capture it.
+    const findBar = () => [...v.containerEl.querySelectorAll(".document-search-container")].find((e) => e.offsetParent);
+    if (action !== "search" && findBar()) {
+      findBar().querySelector(".document-search-close-button")?.click();
+      await sleep(300);
+      if (findBar()) throw new Error("the editor's find bar is still open");
+    }
     if (action === "select") v.editor.setSelection({ line, ch: 0 }, { line, ch: word.length });
     if (action === "search") {
       app.commands.executeCommandById("editor:open-search");
