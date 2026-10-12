@@ -24,14 +24,18 @@ async function connect(port) {
 }
 
 // Evaluate `expression` in the main Obsidian window and return its JSON-serialisable result.
-// Throws on a connection problem or an exception inside the page.
-export async function evaluate(port, expression) {
+// Throws on a connection problem, an exception inside the page, or when the page has not answered within
+// `timeoutMs` (a promise in the page that never settles would otherwise stall the whole run).
+export async function evaluate(port, expression, timeoutMs = 180000) {
   const s = await connect(port);
+  let timer;
   try {
-    const res = await s.send("Runtime.evaluate", { expression, returnByValue: true, awaitPromise: true });
+    const timeout = new Promise((_, reject) => { timer = setTimeout(() => reject(new Error(`page did not answer within ${timeoutMs / 1000} s`)), timeoutMs); });
+    const res = await Promise.race([s.send("Runtime.evaluate", { expression, returnByValue: true, awaitPromise: true }), timeout]);
     if (res?.exceptionDetails) throw new Error(`page exception: ${JSON.stringify(res.exceptionDetails).slice(0, 500)}`);
     return res?.result?.value;
   } finally {
+    clearTimeout(timer);
     s.close();
   }
 }

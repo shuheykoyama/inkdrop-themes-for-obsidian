@@ -231,6 +231,11 @@ try {
             : cls.includes("is-mobile") && cls.includes(platform === "tablet" ? "is-tablet" : "is-phone") && cls.includes("is-floating-nav") === (platform !== "phone-nonfloating") && !cls.includes("is-translucent");
           results.push({ id: "runner.environment", ...where, status: envOk ? ok : "FAIL", detail: cls.filter((x) => /^(is-|emulate-)/.test(x)).join(" "), selfTest: selfTest ? (state === "self-test-translucent-leak" ? "FAIL" : "PASS") : undefined });
           if (deferMeasure) results.push({ id: "runner.pointer-released", ...where, status: overlaysLeft === 0 ? ok : "FAIL", detail: `${overlaysLeft} overlay(s) still open`, selfTest: selfTest ? "PASS" : undefined });
+          if (page.edPrepared) {
+            const e = page.edPrepared;
+            const prepared = e.leafFound && e.file === "Editor chrome" && e.gutters === e.want;
+            results.push({ id: "runner.ed-prepared", ...where, status: prepared ? ok : "FAIL", detail: JSON.stringify(e), selfTest: selfTest ? "PASS" : undefined });
+          }
           results.push({ id: "runner.modals-closed", ...where, status: page.modalsLeftOpen === 0 ? ok : "FAIL", detail: `${page.modalsLeftOpen} open`, selfTest: selfTest ? "PASS" : undefined });
           for (const c of todo) {
             const [status, detail] = judge(c, page.results[c.id], defs);

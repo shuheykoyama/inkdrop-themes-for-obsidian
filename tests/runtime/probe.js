@@ -27,6 +27,9 @@
   }
 
   // Notes: "Sample note" active; on desktop also "Other note" in a second centre tab (an inactive tab).
+  // After a reload (mobile emulation on / off) Obsidian restores background tabs as deferred leaves, whose
+  // view has no file yet: load them, or a note that is open would look missing and be opened a second time.
+  for (const l of ws.getLeavesOfType("markdown")) await l.loadIfDeferred?.();
   const leafOf = (name) => ws.getLeavesOfType("markdown").find((l) => l.view?.file?.basename === name);
   if (!leafOf("Sample note")) await ws.openLinkText("Sample note", "", false);
   if (!mobile && !leafOf("Other note")) {
@@ -95,11 +98,29 @@
   const ed = ED_STATES[state];
   const edLeaf = ed ? leafOf("Sample note") : null;
   const edBefore = ed ? { lines: app.vault.getConfig("showLineNumber") ?? false } : null;
+  let edAttempts = 0;
   if (edLeaf) {
     app.vault.setConfig("showLineNumber", ed.lines);
     await edLeaf.setViewState({ type: "markdown", state: { file: "Editor chrome.md", mode: "source", source: ed.source }, active: true });
     ws.setActiveLeaf(edLeaf, { focus: true });
     for (let i = 0; i < 25 && !edLeaf.view.contentEl.querySelector(".cm-content .cm-line"); i++) await sleep(200);
+    // The line-number gutter follows the setting a moment later, and on Electron 39 it sometimes did not follow
+    // at all or came back after it had gone (the setting changing again on its own after a moment is the
+    // suspected cause; not proven). Wait (up to 5 s) until the gutter is as asked, then check that it stays so
+    // for 1 s; otherwise set the setting again, up to 3 times. runner.ed-prepared reports the attempts and the
+    // setting at measuring time.
+    const gutterAsAsked = () => !!edLeaf.view.contentEl.querySelector(".cm-gutters") === ed.lines;
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      edAttempts = attempt;
+      if (attempt > 1) {
+        app.vault.setConfig("showLineNumber", !ed.lines);
+        await sleep(300);
+        app.vault.setConfig("showLineNumber", ed.lines);
+      }
+      for (let i = 0; i < 25 && !gutterAsAsked(); i++) await sleep(200);
+      await sleep(1000);
+      if (gutterAsAsked()) break;
+    }
     const editor = edLeaf.view.editor;
     editor.focus();
     const line = editor.getValue().split("\n").findIndex((l) => l.includes(ed.at));
@@ -143,6 +164,12 @@
     bodyClasses: [...document.body.classList],
     results: {},
   };
+  // Editor chrome states: whether the state was really prepared (the note, the mode and the line-number
+  // gutter as asked) at measuring time; the runner turns this into runner.ed-prepared.
+  if (ed) {
+    const v = ws.activeLeaf?.view;
+    out.edPrepared = { leafFound: !!edLeaf, file: v?.file?.basename ?? null, source: v?.getState?.().source ?? null, gutters: !!v?.contentEl?.querySelector(".cm-gutters"), want: ed.lines, setting: app.vault.getConfig("showLineNumber") ?? null, attempts: edAttempts };
+  }
   for (const c of checks.filter((x) => x.document === "main")) {
     // c.scrollTo: text of a line of the Markdown note to scroll into view first (CodeMirror draws only the
     // lines near the viewport; the reading view renders sections lazily).
