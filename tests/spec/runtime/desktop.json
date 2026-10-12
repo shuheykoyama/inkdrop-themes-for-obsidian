@@ -2906,6 +2906,20 @@
       "value": "Courier New"
     },
     {
+      "id": "md.user-code-font-syntax",
+      "requirement": "qd8.user-text-fonts",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-keyword",
+      "scrollTo": "const x = 1;",
+      "document": "main",
+      "property": "font-family",
+      "state": "md-user-fonts",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "first-family",
+      "value": "Menlo"
+    },
+    {
       "id": "md.user-code-font",
       "requirement": "qd8.user-text-fonts",
       "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-inline-code:not(.cm-formatting)",

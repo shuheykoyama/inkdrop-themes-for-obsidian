@@ -12,7 +12,9 @@
 //                    Missing, hidden, unreadable or unparseable -> FAIL with the reason.
 //   expect absent -> PASS only if no element matches. expect hidden -> PASS only if it exists and is not displayed.
 // Status values: PASS (desktop = the real macOS app), PASS (EMULATED) (tablet / phone via
-// app.emulateMobile(true) on desktop; never counts as a device check, research/14 §2.3), FAIL.
+// app.emulateMobile(true) on desktop; never counts as a device check, research/14 §2.3), FAIL, and for the
+// syntax fidelity of code blocks NOT REPRODUCIBLE (an Inkdrop colour that Obsidian's token classes cannot
+// carry; never a PASS, tests/runtime/lib/syntax.mjs).
 // Platforms run in the order desktop, tablet, phone, phone-nonfloating; the window size and emulation are
 // restored at the end. The isolated instance's own test vault is the only place settings change.
 // --self-test runs tests/runtime/self-test-spec.json, whose cases declare the outcome the runner must
@@ -24,6 +26,7 @@ import { parseArgs } from "node:util";
 import { declarations, norm, parseColor, parseComputedColor, sameColor, substitute } from "../lib/css.mjs";
 import { checkErrors, loadChecks, loadRequirements, PLATFORMS, POINTER_STATES, runtimeSpecFiles, STATES, THEMES } from "../lib/spec.mjs";
 import { escape, evaluate, pointer, typeText } from "./lib/cdp.mjs";
+import { judgeSyntax, syntaxVars } from "./lib/syntax.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
 const { values: args } = parseArgs({ options: { vault: { type: "string" }, out: { type: "string" }, port: { type: "string", default: "9333" }, "self-test": { type: "boolean", default: false } } });
@@ -93,6 +96,15 @@ function judge(c, m, defs) {
 
 // ---------- run ----------
 const probe = readFileSync(path.join(repo, "tests/runtime/probe.js"), "utf8");
+// Syntax colours of code blocks (step 8): after the states of each platform / theme / appearance, the code
+// blocks of tests/spec/syntax.json's note are dumped (tests/runtime/code-tokens.js) and judged against the
+// oracle and Inkdrop's token ranges (tests/runtime/lib/syntax.mjs).
+const syntaxSpec = JSON.parse(readFileSync(path.join(repo, "tests/spec/syntax.json"), "utf8"));
+const inkdropTokens = JSON.parse(readFileSync(path.join(repo, syntaxSpec.inkdrop), "utf8"));
+const codeDump = readFileSync(path.join(repo, "tests/runtime/code-tokens.js"), "utf8");
+async function syntaxPage() {
+  return evaluate(args.port, `window.__CODE = ${JSON.stringify({ note: syntaxSpec.note, vars: syntaxVars(syntaxSpec, inkdropTokens) })};\n${codeDump}`);
+}
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const results = [];
 const environment = {};
@@ -242,6 +254,10 @@ try {
             results.push({ id: c.id, requirement: c.requirement, ...where, status: status === "PASS" ? ok : status, detail, measured: page.results[c.id], selfTest: c.selfTest });
           }
         }
+        if (!selfTest) {
+          const where = { theme, platform, appearance: pass === 2 ? "opaque (after translucent)" : appearance, state: "syntax" };
+          results.push(...judgeSyntax(syntaxSpec, inkdropTokens, await syntaxPage(), where, platform === "desktop" ? "PASS" : "PASS (EMULATED)"));
+        }
       }
     }
   }
@@ -250,6 +266,50 @@ try {
   await setPlatform("desktop", original);
   await evaluate(args.port, `(() => { app.customCss.setTranslucency(false); app.vault.setConfig("floatingNavigation", ${JSON.stringify(floatingBefore)}); return 1; })()`);
 }
+// Syntax self-test (desktop, Solarized Dark, opaque): each case changes the page CSS or the oracle and
+// declares whether the syntax judgement must still pass. A case FAILs when any implementation or
+// avoidable result FAILs.
+if (selfTest) {
+  const sd = JSON.parse(readFileSync(path.join(repo, "dist", THEMES[0], "manifest.json"), "utf8")).name;
+  // Select the theme as the probe does (repeat until it and its stylesheet stay put), and record whether it
+  // took: a case run under the other theme could pass for the wrong reason.
+  const applied = await evaluate(args.port, `(async () => {
+    await app.customCss.readThemes();
+    let last = -1;
+    for (let i = 0; i < 20; i++) {
+      if (app.customCss.theme !== ${JSON.stringify(sd)}) app.customCss.setTheme(${JSON.stringify(sd)});
+      await app.customCss.loadTheme();
+      await new Promise((r) => setTimeout(r, 300));
+      const len = app.customCss.styleEl.textContent.length;
+      if (app.customCss.theme === ${JSON.stringify(sd)} && len > 0 && len === last) break;
+      last = len;
+    }
+    return app.customCss.theme === ${JSON.stringify(sd)} && document.body.classList.contains("theme-dark");
+  })()`);
+  results.push({ id: "syn.self-test.theme-applied", theme: THEMES[0], platform: "desktop", appearance: "opaque", state: "syntax self-test", status: applied ? "PASS" : "FAIL", detail: applied ? sd : "theme not applied", selfTest: "PASS" });
+  const kdKeyword = "rgb(138, 147, 168)"; // Kanagawa Dragon's keyword colour (dragonViolet)
+  const mutate = (fn) => { const s = structuredClone(syntaxSpec); fn(s); return s; };
+  const tagIsString = (s) => { s.editing.rules.find((r) => r.on.join() === "cm-hmd-codeblock,cm-tag").var = "string"; };
+  const cases = [
+    { name: "positive control (theme and oracle as committed)", expect: "PASS" },
+    { name: "other theme's colour on editing keywords", expect: "FAIL", css: `.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-keyword { color: ${kdKeyword} !important; }` },
+    { name: "Reading view function rule lost (code text colour)", expect: "FAIL", css: `.theme-dark .markdown-rendered code[class*="language-"] .token.function { color: var(--code-normal) !important; }` },
+    { name: "comments not italic", expect: "FAIL", css: `.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-comment { font-style: normal !important; }` },
+    { name: "oracle expects another token for editing tags", expect: "FAIL", spec: mutate(tagIsString) },
+    { name: "theme and oracle agree on a token Inkdrop never gives that class (avoidable)", expect: "FAIL", spec: mutate(tagIsString), css: `.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-tag:not(.cm-bracket) { color: var(--ink-syntax-string-color) !important; }`, only: "avoidable" },
+  ];
+  for (const c of cases) {
+    await evaluate(args.port, `(() => { document.getElementById("ink-syntax-self-test")?.remove(); ${c.css ? `document.head.createEl("style", { attr: { id: "ink-syntax-self-test" }, text: ${JSON.stringify(c.css)} });` : ""} return 1; })()`);
+    const res = judgeSyntax(c.spec ?? syntaxSpec, inkdropTokens, await syntaxPage(), {}, "PASS");
+    // `only`: the case must fail through that kind of result alone (the others must pass).
+    const failed = res.filter((r) => r.status === "FAIL");
+    if (c.only && failed.some((r) => !r.id.endsWith(`.${c.only}`))) failed.push({ id: "syn.self-test", detail: `a result other than .${c.only} failed` });
+    results.push({ id: "syn.self-test", theme: THEMES[0], platform: "desktop", appearance: "opaque", state: c.name, status: failed.length ? "FAIL" : "PASS",
+      detail: failed.length ? `${failed.length} FAIL: ${failed.slice(0, 2).map((r) => `${r.id} ${r.detail.slice(0, 120)}`).join(" | ")}` : `${res.length} results, none FAIL`, selfTest: c.expect });
+  }
+  await evaluate(args.port, `(() => { document.getElementById("ink-syntax-self-test")?.remove(); return 1; })()`);
+}
+
 // The restore itself is checked: desktop, original size, not translucent, original floating-navigation setting.
 {
   const st = await evaluate(args.port, "(() => ({ cls: [...document.body.classList], size: electronWindow.getSize(), floating: app.vault.getConfig('floatingNavigation') ?? null }))()");
@@ -269,11 +329,13 @@ for (const r of results) {
     if (!ok) bad++;
   } else {
     console.log(line);
-    if (!r.status.startsWith("PASS")) bad++;
+    // NOT REPRODUCIBLE (syntax fidelity) is reported, never counted as PASS, and does not fail the run: the
+    // avoidable check (syn.<view>.avoidable) fails when such a difference could have been avoided.
+    if (!r.status.startsWith("PASS") && r.status !== "NOT REPRODUCIBLE") bad++;
   }
 }
 if (args.out) writeFileSync(args.out, `${JSON.stringify({ measuredAt: new Date().toISOString(), environment, selfTest, results }, null, 1)}\n`);
 console.log(selfTest
   ? (bad ? `\n${bad} self-test case(s) did NOT produce the declared outcome` : `\nall ${results.length} self-test results produced the declared outcome`)
-  : (bad ? `\n${bad} runtime check(s) FAILED` : `\nall ${results.length} runtime checks passed (${results.filter((r) => r.status === "PASS (EMULATED)").length} of them EMULATED; Obsidian ${environment.appVersion}, Electron ${environment.electron})`));
+  : (bad ? `\n${bad} runtime check(s) FAILED` : `\nall ${results.length} runtime checks passed or are reported as NOT REPRODUCIBLE (${results.filter((r) => r.status === "PASS (EMULATED)").length} PASS (EMULATED), ${results.filter((r) => r.status === "NOT REPRODUCIBLE").length} NOT REPRODUCIBLE; Obsidian ${environment.appVersion}, Electron ${environment.electron})`));
 process.exit(bad ? 1 : 0);

@@ -738,6 +738,57 @@
         "reason": "V-34: Obsidian 1.14.4 does not create .cm-matchingBracket or .cm-selectionMatch, marks only the current search match and draws no selection after blur, so there is nothing to style or measure",
         "risk": "A plugin or a later Obsidian version that adds these elements shows Obsidian's own colours for them"
       }
+    },
+    {
+      "id": "qd13.implementation",
+      "qd": "Q-D13",
+      "description": "Code block tokens in Source mode, Live Preview and Reading view get the colour (and italic / bold) that the syntax oracle (tests/spec/syntax.json) assigns to their Obsidian token classes, for the 12 languages of V-12 and the fence-name aliases, both themes, opaque and translucent",
+      "platforms": [
+        "desktop",
+        "tablet",
+        "phone"
+      ],
+      "mandatory": true,
+      "verifiedBy": [
+        {
+          "method": "Runtime syntax checks syn.<view>.<lang>.impl (tests/runtime/lib/syntax.mjs): the computed style of every text run of tests/fixtures/vault/Code blocks.md against the oracle; negative cases in the runner self-test (syn.self-test)",
+          "evidence": "research/evidence/phase3-step8/runtime",
+          "result": "see research/14 §6.17"
+        }
+      ]
+    },
+    {
+      "id": "qd13.fidelity",
+      "qd": "Q-D13",
+      "description": "Every code token whose Obsidian element (classes; plus the language in Reading view) carries a single Inkdrop colour gets that colour; a difference is only allowed where the same element also carries text that Inkdrop colours differently, or the text has no element (bare text)",
+      "platforms": [
+        "desktop",
+        "tablet",
+        "phone"
+      ],
+      "mandatory": true,
+      "verifiedBy": [
+        {
+          "method": "Runtime syntax checks syn.<view>.avoidable against Inkdrop 6.1.5's own token ranges for the same note (tests/fixtures/inkdrop-tokens.json, from tests/visual/inkdrop-tokens.mjs); the per-language share of runs with Inkdrop's colour is reported as syn.<view>.<lang>.fidelity (PASS or NOT REPRODUCIBLE, never counted as PASS when it differs)",
+          "evidence": "research/evidence/phase3-step8",
+          "result": "see research/14 §6.17"
+        }
+      ]
+    },
+    {
+      "id": "qd13.not-reproducible",
+      "qd": "Q-D13",
+      "description": "Inkdrop colours that Obsidian's tokenisers cannot carry: one Obsidian class (or bare text) holds several Inkdrop tokens of different colours, the editing views have no language to scope rules by, and some fence names are not highlighted (rs; zsh in Reading view)",
+      "platforms": [
+        "desktop",
+        "tablet",
+        "phone"
+      ],
+      "mandatory": false,
+      "unverified": {
+        "reason": "Not reproducible by CSS: the text is told apart only by content or by a language the DOM does not carry (V-12, research/14 §6.17 and research/evidence/phase3-step8/not-reproducible.csv). The colour chosen for each shared class is a trade-off left to RV5",
+        "risk": "Such text shows the colour of the token chosen for its class (or the code block text colour) instead of Inkdrop's; most visible in the editing views for brackets and separators (bare text), YAML keys (cm-atom) and Go fields (cm-variable)"
+      }
     }
   ]
 }
