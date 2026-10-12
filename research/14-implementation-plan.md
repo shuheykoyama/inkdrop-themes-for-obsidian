@@ -1677,3 +1677,171 @@ SD ではこの 4 つ、KD では Python の `decorator` だけが DOMINATED だ
 ### 6.20 次の作業
 
 RV5 の再レビューを待つ。工程 9 には進まない。
+
+### 6.21 工程 9: Mermaid（2026-10-13 実装、レビュー待ち）
+
+RV5 は `72df53b` で承認済み。RV5 から引き継いだ決定は変えていない。対象は、編集ビューのコードの基本色、Reading view の基本色 `--ink-mde-preview-codeblock-text-color`、`cm-atom`・`cm-string-2`・`cm-variable`・Reading view の JS の `function` の意味での選択、DIFF の記録の仕方。V-39 は実施していない（Inkdrop は起動していない）。
+
+**工程の最初の確認: 工程 8 の修正の描画**（Electron 39.5.1、`evidence/phase3-step9/step8-rv5-39.5.1/`）
+
+RV5 で直した Reading view の 4 クラス（Python の `builtin`・`decorator`、Shell の `builtin`、Rust の `function`）を、両テーマでネイティブに撮影した。トークンの文字の画素の色を期待色と比べ、12 対象すべて ΔE2000 ≤ 0.53（`rv5-token-colours.csv`）。
+
+**V-10（Obsidian 1.14.4、隔離インスタンス、`tests/fixtures/vault/Mermaid.md`。`evidence/phase3-step9/v10/`）**
+
+- 同梱の Mermaid は **11.13.0**（`lib/mermaid.min.js`）。Obsidian はテーマを指定せずに初期化する（`mermaid.initialize({ startOnLoad: false, securityLevel: "strict", themeVariables: { fontFamily: "var(--font-mermaid)" }, … })`）。つまり既定の light テーマで描く。Inkdrop は Mermaid 11.17.2 を `base` テーマで使い、`--mermaid-*` の値を themeVariables として渡す（`inkdropapp/mermaid@384e9f5` `packages/mermaid/src/theme.ts`）。
+- **Obsidian 1.14 の Vault ごとの確認**: 初めて図を表示する Vault では「Display Mermaid diagrams in this vault?」と尋ねられ、許可するまで図は描かれない。検証では、隔離インスタンスのテスト Vault に限ってローカルストレージの `mermaid-vault-trust` を設定した。ボタンは押しておらず、ユーザーの Vault にも触れていない。
+- **反転フィルタ**: dark では app.css の `.theme-dark .mermaid > svg { filter: invert(1) hue-rotate(180deg) saturate(1.25) }` が SVG 自体に掛かる。親の `.mermaid`・`.el-pre`・`.cm-embed-block` には掛からない。Reading view と Live Preview で同じ。Source mode では図は描かれず、コードのまま。
+- **DOM**:
+  - Reading view は `.markdown-rendered .el-pre > .mermaid > svg`、Live Preview は `.cm-preview-code-block.cm-embed-block.markdown-rendered.cm-lang-mermaid > .mermaid > svg`。
+  - 図の種類は SVG の `aria-roledescription` に入る（`flowchart-v2`・`sequence`・`class`・`stateDiagram`・`gantt`・`pie`・`er`・`gitGraph`・`mindmap`）。
+  - **ID は描画ごとに変わる**（`m<16 桁の 16 進>`）。シーケンス図のマーカーの ID は `<ID>-arrowhead` などになる。クラス名と `aria-roledescription` は再描画しても同じ。
+- **色の置き場所**: SVG の中の `<style>` に、図の ID で絞った規則として入る（`#m… { fill: #333 }`、`#m… .node rect { fill; stroke }` など。詳細度 1-0-0 以上）。
+  - 要素のインラインの `style` は次のものだけ: Flowchart のラベルの `div` の配置、利用者の `style`・`classDef`（`!important` 付きのインライン、または ID で絞った規則）、`linkStyle`（`!important` なしのインライン）。
+  - `fill`・`stroke` の属性があるのは次のものだけ: Sequence の一部のマーカー（`stick*ArrowHead` は黒の属性）、`linkStyle` で色を付けたエッジ専用の矢じり（`…-pointEnd__0f0` に `stroke`・`fill` 属性）。
+- **ラベル**: Flowchart のノード・エッジ・クラスタのラベルは HTML（`foreignObject > div > span.nodeLabel > p`、エッジは `span.edgeLabel`、背景は `div.labelBkg`）。Sequence はすべて SVG の `text`。
+- **themeVariables と要素の対応**（`v10/sentinel.json`）: themeVariable ごとに別の色を与えて描き、各要素の色から逆引きした。
+  - Flowchart:
+    - 図形 = `mainBkg`・`nodeBorder`
+    - ラベル = `primaryTextColor`
+    - クラスタ = `clusterBkg`・`clusterBorder`、クラスタのラベル = `titleColor`
+    - エッジと矢じり = `lineColor`
+    - エッジのラベルの背景 = `edgeLabelBackground`（`labelBkg` はその 50% の透明度）
+  - Sequence:
+    - アクター = `actorBkg`・`actorBorder`。Mermaid の規則 `#id .actor-man circle, #id line` により、すべての `line` もこの色になる
+    - アクターの名前 = `actorTextColor`、ライフライン = `actorLineColor`
+    - メッセージの線と矢じり = `signalColor`、メッセージの文字 = `signalTextColor`
+    - 活性化 = `activationBkgColor`・`activationBorderColor`、ノート = `note*`
+    - loop / alt の枠 = `labelBoxBkgColor`・`labelBoxBorderColor`、枠の見出し = `labelTextColor`、条件の文字 = `loopTextColor`
+    - 番号 = `sequenceNumberColor`（円は `signalColor`）
+- **詳細度**: ID のない規則は、`!important` がないと Mermaid の `<style>` に負ける。同じ規則を `!important` なしで当てて確認した。
+
+**方針と実装**（`components/mermaid.css`、パレットの `--ink-mermaid-*`）
+
+- Obsidian には、Mermaid の色を受け取る公式変数がない。そのため `mapping/mermaid.css` は作らず、`components/mermaid.css` で SVG の要素にパレットのトークンを直接当てる（固定の色値はない）。
+- 範囲は `.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2" | "sequence"]` だけ。Reading view と Live Preview は、どちらも `.markdown-rendered` の中にある。
+  - この 2 種だけ、反転フィルタを `filter: none` にする。app.css の規則に `!important` がないので、ここでも `!important` は要らない。
+  - 他の図種・画像・アイコンの SVG には触れない。
+- 色の宣言は 40 件すべて `!important`（上の詳細度の理由による）。許可リストに理由付きで 40 件を載せた。
+- 利用者の色は残す。
+  - `style`・`classDef` は、Mermaid が `!important` 付きのインラインか ID で絞った規則で出すので、テーマの規則に勝つ。
+  - `linkStyle` の線は `:not([style*="stroke:"])` で、その専用の矢じりは `:not([stroke])` で除外した。
+- Mermaid のキャメルケースのクラス（`nodeLabel` など）は、公式 lint の規則に合わせて `[class~="nodeLabel"]` と書いた（詳細度は同じ）。
+- 図の背景（`background`）は、Inkdrop でも `transparent` で、Obsidian の SVG にも背景はない。
+
+**トークン**（パレットに 23 件と派生 1 件を追加。S1 で Inkdrop の宣言と照合）
+
+| 役割 | トークン | SD | KD |
+|---|---|---|---|
+| 文字（図の既定）・見出し・ラベル | `text`・`title`・`primary-text` | 上書き（`neutral-200`） | 継承（`--ink-text-color`） |
+| エッジ・ライフライン・メッセージ | `line`・`actor-line`・`signal` | 上書き（cyan-500） | 上書き（dragonGreen2） |
+| ノード・アクター・活性化 | `node-*`・`actor-*`・`activation-*` | ノードは上書き。アクター・活性化は継承（ノードと同じ） | 同左 |
+| クラスタ | `cluster-*` | 上書き | 上書き |
+| エッジのラベルの背景 | `edge-label-background`（と派生の 50%） | 上書き（`neutral-800` 85%） | 上書き（waveBlue2 70%） |
+| ノート | `note-*` | 上書き（yellow 系） | 上書き（winterYellow ほか） |
+| loop / alt の枠と見出し | `label-box-*`・`label-text` | 上書き（green 系） | 上書き（autumnRed ほか） |
+| 条件の文字・メッセージの文字 | `loop-text`・`signal-text` | 継承（`text`） | 継承（`text`） |
+| 番号 | `sequence-number` | 継承（`edge-label-background`） | 上書き（dragonBlack3） |
+
+- 「継承」は、`inkdropapp/css@add48d9` の `mermaid.css` の既定値をテーマがそのまま使うもの。
+- 「上書き」は、各テーマの `preview.css` が宣言するもの。行番号はパレットの出典コメントにある。
+- 派生の `--ink-derived-mermaid-label-bkg-color` は、Mermaid がエッジのラベルの外側の `labelBkg` に 50% の透明度で掛ける値。S1 は「derived: N% alpha of <token>」の形も照合するようにした。
+
+**検証の仕組み**（実行時テスト、`tests/runtime/mermaid-dump.js`・`lib/mermaid.mjs`・`tests/spec/mermaid.json`）
+
+- **参照描画**: Inkdrop の Mermaid プラグインと同じ描き方で、検証用ノートの各ブロックを描く。
+  - Obsidian と同じ Mermaid で、`base` テーマとテーマのトークンから解決した themeVariables を使う。themeVariables は、Inkdrop の `theme.ts` の対応のうちパレットにある 32 個。
+  - 描いた図は `.mermaid` の外に置くので、テーマの規則は掛からない。
+  - 同じ文を同じ Mermaid で描くので要素の並びが一致し、要素ごとに比べられる。
+- **判定**（ビュー × 図種）:
+  - `.filter`: 反転フィルタが `none`。
+  - `.elements`: 必須の要素の種類が描かれている（Flowchart 10 種、Sequence 14 種）。
+  - `.colours`: 全要素の `fill`・`stroke`・`color`・`background-color` が参照描画と一致し、要素数も同じ。
+  - `.unsupported`: 他の 7 図種が Obsidian の反転フィルタを保つ。**UNSUPPORTED として報告し、PASS にはしない**。フィルタが違えば FAIL。
+  - `.others`: ノートの他の画像・SVG（テスト画像を含む）にフィルタがない。
+  - `mm.source.code`: Source mode で図が描かれず、全ブロックの全行がコードとして出る。
+- **実行する条件**: 全プラットフォーム（デスクトップと、tablet・phone・phone の非フローティングのエミュレーション）× 両テーマ × 外観（デスクトップは不透明 → translucent → 不透明）× Reading view・Live Preview・Source mode。
+  - デスクトップの不透明の 1 回目では、次の 2 つも確かめる。
+  - **再描画**: Reading view をその場で描き直しても、新しい ID で同じ結果になる。
+  - **light**: Obsidian を light に切り替えると、Mermaid の既定の描画と一致し、フィルタもない。
+- 利用者の色の確認のため、検証用ノートに `style`・`classDef`・`linkStyle` 付きの Flowchart を加えた。参照描画にも同じ指定が入るので、色が残っていれば一致する。
+- **陰性テスト**（`mm.self-test`、13 件）:
+  - 陽性対照（Reading view・Live Preview・light）は PASS する。
+  - 次の場合は、それぞれ想定した判定だけが FAIL する。
+    - 反転フィルタを解除しない（`.filter`）
+    - 誤ったトークン（`.colours`）
+    - 仕様の対応の誤り（`.colours`）
+    - 要素の欠落。クラスタを非表示にする（`.elements`）
+    - `!important` 付きのインラインにテーマが負ける（`.colours`）
+    - `linkStyle` をテーマが上書きする（`.colours`）
+    - light への漏れ。`.theme-dark` のない規則（`mm.light.*.colours`）
+    - 全図種のフィルタを解除する（`.unsupported`）
+    - 画像への漏れ（`.others`）
+  - `!important` のないインライン（Mermaid の `linkStyle` と同じ形）にはテーマが勝つ（PASS）。
+- 実装中、参照描画との比較で見つけて直した差:
+  - ルートの `fill`
+  - ラベルの `color`・`fill`
+  - `labelBkg` の透明度
+  - シーケンス図のマーカー（ID の前に図の ID が付く）
+  - すべての `line`
+  - メッセージの線の `fill: none`
+  - エッジのラベルの内側の `p` の背景
+  - `linkStyle` の矢じり
+
+**結果**
+
+| 環境 | self-test | 実行時テスト（全体） | Mermaid の結果 |
+|---|---|---|---|
+| Electron 39.5.1 | 413 件すべて宣言どおり | 3549 件、FAIL 0（PASS (EMULATED) 713、DIFF 606、UNSUPPORTED 30） | `mm.*` 252 件（ほかに light への切り替えの確認 2 件）。Flowchart・Sequence の `.filter`・`.elements`・`.colours`、`.others`、`mm.source.code` はすべて PASS（モバイルは PASS (EMULATED)）。`.unsupported` は 30 件とも UNSUPPORTED |
+| Electron 43.7.7 | 413 件すべて宣言どおり | 3549 件、FAIL 0（PASS (EMULATED) 713、DIFF 606、UNSUPPORTED 30） | 39.5.1 と同じ |
+
+- DIFF 606 件は工程 8 の構文の忠実度（§6.19）で、この工程では増減していない。
+- 39.5.1 の self-test の 1 回目では、`self.popover-open`（ホバーのポップオーバー）が 1 件だけ、要素なしで FAIL した。再実行では PASS した。ホバーの一時的な取りこぼしで、Mermaid とは関係ない。
+
+**ネイティブの撮影**（`evidence/phase3-step9/native-*/`、すべて目視で確認）
+
+- 撮影した内容: 両テーマ × Reading view・Live Preview の Flowchart と Sequence、Source mode、非対応の図種（Class）、translucent の Reading view。
+- 図はトークンの色で描かれ、非対応の図種は Obsidian の反転表示のまま読める。
+- Flowchart の右端がペインで切れる。図の幅（1024 px）が本文の幅（572 px）を超えるためで、テーマを外しても同じになる（Obsidian の挙動）。
+
+**非対応の図種**（`qd12.unsupported`、UNVERIFIED）
+
+- class・state・gantt・pie・ER・git graph・mindmap には色を付けず、Obsidian の反転フィルタのままにした。Inkdrop の色ではない。
+- リスク: Obsidian がフィルタを外すと、light の色が dark の上に出る。その場合は `.unsupported` が FAIL して検出する。
+
+**ユーザーの指示による変更: KD の編集ビューのガターの右線を削除（2026-10-12）**
+
+- 症状: KD の編集ビューで、行番号と本文の間に縦の直線が出る。
+- 原因: 工程 7 で、Inkdrop の KD に合わせて `.cm-gutters` に `border-right: 1px solid dragonBlack4`（`!important`）を当てていた。Obsidian ではガターと本文の間に折り畳み用の 24 px の余白（`--file-folding-offset`）がある。そのため線が本文から離れ、浮いた直線に見えていた（Inkdrop では本文に接する）。
+- 対応: ユーザーの判断で線を描かないことにした。
+  - `editor.css` から規則を削除し、app.css の `border-right: none !important` のままにした。
+  - Inkdrop との差（Q-D23 の Q23-4 の KD 側）は、意図した差として `qd23.gutter-border` に記録した。
+  - 実行時の検査は、両テーマで線がないことを確かめる形（`ed.*.gutter-border-none`）に改めた。
+  - 許可リストの 1 件と KD の派生トークンを削除した。
+  - 撮影で線が消えたことと、Q23-5 が PASS することを確認した（`evidence/phase3-step9/gutter-border-39.5.1/`）。
+
+**検証基盤の修正: バックグラウンドの間引き**
+
+- 画面がロックまたはスリープすると、隔離インスタンスのページが hidden になり、Chromium がタイマーを間引く。300 ms の待ちが 1 秒以上、最大で 1 分かかり、実行が途中で止まった。
+- そのため `obsidian-isolated.sh` の起動に `--disable-background-timer-throttling --disable-renderer-backgrounding --disable-backgrounding-occluded-windows` を加えた。隔離インスタンスだけの設定。
+
+**スクリプトの言語**
+
+| スクリプト | 言語 | 理由 |
+|---|---|---|
+| `tests/runtime/mermaid-dump.js` | ブラウザの JS | ページ内で SVG を読み、Mermaid で参照描画するため |
+| `tests/runtime/lib/mermaid.mjs`、`run.mjs`・`tests/static/run.mjs`（修正） | Node | ランナー・静的テストと同じ言語 |
+| `evidence/phase3-step9/v10/*.mjs` | Node | CDP で隔離インスタンスを操作する既存のツールに合わせた |
+| `obsidian-isolated.sh`（修正） | bash | 既存のスクリプトの修正 |
+| 作業用の通しの実行（リポジトリには入れていない） | fish | macOS ローカルの操作補助 |
+
+**未検証事項とリスク**
+
+- Mermaid の SVG の構造・クラス名・ID の付け方が変わるリスク（07 R04）。変われば検査が FAIL するので、Obsidian の更新ごとに直す。
+- Inkdrop の実機での Mermaid の描画とは比べていない。参照描画は、Inkdrop と同じ描き方を Obsidian の Mermaid 11.13.0 で再現したもの（Inkdrop は 11.17.2）。比べるには、V-39 と同じく Inkdrop の操作に承認が要る。
+- Inkdrop の themeVariables 129 個のうち、2 図種で使わない 97 個はパレットに入れていない（Q-D12 の範囲外）。
+- モバイルはエミュレーションだけで確かめた（実機は工程 10）。
+- RV5 からの引き継ぎ（V-39 ほか）は残っている。
+
+### 6.22 次の作業
+
+工程 9 のレビューを待つ。工程 10 には進まない。

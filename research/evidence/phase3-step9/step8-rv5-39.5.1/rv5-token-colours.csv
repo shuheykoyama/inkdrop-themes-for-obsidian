@@ -1,0 +1,15 @@
+theme,block,class,text,computed,expected,measured,dE2000_measured_vs_expected,dE2000_measured_vs_computed
+solarized-dark,python,builtin,str,"rgb(39, 139, 211)","rgb(39, 139, 211)","rgb(42, 139, 208)",0.47,0.47
+solarized-dark,python,builtin,len,"rgb(39, 139, 211)","rgb(39, 139, 211)","rgb(42, 140, 209)",0.52,0.52
+solarized-dark,python,decorator,@decorator,"rgb(220, 49, 46)","rgb(220, 49, 46)","rgb(218, 49, 46)",0.49,0.49
+solarized-dark,sh,builtin,export,"rgb(100, 122, 130)","rgb(100, 122, 130)","rgb(100, 122, 130)",0.0,0.0
+solarized-dark,sh,builtin,echo,"rgb(100, 122, 130)","rgb(100, 122, 130)","rgb(100, 122, 130)",0.0,0.0
+solarized-dark,rust,function,new,"rgb(42, 162, 152)","rgb(42, 162, 152)","rgb(47, 162, 153)",0.49,0.49
+solarized-dark,rust,function,insert,"rgb(42, 162, 152)","rgb(42, 162, 152)","rgb(47, 162, 153)",0.53,0.53
+kanagawa-dragon,python,builtin,str,"rgb(140, 165, 177)","rgb(140, 165, 177)","rgb(139, 164, 175)",0.53,0.53
+kanagawa-dragon,python,builtin,len,"rgb(140, 165, 177)","rgb(140, 165, 177)","rgb(140, 165, 176)",0.47,0.47
+kanagawa-dragon,python,decorator,@decorator,"rgb(196, 116, 110)","rgb(196, 116, 110)","rgb(195, 116, 111)",0.45,0.45
+kanagawa-dragon,sh,builtin,export,"rgb(197, 201, 197)","rgb(197, 201, 197)","rgb(197, 201, 197)",0.0,0.0
+kanagawa-dragon,sh,builtin,echo,"rgb(197, 201, 197)","rgb(197, 201, 197)","rgb(197, 201, 197)",0.0,0.0
+kanagawa-dragon,rust,function,new,"rgb(140, 165, 177)","rgb(140, 165, 177)","rgb(140, 165, 176)",0.47,0.47
+kanagawa-dragon,rust,function,insert,"rgb(140, 165, 177)","rgb(140, 165, 177)","rgb(140, 165, 176)",0.49,0.49

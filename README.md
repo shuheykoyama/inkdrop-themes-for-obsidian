@@ -1,7 +1,7 @@
 # inkdrop-themes-for-obsidian
 Faithful ports of Inkdrop's Solarized Dark and Kanagawa Dragon themes for Obsidian.
 
-**Status: in development (Phase 3, step 8: workspace backgrounds, UI details, Markdown in the editing and reading views, editor chrome with the active line and line numbers, and syntax colours of code blocks; no Mermaid yet).** There is no usable theme yet,
+**Status: in development (Phase 3, step 9: workspace backgrounds, UI details, Markdown in the editing and reading views, editor chrome with the active line and line numbers, and syntax colours of code blocks, and Mermaid Flowchart and Sequence diagrams).** There is no usable theme yet,
 and the theme names and licence/attribution text are not decided. The research and the implementation plan
 are in [`research/`](research/README.md) (plan: [`research/14-implementation-plan.md`](research/14-implementation-plan.md)).
 
@@ -54,6 +54,11 @@ report per language and the class groups (EXACT / CONFLICT / MISMATCH / DOMINATE
 `nu tests/visual/syntax-candidates.nu <correspondence.csv> <page-sd.json> <page-kd.json> <out.csv>`. Inkdrop's ranges
 are regenerated from an extracted Inkdrop 6.1.5 app.asar with `tests/visual/inkdrop-tokens.mjs`, and Obsidian's
 token structure is dumped with `tests/visual/obsidian-tokens.mjs` (research/evidence/phase3-step8/README.md).
+Mermaid (Q-D12): the runtime run also renders every diagram of `tests/fixtures/vault/Mermaid.md` a second time
+the way Inkdrop does (Mermaid's base theme, themeVariables from the theme's `--ink-mermaid-*` tokens, as listed in
+`tests/spec/mermaid.json`) and compares every element's colours with Obsidian's themed SVG; kinds other than
+Flowchart and Sequence are reported as UNSUPPORTED. The isolated test vault is marked as trusted for Mermaid
+(Obsidian 1.14 asks once per vault) by the runner itself (research/evidence/phase3-step9/README.md).
 
 | Path | Contents |
 |---|---|

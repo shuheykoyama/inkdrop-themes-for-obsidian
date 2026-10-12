@@ -1,0 +1,1064 @@
+{
+ "sentinel": {
+  "background": "#102030",
+  "textColor": "#112131",
+  "titleColor": "#122232",
+  "lineColor": "#132333",
+  "arrowheadColor": "#142434",
+  "defaultLinkColor": "#152535",
+  "vertLineColor": "#162636",
+  "mainBkg": "#172737",
+  "nodeBkg": "#182838",
+  "secondBkg": "#192939",
+  "nodeBorder": "#1a2a3a",
+  "border1": "#1b2b3b",
+  "nodeTextColor": "#1c2c3c",
+  "labelColor": "#1d2d3d",
+  "labelBackgroundColor": "#1e2e3e",
+  "border2": "#1f2f3f",
+  "clusterBkg": "#203040",
+  "clusterBorder": "#213141",
+  "edgeLabelBackground": "#223242",
+  "rectBkgColor": "#233343",
+  "rowOdd": "#243444",
+  "rowEven": "#253545",
+  "attributeBackgroundColorOdd": "#263646",
+  "attributeBackgroundColorEven": "#273747",
+  "relationColor": "#283848",
+  "relationLabelColor": "#293949",
+  "relationLabelBackground": "#2a3a4a",
+  "actorBkg": "#2b3b4b",
+  "actorBorder": "#2c3c4c",
+  "actorTextColor": "#2d3d4d",
+  "actorLineColor": "#2e3e4e",
+  "signalColor": "#2f3f4f",
+  "signalTextColor": "#304050",
+  "labelBoxBkgColor": "#314151",
+  "labelBoxBorderColor": "#324252",
+  "labelTextColor": "#334353",
+  "loopTextColor": "#344454",
+  "activationBkgColor": "#354555",
+  "activationBorderColor": "#364656",
+  "sequenceNumberColor": "#374757",
+  "noteBkgColor": "#384858",
+  "noteBorderColor": "#394959",
+  "noteTextColor": "#3a4a5a",
+  "classText": "#3b4b5b",
+  "stateBkg": "#3c4c5c",
+  "stateBorder": "#3d4d5d",
+  "stateLabelColor": "#3e4e5e",
+  "transitionColor": "#3f4f5f",
+  "transitionLabelColor": "#405060",
+  "specialStateColor": "#415161",
+  "compositeBackground": "#425262",
+  "compositeTitleBackground": "#435363",
+  "compositeBorder": "#445464",
+  "altBackground": "#455565",
+  "innerEndBackground": "#465666",
+  "errorBkgColor": "#475767",
+  "errorTextColor": "#485868",
+  "personBkg": "#495969",
+  "personBorder": "#4a5a6a",
+  "archEdgeColor": "#4b5b6b",
+  "archEdgeArrowColor": "#4c5c6c",
+  "archGroupBorderColor": "#4d5d6d",
+  "requirementBackground": "#4e5e6e",
+  "requirementBorderColor": "#4f5f6f",
+  "requirementTextColor": "#506070",
+  "sectionBkgColor": "#516171",
+  "sectionBkgColor2": "#526272",
+  "altSectionBkgColor": "#536373",
+  "excludeBkgColor": "#546474",
+  "taskBkgColor": "#556575",
+  "taskBorderColor": "#566676",
+  "taskTextColor": "#576777",
+  "taskTextLightColor": "#586878",
+  "taskTextDarkColor": "#596979",
+  "taskTextOutsideColor": "#5a6a7a",
+  "taskTextClickableColor": "#5b6b7b",
+  "activeTaskBkgColor": "#5c6c7c",
+  "activeTaskBorderColor": "#5d6d7d",
+  "doneTaskBkgColor": "#5e6e7e",
+  "doneTaskBorderColor": "#5f6f7f",
+  "critBkgColor": "#607080",
+  "critBorderColor": "#617181",
+  "gridColor": "#627282",
+  "todayLineColor": "#637383",
+  "pieTitleTextColor": "#647484",
+  "pieSectionTextColor": "#657585",
+  "pieLegendTextColor": "#667686",
+  "pieStrokeColor": "#677787",
+  "pieOuterStrokeColor": "#687888",
+  "quadrant1Fill": "#697989",
+  "quadrant2Fill": "#6a7a8a",
+  "quadrant3Fill": "#6b7b8b",
+  "quadrant4Fill": "#6c7c8c",
+  "quadrant1TextFill": "#6d7d8d",
+  "quadrant2TextFill": "#6e7e8e",
+  "quadrant3TextFill": "#6f7f8f",
+  "quadrant4TextFill": "#708090",
+  "quadrantPointFill": "#718191",
+  "quadrantPointTextFill": "#728292",
+  "quadrantXAxisTextFill": "#738393",
+  "quadrantYAxisTextFill": "#748494",
+  "quadrantTitleFill": "#758595",
+  "quadrantInternalBorderStrokeFill": "#768696",
+  "quadrantExternalBorderStrokeFill": "#778797",
+  "vennTitleTextColor": "#788898",
+  "vennSetTextColor": "#798999",
+  "commitLabelColor": "#7a8a9a",
+  "commitLabelBackground": "#7b8b9b",
+  "tagLabelColor": "#7c8c9c",
+  "tagLabelBackground": "#7d8d9d",
+  "tagLabelBorder": "#7e8e9e",
+  "emUiFill": "#7f8f9f",
+  "emUiStroke": "#8090a0",
+  "emProcessorFill": "#8191a1",
+  "emProcessorStroke": "#8292a2",
+  "emReadModelFill": "#8393a3",
+  "emReadModelStroke": "#8494a4",
+  "emCommandFill": "#8595a5",
+  "emCommandStroke": "#8696a6",
+  "emEventFill": "#8797a7",
+  "emEventStroke": "#8898a8",
+  "emSwimlaneBackgroundOdd": "#8999a9",
+  "emSwimlaneBackgroundStroke": "#8a9aaa",
+  "emArrowhead": "#8b9bab",
+  "emRelationStroke": "#8c9cac",
+  "primaryColor": "#8d9dad",
+  "secondaryColor": "#8e9eae",
+  "tertiaryColor": "#8f9faf",
+  "primaryTextColor": "#90a0b0"
+ },
+ "res": [
+  {
+   "code": "flowchart LR",
+   "style": "#v10sentinel0{font-family:var(--font-mermaid);font-size:16px;fill:#112131;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#v10sentinel0 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#v10sentinel0 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#v10sentinel0 .error-icon{fill:#475767;}#v10sentinel0 .error-text{fill:#485868;stroke:#485868;}#v10sentinel0 .edge-thickness-normal{stroke-width:1px;}#v10sentinel0 .edge-thickness-thick{stroke-width:3.5px;}#v10sentinel0 .edge-pattern-solid{stroke-dasharray:0;}#v10sentinel0 .edge-thickness-invisible{stroke-width:0;fill:none;}#v10sentinel0 .edge-pattern-dashed{stroke-dasharray:3;}#v10sentinel0 .edge-pattern-dotted{stroke-dasharray:2;}#v10sentinel0 .marker{fill:#132333;stroke:#132333;}#v10sentinel0 .marker.cross{stroke:#132333;}#v10sentinel0 svg{font-family:var(--font-mermaid);font-size:16px;}#v10sentinel0 p{margin:0;}#v10sentinel0 .label{font-family:var(--font-mermaid);color:#90a0b0;}#v10sentinel0 .cluster-label text{fill:#122232;}#v10sentinel0 .cluster-label span{color:#122232;}#v10sentinel0 .cluster-label span p{background-color:transparent;}#v10sentinel0 .label text,#v10sentinel0 span{fill:#90a0b0;color:#90a0b0;}#v10sentinel0 .node rect,#v10sentinel0 .node circle,#v10sentinel0 .node ellipse,#v10sentinel0 .node polygon,#v10sentinel0 .node path{fill:#172737;stroke:#1a2a3a;stroke-width:1px;}#v10sentinel0 .rough-node .label text,#v10sentinel0 .node .label text,#v10sentinel0 .image-shape .label,#v10sentinel0 .icon-shape .label{text-anchor:middle;}#v10sentinel0 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#v10sentinel0 .rough-node .label,#v10sentinel0 .node .label,#v10sentinel0 .image-shape .label,#v10sentinel0 .icon-shape .label{text-align:center;}#v10sentinel0 .node.clickable{cursor:pointer;}#v10sentinel0 .root .anchor path{fill:#132333!important;stroke-width:0;stroke:#132333;}#v10sentinel0 .arrowheadPath{fill:#142434;}#v10sentinel0 .edgePath .path{stroke:#132333;stroke-width:2.0px;}#v10sentinel0 .flowchart-link{stroke:#132333;fill:none;}#v10sentinel0 .edgeLabel{background-color:#223242;text-align:center;}#v10sentinel0 .edgeLabel p{background-color:#223242;}#v10sentinel0 .edgeLabel rect{opacity:0.5;background-color:#223242;fill:#223242;}#v10sentinel0 .labelBkg{background-color:rgba(34, 50, 66, 0.5);}#v10sentinel0 .cluster rect{fill:#203040;stroke:#213141;stroke-width:1px;}#v10sentinel0 .cluster text{fill:#122232;}#v10sentinel0 .cluster span{color:#122232;}#v10sentinel0 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:var(--font-mermaid);font-size:12px;background:#8f9faf;border:1px solid #1f2f3f;border-radius:2px;pointer-events:none;z-index:100;}#v10sentinel0 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#112131;}#v10sentinel0 rect.text{fill:none;stroke-width:0;}#v10sentinel0 .icon-shape,#v10sentinel0 .image-shape{background-color:#223242;text-align:center;}#v10sentinel0 .icon-shape p,#v10sentinel0 .image-shape p{background-color:#223242;padding:2px;}#v10sentinel0 .icon-shape .label rect,#v10sentinel0 .image-shape .label rect{opacity:0.5;background-color:#223242;fill:#223242;}#v10sentinel0 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#v10sentinel0 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#v10sentinel0 :root{--mermaid-font-family:\"trebuchet ms\",verdana,arial,sans-serif;}",
+   "kinds": {
+    "style.": {
+     "n": 1,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "g.": {
+     "n": 1,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "marker.marker.flowchart-v2": {
+     "n": 4,
+     "fill": [
+      "rgb(19, 35, 51)"
+     ],
+     "stroke": [
+      "rgb(19, 35, 51)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "path.arrowMarkerPath": {
+     "n": 4,
+     "fill": [
+      "rgb(19, 35, 51)"
+     ],
+     "stroke": [
+      "rgb(19, 35, 51)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "circle.arrowMarkerPath": {
+     "n": 2,
+     "fill": [
+      "rgb(19, 35, 51)"
+     ],
+     "stroke": [
+      "rgb(19, 35, 51)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "marker.marker.cross.flowchart-v2": {
+     "n": 2,
+     "fill": [
+      "rgb(19, 35, 51)"
+     ],
+     "stroke": [
+      "rgb(19, 35, 51)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "g.root": {
+     "n": 1,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "g.clusters": {
+     "n": 1,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "g.cluster": {
+     "n": 1,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "rect.": {
+     "n": 10,
+     "fill": [
+      "rgb(32, 48, 64)",
+      "rgb(23, 39, 55)"
+     ],
+     "stroke": [
+      "rgb(33, 49, 65)",
+      "rgb(26, 42, 58)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)",
+      "rgb(144, 160, 176)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "g.cluster-label": {
+     "n": 1,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "foreignobject.": {
+     "n": 18,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)",
+      "rgb(144, 160, 176)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "div.": {
+     "n": 10,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)",
+      "rgb(144, 160, 176)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "span.nodeLabel": {
+     "n": 10,
+     "fill": [
+      "rgb(144, 160, 176)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(18, 34, 50)",
+      "rgb(144, 160, 176)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "p.": {
+     "n": 12,
+     "fill": [
+      "rgb(144, 160, 176)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(18, 34, 50)",
+      "rgb(144, 160, 176)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)",
+      "rgb(34, 50, 66)"
+     ]
+    },
+    "g.edgePaths": {
+     "n": 1,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "path.edge-thickness-normal.edge-pattern-solid.flowchart-link": {
+     "n": 6,
+     "fill": [
+      "none"
+     ],
+     "stroke": [
+      "rgb(19, 35, 51)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "path.edge-thickness-normal.edge-pattern-dotted.edge-pattern-solid.flowchart-link": {
+     "n": 1,
+     "fill": [
+      "none"
+     ],
+     "stroke": [
+      "rgb(19, 35, 51)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "path.edge-thickness-thick.edge-pattern-solid.edge-thickness-normal.flowchart-link": {
+     "n": 1,
+     "fill": [
+      "none"
+     ],
+     "stroke": [
+      "rgb(19, 35, 51)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "g.edgeLabels": {
+     "n": 1,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "g.edgeLabel": {
+     "n": 8,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgb(34, 50, 66)"
+     ]
+    },
+    "g.label": {
+     "n": 17,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(144, 160, 176)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "div.labelBkg": {
+     "n": 8,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(144, 160, 176)"
+     ],
+     "bg": [
+      "rgba(34, 50, 66, 0.5)"
+     ]
+    },
+    "span.edgeLabel": {
+     "n": 8,
+     "fill": [
+      "rgb(144, 160, 176)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(144, 160, 176)"
+     ],
+     "bg": [
+      "rgb(34, 50, 66)"
+     ]
+    },
+    "g.nodes": {
+     "n": 1,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "g.node.default": {
+     "n": 9,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "rect.basic.label-container": {
+     "n": 2,
+     "fill": [
+      "rgb(23, 39, 55)"
+     ],
+     "stroke": [
+      "rgb(26, 42, 58)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "polygon.label-container": {
+     "n": 3,
+     "fill": [
+      "rgb(23, 39, 55)"
+     ],
+     "stroke": [
+      "rgb(26, 42, 58)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "g.basic.label-container.outer-path": {
+     "n": 1,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "path.": {
+     "n": 4,
+     "fill": [
+      "rgb(23, 39, 55)"
+     ],
+     "stroke": [
+      "rgb(26, 42, 58)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "path.basic.label-container": {
+     "n": 1,
+     "fill": [
+      "rgb(23, 39, 55)"
+     ],
+     "stroke": [
+      "rgb(26, 42, 58)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "circle.basic.label-container": {
+     "n": 1,
+     "fill": [
+      "rgb(23, 39, 55)"
+     ],
+     "stroke": [
+      "rgb(26, 42, 58)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "g.basic.label-container": {
+     "n": 1,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    }
+   }
+  },
+  {
+   "code": "sequenceDiagram",
+   "style": "#v10sentinel1{font-family:var(--font-mermaid);font-size:16px;fill:#112131;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#v10sentinel1 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#v10sentinel1 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#v10sentinel1 .error-icon{fill:#475767;}#v10sentinel1 .error-text{fill:#485868;stroke:#485868;}#v10sentinel1 .edge-thickness-normal{stroke-width:1px;}#v10sentinel1 .edge-thickness-thick{stroke-width:3.5px;}#v10sentinel1 .edge-pattern-solid{stroke-dasharray:0;}#v10sentinel1 .edge-thickness-invisible{stroke-width:0;fill:none;}#v10sentinel1 .edge-pattern-dashed{stroke-dasharray:3;}#v10sentinel1 .edge-pattern-dotted{stroke-dasharray:2;}#v10sentinel1 .marker{fill:#132333;stroke:#132333;}#v10sentinel1 .marker.cross{stroke:#132333;}#v10sentinel1 svg{font-family:var(--font-mermaid);font-size:16px;}#v10sentinel1 p{margin:0;}#v10sentinel1 .actor{stroke:#2c3c4c;fill:#2b3b4b;}#v10sentinel1 text.actor>tspan{fill:#2d3d4d;stroke:none;}#v10sentinel1 .actor-line{stroke:#2e3e4e;}#v10sentinel1 .innerArc{stroke-width:1.5;stroke-dasharray:none;}#v10sentinel1 .messageLine0{stroke-width:1.5;stroke-dasharray:none;stroke:#2f3f4f;}#v10sentinel1 .messageLine1{stroke-width:1.5;stroke-dasharray:2,2;stroke:#2f3f4f;}#v10sentinel1 #arrowhead path{fill:#2f3f4f;stroke:#2f3f4f;}#v10sentinel1 .sequenceNumber{fill:#374757;}#v10sentinel1 #sequencenumber{fill:#2f3f4f;}#v10sentinel1 #crosshead path{fill:#2f3f4f;stroke:#2f3f4f;}#v10sentinel1 .messageText{fill:#304050;stroke:none;}#v10sentinel1 .labelBox{stroke:#324252;fill:#314151;}#v10sentinel1 .labelText,#v10sentinel1 .labelText>tspan{fill:#334353;stroke:none;}#v10sentinel1 .loopText,#v10sentinel1 .loopText>tspan{fill:#344454;stroke:none;}#v10sentinel1 .loopLine{stroke-width:2px;stroke-dasharray:2,2;stroke:#324252;fill:#324252;}#v10sentinel1 .note{stroke:#394959;fill:#384858;}#v10sentinel1 .noteText,#v10sentinel1 .noteText>tspan{fill:#3a4a5a;stroke:none;}#v10sentinel1 .activation0{fill:#354555;stroke:#364656;}#v10sentinel1 .activation1{fill:#354555;stroke:#364656;}#v10sentinel1 .activation2{fill:#354555;stroke:#364656;}#v10sentinel1 .actorPopupMenu{position:absolute;}#v10sentinel1 .actorPopupMenuPanel{position:absolute;fill:#2b3b4b;box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);filter:drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));}#v10sentinel1 .actor-man line{stroke:#2c3c4c;fill:#2b3b4b;}#v10sentinel1 .actor-man circle,#v10sentinel1 line{stroke:#2c3c4c;fill:#2b3b4b;stroke-width:2px;}#v10sentinel1 :root{--mermaid-font-family:\"trebuchet ms\",verdana,arial,sans-serif;}",
+   "kinds": {
+    "g.": {
+     "n": 10,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "rect.actor.actor-bottom": {
+     "n": 1,
+     "fill": [
+      "rgb(43, 59, 75)"
+     ],
+     "stroke": [
+      "rgb(44, 60, 76)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "text.actor.actor-box": {
+     "n": 2,
+     "fill": [
+      "rgb(43, 59, 75)"
+     ],
+     "stroke": [
+      "rgb(44, 60, 76)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "tspan.": {
+     "n": 7,
+     "fill": [
+      "rgb(45, 61, 77)",
+      "rgb(58, 74, 90)",
+      "rgb(52, 68, 84)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "line.actor-line": {
+     "n": 2,
+     "fill": [
+      "rgb(43, 59, 75)"
+     ],
+     "stroke": [
+      "rgb(46, 62, 78)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "rect.actor.actor-top": {
+     "n": 1,
+     "fill": [
+      "rgb(43, 59, 75)"
+     ],
+     "stroke": [
+      "rgb(44, 60, 76)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "style.": {
+     "n": 1,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "defs.": {
+     "n": 11,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "symbol.": {
+     "n": 3,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "path.": {
+     "n": 10,
+     "fill": [
+      "rgb(17, 33, 49)",
+      "rgb(47, 63, 79)",
+      "none"
+     ],
+     "stroke": [
+      "none",
+      "rgb(47, 63, 79)",
+      "rgb(0, 0, 0)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "marker.": {
+     "n": 8,
+     "fill": [
+      "rgb(17, 33, 49)",
+      "rgb(47, 63, 79)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "circle.": {
+     "n": 3,
+     "fill": [
+      "rgb(47, 63, 79)",
+      "rgb(43, 59, 75)"
+     ],
+     "stroke": [
+      "none",
+      "rgb(44, 60, 76)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "rect.activation0": {
+     "n": 1,
+     "fill": [
+      "rgb(53, 69, 85)"
+     ],
+     "stroke": [
+      "rgb(54, 70, 86)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "rect.note": {
+     "n": 1,
+     "fill": [
+      "rgb(56, 72, 88)"
+     ],
+     "stroke": [
+      "rgb(57, 73, 89)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "text.noteText": {
+     "n": 1,
+     "fill": [
+      "rgb(58, 74, 90)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "line.loopLine": {
+     "n": 9,
+     "fill": [
+      "rgb(50, 66, 82)"
+     ],
+     "stroke": [
+      "rgb(50, 66, 82)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "polygon.labelBox": {
+     "n": 2,
+     "fill": [
+      "rgb(49, 65, 81)"
+     ],
+     "stroke": [
+      "rgb(50, 66, 82)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "text.labelText": {
+     "n": 2,
+     "fill": [
+      "rgb(51, 67, 83)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "text.loopText": {
+     "n": 3,
+     "fill": [
+      "rgb(52, 68, 84)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "g.actor-man.actor-top": {
+     "n": 1,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "line.": {
+     "n": 14,
+     "fill": [
+      "rgb(43, 59, 75)"
+     ],
+     "stroke": [
+      "rgb(44, 60, 76)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "text.actor.actor-man": {
+     "n": 2,
+     "fill": [
+      "rgb(43, 59, 75)"
+     ],
+     "stroke": [
+      "rgb(44, 60, 76)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "text.messageText": {
+     "n": 6,
+     "fill": [
+      "rgb(48, 64, 80)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "line.messageLine0": {
+     "n": 5,
+     "fill": [
+      "none"
+     ],
+     "stroke": [
+      "rgb(47, 63, 79)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "text.sequenceNumber": {
+     "n": 6,
+     "fill": [
+      "rgb(55, 71, 87)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "line.messageLine1": {
+     "n": 1,
+     "fill": [
+      "none"
+     ],
+     "stroke": [
+      "rgb(47, 63, 79)"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    },
+    "g.actor-man.actor-bottom": {
+     "n": 1,
+     "fill": [
+      "rgb(17, 33, 49)"
+     ],
+     "stroke": [
+      "none"
+     ],
+     "color": [
+      "rgb(131, 148, 149)"
+     ],
+     "bg": [
+      "rgba(0, 0, 0, 0)"
+     ]
+    }
+   }
+  }
+ ]
+}
