@@ -343,6 +343,15 @@
   color: var(--ink-syntax-variable-name-definition-color);
 }
 
+/* Python built-ins (len, str) are mostly called; the decorator span holds @ (meta) and the name. */
+.theme-dark .markdown-rendered :is(code.language-python, code.language-py) .token.builtin {
+  color: var(--ink-syntax-variable-name-function-color);
+}
+
+.theme-dark .markdown-rendered :is(code.language-python, code.language-py) .token.decorator {
+  color: var(--ink-syntax-meta-color);
+}
+
 .theme-dark .markdown-rendered :is(code.language-ts, code.language-typescript) .token.class-name {
   color: var(--ink-syntax-name-definition-color);
 }
@@ -361,6 +370,11 @@
 
 .theme-dark .markdown-rendered code.language-rust .token.number {
   color: var(--ink-syntax-integer-color);
+}
+
+/* Rust calls: method calls (insert) and path calls (HashMap::new) share .token.function. */
+.theme-dark .markdown-rendered code.language-rust .token.function {
+  color: var(--ink-syntax-property-name-function-color);
 }
 
 .theme-dark .markdown-rendered code.language-rust .token.function-definition {
@@ -390,7 +404,7 @@
 }
 
 /* Shell: commands are standard names, $variables and assignments are definitions, options are attributes. */
-.theme-dark .markdown-rendered :is(code.language-sh, code.language-bash, code.language-shell) .token.function {
+.theme-dark .markdown-rendered :is(code.language-sh, code.language-bash, code.language-shell) :is(.token.function, .token.builtin) {
   color: var(--ink-syntax-variable-name-standard-color);
 }
 
