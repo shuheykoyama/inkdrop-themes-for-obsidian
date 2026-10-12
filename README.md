@@ -49,7 +49,9 @@ then `python3 -I tests/visual/sample-regions.py --config tests/visual/configs/st
 `nu tests/visual/q23-check.nu <out_dir> <measurement.json> ...` (Nushell; research/evidence/phase3-step7/README.md).
 Syntax colours (Q-D13): the runtime run also judges the code blocks of `tests/fixtures/vault/Code blocks.md`
 against `tests/spec/syntax.json` and Inkdrop's own token ranges (`tests/fixtures/inkdrop-tokens.json`); the
-report per language: `nu tests/visual/syntax-report.nu <runtime-electron-*.json> <out_dir>`. Inkdrop's ranges
+report per language and the class groups (EXACT / CONFLICT / MISMATCH / DOMINATED):
+`nu tests/visual/syntax-report.nu <runtime-electron-*.json> <out_dir>`; colour candidates for the shared classes:
+`nu tests/visual/syntax-candidates.nu <correspondence.csv> <page-sd.json> <page-kd.json> <out.csv>`. Inkdrop's ranges
 are regenerated from an extracted Inkdrop 6.1.5 app.asar with `tests/visual/inkdrop-tokens.mjs`, and Obsidian's
 token structure is dumped with `tests/visual/obsidian-tokens.mjs` (research/evidence/phase3-step8/README.md).
 

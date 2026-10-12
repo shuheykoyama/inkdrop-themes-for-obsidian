@@ -1,5 +1,5 @@
 {
- "measuredAt": "2026-10-12T09:25:23.423Z",
+ "measuredAt": "2026-10-12T13:39:38.611Z",
  "environment": {
   "appVersion": "1.14.4",
   "electron": "43.7.7"
@@ -13,7 +13,7 @@
    "appearance": "opaque",
    "state": "default",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -23,7 +23,7 @@
    "appearance": "opaque",
    "state": "default",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-focused is-floating-nav",
    "selfTest": "PASS"
   },
   {
@@ -482,7 +482,7 @@
    "appearance": "opaque",
    "state": "user-font",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -492,7 +492,7 @@
    "appearance": "opaque",
    "state": "user-font",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -532,7 +532,7 @@
    "appearance": "opaque",
    "state": "file-explorer-focused",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -542,7 +542,7 @@
    "appearance": "opaque",
    "state": "file-explorer-focused",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -582,7 +582,7 @@
    "appearance": "opaque",
    "state": "menu-open",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -592,7 +592,7 @@
    "appearance": "opaque",
    "state": "menu-open",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -642,7 +642,7 @@
    "appearance": "opaque",
    "state": "popover-open",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -652,7 +652,7 @@
    "appearance": "opaque",
    "state": "popover-open",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -702,7 +702,7 @@
    "appearance": "opaque",
    "state": "md-source",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -712,7 +712,7 @@
    "appearance": "opaque",
    "state": "md-source",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -829,7 +829,7 @@
    "appearance": "opaque",
    "state": "md-live",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -839,7 +839,7 @@
    "appearance": "opaque",
    "state": "md-live",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -879,7 +879,7 @@
    "appearance": "opaque",
    "state": "md-reading",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -889,7 +889,7 @@
    "appearance": "opaque",
    "state": "md-reading",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -969,7 +969,7 @@
    "appearance": "opaque",
    "state": "md-user-fonts",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -979,7 +979,7 @@
    "appearance": "opaque",
    "state": "md-user-fonts",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -1019,7 +1019,7 @@
    "appearance": "opaque",
    "state": "ed-source",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -1029,7 +1029,7 @@
    "appearance": "opaque",
    "state": "ed-source",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -1136,7 +1136,7 @@
    "appearance": "opaque",
    "state": "ed-source-no-lines",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -1146,7 +1146,7 @@
    "appearance": "opaque",
    "state": "ed-source-no-lines",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -1193,7 +1193,7 @@
    "appearance": "opaque",
    "state": "ed-search",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -1203,7 +1203,7 @@
    "appearance": "opaque",
    "state": "ed-search",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -1253,7 +1253,7 @@
    "appearance": "translucent",
    "state": "default",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -1263,7 +1263,7 @@
    "appearance": "translucent",
    "state": "default",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav is-translucent",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused is-translucent",
    "selfTest": "PASS"
   },
   {
@@ -1343,7 +1343,7 @@
    "appearance": "translucent",
    "state": "fullscreen-class",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -1353,7 +1353,7 @@
    "appearance": "translucent",
    "state": "fullscreen-class",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav is-translucent is-fullscreen",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused is-translucent is-fullscreen",
    "selfTest": "PASS"
   },
   {
@@ -1393,7 +1393,7 @@
    "appearance": "opaque (after translucent)",
    "state": "default",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -1403,7 +1403,7 @@
    "appearance": "opaque (after translucent)",
    "state": "default",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -1862,7 +1862,7 @@
    "appearance": "opaque (after translucent)",
    "state": "user-font",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -1872,7 +1872,7 @@
    "appearance": "opaque (after translucent)",
    "state": "user-font",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -1912,7 +1912,7 @@
    "appearance": "opaque (after translucent)",
    "state": "file-explorer-focused",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -1922,7 +1922,7 @@
    "appearance": "opaque (after translucent)",
    "state": "file-explorer-focused",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -1962,7 +1962,7 @@
    "appearance": "opaque (after translucent)",
    "state": "menu-open",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -1972,7 +1972,7 @@
    "appearance": "opaque (after translucent)",
    "state": "menu-open",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -2022,7 +2022,7 @@
    "appearance": "opaque (after translucent)",
    "state": "popover-open",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -2032,7 +2032,7 @@
    "appearance": "opaque (after translucent)",
    "state": "popover-open",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -2082,7 +2082,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-source",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -2092,7 +2092,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-source",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -2209,7 +2209,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-live",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -2219,7 +2219,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-live",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -2259,7 +2259,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-reading",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -2269,7 +2269,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-reading",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -2349,7 +2349,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-user-fonts",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -2359,7 +2359,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-user-fonts",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -2399,7 +2399,7 @@
    "appearance": "opaque (after translucent)",
    "state": "ed-source",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -2409,7 +2409,7 @@
    "appearance": "opaque (after translucent)",
    "state": "ed-source",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -2516,7 +2516,7 @@
    "appearance": "opaque (after translucent)",
    "state": "ed-source-no-lines",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -2526,7 +2526,7 @@
    "appearance": "opaque (after translucent)",
    "state": "ed-source-no-lines",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -2573,7 +2573,7 @@
    "appearance": "opaque (after translucent)",
    "state": "ed-search",
    "status": "PASS",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -2583,7 +2583,7 @@
    "appearance": "opaque (after translucent)",
    "state": "ed-search",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -2633,7 +2633,7 @@
    "appearance": "opaque",
    "state": "default",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -2643,7 +2643,7 @@
    "appearance": "opaque",
    "state": "default",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -3102,7 +3102,7 @@
    "appearance": "opaque",
    "state": "user-font",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -3112,7 +3112,7 @@
    "appearance": "opaque",
    "state": "user-font",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -3152,7 +3152,7 @@
    "appearance": "opaque",
    "state": "file-explorer-focused",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -3162,7 +3162,7 @@
    "appearance": "opaque",
    "state": "file-explorer-focused",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -3202,7 +3202,7 @@
    "appearance": "opaque",
    "state": "menu-open",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -3212,7 +3212,7 @@
    "appearance": "opaque",
    "state": "menu-open",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -3262,7 +3262,7 @@
    "appearance": "opaque",
    "state": "popover-open",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -3272,7 +3272,7 @@
    "appearance": "opaque",
    "state": "popover-open",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -3322,7 +3322,7 @@
    "appearance": "opaque",
    "state": "md-source",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -3332,7 +3332,7 @@
    "appearance": "opaque",
    "state": "md-source",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -3449,7 +3449,7 @@
    "appearance": "opaque",
    "state": "md-live",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -3459,7 +3459,7 @@
    "appearance": "opaque",
    "state": "md-live",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -3499,7 +3499,7 @@
    "appearance": "opaque",
    "state": "md-reading",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -3509,7 +3509,7 @@
    "appearance": "opaque",
    "state": "md-reading",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -3589,7 +3589,7 @@
    "appearance": "opaque",
    "state": "md-user-fonts",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -3599,7 +3599,7 @@
    "appearance": "opaque",
    "state": "md-user-fonts",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -3639,7 +3639,7 @@
    "appearance": "opaque",
    "state": "ed-source",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -3649,7 +3649,7 @@
    "appearance": "opaque",
    "state": "ed-source",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -3756,7 +3756,7 @@
    "appearance": "opaque",
    "state": "ed-source-no-lines",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -3766,7 +3766,7 @@
    "appearance": "opaque",
    "state": "ed-source-no-lines",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -3813,7 +3813,7 @@
    "appearance": "opaque",
    "state": "ed-search",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -3823,7 +3823,7 @@
    "appearance": "opaque",
    "state": "ed-search",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -3873,7 +3873,7 @@
    "appearance": "translucent",
    "state": "default",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -3883,7 +3883,7 @@
    "appearance": "translucent",
    "state": "default",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav is-translucent",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused is-translucent",
    "selfTest": "PASS"
   },
   {
@@ -3963,7 +3963,7 @@
    "appearance": "translucent",
    "state": "fullscreen-class",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -3973,7 +3973,7 @@
    "appearance": "translucent",
    "state": "fullscreen-class",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav is-translucent is-fullscreen",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused is-translucent is-fullscreen",
    "selfTest": "PASS"
   },
   {
@@ -4013,7 +4013,7 @@
    "appearance": "opaque (after translucent)",
    "state": "default",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -4023,7 +4023,7 @@
    "appearance": "opaque (after translucent)",
    "state": "default",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -4482,7 +4482,7 @@
    "appearance": "opaque (after translucent)",
    "state": "user-font",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -4492,7 +4492,7 @@
    "appearance": "opaque (after translucent)",
    "state": "user-font",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -4532,7 +4532,7 @@
    "appearance": "opaque (after translucent)",
    "state": "file-explorer-focused",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -4542,7 +4542,7 @@
    "appearance": "opaque (after translucent)",
    "state": "file-explorer-focused",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -4582,7 +4582,7 @@
    "appearance": "opaque (after translucent)",
    "state": "menu-open",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -4592,7 +4592,7 @@
    "appearance": "opaque (after translucent)",
    "state": "menu-open",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -4642,7 +4642,7 @@
    "appearance": "opaque (after translucent)",
    "state": "popover-open",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -4652,7 +4652,7 @@
    "appearance": "opaque (after translucent)",
    "state": "popover-open",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -4702,7 +4702,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-source",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -4712,7 +4712,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-source",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -4829,7 +4829,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-live",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -4839,7 +4839,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-live",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -4879,7 +4879,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-reading",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -4889,7 +4889,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-reading",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -4969,7 +4969,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-user-fonts",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -4979,7 +4979,7 @@
    "appearance": "opaque (after translucent)",
    "state": "md-user-fonts",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -5019,7 +5019,7 @@
    "appearance": "opaque (after translucent)",
    "state": "ed-source",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -5029,7 +5029,7 @@
    "appearance": "opaque (after translucent)",
    "state": "ed-source",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -5136,7 +5136,7 @@
    "appearance": "opaque (after translucent)",
    "state": "ed-source-no-lines",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -5146,7 +5146,7 @@
    "appearance": "opaque (after translucent)",
    "state": "ed-source-no-lines",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -5193,7 +5193,7 @@
    "appearance": "opaque (after translucent)",
    "state": "ed-search",
    "status": "PASS",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -5203,7 +5203,7 @@
    "appearance": "opaque (after translucent)",
    "state": "ed-search",
    "status": "PASS",
-   "detail": "is-frameless is-hidden-frameless is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-floating-nav is-focused",
    "selfTest": "PASS"
   },
   {
@@ -5253,7 +5253,7 @@
    "appearance": "opaque",
    "state": "default",
    "status": "PASS (EMULATED)",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -5263,7 +5263,7 @@
    "appearance": "opaque",
    "state": "default",
    "status": "PASS (EMULATED)",
-   "detail": "is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-focused emulate-mobile is-tablet is-mobile is-floating-nav",
    "selfTest": "PASS"
   },
   {
@@ -5303,7 +5303,7 @@
    "appearance": "opaque",
    "state": "left-drawer-open",
    "status": "PASS (EMULATED)",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -5313,7 +5313,7 @@
    "appearance": "opaque",
    "state": "left-drawer-open",
    "status": "PASS (EMULATED)",
-   "detail": "is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-focused emulate-mobile is-tablet is-mobile is-floating-nav",
    "selfTest": "PASS"
   },
   {
@@ -5353,7 +5353,7 @@
    "appearance": "opaque",
    "state": "self-test-translucent-leak",
    "status": "PASS (EMULATED)",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -5363,7 +5363,7 @@
    "appearance": "opaque",
    "state": "self-test-translucent-leak",
    "status": "FAIL",
-   "detail": "is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav is-translucent",
+   "detail": "is-frameless is-hidden-frameless is-focused emulate-mobile is-tablet is-mobile is-floating-nav is-translucent",
    "selfTest": "FAIL"
   },
   {
@@ -5400,7 +5400,7 @@
    "appearance": "opaque",
    "state": "default",
    "status": "PASS (EMULATED)",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -5410,7 +5410,7 @@
    "appearance": "opaque",
    "state": "default",
    "status": "PASS (EMULATED)",
-   "detail": "is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-focused emulate-mobile is-tablet is-mobile is-floating-nav",
    "selfTest": "PASS"
   },
   {
@@ -5450,7 +5450,7 @@
    "appearance": "opaque",
    "state": "left-drawer-open",
    "status": "PASS (EMULATED)",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -5460,7 +5460,7 @@
    "appearance": "opaque",
    "state": "left-drawer-open",
    "status": "PASS (EMULATED)",
-   "detail": "is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-focused emulate-mobile is-tablet is-mobile is-floating-nav",
    "selfTest": "PASS"
   },
   {
@@ -5500,7 +5500,7 @@
    "appearance": "opaque",
    "state": "self-test-translucent-leak",
    "status": "PASS (EMULATED)",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -5510,7 +5510,7 @@
    "appearance": "opaque",
    "state": "self-test-translucent-leak",
    "status": "FAIL",
-   "detail": "is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav is-translucent",
+   "detail": "is-frameless is-hidden-frameless is-focused emulate-mobile is-tablet is-mobile is-floating-nav is-translucent",
    "selfTest": "FAIL"
   },
   {
@@ -5547,7 +5547,7 @@
    "appearance": "opaque",
    "state": "default",
    "status": "PASS (EMULATED)",
-   "detail": "DEV solarized-dark (unnamed), 120388 chars",
+   "detail": "DEV solarized-dark (unnamed), 121021 chars",
    "selfTest": "PASS"
   },
   {
@@ -5557,7 +5557,7 @@
    "appearance": "opaque",
    "state": "default",
    "status": "PASS (EMULATED)",
-   "detail": "is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-focused emulate-mobile is-phone is-mobile is-floating-nav",
    "selfTest": "PASS"
   },
   {
@@ -5594,7 +5594,7 @@
    "appearance": "opaque",
    "state": "default",
    "status": "PASS (EMULATED)",
-   "detail": "DEV kanagawa-dragon (unnamed), 123157 chars",
+   "detail": "DEV kanagawa-dragon (unnamed), 123790 chars",
    "selfTest": "PASS"
   },
   {
@@ -5604,7 +5604,7 @@
    "appearance": "opaque",
    "state": "default",
    "status": "PASS (EMULATED)",
-   "detail": "is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav",
+   "detail": "is-frameless is-hidden-frameless is-focused emulate-mobile is-phone is-mobile is-floating-nav",
    "selfTest": "PASS"
   },
   {
@@ -5699,9 +5699,49 @@
    "theme": "solarized-dark",
    "platform": "desktop",
    "appearance": "opaque",
-   "state": "theme and oracle agree on a token Inkdrop never gives that class (avoidable)",
+   "state": "one Inkdrop colour, theme and oracle both choose another (EXACT -> MISMATCH)",
    "status": "FAIL",
-   "detail": "2 FAIL: syn.source.avoidable [[\"cm-hmd-codeblock\",\"cm-tag\"]] -> Inkdrop rgb(39, 139, 211), theme rgb(179, 134, 0): css:\"a\" html:\"div\" html:\"a\" | syn.live.avoidable [[\"cm-hmd-codeblock\",\"cm-tag\"]] -> Inkdrop rgb(39, 139, 211), theme rgb(179, 134, 0): css:\"a\" html:\"div\" html:\"a\"",
+   "detail": "2 FAIL: syn.source.classes element groups: EXACT 7, CONFLICT 20, MISMATCH 1, DOMINATED 0; base colour (bare text, not failed): EXACT 0, CONFLICT 1, | syn.live.classes element groups: EXACT 7, CONFLICT 20, MISMATCH 1, DOMINATED 0; base colour (bare text, not failed): EXACT 0, CONFLICT 1,",
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "syn.self-test",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "several Inkdrop colours, theme and oracle choose another of them (CONFLICT)",
+   "status": "PASS",
+   "detail": "129 results, none FAIL",
+   "selfTest": "PASS"
+  },
+  {
+   "id": "syn.self-test",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "several Inkdrop colours, theme and oracle choose none of them (DOMINATED)",
+   "status": "FAIL",
+   "detail": "2 FAIL: syn.source.classes element groups: EXACT 8, CONFLICT 19, MISMATCH 0, DOMINATED 1; base colour (bare text, not failed): EXACT 0, CONFLICT 1, | syn.live.classes element groups: EXACT 8, CONFLICT 19, MISMATCH 0, DOMINATED 1; base colour (bare text, not failed): EXACT 0, CONFLICT 1,",
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "syn.self-test",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "class rule lost in the theme (definitions take the code text colour)",
+   "status": "FAIL",
+   "detail": "22 FAIL: syn.source.js.impl 10/108 runs: \"readFile\" rgb(131, 148, 149) != --ink-syntax-variable-name-definition-color rgb(100, 122, 130); \"answer\" r | syn.source.ts.impl 8/65 runs: \"Point\" rgb(131, 148, 149) != --ink-syntax-variable-name-definition-color rgb(100, 122, 130); \"Color\" rgb(131",
+   "selfTest": "FAIL"
+  },
+  {
+   "id": "syn.self-test",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "class rule lost in the theme and the oracle alike",
+   "status": "FAIL",
+   "detail": "2 FAIL: syn.source.classes element groups: EXACT 8, CONFLICT 19, MISMATCH 0, DOMINATED 1; base colour (bare text, not failed): EXACT 0, CONFLICT 1, | syn.live.classes element groups: EXACT 8, CONFLICT 19, MISMATCH 0, DOMINATED 1; base colour (bare text, not failed): EXACT 0, CONFLICT 1,",
    "selfTest": "FAIL"
   },
   {

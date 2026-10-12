@@ -15,9 +15,12 @@
 | `v31-inkdrop-token-table.txt` | Inkdrop の tokenHighlighter（Lezer のタグ → `tok-*`）。本体 JS から抽出 |
 | `v12-v31-correspondence.csv` | 言語・テキストごとの対応表: Inkdrop のクラスと色の変数、Obsidian の Source mode・Live Preview・Reading view のクラス（`tests/visual/token-table.mjs`） |
 | `fidelity.csv` | ビュー・言語・テーマごとの、Inkdrop と同じ色のランの数（デスクトップ・不透明。`tests/visual/syntax-report.nu`） |
-| `not-reproducible.csv` | Inkdrop の色にならないランの一覧（ビュー・言語・テキスト・Inkdrop のトークン・Obsidian の要素・テーマが選んだトークン・差の出るテーマ） |
+| `differences.csv` | Inkdrop の色にならないランの一覧と理由（shared: クラスの色の選択、bare: 素のテキストの基本色）、差の出るテーマ（RV5 で `not-reproducible.csv` から改名） |
+| `classes.csv` | `syn.<view>.classes` の各グループの分類（EXACT / CONFLICT / MISMATCH / DOMINATED）、テーマの色、Inkdrop の色とラン数（RV5） |
+| `rv5/candidates.csv` | RV5 の配色候補の比較（`tests/visual/syntax-candidates.nu`） |
+| `rv5/v39-existing/` | V-39 の既存データでの確認: 既存のサンプルノートの JS のブロック（V-30 の撮影）の各トークンの色の測定（`measure.py`、`v39-existing.csv`）と、同じコードの Inkdrop のトークン |
 | `runtime/runtime-electron-*.json` | 実行時テスト（`syn.*` を含む全検査） |
 | `runtime/self-test-electron-*.json` | ランナーの陰性テスト（`syn.self-test` を含む） |
 | `native-39.5.1/`、`native-43.7.7/` | ネイティブの撮影（各 40 枚）: 両テーマ × Source mode・Live Preview・Reading view × 6 か所（JS・Python・CSS・Shell・Rust・SQL のブロックを先頭に）の不透明、translucent の Source mode・Reading view（JS）。`top-left-corner.csv` に左上隅の検査（全枚 PASS）。撮影時にユーザーの許可でディスプレイを起こし、撮影の間だけスクリーンセーバーの開始を無効にした（撮影後に元の 600 秒へ戻した） |
 
-`fidelity.csv` と `not-reproducible.csv` は Electron 43.7.7 の結果から作った（39.5.1 と同じ値）。
+`fidelity.csv`・`differences.csv`・`classes.csv` と `runtime/` は RV5 の追加対応（§6.19）の後の結果。CSV は Electron 43.7.7 から作った（39.5.1 と同じ内容）。ネイティブの撮影は RV5 の 4 つの修正（Reading view の Python の `builtin`・`decorator`、Shell の `builtin`、Rust の `function`）の前の CSS で撮った。

@@ -1410,8 +1410,8 @@ Inkdrop はこれらすべてを色付けする。色付けされないブロッ
 - オラクル `tests/spec/syntax.json`: Obsidian のクラス（と閲覧では言語）ごとの期待トークンを CSS とは別に宣言し、Obsidian の app.css の `--code-*` の規則と継承も含めてカスケードと同じ順で期待値を決める。
 - 検証用ノートの各コードブロックを、Inkdrop の範囲と Obsidian の範囲が変わらない区間（ラン）に切り、文字のある各ランで次を判定する。
   - (A) 実装（`syn.<view>.<lang>.impl`）: Computed Style の色（と斜体・太字）がオラクルの色と一致。
-  - (B) 忠実度（`syn.<view>.<lang>.fidelity`）: その色が Inkdrop の色と一致するか。一致しないランは **NOT REPRODUCIBLE** として一覧を出す（PASS にしない）。
-  - (C) 回避可能（`syn.<view>.avoidable`）: 同じ要素の署名（編集はクラス、閲覧は言語 + クラス）のランがすべて 1 つの Inkdrop の色なのに、テーマがその色を出していなければ FAIL。差が許されるのは、同じ署名に別の色の Inkdrop のトークンが混ざる場合と、要素のない素のテキストだけ。
+  - (B) 忠実度（`syn.<view>.<lang>.fidelity`）: その色が Inkdrop の色と一致するか。一致しないランは **NOT REPRODUCIBLE** として一覧を出す（PASS にしない。RV5 で DIFF と理由付きの分類に改めた、§6.19）。
+  - (C) 回避可能（`syn.<view>.avoidable`。RV5 で `syn.<view>.classes` の 4 分類に改めた、§6.19）: 同じ要素の署名（編集はクラス、閲覧は言語 + クラス）のランがすべて 1 つの Inkdrop の色なのに、テーマがその色を出していなければ FAIL。差が許されるのは、同じ署名に別の色の Inkdrop のトークンが混ざる場合と、要素のない素のテキストだけ。
 - 実装中にこの (C) で 13 件の回避可能な差を見つけて直した（CSS の関数名 `cm-callee`、テンプレート内の変数、TS の関数定義、doctype の記号、CSS セレクタの入れ子、Shell の括弧・`&1`・ループ変数・`2>` の `2`、Rust の属性と関数定義、YAML の `true`、Markdown のリンクの記号）。
 - 陰性テスト（ランナーの self-test、`syn.self-test`）: 他テーマの色の混入（KD の keyword の色を SD に注入）、規則の欠落（閲覧の `function`）、斜体の欠落、オラクルとの不一致、回避可能な選択（テーマとオラクルが揃って誤ったトークンを選ぶ）がそれぞれ FAIL し、陽性対照が PASS する。テーマが適用されたことも検査する。
 
@@ -1444,7 +1444,7 @@ Inkdrop はこれらすべてを色付けする。色付けされないブロッ
 | SQL | 21 / 34（35） | 19 / 19（35） |
 | Markdown | 11 / 12（23） | 21 / 16（23） |
 
-**再現できない主な理由**（全件は `evidence/phase3-step8/not-reproducible.csv`）
+**再現できない主な理由**（全件は `evidence/phase3-step8/differences.csv`。RV5 で `not-reproducible.csv` から改名、§6.19）
 
 | # | 理由 | 主な例 | ビュー |
 |---|---|---|---|
@@ -1514,6 +1514,166 @@ Inkdrop はこれらすべてを色付けする。色付けされないブロッ
 - 再現できないトークン（`qd13.not-reproducible`、上の表）。
 - RV4 から: V-35、`ed.unrendered`、`.suggestion-container` の波及、RV3 の Markdown の差、モバイル実機（工程 10）、Windows・Linux（Q-D10）。
 
-### 6.18 次の作業
+### 6.18 RV5（条件付き APPROVE）
 
-RV5 を待つ。工程 9 には進まない。
+RV5 は `3a7e098` を条件付き APPROVE とした。CSS の構造、Inkdrop 同梱のトークナイザの利用、Obsidian の CM5・Prism の調査、実行時テストの設計は妥当。ただし回避可能性の判定 (C) は、同じクラスに複数の Inkdrop の色があれば、テーマがどの色を選んでも（どれとも一致しない色でも）PASS していた。補強と、配色候補の比較、V-39 の準備を求められた（§6.19）。RV5 の最終判定は保留。
+
+### 6.19 RV5 の追加対応: (C) の補強、配色候補の比較、V-39 の準備（2026-10-12、RV5 の再レビュー待ち）
+
+作業中は Mac がスリープしないようにした（スクリーンセーバーの開始を 600 → 0 秒、`caffeinate -d -i -m -s`）。作業後に元に戻した。
+
+**(C) の補強**（`tests/runtime/lib/syntax.mjs`、結果 `syn.<view>.classes`。旧 `syn.<view>.avoidable`）
+
+- グループ: CSS で区別できる単位。編集ビューは要素のクラス（順序を問わない）、Reading view は言語（別名は正規の言語にまとめる）+ 要素のクラス。トークンの要素がない素のテキスト（編集ビューでは CodeMirror がトークン以外に付ける `cm-hmd-codeblock` だけの span も含む）は、編集ビューでは言語をまたいで 1 グループ、Reading view では言語ごとに 1 グループ。
+- 分類（グループの Inkdrop の色の集合と、テーマがそのグループに出す色）:
+
+| 分類 | 条件 | 判定 |
+|---|---|---|
+| EXACT | Inkdrop の色が 1 つで、テーマの色が一致 | PASS |
+| MISMATCH | Inkdrop の色が 1 つで、テーマの色が不一致 | **FAIL** |
+| CONFLICT | Inkdrop の色が複数で、テーマの色がそのどれかと一致 | PASS。選ばなかった色のランは忠実度の不一致として残る |
+| DOMINATED | Inkdrop の色が複数で、テーマの色がどれとも不一致 | **FAIL** |
+
+- 素のテキストのグループは同じ分類で別に集計し、FAIL にしない。その色はコードブロックの基本色で、その言語（編集ビューではすべての言語）のトークンのないテキスト全体に効くため、配色候補の判断（下記の RV5 の判断事項 1）に含めた。
+- 忠実度 (B): 状態を NOT REPRODUCIBLE から **DIFF** に改め、不一致の各ランに理由を付けた: `shared`（クラスが他の Inkdrop の色も担い、テーマはそのうち別の色を選んだ）、`bare`（素のテキスト。基本色）。CONFLICT であることは、そのランが原理的に再現できないことの証明ではない（どのランが不一致になるかは選んだ色で決まる）。
+- (A) 実装・(B) 忠実度・(C) クラスの選択は、独立した別の検査のまま。
+
+**新たに見つかった DOMINATED（要素のグループ、最小限の修正をした）**
+
+| グループ | Inkdrop の色（ラン数） | 修正前のテーマ | 修正 |
+|---|---|---|---|
+| Python の `decorator`（`@decorator` が 1 つの span） | meta（`@`）1、variable-name 1 | punctuation | Python の `.token.decorator` → meta |
+| Python の `builtin`（`len`、`str`） | variable-name-function 2、variable-name 1 | name | Python の `.token.builtin` → variable-name-function |
+| Shell の `builtin class-name`（`echo`、`export`） | variable-name-standard 2、keyword 1 | name | Shell の `.token.builtin` → variable-name-standard |
+| Rust の `function`（`new`、`insert`） | variable-name 1、property-name-function 1 | variable-name-function | Rust の `.token.function` → property-name-function |
+
+SD ではこの 4 つ、KD では Python の `decorator` だけが DOMINATED だった（KD では他の 3 つはテーマの色がたまたまどれかと同じ値）。修正はどれも、グループの Inkdrop の色のうち多数のもの（同数は意味で選んだ）に合わせた。
+
+**陰性テスト**（ランナーの self-test、`syn.self-test`。検証用ノートの実データのグループを使用）
+
+| ケース | 期待 | 結果 |
+|---|---|---|
+| Inkdrop の色が 1 つのクラス（編集の `cm-tag`）で、テーマと期待値をそろって別の色にする | FAIL（MISMATCH、`.classes` だけが FAIL） | 宣言どおり |
+| Inkdrop の色が複数のクラス（編集の `cm-atom`: 値・YAML のキー・Rust の型など）で、テーマと期待値をそろって別の候補（YAML のキーの色）にする | PASS、かつ `cm-atom` が CONFLICT と分類される | 宣言どおり |
+| 同じクラスで、テーマと期待値をそろって、どの候補でもない色（tag-name の青）にする | FAIL（DOMINATED、`.classes` だけが FAIL） | 宣言どおり |
+| クラスの規則がテーマから欠ける（`cm-def` がコードの文字色になる） | FAIL（`.impl` だけが FAIL） | 宣言どおり |
+| クラスの規則がテーマと期待値の両方から欠ける | FAIL（`cm-def` が DOMINATED、`.classes` だけが FAIL） | 宣言どおり |
+
+既存のケース（陽性対照、他テーマの色の混入、Reading view の規則の欠落、斜体の欠落、期待値の不一致）も維持した。
+
+**分類の件数**（SD / KD、両 Electron で同じ。デスクトップ・不透明）
+
+| ビュー | 要素のグループ: EXACT / CONFLICT / MISMATCH / DOMINATED | 素のテキスト（FAIL にしない）: EXACT / CONFLICT / MISMATCH / DOMINATED |
+|---|---|---|
+| Source mode・Live Preview | SD 8 / 20 / 0 / 0、KD 8 / 20 / 0 / 0 | SD 0 / 1 / 0 / 0、KD 0 / 1 / 0 / 0（言語をまたいだ 1 グループ） |
+| Reading view | SD 123 / 29 / 0 / 0、KD 126 / 26 / 0 / 0 | SD 3 / 2 / 4 / 2、KD 0 / 1 / 7 / 3（言語ごと） |
+
+修正前（§6.17 の実装）は Reading view の要素のグループで SD 4 件、KD 1 件の DOMINATED があった（上記）。
+
+素のテキストの言語ごとの分類（Reading view）: JS・Python・CSS・SQL は MISMATCH（SD・KD。Inkdrop の色は JS・Python が variable-name 系、CSS が atom、SQL が name）、TS・Go は DOMINATED（識別子・プロパティ・型が混在）、Rust は SD で CONFLICT・KD で DOMINATED、Shell は CONFLICT、HTML・YAML・Markdown は SD で EXACT・KD で MISMATCH（KD の差はアルファ 0.9 と 1.0 だけ）。
+
+忠実度（Inkdrop と同じ色のラン。12 言語、別名のブロックを除く。デスクトップ・不透明。不一致の内訳は shared / bare）:
+
+| ビュー | Solarized Dark | Kanagawa Dragon |
+|---|---|---|
+| Source mode・Live Preview | 301 / 604（49.8%）。shared 120、bare 183 | 328 / 604（54.3%）。shared 102、bare 174 |
+| Reading view | 483 / 622（77.7%）。shared 72、bare 67 | 481 / 622（77.3%）。shared 64、bare 77 |
+
+（§6.17 の表は別名のブロックを含めた数。Reading view は 4 つの修正で Python・Shell・Rust の一致が増えた）
+
+**配色候補の比較**（`evidence/phase3-step8/rv5/candidates.csv`、`tests/visual/syntax-candidates.nu`。現在案を先頭に。数は検証用ノートのランと文字で、言語とサンプルの偏りがある）
+
+| 対象 | 候補 | SD ラン（文字） | KD ラン（文字） | 全体 | 主な影響 |
+|---|---|---|---|---|---|
+| 編集の素のテキスト | **コードの文字色**（現在） | 39（83） | 52（118） | 252（367） | 言語指定のないブロック（ログ・出力）と文章は正しい。括弧・区切りは Inkdrop と違う |
+| | punctuation | 182（211） | 172（185） | | 括弧・区切りは一致するが、言語指定のないブロックの全文、HTML の本文、未対応の言語の識別子まで記号の色になる |
+| | variable-name | 5（11） | 52（118） | | KD では文字色と同じ値。SD では本文が暗くなる |
+| Reading の素のテキスト | **プレビューのコードの文字色**（現在） | 19（63） | 7（24） | 110（318） | KD はアルファ 0.9（Inkdrop のトークンは不透明）で、ほぼ全件が不一致 |
+| | variable-name | 45（126） | 72（221） | | JS・Python・TS・Go の識別子（Prism が span を付けない）に一致。言語ごとに `code.language-*` で指定できるが、言語指定のないブロックには効かない |
+| | punctuation | 33（86） | 4（5） | | 意味が合わない |
+| 編集の `cm-atom` | **atom**（現在） | 6（34） | 10（48） | 25（116） | 値（`true`・`auto`・`sans-serif`）。CM5 の atom の主な用途 |
+| | property-name-definition | 13（54） | 9（42） | | YAML のキーだけに合う（検証用ノートの YAML が 9 ラン） |
+| | null | 4（14） | 10（48） | | KD では atom と同じ値 |
+| | name | 13（54） | 5（21） | | Rust の型（`i32`）・YAML のキー（SD で同じ値） |
+| 編集の `cm-string-2` | **string-special**（現在） | 10（14） | 6（7） | 14（20） | テンプレート文字列。SD では regexp と同じ値 |
+| | regexp | 10（14） | 4（7） | | 正規表現。KD では赤（テンプレート文字列が赤になる） |
+| | brace | 4（6） | 4（6） | | `${` `}` だけ |
+| 編集の `cm-variable` | **variable-name**（現在） | 27（96） | 31（120） | 45（174） | JS・Python の変数。CM5 の variable の主な用途 |
+| | property-name | 13（47） | 8（17） | | Go のフィールド |
+| | name | 13（47） | 31（120） | | Go・Rust の型。KD では variable-name と同じ値 |
+| | namespace | 3（21） | 3（21） | | Rust のパスだけ |
+| Reading の JS の `function` | **variable-name-function**（現在） | 1（5） | 1（5） | 4（25） | 関数呼び出し（`greet("world")`） |
+| | variable-name-definition | 1（5） | 1（5） | | 関数定義（`function greet`） |
+| | property-name-definition | 2（15） | 2（15） | | クラスのメソッド定義（`constructor`・`area`） |
+
+評価（Inkdrop の意味的なトークンと、Obsidian のクラスの主な用途を優先）:
+
+1. 素のテキスト（編集）: 現在案を維持。数では punctuation が大きく上回るが、言語指定のないコードブロック（ログ・出力・未対応の言語）の全文が記号の色になり、Inkdrop（その場合はコードの文字色）とかけ離れる。検証用ノートは全ブロックに言語があり、この影響が数に出ない。
+2. 素のテキスト（Reading）: 判断が必要。Prism が span を付けないテキストの大半は識別子で、Inkdrop は variable-name 系の色を付ける。言語ごと（`code.language-js` など）に基本色を variable-name にすれば識別子は一致するが、言語指定のないブロックには効かず、プレビューの本文の色（KD はアルファ 0.9）から外れる。KD の差の多くはアルファ 0.9 と 1.0 の差だけ。
+3. `cm-atom`: 現在案を維持。YAML のキーを優先する案は検証用ノートの YAML の比重による。CM5 の atom の主な用途は値（`true`・`null`・CSS のキーワード）。
+4. `cm-string-2`: 現在案を維持。CM5 の string-2 の主な用途は JS のテンプレート文字列（と正規表現）。SD では差がない。
+5. `cm-variable`: 現在案を維持。主な用途は JS・Python の変数。
+6. Reading の JS の `function`: 4 ランしかなく数では決められない。現在案（呼び出し）を維持。
+
+**判定の区別**（報告の指標）
+
+| 区別 | 検査・数 |
+|---|---|
+| Computed Style が CSS の期待どおりか | (A) `syn.<view>.<lang>.impl`（すべて PASS） |
+| Inkdrop の色と一致したか | (B) `syn.<view>.<lang>.fidelity`（PASS / DIFF、ラン単位） |
+| CSS の制約で同じクラスの意味的トークンを区別できないか | (C) CONFLICT のグループ |
+| 現在の色の選択による不一致か | CONFLICT のグループで、選ばなかった色のラン（`shared`）。候補ごとの数は上表 |
+| 基本色を変えれば改善するが他のテキストに影響するか | 素のテキストのグループ（`bare`）。上表の素のテキストの行 |
+
+**V-39（Inkdrop の実機の描画との照合）**
+
+既存のデータだけで確認できた範囲（状態の変更なし）:
+
+- 既存のサンプルノート（Inkdrop の検証用ノートブック「Theme Validation (Phase 2B)」）には JS のコードブロックが 1 つあり、V-30 の撮影（CDP、1 倍、不透明）にエディタ（状態 1）とプレビュー（状態 5）の両方が写っている。
+- 同じコードを Inkdrop 同梱のパーサで解析した期待色と、撮影の各トークンの字形の色を比べた（`evidence/phase3-step8/rv5/v39-existing/`）。単語のトークン（`function`・`foo`・`bar`・`x`・`prop`・`return` など）は両テーマ・エディタ・プレビューの 40 件すべてで ΔE2000 2.5 以下で、最も近い宣言色は期待色と同じ値だった。`.` や `;` などの 1〜2 px の記号はアンチエイリアスで測れない（拡大すると期待どおりの色系統）。エディタとプレビューで同じテキストは同じ色だった（V-31 と一致）。
+- これで確認できたのは JS の 1 ブロック（定義・呼び出し・変数・プロパティ・演算子・キーワード）だけ。
+
+隔離した Inkdrop（専用の `--user-data-dir`）はログインが必要で、ログインするとアカウントのノートが同期されるため、アカウントから切り離せない（以前の試行で確認）。
+
+残り（12 言語）の計画（**承認が必要。承認前は実施しない**）:
+
+| 項目 | 案 B（推奨）: 一時的な DOM の注入 | 案 C: 一時的なノート |
+|---|---|---|
+| 変更するもの | Inkdrop を 127.0.0.1:9334 限定のリモートデバッグ付きで再起動、テーマを SD → KD → 元のテーマに切り替え（V-38 と同じ手順、`config.json` を控えて書き戻す） | 案 B に加え、検証用ノートブックに検証用ノートを 1 件作成し、撮影後に削除 |
+| 同期への影響 | ノートの作成・編集なし。同期されるデータは変わらない | ノートの作成と削除が同期される（削除後もゴミ箱・履歴に残る可能性） |
+| 検証用の内容 | `tests/fixtures/vault/Code blocks.md` のコードを Inkdrop 同梱のパーサで解析した `tok-*` の span を、Inkdrop の画面内の一時的な要素（`.cm-editor` と `.mde-preview .codeblock` の構造を再現、保存されない）に入れる | 同じコードをノートの本文に入れる |
+| 確かめるもの | Inkdrop の実際の CSS（基盤と各テーマ）による各トークンの Computed Style と撮影（トークナイザは V-31 で確認済み） | トークナイザを含む実際の描画 |
+| 言語とトークン | 12 言語と別名の全トークン（キーワード・文字列・数値・コメント・関数・変数・型・プロパティ・演算子・句読記号・正規表現など） | 同じ |
+| 復元・削除 | 要素を取り除き、テーマを元に戻し、通常起動に戻す。`config.json` の差分がないことを確認 | 案 B の復元に加え、ノートを削除してゴミ箱を空にする |
+| 既存データを変えない対策 | ノートを開かない・書き込まない。既存のサンプルノートは表示だけ | 既存のノートには触れない。検証用ノートブックだけを使う |
+
+**回帰とテスト結果**
+
+| テスト | Electron 39.5.1 | Electron 43.7.7 |
+|---|---|---|
+| 実行時テスト | 3303 件が PASS または DIFF（PASS (EMULATED) 623 件、DIFF 606 件、FAIL 0 件）。`.impl` と `.classes` はすべて PASS | 同じ |
+| ランナーの陰性テスト | 400 件すべて宣言どおり（新しい 5 ケースを含む） | 同じ |
+
+工程 1〜8 の既存の検査はすべて維持して PASS。静的テストすべて PASS、静的テストの陰性テスト 47 件、視覚的テストの陰性テスト 6 件、クリーンルームのビルド一致。`fidelity.csv`・`classes.csv`・`differences.csv` は両 Electron で同じ内容。
+
+ネイティブの撮影（`native-*`）は RV5 の 4 つの修正の前の CSS で撮ったもので、Reading view の Python の `len`・`@decorator`、Shell の `echo`・`export`、Rust の `new`・`insert` の色は修正前のまま（Computed Style の検査は修正後で PASS）。
+
+**スクリプトの言語**
+
+| スクリプト | 言語 | 理由 |
+|---|---|---|
+| `tests/runtime/lib/syntax.mjs`、`run.mjs`（修正） | Node | ランナーと同じ言語。判定の分類 |
+| `tests/visual/syntax-candidates.nu`（新規）、`syntax-report.nu`（修正） | Nushell | 対応表と色の JSON から候補ごとの数を集計する構造化データの処理 |
+| `evidence/phase3-step8/rv5/v39-existing/measure.py`（新規） | Python | 画像の画素を読む処理（既存の `sample-regions.py` と同じ）。ΔE2000 を含む |
+| 作業用の通しの実行（リポジトリには入れていない） | fish | macOS ローカルの操作補助 |
+
+**未検証事項とリスク**
+
+- V-39 の残り（承認待ち）。
+- 配色候補の数は検証用ノートに依存する（言語とサンプルの偏り）。
+- 素のテキスト（Reading）の基本色は RV5 の判断待ち。現在案（プレビューのコードの文字色）では識別子が Inkdrop と違う。
+- RV4 からの引き継ぎ（V-35、`ed.unrendered`、`.suggestion-container`、RV3 の Markdown の差、モバイル実機、Windows・Linux）。
+
+### 6.20 次の作業
+
+RV5 の再レビューを待つ。工程 9 には進まない。

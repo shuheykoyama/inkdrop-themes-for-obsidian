@@ -1,0 +1,527 @@
+view,lang,text,category,inkdrop,inkdrop_var,obsidian,theme_var,themes
+live,css,@media,shared,tok-definition-keyword,--ink-syntax-definition-keyword-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark kanagawa-dragon
+live,css,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,css,:,bare,tok-punctuation,--ink-syntax-punctuation-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,css,px,shared,tok-unit,--ink-syntax-unit-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark kanagawa-dragon
+live,css,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,css,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,css,.,shared,(no token),--ink-md-codeblock-color,cm-hmd-codeblock.cm-qualifier,--ink-syntax-class-name-color,solarized-dark kanagawa-dragon
+live,css,>,bare,tok-logic-operator,--ink-syntax-logic-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,css,",",bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,css,#,shared,tok-deref-operator,--ink-syntax-deref-operator-color,cm-builtin.cm-hmd-codeblock,--ink-syntax-variable-name-standard-color,solarized-dark kanagawa-dragon
+live,css,main,shared,tok-label-name,--ink-syntax-label-name-color,cm-builtin.cm-hmd-codeblock,--ink-syntax-variable-name-standard-color,solarized-dark kanagawa-dragon
+live,css,;,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,css,!important,shared,tok-modifier,--ink-syntax-modifier-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark
+live,css,%,shared,tok-unit,--ink-syntax-unit-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark kanagawa-dragon
+live,css,-,bare,tok-arithmetic-operator,--ink-syntax-arithmetic-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,css,em,shared,tok-unit,--ink-syntax-unit-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark kanagawa-dragon
+live,css,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,go,Point,shared,tok-name tok-definition,--ink-syntax-name-definition-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+live,go,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,go,X,shared,tok-property-name,--ink-syntax-property-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+live,go,",",bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,go,Y,shared,tok-property-name,--ink-syntax-property-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+live,go,int,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+live,go,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,go,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,go,*,shared,tok-modifier,--ink-syntax-modifier-color,cm-hmd-codeblock.cm-operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+live,go,Point,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark
+live,go,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,go,Move,shared,tok-property-name,--ink-syntax-property-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+live,go,error,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+live,go,.,shared,tok-deref-operator,--ink-syntax-deref-operator-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark kanagawa-dragon
+live,go,Println,shared,tok-property-name,--ink-syntax-property-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+live,go,nil,shared,tok-null,--ink-syntax-null-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark
+live,html,<!DOCTYPE html>,shared,tok-document-meta,--ink-syntax-document-meta-color,cm-hmd-codeblock.cm-meta,--ink-syntax-meta-color,solarized-dark kanagawa-dragon
+live,html,=,bare,tok-definition-operator,--ink-syntax-definition-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,html,"""box""",shared,tok-attribute-value,--ink-syntax-attribute-value-color,cm-hmd-codeblock.cm-string,--ink-syntax-string-color,solarized-dark
+live,html,"""main""",shared,tok-attribute-value,--ink-syntax-attribute-value-color,cm-hmd-codeblock.cm-string,--ink-syntax-string-color,solarized-dark
+live,html,"""https://example.com""",shared,tok-attribute-value,--ink-syntax-attribute-value-color,cm-hmd-codeblock.cm-string,--ink-syntax-string-color,solarized-dark
+live,html,&amp;,shared,tok-character,--ink-syntax-character-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+live,javascript,${,shared,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock.cm-string-2,--ink-syntax-string-special-color,solarized-dark kanagawa-dragon
+live,javascript,},shared,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock.cm-string-2,--ink-syntax-string-special-color,solarized-dark kanagawa-dragon
+live,javascript,;,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,javascript,.,bare,tok-deref-operator,--ink-syntax-deref-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,javascript,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,javascript,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,javascript,log,shared,tok-property-name tok-function,--ink-syntax-property-name-function-color,cm-hmd-codeblock.cm-property,--ink-syntax-property-name-color,kanagawa-dragon
+live,js,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,js,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,js,;,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,js,",",bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,js,null,shared,tok-null,--ink-syntax-null-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark
+live,js,Shape,shared,tok-class-name,--ink-syntax-class-name-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark kanagawa-dragon
+live,js,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,js,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,js,super,shared,tok-atom,--ink-syntax-atom-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+live,js,this,shared,tok-self,--ink-syntax-self-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+live,js,.,bare,tok-deref-operator,--ink-syntax-deref-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,js,undefined,shared,tok-variable-name,--ink-syntax-variable-name-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+live,js,${,shared,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock.cm-string-2,--ink-syntax-string-special-color,solarized-dark kanagawa-dragon
+live,js,},shared,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock.cm-string-2,--ink-syntax-string-special-color,solarized-dark kanagawa-dragon
+live,js,greet,shared,tok-variable-name tok-function,--ink-syntax-variable-name-function-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+live,js,/ab+c/g,shared,tok-regexp,--ink-syntax-regexp-color,cm-hmd-codeblock.cm-string-2,--ink-syntax-string-special-color,kanagawa-dragon
+live,js,log,shared,tok-property-name tok-function,--ink-syntax-property-name-function-color,cm-hmd-codeblock.cm-property,--ink-syntax-property-name-color,kanagawa-dragon
+live,js,max,shared,tok-property-name tok-function,--ink-syntax-property-name-function-color,cm-hmd-codeblock.cm-property,--ink-syntax-property-name-color,kanagawa-dragon
+live,json,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,json,:,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,json,",",bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,json,-,shared,tok-number,--ink-syntax-number-color,cm-hmd-codeblock.cm-operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+live,json,[,bare,tok-square-bracket,--ink-syntax-square-bracket-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,json,],bare,tok-square-bracket,--ink-syntax-square-bracket-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,json,null,shared,tok-null,--ink-syntax-null-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark
+live,json,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,markdown,#,shared,tok-heading-1 tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-header.cm-header-1.cm-hmd-codeblock,--ink-syntax-heading-color,solarized-dark kanagawa-dragon
+live,markdown,**,shared,tok-strong tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock.cm-strong,--ink-syntax-strong-color,solarized-dark kanagawa-dragon
+live,markdown,`,shared,tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-comment.cm-hmd-codeblock,--ink-syntax-comment-color,solarized-dark kanagawa-dragon
+live,markdown,code,shared,tok-monospace,--ink-syntax-monospace-color,cm-comment.cm-hmd-codeblock,--ink-syntax-comment-color,solarized-dark kanagawa-dragon
+live,markdown,-,shared,tok-list tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock.cm-variable-2,--ink-syntax-variable-name-local-color,solarized-dark kanagawa-dragon
+live,markdown,item,shared,tok-list tok-content,--ink-syntax-content-color,cm-hmd-codeblock.cm-variable-2,--ink-syntax-variable-name-local-color,solarized-dark
+live,markdown,[,shared,tok-list tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock.cm-link,--ink-syntax-link-color,solarized-dark kanagawa-dragon
+live,markdown,],shared,tok-list tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock.cm-link,--ink-syntax-link-color,solarized-dark kanagawa-dragon
+live,markdown,(,shared,tok-list tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock.cm-string.cm-url,--ink-syntax-url-color,solarized-dark kanagawa-dragon
+live,markdown,),shared,tok-list tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock.cm-string.cm-url,--ink-syntax-url-color,solarized-dark kanagawa-dragon
+live,md,**,bare,tok-strong tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,md,bold,bare,tok-strong,--ink-syntax-strong-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,md,[,bare,tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,md,a,bare,tok-link,--ink-syntax-link-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,md,],bare,tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,md,(,bare,tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,md,https://example.com,bare,tok-link tok-url,--ink-syntax-url-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,md,),bare,tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,py,def,bare,tok-definition-keyword,--ink-syntax-definition-keyword-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,py,area,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+live,py,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,py,r,bare,tok-variable-name,--ink-syntax-variable-name-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+live,py,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,py,return,bare,tok-control-keyword,--ink-syntax-control-keyword-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,py,len,bare,tok-variable-name tok-function,--ink-syntax-variable-name-function-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,python,decorator,shared,tok-variable-name,--ink-syntax-variable-name-color,cm-hmd-codeblock.cm-meta,--ink-syntax-meta-color,solarized-dark kanagawa-dragon
+live,python,Greeter,shared,tok-class-name,--ink-syntax-class-name-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark kanagawa-dragon
+live,python,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,python,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,python,",",bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,python,->,shared,(no token),--ink-md-codeblock-color,cm-hmd-codeblock.cm-operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+live,python,None,shared,tok-null,--ink-syntax-null-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+live,python,print,shared,tok-variable-name tok-function,--ink-syntax-variable-name-function-color,cm-builtin.cm-hmd-codeblock,--ink-syntax-variable-name-standard-color,solarized-dark kanagawa-dragon
+live,python,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,python,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,python,len,shared,tok-variable-name tok-function,--ink-syntax-variable-name-function-color,cm-builtin.cm-hmd-codeblock,--ink-syntax-variable-name-standard-color,solarized-dark kanagawa-dragon
+live,python,True,shared,tok-bool,--ink-syntax-bool-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+live,rs,fn,bare,tok-definition-keyword,--ink-syntax-definition-keyword-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rs,main,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+live,rs,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rs,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rs,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rs,let,bare,tok-definition-keyword,--ink-syntax-definition-keyword-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rs,x,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+live,rs,=,bare,tok-definition-operator,--ink-syntax-definition-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rs,;,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rs,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rs,2.0,bare,tok-float,--ink-syntax-float-color,cm-hmd-codeblock,--ink-md-codeblock-color,kanagawa-dragon
+live,rust,std,shared,tok-namespace,--ink-syntax-namespace-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+live,rust,::,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rust,collections,shared,tok-namespace,--ink-syntax-namespace-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+live,rust,;,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rust,Point,shared,tok-name,--ink-syntax-name-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark
+live,rust,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rust,x,shared,tok-property-name,--ink-syntax-property-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+live,rust,i32,shared,tok-name,--ink-syntax-name-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+live,rust,",",bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rust,y,shared,tok-property-name,--ink-syntax-property-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+live,rust,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rust,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rust,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rust,->,shared,tok-punctuation,--ink-syntax-punctuation-color,cm-hmd-codeblock.cm-operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+live,rust,Result,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark
+live,rust,<,shared,(no token),--ink-md-codeblock-color,cm-hmd-codeblock.cm-operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+live,rust,String,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark
+live,rust,>,shared,(no token),--ink-md-codeblock-color,cm-hmd-codeblock.cm-operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+live,rust,mut,shared,tok-modifier,--ink-syntax-modifier-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark
+live,rust,HashMap,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark
+live,rust,&,bare,tok-operator,--ink-syntax-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,rust,str,shared,tok-name,--ink-syntax-name-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+live,rust,HashMap,shared,tok-namespace,--ink-syntax-namespace-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+live,rust,insert,shared,tok-property-name tok-function,--ink-syntax-property-name-function-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+live,rust,1,shared,tok-integer,--ink-syntax-integer-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark
+live,rust,println,shared,tok-macro-name,--ink-syntax-macro-name-color,cm-hmd-codeblock.cm-variable-3,--ink-syntax-class-name-color,solarized-dark kanagawa-dragon
+live,rust,!,shared,tok-macro-name,--ink-syntax-macro-name-color,cm-hmd-codeblock.cm-variable-3,--ink-syntax-class-name-color,solarized-dark kanagawa-dragon
+live,rust,2.5,shared,tok-float,--ink-syntax-float-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark
+live,rust,Ok,shared,tok-variable-name tok-function,--ink-syntax-variable-name-function-color,cm-builtin.cm-hmd-codeblock,--ink-syntax-variable-name-standard-color,solarized-dark kanagawa-dragon
+live,sql,id,bare,tok-name,--ink-syntax-name-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+live,sql,name,bare,tok-name,--ink-syntax-name-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+live,sql,label,bare,tok-name,--ink-syntax-name-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+live,sql,users,bare,tok-name,--ink-syntax-name-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+live,sql,u,bare,tok-name,--ink-syntax-name-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+live,sql,.,shared,(no token),--ink-md-codeblock-color,cm-hmd-codeblock.cm-variable-2,--ink-syntax-variable-name-local-color,solarized-dark
+live,sql,age,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-variable-2,--ink-syntax-variable-name-local-color,solarized-dark
+live,sql,name,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-variable-2,--ink-syntax-variable-name-local-color,solarized-dark
+live,sql,;,shared,(no token),--ink-md-codeblock-color,cm-hmd-codeblock.cm-punctuation,--ink-syntax-punctuation-color,solarized-dark kanagawa-dragon
+live,ts,Point,shared,tok-name tok-definition,--ink-syntax-name-definition-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark kanagawa-dragon
+live,ts,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,ts,:,bare,tok-punctuation,--ink-syntax-punctuation-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,ts,;,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,ts,?,shared,(no token),--ink-md-codeblock-color,cm-hmd-codeblock.cm-operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+live,ts,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,ts,Id,shared,tok-name tok-definition,--ink-syntax-name-definition-color,cm-hmd-codeblock.cm-type,--ink-syntax-name-color,solarized-dark kanagawa-dragon
+live,ts,Color,shared,tok-name tok-definition,--ink-syntax-name-definition-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark kanagawa-dragon
+live,ts,Red,shared,tok-property-name,--ink-syntax-property-name-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark kanagawa-dragon
+live,ts,",",bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,ts,Green,shared,tok-property-name,--ink-syntax-property-name-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark kanagawa-dragon
+live,ts,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,ts,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,ts,...,shared,tok-punctuation,--ink-syntax-punctuation-color,cm-hmd-codeblock.cm-meta,--ink-syntax-meta-color,solarized-dark kanagawa-dragon
+live,ts,.,bare,tok-deref-operator,--ink-syntax-deref-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,typescript,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,typescript,:,bare,tok-punctuation,--ink-syntax-punctuation-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,typescript,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,typescript,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,typescript,;,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,typescript,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+live,yaml,name,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+live,yaml,:,shared,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock.cm-meta,--ink-syntax-meta-color,solarized-dark kanagawa-dragon
+live,yaml,version,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+live,yaml,1.2,shared,tok-content,--ink-syntax-content-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark kanagawa-dragon
+live,yaml,enabled,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+live,yaml,true,shared,tok-content,--ink-syntax-content-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+live,yaml,items,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+live,yaml,-,shared,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock.cm-meta,--ink-syntax-meta-color,solarized-dark kanagawa-dragon
+live,yaml,anchor,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+live,yaml,&base,shared,tok-label-name,--ink-syntax-label-name-color,cm-hmd-codeblock.cm-variable-2,--ink-syntax-variable-name-local-color,solarized-dark kanagawa-dragon
+live,yaml,key,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+live,yaml,ref,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+live,yaml,*base,shared,tok-label-name,--ink-syntax-label-name-color,cm-hmd-codeblock.cm-variable-2,--ink-syntax-variable-name-local-color,solarized-dark kanagawa-dragon
+live,yml,count,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+live,yml,:,shared,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock.cm-meta,--ink-syntax-meta-color,solarized-dark kanagawa-dragon
+live,yml,3,shared,tok-content,--ink-syntax-content-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark kanagawa-dragon
+live,yml,on,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+live,yml,true,shared,tok-content,--ink-syntax-content-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+reading,bash,|,shared,(no token),--ink-mde-preview-codeblock-text-color,token.operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+reading,css,.,shared,(no token),--ink-mde-preview-codeblock-text-color,token.class < token.selector,--ink-syntax-class-name-color,solarized-dark kanagawa-dragon
+reading,css,:,shared,tok-punctuation,--ink-syntax-punctuation-color,token.pseudo-class < token.selector,--ink-syntax-class-name-color,solarized-dark kanagawa-dragon
+reading,css,#,shared,tok-deref-operator,--ink-syntax-deref-operator-color,token.id < token.selector,--ink-syntax-label-name-color,solarized-dark
+reading,css,::,shared,(no token),--ink-mde-preview-codeblock-text-color,token.pseudo-element < token.selector,--ink-syntax-class-name-color,solarized-dark kanagawa-dragon
+reading,css,auto,bare,tok-atom,--ink-syntax-atom-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,css,sans-serif,bare,tok-atom,--ink-syntax-atom-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,go,main,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,go,Point,bare,tok-name tok-definition,--ink-syntax-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,go,X,bare,tok-property-name,--ink-syntax-property-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,go,Y,bare,tok-property-name,--ink-syntax-property-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,go,p,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,go,*,shared,tok-modifier,--ink-syntax-modifier-color,token.operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+reading,go,Point,bare,tok-name,--ink-syntax-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,go,dx,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,go,p,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,go,.,shared,tok-deref-operator,--ink-syntax-deref-operator-color,token.punctuation,--ink-syntax-punctuation-color,solarized-dark kanagawa-dragon
+reading,go,dx,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,go,fmt,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,go,nil,shared,tok-null,--ink-syntax-null-color,token.boolean,--ink-syntax-bool-color,solarized-dark
+reading,html,link,bare,tok-content,--ink-syntax-content-color,(bare text),--ink-mde-preview-codeblock-text-color,kanagawa-dragon
+reading,html,text,bare,tok-content,--ink-syntax-content-color,(bare text),--ink-mde-preview-codeblock-text-color,kanagawa-dragon
+reading,javascript,s,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,javascript,.,shared,tok-deref-operator,--ink-syntax-deref-operator-color,token.punctuation,--ink-syntax-punctuation-color,solarized-dark kanagawa-dragon
+reading,javascript,s,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,js,answer,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,js,ratio,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,js,ok,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,js,none,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,js,re,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,js,Base,shared,tok-variable-name,--ink-syntax-variable-name-color,token.class-name,--ink-syntax-class-name-color,solarized-dark kanagawa-dragon
+reading,js,constructor,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,token.function,--ink-syntax-variable-name-function-color,solarized-dark kanagawa-dragon
+reading,js,super,shared,tok-atom,--ink-syntax-atom-color,token.keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+reading,js,this,shared,tok-self,--ink-syntax-self-color,token.keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+reading,js,.,shared,tok-deref-operator,--ink-syntax-deref-operator-color,token.punctuation,--ink-syntax-punctuation-color,solarized-dark kanagawa-dragon
+reading,js,size,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,js,area,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,token.function,--ink-syntax-variable-name-function-color,solarized-dark kanagawa-dragon
+reading,js,greet,shared,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,token.function,--ink-syntax-variable-name-function-color,solarized-dark kanagawa-dragon
+reading,js,name,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,markdown,`,shared,tok-processing-instruction,--ink-syntax-processing-instruction-color,token.code-snippet.code.keyword,--ink-syntax-monospace-color,solarized-dark kanagawa-dragon
+reading,markdown,Some,bare,tok-content,--ink-syntax-content-color,(bare text),--ink-mde-preview-codeblock-text-color,kanagawa-dragon
+reading,markdown,",",bare,tok-content,--ink-syntax-content-color,(bare text),--ink-mde-preview-codeblock-text-color,kanagawa-dragon
+reading,markdown,and,bare,tok-content,--ink-syntax-content-color,(bare text),--ink-mde-preview-codeblock-text-color,kanagawa-dragon
+reading,markdown,.,bare,tok-content,--ink-syntax-content-color,(bare text),--ink-mde-preview-codeblock-text-color,kanagawa-dragon
+reading,markdown,item,bare,tok-list tok-content,--ink-syntax-content-color,(bare text),--ink-mde-preview-codeblock-text-color,kanagawa-dragon
+reading,md,and,bare,tok-content,--ink-syntax-content-color,(bare text),--ink-mde-preview-codeblock-text-color,kanagawa-dragon
+reading,py,r,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,py,:,shared,(no token),--ink-mde-preview-codeblock-text-color,token.punctuation,--ink-syntax-punctuation-color,solarized-dark kanagawa-dragon
+reading,python,os,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,python,typing,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,python,List,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,python,decorator,shared,tok-variable-name,--ink-syntax-variable-name-color,token.decorator.annotation.punctuation,--ink-syntax-meta-color,solarized-dark kanagawa-dragon
+reading,python,Base,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,python,:,shared,(no token),--ink-mde-preview-codeblock-text-color,token.punctuation,--ink-syntax-punctuation-color,solarized-dark kanagawa-dragon
+reading,python,self,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,python,name,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,python,str,shared,tok-variable-name,--ink-syntax-variable-name-color,token.builtin,--ink-syntax-variable-name-function-color,solarized-dark kanagawa-dragon
+reading,python,count,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,python,-,shared,(no token),--ink-mde-preview-codeblock-text-color,token.operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+reading,python,>,shared,(no token),--ink-mde-preview-codeblock-text-color,token.operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+reading,python,None,shared,tok-null,--ink-syntax-null-color,token.boolean,--ink-syntax-bool-color,solarized-dark
+reading,python,print,shared,tok-variable-name tok-function,--ink-syntax-variable-name-function-color,token.keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+reading,rs,fn,bare,tok-definition-keyword,--ink-syntax-definition-keyword-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,rs,main,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,rs,(,bare,tok-paren,--ink-syntax-paren-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,rs,),bare,tok-paren,--ink-syntax-paren-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,rs,{,bare,tok-brace,--ink-syntax-brace-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,rs,let,bare,tok-definition-keyword,--ink-syntax-definition-keyword-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,rs,x,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,rs,=,bare,tok-definition-operator,--ink-syntax-definition-operator-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,rs,;,bare,tok-separator,--ink-syntax-separator-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,rs,},bare,tok-brace,--ink-syntax-brace-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,rs,2.0,bare,tok-float,--ink-syntax-float-color,(bare text),--ink-mde-preview-codeblock-text-color,kanagawa-dragon
+reading,rust,HashMap,shared,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,token.class-name,--ink-syntax-name-color,solarized-dark
+reading,rust,x,bare,tok-property-name,--ink-syntax-property-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,rust,:,shared,(no token),--ink-mde-preview-codeblock-text-color,token.punctuation,--ink-syntax-punctuation-color,solarized-dark kanagawa-dragon
+reading,rust,i32,shared,tok-name,--ink-syntax-name-color,token.keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+reading,rust,y,bare,tok-property-name,--ink-syntax-property-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,rust,<,shared,(no token),--ink-mde-preview-codeblock-text-color,token.operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+reading,rust,>,shared,(no token),--ink-mde-preview-codeblock-text-color,token.operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+reading,rust,mut,shared,tok-modifier,--ink-syntax-modifier-color,token.keyword,--ink-syntax-keyword-color,solarized-dark
+reading,rust,map,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,rust,str,shared,tok-name,--ink-syntax-name-color,token.keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+reading,rust,HashMap,shared,tok-namespace,--ink-syntax-namespace-color,token.class-name,--ink-syntax-name-color,solarized-dark kanagawa-dragon
+reading,rust,new,shared,tok-variable-name,--ink-syntax-variable-name-color,token.function,--ink-syntax-property-name-function-color,solarized-dark kanagawa-dragon
+reading,rust,map,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,rust,.,shared,(no token),--ink-mde-preview-codeblock-text-color,token.punctuation,--ink-syntax-punctuation-color,solarized-dark kanagawa-dragon
+reading,rust,Ok,shared,tok-variable-name tok-function,--ink-syntax-variable-name-function-color,token.class-name,--ink-syntax-name-color,solarized-dark kanagawa-dragon
+reading,sh,export,shared,tok-keyword,--ink-syntax-keyword-color,token.builtin.class-name,--ink-syntax-variable-name-standard-color,solarized-dark kanagawa-dragon
+reading,sh,|,shared,(no token),--ink-mde-preview-codeblock-text-color,token.operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+reading,sh,>,shared,(no token),--ink-mde-preview-codeblock-text-color,token.operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+reading,sql,id,bare,tok-name,--ink-syntax-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,sql,name,bare,tok-name,--ink-syntax-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,sql,label,bare,tok-name,--ink-syntax-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,sql,users,bare,tok-name,--ink-syntax-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,sql,u,bare,tok-name,--ink-syntax-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,sql,.,shared,(no token),--ink-mde-preview-codeblock-text-color,token.punctuation,--ink-syntax-punctuation-color,solarized-dark kanagawa-dragon
+reading,sql,age,bare,tok-name,--ink-syntax-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,sql,AND,shared,tok-keyword,--ink-syntax-keyword-color,token.operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+reading,sql,LIKE,shared,tok-keyword,--ink-syntax-keyword-color,token.operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+reading,sql,;,shared,(no token),--ink-mde-preview-codeblock-text-color,token.punctuation,--ink-syntax-punctuation-color,solarized-dark kanagawa-dragon
+reading,ts,x,bare,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,ts,:,shared,tok-punctuation,--ink-syntax-punctuation-color,token.operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+reading,ts,label,bare,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,ts,?,shared,(no token),--ink-mde-preview-codeblock-text-color,token.operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+reading,ts,Color,bare,tok-name tok-definition,--ink-syntax-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,ts,Red,bare,tok-property-name,--ink-syntax-property-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,ts,Green,bare,tok-property-name,--ink-syntax-property-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,ts,p,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,ts,Point,bare,tok-name,--ink-syntax-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,ts,dx,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,ts,next,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,ts,...,shared,tok-punctuation,--ink-syntax-punctuation-color,token.operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+reading,ts,p,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,ts,.,shared,tok-deref-operator,--ink-syntax-deref-operator-color,token.punctuation,--ink-syntax-punctuation-color,solarized-dark kanagawa-dragon
+reading,ts,x,bare,tok-property-name,--ink-syntax-property-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,ts,dx,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,ts,next,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,typescript,v,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,typescript,:,shared,tok-punctuation,--ink-syntax-punctuation-color,token.operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+reading,typescript,v,bare,tok-variable-name,--ink-syntax-variable-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,yaml,demo,bare,tok-content,--ink-syntax-content-color,(bare text),--ink-mde-preview-codeblock-text-color,kanagawa-dragon
+reading,yaml,plain,bare,tok-content,--ink-syntax-content-color,(bare text),--ink-mde-preview-codeblock-text-color,kanagawa-dragon
+reading,yaml,value,bare,tok-content,--ink-syntax-content-color,(bare text),--ink-mde-preview-codeblock-text-color,kanagawa-dragon
+reading,zsh,for,bare,tok-keyword,--ink-syntax-keyword-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,zsh,in,bare,tok-keyword,--ink-syntax-keyword-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,zsh,do,bare,tok-keyword,--ink-syntax-keyword-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,zsh,wc,bare,tok-variable-name tok-standard,--ink-syntax-variable-name-standard-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,zsh,-l,bare,tok-attribute-name,--ink-syntax-attribute-name-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,zsh,"""",bare,tok-string,--ink-syntax-string-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,zsh,$f,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+reading,zsh,done,bare,tok-keyword,--ink-syntax-keyword-color,(bare text),--ink-mde-preview-codeblock-text-color,solarized-dark kanagawa-dragon
+source,css,@media,shared,tok-definition-keyword,--ink-syntax-definition-keyword-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark kanagawa-dragon
+source,css,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,css,:,bare,tok-punctuation,--ink-syntax-punctuation-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,css,px,shared,tok-unit,--ink-syntax-unit-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark kanagawa-dragon
+source,css,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,css,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,css,.,shared,(no token),--ink-md-codeblock-color,cm-hmd-codeblock.cm-qualifier,--ink-syntax-class-name-color,solarized-dark kanagawa-dragon
+source,css,>,bare,tok-logic-operator,--ink-syntax-logic-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,css,",",bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,css,#,shared,tok-deref-operator,--ink-syntax-deref-operator-color,cm-builtin.cm-hmd-codeblock,--ink-syntax-variable-name-standard-color,solarized-dark kanagawa-dragon
+source,css,main,shared,tok-label-name,--ink-syntax-label-name-color,cm-builtin.cm-hmd-codeblock,--ink-syntax-variable-name-standard-color,solarized-dark kanagawa-dragon
+source,css,;,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,css,!important,shared,tok-modifier,--ink-syntax-modifier-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark
+source,css,%,shared,tok-unit,--ink-syntax-unit-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark kanagawa-dragon
+source,css,-,bare,tok-arithmetic-operator,--ink-syntax-arithmetic-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,css,em,shared,tok-unit,--ink-syntax-unit-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark kanagawa-dragon
+source,css,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,go,Point,shared,tok-name tok-definition,--ink-syntax-name-definition-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+source,go,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,go,X,shared,tok-property-name,--ink-syntax-property-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+source,go,",",bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,go,Y,shared,tok-property-name,--ink-syntax-property-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+source,go,int,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+source,go,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,go,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,go,*,shared,tok-modifier,--ink-syntax-modifier-color,cm-hmd-codeblock.cm-operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+source,go,Point,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark
+source,go,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,go,Move,shared,tok-property-name,--ink-syntax-property-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+source,go,error,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+source,go,.,shared,tok-deref-operator,--ink-syntax-deref-operator-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark kanagawa-dragon
+source,go,Println,shared,tok-property-name,--ink-syntax-property-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+source,go,nil,shared,tok-null,--ink-syntax-null-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark
+source,html,<!DOCTYPE html>,shared,tok-document-meta,--ink-syntax-document-meta-color,cm-hmd-codeblock.cm-meta,--ink-syntax-meta-color,solarized-dark kanagawa-dragon
+source,html,=,bare,tok-definition-operator,--ink-syntax-definition-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,html,"""box""",shared,tok-attribute-value,--ink-syntax-attribute-value-color,cm-hmd-codeblock.cm-string,--ink-syntax-string-color,solarized-dark
+source,html,"""main""",shared,tok-attribute-value,--ink-syntax-attribute-value-color,cm-hmd-codeblock.cm-string,--ink-syntax-string-color,solarized-dark
+source,html,"""https://example.com""",shared,tok-attribute-value,--ink-syntax-attribute-value-color,cm-hmd-codeblock.cm-string,--ink-syntax-string-color,solarized-dark
+source,html,&amp;,shared,tok-character,--ink-syntax-character-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+source,javascript,${,shared,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock.cm-string-2,--ink-syntax-string-special-color,solarized-dark kanagawa-dragon
+source,javascript,},shared,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock.cm-string-2,--ink-syntax-string-special-color,solarized-dark kanagawa-dragon
+source,javascript,;,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,javascript,.,bare,tok-deref-operator,--ink-syntax-deref-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,javascript,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,javascript,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,javascript,log,shared,tok-property-name tok-function,--ink-syntax-property-name-function-color,cm-hmd-codeblock.cm-property,--ink-syntax-property-name-color,kanagawa-dragon
+source,js,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,js,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,js,;,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,js,",",bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,js,null,shared,tok-null,--ink-syntax-null-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark
+source,js,Shape,shared,tok-class-name,--ink-syntax-class-name-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark kanagawa-dragon
+source,js,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,js,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,js,super,shared,tok-atom,--ink-syntax-atom-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+source,js,this,shared,tok-self,--ink-syntax-self-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+source,js,.,bare,tok-deref-operator,--ink-syntax-deref-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,js,undefined,shared,tok-variable-name,--ink-syntax-variable-name-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+source,js,${,shared,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock.cm-string-2,--ink-syntax-string-special-color,solarized-dark kanagawa-dragon
+source,js,},shared,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock.cm-string-2,--ink-syntax-string-special-color,solarized-dark kanagawa-dragon
+source,js,greet,shared,tok-variable-name tok-function,--ink-syntax-variable-name-function-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+source,js,/ab+c/g,shared,tok-regexp,--ink-syntax-regexp-color,cm-hmd-codeblock.cm-string-2,--ink-syntax-string-special-color,kanagawa-dragon
+source,js,log,shared,tok-property-name tok-function,--ink-syntax-property-name-function-color,cm-hmd-codeblock.cm-property,--ink-syntax-property-name-color,kanagawa-dragon
+source,js,max,shared,tok-property-name tok-function,--ink-syntax-property-name-function-color,cm-hmd-codeblock.cm-property,--ink-syntax-property-name-color,kanagawa-dragon
+source,json,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,json,:,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,json,",",bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,json,-,shared,tok-number,--ink-syntax-number-color,cm-hmd-codeblock.cm-operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+source,json,[,bare,tok-square-bracket,--ink-syntax-square-bracket-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,json,],bare,tok-square-bracket,--ink-syntax-square-bracket-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,json,null,shared,tok-null,--ink-syntax-null-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark
+source,json,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,markdown,#,shared,tok-heading-1 tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-header.cm-header-1.cm-hmd-codeblock,--ink-syntax-heading-color,solarized-dark kanagawa-dragon
+source,markdown,**,shared,tok-strong tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock.cm-strong,--ink-syntax-strong-color,solarized-dark kanagawa-dragon
+source,markdown,`,shared,tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-comment.cm-hmd-codeblock,--ink-syntax-comment-color,solarized-dark kanagawa-dragon
+source,markdown,code,shared,tok-monospace,--ink-syntax-monospace-color,cm-comment.cm-hmd-codeblock,--ink-syntax-comment-color,solarized-dark kanagawa-dragon
+source,markdown,-,shared,tok-list tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock.cm-variable-2,--ink-syntax-variable-name-local-color,solarized-dark kanagawa-dragon
+source,markdown,item,shared,tok-list tok-content,--ink-syntax-content-color,cm-hmd-codeblock.cm-variable-2,--ink-syntax-variable-name-local-color,solarized-dark
+source,markdown,[,shared,tok-list tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock.cm-link,--ink-syntax-link-color,solarized-dark kanagawa-dragon
+source,markdown,],shared,tok-list tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock.cm-link,--ink-syntax-link-color,solarized-dark kanagawa-dragon
+source,markdown,(,shared,tok-list tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock.cm-string.cm-url,--ink-syntax-url-color,solarized-dark kanagawa-dragon
+source,markdown,),shared,tok-list tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock.cm-string.cm-url,--ink-syntax-url-color,solarized-dark kanagawa-dragon
+source,md,**,bare,tok-strong tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,md,bold,bare,tok-strong,--ink-syntax-strong-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,md,[,bare,tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,md,a,bare,tok-link,--ink-syntax-link-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,md,],bare,tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,md,(,bare,tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,md,https://example.com,bare,tok-link tok-url,--ink-syntax-url-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,md,),bare,tok-link tok-processing-instruction,--ink-syntax-processing-instruction-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,py,def,bare,tok-definition-keyword,--ink-syntax-definition-keyword-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,py,area,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+source,py,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,py,r,bare,tok-variable-name,--ink-syntax-variable-name-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+source,py,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,py,return,bare,tok-control-keyword,--ink-syntax-control-keyword-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,py,len,bare,tok-variable-name tok-function,--ink-syntax-variable-name-function-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,python,decorator,shared,tok-variable-name,--ink-syntax-variable-name-color,cm-hmd-codeblock.cm-meta,--ink-syntax-meta-color,solarized-dark kanagawa-dragon
+source,python,Greeter,shared,tok-class-name,--ink-syntax-class-name-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark kanagawa-dragon
+source,python,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,python,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,python,",",bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,python,->,shared,(no token),--ink-md-codeblock-color,cm-hmd-codeblock.cm-operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+source,python,None,shared,tok-null,--ink-syntax-null-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+source,python,print,shared,tok-variable-name tok-function,--ink-syntax-variable-name-function-color,cm-builtin.cm-hmd-codeblock,--ink-syntax-variable-name-standard-color,solarized-dark kanagawa-dragon
+source,python,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,python,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,python,len,shared,tok-variable-name tok-function,--ink-syntax-variable-name-function-color,cm-builtin.cm-hmd-codeblock,--ink-syntax-variable-name-standard-color,solarized-dark kanagawa-dragon
+source,python,True,shared,tok-bool,--ink-syntax-bool-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+source,rs,fn,bare,tok-definition-keyword,--ink-syntax-definition-keyword-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rs,main,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+source,rs,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rs,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rs,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rs,let,bare,tok-definition-keyword,--ink-syntax-definition-keyword-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rs,x,bare,tok-variable-name tok-definition,--ink-syntax-variable-name-definition-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+source,rs,=,bare,tok-definition-operator,--ink-syntax-definition-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rs,;,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rs,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rs,2.0,bare,tok-float,--ink-syntax-float-color,cm-hmd-codeblock,--ink-md-codeblock-color,kanagawa-dragon
+source,rust,std,shared,tok-namespace,--ink-syntax-namespace-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+source,rust,::,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rust,collections,shared,tok-namespace,--ink-syntax-namespace-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+source,rust,;,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rust,Point,shared,tok-name,--ink-syntax-name-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark
+source,rust,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rust,x,shared,tok-property-name,--ink-syntax-property-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+source,rust,i32,shared,tok-name,--ink-syntax-name-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+source,rust,",",bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rust,y,shared,tok-property-name,--ink-syntax-property-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+source,rust,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rust,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rust,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rust,->,shared,tok-punctuation,--ink-syntax-punctuation-color,cm-hmd-codeblock.cm-operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+source,rust,Result,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark
+source,rust,<,shared,(no token),--ink-md-codeblock-color,cm-hmd-codeblock.cm-operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+source,rust,String,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark
+source,rust,>,shared,(no token),--ink-md-codeblock-color,cm-hmd-codeblock.cm-operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+source,rust,mut,shared,tok-modifier,--ink-syntax-modifier-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark
+source,rust,HashMap,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark
+source,rust,&,bare,tok-operator,--ink-syntax-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,rust,str,shared,tok-name,--ink-syntax-name-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+source,rust,HashMap,shared,tok-namespace,--ink-syntax-namespace-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+source,rust,insert,shared,tok-property-name tok-function,--ink-syntax-property-name-function-color,cm-hmd-codeblock.cm-variable,--ink-syntax-variable-name-color,solarized-dark kanagawa-dragon
+source,rust,1,shared,tok-integer,--ink-syntax-integer-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark
+source,rust,println,shared,tok-macro-name,--ink-syntax-macro-name-color,cm-hmd-codeblock.cm-variable-3,--ink-syntax-class-name-color,solarized-dark kanagawa-dragon
+source,rust,!,shared,tok-macro-name,--ink-syntax-macro-name-color,cm-hmd-codeblock.cm-variable-3,--ink-syntax-class-name-color,solarized-dark kanagawa-dragon
+source,rust,2.5,shared,tok-float,--ink-syntax-float-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark
+source,rust,Ok,shared,tok-variable-name tok-function,--ink-syntax-variable-name-function-color,cm-builtin.cm-hmd-codeblock,--ink-syntax-variable-name-standard-color,solarized-dark kanagawa-dragon
+source,sql,id,bare,tok-name,--ink-syntax-name-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+source,sql,name,bare,tok-name,--ink-syntax-name-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+source,sql,label,bare,tok-name,--ink-syntax-name-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+source,sql,users,bare,tok-name,--ink-syntax-name-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+source,sql,u,bare,tok-name,--ink-syntax-name-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark
+source,sql,.,shared,(no token),--ink-md-codeblock-color,cm-hmd-codeblock.cm-variable-2,--ink-syntax-variable-name-local-color,solarized-dark
+source,sql,age,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-variable-2,--ink-syntax-variable-name-local-color,solarized-dark
+source,sql,name,shared,tok-name,--ink-syntax-name-color,cm-hmd-codeblock.cm-variable-2,--ink-syntax-variable-name-local-color,solarized-dark
+source,sql,;,shared,(no token),--ink-md-codeblock-color,cm-hmd-codeblock.cm-punctuation,--ink-syntax-punctuation-color,solarized-dark kanagawa-dragon
+source,ts,Point,shared,tok-name tok-definition,--ink-syntax-name-definition-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark kanagawa-dragon
+source,ts,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,ts,:,bare,tok-punctuation,--ink-syntax-punctuation-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,ts,;,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,ts,?,shared,(no token),--ink-md-codeblock-color,cm-hmd-codeblock.cm-operator,--ink-syntax-operator-color,solarized-dark kanagawa-dragon
+source,ts,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,ts,Id,shared,tok-name tok-definition,--ink-syntax-name-definition-color,cm-hmd-codeblock.cm-type,--ink-syntax-name-color,solarized-dark kanagawa-dragon
+source,ts,Color,shared,tok-name tok-definition,--ink-syntax-name-definition-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark kanagawa-dragon
+source,ts,Red,shared,tok-property-name,--ink-syntax-property-name-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark kanagawa-dragon
+source,ts,",",bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,ts,Green,shared,tok-property-name,--ink-syntax-property-name-color,cm-def.cm-hmd-codeblock,--ink-syntax-variable-name-definition-color,solarized-dark kanagawa-dragon
+source,ts,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,ts,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,ts,...,shared,tok-punctuation,--ink-syntax-punctuation-color,cm-hmd-codeblock.cm-meta,--ink-syntax-meta-color,solarized-dark kanagawa-dragon
+source,ts,.,bare,tok-deref-operator,--ink-syntax-deref-operator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,typescript,(,bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,typescript,:,bare,tok-punctuation,--ink-syntax-punctuation-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,typescript,),bare,tok-paren,--ink-syntax-paren-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,typescript,{,bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,typescript,;,bare,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,typescript,},bare,tok-brace,--ink-syntax-brace-color,cm-hmd-codeblock,--ink-md-codeblock-color,solarized-dark kanagawa-dragon
+source,yaml,name,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+source,yaml,:,shared,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock.cm-meta,--ink-syntax-meta-color,solarized-dark kanagawa-dragon
+source,yaml,version,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+source,yaml,1.2,shared,tok-content,--ink-syntax-content-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark kanagawa-dragon
+source,yaml,enabled,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+source,yaml,true,shared,tok-content,--ink-syntax-content-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon
+source,yaml,items,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+source,yaml,-,shared,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock.cm-meta,--ink-syntax-meta-color,solarized-dark kanagawa-dragon
+source,yaml,anchor,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+source,yaml,&base,shared,tok-label-name,--ink-syntax-label-name-color,cm-hmd-codeblock.cm-variable-2,--ink-syntax-variable-name-local-color,solarized-dark kanagawa-dragon
+source,yaml,key,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+source,yaml,ref,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+source,yaml,*base,shared,tok-label-name,--ink-syntax-label-name-color,cm-hmd-codeblock.cm-variable-2,--ink-syntax-variable-name-local-color,solarized-dark kanagawa-dragon
+source,yml,count,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+source,yml,:,shared,tok-separator,--ink-syntax-separator-color,cm-hmd-codeblock.cm-meta,--ink-syntax-meta-color,solarized-dark kanagawa-dragon
+source,yml,3,shared,tok-content,--ink-syntax-content-color,cm-hmd-codeblock.cm-number,--ink-syntax-number-color,solarized-dark kanagawa-dragon
+source,yml,on,shared,tok-property-name tok-definition,--ink-syntax-property-name-definition-color,cm-atom.cm-hmd-codeblock,--ink-syntax-atom-color,solarized-dark kanagawa-dragon
+source,yml,true,shared,tok-content,--ink-syntax-content-color,cm-hmd-codeblock.cm-keyword,--ink-syntax-keyword-color,solarized-dark kanagawa-dragon

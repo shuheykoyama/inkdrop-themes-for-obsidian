@@ -1,0 +1,443 @@
+view,theme,group,bare,class,theme_colour,inkdrop,differing
+live,kanagawa-dragon,(bare text),true,CONFLICT,"rgb(197, 201, 197)","rgb(158, 155, 148) brace/separator/paren/punctuation/square-bracket x182; rgb(197, 201, 197) --ink-md-codeblock/content/name/variable-name-definition/variable-name x48; rgb(196, 116, 110) deref-operator/logic-operator/arithmetic-operator/definition-operator/operator/strong x15; rgb(137, 153, 122) processing-instruction x6; rgb(138, 147, 168) definition-keyword/control-keyword x4; rgb(140, 165, 177) variable-name-function/link x2; rgb(162, 148, 164) float x1; rgb(150, 160, 182) url x1",211
+live,kanagawa-dragon,cm-atom.cm-hmd-codeblock,false,CONFLICT,"rgb(183, 146, 123)","rgb(183, 146, 123) bool/null/color/atom x10; rgb(195, 177, 136) property-name-definition x9; rgb(197, 201, 197) variable-name/name x5; rgb(137, 153, 122) character x1",15
+live,kanagawa-dragon,cm-builtin.cm-hmd-codeblock,false,CONFLICT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name/variable-name-standard x9; rgb(140, 165, 177) variable-name-function x3; rgb(196, 116, 110) deref-operator/label-name x2",5
+live,kanagawa-dragon,cm-comment.cm-hmd-codeblock,false,CONFLICT,"rgb(115, 125, 115)","rgb(115, 125, 115) line-comment/block-comment/comment x10; rgb(137, 153, 122) processing-instruction x2; rgb(200, 192, 146) monospace x1",3
+live,kanagawa-dragon,cm-def.cm-hmd-codeblock,false,CONFLICT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name-definition/name x30; rgb(142, 164, 162) class-name x2; rgb(140, 165, 177) name-definition x2; rgb(195, 177, 136) property-name x2; rgb(138, 147, 168) definition-keyword x1",7
+live,kanagawa-dragon,cm-header.cm-header-1.cm-hmd-codeblock,false,CONFLICT,"rgb(195, 177, 136)","rgb(137, 153, 122) processing-instruction x1; rgb(195, 177, 136) heading-1 x1",1
+live,kanagawa-dragon,cm-hmd-codeblock.cm-keyword,false,CONFLICT,"rgb(138, 147, 168)","rgb(138, 147, 168) module-keyword/definition-keyword/control-keyword/operator-keyword/modifier/keyword x68; rgb(183, 146, 123) atom/null/bool x5; rgb(197, 201, 197) name/content x5; rgb(196, 116, 110) self x2",12
+live,kanagawa-dragon,cm-hmd-codeblock.cm-link,false,CONFLICT,"rgb(140, 165, 177)","rgb(137, 153, 122) processing-instruction x2; rgb(140, 165, 177) link x1",2
+live,kanagawa-dragon,cm-hmd-codeblock.cm-meta,false,CONFLICT,"rgb(196, 116, 110)","rgb(158, 155, 148) punctuation/separator x12; rgb(196, 116, 110) meta x9; rgb(197, 201, 197) variable-name/document-meta x2",14
+live,kanagawa-dragon,cm-hmd-codeblock.cm-number,false,CONFLICT,"rgb(162, 148, 164)","rgb(162, 148, 164) number/integer/float x21; rgb(183, 146, 123) unit x4; rgb(196, 116, 110) deref-operator x3; rgb(197, 201, 197) content x2",9
+live,kanagawa-dragon,cm-hmd-codeblock.cm-operator,false,CONFLICT,"rgb(196, 116, 110)","rgb(196, 116, 110) definition-operator/arithmetic-operator/compare-operator/logic-operator/operator/update-operator x21; rgb(197, 201, 197) --ink-md-codeblock x6; rgb(162, 148, 164) number x1; rgb(138, 147, 168) modifier x1; rgb(158, 155, 148) punctuation x1",9
+live,kanagawa-dragon,cm-hmd-codeblock.cm-property,false,CONFLICT,"rgb(195, 177, 136)","rgb(195, 177, 136) property-name-definition/property-name x14; rgb(140, 165, 177) property-name-function x3",3
+live,kanagawa-dragon,cm-hmd-codeblock.cm-punctuation,false,CONFLICT,"rgb(158, 155, 148)","rgb(158, 155, 148) punctuation x2; rgb(197, 201, 197) --ink-md-codeblock x1",1
+live,kanagawa-dragon,cm-hmd-codeblock.cm-qualifier,false,CONFLICT,"rgb(142, 164, 162)","rgb(197, 201, 197) --ink-md-codeblock x1; rgb(142, 164, 162) class-name x1",1
+live,kanagawa-dragon,cm-hmd-codeblock.cm-string-2,false,CONFLICT,"rgb(137, 153, 122)","rgb(137, 153, 122) string-special x4; rgb(158, 155, 148) brace x4; rgb(196, 116, 110) regexp x1",5
+live,kanagawa-dragon,cm-hmd-codeblock.cm-string.cm-url,false,CONFLICT,"rgb(150, 160, 182)","rgb(137, 153, 122) processing-instruction x2; rgb(150, 160, 182) url x1",2
+live,kanagawa-dragon,cm-hmd-codeblock.cm-strong,false,CONFLICT,"rgb(196, 116, 110)","rgb(137, 153, 122) processing-instruction x2; rgb(196, 116, 110) strong x1",2
+live,kanagawa-dragon,cm-hmd-codeblock.cm-type,false,CONFLICT,"rgb(197, 201, 197)","rgb(197, 201, 197) name x11; rgb(140, 165, 177) name-definition x1",1
+live,kanagawa-dragon,cm-hmd-codeblock.cm-variable,false,CONFLICT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name/variable-name-definition/name x31; rgb(195, 177, 136) property-name x8; rgb(140, 165, 177) variable-name-function/name-definition/property-name-function x3; rgb(142, 164, 162) namespace x3",14
+live,kanagawa-dragon,cm-hmd-codeblock.cm-variable-2,false,CONFLICT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name/--ink-md-codeblock/name/content x15; rgb(196, 116, 110) label-name x2; rgb(137, 153, 122) processing-instruction x1",3
+live,kanagawa-dragon,cm-hmd-codeblock.cm-variable-3,false,CONFLICT,"rgb(142, 164, 162)","rgb(142, 164, 162) class-name x2; rgb(196, 116, 110) macro-name x2",2
+live,kanagawa-dragon,cm-attribute.cm-hmd-codeblock,false,EXACT,"rgb(195, 177, 136)","rgb(195, 177, 136) attribute-name x9",0
+live,kanagawa-dragon,cm-bracket.cm-hmd-codeblock,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) paren x2",0
+live,kanagawa-dragon,cm-bracket.cm-hmd-codeblock.cm-tag,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) angle-bracket x8",0
+live,kanagawa-dragon,cm-callee.cm-hmd-codeblock.cm-variable,false,EXACT,"rgb(138, 147, 168)","rgb(138, 147, 168) operator-keyword x1",0
+live,kanagawa-dragon,cm-em.cm-hmd-codeblock,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) processing-instruction/emphasis x3",0
+live,kanagawa-dragon,cm-hmd-codeblock.cm-property.cm-string,false,EXACT,"rgb(195, 177, 136)","rgb(195, 177, 136) property-name x6",0
+live,kanagawa-dragon,cm-hmd-codeblock.cm-string,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) string/string-special/attribute-value x34",0
+live,kanagawa-dragon,cm-hmd-codeblock.cm-tag,false,EXACT,"rgb(140, 165, 177)","rgb(140, 165, 177) tag-name x5",0
+live,solarized-dark,(bare text),true,CONFLICT,"rgb(131, 148, 149)","rgb(42, 162, 152) brace/separator/paren/punctuation/square-bracket/name/link x192; rgb(131, 148, 149) --ink-md-codeblock/content/float x35; rgb(109, 114, 197) deref-operator/logic-operator/arithmetic-operator/definition-operator/operator x14; rgb(133, 153, 0) definition-keyword/control-keyword/processing-instruction x10; rgb(100, 122, 130) variable-name-definition/variable-name x5; rgb(39, 139, 211) variable-name-function x1; rgb(173, 184, 184) strong x1; rgb(179, 134, 0) url x1",224
+live,solarized-dark,cm-atom.cm-hmd-codeblock,false,CONFLICT,"rgb(211, 54, 130)","rgb(42, 162, 152) name/property-name-definition x13; rgb(211, 54, 130) bool/color/atom x6; rgb(131, 148, 149) null x4; rgb(100, 122, 130) variable-name x1; rgb(179, 134, 0) character x1",19
+live,solarized-dark,cm-builtin.cm-hmd-codeblock,false,CONFLICT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name/variable-name-standard x9; rgb(39, 139, 211) variable-name-function x3; rgb(109, 114, 197) deref-operator x1; rgb(211, 54, 130) label-name x1",5
+live,solarized-dark,cm-comment.cm-hmd-codeblock,false,CONFLICT,"rgb(88, 110, 116)","rgb(88, 110, 116) line-comment/block-comment/comment x10; rgb(133, 153, 0) processing-instruction x2; rgb(173, 184, 184) monospace x1",3
+live,solarized-dark,cm-def.cm-hmd-codeblock,false,CONFLICT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name-definition x29; rgb(42, 162, 152) property-name/name x3; rgb(202, 76, 22) class-name x2; rgb(39, 139, 211) name-definition x2; rgb(133, 153, 0) definition-keyword x1",8
+live,solarized-dark,cm-header.cm-header-1.cm-hmd-codeblock,false,CONFLICT,"rgb(179, 134, 0)","rgb(133, 153, 0) processing-instruction x1; rgb(179, 134, 0) heading-1 x1",1
+live,solarized-dark,cm-hmd-codeblock.cm-keyword,false,CONFLICT,"rgb(133, 153, 0)","rgb(133, 153, 0) module-keyword/definition-keyword/control-keyword/operator-keyword/keyword x66; rgb(211, 54, 130) atom/self/bool/modifier x6; rgb(131, 148, 149) null/content x5; rgb(42, 162, 152) name x3",14
+live,solarized-dark,cm-hmd-codeblock.cm-link,false,CONFLICT,"rgb(42, 162, 152)","rgb(133, 153, 0) processing-instruction x2; rgb(42, 162, 152) link x1",2
+live,solarized-dark,cm-hmd-codeblock.cm-meta,false,CONFLICT,"rgb(220, 49, 46)","rgb(42, 162, 152) punctuation/separator x12; rgb(220, 49, 46) meta x9; rgb(100, 122, 130) variable-name x1; rgb(131, 148, 149) document-meta x1",14
+live,solarized-dark,cm-hmd-codeblock.cm-number,false,CONFLICT,"rgb(211, 54, 130)","rgb(211, 54, 130) number x19; rgb(131, 148, 149) unit/integer/float/content x8; rgb(109, 114, 197) deref-operator x3",11
+live,solarized-dark,cm-hmd-codeblock.cm-operator,false,CONFLICT,"rgb(109, 114, 197)","rgb(109, 114, 197) definition-operator/arithmetic-operator/compare-operator/logic-operator/operator/update-operator x21; rgb(131, 148, 149) --ink-md-codeblock x6; rgb(211, 54, 130) number/modifier x2; rgb(42, 162, 152) punctuation x1",9
+live,solarized-dark,cm-hmd-codeblock.cm-punctuation,false,CONFLICT,"rgb(42, 162, 152)","rgb(42, 162, 152) punctuation x2; rgb(131, 148, 149) --ink-md-codeblock x1",1
+live,solarized-dark,cm-hmd-codeblock.cm-qualifier,false,CONFLICT,"rgb(202, 76, 22)","rgb(131, 148, 149) --ink-md-codeblock x1; rgb(202, 76, 22) class-name x1",1
+live,solarized-dark,cm-hmd-codeblock.cm-string,false,CONFLICT,"rgb(179, 134, 0)","rgb(179, 134, 0) string/string-special x31; rgb(131, 148, 149) attribute-value x3",3
+live,solarized-dark,cm-hmd-codeblock.cm-string-2,false,CONFLICT,"rgb(179, 134, 0)","rgb(179, 134, 0) regexp/string-special x5; rgb(42, 162, 152) brace x4",4
+live,solarized-dark,cm-hmd-codeblock.cm-string.cm-url,false,CONFLICT,"rgb(179, 134, 0)","rgb(133, 153, 0) processing-instruction x2; rgb(179, 134, 0) url x1",2
+live,solarized-dark,cm-hmd-codeblock.cm-strong,false,CONFLICT,"rgb(173, 184, 184)","rgb(133, 153, 0) processing-instruction x2; rgb(173, 184, 184) strong x1",2
+live,solarized-dark,cm-hmd-codeblock.cm-type,false,CONFLICT,"rgb(42, 162, 152)","rgb(42, 162, 152) name x11; rgb(39, 139, 211) name-definition x1",1
+live,solarized-dark,cm-hmd-codeblock.cm-variable,false,CONFLICT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name/variable-name-definition x27; rgb(42, 162, 152) property-name/name/property-name-function x13; rgb(211, 54, 130) namespace x3; rgb(39, 139, 211) variable-name-function/name-definition x2",18
+live,solarized-dark,cm-hmd-codeblock.cm-variable-2,false,CONFLICT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name x10; rgb(131, 148, 149) --ink-md-codeblock/content x3; rgb(211, 54, 130) label-name x2; rgb(42, 162, 152) name x2; rgb(133, 153, 0) processing-instruction x1",8
+live,solarized-dark,cm-hmd-codeblock.cm-variable-3,false,CONFLICT,"rgb(202, 76, 22)","rgb(202, 76, 22) class-name x2; rgb(42, 162, 152) macro-name x2",2
+live,solarized-dark,cm-attribute.cm-hmd-codeblock,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) attribute-name x9",0
+live,solarized-dark,cm-bracket.cm-hmd-codeblock,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) paren x2",0
+live,solarized-dark,cm-bracket.cm-hmd-codeblock.cm-tag,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) angle-bracket x8",0
+live,solarized-dark,cm-callee.cm-hmd-codeblock.cm-variable,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) operator-keyword x1",0
+live,solarized-dark,cm-em.cm-hmd-codeblock,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) processing-instruction/emphasis x3",0
+live,solarized-dark,cm-hmd-codeblock.cm-property,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) property-name-definition/property-name/property-name-function x17",0
+live,solarized-dark,cm-hmd-codeblock.cm-property.cm-string,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) property-name x6",0
+live,solarized-dark,cm-hmd-codeblock.cm-tag,false,EXACT,"rgb(39, 139, 211)","rgb(39, 139, 211) tag-name x5",0
+reading,kanagawa-dragon,css class.token < selector.token,false,CONFLICT,"rgb(142, 164, 162)","rgba(197, 201, 197, 0.9) --ink-mde-preview-codeblock-text x1; rgb(142, 164, 162) class-name x1",1
+reading,kanagawa-dragon,css pseudo-class.token < selector.token,false,CONFLICT,"rgb(142, 164, 162)","rgb(158, 155, 148) punctuation x1; rgb(142, 164, 162) class-name x1",1
+reading,kanagawa-dragon,css pseudo-element.token < selector.token,false,CONFLICT,"rgb(142, 164, 162)","rgba(197, 201, 197, 0.9) --ink-mde-preview-codeblock-text x1; rgb(142, 164, 162) class-name x1",1
+reading,kanagawa-dragon,go operator.token,false,CONFLICT,"rgb(196, 116, 110)","rgb(138, 147, 168) modifier x1; rgb(196, 116, 110) update-operator x1",1
+reading,kanagawa-dragon,go punctuation.token,false,CONFLICT,"rgb(158, 155, 148)","rgb(158, 155, 148) brace/separator/paren x15; rgb(196, 116, 110) deref-operator x3",3
+reading,kanagawa-dragon,js class-name.token,false,CONFLICT,"rgb(142, 164, 162)","rgb(142, 164, 162) class-name x1; rgb(197, 201, 197) variable-name x1",1
+reading,kanagawa-dragon,js function.token,false,CONFLICT,"rgb(140, 165, 177)","rgb(195, 177, 136) property-name-definition x2; rgb(197, 201, 197) variable-name-definition x1; rgb(140, 165, 177) variable-name-function x1",3
+reading,kanagawa-dragon,js keyword.token,false,CONFLICT,"rgb(138, 147, 168)","rgb(138, 147, 168) definition-keyword x6; rgb(196, 116, 110) self x2; rgb(183, 146, 123) atom x1",3
+reading,kanagawa-dragon,js punctuation.token,false,CONFLICT,"rgb(158, 155, 148)","rgb(158, 155, 148) separator/brace/paren x42; rgb(196, 116, 110) deref-operator x6",6
+reading,kanagawa-dragon,markdown code.code-snippet.keyword.token,false,CONFLICT,"rgb(200, 192, 146)","rgb(137, 153, 122) processing-instruction x2; rgb(200, 192, 146) monospace x1",2
+reading,kanagawa-dragon,python annotation.decorator.punctuation.token,false,CONFLICT,"rgb(196, 116, 110)","rgb(196, 116, 110) meta x1; rgb(197, 201, 197) variable-name x1",1
+reading,kanagawa-dragon,python builtin.token,false,CONFLICT,"rgb(140, 165, 177)","rgb(140, 165, 177) variable-name-function x2; rgb(197, 201, 197) variable-name x1",1
+reading,kanagawa-dragon,python keyword.token,false,CONFLICT,"rgb(138, 147, 168)","rgb(138, 147, 168) module-keyword/definition-keyword/control-keyword/operator-keyword x12; rgb(140, 165, 177) variable-name-function x1",1
+reading,kanagawa-dragon,python operator.token,false,CONFLICT,"rgb(196, 116, 110)","rgb(196, 116, 110) definition-operator/compare-operator x2; rgba(197, 201, 197, 0.9) --ink-mde-preview-codeblock-text x2",2
+reading,kanagawa-dragon,python punctuation.token,false,CONFLICT,"rgb(158, 155, 148)","rgb(158, 155, 148) paren/separator x18; rgba(197, 201, 197, 0.9) --ink-mde-preview-codeblock-text x5",5
+reading,kanagawa-dragon,rust class-name.token,false,CONFLICT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name-definition/name x4; rgb(142, 164, 162) namespace x1; rgb(140, 165, 177) variable-name-function x1",2
+reading,kanagawa-dragon,rust function.token,false,CONFLICT,"rgb(140, 165, 177)","rgb(197, 201, 197) variable-name x1; rgb(140, 165, 177) property-name-function x1",1
+reading,kanagawa-dragon,rust keyword.token,false,CONFLICT,"rgb(138, 147, 168)","rgb(138, 147, 168) module-keyword/definition-keyword/modifier x5; rgb(197, 201, 197) name x4",4
+reading,kanagawa-dragon,rust operator.token,false,CONFLICT,"rgb(196, 116, 110)","rgba(197, 201, 197, 0.9) --ink-mde-preview-codeblock-text x4; rgb(196, 116, 110) operator/definition-operator x2",4
+reading,kanagawa-dragon,rust punctuation.token,false,CONFLICT,"rgb(158, 155, 148)","rgb(158, 155, 148) separator/brace/paren/punctuation x30; rgba(197, 201, 197, 0.9) --ink-mde-preview-codeblock-text x4",4
+reading,kanagawa-dragon,sh (bare text),true,CONFLICT,"rgba(197, 201, 197, 0.9)","rgba(197, 201, 197, 0.9) --ink-mde-preview-codeblock-text x7; rgb(138, 147, 168) keyword x4; rgb(197, 201, 197) variable-name-standard/variable-name-definition x2; rgb(137, 153, 122) string x2; rgb(195, 177, 136) attribute-name x1",9
+reading,kanagawa-dragon,sh builtin.class-name.token,false,CONFLICT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name-standard x2; rgb(138, 147, 168) keyword x1",1
+reading,kanagawa-dragon,sh operator.token,false,CONFLICT,"rgb(196, 116, 110)","rgba(197, 201, 197, 0.9) --ink-mde-preview-codeblock-text x4; rgb(196, 116, 110) operator x2",4
+reading,kanagawa-dragon,sql operator.token,false,CONFLICT,"rgb(196, 116, 110)","rgb(196, 116, 110) operator x2; rgb(138, 147, 168) keyword x2",2
+reading,kanagawa-dragon,sql punctuation.token,false,CONFLICT,"rgb(158, 155, 148)","rgb(158, 155, 148) punctuation/paren x4; rgba(197, 201, 197, 0.9) --ink-mde-preview-codeblock-text x3",3
+reading,kanagawa-dragon,ts operator.token,false,CONFLICT,"rgb(196, 116, 110)","rgb(158, 155, 148) punctuation x10; rgb(196, 116, 110) definition-operator/logic-operator/arithmetic-operator x4; rgba(197, 201, 197, 0.9) --ink-mde-preview-codeblock-text x1",11
+reading,kanagawa-dragon,ts punctuation.token,false,CONFLICT,"rgb(158, 155, 148)","rgb(158, 155, 148) brace/separator/paren x22; rgb(196, 116, 110) deref-operator x1",1
+reading,kanagawa-dragon,go (bare text),true,DOMINATED,"rgba(197, 201, 197, 0.9)","rgb(197, 201, 197) variable-name-definition/name/variable-name x8; rgb(195, 177, 136) property-name x4; rgb(140, 165, 177) name-definition x1",13
+reading,kanagawa-dragon,rust (bare text),true,DOMINATED,"rgba(197, 201, 197, 0.9)","rgb(197, 201, 197) variable-name-definition/variable-name x5; rgb(158, 155, 148) paren/brace/separator x5; rgb(195, 177, 136) property-name x2; rgb(138, 147, 168) definition-keyword x2; rgb(196, 116, 110) definition-operator x1; rgb(162, 148, 164) float x1",16
+reading,kanagawa-dragon,ts (bare text),true,DOMINATED,"rgba(197, 201, 197, 0.9)","rgb(197, 201, 197) variable-name-definition/name/variable-name x13; rgb(195, 177, 136) property-name-definition/property-name x6; rgb(140, 165, 177) name-definition x1",20
+reading,kanagawa-dragon,css color.hexcode.token,false,EXACT,"rgb(183, 146, 123)","rgb(183, 146, 123) color x1",0
+reading,kanagawa-dragon,css combinator.token < selector.token,false,EXACT,"rgb(196, 116, 110)","rgb(196, 116, 110) logic-operator x1",0
+reading,kanagawa-dragon,css comment.token,false,EXACT,"rgb(115, 125, 115)","rgb(115, 125, 115) block-comment x1",0
+reading,kanagawa-dragon,css function.token,false,EXACT,"rgb(138, 147, 168)","rgb(138, 147, 168) operator-keyword x1",0
+reading,kanagawa-dragon,css id.token < selector.token,false,EXACT,"rgb(196, 116, 110)","rgb(196, 116, 110) deref-operator/label-name x2",0
+reading,kanagawa-dragon,css important.token,false,EXACT,"rgb(138, 147, 168)","rgb(138, 147, 168) modifier x1",0
+reading,kanagawa-dragon,css number.token,false,EXACT,"rgb(162, 148, 164)","rgb(162, 148, 164) number x4",0
+reading,kanagawa-dragon,css number.token < atrule.token,false,EXACT,"rgb(162, 148, 164)","rgb(162, 148, 164) number x1",0
+reading,kanagawa-dragon,css operator.token,false,EXACT,"rgb(196, 116, 110)","rgb(196, 116, 110) arithmetic-operator x1",0
+reading,kanagawa-dragon,css property.token,false,EXACT,"rgb(195, 177, 136)","rgb(195, 177, 136) property-name x4",0
+reading,kanagawa-dragon,css property.token < atrule.token,false,EXACT,"rgb(195, 177, 136)","rgb(195, 177, 136) property-name x1",0
+reading,kanagawa-dragon,css punctuation.token,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) brace/punctuation/separator/paren x15",0
+reading,kanagawa-dragon,css punctuation.token < atrule.token,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) paren/punctuation x3",0
+reading,kanagawa-dragon,css punctuation.token < selector.token,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) separator x1",0
+reading,kanagawa-dragon,css rule.token < atrule.token,false,EXACT,"rgb(138, 147, 168)","rgb(138, 147, 168) definition-keyword x1",0
+reading,kanagawa-dragon,css selector.token,false,EXACT,"rgb(140, 165, 177)","rgb(140, 165, 177) tag-name x1",0
+reading,kanagawa-dragon,css string.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) string x1",0
+reading,kanagawa-dragon,css token.unit,false,EXACT,"rgb(183, 146, 123)","rgb(183, 146, 123) unit x3",0
+reading,kanagawa-dragon,css token.unit < atrule.token,false,EXACT,"rgb(183, 146, 123)","rgb(183, 146, 123) unit x1",0
+reading,kanagawa-dragon,go boolean.token,false,EXACT,"rgb(183, 146, 123)","rgb(183, 146, 123) bool/null x3",0
+reading,kanagawa-dragon,go builtin.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) name x3",0
+reading,kanagawa-dragon,go comment.token,false,EXACT,"rgb(115, 125, 115)","rgb(115, 125, 115) line-comment x1",0
+reading,kanagawa-dragon,go function.token,false,EXACT,"rgb(195, 177, 136)","rgb(195, 177, 136) property-name x2",0
+reading,kanagawa-dragon,go keyword.token,false,EXACT,"rgb(138, 147, 168)","rgb(138, 147, 168) module-keyword/definition-keyword/control-keyword x6",0
+reading,kanagawa-dragon,go number.token,false,EXACT,"rgb(162, 148, 164)","rgb(162, 148, 164) number x1",0
+reading,kanagawa-dragon,go string.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) string x2",0
+reading,kanagawa-dragon,html attr-equals.punctuation.token < attr-value.token < tag.token,false,EXACT,"rgb(196, 116, 110)","rgb(196, 116, 110) definition-operator x3",0
+reading,kanagawa-dragon,html attr-name.token < tag.token,false,EXACT,"rgb(195, 177, 136)","rgb(195, 177, 136) attribute-name x4",0
+reading,kanagawa-dragon,html attr-value.token < tag.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) attribute-value x3",0
+reading,kanagawa-dragon,html comment.token,false,EXACT,"rgb(115, 125, 115)","rgb(115, 125, 115) block-comment x1",0
+reading,kanagawa-dragon,html doctype-tag.token < doctype.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) document-meta x1",0
+reading,kanagawa-dragon,html entity.named-entity.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) character x1",0
+reading,kanagawa-dragon,html name.token < doctype.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) document-meta x1",0
+reading,kanagawa-dragon,html punctuation.token < attr-value.token < tag.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) attribute-value x6",0
+reading,kanagawa-dragon,html punctuation.token < doctype.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) document-meta x2",0
+reading,kanagawa-dragon,html punctuation.token < tag.token,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) angle-bracket x4",0
+reading,kanagawa-dragon,html punctuation.token < tag.token < tag.token,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) angle-bracket x4",0
+reading,kanagawa-dragon,html tag.token < tag.token,false,EXACT,"rgb(140, 165, 177)","rgb(140, 165, 177) tag-name x4",0
+reading,kanagawa-dragon,js boolean.token,false,EXACT,"rgb(183, 146, 123)","rgb(183, 146, 123) bool x1",0
+reading,kanagawa-dragon,js class-name.console.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name x2",0
+reading,kanagawa-dragon,js class-name.known-class-name.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name x1",0
+reading,kanagawa-dragon,js comment.token,false,EXACT,"rgb(115, 125, 115)","rgb(115, 125, 115) line-comment/block-comment x2",0
+reading,kanagawa-dragon,js control-flow.keyword.token,false,EXACT,"rgb(138, 147, 168)","rgb(138, 147, 168) control-keyword x3",0
+reading,kanagawa-dragon,js function.method.property-access.token,false,EXACT,"rgb(140, 165, 177)","rgb(140, 165, 177) property-name-function x3",0
+reading,kanagawa-dragon,js imports.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name-definition x1",0
+reading,kanagawa-dragon,js interpolation-punctuation.punctuation.token < interpolation.token < template-string.token,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) brace x4",0
+reading,kanagawa-dragon,js interpolation.token < template-string.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name x2",0
+reading,kanagawa-dragon,js keyword.module.token,false,EXACT,"rgb(138, 147, 168)","rgb(138, 147, 168) module-keyword x2",0
+reading,kanagawa-dragon,js keyword.nil.null.token,false,EXACT,"rgb(183, 146, 123)","rgb(183, 146, 123) null x1",0
+reading,kanagawa-dragon,js keyword.nil.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name x1",0
+reading,kanagawa-dragon,js language-regex.regex-source.token < regex.token,false,EXACT,"rgb(196, 116, 110)","rgb(196, 116, 110) regexp x1",0
+reading,kanagawa-dragon,js number.token,false,EXACT,"rgb(162, 148, 164)","rgb(162, 148, 164) number x5",0
+reading,kanagawa-dragon,js operator.token,false,EXACT,"rgb(196, 116, 110)","rgb(196, 116, 110) definition-operator/arithmetic-operator/compare-operator x9",0
+reading,kanagawa-dragon,js parameter.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name-definition x2",0
+reading,kanagawa-dragon,js property-access.token,false,EXACT,"rgb(195, 177, 136)","rgb(195, 177, 136) property-name x3",0
+reading,kanagawa-dragon,js punctuation.token < imports.token,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) brace x2",0
+reading,kanagawa-dragon,js regex-delimiter.token < regex.token,false,EXACT,"rgb(196, 116, 110)","rgb(196, 116, 110) regexp x2",0
+reading,kanagawa-dragon,js regex-flags.token < regex.token,false,EXACT,"rgb(196, 116, 110)","rgb(196, 116, 110) regexp x1",0
+reading,kanagawa-dragon,js string.template-punctuation.token < template-string.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) string-special x4",0
+reading,kanagawa-dragon,js string.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) string x2",0
+reading,kanagawa-dragon,js string.token < template-string.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) string-special x2",0
+reading,kanagawa-dragon,json boolean.token,false,EXACT,"rgb(183, 146, 123)","rgb(183, 146, 123) bool x1",0
+reading,kanagawa-dragon,json keyword.null.token,false,EXACT,"rgb(183, 146, 123)","rgb(183, 146, 123) null x1",0
+reading,kanagawa-dragon,json number.token,false,EXACT,"rgb(162, 148, 164)","rgb(162, 148, 164) number x2",0
+reading,kanagawa-dragon,json operator.token,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) separator x6",0
+reading,kanagawa-dragon,json property.token,false,EXACT,"rgb(195, 177, 136)","rgb(195, 177, 136) property-name x6",0
+reading,kanagawa-dragon,json punctuation.token,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) brace/separator/square-bracket x10",0
+reading,kanagawa-dragon,json string.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) string x3",0
+reading,kanagawa-dragon,markdown content.token < bold.token,false,EXACT,"rgb(196, 116, 110)","rgb(196, 116, 110) strong x2",0
+reading,kanagawa-dragon,markdown content.token < italic.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) emphasis x1",0
+reading,kanagawa-dragon,markdown content.token < token.url,false,EXACT,"rgb(140, 165, 177)","rgb(140, 165, 177) link x2",0
+reading,kanagawa-dragon,markdown important.title.token,false,EXACT,"rgb(195, 177, 136)","rgb(195, 177, 136) heading-1 x1",0
+reading,kanagawa-dragon,markdown list.punctuation.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) processing-instruction x1",0
+reading,kanagawa-dragon,markdown punctuation.token < bold.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) processing-instruction x4",0
+reading,kanagawa-dragon,markdown punctuation.token < important.title.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) processing-instruction x1",0
+reading,kanagawa-dragon,markdown punctuation.token < italic.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) processing-instruction x2",0
+reading,kanagawa-dragon,markdown token.url,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) processing-instruction x8",0
+reading,kanagawa-dragon,markdown token.url < token.url,false,EXACT,"rgb(150, 160, 182)","rgb(150, 160, 182) url x2",0
+reading,kanagawa-dragon,python boolean.token,false,EXACT,"rgb(183, 146, 123)","rgb(183, 146, 123) null/bool x4",0
+reading,kanagawa-dragon,python class-name.token,false,EXACT,"rgb(142, 164, 162)","rgb(142, 164, 162) class-name x1",0
+reading,kanagawa-dragon,python comment.token,false,EXACT,"rgb(115, 125, 115)","rgb(115, 125, 115) line-comment x1",0
+reading,kanagawa-dragon,python function.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name-definition x2",0
+reading,kanagawa-dragon,python interpolation.token < string-interpolation.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name x1",0
+reading,kanagawa-dragon,python number.token,false,EXACT,"rgb(162, 148, 164)","rgb(162, 148, 164) number x4",0
+reading,kanagawa-dragon,python punctuation.token < interpolation.token < string-interpolation.token,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) brace x2",0
+reading,kanagawa-dragon,python string.token < string-interpolation.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) string-special x2",0
+reading,kanagawa-dragon,python string.token.triple-quoted-string,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) string x1",0
+reading,kanagawa-dragon,rust attr-name.attribute.token,false,EXACT,"rgb(196, 116, 110)","rgb(196, 116, 110) meta x7",0
+reading,kanagawa-dragon,rust class-name.token.type-definition,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) name x1",0
+reading,kanagawa-dragon,rust comment.token,false,EXACT,"rgb(115, 125, 115)","rgb(115, 125, 115) line-comment x1",0
+reading,kanagawa-dragon,rust function.function-definition.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name-definition x1",0
+reading,kanagawa-dragon,rust macro.property.token,false,EXACT,"rgb(196, 116, 110)","rgb(196, 116, 110) macro-name x2",0
+reading,kanagawa-dragon,rust namespace.token,false,EXACT,"rgb(142, 164, 162)","rgb(142, 164, 162) namespace x2",0
+reading,kanagawa-dragon,rust number.token,false,EXACT,"rgb(162, 148, 164)","rgb(162, 148, 164) integer/float x2",0
+reading,kanagawa-dragon,rust punctuation.token < namespace.token,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) separator x2",0
+reading,kanagawa-dragon,rust string.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) string x2",0
+reading,kanagawa-dragon,sh assign-left.token.variable,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name-definition x1",0
+reading,kanagawa-dragon,sh comment.token,false,EXACT,"rgb(115, 125, 115)","rgb(115, 125, 115) comment x1",0
+reading,kanagawa-dragon,sh constant.environment.token < assign-left.token.variable,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name-definition x1",0
+reading,kanagawa-dragon,sh constant.environment.token < string.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name-definition x3",0
+reading,kanagawa-dragon,sh file-descriptor.important.token,false,EXACT,"rgba(197, 201, 197, 0.9)","rgba(197, 201, 197, 0.9) --ink-mde-preview-codeblock-text x1",0
+reading,kanagawa-dragon,sh file-descriptor.important.token < operator.token,false,EXACT,"rgb(162, 148, 164)","rgb(162, 148, 164) number x1",0
+reading,kanagawa-dragon,sh for-or-select.token.variable,false,EXACT,"rgba(197, 201, 197, 0.9)","rgba(197, 201, 197, 0.9) --ink-mde-preview-codeblock-text x1",0
+reading,kanagawa-dragon,sh function.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name-standard x5",0
+reading,kanagawa-dragon,sh important.shebang.token,false,EXACT,"rgb(196, 116, 110)","rgb(196, 116, 110) meta x1",0
+reading,kanagawa-dragon,sh keyword.token,false,EXACT,"rgb(138, 147, 168)","rgb(138, 147, 168) keyword x8",0
+reading,kanagawa-dragon,sh parameter.token.variable,false,EXACT,"rgb(195, 177, 136)","rgb(195, 177, 136) attribute-name x4",0
+reading,kanagawa-dragon,sh punctuation.token,false,EXACT,"rgba(197, 201, 197, 0.9)","rgba(197, 201, 197, 0.9) --ink-mde-preview-codeblock-text x6",0
+reading,kanagawa-dragon,sh string.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) string x14",0
+reading,kanagawa-dragon,sh token.variable < string.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name-definition x4",0
+reading,kanagawa-dragon,sql comment.token,false,EXACT,"rgb(115, 125, 115)","rgb(115, 125, 115) line-comment x1",0
+reading,kanagawa-dragon,sql function.token,false,EXACT,"rgb(138, 147, 168)","rgb(138, 147, 168) keyword x1",0
+reading,kanagawa-dragon,sql keyword.token,false,EXACT,"rgb(138, 147, 168)","rgb(138, 147, 168) keyword x9",0
+reading,kanagawa-dragon,sql number.token,false,EXACT,"rgb(162, 148, 164)","rgb(162, 148, 164) number x1",0
+reading,kanagawa-dragon,sql string.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) string x1",0
+reading,kanagawa-dragon,ts builtin.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) name x7",0
+reading,kanagawa-dragon,ts class-name.token,false,EXACT,"rgb(140, 165, 177)","rgb(140, 165, 177) name-definition x2",0
+reading,kanagawa-dragon,ts function.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name-definition x2",0
+reading,kanagawa-dragon,ts keyword.token,false,EXACT,"rgb(138, 147, 168)","rgb(138, 147, 168) definition-keyword/module-keyword/control-keyword/operator-keyword x10",0
+reading,kanagawa-dragon,yaml atrule.key.token,false,EXACT,"rgb(195, 177, 136)","rgb(195, 177, 136) property-name-definition x9",0
+reading,kanagawa-dragon,yaml boolean.important.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) content x2",0
+reading,kanagawa-dragon,yaml comment.token,false,EXACT,"rgb(115, 125, 115)","rgb(115, 125, 115) line-comment x1",0
+reading,kanagawa-dragon,yaml important.token,false,EXACT,"rgb(196, 116, 110)","rgb(196, 116, 110) label-name x2",0
+reading,kanagawa-dragon,yaml number.token,false,EXACT,"rgb(197, 201, 197)","rgb(197, 201, 197) content x2",0
+reading,kanagawa-dragon,yaml punctuation.token,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) separator x11",0
+reading,kanagawa-dragon,yaml string.token,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) string x1",0
+reading,kanagawa-dragon,css (bare text),true,MISMATCH,"rgba(197, 201, 197, 0.9)","rgb(183, 146, 123) atom x2",2
+reading,kanagawa-dragon,html (bare text),true,MISMATCH,"rgba(197, 201, 197, 0.9)","rgb(197, 201, 197) content x2",2
+reading,kanagawa-dragon,js (bare text),true,MISMATCH,"rgba(197, 201, 197, 0.9)","rgb(197, 201, 197) variable-name-definition/variable-name x10",10
+reading,kanagawa-dragon,markdown (bare text),true,MISMATCH,"rgba(197, 201, 197, 0.9)","rgb(197, 201, 197) content x6",6
+reading,kanagawa-dragon,python (bare text),true,MISMATCH,"rgba(197, 201, 197, 0.9)","rgb(197, 201, 197) variable-name x12",12
+reading,kanagawa-dragon,sql (bare text),true,MISMATCH,"rgba(197, 201, 197, 0.9)","rgb(197, 201, 197) name x11",11
+reading,kanagawa-dragon,yaml (bare text),true,MISMATCH,"rgba(197, 201, 197, 0.9)","rgb(197, 201, 197) content x3",3
+reading,solarized-dark,css class.token < selector.token,false,CONFLICT,"rgb(202, 76, 22)","rgb(131, 148, 149) --ink-mde-preview-codeblock-text x1; rgb(202, 76, 22) class-name x1",1
+reading,solarized-dark,css id.token < selector.token,false,CONFLICT,"rgb(211, 54, 130)","rgb(109, 114, 197) deref-operator x1; rgb(211, 54, 130) label-name x1",1
+reading,solarized-dark,css pseudo-class.token < selector.token,false,CONFLICT,"rgb(202, 76, 22)","rgb(42, 162, 152) punctuation x1; rgb(202, 76, 22) class-name x1",1
+reading,solarized-dark,css pseudo-element.token < selector.token,false,CONFLICT,"rgb(202, 76, 22)","rgb(131, 148, 149) --ink-mde-preview-codeblock-text x1; rgb(202, 76, 22) class-name x1",1
+reading,solarized-dark,go boolean.token,false,CONFLICT,"rgb(211, 54, 130)","rgb(131, 148, 149) null x2; rgb(211, 54, 130) bool x1",2
+reading,solarized-dark,go operator.token,false,CONFLICT,"rgb(109, 114, 197)","rgb(211, 54, 130) modifier x1; rgb(109, 114, 197) update-operator x1",1
+reading,solarized-dark,go punctuation.token,false,CONFLICT,"rgb(42, 162, 152)","rgb(42, 162, 152) brace/separator/paren x15; rgb(109, 114, 197) deref-operator x3",3
+reading,solarized-dark,js class-name.token,false,CONFLICT,"rgb(202, 76, 22)","rgb(202, 76, 22) class-name x1; rgb(100, 122, 130) variable-name x1",1
+reading,solarized-dark,js function.token,false,CONFLICT,"rgb(39, 139, 211)","rgb(42, 162, 152) property-name-definition x2; rgb(100, 122, 130) variable-name-definition x1; rgb(39, 139, 211) variable-name-function x1",3
+reading,solarized-dark,js keyword.token,false,CONFLICT,"rgb(133, 153, 0)","rgb(133, 153, 0) definition-keyword x6; rgb(211, 54, 130) atom/self x3",3
+reading,solarized-dark,js punctuation.token,false,CONFLICT,"rgb(42, 162, 152)","rgb(42, 162, 152) separator/brace/paren x42; rgb(109, 114, 197) deref-operator x6",6
+reading,solarized-dark,markdown code.code-snippet.keyword.token,false,CONFLICT,"rgb(173, 184, 184)","rgb(133, 153, 0) processing-instruction x2; rgb(173, 184, 184) monospace x1",2
+reading,solarized-dark,python annotation.decorator.punctuation.token,false,CONFLICT,"rgb(220, 49, 46)","rgb(220, 49, 46) meta x1; rgb(100, 122, 130) variable-name x1",1
+reading,solarized-dark,python boolean.token,false,CONFLICT,"rgb(211, 54, 130)","rgb(131, 148, 149) null x3; rgb(211, 54, 130) bool x1",3
+reading,solarized-dark,python builtin.token,false,CONFLICT,"rgb(39, 139, 211)","rgb(39, 139, 211) variable-name-function x2; rgb(100, 122, 130) variable-name x1",1
+reading,solarized-dark,python keyword.token,false,CONFLICT,"rgb(133, 153, 0)","rgb(133, 153, 0) module-keyword/definition-keyword/control-keyword/operator-keyword x12; rgb(39, 139, 211) variable-name-function x1",1
+reading,solarized-dark,python operator.token,false,CONFLICT,"rgb(109, 114, 197)","rgb(109, 114, 197) definition-operator/compare-operator x2; rgb(131, 148, 149) --ink-mde-preview-codeblock-text x2",2
+reading,solarized-dark,python punctuation.token,false,CONFLICT,"rgb(42, 162, 152)","rgb(42, 162, 152) paren/separator x18; rgb(131, 148, 149) --ink-mde-preview-codeblock-text x5",5
+reading,solarized-dark,rust (bare text),true,CONFLICT,"rgb(131, 148, 149)","rgb(42, 162, 152) property-name/paren/brace/separator x7; rgb(100, 122, 130) variable-name-definition/variable-name x5; rgb(133, 153, 0) definition-keyword x2; rgb(109, 114, 197) definition-operator x1; rgb(131, 148, 149) float x1",15
+reading,solarized-dark,rust class-name.token,false,CONFLICT,"rgb(42, 162, 152)","rgb(42, 162, 152) name x3; rgb(100, 122, 130) variable-name-definition x1; rgb(211, 54, 130) namespace x1; rgb(39, 139, 211) variable-name-function x1",3
+reading,solarized-dark,rust function.token,false,CONFLICT,"rgb(42, 162, 152)","rgb(100, 122, 130) variable-name x1; rgb(42, 162, 152) property-name-function x1",1
+reading,solarized-dark,rust keyword.token,false,CONFLICT,"rgb(133, 153, 0)","rgb(133, 153, 0) module-keyword/definition-keyword x4; rgb(42, 162, 152) name x4; rgb(211, 54, 130) modifier x1",5
+reading,solarized-dark,rust operator.token,false,CONFLICT,"rgb(109, 114, 197)","rgb(131, 148, 149) --ink-mde-preview-codeblock-text x4; rgb(109, 114, 197) operator/definition-operator x2",4
+reading,solarized-dark,rust punctuation.token,false,CONFLICT,"rgb(42, 162, 152)","rgb(42, 162, 152) separator/brace/paren/punctuation x30; rgb(131, 148, 149) --ink-mde-preview-codeblock-text x4",4
+reading,solarized-dark,sh (bare text),true,CONFLICT,"rgb(131, 148, 149)","rgb(131, 148, 149) --ink-mde-preview-codeblock-text x7; rgb(133, 153, 0) keyword x4; rgb(100, 122, 130) variable-name-standard/variable-name-definition x2; rgb(179, 134, 0) string x2; rgb(42, 162, 152) attribute-name x1",9
+reading,solarized-dark,sh builtin.class-name.token,false,CONFLICT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name-standard x2; rgb(133, 153, 0) keyword x1",1
+reading,solarized-dark,sh operator.token,false,CONFLICT,"rgb(109, 114, 197)","rgb(131, 148, 149) --ink-mde-preview-codeblock-text x4; rgb(109, 114, 197) operator x2",4
+reading,solarized-dark,sql operator.token,false,CONFLICT,"rgb(109, 114, 197)","rgb(109, 114, 197) operator x2; rgb(133, 153, 0) keyword x2",2
+reading,solarized-dark,sql punctuation.token,false,CONFLICT,"rgb(42, 162, 152)","rgb(42, 162, 152) punctuation/paren x4; rgb(131, 148, 149) --ink-mde-preview-codeblock-text x3",3
+reading,solarized-dark,ts operator.token,false,CONFLICT,"rgb(109, 114, 197)","rgb(42, 162, 152) punctuation x10; rgb(109, 114, 197) definition-operator/logic-operator/arithmetic-operator x4; rgb(131, 148, 149) --ink-mde-preview-codeblock-text x1",11
+reading,solarized-dark,ts punctuation.token,false,CONFLICT,"rgb(42, 162, 152)","rgb(42, 162, 152) brace/separator/paren x22; rgb(109, 114, 197) deref-operator x1",1
+reading,solarized-dark,go (bare text),true,DOMINATED,"rgb(131, 148, 149)","rgb(100, 122, 130) variable-name-definition/variable-name x7; rgb(42, 162, 152) property-name/name x5; rgb(39, 139, 211) name-definition x1",13
+reading,solarized-dark,ts (bare text),true,DOMINATED,"rgb(131, 148, 149)","rgb(42, 162, 152) property-name-definition/property-name/name x10; rgb(100, 122, 130) variable-name-definition/variable-name x9; rgb(39, 139, 211) name-definition x1",20
+reading,solarized-dark,css color.hexcode.token,false,EXACT,"rgb(211, 54, 130)","rgb(211, 54, 130) color x1",0
+reading,solarized-dark,css combinator.token < selector.token,false,EXACT,"rgb(109, 114, 197)","rgb(109, 114, 197) logic-operator x1",0
+reading,solarized-dark,css comment.token,false,EXACT,"rgb(88, 110, 116)","rgb(88, 110, 116) block-comment x1",0
+reading,solarized-dark,css function.token,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) operator-keyword x1",0
+reading,solarized-dark,css important.token,false,EXACT,"rgb(211, 54, 130)","rgb(211, 54, 130) modifier x1",0
+reading,solarized-dark,css number.token,false,EXACT,"rgb(211, 54, 130)","rgb(211, 54, 130) number x4",0
+reading,solarized-dark,css number.token < atrule.token,false,EXACT,"rgb(211, 54, 130)","rgb(211, 54, 130) number x1",0
+reading,solarized-dark,css operator.token,false,EXACT,"rgb(109, 114, 197)","rgb(109, 114, 197) arithmetic-operator x1",0
+reading,solarized-dark,css property.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) property-name x4",0
+reading,solarized-dark,css property.token < atrule.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) property-name x1",0
+reading,solarized-dark,css punctuation.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) brace/punctuation/separator/paren x15",0
+reading,solarized-dark,css punctuation.token < atrule.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) paren/punctuation x3",0
+reading,solarized-dark,css punctuation.token < selector.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) separator x1",0
+reading,solarized-dark,css rule.token < atrule.token,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) definition-keyword x1",0
+reading,solarized-dark,css selector.token,false,EXACT,"rgb(39, 139, 211)","rgb(39, 139, 211) tag-name x1",0
+reading,solarized-dark,css string.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) string x1",0
+reading,solarized-dark,css token.unit,false,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) unit x3",0
+reading,solarized-dark,css token.unit < atrule.token,false,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) unit x1",0
+reading,solarized-dark,go builtin.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) name x3",0
+reading,solarized-dark,go comment.token,false,EXACT,"rgb(88, 110, 116)","rgb(88, 110, 116) line-comment x1",0
+reading,solarized-dark,go function.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) property-name x2",0
+reading,solarized-dark,go keyword.token,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) module-keyword/definition-keyword/control-keyword x6",0
+reading,solarized-dark,go number.token,false,EXACT,"rgb(211, 54, 130)","rgb(211, 54, 130) number x1",0
+reading,solarized-dark,go string.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) string x2",0
+reading,solarized-dark,html (bare text),true,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) content x2",0
+reading,solarized-dark,html attr-equals.punctuation.token < attr-value.token < tag.token,false,EXACT,"rgb(109, 114, 197)","rgb(109, 114, 197) definition-operator x3",0
+reading,solarized-dark,html attr-name.token < tag.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) attribute-name x4",0
+reading,solarized-dark,html attr-value.token < tag.token,false,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) attribute-value x3",0
+reading,solarized-dark,html comment.token,false,EXACT,"rgb(88, 110, 116)","rgb(88, 110, 116) block-comment x1",0
+reading,solarized-dark,html doctype-tag.token < doctype.token,false,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) document-meta x1",0
+reading,solarized-dark,html entity.named-entity.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) character x1",0
+reading,solarized-dark,html name.token < doctype.token,false,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) document-meta x1",0
+reading,solarized-dark,html punctuation.token < attr-value.token < tag.token,false,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) attribute-value x6",0
+reading,solarized-dark,html punctuation.token < doctype.token,false,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) document-meta x2",0
+reading,solarized-dark,html punctuation.token < tag.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) angle-bracket x4",0
+reading,solarized-dark,html punctuation.token < tag.token < tag.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) angle-bracket x4",0
+reading,solarized-dark,html tag.token < tag.token,false,EXACT,"rgb(39, 139, 211)","rgb(39, 139, 211) tag-name x4",0
+reading,solarized-dark,js boolean.token,false,EXACT,"rgb(211, 54, 130)","rgb(211, 54, 130) bool x1",0
+reading,solarized-dark,js class-name.console.token,false,EXACT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name x2",0
+reading,solarized-dark,js class-name.known-class-name.token,false,EXACT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name x1",0
+reading,solarized-dark,js comment.token,false,EXACT,"rgb(88, 110, 116)","rgb(88, 110, 116) line-comment/block-comment x2",0
+reading,solarized-dark,js control-flow.keyword.token,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) control-keyword x3",0
+reading,solarized-dark,js function.method.property-access.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) property-name-function x3",0
+reading,solarized-dark,js imports.token,false,EXACT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name-definition x1",0
+reading,solarized-dark,js interpolation-punctuation.punctuation.token < interpolation.token < template-string.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) brace x4",0
+reading,solarized-dark,js interpolation.token < template-string.token,false,EXACT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name x2",0
+reading,solarized-dark,js keyword.module.token,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) module-keyword x2",0
+reading,solarized-dark,js keyword.nil.null.token,false,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) null x1",0
+reading,solarized-dark,js keyword.nil.token,false,EXACT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name x1",0
+reading,solarized-dark,js language-regex.regex-source.token < regex.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) regexp x1",0
+reading,solarized-dark,js number.token,false,EXACT,"rgb(211, 54, 130)","rgb(211, 54, 130) number x5",0
+reading,solarized-dark,js operator.token,false,EXACT,"rgb(109, 114, 197)","rgb(109, 114, 197) definition-operator/arithmetic-operator/compare-operator x9",0
+reading,solarized-dark,js parameter.token,false,EXACT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name-definition x2",0
+reading,solarized-dark,js property-access.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) property-name x3",0
+reading,solarized-dark,js punctuation.token < imports.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) brace x2",0
+reading,solarized-dark,js regex-delimiter.token < regex.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) regexp x2",0
+reading,solarized-dark,js regex-flags.token < regex.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) regexp x1",0
+reading,solarized-dark,js string.template-punctuation.token < template-string.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) string-special x4",0
+reading,solarized-dark,js string.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) string x2",0
+reading,solarized-dark,js string.token < template-string.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) string-special x2",0
+reading,solarized-dark,json boolean.token,false,EXACT,"rgb(211, 54, 130)","rgb(211, 54, 130) bool x1",0
+reading,solarized-dark,json keyword.null.token,false,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) null x1",0
+reading,solarized-dark,json number.token,false,EXACT,"rgb(211, 54, 130)","rgb(211, 54, 130) number x2",0
+reading,solarized-dark,json operator.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) separator x6",0
+reading,solarized-dark,json property.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) property-name x6",0
+reading,solarized-dark,json punctuation.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) brace/separator/square-bracket x10",0
+reading,solarized-dark,json string.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) string x3",0
+reading,solarized-dark,markdown (bare text),true,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) content x6",0
+reading,solarized-dark,markdown content.token < bold.token,false,EXACT,"rgb(173, 184, 184)","rgb(173, 184, 184) strong x2",0
+reading,solarized-dark,markdown content.token < italic.token,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) emphasis x1",0
+reading,solarized-dark,markdown content.token < token.url,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) link x2",0
+reading,solarized-dark,markdown important.title.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) heading-1 x1",0
+reading,solarized-dark,markdown list.punctuation.token,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) processing-instruction x1",0
+reading,solarized-dark,markdown punctuation.token < bold.token,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) processing-instruction x4",0
+reading,solarized-dark,markdown punctuation.token < important.title.token,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) processing-instruction x1",0
+reading,solarized-dark,markdown punctuation.token < italic.token,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) processing-instruction x2",0
+reading,solarized-dark,markdown token.url,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) processing-instruction x8",0
+reading,solarized-dark,markdown token.url < token.url,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) url x2",0
+reading,solarized-dark,python class-name.token,false,EXACT,"rgb(202, 76, 22)","rgb(202, 76, 22) class-name x1",0
+reading,solarized-dark,python comment.token,false,EXACT,"rgb(88, 110, 116)","rgb(88, 110, 116) line-comment x1",0
+reading,solarized-dark,python function.token,false,EXACT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name-definition x2",0
+reading,solarized-dark,python interpolation.token < string-interpolation.token,false,EXACT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name x1",0
+reading,solarized-dark,python number.token,false,EXACT,"rgb(211, 54, 130)","rgb(211, 54, 130) number x4",0
+reading,solarized-dark,python punctuation.token < interpolation.token < string-interpolation.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) brace x2",0
+reading,solarized-dark,python string.token < string-interpolation.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) string-special x2",0
+reading,solarized-dark,python string.token.triple-quoted-string,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) string x1",0
+reading,solarized-dark,rust attr-name.attribute.token,false,EXACT,"rgb(220, 49, 46)","rgb(220, 49, 46) meta x7",0
+reading,solarized-dark,rust class-name.token.type-definition,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) name x1",0
+reading,solarized-dark,rust comment.token,false,EXACT,"rgb(88, 110, 116)","rgb(88, 110, 116) line-comment x1",0
+reading,solarized-dark,rust function.function-definition.token,false,EXACT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name-definition x1",0
+reading,solarized-dark,rust macro.property.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) macro-name x2",0
+reading,solarized-dark,rust namespace.token,false,EXACT,"rgb(211, 54, 130)","rgb(211, 54, 130) namespace x2",0
+reading,solarized-dark,rust number.token,false,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) integer/float x2",0
+reading,solarized-dark,rust punctuation.token < namespace.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) separator x2",0
+reading,solarized-dark,rust string.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) string x2",0
+reading,solarized-dark,sh assign-left.token.variable,false,EXACT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name-definition x1",0
+reading,solarized-dark,sh comment.token,false,EXACT,"rgb(88, 110, 116)","rgb(88, 110, 116) comment x1",0
+reading,solarized-dark,sh constant.environment.token < assign-left.token.variable,false,EXACT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name-definition x1",0
+reading,solarized-dark,sh constant.environment.token < string.token,false,EXACT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name-definition x3",0
+reading,solarized-dark,sh file-descriptor.important.token,false,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) --ink-mde-preview-codeblock-text x1",0
+reading,solarized-dark,sh file-descriptor.important.token < operator.token,false,EXACT,"rgb(211, 54, 130)","rgb(211, 54, 130) number x1",0
+reading,solarized-dark,sh for-or-select.token.variable,false,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) --ink-mde-preview-codeblock-text x1",0
+reading,solarized-dark,sh function.token,false,EXACT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name-standard x5",0
+reading,solarized-dark,sh important.shebang.token,false,EXACT,"rgb(220, 49, 46)","rgb(220, 49, 46) meta x1",0
+reading,solarized-dark,sh keyword.token,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) keyword x8",0
+reading,solarized-dark,sh parameter.token.variable,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) attribute-name x4",0
+reading,solarized-dark,sh punctuation.token,false,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) --ink-mde-preview-codeblock-text x6",0
+reading,solarized-dark,sh string.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) string x14",0
+reading,solarized-dark,sh token.variable < string.token,false,EXACT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name-definition x4",0
+reading,solarized-dark,sql comment.token,false,EXACT,"rgb(88, 110, 116)","rgb(88, 110, 116) line-comment x1",0
+reading,solarized-dark,sql function.token,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) keyword x1",0
+reading,solarized-dark,sql keyword.token,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) keyword x9",0
+reading,solarized-dark,sql number.token,false,EXACT,"rgb(211, 54, 130)","rgb(211, 54, 130) number x1",0
+reading,solarized-dark,sql string.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) string x1",0
+reading,solarized-dark,ts builtin.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) name x7",0
+reading,solarized-dark,ts class-name.token,false,EXACT,"rgb(39, 139, 211)","rgb(39, 139, 211) name-definition x2",0
+reading,solarized-dark,ts function.token,false,EXACT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name-definition x2",0
+reading,solarized-dark,ts keyword.token,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) definition-keyword/module-keyword/control-keyword/operator-keyword x10",0
+reading,solarized-dark,yaml (bare text),true,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) content x3",0
+reading,solarized-dark,yaml atrule.key.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) property-name-definition x9",0
+reading,solarized-dark,yaml boolean.important.token,false,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) content x2",0
+reading,solarized-dark,yaml comment.token,false,EXACT,"rgb(88, 110, 116)","rgb(88, 110, 116) line-comment x1",0
+reading,solarized-dark,yaml important.token,false,EXACT,"rgb(211, 54, 130)","rgb(211, 54, 130) label-name x2",0
+reading,solarized-dark,yaml number.token,false,EXACT,"rgb(131, 148, 149)","rgb(131, 148, 149) content x2",0
+reading,solarized-dark,yaml punctuation.token,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) separator x11",0
+reading,solarized-dark,yaml string.token,false,EXACT,"rgb(179, 134, 0)","rgb(179, 134, 0) string x1",0
+reading,solarized-dark,css (bare text),true,MISMATCH,"rgb(131, 148, 149)","rgb(211, 54, 130) atom x2",2
+reading,solarized-dark,js (bare text),true,MISMATCH,"rgb(131, 148, 149)","rgb(100, 122, 130) variable-name-definition/variable-name x10",10
+reading,solarized-dark,python (bare text),true,MISMATCH,"rgb(131, 148, 149)","rgb(100, 122, 130) variable-name x12",12
+reading,solarized-dark,sql (bare text),true,MISMATCH,"rgb(131, 148, 149)","rgb(42, 162, 152) name x11",11
+source,kanagawa-dragon,(bare text),true,CONFLICT,"rgb(197, 201, 197)","rgb(158, 155, 148) brace/separator/paren/punctuation/square-bracket x182; rgb(197, 201, 197) --ink-md-codeblock/content/name/variable-name-definition/variable-name x48; rgb(196, 116, 110) deref-operator/logic-operator/arithmetic-operator/definition-operator/operator/strong x15; rgb(137, 153, 122) processing-instruction x6; rgb(138, 147, 168) definition-keyword/control-keyword x4; rgb(140, 165, 177) variable-name-function/link x2; rgb(162, 148, 164) float x1; rgb(150, 160, 182) url x1",211
+source,kanagawa-dragon,cm-atom.cm-hmd-codeblock,false,CONFLICT,"rgb(183, 146, 123)","rgb(183, 146, 123) bool/null/color/atom x10; rgb(195, 177, 136) property-name-definition x9; rgb(197, 201, 197) variable-name/name x5; rgb(137, 153, 122) character x1",15
+source,kanagawa-dragon,cm-builtin.cm-hmd-codeblock,false,CONFLICT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name/variable-name-standard x9; rgb(140, 165, 177) variable-name-function x3; rgb(196, 116, 110) deref-operator/label-name x2",5
+source,kanagawa-dragon,cm-comment.cm-hmd-codeblock,false,CONFLICT,"rgb(115, 125, 115)","rgb(115, 125, 115) line-comment/block-comment/comment x10; rgb(137, 153, 122) processing-instruction x2; rgb(200, 192, 146) monospace x1",3
+source,kanagawa-dragon,cm-def.cm-hmd-codeblock,false,CONFLICT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name-definition/name x30; rgb(142, 164, 162) class-name x2; rgb(140, 165, 177) name-definition x2; rgb(195, 177, 136) property-name x2; rgb(138, 147, 168) definition-keyword x1",7
+source,kanagawa-dragon,cm-header.cm-header-1.cm-hmd-codeblock,false,CONFLICT,"rgb(195, 177, 136)","rgb(137, 153, 122) processing-instruction x1; rgb(195, 177, 136) heading-1 x1",1
+source,kanagawa-dragon,cm-hmd-codeblock.cm-keyword,false,CONFLICT,"rgb(138, 147, 168)","rgb(138, 147, 168) module-keyword/definition-keyword/control-keyword/operator-keyword/modifier/keyword x68; rgb(183, 146, 123) atom/null/bool x5; rgb(197, 201, 197) name/content x5; rgb(196, 116, 110) self x2",12
+source,kanagawa-dragon,cm-hmd-codeblock.cm-link,false,CONFLICT,"rgb(140, 165, 177)","rgb(137, 153, 122) processing-instruction x2; rgb(140, 165, 177) link x1",2
+source,kanagawa-dragon,cm-hmd-codeblock.cm-meta,false,CONFLICT,"rgb(196, 116, 110)","rgb(158, 155, 148) punctuation/separator x12; rgb(196, 116, 110) meta x9; rgb(197, 201, 197) variable-name/document-meta x2",14
+source,kanagawa-dragon,cm-hmd-codeblock.cm-number,false,CONFLICT,"rgb(162, 148, 164)","rgb(162, 148, 164) number/integer/float x21; rgb(183, 146, 123) unit x4; rgb(196, 116, 110) deref-operator x3; rgb(197, 201, 197) content x2",9
+source,kanagawa-dragon,cm-hmd-codeblock.cm-operator,false,CONFLICT,"rgb(196, 116, 110)","rgb(196, 116, 110) definition-operator/arithmetic-operator/compare-operator/logic-operator/operator/update-operator x21; rgb(197, 201, 197) --ink-md-codeblock x6; rgb(162, 148, 164) number x1; rgb(138, 147, 168) modifier x1; rgb(158, 155, 148) punctuation x1",9
+source,kanagawa-dragon,cm-hmd-codeblock.cm-property,false,CONFLICT,"rgb(195, 177, 136)","rgb(195, 177, 136) property-name-definition/property-name x14; rgb(140, 165, 177) property-name-function x3",3
+source,kanagawa-dragon,cm-hmd-codeblock.cm-punctuation,false,CONFLICT,"rgb(158, 155, 148)","rgb(158, 155, 148) punctuation x2; rgb(197, 201, 197) --ink-md-codeblock x1",1
+source,kanagawa-dragon,cm-hmd-codeblock.cm-qualifier,false,CONFLICT,"rgb(142, 164, 162)","rgb(197, 201, 197) --ink-md-codeblock x1; rgb(142, 164, 162) class-name x1",1
+source,kanagawa-dragon,cm-hmd-codeblock.cm-string-2,false,CONFLICT,"rgb(137, 153, 122)","rgb(137, 153, 122) string-special x4; rgb(158, 155, 148) brace x4; rgb(196, 116, 110) regexp x1",5
+source,kanagawa-dragon,cm-hmd-codeblock.cm-string.cm-url,false,CONFLICT,"rgb(150, 160, 182)","rgb(137, 153, 122) processing-instruction x2; rgb(150, 160, 182) url x1",2
+source,kanagawa-dragon,cm-hmd-codeblock.cm-strong,false,CONFLICT,"rgb(196, 116, 110)","rgb(137, 153, 122) processing-instruction x2; rgb(196, 116, 110) strong x1",2
+source,kanagawa-dragon,cm-hmd-codeblock.cm-type,false,CONFLICT,"rgb(197, 201, 197)","rgb(197, 201, 197) name x11; rgb(140, 165, 177) name-definition x1",1
+source,kanagawa-dragon,cm-hmd-codeblock.cm-variable,false,CONFLICT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name/variable-name-definition/name x31; rgb(195, 177, 136) property-name x8; rgb(140, 165, 177) variable-name-function/name-definition/property-name-function x3; rgb(142, 164, 162) namespace x3",14
+source,kanagawa-dragon,cm-hmd-codeblock.cm-variable-2,false,CONFLICT,"rgb(197, 201, 197)","rgb(197, 201, 197) variable-name/--ink-md-codeblock/name/content x15; rgb(196, 116, 110) label-name x2; rgb(137, 153, 122) processing-instruction x1",3
+source,kanagawa-dragon,cm-hmd-codeblock.cm-variable-3,false,CONFLICT,"rgb(142, 164, 162)","rgb(142, 164, 162) class-name x2; rgb(196, 116, 110) macro-name x2",2
+source,kanagawa-dragon,cm-attribute.cm-hmd-codeblock,false,EXACT,"rgb(195, 177, 136)","rgb(195, 177, 136) attribute-name x9",0
+source,kanagawa-dragon,cm-bracket.cm-hmd-codeblock,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) paren x2",0
+source,kanagawa-dragon,cm-bracket.cm-hmd-codeblock.cm-tag,false,EXACT,"rgb(158, 155, 148)","rgb(158, 155, 148) angle-bracket x8",0
+source,kanagawa-dragon,cm-callee.cm-hmd-codeblock.cm-variable,false,EXACT,"rgb(138, 147, 168)","rgb(138, 147, 168) operator-keyword x1",0
+source,kanagawa-dragon,cm-em.cm-hmd-codeblock,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) processing-instruction/emphasis x3",0
+source,kanagawa-dragon,cm-hmd-codeblock.cm-property.cm-string,false,EXACT,"rgb(195, 177, 136)","rgb(195, 177, 136) property-name x6",0
+source,kanagawa-dragon,cm-hmd-codeblock.cm-string,false,EXACT,"rgb(137, 153, 122)","rgb(137, 153, 122) string/string-special/attribute-value x34",0
+source,kanagawa-dragon,cm-hmd-codeblock.cm-tag,false,EXACT,"rgb(140, 165, 177)","rgb(140, 165, 177) tag-name x5",0
+source,solarized-dark,(bare text),true,CONFLICT,"rgb(131, 148, 149)","rgb(42, 162, 152) brace/separator/paren/punctuation/square-bracket/name/link x192; rgb(131, 148, 149) --ink-md-codeblock/content/float x35; rgb(109, 114, 197) deref-operator/logic-operator/arithmetic-operator/definition-operator/operator x14; rgb(133, 153, 0) definition-keyword/control-keyword/processing-instruction x10; rgb(100, 122, 130) variable-name-definition/variable-name x5; rgb(39, 139, 211) variable-name-function x1; rgb(173, 184, 184) strong x1; rgb(179, 134, 0) url x1",224
+source,solarized-dark,cm-atom.cm-hmd-codeblock,false,CONFLICT,"rgb(211, 54, 130)","rgb(42, 162, 152) name/property-name-definition x13; rgb(211, 54, 130) bool/color/atom x6; rgb(131, 148, 149) null x4; rgb(100, 122, 130) variable-name x1; rgb(179, 134, 0) character x1",19
+source,solarized-dark,cm-builtin.cm-hmd-codeblock,false,CONFLICT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name/variable-name-standard x9; rgb(39, 139, 211) variable-name-function x3; rgb(109, 114, 197) deref-operator x1; rgb(211, 54, 130) label-name x1",5
+source,solarized-dark,cm-comment.cm-hmd-codeblock,false,CONFLICT,"rgb(88, 110, 116)","rgb(88, 110, 116) line-comment/block-comment/comment x10; rgb(133, 153, 0) processing-instruction x2; rgb(173, 184, 184) monospace x1",3
+source,solarized-dark,cm-def.cm-hmd-codeblock,false,CONFLICT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name-definition x29; rgb(42, 162, 152) property-name/name x3; rgb(202, 76, 22) class-name x2; rgb(39, 139, 211) name-definition x2; rgb(133, 153, 0) definition-keyword x1",8
+source,solarized-dark,cm-header.cm-header-1.cm-hmd-codeblock,false,CONFLICT,"rgb(179, 134, 0)","rgb(133, 153, 0) processing-instruction x1; rgb(179, 134, 0) heading-1 x1",1
+source,solarized-dark,cm-hmd-codeblock.cm-keyword,false,CONFLICT,"rgb(133, 153, 0)","rgb(133, 153, 0) module-keyword/definition-keyword/control-keyword/operator-keyword/keyword x66; rgb(211, 54, 130) atom/self/bool/modifier x6; rgb(131, 148, 149) null/content x5; rgb(42, 162, 152) name x3",14
+source,solarized-dark,cm-hmd-codeblock.cm-link,false,CONFLICT,"rgb(42, 162, 152)","rgb(133, 153, 0) processing-instruction x2; rgb(42, 162, 152) link x1",2
+source,solarized-dark,cm-hmd-codeblock.cm-meta,false,CONFLICT,"rgb(220, 49, 46)","rgb(42, 162, 152) punctuation/separator x12; rgb(220, 49, 46) meta x9; rgb(100, 122, 130) variable-name x1; rgb(131, 148, 149) document-meta x1",14
+source,solarized-dark,cm-hmd-codeblock.cm-number,false,CONFLICT,"rgb(211, 54, 130)","rgb(211, 54, 130) number x19; rgb(131, 148, 149) unit/integer/float/content x8; rgb(109, 114, 197) deref-operator x3",11
+source,solarized-dark,cm-hmd-codeblock.cm-operator,false,CONFLICT,"rgb(109, 114, 197)","rgb(109, 114, 197) definition-operator/arithmetic-operator/compare-operator/logic-operator/operator/update-operator x21; rgb(131, 148, 149) --ink-md-codeblock x6; rgb(211, 54, 130) number/modifier x2; rgb(42, 162, 152) punctuation x1",9
+source,solarized-dark,cm-hmd-codeblock.cm-punctuation,false,CONFLICT,"rgb(42, 162, 152)","rgb(42, 162, 152) punctuation x2; rgb(131, 148, 149) --ink-md-codeblock x1",1
+source,solarized-dark,cm-hmd-codeblock.cm-qualifier,false,CONFLICT,"rgb(202, 76, 22)","rgb(131, 148, 149) --ink-md-codeblock x1; rgb(202, 76, 22) class-name x1",1
+source,solarized-dark,cm-hmd-codeblock.cm-string,false,CONFLICT,"rgb(179, 134, 0)","rgb(179, 134, 0) string/string-special x31; rgb(131, 148, 149) attribute-value x3",3
+source,solarized-dark,cm-hmd-codeblock.cm-string-2,false,CONFLICT,"rgb(179, 134, 0)","rgb(179, 134, 0) regexp/string-special x5; rgb(42, 162, 152) brace x4",4
+source,solarized-dark,cm-hmd-codeblock.cm-string.cm-url,false,CONFLICT,"rgb(179, 134, 0)","rgb(133, 153, 0) processing-instruction x2; rgb(179, 134, 0) url x1",2
+source,solarized-dark,cm-hmd-codeblock.cm-strong,false,CONFLICT,"rgb(173, 184, 184)","rgb(133, 153, 0) processing-instruction x2; rgb(173, 184, 184) strong x1",2
+source,solarized-dark,cm-hmd-codeblock.cm-type,false,CONFLICT,"rgb(42, 162, 152)","rgb(42, 162, 152) name x11; rgb(39, 139, 211) name-definition x1",1
+source,solarized-dark,cm-hmd-codeblock.cm-variable,false,CONFLICT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name/variable-name-definition x27; rgb(42, 162, 152) property-name/name/property-name-function x13; rgb(211, 54, 130) namespace x3; rgb(39, 139, 211) variable-name-function/name-definition x2",18
+source,solarized-dark,cm-hmd-codeblock.cm-variable-2,false,CONFLICT,"rgb(100, 122, 130)","rgb(100, 122, 130) variable-name x10; rgb(131, 148, 149) --ink-md-codeblock/content x3; rgb(211, 54, 130) label-name x2; rgb(42, 162, 152) name x2; rgb(133, 153, 0) processing-instruction x1",8
+source,solarized-dark,cm-hmd-codeblock.cm-variable-3,false,CONFLICT,"rgb(202, 76, 22)","rgb(202, 76, 22) class-name x2; rgb(42, 162, 152) macro-name x2",2
+source,solarized-dark,cm-attribute.cm-hmd-codeblock,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) attribute-name x9",0
+source,solarized-dark,cm-bracket.cm-hmd-codeblock,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) paren x2",0
+source,solarized-dark,cm-bracket.cm-hmd-codeblock.cm-tag,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) angle-bracket x8",0
+source,solarized-dark,cm-callee.cm-hmd-codeblock.cm-variable,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) operator-keyword x1",0
+source,solarized-dark,cm-em.cm-hmd-codeblock,false,EXACT,"rgb(133, 153, 0)","rgb(133, 153, 0) processing-instruction/emphasis x3",0
+source,solarized-dark,cm-hmd-codeblock.cm-property,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) property-name-definition/property-name/property-name-function x17",0
+source,solarized-dark,cm-hmd-codeblock.cm-property.cm-string,false,EXACT,"rgb(42, 162, 152)","rgb(42, 162, 152) property-name x6",0
+source,solarized-dark,cm-hmd-codeblock.cm-tag,false,EXACT,"rgb(39, 139, 211)","rgb(39, 139, 211) tag-name x5",0
