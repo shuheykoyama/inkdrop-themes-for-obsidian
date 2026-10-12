@@ -658,8 +658,8 @@
       "verifiedBy": [
         {
           "method": "Native captures (tests/visual/capture-obsidian.sh, CAPTURE_LINES=on, CAPTURE_CURSOR) measured by tests/visual/q23-check.nu: flat regions of the gutter element, the gap and the line; Q23-5a against the opaque composite, Q23-5b across both boundaries, dE2000 <= 1.0",
-          "evidence": "research/evidence/phase3-step7/native-39.5.1, native-39.5.1-trial, native-39.5.1-no-gap-fill",
-          "result": "PASS on 2026-10-12, Electron 39.5.1: Solarized Dark Source and Live Preview, opaque and translucent; Kanagawa Dragon Source mode, opaque. Without the gap fill both themes FAIL (negative). Not captured: Kanagawa Dragon Live Preview and translucent, and Electron 43.7.7 (the display slept; research/14 §6.15)"
+          "evidence": "research/evidence/phase3-step7/native-39.5.1, native-43.7.7, native-39.5.1-no-gap-fill",
+          "result": "PASS on 2026-10-12, Electron 39.5.1 and 43.7.7: Solarized Dark and Kanagawa Dragon, Source and Live Preview, opaque and translucent (16 captures). Without the gap fill both themes FAIL (negative)"
         }
       ]
     },

@@ -1,0 +1,108 @@
+{
+ "capture": {
+  "method": "/usr/sbin/screencapture -x -R400,250,1200,700 (native window-server composite, display colour space)",
+  "capturedAt": "2026-10-12T03:52:14Z",
+  "file": "screenshots/obsidian-solarized-dark-opaque-gray-active-source-select.png",
+  "pixels": [
+   2400,
+   1400
+  ],
+  "sha256": "858335ddf35e39cc0fe63e0e95d7edeeb8b04f7ca36840648dd5bb520795e8c5",
+  "windowRectPoints": [
+   400,
+   250,
+   1200,
+   700
+  ],
+  "backdrop": "gray",
+  "backdropRectPoints": [
+   300,
+   150,
+   1400,
+   900
+  ],
+  "requestedFocus": "active",
+  "translucency": "opaque",
+  "theme": "solarized-dark"
+ },
+ "setup": {
+  "theme": "DEV solarized-dark (unnamed)",
+  "themeCssLength": 101391,
+  "isTranslucent": false,
+  "bounds": {
+   "x": 400,
+   "y": 250,
+   "width": 1200,
+   "height": 700
+  },
+  "dockWidths": [
+   260,
+   260
+  ],
+  "electron": "43.7.7",
+  "appVersion": "1.14.4",
+  "q23": {
+   "line": {
+    "left": 383.1171875,
+    "top": 256.828125,
+    "right": 908,
+    "bottom": 280.828125
+   },
+   "lineText": {
+    "left": 383.1171875,
+    "top": 259.328125,
+    "right": 679.5234375,
+    "bottom": 278.328125
+   },
+   "gutterActive": {
+    "left": 336,
+    "top": 256.828125,
+    "right": 359.1171875,
+    "bottom": 280.828125
+   },
+   "gutterText": {
+    "left": 348.5546875,
+    "top": 261.828125,
+    "right": 356.1171875,
+    "bottom": 275.828125
+   },
+   "gutters": {
+    "left": 336,
+    "top": 153.765625,
+    "right": 359.1171875,
+    "bottom": 1158.28125
+   },
+   "surface": [
+    0,
+    33,
+    41
+   ],
+   "overlay": [
+    0,
+    45,
+    56,
+    0.5,
+    0,
+    45,
+    56,
+    0.5
+   ],
+   "expected": [
+    0,
+    39,
+    48.5
+   ]
+  }
+ },
+ "focusStep": {
+  "focused": true,
+  "hasFocus": true,
+  "bodyFocusedClass": true
+ },
+ "afterShot": {
+  "focused": true,
+  "cls": [
+   "is-focused"
+  ]
+ }
+}

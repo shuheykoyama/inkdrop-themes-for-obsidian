@@ -1,13 +1,13 @@
 {
  "capture": {
   "method": "/usr/sbin/screencapture -x -R400,250,1200,700 (native window-server composite, display colour space)",
-  "capturedAt": "2026-10-11T19:48:24Z",
+  "capturedAt": "2026-10-12T03:48:18Z",
   "file": "screenshots/obsidian-solarized-dark-translucent-gray-active-live-q23.png",
   "pixels": [
    2400,
    1400
   ],
-  "sha256": "5e25106a4ffdc84e7160417fa11dc4249c76a5a3ef60bd0eae545e5705a58e3e",
+  "sha256": "677f6a8e0db56fcaa0f9519ce8fe8f7209e00a82c37f893c5d34a089562b847c",
   "windowRectPoints": [
    400,
    250,

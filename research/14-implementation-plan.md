@@ -1296,16 +1296,19 @@ RV3 は `414d64d` で APPROVE された。
 - Q23-5a: 各領域がエディタの面にアクティブ行の色を重ねた期待色から ΔE2000 1.0 以内（不透明だけ。translucent は面がウィンドウの素材で決まるため期待色を計算できない）。
 - Q23-5b: ガター｜隙間、隙間｜行の ΔE2000 が 1.0 以内。
 
-| 撮影（Electron 39.5.1） | Q23-5a | Q23-5b |
+| 撮影（Electron 39.5.1・43.7.7 とも同じ値。KD translucent の隙間｜行だけ 43.7.7 で 0.55） | Q23-5a | Q23-5b |
 |---|---|---|
 | SD Source・Live Preview、不透明 | PASS（ΔE2000 0.22〜0.26） | PASS（0.00 / 0.32） |
-| SD Source・Live Preview、translucent | — | PASS |
-| KD Source、不透明 | PASS（0.22〜0.77） | PASS（0.00 / 0.56） |
-| 陰性: 隙間を塗る規則を外した CSS（SD・KD） | **FAIL**（隙間 1.09〜2.04） | **FAIL**（1.12〜1.97） |
+| SD Source・Live Preview、translucent | — | PASS（0.00 / 0.32） |
+| KD Source・Live Preview、不透明 | PASS（0.22〜0.77） | PASS（0.00 / 0.56） |
+| KD Source・Live Preview、translucent | — | PASS（0.00 / 0.56） |
+| 陰性: 隙間を塗る規則を外した CSS（SD・KD、39.5.1） | **FAIL**（隙間 1.09〜2.04） | **FAIL**（1.12〜1.97） |
+
+選択（Source mode）・検索（Source mode、現在の一致）・行番号なし（Live Preview）も両テーマ・両 Electron で撮り、目視で確認した（選択と現在の一致の色、行番号を消したときにガターが出ないこと）。左上隅の検査は各 Electron の 14 枚すべてで差 0.00。
 
 **隙間の発見**: 隙間を塗る前は、SD・KD とも隙間の色がアクティブ行と ΔE2000 1.1〜2.0 違い、帯が途切れて見えた（陰性の撮影がその状態）。Inkdrop（V-30 の状態 4）ではガターが本文に接している。
 
-**撮影できなかった分**: 早朝の通しの実行の途中でディスプレイがスリープし（`displaysleep 20`）、`screencapture` が「could not create image from rect」で失敗した。KD の Live Preview と translucent、選択・検索・行番号なしの撮影、Electron 43.7.7 の撮影は未実施。ディスプレイを起こす・ロックを解く操作はしていない。Computed Style の検査は両 Electron で完了している。失敗時に背景ウィンドウが残って後続の撮影を壊す不具合が撮影スクリプトにあり、`trap` で必ず閉じるように直した。
+**撮影の経緯**: 最初の通しの実行は途中でディスプレイがスリープし（`displaysleep 20`）、`screencapture` が「could not create image from rect」で失敗した（ディスプレイを起こす・ロックを解く操作はしていない）。失敗時に背景ウィンドウが残って後続の撮影を壊す不具合が撮影スクリプトにあり、`trap` で必ず閉じるように直した。同日、ユーザーが画面を点けた状態で残りを含む全撮影をやり直した。その際、「検索」の撮影で開いた検索バーが同じウィンドウの後続の撮影（行番号なし、次のテーマの撮影）に残る不具合を目視で見つけた。`obsidian-capture-setup.js` が「検索」以外の撮影の前に検索バーを閉じ、閉じられなければ撮影を失敗させるように直し、全撮影を撮り直した。
 
 **V-35**: 未実施（Inkdrop の設定変更が要るため、承認を得ていない）。V-30 の状態 4（選択あり、CDP の撮影）と V-22 の Computed Style（V-22 の実測値は、今回測ったアクティブ行・ガター・選択の値と一致）だけを基準にした。V-30 の状態 4 と並べた画像: `evidence/phase3-step7/v30-compare/`（アクティブ行の帯がガターから本文まで続き、KD は右線が見える構造が一致）。
 
@@ -1328,7 +1331,7 @@ V-35 を行う場合の内容（承認が必要）:
 |---|---|---|
 | 実行時テスト | 1699 件 PASS（うち 148 件 PASS（EMULATED）） | 1699 件 PASS（同） |
 | ランナーの陰性テスト | 377 件すべて宣言どおり | 同 |
-| Q23-5（ネイティブ） | 上表（一部のみ） | 未実施 |
+| Q23-5（ネイティブ） | 8 件 PASS（上表） | 8 件 PASS（上表） |
 
 静的テストすべて PASS、静的テストの陰性テスト 47 件、視覚的テストの陰性テスト 6 件、クリーンルームのビルド一致、Dark のみのスコープの検査（S4）も PASS。
 
@@ -1349,12 +1352,12 @@ V-35 を行う場合の内容（承認が必要）:
 |---|---|---|
 | `tests/visual/q23-check.nu`（新規） | Nushell | 撮影の測定 JSON から領域の設定 JSON を作り、結果を集計する構造化データの処理が中心。CI では使わない macOS ローカル専用 |
 | `tests/visual/capture-obsidian.sh`（`trap` の追加、撮影の項目の追加） | POSIX 系の bash のまま | 既存のスクリプトの小さな修正で、書き直す理由がない |
+| `tests/visual/obsidian-capture-setup.js`（検索バーを閉じる処理の追加） | JavaScript（既存） | Obsidian の中で CDP から実行するコード |
 | `tests/runtime/*.mjs`・`probe.js` | Node（既存） | CDP のクライアントと Obsidian の中で動くコードが JavaScript |
 | 作業用の通しの実行（リポジトリには入れていない） | fish | macOS ローカルの操作補助 |
 
 **未検証事項とリスク**
 
-- Q23-5 のネイティブ撮影の残り（KD の Live Preview・translucent、選択・検索・行番号なしの撮影、Electron 43.7.7）。画面が使える時間に撮る必要がある。
 - V-35（Inkdrop 側の追加の基準）。
 - 対応括弧などの未描画の要素（`ed.unrendered`）。
 - 補完の `.suggestion-container` が他の候補リストにも当たること（Obsidian の同じ部品のため）。
