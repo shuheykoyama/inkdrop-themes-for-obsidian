@@ -1,0 +1,41 @@
+subject,candidate,current,theme,runs,runs_total,chars,chars_total
+default code text (editing),md-codeblock,true,solarized-dark,39,252,83,367
+default code text (editing),md-codeblock,true,kanagawa-dragon,52,252,118,367
+default code text (editing),punctuation,false,solarized-dark,182,252,211,367
+default code text (editing),punctuation,false,kanagawa-dragon,172,252,185,367
+default code text (editing),variable-name,false,solarized-dark,5,252,11,367
+default code text (editing),variable-name,false,kanagawa-dragon,52,252,118,367
+default code text (Reading),mde-preview-codeblock-text,true,solarized-dark,19,110,63,318
+default code text (Reading),mde-preview-codeblock-text,true,kanagawa-dragon,7,110,24,318
+default code text (Reading),variable-name,false,solarized-dark,45,110,126,318
+default code text (Reading),variable-name,false,kanagawa-dragon,72,110,221,318
+default code text (Reading),punctuation,false,solarized-dark,33,110,86,318
+default code text (Reading),punctuation,false,kanagawa-dragon,4,110,5,318
+cm-atom,atom,true,solarized-dark,6,25,34,116
+cm-atom,atom,true,kanagawa-dragon,10,25,48,116
+cm-atom,property-name-definition,false,solarized-dark,13,25,54,116
+cm-atom,property-name-definition,false,kanagawa-dragon,9,25,42,116
+cm-atom,null,false,solarized-dark,4,25,14,116
+cm-atom,null,false,kanagawa-dragon,10,25,48,116
+cm-atom,name,false,solarized-dark,13,25,54,116
+cm-atom,name,false,kanagawa-dragon,5,25,21,116
+cm-string-2,string-special,true,solarized-dark,10,14,14,20
+cm-string-2,string-special,true,kanagawa-dragon,6,14,7,20
+cm-string-2,regexp,false,solarized-dark,10,14,14,20
+cm-string-2,regexp,false,kanagawa-dragon,4,14,7,20
+cm-string-2,brace,false,solarized-dark,4,14,6,20
+cm-string-2,brace,false,kanagawa-dragon,4,14,6,20
+cm-variable,variable-name,true,solarized-dark,27,45,96,174
+cm-variable,variable-name,true,kanagawa-dragon,31,45,120,174
+cm-variable,property-name,false,solarized-dark,13,45,47,174
+cm-variable,property-name,false,kanagawa-dragon,8,45,17,174
+cm-variable,name,false,solarized-dark,13,45,47,174
+cm-variable,name,false,kanagawa-dragon,31,45,120,174
+cm-variable,namespace,false,solarized-dark,3,45,21,174
+cm-variable,namespace,false,kanagawa-dragon,3,45,21,174
+Reading JS function,variable-name-function,true,solarized-dark,1,4,5,25
+Reading JS function,variable-name-function,true,kanagawa-dragon,1,4,5,25
+Reading JS function,variable-name-definition,false,solarized-dark,1,4,5,25
+Reading JS function,variable-name-definition,false,kanagawa-dragon,1,4,5,25
+Reading JS function,property-name-definition,false,solarized-dark,2,4,15,25
+Reading JS function,property-name-definition,false,kanagawa-dragon,2,4,15,25
