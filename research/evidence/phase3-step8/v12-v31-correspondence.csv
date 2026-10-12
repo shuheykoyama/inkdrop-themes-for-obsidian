@@ -1,0 +1,707 @@
+lang,text,inkdrop_classes,inkdrop_var,obsidian_source,obsidian_live,obsidian_reading
+js,// line comment,tok-line-comment,--syntax-line-comment-color,cm-comment,cm-comment,comment
+js,/* block comment */,tok-block-comment,--syntax-block-comment-color,cm-comment,cm-comment,comment
+js,import,tok-module-keyword,--syntax-module-keyword-color,cm-keyword,cm-keyword,keyword module
+js,{,tok-brace,--syntax-brace-color,-,-,imports punctuation
+js,readFile,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,imports
+js,},tok-brace,--syntax-brace-color,-,-,imports punctuation
+js,from,tok-module-keyword,--syntax-module-keyword-color,cm-keyword,cm-keyword,keyword module
+js,"""fs""",tok-string,--syntax-string-color,cm-string,cm-string,string
+js,;,tok-separator,--syntax-separator-color,-,-,punctuation
+js,const,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+js,answer,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,-
+js,=,tok-definition-operator,--syntax-definition-operator-color,cm-operator,cm-operator,operator
+js,42,tok-number,--syntax-number-color,cm-number,cm-number,number
+js,",",tok-separator,--syntax-separator-color,-,-,punctuation
+js,ratio,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,-
+js,=,tok-definition-operator,--syntax-definition-operator-color,cm-operator,cm-operator,operator
+js,1.5,tok-number,--syntax-number-color,cm-number,cm-number,number
+js,",",tok-separator,--syntax-separator-color,-,-,punctuation
+js,ok,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,-
+js,=,tok-definition-operator,--syntax-definition-operator-color,cm-operator,cm-operator,operator
+js,true,tok-bool,--syntax-bool-color,cm-atom,cm-atom,boolean
+js,",",tok-separator,--syntax-separator-color,-,-,punctuation
+js,none,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,-
+js,=,tok-definition-operator,--syntax-definition-operator-color,cm-operator,cm-operator,operator
+js,null,tok-null,--syntax-null-color,cm-atom,cm-atom,keyword nil null
+js,;,tok-separator,--syntax-separator-color,-,-,punctuation
+js,let,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+js,re,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,-
+js,=,tok-definition-operator,--syntax-definition-operator-color,cm-operator,cm-operator,operator
+js,/,tok-regexp,--syntax-regexp-color,cm-string-2,cm-string-2,regex regex-delimiter
+js,ab+c,tok-regexp,--syntax-regexp-color,cm-string-2,cm-string-2,language-regex regex regex-source
+js,/,tok-regexp,--syntax-regexp-color,cm-string-2,cm-string-2,regex regex-delimiter
+js,g,tok-regexp,--syntax-regexp-color,cm-string-2,cm-string-2,regex regex-flags
+js,;,tok-separator,--syntax-separator-color,-,-,punctuation
+js,class,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+js,Shape,tok-class-name,--syntax-class-name-color,cm-def,cm-def,class-name
+js,extends,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+js,Base,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,class-name
+js,{,tok-brace,--syntax-brace-color,-,-,punctuation
+js,constructor,tok-property-name tok-definition,--syntax-property-name-definition-color,cm-property,cm-property,function
+js,(,tok-paren,--syntax-paren-color,-,-,punctuation
+js,size,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,parameter
+js,),tok-paren,--syntax-paren-color,-,-,punctuation
+js,{,tok-brace,--syntax-brace-color,-,-,punctuation
+js,super,tok-atom,--syntax-atom-color,cm-keyword,cm-keyword,keyword
+js,(),tok-paren,--syntax-paren-color,-,-,punctuation
+js,;,tok-separator,--syntax-separator-color,-,-,punctuation
+js,this,tok-self,--syntax-self-color,cm-keyword,cm-keyword,keyword
+js,.,tok-deref-operator,--syntax-deref-operator-color,-,-,punctuation
+js,size,tok-property-name,--syntax-property-name-color,cm-property,cm-property,property-access
+js,=,tok-definition-operator,--syntax-definition-operator-color,cm-operator,cm-operator,operator
+js,size,tok-variable-name,--syntax-variable-name-color,cm-variable-2,cm-variable-2,-
+js,;,tok-separator,--syntax-separator-color,-,-,punctuation
+js,},tok-brace,--syntax-brace-color,-,-,punctuation
+js,area,tok-property-name tok-definition,--syntax-property-name-definition-color,cm-property,cm-property,function
+js,(),tok-paren,--syntax-paren-color,-,-,punctuation
+js,{,tok-brace,--syntax-brace-color,-,-,punctuation
+js,return,tok-control-keyword,--syntax-control-keyword-color,cm-keyword,cm-keyword,control-flow keyword
+js,this,tok-self,--syntax-self-color,cm-keyword,cm-keyword,keyword
+js,.,tok-deref-operator,--syntax-deref-operator-color,-,-,punctuation
+js,size,tok-property-name,--syntax-property-name-color,cm-property,cm-property,property-access
+js,*,tok-arithmetic-operator,--syntax-arithmetic-operator-color,cm-operator,cm-operator,operator
+js,2,tok-number,--syntax-number-color,cm-number,cm-number,number
+js,;,tok-separator,--syntax-separator-color,-,-,punctuation
+js,},tok-brace,--syntax-brace-color,-,-,punctuation
+js,},tok-brace,--syntax-brace-color,-,-,punctuation
+js,function,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+js,greet,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,function
+js,(,tok-paren,--syntax-paren-color,-,-,punctuation
+js,name,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,parameter
+js,),tok-paren,--syntax-paren-color,-,-,punctuation
+js,{,tok-brace,--syntax-brace-color,-,-,punctuation
+js,if,tok-control-keyword,--syntax-control-keyword-color,cm-keyword,cm-keyword,control-flow keyword
+js,(,tok-paren,--syntax-paren-color,-,-,punctuation
+js,name,tok-variable-name,--syntax-variable-name-color,cm-variable-2,cm-variable-2,-
+js,!==,tok-compare-operator,--syntax-compare-operator-color,cm-operator,cm-operator,operator
+js,undefined,tok-variable-name,--syntax-variable-name-color,cm-atom,cm-atom,keyword nil
+js,),tok-paren,--syntax-paren-color,-,-,punctuation
+js,return,tok-control-keyword,--syntax-control-keyword-color,cm-keyword,cm-keyword,control-flow keyword
+js,`,tok-string tok-special,--syntax-string-special-color,cm-string-2,cm-string-2,string template-punctuation template-string
+js,hi,tok-string tok-special,--syntax-string-special-color,cm-string-2,cm-string-2,string template-string
+js,${,tok-brace,--syntax-brace-color,cm-string-2,cm-string-2,interpolation interpolation-punctuation punctuation template-string
+js,name,tok-variable-name,--syntax-variable-name-color,cm-variable-2,cm-variable-2,interpolation template-string
+js,},tok-brace,--syntax-brace-color,cm-string-2,cm-string-2,interpolation interpolation-punctuation punctuation template-string
+js,`,tok-string tok-special,--syntax-string-special-color,cm-string-2,cm-string-2,string template-punctuation template-string
+js,;,tok-separator,--syntax-separator-color,-,-,punctuation
+js,console,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,class-name console
+js,.,tok-deref-operator,--syntax-deref-operator-color,-,-,punctuation
+js,log,tok-property-name tok-function,--syntax-property-name-function-color,cm-property,cm-property,function method property-access
+js,(,tok-paren,--syntax-paren-color,-,-,punctuation
+js,name,tok-variable-name,--syntax-variable-name-color,cm-variable-2,cm-variable-2,-
+js,.,tok-deref-operator,--syntax-deref-operator-color,-,-,punctuation
+js,length,tok-property-name,--syntax-property-name-color,cm-property,cm-property,property-access
+js,",",tok-separator,--syntax-separator-color,-,-,punctuation
+js,Math,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,class-name known-class-name
+js,.,tok-deref-operator,--syntax-deref-operator-color,-,-,punctuation
+js,max,tok-property-name tok-function,--syntax-property-name-function-color,cm-property,cm-property,function method property-access
+js,(,tok-paren,--syntax-paren-color,-,-,punctuation
+js,1,tok-number,--syntax-number-color,cm-number,cm-number,number
+js,",",tok-separator,--syntax-separator-color,-,-,punctuation
+js,2,tok-number,--syntax-number-color,cm-number,cm-number,number
+js,)),tok-paren,--syntax-paren-color,-,-,punctuation
+js,;,tok-separator,--syntax-separator-color,-,-,punctuation
+js,},tok-brace,--syntax-brace-color,-,-,punctuation
+js,greet,tok-variable-name tok-function,--syntax-variable-name-function-color,cm-variable,cm-variable,function
+js,(,tok-paren,--syntax-paren-color,-,-,punctuation
+js,"""world""",tok-string,--syntax-string-color,cm-string,cm-string,string
+js,),tok-paren,--syntax-paren-color,-,-,punctuation
+js,;,tok-separator,--syntax-separator-color,-,-,punctuation
+ts,interface,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+ts,Point,tok-name tok-definition,--syntax-name-definition-color,cm-def,cm-def,class-name
+ts,{,tok-brace,--syntax-brace-color,-,-,punctuation
+ts,x,tok-property-name tok-definition,--syntax-property-name-definition-color,cm-property,cm-property,-
+ts,:,tok-punctuation,--syntax-punctuation-color,-,-,operator
+ts,number,tok-name,--syntax-name-color,cm-type,cm-type,builtin
+ts,;,tok-separator,--syntax-separator-color,-,-,punctuation
+ts,label,tok-property-name tok-definition,--syntax-property-name-definition-color,cm-property,cm-property,-
+ts,?,-,-,cm-operator,cm-operator,operator
+ts,:,tok-punctuation,--syntax-punctuation-color,-,-,operator
+ts,string,tok-name,--syntax-name-color,cm-type,cm-type,builtin
+ts,},tok-brace,--syntax-brace-color,-,-,punctuation
+ts,type,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+ts,Id,tok-name tok-definition,--syntax-name-definition-color,cm-type,cm-type,class-name
+ts,=,tok-definition-operator,--syntax-definition-operator-color,cm-operator,cm-operator,operator
+ts,string,tok-name,--syntax-name-color,cm-type,cm-type,builtin
+ts,|,tok-logic-operator,--syntax-logic-operator-color,cm-operator,cm-operator,operator
+ts,number,tok-name,--syntax-name-color,cm-type,cm-type,builtin
+ts,;,tok-separator,--syntax-separator-color,-,-,punctuation
+ts,enum,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+ts,Color,tok-name tok-definition,--syntax-name-definition-color,cm-def,cm-def,-
+ts,{,tok-brace,--syntax-brace-color,-,-,punctuation
+ts,Red,tok-property-name,--syntax-property-name-color,cm-def,cm-def,-
+ts,",",tok-separator,--syntax-separator-color,-,-,punctuation
+ts,Green,tok-property-name,--syntax-property-name-color,cm-def,cm-def,-
+ts,},tok-brace,--syntax-brace-color,-,-,punctuation
+ts,export,tok-module-keyword,--syntax-module-keyword-color,cm-keyword,cm-keyword,keyword
+ts,function,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+ts,move,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,function
+ts,(,tok-paren,--syntax-paren-color,-,-,punctuation
+ts,p,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,-
+ts,:,tok-punctuation,--syntax-punctuation-color,-,-,operator
+ts,Point,tok-name,--syntax-name-color,cm-type,cm-type,-
+ts,",",tok-separator,--syntax-separator-color,-,-,punctuation
+ts,dx,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,-
+ts,:,tok-punctuation,--syntax-punctuation-color,-,-,operator
+ts,number,tok-name,--syntax-name-color,cm-type,cm-type,builtin
+ts,),tok-paren,--syntax-paren-color,-,-,punctuation
+ts,:,tok-punctuation,--syntax-punctuation-color,-,-,operator
+ts,Point,tok-name,--syntax-name-color,cm-type,cm-type,-
+ts,{,tok-brace,--syntax-brace-color,-,-,punctuation
+ts,const,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+ts,next,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,-
+ts,:,tok-punctuation,--syntax-punctuation-color,-,-,operator
+ts,Point,tok-name,--syntax-name-color,cm-type,cm-type,-
+ts,=,tok-definition-operator,--syntax-definition-operator-color,cm-operator,cm-operator,operator
+ts,{,tok-brace,--syntax-brace-color,-,-,punctuation
+ts,...,tok-punctuation,--syntax-punctuation-color,cm-meta,cm-meta,operator
+ts,p,tok-variable-name,--syntax-variable-name-color,cm-variable-2,cm-variable-2,-
+ts,",",tok-separator,--syntax-separator-color,-,-,punctuation
+ts,x,tok-property-name tok-definition,--syntax-property-name-definition-color,cm-property,cm-property,-
+ts,:,tok-punctuation,--syntax-punctuation-color,-,-,operator
+ts,p,tok-variable-name,--syntax-variable-name-color,cm-variable-2,cm-variable-2,-
+ts,.,tok-deref-operator,--syntax-deref-operator-color,-,-,punctuation
+ts,x,tok-property-name,--syntax-property-name-color,cm-property,cm-property,-
+ts,+,tok-arithmetic-operator,--syntax-arithmetic-operator-color,cm-operator,cm-operator,operator
+ts,dx,tok-variable-name,--syntax-variable-name-color,cm-variable-2,cm-variable-2,-
+ts,},tok-brace,--syntax-brace-color,-,-,punctuation
+ts,;,tok-separator,--syntax-separator-color,-,-,punctuation
+ts,return,tok-control-keyword,--syntax-control-keyword-color,cm-keyword,cm-keyword,keyword
+ts,next,tok-variable-name,--syntax-variable-name-color,cm-variable-2,cm-variable-2,-
+ts,as,tok-operator-keyword,--syntax-operator-keyword-color,cm-keyword,cm-keyword,keyword
+ts,Point,tok-name,--syntax-name-color,cm-type,cm-type,-
+ts,;,tok-separator,--syntax-separator-color,-,-,punctuation
+ts,},tok-brace,--syntax-brace-color,-,-,punctuation
+python,# comment,tok-line-comment,--syntax-line-comment-color,cm-comment,cm-comment,comment
+python,import,tok-module-keyword,--syntax-module-keyword-color,cm-keyword,cm-keyword,keyword
+python,os,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+python,from,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+python,typing,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+python,import,tok-module-keyword,--syntax-module-keyword-color,cm-keyword,cm-keyword,keyword
+python,List,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+python,@,tok-meta,--syntax-meta-color,cm-meta,cm-meta,annotation decorator punctuation
+python,decorator,tok-variable-name,--syntax-variable-name-color,cm-meta,cm-meta,annotation decorator punctuation
+python,class,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+python,Greeter,tok-class-name,--syntax-class-name-color,cm-def,cm-def,class-name
+python,(,tok-paren,--syntax-paren-color,-,-,punctuation
+python,Base,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+python,),tok-paren,--syntax-paren-color,-,-,punctuation
+python,:,-,-,-,-,punctuation
+python,"""""""Docstring.""""""",tok-string,--syntax-string-color,cm-string,cm-string,string triple-quoted-string
+python,def,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+python,greet,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,function
+python,(,tok-paren,--syntax-paren-color,-,-,punctuation
+python,self,tok-variable-name,--syntax-variable-name-color,cm-variable-2,cm-variable-2,-
+python,",",tok-separator,--syntax-separator-color,-,-,punctuation
+python,name,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+python,:,-,-,-,-,punctuation
+python,str,tok-variable-name,--syntax-variable-name-color,cm-builtin,cm-builtin,builtin
+python,",",tok-separator,--syntax-separator-color,-,-,punctuation
+python,count,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+python,=,tok-definition-operator,--syntax-definition-operator-color,cm-operator,cm-operator,operator
+python,3,tok-number,--syntax-number-color,cm-number,cm-number,number
+python,),tok-paren,--syntax-paren-color,-,-,punctuation
+python,->,-,-,cm-operator,cm-operator,operator
+python,None,tok-null,--syntax-null-color,cm-keyword,cm-keyword,boolean
+python,:,-,-,-,-,punctuation
+python,if,tok-control-keyword,--syntax-control-keyword-color,cm-keyword,cm-keyword,keyword
+python,name,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+python,is,tok-operator-keyword,--syntax-operator-keyword-color,cm-keyword,cm-keyword,keyword
+python,not,tok-operator-keyword,--syntax-operator-keyword-color,cm-keyword,cm-keyword,keyword
+python,None,tok-null,--syntax-null-color,cm-keyword,cm-keyword,boolean
+python,and,tok-operator-keyword,--syntax-operator-keyword-color,cm-keyword,cm-keyword,keyword
+python,count,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+python,>,tok-compare-operator,--syntax-compare-operator-color,cm-operator,cm-operator,operator
+python,0,tok-number,--syntax-number-color,cm-number,cm-number,number
+python,:,-,-,-,-,punctuation
+python,print,tok-variable-name tok-function,--syntax-variable-name-function-color,cm-builtin,cm-builtin,keyword
+python,(,tok-paren,--syntax-paren-color,-,-,punctuation
+python,"f""hi",tok-string tok-special,--syntax-string-special-color,cm-string,cm-string,string string-interpolation
+python,{,tok-brace,--syntax-brace-color,-,-,interpolation punctuation string-interpolation
+python,name,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,interpolation string-interpolation
+python,},tok-brace,--syntax-brace-color,-,-,interpolation punctuation string-interpolation
+python,"""",tok-string tok-special,--syntax-string-special-color,cm-string,cm-string,string string-interpolation
+python,",",tok-separator,--syntax-separator-color,-,-,punctuation
+python,len,tok-variable-name tok-function,--syntax-variable-name-function-color,cm-builtin,cm-builtin,builtin
+python,(,tok-paren,--syntax-paren-color,-,-,punctuation
+python,name,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+python,),tok-paren,--syntax-paren-color,-,-,punctuation
+python,",",tok-separator,--syntax-separator-color,-,-,punctuation
+python,True,tok-bool,--syntax-bool-color,cm-keyword,cm-keyword,boolean
+python,",",tok-separator,--syntax-separator-color,-,-,punctuation
+python,0x1F,tok-number,--syntax-number-color,cm-number,cm-number,number
+python,",",tok-separator,--syntax-separator-color,-,-,punctuation
+python,2.5,tok-number,--syntax-number-color,cm-number,cm-number,number
+python,),tok-paren,--syntax-paren-color,-,-,punctuation
+python,return,tok-control-keyword,--syntax-control-keyword-color,cm-keyword,cm-keyword,keyword
+python,None,tok-null,--syntax-null-color,cm-keyword,cm-keyword,boolean
+css,/* comment */,tok-block-comment,--syntax-block-comment-color,cm-comment,cm-comment,comment
+css,@media,tok-definition-keyword,--syntax-definition-keyword-color,cm-def,cm-def,atrule rule
+css,(,tok-paren,--syntax-paren-color,-,-,atrule punctuation
+css,max-width,tok-property-name,--syntax-property-name-color,cm-property,cm-property,atrule property
+css,:,tok-punctuation,--syntax-punctuation-color,-,-,atrule punctuation
+css,600,tok-number,--syntax-number-color,cm-number,cm-number,atrule number
+css,px,tok-unit,--syntax-unit-color,cm-number,cm-number,atrule unit
+css,),tok-paren,--syntax-paren-color,-,-,atrule punctuation
+css,{,tok-brace,--syntax-brace-color,-,-,punctuation
+css,.,-,-,cm-qualifier,cm-qualifier,class selector
+css,card,tok-class-name,--syntax-class-name-color,cm-qualifier,cm-qualifier,class selector
+css,>,tok-logic-operator,--syntax-logic-operator-color,-,-,combinator selector
+css,a,tok-tag-name,--syntax-tag-name-color,cm-tag,cm-tag,selector
+css,:,tok-punctuation,--syntax-punctuation-color,-,-,pseudo-class selector
+css,hover,tok-class-name,--syntax-class-name-color,cm-variable-3,cm-variable-3,pseudo-class selector
+css,",",tok-separator,--syntax-separator-color,-,-,punctuation selector
+css,#,tok-deref-operator,--syntax-deref-operator-color,cm-builtin,cm-builtin,id selector
+css,main,tok-label-name,--syntax-label-name-color,cm-builtin,cm-builtin,id selector
+css,::,-,-,-,-,pseudo-element selector
+css,before,tok-class-name,--syntax-class-name-color,cm-variable-3,cm-variable-3,pseudo-element selector
+css,{,tok-brace,--syntax-brace-color,-,-,punctuation
+css,color,tok-property-name,--syntax-property-name-color,cm-property,cm-property,property
+css,:,tok-punctuation,--syntax-punctuation-color,-,-,punctuation
+css,#ff0000,tok-color,--syntax-color-color,cm-atom,cm-atom,color hexcode
+css,;,tok-separator,--syntax-separator-color,-,-,punctuation
+css,margin,tok-property-name,--syntax-property-name-color,cm-property,cm-property,property
+css,:,tok-punctuation,--syntax-punctuation-color,-,-,punctuation
+css,0,tok-number,--syntax-number-color,cm-number,cm-number,number
+css,auto,tok-atom,--syntax-atom-color,cm-atom,cm-atom,-
+css,12,tok-number,--syntax-number-color,cm-number,cm-number,number
+css,px,tok-unit,--syntax-unit-color,cm-number,cm-number,unit
+css,;,tok-separator,--syntax-separator-color,-,-,punctuation
+css,font-family,tok-property-name,--syntax-property-name-color,cm-property,cm-property,property
+css,:,tok-punctuation,--syntax-punctuation-color,-,-,punctuation
+css,"""Inter""",tok-string,--syntax-string-color,cm-string,cm-string,string
+css,",",tok-separator,--syntax-separator-color,-,-,punctuation
+css,sans-serif,tok-atom,--syntax-atom-color,cm-atom,cm-atom,-
+css,!important,tok-modifier,--syntax-modifier-color,cm-keyword,cm-keyword,important
+css,;,tok-separator,--syntax-separator-color,-,-,punctuation
+css,width,tok-property-name,--syntax-property-name-color,cm-property,cm-property,property
+css,:,tok-punctuation,--syntax-punctuation-color,-,-,punctuation
+css,calc,tok-operator-keyword,--syntax-operator-keyword-color,cm-callee cm-variable,cm-callee cm-variable,function
+css,(,tok-paren,--syntax-paren-color,-,-,punctuation
+css,100,tok-number,--syntax-number-color,cm-number,cm-number,number
+css,%,tok-unit,--syntax-unit-color,cm-number,cm-number,unit
+css,-,tok-arithmetic-operator,--syntax-arithmetic-operator-color,-,-,operator
+css,2,tok-number,--syntax-number-color,cm-number,cm-number,number
+css,em,tok-unit,--syntax-unit-color,cm-number,cm-number,unit
+css,),tok-paren,--syntax-paren-color,-,-,punctuation
+css,;,tok-separator,--syntax-separator-color,-,-,punctuation
+css,},tok-brace,--syntax-brace-color,-,-,punctuation
+css,},tok-brace,--syntax-brace-color,-,-,punctuation
+html,<!-- comment -->,tok-block-comment,--syntax-block-comment-color,cm-comment,cm-comment,comment
+html,<!,tok-document-meta,--syntax-document-meta-color,cm-meta,cm-meta,doctype punctuation
+html,DOCTYPE,tok-document-meta,--syntax-document-meta-color,cm-meta,cm-meta,doctype doctype-tag
+html,html,tok-document-meta,--syntax-document-meta-color,cm-meta,cm-meta,doctype name
+html,>,tok-document-meta,--syntax-document-meta-color,cm-meta,cm-meta,doctype punctuation
+html,<,tok-angle-bracket,--syntax-angle-bracket-color,cm-bracket cm-tag,cm-bracket cm-tag,punctuation tag
+html,div,tok-tag-name,--syntax-tag-name-color,cm-tag,cm-tag,tag
+html,class,tok-attribute-name,--syntax-attribute-name-color,cm-attribute,cm-attribute,attr-name tag
+html,=,tok-definition-operator,--syntax-definition-operator-color,-,-,attr-equals attr-value punctuation tag
+html,"""",tok-attribute-value,--syntax-attribute-value-color,cm-string,cm-string,attr-value punctuation tag
+html,box,tok-attribute-value,--syntax-attribute-value-color,cm-string,cm-string,attr-value tag
+html,"""",tok-attribute-value,--syntax-attribute-value-color,cm-string,cm-string,attr-value punctuation tag
+html,id,tok-attribute-name,--syntax-attribute-name-color,cm-attribute,cm-attribute,attr-name tag
+html,=,tok-definition-operator,--syntax-definition-operator-color,-,-,attr-equals attr-value punctuation tag
+html,"""",tok-attribute-value,--syntax-attribute-value-color,cm-string,cm-string,attr-value punctuation tag
+html,main,tok-attribute-value,--syntax-attribute-value-color,cm-string,cm-string,attr-value tag
+html,"""",tok-attribute-value,--syntax-attribute-value-color,cm-string,cm-string,attr-value punctuation tag
+html,hidden,tok-attribute-name,--syntax-attribute-name-color,cm-attribute,cm-attribute,attr-name tag
+html,>,tok-angle-bracket,--syntax-angle-bracket-color,cm-bracket cm-tag,cm-bracket cm-tag,punctuation tag
+html,<,tok-angle-bracket,--syntax-angle-bracket-color,cm-bracket cm-tag,cm-bracket cm-tag,punctuation tag
+html,a,tok-tag-name,--syntax-tag-name-color,cm-tag,cm-tag,tag
+html,href,tok-attribute-name,--syntax-attribute-name-color,cm-attribute,cm-attribute,attr-name tag
+html,=,tok-definition-operator,--syntax-definition-operator-color,-,-,attr-equals attr-value punctuation tag
+html,"""",tok-attribute-value,--syntax-attribute-value-color,cm-string,cm-string,attr-value punctuation tag
+html,https://example.com,tok-attribute-value,--syntax-attribute-value-color,cm-string,cm-string,attr-value tag
+html,"""",tok-attribute-value,--syntax-attribute-value-color,cm-string,cm-string,attr-value punctuation tag
+html,>,tok-angle-bracket,--syntax-angle-bracket-color,cm-bracket cm-tag,cm-bracket cm-tag,punctuation tag
+html,link,tok-content,--syntax-content-color,-,-,-
+html,&amp;,tok-character,--syntax-character-color,cm-atom,cm-atom,entity named-entity
+html,text,tok-content,--syntax-content-color,-,-,-
+html,</,tok-angle-bracket,--syntax-angle-bracket-color,cm-bracket cm-tag,cm-bracket cm-tag,punctuation tag
+html,a,tok-tag-name,--syntax-tag-name-color,cm-tag,cm-tag,tag
+html,>,tok-angle-bracket,--syntax-angle-bracket-color,cm-bracket cm-tag,cm-bracket cm-tag,punctuation tag
+html,</,tok-angle-bracket,--syntax-angle-bracket-color,cm-bracket cm-tag,cm-bracket cm-tag,punctuation tag
+html,div,tok-tag-name,--syntax-tag-name-color,cm-tag,cm-tag,tag
+html,>,tok-angle-bracket,--syntax-angle-bracket-color,cm-bracket cm-tag,cm-bracket cm-tag,punctuation tag
+json,{,tok-brace,--syntax-brace-color,-,-,punctuation
+json,"""name""",tok-property-name,--syntax-property-name-color,cm-property cm-string,cm-property cm-string,property
+json,:,tok-separator,--syntax-separator-color,-,-,operator
+json,"""demo""",tok-string,--syntax-string-color,cm-string,cm-string,string
+json,",",tok-separator,--syntax-separator-color,-,-,punctuation
+json,"""count""",tok-property-name,--syntax-property-name-color,cm-property cm-string,cm-property cm-string,property
+json,:,tok-separator,--syntax-separator-color,-,-,operator
+json,3,tok-number,--syntax-number-color,cm-number,cm-number,number
+json,",",tok-separator,--syntax-separator-color,-,-,punctuation
+json,"""ratio""",tok-property-name,--syntax-property-name-color,cm-property cm-string,cm-property cm-string,property
+json,:,tok-separator,--syntax-separator-color,-,-,operator
+json,-,tok-number,--syntax-number-color,cm-operator,cm-operator,number
+json,0.5,tok-number,--syntax-number-color,cm-number,cm-number,number
+json,",",tok-separator,--syntax-separator-color,-,-,punctuation
+json,"""enabled""",tok-property-name,--syntax-property-name-color,cm-property cm-string,cm-property cm-string,property
+json,:,tok-separator,--syntax-separator-color,-,-,operator
+json,false,tok-bool,--syntax-bool-color,cm-atom,cm-atom,boolean
+json,",",tok-separator,--syntax-separator-color,-,-,punctuation
+json,"""tags""",tok-property-name,--syntax-property-name-color,cm-property cm-string,cm-property cm-string,property
+json,:,tok-separator,--syntax-separator-color,-,-,operator
+json,[,tok-square-bracket,--syntax-square-bracket-color,-,-,punctuation
+json,"""a""",tok-string,--syntax-string-color,cm-string,cm-string,string
+json,",",tok-separator,--syntax-separator-color,-,-,punctuation
+json,"""b""",tok-string,--syntax-string-color,cm-string,cm-string,string
+json,],tok-square-bracket,--syntax-square-bracket-color,-,-,punctuation
+json,",",tok-separator,--syntax-separator-color,-,-,punctuation
+json,"""empty""",tok-property-name,--syntax-property-name-color,cm-property cm-string,cm-property cm-string,property
+json,:,tok-separator,--syntax-separator-color,-,-,operator
+json,null,tok-null,--syntax-null-color,cm-atom,cm-atom,keyword null
+json,},tok-brace,--syntax-brace-color,-,-,punctuation
+sh,#!/bin/sh,tok-meta,--syntax-meta-color,cm-meta,cm-meta,important shebang
+sh,# comment,tok-comment,--syntax-comment-color,cm-comment,cm-comment,comment
+sh,NAME,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,assign-left variable
+sh,=,tok-operator,--syntax-operator-color,cm-operator,cm-operator,operator
+sh,"""world""",tok-string,--syntax-string-color,cm-string,cm-string,string
+sh,export,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,builtin class-name
+sh,PATH,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,assign-left constant environment variable
+sh,=,tok-operator,--syntax-operator-color,cm-operator,cm-operator,operator
+sh,"""",tok-string,--syntax-string-color,cm-string,cm-string,string
+sh,$HOME,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,constant environment string
+sh,/bin:,tok-string,--syntax-string-color,cm-string,cm-string,string
+sh,$PATH,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,constant environment string
+sh,"""",tok-string,--syntax-string-color,cm-string,cm-string,string
+sh,if,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+sh,[,-,-,-,-,punctuation
+sh,-n,tok-attribute-name,--syntax-attribute-name-color,cm-attribute,cm-attribute,parameter variable
+sh,"""",tok-string,--syntax-string-color,cm-string,cm-string,string
+sh,$NAME,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,string variable
+sh,"""",tok-string,--syntax-string-color,cm-string,cm-string,string
+sh,];,-,-,-,-,punctuation
+sh,then,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+sh,echo,tok-variable-name tok-standard,--syntax-variable-name-standard-color,cm-builtin,cm-builtin,builtin class-name
+sh,"""hi",tok-string,--syntax-string-color,cm-string,cm-string,string
+sh,${NAME},tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,string variable
+sh,"""",tok-string,--syntax-string-color,cm-string,cm-string,string
+sh,|,-,-,-,-,operator
+sh,grep,tok-variable-name tok-standard,--syntax-variable-name-standard-color,cm-builtin,cm-builtin,function
+sh,-c,tok-attribute-name,--syntax-attribute-name-color,cm-attribute,cm-attribute,parameter variable
+sh,hi,-,-,-,-,-
+sh,>,-,-,-,-,operator
+sh,/dev/null,-,-,-,-,-
+sh,2,tok-number,--syntax-number-color,cm-number,cm-number,file-descriptor important operator
+sh,>,-,-,-,-,operator
+sh,&1,-,-,-,-,file-descriptor important
+sh,fi,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+sh,for,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+sh,f,-,-,-,-,for-or-select variable
+sh,in,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+sh,*.txt,-,-,-,-,-
+sh,;,-,-,-,-,punctuation
+sh,do,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+sh,cat,tok-variable-name tok-standard,--syntax-variable-name-standard-color,cm-builtin,cm-builtin,function
+sh,"""",tok-string,--syntax-string-color,cm-string,cm-string,string
+sh,$f,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,string variable
+sh,"""",tok-string,--syntax-string-color,cm-string,cm-string,string
+sh,;,-,-,-,-,punctuation
+sh,done,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+go,// comment,tok-line-comment,--syntax-line-comment-color,cm-comment,cm-comment,comment
+go,package,tok-module-keyword,--syntax-module-keyword-color,cm-keyword,cm-keyword,keyword
+go,main,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-variable,cm-variable,-
+go,import,tok-module-keyword,--syntax-module-keyword-color,cm-keyword,cm-keyword,keyword
+go,"""fmt""",tok-string,--syntax-string-color,cm-string,cm-string,string
+go,type,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+go,Point,tok-name tok-definition,--syntax-name-definition-color,cm-variable,cm-variable,-
+go,struct,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+go,{,tok-brace,--syntax-brace-color,-,-,punctuation
+go,X,tok-property-name,--syntax-property-name-color,cm-variable,cm-variable,-
+go,",",tok-separator,--syntax-separator-color,-,-,punctuation
+go,Y,tok-property-name,--syntax-property-name-color,cm-variable,cm-variable,-
+go,int,tok-name,--syntax-name-color,cm-keyword,cm-keyword,builtin
+go,},tok-brace,--syntax-brace-color,-,-,punctuation
+go,func,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+go,(,tok-paren,--syntax-paren-color,-,-,punctuation
+go,p,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-variable,cm-variable,-
+go,*,tok-modifier,--syntax-modifier-color,cm-operator,cm-operator,operator
+go,Point,tok-name,--syntax-name-color,cm-variable,cm-variable,-
+go,),tok-paren,--syntax-paren-color,-,-,punctuation
+go,Move,tok-property-name,--syntax-property-name-color,cm-variable,cm-variable,function
+go,(,tok-paren,--syntax-paren-color,-,-,punctuation
+go,dx,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-variable,cm-variable,-
+go,int,tok-name,--syntax-name-color,cm-keyword,cm-keyword,builtin
+go,),tok-paren,--syntax-paren-color,-,-,punctuation
+go,error,tok-name,--syntax-name-color,cm-keyword,cm-keyword,builtin
+go,{,tok-brace,--syntax-brace-color,-,-,punctuation
+go,p,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+go,.,tok-deref-operator,--syntax-deref-operator-color,cm-number,cm-number,punctuation
+go,X,tok-property-name,--syntax-property-name-color,cm-variable,cm-variable,-
+go,+=,tok-update-operator,--syntax-update-operator-color,cm-operator,cm-operator,operator
+go,dx,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+go,fmt,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+go,.,tok-deref-operator,--syntax-deref-operator-color,cm-number,cm-number,punctuation
+go,Println,tok-property-name,--syntax-property-name-color,cm-variable,cm-variable,function
+go,(,tok-paren,--syntax-paren-color,-,-,punctuation
+go,"""moved""",tok-string,--syntax-string-color,cm-string,cm-string,string
+go,",",tok-separator,--syntax-separator-color,-,-,punctuation
+go,p,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+go,.,tok-deref-operator,--syntax-deref-operator-color,cm-number,cm-number,punctuation
+go,X,tok-property-name,--syntax-property-name-color,cm-variable,cm-variable,-
+go,",",tok-separator,--syntax-separator-color,-,-,punctuation
+go,3.14,tok-number,--syntax-number-color,cm-number,cm-number,number
+go,",",tok-separator,--syntax-separator-color,-,-,punctuation
+go,true,tok-bool,--syntax-bool-color,cm-atom,cm-atom,boolean
+go,",",tok-separator,--syntax-separator-color,-,-,punctuation
+go,nil,tok-null,--syntax-null-color,cm-atom,cm-atom,boolean
+go,),tok-paren,--syntax-paren-color,-,-,punctuation
+go,return,tok-control-keyword,--syntax-control-keyword-color,cm-keyword,cm-keyword,keyword
+go,nil,tok-null,--syntax-null-color,cm-atom,cm-atom,boolean
+go,},tok-brace,--syntax-brace-color,-,-,punctuation
+rust,// comment,tok-line-comment,--syntax-line-comment-color,cm-comment,cm-comment,comment
+rust,use,tok-module-keyword,--syntax-module-keyword-color,cm-keyword,cm-keyword,keyword
+rust,std,tok-namespace,--syntax-namespace-color,cm-variable,cm-variable,namespace
+rust,::,tok-separator,--syntax-separator-color,-,-,namespace punctuation
+rust,collections,tok-namespace,--syntax-namespace-color,cm-variable,cm-variable,namespace
+rust,::,tok-separator,--syntax-separator-color,-,-,namespace punctuation
+rust,HashMap,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-variable,cm-variable,class-name
+rust,;,tok-separator,--syntax-separator-color,-,-,punctuation
+rust,#,tok-meta,--syntax-meta-color,cm-meta,cm-meta,attr-name attribute
+rust,[,tok-meta tok-square-bracket,--syntax-meta-color,cm-meta,cm-meta,attr-name attribute
+rust,derive,tok-meta tok-variable-name,--syntax-meta-color,cm-meta,cm-meta,attr-name attribute
+rust,(,tok-meta tok-paren,--syntax-meta-color,cm-meta,cm-meta,attr-name attribute
+rust,Debug,tok-meta tok-variable-name,--syntax-meta-color,cm-meta,cm-meta,attr-name attribute
+rust,),tok-meta tok-paren,--syntax-meta-color,cm-meta,cm-meta,attr-name attribute
+rust,],tok-meta tok-square-bracket,--syntax-meta-color,cm-meta,cm-meta,attr-name attribute
+rust,struct,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+rust,Point,tok-name,--syntax-name-color,cm-def,cm-def,class-name type-definition
+rust,{,tok-brace,--syntax-brace-color,-,-,punctuation
+rust,x,tok-property-name,--syntax-property-name-color,cm-variable,cm-variable,-
+rust,:,-,-,-,-,punctuation
+rust,i32,tok-name,--syntax-name-color,cm-atom,cm-atom,keyword
+rust,",",tok-separator,--syntax-separator-color,-,-,punctuation
+rust,y,tok-property-name,--syntax-property-name-color,cm-variable,cm-variable,-
+rust,:,-,-,-,-,punctuation
+rust,i32,tok-name,--syntax-name-color,cm-atom,cm-atom,keyword
+rust,},tok-brace,--syntax-brace-color,-,-,punctuation
+rust,fn,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+rust,main,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,function function-definition
+rust,(),tok-paren,--syntax-paren-color,-,-,punctuation
+rust,->,tok-punctuation,--syntax-punctuation-color,cm-operator,cm-operator,punctuation
+rust,Result,tok-name,--syntax-name-color,cm-variable,cm-variable,class-name
+rust,<,-,-,cm-operator,cm-operator,operator
+rust,(),tok-paren,--syntax-paren-color,-,-,punctuation
+rust,",",tok-separator,--syntax-separator-color,-,-,punctuation
+rust,String,tok-name,--syntax-name-color,cm-variable,cm-variable,class-name
+rust,>,-,-,cm-operator,cm-operator,operator
+rust,{,tok-brace,--syntax-brace-color,-,-,punctuation
+rust,let,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+rust,mut,tok-modifier,--syntax-modifier-color,cm-keyword,cm-keyword,keyword
+rust,map,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,-
+rust,:,-,-,-,-,punctuation
+rust,HashMap,tok-name,--syntax-name-color,cm-variable,cm-variable,class-name
+rust,<,-,-,cm-operator,cm-operator,operator
+rust,&,tok-operator,--syntax-operator-color,-,-,operator
+rust,str,tok-name,--syntax-name-color,cm-atom,cm-atom,keyword
+rust,",",tok-separator,--syntax-separator-color,-,-,punctuation
+rust,i32,tok-name,--syntax-name-color,cm-atom,cm-atom,keyword
+rust,>,-,-,cm-operator,cm-operator,operator
+rust,=,tok-definition-operator,--syntax-definition-operator-color,cm-operator,cm-operator,operator
+rust,HashMap,tok-namespace,--syntax-namespace-color,cm-variable,cm-variable,class-name
+rust,::,tok-separator,--syntax-separator-color,-,-,punctuation
+rust,new,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,function
+rust,(),tok-paren,--syntax-paren-color,-,-,punctuation
+rust,;,tok-separator,--syntax-separator-color,-,-,punctuation
+rust,map,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+rust,.,-,-,-,-,punctuation
+rust,insert,tok-property-name tok-function,--syntax-property-name-function-color,cm-variable,cm-variable,function
+rust,(,tok-paren,--syntax-paren-color,-,-,punctuation
+rust,"""one""",tok-string,--syntax-string-color,cm-string,cm-string,string
+rust,",",tok-separator,--syntax-separator-color,-,-,punctuation
+rust,1,tok-integer,--syntax-integer-color,cm-number,cm-number,number
+rust,),tok-paren,--syntax-paren-color,-,-,punctuation
+rust,;,tok-separator,--syntax-separator-color,-,-,punctuation
+rust,println!,tok-macro-name,--syntax-macro-name-color,cm-variable-3,cm-variable-3,macro property
+rust,(,tok-paren,--syntax-paren-color,-,-,punctuation
+rust,"""{:?} {}""",tok-string,--syntax-string-color,cm-string,cm-string,string
+rust,",",tok-separator,--syntax-separator-color,-,-,punctuation
+rust,map,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+rust,",",tok-separator,--syntax-separator-color,-,-,punctuation
+rust,2.5,tok-float,--syntax-float-color,cm-number,cm-number,number
+rust,),tok-paren,--syntax-paren-color,-,-,punctuation
+rust,;,tok-separator,--syntax-separator-color,-,-,punctuation
+rust,Ok,tok-variable-name tok-function,--syntax-variable-name-function-color,cm-builtin,cm-builtin,class-name
+rust,(()),tok-paren,--syntax-paren-color,-,-,punctuation
+rust,},tok-brace,--syntax-brace-color,-,-,punctuation
+yaml,# comment,tok-line-comment,--syntax-line-comment-color,cm-comment,cm-comment,comment
+yaml,name,tok-property-name tok-definition,--syntax-property-name-definition-color,cm-atom,cm-atom,atrule key
+yaml,:,tok-separator,--syntax-separator-color,cm-meta,cm-meta,punctuation
+yaml,demo,tok-content,--syntax-content-color,-,-,-
+yaml,version,tok-property-name tok-definition,--syntax-property-name-definition-color,cm-atom,cm-atom,atrule key
+yaml,:,tok-separator,--syntax-separator-color,cm-meta,cm-meta,punctuation
+yaml,1.2,tok-content,--syntax-content-color,cm-number,cm-number,number
+yaml,enabled,tok-property-name tok-definition,--syntax-property-name-definition-color,cm-atom,cm-atom,atrule key
+yaml,:,tok-separator,--syntax-separator-color,cm-meta,cm-meta,punctuation
+yaml,true,tok-content,--syntax-content-color,cm-keyword,cm-keyword,boolean important
+yaml,items,tok-property-name tok-definition,--syntax-property-name-definition-color,cm-atom,cm-atom,atrule key
+yaml,:,tok-separator,--syntax-separator-color,cm-meta,cm-meta,punctuation
+yaml,-,tok-separator,--syntax-separator-color,cm-meta,cm-meta,punctuation
+yaml,"""quoted""",tok-string,--syntax-string-color,cm-string,cm-string,string
+yaml,-,tok-separator,--syntax-separator-color,cm-meta,cm-meta,punctuation
+yaml,plain,tok-content,--syntax-content-color,-,-,-
+yaml,anchor,tok-property-name tok-definition,--syntax-property-name-definition-color,cm-atom,cm-atom,atrule key
+yaml,:,tok-separator,--syntax-separator-color,cm-meta,cm-meta,punctuation
+yaml,&base,tok-label-name,--syntax-label-name-color,cm-variable-2,cm-variable-2,important
+yaml,key,tok-property-name tok-definition,--syntax-property-name-definition-color,cm-atom,cm-atom,atrule key
+yaml,:,tok-separator,--syntax-separator-color,cm-meta,cm-meta,punctuation
+yaml,value,tok-content,--syntax-content-color,-,-,-
+yaml,ref,tok-property-name tok-definition,--syntax-property-name-definition-color,cm-atom,cm-atom,atrule key
+yaml,:,tok-separator,--syntax-separator-color,cm-meta,cm-meta,punctuation
+yaml,*base,tok-label-name,--syntax-label-name-color,cm-variable-2,cm-variable-2,important
+sql,-- comment,tok-line-comment,--syntax-line-comment-color,cm-comment,cm-comment,comment
+sql,SELECT,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+sql,id,tok-name,--syntax-name-color,-,-,-
+sql,",",tok-punctuation,--syntax-punctuation-color,cm-punctuation,cm-punctuation,punctuation
+sql,name,tok-name,--syntax-name-color,-,-,-
+sql,AS,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+sql,label,tok-name,--syntax-name-color,-,-,-
+sql,",",tok-punctuation,--syntax-punctuation-color,cm-punctuation,cm-punctuation,punctuation
+sql,COUNT,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,function
+sql,(,tok-paren,--syntax-paren-color,cm-bracket,cm-bracket,punctuation
+sql,*,tok-operator,--syntax-operator-color,cm-operator,cm-operator,operator
+sql,),tok-paren,--syntax-paren-color,cm-bracket,cm-bracket,punctuation
+sql,FROM,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+sql,users,tok-name,--syntax-name-color,-,-,-
+sql,u,tok-name,--syntax-name-color,-,-,-
+sql,WHERE,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+sql,u,tok-name,--syntax-name-color,-,-,-
+sql,.,-,-,cm-variable-2,cm-variable-2,punctuation
+sql,age,tok-name,--syntax-name-color,cm-variable-2,cm-variable-2,-
+sql,>,tok-operator,--syntax-operator-color,cm-operator,cm-operator,operator
+sql,21,tok-number,--syntax-number-color,cm-number,cm-number,number
+sql,AND,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,operator
+sql,u,tok-name,--syntax-name-color,-,-,-
+sql,.,-,-,cm-variable-2,cm-variable-2,punctuation
+sql,name,tok-name,--syntax-name-color,cm-variable-2,cm-variable-2,-
+sql,LIKE,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,operator
+sql,'A%',tok-string,--syntax-string-color,cm-string,cm-string,string
+sql,GROUP,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+sql,BY,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+sql,id,tok-name,--syntax-name-color,-,-,-
+sql,ORDER,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+sql,BY,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+sql,name,tok-name,--syntax-name-color,-,-,-
+sql,DESC,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+sql,;,-,-,cm-punctuation,cm-punctuation,punctuation
+markdown,#,tok-heading-1 tok-processing-instruction,--syntax-processing-instruction-color,cm-header cm-header-1,cm-header cm-header-1,important punctuation title
+markdown,Heading,tok-heading-1,--syntax-heading-1-color,cm-header cm-header-1,cm-header cm-header-1,important title
+markdown,Some,tok-content,--syntax-content-color,-,-,-
+markdown,*,tok-emphasis tok-processing-instruction,--syntax-processing-instruction-color,cm-em,cm-em,italic punctuation
+markdown,emphasis,tok-emphasis,--syntax-emphasis-color,cm-em,cm-em,content italic
+markdown,*,tok-emphasis tok-processing-instruction,--syntax-processing-instruction-color,cm-em,cm-em,italic punctuation
+markdown,",",tok-content,--syntax-content-color,-,-,-
+markdown,**,tok-strong tok-processing-instruction,--syntax-processing-instruction-color,cm-strong,cm-strong,bold punctuation
+markdown,strong,tok-strong,--syntax-strong-color,cm-strong,cm-strong,bold content
+markdown,**,tok-strong tok-processing-instruction,--syntax-processing-instruction-color,cm-strong,cm-strong,bold punctuation
+markdown,and,tok-content,--syntax-content-color,-,-,-
+markdown,`,tok-processing-instruction,--syntax-processing-instruction-color,cm-comment,cm-comment,code code-snippet keyword
+markdown,code,tok-monospace,--syntax-monospace-color,cm-comment,cm-comment,code code-snippet keyword
+markdown,`,tok-processing-instruction,--syntax-processing-instruction-color,cm-comment,cm-comment,code code-snippet keyword
+markdown,.,tok-content,--syntax-content-color,-,-,-
+markdown,-,tok-list tok-processing-instruction,--syntax-processing-instruction-color,cm-variable-2,cm-variable-2,list punctuation
+markdown,item,tok-list tok-content,--syntax-content-color,cm-variable-2,cm-variable-2,-
+markdown,[,tok-list tok-link tok-processing-instruction,--syntax-processing-instruction-color,cm-link,cm-link,url
+markdown,link,tok-list tok-link,--syntax-link-color,cm-link,cm-link,content url
+markdown,],tok-list tok-link tok-processing-instruction,--syntax-processing-instruction-color,cm-link,cm-link,url
+markdown,(,tok-list tok-link tok-processing-instruction,--syntax-processing-instruction-color,cm-string cm-url,cm-string cm-url,url
+markdown,https://example.com,tok-list tok-link tok-url,--syntax-url-color,cm-string cm-url,cm-string cm-url,url
+markdown,),tok-list tok-link tok-processing-instruction,--syntax-processing-instruction-color,cm-string cm-url,cm-string cm-url,url
+javascript,const,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+javascript,s,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,-
+javascript,=,tok-definition-operator,--syntax-definition-operator-color,cm-operator,cm-operator,operator
+javascript,`,tok-string tok-special,--syntax-string-special-color,cm-string-2,cm-string-2,string template-punctuation template-string
+javascript,x,tok-string tok-special,--syntax-string-special-color,cm-string-2,cm-string-2,string template-string
+javascript,${,tok-brace,--syntax-brace-color,cm-string-2,cm-string-2,interpolation interpolation-punctuation punctuation template-string
+javascript,y,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,interpolation template-string
+javascript,},tok-brace,--syntax-brace-color,cm-string-2,cm-string-2,interpolation interpolation-punctuation punctuation template-string
+javascript,`,tok-string tok-special,--syntax-string-special-color,cm-string-2,cm-string-2,string template-punctuation template-string
+javascript,;,tok-separator,--syntax-separator-color,-,-,punctuation
+javascript,console,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,class-name console
+javascript,.,tok-deref-operator,--syntax-deref-operator-color,-,-,punctuation
+javascript,log,tok-property-name tok-function,--syntax-property-name-function-color,cm-property,cm-property,function method property-access
+javascript,(,tok-paren,--syntax-paren-color,-,-,punctuation
+javascript,s,tok-variable-name,--syntax-variable-name-color,cm-variable,cm-variable,-
+javascript,),tok-paren,--syntax-paren-color,-,-,punctuation
+javascript,;,tok-separator,--syntax-separator-color,-,-,punctuation
+typescript,function,tok-definition-keyword,--syntax-definition-keyword-color,cm-keyword,cm-keyword,keyword
+typescript,id,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,function
+typescript,(,tok-paren,--syntax-paren-color,-,-,punctuation
+typescript,v,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,-
+typescript,:,tok-punctuation,--syntax-punctuation-color,-,-,operator
+typescript,number,tok-name,--syntax-name-color,cm-type,cm-type,builtin
+typescript,),tok-paren,--syntax-paren-color,-,-,punctuation
+typescript,:,tok-punctuation,--syntax-punctuation-color,-,-,operator
+typescript,number,tok-name,--syntax-name-color,cm-type,cm-type,builtin
+typescript,{,tok-brace,--syntax-brace-color,-,-,punctuation
+typescript,return,tok-control-keyword,--syntax-control-keyword-color,cm-keyword,cm-keyword,keyword
+typescript,v,tok-variable-name,--syntax-variable-name-color,cm-variable-2,cm-variable-2,-
+typescript,;,tok-separator,--syntax-separator-color,-,-,punctuation
+typescript,},tok-brace,--syntax-brace-color,-,-,punctuation
+py,def,tok-definition-keyword,--syntax-definition-keyword-color,-,-,keyword
+py,area,tok-variable-name tok-definition,--syntax-variable-name-definition-color,-,-,function
+py,(,tok-paren,--syntax-paren-color,-,-,punctuation
+py,r,tok-variable-name,--syntax-variable-name-color,-,-,-
+py,),tok-paren,--syntax-paren-color,-,-,punctuation
+py,:,-,-,-,-,punctuation
+py,return,tok-control-keyword,--syntax-control-keyword-color,-,-,keyword
+py,len,tok-variable-name tok-function,--syntax-variable-name-function-color,-,-,builtin
+py,(,tok-paren,--syntax-paren-color,-,-,punctuation
+py,r,tok-variable-name,--syntax-variable-name-color,-,-,-
+py,),tok-paren,--syntax-paren-color,-,-,punctuation
+bash,ls,tok-variable-name tok-standard,--syntax-variable-name-standard-color,cm-builtin,cm-builtin,function
+bash,-la,tok-attribute-name,--syntax-attribute-name-color,cm-attribute,cm-attribute,parameter variable
+bash,"""",tok-string,--syntax-string-color,cm-string,cm-string,string
+bash,$HOME,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,constant environment string
+bash,"""",tok-string,--syntax-string-color,cm-string,cm-string,string
+bash,|,-,-,-,-,operator
+bash,grep,tok-variable-name tok-standard,--syntax-variable-name-standard-color,cm-builtin,cm-builtin,function
+bash,-c,tok-attribute-name,--syntax-attribute-name-color,cm-attribute,cm-attribute,parameter variable
+bash,x,-,-,-,-,-
+shell,cat,tok-variable-name tok-standard,--syntax-variable-name-standard-color,cm-builtin,cm-builtin,function
+shell,"""",tok-string,--syntax-string-color,cm-string,cm-string,string
+shell,$FILE,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,string variable
+shell,"""",tok-string,--syntax-string-color,cm-string,cm-string,string
+shell,;,-,-,-,-,punctuation
+shell,echo,tok-variable-name tok-standard,--syntax-variable-name-standard-color,cm-builtin,cm-builtin,builtin class-name
+shell,done,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,keyword
+zsh,for,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,-
+zsh,f,-,-,-,-,-
+zsh,in,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,-
+zsh,*.md;,-,-,-,-,-
+zsh,do,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,-
+zsh,wc,tok-variable-name tok-standard,--syntax-variable-name-standard-color,cm-builtin,cm-builtin,-
+zsh,-l,tok-attribute-name,--syntax-attribute-name-color,cm-attribute,cm-attribute,-
+zsh,"""",tok-string,--syntax-string-color,cm-string,cm-string,-
+zsh,$f,tok-variable-name tok-definition,--syntax-variable-name-definition-color,cm-def,cm-def,-
+zsh,"""",tok-string,--syntax-string-color,cm-string,cm-string,-
+zsh,;,-,-,-,-,-
+zsh,done,tok-keyword,--syntax-keyword-color,cm-keyword,cm-keyword,-
+yml,count,tok-property-name tok-definition,--syntax-property-name-definition-color,cm-atom,cm-atom,atrule key
+yml,:,tok-separator,--syntax-separator-color,cm-meta,cm-meta,punctuation
+yml,3,tok-content,--syntax-content-color,cm-number,cm-number,number
+yml,on,tok-property-name tok-definition,--syntax-property-name-definition-color,cm-atom,cm-atom,atrule key
+yml,:,tok-separator,--syntax-separator-color,cm-meta,cm-meta,punctuation
+yml,true,tok-content,--syntax-content-color,cm-keyword,cm-keyword,boolean important
+rs,fn,tok-definition-keyword,--syntax-definition-keyword-color,-,-,-
+rs,main,tok-variable-name tok-definition,--syntax-variable-name-definition-color,-,-,-
+rs,(),tok-paren,--syntax-paren-color,-,-,-
+rs,{,tok-brace,--syntax-brace-color,-,-,-
+rs,let,tok-definition-keyword,--syntax-definition-keyword-color,-,-,-
+rs,x,tok-variable-name tok-definition,--syntax-variable-name-definition-color,-,-,-
+rs,=,tok-definition-operator,--syntax-definition-operator-color,-,-,-
+rs,2.0,tok-float,--syntax-float-color,-,-,-
+rs,;,tok-separator,--syntax-separator-color,-,-,-
+rs,},tok-brace,--syntax-brace-color,-,-,-
+md,**,tok-strong tok-processing-instruction,--syntax-processing-instruction-color,-,-,bold punctuation
+md,bold,tok-strong,--syntax-strong-color,-,-,bold content
+md,**,tok-strong tok-processing-instruction,--syntax-processing-instruction-color,-,-,bold punctuation
+md,and,tok-content,--syntax-content-color,-,-,-
+md,[,tok-link tok-processing-instruction,--syntax-processing-instruction-color,-,-,url
+md,a,tok-link,--syntax-link-color,-,-,content url
+md,](,tok-link tok-processing-instruction,--syntax-processing-instruction-color,-,-,url
+md,https://example.com,tok-link tok-url,--syntax-url-color,-,-,url
+md,),tok-link tok-processing-instruction,--syntax-processing-instruction-color,-,-,url

@@ -130,7 +130,8 @@ Phase 2B 時点（2026-10-10）の記述: 「Q-D1 は未決定。判断材料は
 | **V-30** | **VERIFIED**（不透明表示 11 §14.3、半透明表示 11 §15） | 両テーマ × 5 状態の基準スクリーンショット（不透明）と、acrylic / 不透明の対照のネイティブキャプチャ | 11 §14.3・§15 |
 | **V-04** | **VERIFIED**（Obsidian 1.14.4、macOS 26.5.2、V-32 と同じ条件。壁紙の影響は未確認） | translucent は macOS 専用で `setVibrancy("sidebar")`（Inkdrop は `under-window`）。左右ドック・タブ帯・Ribbon は `transparent !important`、中央とステータスバーは不透明のまま。`.workspace-leaf-content` と中央の変数なら `!important` なしで半透明の面を描け、Inkdrop の acrylic 宣言値をそのまま置くとアクティブ時の合成が V-32 と ΔE2000 0.4 未満で一致。非アクティブ時は Obsidian だけ見た目が変わる | 12 |
 | **V-32** | **VERIFIED**（Inkdrop 6.1.5、macOS 26.5.2、制御した背景ウィンドウの前。壁紙の影響は未確認） | acrylic では各面がほぼ一定の暗い灰色の下地に重なった見た目になり、背後のウィンドウの柄とフォーカスの有無で変わらなかった。SD は明度の順を保って差が縮み、KD は 3 面がほぼ同じ明るさになる | 11 §15 |
-| **V-31** | 一部進展（STATIC） | Inkdrop 6.1.5 に `@inkdropapp/cm6-theme-common` という名前のパッケージは同梱されていない。トークンの付き方の確認は未着手 | 11 §6 |
+| **V-31** | **VERIFIED**（STATIC + 同梱コードの実行。Inkdrop の実機の描画色は未確認） | tokenHighlighter は本体 JS（`notebook-picker-*.js`）の 96 件の表。エディタとプレビューのコードブロックは同じパーサ・同じ表を使う。同梱のパーサで検証用ノートを解析し、全トークンの `tok-*` と色の変数を得た（2026-10-12、工程 8） | 14 §6.17 |
+| **V-12** | **VERIFIED**（Obsidian 1.14.4、12 言語と別名） | 編集は CM5 のモード（Source mode と Live Preview で同じクラス、行に言語なし、括弧・区切りの多くは span なし）、閲覧は Prism（`code.language-*`）。03 §6.3 の例 1〜4 は成立。`rs` は両ビュー、`py`・`md` は編集、`zsh` は閲覧で色付けされない（2026-10-12、工程 8） | 14 §6.17 |
 
 U-12 は、tokenHighlighter に相当するコードが本体 JS に含まれることまで確認した（STATIC）。ソースは公開されていない。
 
@@ -223,7 +224,7 @@ U-12 は、tokenHighlighter に相当するコードが本体 JS に含まれる
 | V-09 | P3 | Graph View が `hsl()`、`color-mix()`、`oklch()` を含む色値を正しく解釈するか | app.js の推測 | 05 Obsidian 固有 |
 | V-10 | P1 | 同梱の Mermaid のバージョン、図種別の DOM、反転フィルタ解除後の描画。要素にインラインの `style` / `fill` があるか | 静的解析では確認できない | 07 R04 |
 | V-11 | P1 | Live Preview・Source mode・Reading View の各要素が、想定したクラスを持つか（特に `.cm-active`、`.HyperMD-list-line-N`、`.cm-formatting-*`） | クラスの存在は app.css のセレクタから推定。**→ 2026-10-12（工程 6）に Markdown の範囲で確認**: Source mode・Live Preview・Reading view の DOM を実機で調べ、`.cm-formatting-*`、`.cm-list-N`（記号の階層、3 で循環）、`.HyperMD-quote`・`.HyperMD-callout`（Callout は 1 行目だけで、種類のクラスはない）、Live Preview で HTML として描かれるブロック（表・Callout・埋め込みは `.markdown-rendered`）を確認した。`.cm-active` は工程 7 | 03 §6, 05 Editor, 14 §6.11 |
-| V-12 | P1 | 言語別サンプルで、両ビューのトークンクラスの対応表を作る。最低限 JS / TS / Python / CSS / HTML / JSON / Shell / Go / Rust / YAML / SQL / Markdown。03 §6.3 の例 1〜4 が実機の DOM でも成り立つか、編集時に `(` が別の span になるか、Prism の `method` / `maybe-class-name` が付くか、Rust（`defineSimpleMode`）のトークン名 | 静的解析で一部の例は確認したが、全体の粒度は未確認 | 03 §6.3, 07 R02 |
+| V-12 | P1 | 言語別サンプルで、両ビューのトークンクラスの対応表を作る。最低限 JS / TS / Python / CSS / HTML / JSON / Shell / Go / Rust / YAML / SQL / Markdown。03 §6.3 の例 1〜4 が実機の DOM でも成り立つか、編集時に `(` が別の span になるか、Prism の `method` / `maybe-class-name` が付くか、Rust（`defineSimpleMode`）のトークン名 | 静的解析で一部の例は確認したが、全体の粒度は未確認。**→ 2026-10-12 に VERIFIED（工程 8）**: 例 1〜4 は成立、`(` は多くの言語で span にならない、`method` は付き `maybe-class-name` は付かない。対応表は `evidence/phase3-step8/v12-v31-correspondence.csv` | 03 §6.3, 07 R02, 14 §6.17 |
 | V-13 | P3 | ドキュメント記載の `--input-focus-border-color` 等が一般の入力欄に効かないこと | pdf.js 専用の定義と推測 | 03 §11.2 |
 | V-14 | P3 | Slides で `--r-*` の上書きが効くか（対応範囲に含める場合のみ） | 推測 | 05 Obsidian 固有 |
 | V-15 | P3 | `theme.css` 内の相対 `@import` が、テーマフォルダではなく `index.html` を基準に解決されること | HTML Standard と CSS Values 4 からの推論（08 §1） | 08 §1 |
@@ -251,7 +252,8 @@ U-12 は、tokenHighlighter に相当するコードが本体 JS に含まれる
 | V-35 | P1 | （2026-10-11 追加、Q-D23）Inkdrop で行番号とアクティブ行を有効にした状態の追加の基準画像と Computed Style: 選択のないアクティブ行、検索一致がある行、コードブロック内の行、acrylic 表示。V-30 の状態 4 は選択ありの 1 枚だけで、CDP のスクリーンショット（不透明）である | Q-D23 の比較基準。Inkdrop の設定を一時的に変えるため、**実施前にユーザーの承認が必要**（11 §14.2 と同じ復元手順）。**2026-10-12（工程 7）: 未実施（承認待ち）**。工程 7 は Inkdrop の宣言値、V-22 の Computed Style、V-30 の状態 4 だけで実装した。V-35 に依存する比較（選択のないアクティブ行、検索一致のある行、コードブロック内の行、acrylic 表示の Inkdrop の見え方）は UNVERIFIED（14 §6.15） | §0.1.2, 11 §14.3, 14 工程 7, 14 §6.15 |
 | V-37 | P2 | （2026-10-11 追加、工程 2 のレビュー）基盤 CSS だけに acrylic の上書き（`ui.css:1586`）がある `--editor-drawer-background` が、acrylic 表示の Inkdrop で実際にどの値になるか（Computed Style を正本とする）。工程 2 では、テーマの上位のレイヤの宣言に負けると推論した | 推論であり実測していない。Inkdrop の設定を使うため、実施前にユーザーの承認が必要。**→ 2026-10-11 にユーザーの承認を得て実施し VERIFIED**: acrylic 表示でもテーマの通常の宣言（SD `hsl(192deg 100% 11% / 70%)`、KD `hsl(60deg 9% 6% / 70%)`）のままで、基盤の上書きは効いていなかった（推論どおり）。`evidence/phase3-step4/inkdrop-v37/` | 14 §1.5、工程 4 |
 | V-38 | P2 | （2026-10-11 追加、工程 4）同じ日・同じ条件で Inkdrop（V-32 の手順）と Obsidian の acrylic / translucent を撮り直し、アクティブ時の各面を ΔE2000 で比べる | 工程 4 の撮影では、V-32（2026-10-10）との差が最大 ΔE2000 3.2 だったが、V-04 の診断用 CSS を同日に撮り直しても同じ差が出たため、撮影環境（アクティブ時のウィンドウ素材の下地）が変わったと判断した（`evidence/phase3-step4/README.md` §2.2）。Inkdrop の撮影には検証用ノートの作成（同期される）とテーマの切り替えが要るため、実施前にユーザーの承認が必要。**→ 2026-10-11 にユーザーの承認を得て実施し VERIFIED**: 新しいノートは作らず、既存のサンプルノートを表示して撮影した。同じ時刻の比較で、灰色の背景・アクティブ時の 14 組すべてが ΔE2000 0.00（PASS）。Inkdrop 自身の値も V-32 から同じだけ変わっており、工程 4 の差は撮影時刻の違いによる環境差だった（原因の特定は推論にとどまる）。`evidence/phase3-v38/` | 14 §6.4・§6.6 |
-| V-31 | P1 | エディタとプレビューのコードブロックで、各 Lezer タグがどの `tok-*` クラスになるか（例: `t.function(t.variableName)` が `tok-variable-name tok-function` になるか） | tokenHighlighter（`@inkdropapp/cm6-theme-common`）は npm でも公開されておらず（Phase 1B で確認）、対応は `syntax.css` の構造からの推定（Phase 1B で追加） | 03 §6.3, 07 R02 |
+| V-31 | P1 | エディタとプレビューのコードブロックで、各 Lezer タグがどの `tok-*` クラスになるか（例: `t.function(t.variableName)` が `tok-variable-name tok-function` になるか） | tokenHighlighter（`@inkdropapp/cm6-theme-common`）は npm でも公開されておらず（Phase 1B で確認）、対応は `syntax.css` の構造からの推定（Phase 1B で追加）。**→ 2026-10-12 に VERIFIED（工程 8）**: 本体に同梱の表とパーサで確認し、推定どおりだった。Inkdrop を起動しての描画色の確認は V-39 | 03 §6.3, 07 R02, 14 §6.17 |
+| V-39 | P2 | （2026-10-12 追加、工程 8）Inkdrop で検証用ノートと同じコードブロックを表示したネイティブの撮影と Computed Style（両テーマ、エディタとプレビュー）。V-31 は同梱コードの解析で、実機の描画色とは照合していない | RV5 の Inkdrop との視覚比較の基準。ノートの作成（同期される）と表示が要るため、**実施前にユーザーの承認が必要**。未実施 | 14 §6.17 |
 
 ---
 

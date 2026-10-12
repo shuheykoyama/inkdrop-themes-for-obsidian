@@ -1,7 +1,7 @@
 # inkdrop-themes-for-obsidian
 Faithful ports of Inkdrop's Solarized Dark and Kanagawa Dragon themes for Obsidian.
 
-**Status: in development (Phase 3, step 7: workspace backgrounds, UI details, Markdown in the editing and reading views, and editor chrome with the active line and line numbers; no syntax colours or Mermaid yet).** There is no usable theme yet,
+**Status: in development (Phase 3, step 8: workspace backgrounds, UI details, Markdown in the editing and reading views, editor chrome with the active line and line numbers, and syntax colours of code blocks; no Mermaid yet).** There is no usable theme yet,
 and the theme names and licence/attribution text are not decided. The research and the implementation plan
 are in [`research/`](research/README.md) (plan: [`research/14-implementation-plan.md`](research/14-implementation-plan.md)).
 
@@ -47,6 +47,11 @@ then `python3 -I tests/visual/sample-regions.py --config tests/visual/configs/st
 (research/evidence/phase3-corner/README.md). Active line and line numbers (Q-D23) on captures taken with
 `CAPTURE_NOTE="Editor chrome.md" CAPTURE_LINES=on CAPTURE_CURSOR="Second paragraph"`:
 `nu tests/visual/q23-check.nu <out_dir> <measurement.json> ...` (Nushell; research/evidence/phase3-step7/README.md).
+Syntax colours (Q-D13): the runtime run also judges the code blocks of `tests/fixtures/vault/Code blocks.md`
+against `tests/spec/syntax.json` and Inkdrop's own token ranges (`tests/fixtures/inkdrop-tokens.json`); the
+report per language: `nu tests/visual/syntax-report.nu <runtime-electron-*.json> <out_dir>`. Inkdrop's ranges
+are regenerated from an extracted Inkdrop 6.1.5 app.asar with `tests/visual/inkdrop-tokens.mjs`, and Obsidian's
+token structure is dumped with `tests/visual/obsidian-tokens.mjs` (research/evidence/phase3-step8/README.md).
 
 | Path | Contents |
 |---|---|

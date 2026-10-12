@@ -431,7 +431,7 @@ dist/                             # 生成物（Git には入れない）: <them
 |---|---|---|---|
 | R-dom | Obsidian の内部 DOM・未掲載の CSS 変数への依存（07 R08・R09） | 依存しているクラスと変数を検査仕様に入れておき、Obsidian の更新時に実行時テストで検出する。代替の公式変数が出たら移行する | 各工程、Obsidian の更新ごと |
 | R-compat | Obsidian 1.14.0 との互換性（検証は 1.14.4 で行っている） | 1.14.0 の配布物を取得し、隔離インスタンスで実行時テストを回す。1.14.1 以降に追加・変更されたクラス・変数を使う箇所は、フォールバックを用意するか、最小対応版の変更をユーザーに諮る | 工程 3 で一度、工程 11 で全体 |
-| R-token | CodeMirror / Prism のトークン分類の限界（07 R02） | 再現不可の組み合わせを一覧にし、近い代替（同じクラスに付く色のどちらを採るか）は RV5 でユーザーに諮る | 工程 8 の最初（V-12・V-31） |
+| R-token | CodeMirror / Prism のトークン分類の限界（07 R02） | 再現不可の組み合わせを一覧にし、近い代替（同じクラスに付く色のどちらを採るか）は RV5 でユーザーに諮る | 工程 8 の最初（V-12・V-31）。**2026-10-12: 一覧を作成し、代替の選択を RV5 の判断事項にした（§6.17）** |
 | R-mermaid | Mermaid の SVG 構造への依存（07 R04） | 対応図種を Q-D12 の 2 種に限る。構造が変わったら検査が FAIL するので、図種ごとに直す | 工程 9、Obsidian の更新ごと |
 | R-mobile | モバイル固有の表示（`.is-mobile.theme-dark` の上書き、WebView、セーフエリア） | エミュレーションを工程 3 から継続し、実機の確認は工程 10 でまとめる。実機がない項目は UNVERIFIED として残す | 工程 3〜（エミュレーション）、工程 10（実機） |
 | R-cascade | カスケードと詳細度（07 R06・R17） | §1.8 の方針、`!important` の許可リスト、陰性対照、漏れの番人 | 全工程 |
@@ -1069,7 +1069,7 @@ Inkdrop の値は 2 組ある: エディタ（CodeMirror、`--editor-*`・`--syn
 | E18 | ハイライト | `--md-inline-mark-*`（文字・背景・3px の下線） | `--mde-preview-inline-mark-*` | 実装。Obsidian の色付きハイライトは対象外 |
 | E19 | インラインコード | `--md-inline-code-*`、文字は `--syntax-monospace-color` | `--mde-preview-inline-code-*` | 実装 |
 | E20 | コードブロックの枠と背景 | `--md-codeblock-*`、角 0.4em | `--mde-preview-codeblock-*`、角 6px | 実装（シンタックスは工程 8） |
-| E21 | シンタックス | — | — | 工程 8 |
+| E21 | シンタックス | — | — | 工程 8（§6.17 で実装） |
 | E22 | リストの記号 | `--md-list-mark-*`（3 色で循環） | `--mde-preview-list-marker-*`（9 階層） | 実装 |
 | E23 | タスクの完了 | 文字色はそのまま、取り消し線 | 文字色はそのまま、線の色 `--mde-preview-task-list-checked-color` | 実装（チェックボックスは工程 5 のアクセント） |
 | E24 | カスタムタスク | — | — | Obsidian 固有、変更なし |
@@ -1365,4 +1365,156 @@ V-35 を行う場合の内容（承認が必要）:
 
 ### 6.16 次の作業
 
-RV4 を待つ。工程 8 には進まない。
+RV4 は `aedaea0` で APPROVE された。工程 8 に進んだ（§6.17）。
+
+### 6.17 工程 8: コードブロック・シンタックスハイライト（2026-10-12 実装、RV5 待ち）
+
+**V-31（Inkdrop 6.1.5、静的解析と同梱コードの実行。Inkdrop は起動していない）**
+
+- tokenHighlighter は本体 JS に同梱されている（`renderer/assets/notebook-picker-Bo2H_0--.js` の `Xd=re([...])`、`@lezer/highlight` の `tagHighlighter` で作った 96 件の表。`evidence/phase3-step8/v31-inkdrop-token-table.txt`）。タグごとに最も具体的なクラスが 1 つ付く（例: `t.function(t.variableName)` → `tok-variable-name tok-function`、`t.definition(t.variableName)` → `tok-variable-name tok-definition`、`t.controlKeyword` → `tok-control-keyword` だけ）。03 §6.3 の推定は正しかった。
+- **プレビューのコードブロックもエディタと同じパーサと同じ表を使う**（プレビューの `Highlighter` の `theme: [Xd, Jd]`、言語一覧も同じ）。Inkdrop ではエディタとプレビューで同じテキストは同じ色になる。
+- 言語ごとのパーサ（Inkdrop の言語一覧 = `@codemirror/language-data`）: JS / TS / Python / CSS / HTML / JSON / Go / Rust / YAML / SQL（StandardSQL）/ Markdown は Lezer、Shell は CM5 のレガシーモード（`StreamLanguage`）。
+- これらのチャンクを Node で読み込み（`--permission` で読み取りを展開ディレクトリに限定）、検証用ノートのコードを Inkdrop と同じパーサ・同じ表で解析し、基盤 `syntax.css` の規則の順序と詳細度で色の変数を求めた（`tests/visual/inkdrop-tokens.mjs`、結果は `tests/fixtures/inkdrop-tokens.json`）。実機の DOM での確認（Inkdrop の起動・ノートの作成が必要）はしていない。同じコードを実行しているので対応は一致するはずだが、描画色の実機確認は残る（下の RV5 の判断事項 6）。
+
+**V-12（Obsidian 1.14.4、隔離インスタンス、`tests/fixtures/vault/Code blocks.md`）**
+
+- 編集（Source mode と Live Preview）: CM5 のモード。トークンは `cm-<style> cm-hmd-codeblock` の span。**Source mode と Live Preview でクラスは完全に同じ**（両ビューの対応表が一致）。
+- **編集のコード行には言語を示すクラスも属性もない**（`cm-line HyperMD-codeblock HyperMD-codeblock-bg`。開始行の言語名はテキストかウィジェットのラベルだけ）。編集ビューの規則は言語共通にしかできない。
+- 編集で span にならないテキストがある: 多くの言語の括弧・区切り（`(` `{` `;` `,`）、CSS の `:`、HTML の本文など。CM5 のモードがスタイルを返さないため（03 §6.3 の推測は正しかった）。
+- 閲覧（Reading view）: Prism。`pre > code.language-<フェンス名>` の中の `.token.*`。入れ子がある（CSS のセレクタの部品は `.token.selector` の中、属性値の引用符は `.token.attr-value` の中）。
+- 03 §6.3 の例: (1) JS の関数呼び出しと変数参照は編集では `cm-variable`（成立）、(2) `obj.method()` と `obj.prop` は編集でどちらも `cm-property`（成立）、(3) 閲覧の `this` と `const` はどちらも `token keyword`（成立）、(4) 閲覧の Python の関数呼び出しの名前と引数の変数には span がない（成立。`print` は `keyword`、`len` は `builtin`）。Prism の `method` は付く、`maybe-class-name` は付かない（`known-class-name`・`console` が付く）。
+- フェンス名の別名（1.14.4）:
+
+| フェンス名 | 編集（CM5） | 閲覧（Prism） |
+|---|---|---|
+| js・javascript、ts・typescript、python、sh・bash・shell、yaml・yml、markdown | 色付け | 色付け |
+| py、md | **色付けなし** | 色付け |
+| zsh | 色付け | **色付けなし** |
+| rust | 色付け | 色付け |
+| rs | **色付けなし** | **色付けなし** |
+
+Inkdrop はこれらすべてを色付けする。色付けされないブロックは Obsidian 側の制約で、テーマでは変えられない（`qd13.not-reproducible`）。
+
+**方針と実装**（`mapping/syntax.css`、`components/syntax.css`。すべて `.theme-dark` の下）
+
+- 色は Inkdrop の `--syntax-*` だけを使い（パレットの `--ink-syntax-*`。新しい色はない）、Obsidian のクラスごとに Inkdrop のトークンを 1 つ選ぶ。選ぶ単位は色ではなく**意味（変数）**にした。テーマ別の分岐を作らずに共通構造とパレットを分けたまま保てるため。
+- 編集: `.cm-hmd-codeblock.cm-<style>` の 30 規則（言語共通）。`.cm-hmd-codeblock` はコードブロック内の span にだけ付くため、インラインコードと本文の Markdown に波及しない。span のないテキストは `--code-normal`（工程 6 の Inkdrop のコードブロックの文字色）のまま。
+- 閲覧: `code[class*="language-"] .token.*` の共通規則、複合クラス（`keyword.module`、`function.method`、`tag .punctuation` など）、言語別の規則（`code.language-*`。その言語のその Prism クラスがすべて同じ Inkdrop のトークンのときだけ）。言語別の調整: Python・TS・Go・CSS・SQL・Shell の `function`、TS・Rust の `class-name`、Rust の数値と関数定義、JSON の `:`、YAML のスカラーとアンカー、Shell の変数・オプション・括弧、Markdown の記号・見出し・強調・リンク。
+- 公式変数 `--code-*` の 10 個も Inkdrop の近いトークンにした（プラグインと、直接の規則で名指ししていないクラスのため）。
+- 公式 lint: エラー・警告なし（許可リストの追加なし）。Markdown と Shell の括弧の規則は、lint の詳細度の順序の要求に合わせて共通の `punctuation` の直後に置いた。
+
+対応表の全体: `evidence/phase3-step8/v12-v31-correspondence.csv`（言語・テキストごとに Inkdrop のクラスと変数、Obsidian の 3 ビューのクラス）。
+
+**検証の仕組み**（実行時テスト、`tests/runtime/lib/syntax.mjs`。`run.mjs` の各プラットフォーム・テーマ・外観で、状態の検査のあとに実行）
+
+- オラクル `tests/spec/syntax.json`: Obsidian のクラス（と閲覧では言語）ごとの期待トークンを CSS とは別に宣言し、Obsidian の app.css の `--code-*` の規則と継承も含めてカスケードと同じ順で期待値を決める。
+- 検証用ノートの各コードブロックを、Inkdrop の範囲と Obsidian の範囲が変わらない区間（ラン）に切り、文字のある各ランで次を判定する。
+  - (A) 実装（`syn.<view>.<lang>.impl`）: Computed Style の色（と斜体・太字）がオラクルの色と一致。
+  - (B) 忠実度（`syn.<view>.<lang>.fidelity`）: その色が Inkdrop の色と一致するか。一致しないランは **NOT REPRODUCIBLE** として一覧を出す（PASS にしない）。
+  - (C) 回避可能（`syn.<view>.avoidable`）: 同じ要素の署名（編集はクラス、閲覧は言語 + クラス）のランがすべて 1 つの Inkdrop の色なのに、テーマがその色を出していなければ FAIL。差が許されるのは、同じ署名に別の色の Inkdrop のトークンが混ざる場合と、要素のない素のテキストだけ。
+- 実装中にこの (C) で 13 件の回避可能な差を見つけて直した（CSS の関数名 `cm-callee`、テンプレート内の変数、TS の関数定義、doctype の記号、CSS セレクタの入れ子、Shell の括弧・`&1`・ループ変数・`2>` の `2`、Rust の属性と関数定義、YAML の `true`、Markdown のリンクの記号）。
+- 陰性テスト（ランナーの self-test、`syn.self-test`）: 他テーマの色の混入（KD の keyword の色を SD に注入）、規則の欠落（閲覧の `function`）、斜体の欠落、オラクルとの不一致、回避可能な選択（テーマとオラクルが揃って誤ったトークンを選ぶ）がそれぞれ FAIL し、陽性対照が PASS する。テーマが適用されたことも検査する。
+
+**結果: 実装と回避可能**
+
+両 Electron、両テーマ、デスクトップ（不透明 → translucent → 不透明）とモバイルのエミュレーション（tablet・phone・phone の非フローティング）で、`.impl` と `.avoidable` はすべて PASS。
+
+**結果: 忠実度**（Inkdrop と同じ色のランの割合。デスクトップ・不透明。両 Electron で同じ）
+
+| ビュー | Solarized Dark | Kanagawa Dragon |
+|---|---|---|
+| Source mode | 348 / 700（49.7%） | 378 / 700（54.0%） |
+| Live Preview | 348 / 700（49.7%） | 378 / 700（54.0%） |
+| Reading view | 544 / 719（75.7%） | 544 / 719（75.7%） |
+
+言語別（SD / KD、ラン数。別名のブロックを除く）:
+
+| 言語 | Source・Live Preview | Reading view |
+|---|---|---|
+| JavaScript | 54 / 52（108） | 92 / 92（112） |
+| TypeScript | 33 / 33（65） | 37 / 37（65） |
+| Python | 38 / 38（63） | 40 / 44（64） |
+| CSS | 21 / 22（52） | 46 / 47（52） |
+| HTML | 19 / 22（27） | 36 / 34（36） |
+| JSON | 12 / 13（30） | 29 / 29（29） |
+| Shell | 43 / 43（43） | 43 / 44（48） |
+| Go | 19 / 22（51） | 32 / 34（51） |
+| Rust | 25 / 32（82） | 59 / 62（82） |
+| YAML | 5 / 5（25） | 25 / 22（25） |
+| SQL | 21 / 34（35） | 19 / 19（35） |
+| Markdown | 11 / 12（23） | 21 / 16（23） |
+
+**再現できない主な理由**（全件は `evidence/phase3-step8/not-reproducible.csv`）
+
+| # | 理由 | 主な例 | ビュー |
+|---|---|---|---|
+| 1 | 括弧・区切りに span がない（素のテキスト）。Inkdrop は SD で cyan、KD で dragonGray2 | `(` `)` `{` `}` `;` `,` `.` | 編集 |
+| 2 | 編集の行に言語がなく、同じ CM5 クラスが言語で別の意味になる | `cm-atom` = JS の `true`・`null`、YAML のキー、Rust の `i32`。`cm-variable` = JS の変数、Go のフィールド・型、Rust の名前空間 | 編集 |
+| 3 | 同じ Prism クラスが意味の違うトークンを含む | JS の `function`（定義・呼び出し・メソッド定義）、`class-name`（`Base` と `Shape`）、`keyword`（`this`・`super`）、Python・Go の `boolean`（`True` と `None`）、SQL の `operator`（`AND` と `>`） | 閲覧 |
+| 4 | Prism が span を付けない識別子（素のテキスト） | JS・Go の変数定義、TS・Go・Rust のフィールド、SQL の列名 | 閲覧 |
+| 5 | Markdown の記号と本文が同じクラス | `**strong**` の `**`、`# Heading` の `#` | 編集 |
+| 6 | Obsidian がそのフェンス名を色付けしない | `rs`、編集の `py`・`md`、閲覧の `zsh` | 該当ビュー |
+| 7 | Inkdrop の `content` と既定の文字色の差 | KD の閲覧の素のテキスト（`--mde-preview-codeblock-text-color` は 90% のアルファ） | 閲覧 |
+
+**RV5 で判断が必要な事項**（忠実度に大きく影響するもの。現在の実装は括弧内）
+
+1. 編集ビューの span のないテキストの色（**コードブロックの文字色のまま**）。Inkdrop の括弧・区切りの色（SD cyan、KD gray2）にすると編集の一致は大きく上がるが、言語指定のないコードブロック（ログ・出力）の全文と、HTML の本文などもその色になる。
+2. 編集の `cm-atom`（**`atom`**: JS・JSON・Go の `true`・`null`・`nil`、CSS の `auto`）。YAML のキー（`property-name-definition`）を優先する案もある。
+3. 編集の `cm-string-2`（**`string-special`**: JS のテンプレート文字列）。正規表現（`regexp`）を優先する案。KD では緑と赤で差が大きい。
+4. 編集の `cm-variable`（**`variable-name`**: JS の変数）。Go のフィールド・型（`property-name`・`name`）とは塗り分けられない。
+5. 閲覧の JS の `function`（**`variable-name-function`**: 呼び出し）。定義（`variable-name-definition`）・メソッド定義（`property-name-definition`）とは塗り分けられない。
+6. Inkdrop 側の基準画像（V-39 として提案）: Inkdrop で同じコードを表示したネイティブの撮影は、ノートの作成と表示が要るため承認待ち。現在の比較は Inkdrop の同梱コードで解析した色の変数だけ（実機の描画色との照合は未実施）。
+
+**回帰**
+
+| 項目 | 結果 |
+|---|---|
+| 工程 1〜7 の全検査（実行時テスト） | PASS（両 Electron） |
+| コードブロックの背景・枠、インラインコード（工程 6 の `md.*`）、インラインコードへの波及なし | PASS（規則は `.cm-hmd-codeblock` と `code[class*="language-"]` の中だけ） |
+| 利用者のコードフォント | `md.user-code-font-syntax`（コードブロックのトークンが利用者の等幅フォント）を追加、PASS |
+| アクティブ行とガター（工程 7 の `ed.*`、Q23） | PASS |
+| 選択・検索の重なり | PASS（`ed-selection`・`ed-search`） |
+| 不透明・translucent、モバイルのエミュレーション | PASS（`syn.*` もすべての外観とプラットフォームで実行） |
+
+**テスト結果**
+
+| テスト | Electron 39.5.1 | Electron 43.7.7 |
+|---|---|---|
+| 実行時テスト | 3303 件が PASS または NOT REPRODUCIBLE（PASS (EMULATED) 620 件、NOT REPRODUCIBLE 612 件、FAIL 0 件） | 同じ（3303 件、FAIL 0 件） |
+| ランナーの陰性テスト | 396 件すべて宣言どおり | 同じ |
+
+静的テストすべて PASS、静的テストの陰性テスト 47 件、視覚的テストの陰性テスト 6 件、クリーンルームのビルド一致。NOT REPRODUCIBLE は `syn.<view>.<lang>.fidelity` だけで、PASS には数えていない。
+
+**撮影（未実施）**: シンタックスの表示のネイティブの撮影（両テーマ × 3 ビュー × 6 か所の不透明と、translucent の Source mode・Reading view。撮影の手順は用意した）は、ディスプレイのスリープ中で `screencapture` が「could not create image from rect」となり、撮れなかった（両 Electron とも未実施）。ディスプレイを起こす・ロックを解く操作はしていない。画面が点いている時間に撮る。Computed Style の検査（`syn.*`）は両 Electron で完了している。
+
+**実装中に見つけて直したテストの不具合**
+
+- 検査用のダンプがアクティブなリーフに「Code blocks」を開いたままにし、以後の状態（リンクのホバー）を壊した → ダンプは専用のタブで行い、最後に閉じて元のリーフをアクティブに戻す。
+- Electron 39.5.1 だけで、行番号のガターが設定に従わないことがあった（`ed-source` でガターが 5 秒以上作られない、`ed-live-no-lines` で一度消えたガターが測る時点で戻っている。4 回の実行で発生、43.7.7 では発生なし。同じ手順を単独で再現しても起きなかった。設定が少しあとで元の値に戻ることを疑っているが、原因は特定できていない。テーマとは関係しない Obsidian 側のガターの有無）→ ガターが設定どおりになるまで最大 5 秒待ち、さらに 1 秒そのままであることを確かめ、そうでなければ設定をかけ直す（最大 3 回）。状態が準備できたこと（ノート・モード・ガター、測る時点の設定、試行回数）を `runner.ed-prepared` として検査し、結果に残す。
+- モバイルのエミュレーションの切り替え（再読み込み）のあと、Obsidian は背景のタブを遅延読み込みのリーフ（deferred）として復元し、そのビューにはファイルがない。プローブが「Sample note」を見つけられず別のリーフに開き直し、全検査のあとに続けて実行した self-test の最初のリンクのホバー（`self.popover-open`）が失敗した → プローブの最初に遅延読み込みのリーフを読み込む（`loadIfDeferred()`）。
+- 構文の self-test でテーマの切り替えが効かないまま判定されることがあった → プローブと同じ方法で適用し、適用できたかを検査する。
+- Electron 39.5.1 の 1 回の実行で、`md-reading` のプローブがページ内で応答を返さなくなり、実行全体が 40 分以上止まった（原因は特定できていない。再実行では発生しなかった）→ CDP の評価に 180 秒の上限を設け、応答がなければエラーで止める（`tests/runtime/lib/cdp.mjs`）。
+
+**スクリプトの言語**
+
+| スクリプト | 言語 | 理由 |
+|---|---|---|
+| `tests/visual/inkdrop-tokens.mjs`（新規） | Node | Inkdrop の同梱の ES モジュール（Lezer）を読み込んで実行するため。`--permission` で読み取り範囲を限定 |
+| `tests/visual/obsidian-tokens.mjs`、`tests/runtime/code-tokens.js`（新規） | Node / ページ内 JavaScript | 既存の CDP 実装と同じ形 |
+| `tests/visual/token-table.mjs`（新規） | Node | 2 つの範囲の列を文字単位で突き合わせる処理 |
+| `tests/runtime/lib/syntax.mjs`（新規）、`run.mjs`（追加） | Node | カスケードの再現と判定。ランナーと同じ言語 |
+| `tests/visual/syntax-report.nu`（新規） | Nushell | 実行時テストの結果 JSON から CSV を作る構造化データの集計 |
+| 作業用の通しの実行・撮影（リポジトリには入れていない） | fish | macOS ローカルの操作補助 |
+
+**未検証事項とリスク**
+
+- V-39（Inkdrop でのコードブロックの表示の撮影）と描画色の実機確認。承認が必要。
+- Obsidian のシンタックスの表示のネイティブの撮影（ディスプレイのスリープで未実施）。
+- 12 言語以外（C・Java・PHP など）は共通規則だけで、検査していない。
+- Obsidian の更新による CM5 モード・Prism の変更（クラスが変わると共通規則が外れる）。
+- 再現できないトークン（`qd13.not-reproducible`、上の表）。
+- RV4 から: V-35、`ed.unrendered`、`.suggestion-container` の波及、RV3 の Markdown の差、モバイル実機（工程 10）、Windows・Linux（Q-D10）。
+
+### 6.18 次の作業
+
+RV5 を待つ。工程 9 には進まない。
