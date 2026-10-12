@@ -11,8 +11,9 @@
    - "acrylic": the theme's override under :root:has(body.acrylic-window), kept as <name>-acrylic (Q-D22).
    Selection (research/14 §6.2): the tokens named by the mapping candidates (research/06), the families
    --editor-* --syntax-* --mde-preview-* --md-* --gfm-alert-* --tag-default-*, --page-font (Q-D8), the
-   acrylic menu surfaces, and every token these reference. Not included yet: --mermaid-* (step 9, after
-   V-10) and the tokens of Inkdrop components without an Obsidian counterpart.
+   acrylic menu surfaces, the --mermaid-* tokens of Flowchart and Sequence (step 9), and every token these
+   reference. Not included: the other --mermaid-* tokens (diagram types the theme does not colour, Q-D12) and
+   the tokens of Inkdrop components without an Obsidian counterpart.
    tests/static/run.mjs (S1) checks every declaration against research/data/inkdrop-kanagawa-dragon-tokens.csv. */
 .theme-dark {
   /* inkdropapp_css@add48d9 markdown.css (Inkdrop base CSS, inherited by the theme: Q-D9) */
@@ -160,6 +161,7 @@
   --kanagawa-autumn-green: 103deg 17% 50%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:62 */
   --kanagawa-autumn-red: 359deg 52% 51%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:63 */
   --kanagawa-autumn-yellow: 33deg 64% 62%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:64 */
+  --kanagawa-winter-yellow: 37deg 10% 26%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:59 */
 
   /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css */
   --ink-kanagawa-preview-surface: hsl(var(--kanagawa-dragon-black4) / 60%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:13 */
@@ -188,6 +190,32 @@
   --ink-mermaid-line-color: hsl(var(--kanagawa-dragon-green2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:69 */
   --ink-mermaid-node-background-color: hsl(var(--kanagawa-wave-blue1) / 55%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:70 */
   --ink-mermaid-node-border-color: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:71 */
+
+  /* Mermaid, Flowchart and Sequence (step 9, V-10): the tokens Inkdrop's Mermaid plugin passes as themeVariables
+     for these two diagrams, and the tokens they reference */
+  --ink-mermaid-background-color: transparent; /* inkdropapp_css@add48d9 mermaid.css:22 */
+  --ink-mermaid-title-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:26 */
+  --ink-mermaid-node-text-color: var(--ink-text-color); /* inkdropapp_css@add48d9 mermaid.css:37 */
+  --ink-mermaid-primary-text-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:149 */
+  --ink-mermaid-cluster-background-color: var(--ink-kanagawa-preview-surface-subtle); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:72 */
+  --ink-mermaid-cluster-border-color: hsl(var(--kanagawa-dragon-black6) / 40%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:73 */
+  --ink-mermaid-edge-label-background-color: hsl(var(--kanagawa-wave-blue2) / 70%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:74 */
+  --ink-mermaid-actor-background-color: var(--ink-mermaid-node-background-color); /* inkdropapp_css@add48d9 mermaid.css:65 */
+  --ink-mermaid-actor-border-color: var(--ink-mermaid-node-border-color); /* inkdropapp_css@add48d9 mermaid.css:66 */
+  --ink-mermaid-actor-text-color: var(--ink-mermaid-node-text-color); /* inkdropapp_css@add48d9 mermaid.css:67 */
+  --ink-mermaid-actor-line-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:68 */
+  --ink-mermaid-signal-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:69 */
+  --ink-mermaid-signal-text-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:70 */
+  --ink-mermaid-activation-background-color: var(--ink-mermaid-node-background-color); /* inkdropapp_css@add48d9 mermaid.css:75 */
+  --ink-mermaid-activation-border-color: var(--ink-mermaid-node-border-color); /* inkdropapp_css@add48d9 mermaid.css:76 */
+  --ink-mermaid-note-background-color: hsl(var(--kanagawa-winter-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:77 */
+  --ink-mermaid-note-border-color: hsl(var(--kanagawa-dragon-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:78 */
+  --ink-mermaid-note-text-color: hsl(var(--kanagawa-old-white)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:79 */
+  --ink-mermaid-label-box-background-color: hsl(var(--kanagawa-autumn-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:85 */
+  --ink-mermaid-label-box-border-color: hsl(var(--kanagawa-autumn-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:86 */
+  --ink-mermaid-label-text-color: hsl(var(--kanagawa-dragon-white)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:87 */
+  --ink-mermaid-loop-text-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:74 */
+  --ink-mermaid-sequence-number-color: hsl(var(--kanagawa-dragon-black3)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:82 */
 
   /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css */
   --ink-editor-foreground-color: hsl(var(--kanagawa-dragon-white)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:16 */
@@ -490,4 +518,5 @@
   --ink-derived-toggle-handle-color: hsl(var(--kanagawa-dragon-white)); /* derived: background color of --ink-toggle-handle-background */
   --ink-derived-search-match-selected-outline-color: hsl(var(--kanagawa-dragon-yellow)); /* derived: outline color of --ink-editor-search-match-selected-outline */
   --ink-derived-fold-placeholder-border-color: hsl(var(--kanagawa-dragon-black6)); /* derived: border color of --ink-editor-fold-placeholder-border */
+  --ink-derived-mermaid-label-bkg-color: hsl(var(--kanagawa-wave-blue2) / 50%); /* derived: 50% alpha of --ink-mermaid-edge-label-background-color */
 }

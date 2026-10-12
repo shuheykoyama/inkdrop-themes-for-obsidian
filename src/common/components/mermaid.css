@@ -1,0 +1,166 @@
+/* Components: Mermaid, Flowchart and Sequence diagrams (Q-D12; research/06 E33; step 9). V-10 (research/14
+   §6.21): Obsidian 1.14.4 renders Mermaid 11.13.0 with its default (light) theme and, in dark mode, turns the
+   whole SVG with `.theme-dark .mermaid > svg { filter: invert(1) hue-rotate(180deg) saturate(1.25) }`. The
+   colours sit in the SVG's own <style>, scoped by the diagram's random id (#m<hex> .node rect {…}), so a
+   rule without an id can only win with !important (measured; allow-listed with that reason). Inkdrop renders
+   the same elements with Mermaid's base theme and themeVariables taken from its --mermaid-* tokens
+   (inkdropapp/mermaid@384e9f5 theme.ts); each rule below gives an element the token of the themeVariable
+   that colours it (measured on Mermaid 11.13.0 by rendering with one distinct colour per themeVariable).
+
+   Scope: only the SVGs Mermaid marks as these two diagrams (aria-roledescription, set by Mermaid itself and
+   the same on every render; the ids change), in Reading view and in Live Preview (both inside
+   .markdown-rendered). Other diagram types keep Obsidian's inverted rendering. A user's own colours stay:
+   `style` / `classDef` are emitted with !important inline or with the diagram id, and edges with a
+   `linkStyle` stroke (and their arrowheads, drawn with stroke / fill attributes) are left out below. Mermaid's camelCase classes are written [class~="nodeLabel"] (the
+   official lint wants kebab-case class selectors; the specificity is the same). */
+
+/* No inversion for the two diagrams: their colours are set here. */
+.theme-dark .markdown-rendered .mermaid > svg:is([aria-roledescription="flowchart-v2"], [aria-roledescription="sequence"]) {
+  filter: none;
+}
+
+/* The diagram's own fill, textColor: inherited by every element without its own (SVG text, the markers
+   Mermaid leaves uncoloured). */
+.theme-dark .markdown-rendered .mermaid > svg:is([aria-roledescription="flowchart-v2"], [aria-roledescription="sequence"]) {
+  fill: var(--ink-mermaid-text-color) !important;
+}
+
+/* Flowchart: node shapes (rect, circle, polygon, path), mainBkg / nodeBorder. */
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .node :is(rect, circle, ellipse, polygon, path) {
+  fill: var(--ink-mermaid-node-background-color) !important;
+  stroke: var(--ink-mermaid-node-border-color) !important;
+}
+
+/* Subgraphs: clusterBkg / clusterBorder, label titleColor. */
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .cluster rect {
+  fill: var(--ink-mermaid-cluster-background-color) !important;
+  stroke: var(--ink-mermaid-cluster-border-color) !important;
+}
+
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .cluster-label :is(span, p) {
+  color: var(--ink-mermaid-title-color) !important;
+}
+
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .cluster-label text {
+  fill: var(--ink-mermaid-title-color) !important;
+}
+
+/* Node and edge label text, primaryTextColor (HTML labels: the label group and its span, which the text
+   inherits, colour and the fill Mermaid also sets there; SVG labels: text). */
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.label, [class~="nodeLabel"], span[class~="edgeLabel"]) {
+  color: var(--ink-mermaid-primary-text-color) !important;
+  fill: var(--ink-mermaid-primary-text-color) !important;
+}
+
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.node, [class~="edgeLabel"]) .label text {
+  fill: var(--ink-mermaid-primary-text-color) !important;
+}
+
+/* Edges and their arrowheads, lineColor (an edge with a user linkStyle stroke keeps it, and so does its
+   arrowhead, which Mermaid draws in a marker of its own with stroke / fill attributes). */
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .flowchart-link:not([style*="stroke:"]) {
+  stroke: var(--ink-mermaid-line-color) !important;
+}
+
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.marker, [class~="arrowMarkerPath"]:not([stroke])) {
+  fill: var(--ink-mermaid-line-color) !important;
+  stroke: var(--ink-mermaid-line-color) !important;
+}
+
+/* Edge label background, edgeLabelBackground on the label and its paragraph; the wrapper (labelBkg) gets it
+   at 50% alpha, as Mermaid fades it there (a derived palette entry); SVG labels: the rect behind them. */
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is([class~="edgeLabel"], [class~="edgeLabel"] p) {
+  background-color: var(--ink-mermaid-edge-label-background-color) !important;
+}
+
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] [class~="labelBkg"] {
+  background-color: var(--ink-derived-mermaid-label-bkg-color) !important;
+}
+
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] [class~="edgeLabel"] rect {
+  fill: var(--ink-mermaid-edge-label-background-color) !important;
+}
+
+/* Sequence: Mermaid gives every line, the actor boxes and the stick figure actorBkg / actorBorder (its rule
+   `#id .actor-man circle, #id line`); messages, lifelines and frames override it below. Names actorTextColor. */
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] line {
+  fill: var(--ink-mermaid-actor-background-color) !important;
+  stroke: var(--ink-mermaid-actor-border-color) !important;
+}
+
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is(.actor, .actor-man circle) {
+  fill: var(--ink-mermaid-actor-background-color) !important;
+  stroke: var(--ink-mermaid-actor-border-color) !important;
+}
+
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] text.actor > tspan {
+  fill: var(--ink-mermaid-actor-text-color) !important;
+}
+
+/* Lifelines, actorLineColor. */
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] .actor-line {
+  stroke: var(--ink-mermaid-actor-line-color) !important;
+}
+
+/* Messages: lines and arrowheads signalColor (a line has no fill, as in Mermaid), text signalTextColor. */
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~="messageLine0"], [class~="messageLine1"]) {
+  fill: none !important;
+  stroke: var(--ink-mermaid-signal-color) !important;
+}
+
+/* Arrowheads: the open and the cross head; the other heads keep the diagram's fill. The sequence number's
+   disc. Marker ids are "<random diagram id>-arrowhead" and so on (measured), so only their fixed suffix is
+   matched. */
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] marker:is([id$="-arrowhead"], [id$="-crosshead"]) path {
+  fill: var(--ink-mermaid-signal-color) !important;
+  stroke: var(--ink-mermaid-signal-color) !important;
+}
+
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] marker[id$="-sequencenumber"] {
+  fill: var(--ink-mermaid-signal-color) !important;
+}
+
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="messageText"] {
+  fill: var(--ink-mermaid-signal-text-color) !important;
+}
+
+/* Sequence numbers (autonumber): the digit, sequenceNumberColor, on the signal-coloured marker circle. */
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="sequenceNumber"] {
+  fill: var(--ink-mermaid-sequence-number-color) !important;
+}
+
+/* Activations, activationBkgColor / activationBorderColor. */
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is(.activation0, .activation1, .activation2) {
+  fill: var(--ink-mermaid-activation-background-color) !important;
+  stroke: var(--ink-mermaid-activation-border-color) !important;
+}
+
+/* Notes, noteBkgColor / noteBorderColor / noteTextColor. */
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] .note {
+  fill: var(--ink-mermaid-note-background-color) !important;
+  stroke: var(--ink-mermaid-note-border-color) !important;
+}
+
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~="noteText"], [class~="noteText"] > tspan) {
+  fill: var(--ink-mermaid-note-text-color) !important;
+}
+
+/* Loops, alternatives and other boxes: frame lines and the label box labelBoxBorderColor, label box
+   labelBoxBkgColor, its text labelTextColor, the condition text loopTextColor. */
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="loopLine"] {
+  fill: var(--ink-mermaid-label-box-border-color) !important;
+  stroke: var(--ink-mermaid-label-box-border-color) !important;
+}
+
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="labelBox"] {
+  fill: var(--ink-mermaid-label-box-background-color) !important;
+  stroke: var(--ink-mermaid-label-box-border-color) !important;
+}
+
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~="labelText"], [class~="labelText"] > tspan) {
+  fill: var(--ink-mermaid-label-text-color) !important;
+}
+
+.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~="loopText"], [class~="loopText"] > tspan) {
+  fill: var(--ink-mermaid-loop-text-color) !important;
+}

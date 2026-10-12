@@ -167,8 +167,16 @@ try {
     // outline color of <token>" are the colour after "<width> solid" in the token's declaration; "derived: background color of <token>" is the first
     // top-level component of a background shorthand. Compared as written (no conversion).
     const topSplit = (v) => { const out = []; let depth = 0, cur = ""; for (const ch of norm(v)) { if (ch === "(") depth++; if (ch === ")") depth--; if (ch === " " && depth === 0) { if (cur) out.push(cur); cur = ""; } else cur += ch; } if (cur) out.push(cur); return out; };
+    // "derived: N% alpha of <token>": the token's colour with its alpha replaced by N% (Mermaid fades a colour
+    // this way for the edge label wrapper, research/14 §6.21); the token must be hsl(… / A%).
     const shorthandBad = [];
-    for (const d of derived.filter((x) => !/^--ink-derived-accent-[hsl]$/.test(x.prop))) {
+    for (const d of derived.filter((x) => /^derived: \d+% alpha of /.test(x.comment ?? ""))) {
+      const [, pct, tok] = /^derived: (\d+)% alpha of (--ink-[\w-]+)$/.exec(d.comment) ?? [];
+      const src = tok && defs.get(tok);
+      const want = src && /\/\s*[\d.]+%\s*\)$/.test(src) ? src.replace(/\/\s*[\d.]+%\s*\)$/, `/ ${pct}%)`) : null;
+      if (!want || want.replace(/\s+/g, "") !== d.value.replace(/\s+/g, "")) shorthandBad.push(`${d.prop}: ${d.value} vs ${want} (from ${tok}: ${src})`);
+    }
+    for (const d of derived.filter((x) => !/^--ink-derived-accent-[hsl]$/.test(x.prop) && !/^derived: \d+% alpha of /.test(x.comment ?? ""))) {
       const m = /^derived: (border color|outline color|background color) of (--ink-[\w-]+)$/.exec(d.comment ?? "");
       const src = m && defs.get(m[2]);
       if (!m || src === undefined) { shorthandBad.push(`${d.prop}: comment ${d.comment}`); continue; }
@@ -176,7 +184,7 @@ try {
       const want = m[1] !== "background color" ? (parts[1] === "solid" ? parts.slice(2).join(" ") : null) : parts[0];
       if (want === null || d.value !== want) shorthandBad.push(`${d.prop}: ${d.value} vs ${want} (from ${m[2]}: ${src})`);
     }
-    check(`S1 ${theme} shorthand-derived colours = the colour part of their Inkdrop shorthand`, shorthandBad.length === 0, shorthandBad.join(" | "));
+    check(`S1 ${theme} derived colours = the colour part of their Inkdrop shorthand, or the token at the stated alpha`, shorthandBad.length === 0, shorthandBad.join(" | "));
     const unknownDerived = derived.filter((d) => !/^derived: /.test(d.comment ?? ""));
     check(`S1 ${theme} derived entries are each marked "derived:"`, unknownDerived.length === 0, unknownDerived.map((d) => d.prop).join(", "));
     const n = palette.length;
