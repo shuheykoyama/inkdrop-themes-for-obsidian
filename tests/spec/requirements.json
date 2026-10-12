@@ -760,7 +760,7 @@
     {
       "id": "qd13.fidelity",
       "qd": "Q-D13",
-      "description": "Every code token whose Obsidian element (classes; plus the language in Reading view) carries a single Inkdrop colour gets that colour; a difference is only allowed where the same element also carries text that Inkdrop colours differently, or the text has no element (bare text)",
+      "description": "Every group of code text that CSS can tell apart (element classes; plus the language in Reading view) gets one of the Inkdrop colours of its text: EXACT (one Inkdrop colour, matched) or CONFLICT (several, one of them matched); MISMATCH and DOMINATED fail. Bare text (no token element) is classified the same way but left to the base-colour choice (RV5)",
       "platforms": [
         "desktop",
         "tablet",
@@ -769,16 +769,16 @@
       "mandatory": true,
       "verifiedBy": [
         {
-          "method": "Runtime syntax checks syn.<view>.avoidable against Inkdrop 6.1.5's own token ranges for the same note (tests/fixtures/inkdrop-tokens.json, from tests/visual/inkdrop-tokens.mjs); the per-language share of runs with Inkdrop's colour is reported as syn.<view>.<lang>.fidelity (PASS or NOT REPRODUCIBLE, never counted as PASS when it differs)",
+          "method": "Runtime syntax checks syn.<view>.classes (tests/runtime/lib/syntax.mjs) against Inkdrop 6.1.5's own token ranges for the same note (tests/fixtures/inkdrop-tokens.json); the per-language share of runs with Inkdrop's colour is reported as syn.<view>.<lang>.fidelity (PASS or DIFF with the reason of every differing run, never counted as PASS); negative cases in syn.self-test",
           "evidence": "research/evidence/phase3-step8",
-          "result": "see research/14 §6.17"
+          "result": "see research/14 §6.17 and §6.19"
         }
       ]
     },
     {
       "id": "qd13.not-reproducible",
       "qd": "Q-D13",
-      "description": "Inkdrop colours that Obsidian's tokenisers cannot carry: one Obsidian class (or bare text) holds several Inkdrop tokens of different colours, the editing views have no language to scope rules by, and some fence names are not highlighted (rs; zsh in Reading view)",
+      "description": "Inkdrop colours the theme does not give: runs of a CONFLICT group whose colour was not chosen (one class carries several Inkdrop tokens; the editing views have no language to scope rules by), bare text coloured by the base colour, and fence names Obsidian does not highlight (rs; py and md in the editing views; zsh in Reading view)",
       "platforms": [
         "desktop",
         "tablet",
@@ -786,7 +786,7 @@
       ],
       "mandatory": false,
       "unverified": {
-        "reason": "Not reproducible by CSS: the text is told apart only by content or by a language the DOM does not carry (V-12, research/14 §6.17 and research/evidence/phase3-step8/not-reproducible.csv). The colour chosen for each shared class is a trade-off left to RV5",
+        "reason": "Within one class CSS cannot tell the texts apart, so one colour is chosen per class; which runs differ follows from that choice and from the base colour, both left to RV5 (research/14 §6.19, research/evidence/phase3-step8/differences.csv)",
         "risk": "Such text shows the colour of the token chosen for its class (or the code block text colour) instead of Inkdrop's; most visible in the editing views for brackets and separators (bare text), YAML keys (cm-atom) and Go fields (cm-variable)"
       }
     }

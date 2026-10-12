@@ -5,13 +5,20 @@
 //   (A) implementation: Obsidian's computed colour (and italic / bold where the rule sets them) equals the
 //       colour the oracle gives the run's elements in this theme -> syn.<view>.<lang>.impl PASS / FAIL;
 //   (B) fidelity: that colour equals the colour Inkdrop gives the run (its --syntax-* token, resolved in this
-//       theme) -> syn.<view>.<lang>.fidelity PASS, or NOT REPRODUCIBLE with the list of differing runs. A
-//       difference never counts as PASS;
-//   (C) avoidable: a difference is only acceptable where the same Obsidian element signature also carries
-//       text that Inkdrop colours differently (or has no element at all, i.e. bare text). The signature is
-//       the element classes for the editing views (their lines carry no language, V-12) and the language
-//       plus the element classes for Reading view (code.language-*). A signature whose runs all have one
-//       Inkdrop colour that the theme misses -> syn.<view>.avoidable FAIL.
+//       theme) -> syn.<view>.<lang>.fidelity PASS, or DIFF with every differing run and why it differs
+//       (`shared`: its class carries other Inkdrop colours and the theme chose one of them; `bare`: text
+//       without an element, coloured by the code block's base colour). A difference never counts as PASS;
+//   (C) class choice: the runs are grouped by what CSS can tell apart -- the element classes (in any order)
+//       for the editing views, whose lines carry no language (V-12), and the language plus the element
+//       classes for Reading view (code.language-*); bare text is one group per view (editing) or per
+//       language (Reading). Each group is classified by the set of Inkdrop colours of its runs and the colour
+//       the theme gives it: EXACT (one Inkdrop colour, the theme's), MISMATCH (one Inkdrop colour, not the
+//       theme's), CONFLICT (several, the theme's is one of them), DOMINATED (several, the theme's is none of
+//       them). For element groups MISMATCH and DOMINATED fail syn.<view>.classes. Bare-text groups are
+//       classified the same way but reported apart and not failed: their colour is the code block's base
+//       colour, which also colours every other untokenised text of the view or language, an open choice
+//       (research/14 §6.19). A CONFLICT does not prove that its differing runs cannot be reproduced: which
+//       runs differ follows from the colour chosen.
 import { parseComputedColor, sameColor } from "../../lib/css.mjs";
 
 const VIEWS = ["source", "live", "reading"];
@@ -56,7 +63,8 @@ export function judgeSyntax(spec, inkdrop, page, where, ok) {
   const colour = (name) => parseComputedColor(page.vars[name] ?? "");
   for (const view of VIEWS) {
     const kind = view === "reading" ? "reading" : "editing";
-    const groups = new Map(); // signature -> { inkColours: Set, misses: [] }
+    const groups = new Map(); // signature -> { bare, themeColours: Set, inks: Map(colour -> { runs, chars }), miss: [] }
+    const fidelity = [];
     for (const [k, ink] of inkdrop.entries()) {
       const obs = page.views[view][k];
       const id = `syn.${view}.${ink.lang}`;
@@ -92,30 +100,60 @@ export function judgeSyntax(spec, inkdrop, page, where, ok) {
           if (!actual || !sameColor(actual, colour(want.var)) || !fontOk) {
             implBad.push(`"${text.trim()}" ${o.color}${fontOk ? "" : ` ${o.fontStyle} ${o.fontWeight}`} != ${want.var} ${page.vars[want.var]}`);
           }
+          // (C) group by what CSS can tell apart. Fence names of one language share the per-language rules
+          // (code.language-a, code.language-b); bare text in the editing views shares --code-normal across languages.
+          const lang = spec.langAliases?.[ink.lang] ?? ink.lang;
+          // Bare text: no element, or (editing views) only the span CodeMirror puts around untokenised text in a
+          // code block, which carries no token class.
+          const bare = o.els.every((e) => e.every((c) => c === "cm-hmd-codeblock"));
+          const sig = bare
+            ? (kind === "reading" ? `${lang} (bare text)` : "(bare text)")
+            : (kind === "reading" ? `${lang} ` : "") + o.els.map((x) => [...x].sort().join(".")).join(" < ");
+          if (!groups.has(sig)) groups.set(sig, { bare, themeColours: new Set(), inks: new Map(), miss: [] });
+          const g = groups.get(sig);
+          g.themeColours.add(page.vars[want.var]);
+          const inkColour = page.vars[inkName];
+          const ic = g.inks.get(inkColour) ?? { runs: 0, chars: 0, tokens: new Set() };
+          ic.runs++; ic.chars += text.trim().length; ic.tokens.add(inkName.replace("--ink-syntax-", "").replace(/-color$/, ""));
+          g.inks.set(inkColour, ic);
           // (B) the result equals Inkdrop's colour for this text.
           if (!sameColor(colour(want.var), colour(inkName))) {
-            misses.push({ text: text.trim(), inkdrop: r?.cls ?? "(no token)", inkdropVar: inkName, obsidian: o.els.map((x) => x.join(".")).join(" < ") || "(bare text)", got: want.var });
-          }
-          // (C) group by what CSS can tell apart.
-          // Fence names of one language share the per-language rules (code.language-a, code.language-b).
-          const lang = spec.langAliases?.[ink.lang] ?? ink.lang;
-          const sig = o.els.length ? (kind === "reading" ? `${lang} ` : "") + JSON.stringify(o.els) : null;
-          if (sig) {
-            if (!groups.has(sig)) groups.set(sig, { inkColours: new Set(), wantColour: page.vars[want.var], miss: [] });
-            const g = groups.get(sig);
-            g.inkColours.add(page.vars[inkName]);
-            if (!sameColor(colour(want.var), colour(inkName))) g.miss.push(`${ink.lang}:"${text.trim()}"`);
+            const miss = { text: text.trim(), inkdrop: r?.cls ?? "(no token)", inkdropVar: inkName, obsidian: o.els.map((x) => x.join(".")).join(" < ") || "(bare text)", got: want.var, group: sig };
+            misses.push(miss);
+            g.miss.push(miss);
           }
         }
         s = e;
         if (code[s] === "\n") s++;
       }
       results.push({ id: `${id}.impl`, requirement: "qd13.implementation", ...where, status: implBad.length ? "FAIL" : ok, detail: implBad.length ? `${implBad.length}/${runs} runs: ${implBad.slice(0, 4).join("; ")}` : `${runs} runs` });
-      results.push({ id: `${id}.fidelity`, requirement: "qd13.fidelity", ...where, status: misses.length ? "NOT REPRODUCIBLE" : ok, detail: `${runs - misses.length}/${runs} runs have Inkdrop's colour${misses.length ? `; differ: ${misses.slice(0, 3).map((m) => `"${m.text}"`).join(", ")}…` : ""}`, measured: misses.length ? misses : undefined });
+      fidelity.push({ id: `${id}.fidelity`, runs, misses });
     }
-    // (C) a signature whose runs are all one Inkdrop colour can be given that colour: a miss there is the theme's fault.
-    const avoidable = [...groups.entries()].filter(([, g]) => g.inkColours.size === 1 && g.miss.length);
-    results.push({ id: `syn.${view}.avoidable`, requirement: "qd13.fidelity", ...where, status: avoidable.length ? "FAIL" : ok, detail: avoidable.length ? avoidable.slice(0, 4).map(([sig, g]) => `${sig} -> Inkdrop ${[...g.inkColours][0]}, theme ${g.wantColour}: ${g.miss.slice(0, 3).join(" ")}`).join(" | ") : `${groups.size} element signatures; every difference shares its signature with another Inkdrop colour or is bare text` });
+    // (C) classify every group; the category of each differing run follows from its group.
+    const classes = [];
+    for (const [sig, g] of groups.entries()) {
+      const theme = [...g.themeColours];
+      const inks = [...g.inks.entries()].map(([c, v]) => ({ colour: c, runs: v.runs, chars: v.chars, tokens: [...v.tokens] })).sort((a, b) => b.runs - a.runs);
+      // One element signature must get one colour from the theme; two would mean the grouping is wrong.
+      const chosen = theme.length === 1 ? theme[0] : null;
+      const hit = chosen !== null && inks.some((i) => sameColor(parseComputedColor(i.colour), parseComputedColor(chosen)));
+      const cls = chosen === null ? "MIXED" : inks.length === 1 ? (hit ? "EXACT" : "MISMATCH") : (hit ? "CONFLICT" : "DOMINATED");
+      classes.push({ sig, bare: g.bare, class: cls, theme: chosen ?? theme.join(" / "), inks, differing: g.miss.length });
+      for (const m of g.miss) m.category = g.bare ? "bare" : cls === "CONFLICT" ? "shared" : cls.toLowerCase();
+    }
+    for (const f of fidelity) {
+      const by = (c) => f.misses.filter((m) => m.category === c).length;
+      results.push({ id: f.id, requirement: "qd13.fidelity", ...where, status: f.misses.length ? "DIFF" : ok,
+        detail: `${f.runs - f.misses.length}/${f.runs} runs have Inkdrop's colour${f.misses.length ? `; differ: ${by("shared")} shared class, ${by("bare")} bare text${f.misses.length - by("shared") - by("bare") ? `, ${f.misses.length - by("shared") - by("bare")} from failed groups` : ""}` : ""}`,
+        measured: f.misses.length ? f.misses : undefined });
+    }
+    const count = (c, bare) => classes.filter((x) => x.class === c && x.bare === bare).length;
+    const tally = (bare) => ["EXACT", "CONFLICT", "MISMATCH", "DOMINATED"].map((c) => `${c} ${count(c, bare)}`).join(", ");
+    // Element groups fail on MISMATCH / DOMINATED; any MIXED group (two theme colours for one signature) fails too.
+    const bad = classes.filter((x) => x.class === "MIXED" || (!x.bare && ["MISMATCH", "DOMINATED"].includes(x.class)));
+    results.push({ id: `syn.${view}.classes`, requirement: "qd13.fidelity", ...where, status: bad.length ? "FAIL" : ok,
+      detail: `element groups: ${tally(false)}; base colour (bare text, not failed): ${tally(true)}${bad.length ? ` -- ${bad.slice(0, 3).map((b) => `${b.class} ${b.sig}: theme ${b.theme}, Inkdrop ${b.inks.map((i) => `${i.colour} (${i.tokens.join("/")}) x${i.runs}`).join(", ")}`).join(" | ")}` : ""}`,
+      measured: classes });
   }
   return results;
 }

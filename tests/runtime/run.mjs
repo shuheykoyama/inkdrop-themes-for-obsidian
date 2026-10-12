@@ -13,8 +13,8 @@
 //   expect absent -> PASS only if no element matches. expect hidden -> PASS only if it exists and is not displayed.
 // Status values: PASS (desktop = the real macOS app), PASS (EMULATED) (tablet / phone via
 // app.emulateMobile(true) on desktop; never counts as a device check, research/14 §2.3), FAIL, and for the
-// syntax fidelity of code blocks NOT REPRODUCIBLE (an Inkdrop colour that Obsidian's token classes cannot
-// carry; never a PASS, tests/runtime/lib/syntax.mjs).
+// syntax fidelity of code blocks DIFF (text whose colour differs from Inkdrop's, with the reason; never a
+// PASS, tests/runtime/lib/syntax.mjs).
 // Platforms run in the order desktop, tablet, phone, phone-nonfloating; the window size and emulation are
 // restored at the end. The isolated instance's own test vault is the only place settings change.
 // --self-test runs tests/runtime/self-test-spec.json, whose cases declare the outcome the runner must
@@ -267,8 +267,8 @@ try {
   await evaluate(args.port, `(() => { app.customCss.setTranslucency(false); app.vault.setConfig("floatingNavigation", ${JSON.stringify(floatingBefore)}); return 1; })()`);
 }
 // Syntax self-test (desktop, Solarized Dark, opaque): each case changes the page CSS or the oracle and
-// declares whether the syntax judgement must still pass. A case FAILs when any implementation or
-// avoidable result FAILs.
+// declares whether the syntax judgement must still pass. A case FAILs when any implementation or class
+// result FAILs; `only` requires that kind of result to be the one failing, `group` requires a group's class.
 if (selfTest) {
   const sd = JSON.parse(readFileSync(path.join(repo, "dist", THEMES[0], "manifest.json"), "utf8")).name;
   // Select the theme as the probe does (repeat until it and its stylesheet stay put), and record whether it
@@ -289,14 +289,23 @@ if (selfTest) {
   results.push({ id: "syn.self-test.theme-applied", theme: THEMES[0], platform: "desktop", appearance: "opaque", state: "syntax self-test", status: applied ? "PASS" : "FAIL", detail: applied ? sd : "theme not applied", selfTest: "PASS" });
   const kdKeyword = "rgb(138, 147, 168)"; // Kanagawa Dragon's keyword colour (dragonViolet)
   const mutate = (fn) => { const s = structuredClone(syntaxSpec); fn(s); return s; };
-  const tagIsString = (s) => { s.editing.rules.find((r) => r.on.join() === "cm-hmd-codeblock,cm-tag").var = "string"; };
+  const editRule = (cls, v) => (s) => { s.editing.rules.find((r) => r.on.join() === `cm-hmd-codeblock,${cls}`).var = v; };
+  const tagIsString = editRule("cm-tag", "string");
+  const editCss = (sel, value) => `.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.${sel} { color: ${value} !important; }`;
   const cases = [
     { name: "positive control (theme and oracle as committed)", expect: "PASS" },
     { name: "other theme's colour on editing keywords", expect: "FAIL", css: `.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-keyword { color: ${kdKeyword} !important; }` },
     { name: "Reading view function rule lost (code text colour)", expect: "FAIL", css: `.theme-dark .markdown-rendered code[class*="language-"] .token.function { color: var(--code-normal) !important; }` },
     { name: "comments not italic", expect: "FAIL", css: `.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-comment { font-style: normal !important; }` },
     { name: "oracle expects another token for editing tags", expect: "FAIL", spec: mutate(tagIsString) },
-    { name: "theme and oracle agree on a token Inkdrop never gives that class (avoidable)", expect: "FAIL", spec: mutate(tagIsString), css: `.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-tag:not(.cm-bracket) { color: var(--ink-syntax-string-color) !important; }`, only: "avoidable" },
+    // Class choice (C), with the real groups of the test note: editing tags carry one Inkdrop colour (tag name);
+    // editing atoms carry several (atom, bool and colour pink, YAML keys and Rust type names cyan, null in the
+    // code text colour, character yellow, a variable grey) but no tag-name blue.
+    { name: "one Inkdrop colour, theme and oracle both choose another (EXACT -> MISMATCH)", expect: "FAIL", spec: mutate(tagIsString), css: editCss("cm-tag:not(.cm-bracket)", "var(--ink-syntax-string-color)"), only: "classes" },
+    { name: "several Inkdrop colours, theme and oracle choose another of them (CONFLICT)", expect: "PASS", spec: mutate(editRule("cm-atom", "property-name-definition")), css: editCss("cm-atom", "var(--ink-syntax-property-name-definition-color)"), group: { view: "source", sig: "cm-atom.cm-hmd-codeblock", class: "CONFLICT" } },
+    { name: "several Inkdrop colours, theme and oracle choose none of them (DOMINATED)", expect: "FAIL", spec: mutate(editRule("cm-atom", "tag-name")), css: editCss("cm-atom", "var(--ink-syntax-tag-name-color)"), only: "classes" },
+    { name: "class rule lost in the theme (definitions take the code text colour)", expect: "FAIL", css: editCss("cm-def", "inherit"), only: "impl" },
+    { name: "class rule lost in the theme and the oracle alike", expect: "FAIL", spec: mutate((s) => { s.editing.rules = s.editing.rules.filter((r) => r.on.join() !== "cm-hmd-codeblock,cm-def"); }), css: editCss("cm-def", "inherit"), only: "classes" },
   ];
   for (const c of cases) {
     await evaluate(args.port, `(() => { document.getElementById("ink-syntax-self-test")?.remove(); ${c.css ? `document.head.createEl("style", { attr: { id: "ink-syntax-self-test" }, text: ${JSON.stringify(c.css)} });` : ""} return 1; })()`);
@@ -304,6 +313,10 @@ if (selfTest) {
     // `only`: the case must fail through that kind of result alone (the others must pass).
     const failed = res.filter((r) => r.status === "FAIL");
     if (c.only && failed.some((r) => !r.id.endsWith(`.${c.only}`))) failed.push({ id: "syn.self-test", detail: `a result other than .${c.only} failed` });
+    if (c.group) {
+      const g = res.find((r) => r.id === `syn.${c.group.view}.classes`)?.measured?.find((x) => x.sig === c.group.sig);
+      if (g?.class !== c.group.class) failed.push({ id: "syn.self-test", detail: `group ${c.group.sig} is ${g?.class ?? "missing"}, not ${c.group.class}` });
+    }
     results.push({ id: "syn.self-test", theme: THEMES[0], platform: "desktop", appearance: "opaque", state: c.name, status: failed.length ? "FAIL" : "PASS",
       detail: failed.length ? `${failed.length} FAIL: ${failed.slice(0, 2).map((r) => `${r.id} ${r.detail.slice(0, 120)}`).join(" | ")}` : `${res.length} results, none FAIL`, selfTest: c.expect });
   }
@@ -329,13 +342,13 @@ for (const r of results) {
     if (!ok) bad++;
   } else {
     console.log(line);
-    // NOT REPRODUCIBLE (syntax fidelity) is reported, never counted as PASS, and does not fail the run: the
-    // avoidable check (syn.<view>.avoidable) fails when such a difference could have been avoided.
-    if (!r.status.startsWith("PASS") && r.status !== "NOT REPRODUCIBLE") bad++;
+    // DIFF (syntax fidelity) is reported, never counted as PASS, and does not fail the run: the class check
+    // (syn.<view>.classes) fails when a class gets a colour Inkdrop never gives its text.
+    if (!r.status.startsWith("PASS") && r.status !== "DIFF") bad++;
   }
 }
 if (args.out) writeFileSync(args.out, `${JSON.stringify({ measuredAt: new Date().toISOString(), environment, selfTest, results }, null, 1)}\n`);
 console.log(selfTest
   ? (bad ? `\n${bad} self-test case(s) did NOT produce the declared outcome` : `\nall ${results.length} self-test results produced the declared outcome`)
-  : (bad ? `\n${bad} runtime check(s) FAILED` : `\nall ${results.length} runtime checks passed or are reported as NOT REPRODUCIBLE (${results.filter((r) => r.status === "PASS (EMULATED)").length} PASS (EMULATED), ${results.filter((r) => r.status === "NOT REPRODUCIBLE").length} NOT REPRODUCIBLE; Obsidian ${environment.appVersion}, Electron ${environment.electron})`));
+  : (bad ? `\n${bad} runtime check(s) FAILED` : `\nall ${results.length} runtime checks passed or are reported as DIFF (${results.filter((r) => r.status === "PASS (EMULATED)").length} PASS (EMULATED), ${results.filter((r) => r.status === "DIFF").length} DIFF; Obsidian ${environment.appVersion}, Electron ${environment.electron})`));
 process.exit(bad ? 1 : 0);
