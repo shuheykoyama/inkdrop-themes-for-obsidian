@@ -27,8 +27,12 @@ if [ "$cmd" = start ]; then
   rm -rf "$work/vault"
   cp -R "$root/tests/fixtures/vault" "$work/vault"
   printf '{"vaults":{"inkthemetest0001":{"path":"%s","ts":0,"open":true}}}' "$work/vault" > "$work/userdata/obsidian.json"
+  # No background throttling: with the screen locked or asleep the page counts as hidden and Chromium stretches
+  # its timers (a 300 ms wait took over a second, later up to a minute), which stalled whole runs.
   "$app/Contents/MacOS/Obsidian" --user-data-dir="$work/userdata" \
-    --remote-debugging-port=9333 --remote-debugging-address=127.0.0.1 > "$work/obsidian.log" 2>&1 &
+    --remote-debugging-port=9333 --remote-debugging-address=127.0.0.1 \
+    --disable-background-timer-throttling --disable-renderer-backgrounding --disable-backgrounding-occluded-windows \
+    > "$work/obsidian.log" 2>&1 &
   echo $! > "$work/obsidian.pid"
   for _ in $(seq 1 30); do
     curl -s http://127.0.0.1:9333/json/list | grep -q 'app://obsidian.md' && break
