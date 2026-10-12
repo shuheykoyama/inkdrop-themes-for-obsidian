@@ -614,7 +614,7 @@
     {
       "id": "qd23.gutter-border",
       "qd": "Q-D23",
-      "description": "Gutter right border = Inkdrop --editor-gutter-border-right: none on Solarized Dark, 1 px solid dragonBlack4 on Kanagawa Dragon",
+      "description": "No gutter right border in either theme. Deviation from Inkdrop by the user's decision (2026-10-12): Kanagawa Dragon's --editor-gutter-border-right (1 px solid dragonBlack4) stood 24 px left of the text in Obsidian (fold margin) and read as a stray line; Solarized Dark declares none",
       "platforms": [
         "desktop"
       ],

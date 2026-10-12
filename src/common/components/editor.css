@@ -19,14 +19,14 @@
   box-shadow: calc(-1 * var(--file-folding-offset)) 0 0 0 var(--ink-editor-active-line-background-color);
 }
 
-/* Line numbers (Q-D23): text colour, background and right border of Inkdrop's .cm-gutters. app.css sets the
-   colour as var(--text-faint) !important, so redefining --text-faint here changes it without !important
-   (V-07). The border is `none !important` in app.css; Inkdrop's declaration (SD none, KD 1 px solid
-   dragonBlack4) is used as is, so it needs !important. */
+/* Line numbers (Q-D23): text colour and background of Inkdrop's .cm-gutters. app.css sets the colour as
+   var(--text-faint) !important, so redefining --text-faint here changes it without !important (V-07).
+   No right border: Inkdrop's Kanagawa Dragon declares 1 px solid dragonBlack4 (Solarized Dark none), but
+   Obsidian keeps a 24 px fold margin between the gutter and the text, so the border stood apart from the
+   text as a stray line; by the user's decision (2026-10-12) app.css's `border-right: none !important` stays. */
 .theme-dark .markdown-source-view.mod-cm6 .cm-gutters {
   --text-faint: var(--ink-editor-gutter-color);
 
-  border-right: var(--ink-editor-gutter-border-right) !important;
   background-color: var(--ink-editor-gutter-background-color);
 }
 

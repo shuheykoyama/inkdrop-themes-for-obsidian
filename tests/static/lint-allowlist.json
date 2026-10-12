@@ -84,15 +84,6 @@
       "property": "text-decoration-line",
       "reason": "The lint's browser data reports text-decoration as only partially supported by Chrome. The declaration reproduces Inkdrop's .md-task-done-text line-through (syntax.css:734) in Source mode; the runtime checks measure it in Obsidian on Electron 39.5.1 and 43.7.7 (research/14 §6.13).",
       "refs": "research/14 §6.13"
-    },
-    {
-      "rule": "declaration-no-important",
-      "theme": "*",
-      "selector": ".theme-dark .markdown-source-view.mod-cm6 .cm-gutters",
-      "property": "border-right",
-      "overrides": "app.css 1.14.4 L3726-3735: .markdown-source-view.mod-cm6 .cm-gutters { border-right: none !important }",
-      "reason": "Q-D23 needs Inkdrop's gutter border (--editor-gutter-border-right: SD none, KD 1px solid dragonBlack4) as declared; app.css removes the border with !important, which only !important can override. box-shadow would avoid it but would rewrite the declared value (research/14 §6.15, V-34).",
-      "refs": "research/09 §0.1.2, research/14 §6.15"
     }
   ]
 }

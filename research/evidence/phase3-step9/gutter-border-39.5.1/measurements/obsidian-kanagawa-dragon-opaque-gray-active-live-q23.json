@@ -1,0 +1,108 @@
+{
+ "capture": {
+  "method": "/usr/sbin/screencapture -x -R400,250,1200,700 (native window-server composite, display colour space)",
+  "capturedAt": "2026-10-12T14:08:47Z",
+  "file": "screenshots/obsidian-kanagawa-dragon-opaque-gray-active-live-q23.png",
+  "pixels": [
+   2400,
+   1400
+  ],
+  "sha256": "171b2e4ed9917d0237c99412e89b739ab54624bed4a47ff554166e82412a2f25",
+  "windowRectPoints": [
+   400,
+   250,
+   1200,
+   700
+  ],
+  "backdrop": "gray",
+  "backdropRectPoints": [
+   300,
+   150,
+   1400,
+   900
+  ],
+  "requestedFocus": "active",
+  "translucency": "opaque",
+  "theme": "kanagawa-dragon"
+ },
+ "setup": {
+  "theme": "DEV kanagawa-dragon (unnamed)",
+  "themeCssLength": 123883,
+  "isTranslucent": false,
+  "bounds": {
+   "x": 400,
+   "y": 250,
+   "width": 1200,
+   "height": 700
+  },
+  "dockWidths": [
+   260,
+   260
+  ],
+  "electron": "39.5.1",
+  "appVersion": "1.14.4",
+  "q23": {
+   "line": {
+    "left": 383.1171875,
+    "top": 272.828125,
+    "right": 908,
+    "bottom": 296.828125
+   },
+   "lineText": {
+    "left": 383.1171875,
+    "top": 275.328125,
+    "right": 679.5234375,
+    "bottom": 294.328125
+   },
+   "gutterActive": {
+    "left": 336,
+    "top": 272.828125,
+    "right": 359.1171875,
+    "bottom": 296.828125
+   },
+   "gutterText": {
+    "left": 348.5546875,
+    "top": 277.828125,
+    "right": 356.1171875,
+    "bottom": 291.828125
+   },
+   "gutters": {
+    "left": 336,
+    "top": 153.765625,
+    "right": 359.1171875,
+    "bottom": 1197.875
+   },
+   "surface": [
+    30,
+    29,
+    26
+   ],
+   "overlay": [
+    39,
+    38,
+    38,
+    0.3,
+    39,
+    38,
+    38,
+    0.3
+   ],
+   "expected": [
+    32.7,
+    31.699999999999996,
+    29.6
+   ]
+  }
+ },
+ "focusStep": {
+  "focused": true,
+  "hasFocus": true,
+  "bodyFocusedClass": true
+ },
+ "afterShot": {
+  "focused": true,
+  "cls": [
+   "is-focused"
+  ]
+ }
+}

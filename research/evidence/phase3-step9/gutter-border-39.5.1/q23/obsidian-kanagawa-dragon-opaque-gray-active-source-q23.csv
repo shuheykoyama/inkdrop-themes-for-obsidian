@@ -1,0 +1,4 @@
+image,region,"rect_points(x,y,w,h)",mean_r,mean_g,mean_b,sd_r,sd_g,sd_b,dE76_vs_inkdrop_v32,dE2000_vs_inkdrop_v32
+obsidian-kanagawa-dragon-opaque-gray-active-source-q23.png,gutter,"338,259.828125,7.5546875,18.0",33.0,31.0,29.0,0.0,0.0,0.0,0.57,0.77
+obsidian-kanagawa-dragon-opaque-gray-active-source-q23.png,gap,"362.1171875,259.828125,18.0,18.0",33.0,31.0,29.0,0.0,0.0,0.0,0.57,0.77
+obsidian-kanagawa-dragon-opaque-gray-active-source-q23.png,line,"683.5234375,259.828125,220.4765625,18.0",32.6,31.4,29.4,0.48,0.49,0.49,0.19,0.22

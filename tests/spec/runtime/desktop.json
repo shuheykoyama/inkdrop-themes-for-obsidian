@@ -2986,62 +2986,11 @@
       "token": "--ink-editor-gutter-background-color"
     },
     {
-      "id": "ed.source.gutter-border-kd",
-      "requirement": "qd23.gutter-border",
-      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
-      "document": "main",
-      "property": "border-right-color",
-      "themes": [
-        "kanagawa-dragon"
-      ],
-      "state": "ed-source",
-      "appearance": [
-        "opaque",
-        "translucent"
-      ],
-      "token": "--ink-derived-gutter-border-color"
-    },
-    {
-      "id": "ed.source.gutter-border-kd-width",
-      "requirement": "qd23.gutter-border",
-      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
-      "document": "main",
-      "property": "border-right-width",
-      "themes": [
-        "kanagawa-dragon"
-      ],
-      "state": "ed-source",
-      "appearance": [
-        "opaque"
-      ],
-      "kind": "text",
-      "value": "1px"
-    },
-    {
-      "id": "ed.source.gutter-border-kd-style",
+      "id": "ed.source.gutter-border-none",
       "requirement": "qd23.gutter-border",
       "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
       "document": "main",
       "property": "border-right-style",
-      "themes": [
-        "kanagawa-dragon"
-      ],
-      "state": "ed-source",
-      "appearance": [
-        "opaque"
-      ],
-      "kind": "text",
-      "value": "solid"
-    },
-    {
-      "id": "ed.source.gutter-border-sd",
-      "requirement": "qd23.gutter-border",
-      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
-      "document": "main",
-      "property": "border-right-style",
-      "themes": [
-        "solarized-dark"
-      ],
       "state": "ed-source",
       "appearance": [
         "opaque",
@@ -3170,62 +3119,11 @@
       "token": "--ink-editor-gutter-background-color"
     },
     {
-      "id": "ed.live.gutter-border-kd",
-      "requirement": "qd23.gutter-border",
-      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
-      "document": "main",
-      "property": "border-right-color",
-      "themes": [
-        "kanagawa-dragon"
-      ],
-      "state": "ed-live",
-      "appearance": [
-        "opaque",
-        "translucent"
-      ],
-      "token": "--ink-derived-gutter-border-color"
-    },
-    {
-      "id": "ed.live.gutter-border-kd-width",
-      "requirement": "qd23.gutter-border",
-      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
-      "document": "main",
-      "property": "border-right-width",
-      "themes": [
-        "kanagawa-dragon"
-      ],
-      "state": "ed-live",
-      "appearance": [
-        "opaque"
-      ],
-      "kind": "text",
-      "value": "1px"
-    },
-    {
-      "id": "ed.live.gutter-border-kd-style",
+      "id": "ed.live.gutter-border-none",
       "requirement": "qd23.gutter-border",
       "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
       "document": "main",
       "property": "border-right-style",
-      "themes": [
-        "kanagawa-dragon"
-      ],
-      "state": "ed-live",
-      "appearance": [
-        "opaque"
-      ],
-      "kind": "text",
-      "value": "solid"
-    },
-    {
-      "id": "ed.live.gutter-border-sd",
-      "requirement": "qd23.gutter-border",
-      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
-      "document": "main",
-      "property": "border-right-style",
-      "themes": [
-        "solarized-dark"
-      ],
       "state": "ed-live",
       "appearance": [
         "opaque",

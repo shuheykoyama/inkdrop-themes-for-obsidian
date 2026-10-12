@@ -490,5 +490,4 @@
   --ink-derived-toggle-handle-color: hsl(var(--kanagawa-dragon-white)); /* derived: background color of --ink-toggle-handle-background */
   --ink-derived-search-match-selected-outline-color: hsl(var(--kanagawa-dragon-yellow)); /* derived: outline color of --ink-editor-search-match-selected-outline */
   --ink-derived-fold-placeholder-border-color: hsl(var(--kanagawa-dragon-black6)); /* derived: border color of --ink-editor-fold-placeholder-border */
-  --ink-derived-gutter-border-color: hsl(var(--kanagawa-dragon-black4)); /* derived: border color of --ink-editor-gutter-border-right */
 }
