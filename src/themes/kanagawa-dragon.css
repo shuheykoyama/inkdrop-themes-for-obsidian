@@ -9,9 +9,11 @@
 @import "../common/mapping/ui.css";
 @import "../common/mapping/markdown.css";
 @import "../common/mapping/editor.css";
+@import "../common/mapping/syntax.css";
 @import "../common/components/navigation.css";
 @import "../common/components/overlays.css";
 @import "../common/components/markdown.css";
 @import "../common/components/editor.css";
+@import "../common/components/syntax.css";
 @import "../common/platform/translucent.css";
 @import "../common/platform/mobile.css";

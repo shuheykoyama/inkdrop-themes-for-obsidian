@@ -1,0 +1,19 @@
+/* Mapping: syntax colours of code blocks (Q-D13; research/06 E21; step 8). Shared structure, no colour
+   literals. Obsidian's own rules colour the tokens with the ten --code-* variables (app.css; research/03
+   §6.3), and the same variable means different things in the two views (e.g. --code-property is a variable
+   in the editor and a property in Reading view). These values are the closest Inkdrop token per variable,
+   for plugins and for token classes the direct rules in components/syntax.css do not name; the direct rules
+   decide the colours of the tokens they name (V-12 / V-31, research/14 §6.17). */
+.theme-dark .markdown-source-view.mod-cm6,
+.theme-dark .markdown-rendered {
+  --code-comment: var(--ink-syntax-comment-color);
+  --code-function: var(--ink-syntax-variable-name-function-color);
+  --code-important: var(--ink-syntax-regexp-color);
+  --code-keyword: var(--ink-syntax-keyword-color);
+  --code-operator: var(--ink-syntax-operator-color);
+  --code-property: var(--ink-syntax-property-name-color);
+  --code-punctuation: var(--ink-syntax-punctuation-color);
+  --code-string: var(--ink-syntax-string-color);
+  --code-tag: var(--ink-syntax-tag-name-color);
+  --code-value: var(--ink-syntax-number-color);
+}

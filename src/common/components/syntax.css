@@ -1,0 +1,448 @@
+/* Components: syntax colours of code blocks (Q-D13; research/06 E21; step 8). V-12 / V-31 (research/14 §6.17):
+   Inkdrop colours code with the same Lezer tokens (.tok-*) in the editor and the preview; Obsidian uses CM5
+   modes in Source mode and Live Preview (.cm-* on spans, the same in both views) and Prism in Reading view
+   (.token.*). Each rule gives one Obsidian class the Inkdrop token that the class carries (the colour
+   variable that inkdropapp/css syntax.css applies to that token). Where one Obsidian class carries several
+   Inkdrop tokens of different colours, the text cannot be told apart and gets the token chosen here; the
+   list of those cases is research/evidence/phase3-step8. */
+
+/* Source mode and Live Preview. The code lines carry no language (V-12), so these rules are the same for
+   every language. .cm-hmd-codeblock is on every token span inside a fenced code block and on nothing else,
+   which keeps these rules off inline code and the note's own Markdown. Text without a span (most brackets
+   and separators: the CM5 modes return no style for them) keeps --code-normal, Inkdrop's code block text. */
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-comment {
+  color: var(--ink-syntax-comment-color);
+  font-style: var(--ink-syntax-comment-font-style);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-keyword {
+  color: var(--ink-syntax-keyword-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-atom {
+  color: var(--ink-syntax-atom-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-number {
+  color: var(--ink-syntax-number-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-string {
+  color: var(--ink-syntax-string-color);
+}
+
+/* CM5's string-2: template literals (Inkdrop: special string) and regular expressions (regexp). */
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-string-2 {
+  color: var(--ink-syntax-string-special-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-def {
+  color: var(--ink-syntax-variable-name-definition-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-variable {
+  color: var(--ink-syntax-variable-name-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-variable-2 {
+  color: var(--ink-syntax-variable-name-local-color);
+}
+
+/* CM5's variable-3 is a type or class name. */
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-variable-3,
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-qualifier {
+  color: var(--ink-syntax-class-name-color);
+}
+
+/* Type names: Inkdrop's tokenHighlighter has no entry for typeName, so types take the name token. */
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-type {
+  color: var(--ink-syntax-name-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-builtin {
+  color: var(--ink-syntax-variable-name-standard-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-property {
+  color: var(--ink-syntax-property-name-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-operator {
+  color: var(--ink-syntax-operator-color);
+}
+
+/* CSS function names (calc, var...): an operator keyword for Inkdrop's CSS parser. */
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-callee {
+  color: var(--ink-syntax-operator-keyword-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-punctuation {
+  color: var(--ink-syntax-punctuation-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-bracket {
+  color: var(--ink-syntax-paren-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-meta {
+  color: var(--ink-syntax-meta-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-tag {
+  color: var(--ink-syntax-tag-name-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-attribute {
+  color: var(--ink-syntax-attribute-name-color);
+}
+
+/* JSON keys (property + string) and HTML angle brackets (bracket + tag) carry two classes; these come after
+   the single-class rules they would otherwise lose to. */
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-property.cm-string {
+  color: var(--ink-syntax-property-name-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-bracket.cm-tag {
+  color: var(--ink-syntax-angle-bracket-color);
+}
+
+/* Markdown in a ```markdown block: the marks share the class of their text (no .cm-formatting here). */
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-header {
+  color: var(--ink-syntax-heading-color);
+  font-weight: var(--ink-syntax-heading-font-weight);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-em {
+  color: var(--ink-syntax-emphasis-color);
+  font-style: var(--ink-syntax-emphasis-font-style);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-strong {
+  color: var(--ink-syntax-strong-color);
+  font-weight: var(--ink-syntax-strong-font-weight);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-link {
+  color: var(--ink-syntax-link-color);
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-url {
+  color: var(--ink-syntax-url-color);
+}
+
+/* Reading view (Prism). Common rules first, then the compound classes, then the rules for one language
+   (code.language-*), which only exist where all the text of that Prism class in that language is one
+   Inkdrop token. Text without a .token span keeps --code-normal (Inkdrop's preview code text). */
+.theme-dark .markdown-rendered code[class*="language-"] .token.comment,
+.theme-dark .markdown-rendered code[class*="language-"] .token.prolog,
+.theme-dark .markdown-rendered code[class*="language-"] .token.cdata {
+  color: var(--ink-syntax-comment-color);
+  font-style: var(--ink-syntax-comment-font-style);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.doctype {
+  color: var(--ink-syntax-document-meta-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.keyword {
+  color: var(--ink-syntax-keyword-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.boolean {
+  color: var(--ink-syntax-bool-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.number {
+  color: var(--ink-syntax-number-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.string {
+  color: var(--ink-syntax-string-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.regex {
+  color: var(--ink-syntax-regexp-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.entity {
+  color: var(--ink-syntax-character-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.operator {
+  color: var(--ink-syntax-operator-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.punctuation {
+  color: var(--ink-syntax-punctuation-color);
+}
+
+/* Markdown in a ```markdown block: the marks (Prism punctuation) are processing instructions for Inkdrop.
+   Here rather than with the other Markdown rules below, as the official lint wants it before the more
+   specific .tag .punctuation rule. */
+.theme-dark .markdown-rendered :is(code.language-markdown, code.language-md) .token.punctuation {
+  color: var(--ink-syntax-processing-instruction-color);
+}
+
+/* Shell: Inkdrop's shell mode leaves brackets and ; as plain text (here for the same reason as above). */
+.theme-dark .markdown-rendered :is(code.language-sh, code.language-bash, code.language-shell) .token.punctuation {
+  color: var(--ink-mde-preview-codeblock-text-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.function {
+  color: var(--ink-syntax-variable-name-function-color);
+}
+
+/* The expression inside ${…} / {…} of a template or f-string: a variable. */
+.theme-dark .markdown-rendered code[class*="language-"] .token.interpolation {
+  color: var(--ink-syntax-variable-name-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.parameter,
+.theme-dark .markdown-rendered code[class*="language-"] .token.imports {
+  color: var(--ink-syntax-variable-name-definition-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.class-name {
+  color: var(--ink-syntax-class-name-color);
+}
+
+/* Prism's builtin is a built-in type in these languages (number, string, int, error): Inkdrop's name. */
+.theme-dark .markdown-rendered code[class*="language-"] .token.builtin {
+  color: var(--ink-syntax-name-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.property,
+.theme-dark .markdown-rendered code[class*="language-"] .token.property-access {
+  color: var(--ink-syntax-property-name-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.key {
+  color: var(--ink-syntax-property-name-definition-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.namespace {
+  color: var(--ink-syntax-namespace-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.macro {
+  color: var(--ink-syntax-macro-name-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.attribute {
+  color: var(--ink-syntax-meta-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.tag {
+  color: var(--ink-syntax-tag-name-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.attr-name {
+  color: var(--ink-syntax-attribute-name-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.attr-value {
+  color: var(--ink-syntax-attribute-value-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.selector {
+  color: var(--ink-syntax-tag-name-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.combinator {
+  color: var(--ink-syntax-logic-operator-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.rule {
+  color: var(--ink-syntax-definition-keyword-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.unit {
+  color: var(--ink-syntax-unit-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.hexcode {
+  color: var(--ink-syntax-color-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.important {
+  color: var(--ink-syntax-modifier-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.url {
+  color: var(--ink-syntax-url-color);
+}
+
+/* Compound Prism classes: a more specific Inkdrop token than the single classes above. */
+.theme-dark .markdown-rendered code[class*="language-"] .token.keyword.module {
+  color: var(--ink-syntax-module-keyword-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.keyword.control-flow {
+  color: var(--ink-syntax-control-keyword-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.keyword.null {
+  color: var(--ink-syntax-null-color);
+}
+
+/* `undefined` (keyword nil, not null) is a plain variable for Inkdrop. */
+.theme-dark .markdown-rendered code[class*="language-"] .token.keyword.nil:not(.null),
+.theme-dark .markdown-rendered code[class*="language-"] .token.class-name.known-class-name,
+.theme-dark .markdown-rendered code[class*="language-"] .token.class-name.console {
+  color: var(--ink-syntax-variable-name-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.template-string .token.string,
+.theme-dark .markdown-rendered code[class*="language-"] .token.string-interpolation .token.string {
+  color: var(--ink-syntax-string-special-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.function.method {
+  color: var(--ink-syntax-property-name-function-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.doctype .token.punctuation {
+  color: var(--ink-syntax-document-meta-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.tag .token.punctuation {
+  color: var(--ink-syntax-angle-bracket-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.attr-value .token.punctuation {
+  color: var(--ink-syntax-attribute-value-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.attr-value .token.attr-equals {
+  color: var(--ink-syntax-definition-operator-color);
+}
+
+/* CSS selectors: Prism nests the parts in .token.selector. */
+.theme-dark .markdown-rendered code[class*="language-"] .token.selector .token.class,
+.theme-dark .markdown-rendered code[class*="language-"] .token.selector .token.pseudo-class,
+.theme-dark .markdown-rendered code[class*="language-"] .token.selector .token.pseudo-element {
+  color: var(--ink-syntax-class-name-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.selector .token.id {
+  color: var(--ink-syntax-label-name-color);
+}
+
+/* Rust #[…] attributes: Prism puts attr-name on the same span; the whole attribute is meta for Inkdrop. */
+.theme-dark .markdown-rendered code[class*="language-"] .token.attribute.attr-name {
+  color: var(--ink-syntax-meta-color);
+}
+
+.theme-dark .markdown-rendered code[class*="language-"] .token.important.shebang {
+  color: var(--ink-syntax-meta-color);
+}
+
+/* One language. Prism's class is language-<fence name>, so each rule lists the fence names Obsidian 1.14.4
+   highlights for that language (it highlights rs in neither view and zsh only in the editing views, V-12). */
+.theme-dark .markdown-rendered :is(code.language-python, code.language-py) .token.function {
+  color: var(--ink-syntax-variable-name-definition-color);
+}
+
+.theme-dark .markdown-rendered :is(code.language-ts, code.language-typescript) .token.class-name {
+  color: var(--ink-syntax-name-definition-color);
+}
+
+.theme-dark .markdown-rendered :is(code.language-ts, code.language-typescript) .token.function {
+  color: var(--ink-syntax-variable-name-definition-color);
+}
+
+.theme-dark .markdown-rendered code.language-go .token.function {
+  color: var(--ink-syntax-property-name-color);
+}
+
+.theme-dark .markdown-rendered code.language-rust .token.class-name {
+  color: var(--ink-syntax-name-color);
+}
+
+.theme-dark .markdown-rendered code.language-rust .token.number {
+  color: var(--ink-syntax-integer-color);
+}
+
+.theme-dark .markdown-rendered code.language-rust .token.function-definition {
+  color: var(--ink-syntax-variable-name-definition-color);
+}
+
+.theme-dark .markdown-rendered code.language-css .token.function {
+  color: var(--ink-syntax-operator-keyword-color);
+}
+
+.theme-dark .markdown-rendered code.language-json .token.operator {
+  color: var(--ink-syntax-separator-color);
+}
+
+.theme-dark .markdown-rendered code.language-sql .token.function {
+  color: var(--ink-syntax-keyword-color);
+}
+
+/* YAML: anchors are labels, and Inkdrop's YAML parser leaves plain scalars (numbers, true) as content; Prism
+   also marks true as important, so the scalar rule comes second. */
+.theme-dark .markdown-rendered :is(code.language-yaml, code.language-yml) .token.important {
+  color: var(--ink-syntax-label-name-color);
+}
+
+.theme-dark .markdown-rendered :is(code.language-yaml, code.language-yml) :is(.token.number, .token.boolean) {
+  color: var(--ink-syntax-content-color);
+}
+
+/* Shell: commands are standard names, $variables and assignments are definitions, options are attributes. */
+.theme-dark .markdown-rendered :is(code.language-sh, code.language-bash, code.language-shell) .token.function {
+  color: var(--ink-syntax-variable-name-standard-color);
+}
+
+.theme-dark .markdown-rendered :is(code.language-sh, code.language-bash, code.language-shell) :is(.token.variable, .token.environment, .token.assign-left) {
+  color: var(--ink-syntax-variable-name-definition-color);
+}
+
+.theme-dark .markdown-rendered :is(code.language-sh, code.language-bash, code.language-shell) .token.parameter {
+  color: var(--ink-syntax-attribute-name-color);
+}
+
+/* &1 and the loop variable are plain text for Inkdrop's shell mode (after the important / variable rules
+   these spans also match). */
+.theme-dark .markdown-rendered :is(code.language-sh, code.language-bash, code.language-shell) :is(.token.file-descriptor, .token.for-or-select) {
+  color: var(--ink-mde-preview-codeblock-text-color);
+}
+
+/* The 2 of 2>: a number for Inkdrop. */
+.theme-dark .markdown-rendered :is(code.language-sh, code.language-bash, code.language-shell) .token.operator .token.file-descriptor {
+  color: var(--ink-syntax-number-color);
+}
+
+/* Markdown in a ```markdown block (the marks are above). */
+.theme-dark .markdown-rendered :is(code.language-markdown, code.language-md) .token.title {
+  color: var(--ink-syntax-heading-color);
+  font-weight: var(--ink-syntax-heading-font-weight);
+}
+
+.theme-dark .markdown-rendered :is(code.language-markdown, code.language-md) .token.italic {
+  color: var(--ink-syntax-emphasis-color);
+  font-style: var(--ink-syntax-emphasis-font-style);
+}
+
+.theme-dark .markdown-rendered :is(code.language-markdown, code.language-md) .token.bold {
+  color: var(--ink-syntax-strong-color);
+  font-weight: var(--ink-syntax-strong-font-weight);
+}
+
+.theme-dark .markdown-rendered :is(code.language-markdown, code.language-md) .token.code-snippet {
+  color: var(--ink-syntax-monospace-color);
+}
+
+/* A link: the brackets and parentheses (text of the outer .token.url) are marks, the text a link, the
+   address a URL. */
+.theme-dark .markdown-rendered :is(code.language-markdown, code.language-md) .token.url {
+  color: var(--ink-syntax-processing-instruction-color);
+}
+
+.theme-dark .markdown-rendered :is(code.language-markdown, code.language-md) .token.url .token.content {
+  color: var(--ink-syntax-link-color);
+}
+
+.theme-dark .markdown-rendered :is(code.language-markdown, code.language-md) .token.url .token.url {
+  color: var(--ink-syntax-url-color);
+}
