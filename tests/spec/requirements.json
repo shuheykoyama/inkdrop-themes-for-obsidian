@@ -789,6 +789,75 @@
         "reason": "Within one class CSS cannot tell the texts apart, so one colour is chosen per class; which runs differ follows from that choice and from the base colour, both left to RV5 (research/14 §6.19, research/evidence/phase3-step8/differences.csv)",
         "risk": "Such text shows the colour of the token chosen for its class (or the code block text colour) instead of Inkdrop's; most visible in the editing views for brackets and separators (bare text), YAML keys (cm-atom) and Go fields (cm-variable)"
       }
+    },
+    {
+      "id": "qd12.flowchart-sequence",
+      "qd": "Q-D12",
+      "description": "Flowchart and Sequence diagrams in Reading view and Live Preview, both themes, opaque and translucent: Obsidian's inverting filter is lifted, every required element (nodes of each shape, clusters, edges, arrowheads, edge labels; actors, lifelines, messages, activations, notes, loop / alt boxes, sequence numbers) is drawn, and every element has the colours of Inkdrop's rendering (Mermaid's base theme with themeVariables from Inkdrop's --mermaid-* tokens, inkdropapp/mermaid@384e9f5); user style / classDef / linkStyle colours stay",
+      "platforms": [
+        "desktop",
+        "tablet",
+        "phone"
+      ],
+      "mandatory": true,
+      "verifiedBy": [
+        {
+          "method": "Runtime Mermaid checks mm.<view>.<kind>.filter / .elements / .colours (tests/runtime/lib/mermaid.mjs): every element of Obsidian's SVG against a reference rendering by the same bundled Mermaid (tests/fixtures/vault/Mermaid.md, tests/spec/mermaid.json), also after an in-place re-render; negative cases in the runner self-test (mm.self-test)",
+          "evidence": "research/evidence/phase3-step9",
+          "result": "see research/14 §6.21"
+        }
+      ]
+    },
+    {
+      "id": "qd12.scope",
+      "qd": "Q-D12",
+      "description": "The Mermaid rules change nothing outside dark Flowchart / Sequence diagrams: in the light scheme Obsidian's own rendering (Mermaid's defaults, no filter) stays, and no other image or SVG of a note gets a filter",
+      "platforms": [
+        "desktop",
+        "tablet",
+        "phone"
+      ],
+      "mandatory": true,
+      "verifiedBy": [
+        {
+          "method": "Runtime Mermaid checks mm.light.<view>.<kind>.* (against Mermaid's default rendering) and mm.<view>.others; negative cases in mm.self-test (light leak, leak into an image)",
+          "evidence": "research/evidence/phase3-step9",
+          "result": "see research/14 §6.21"
+        }
+      ]
+    },
+    {
+      "id": "qd12.source",
+      "qd": "Q-D12",
+      "description": "Source mode shows Mermaid blocks as code, not as diagrams",
+      "platforms": [
+        "desktop",
+        "tablet",
+        "phone"
+      ],
+      "mandatory": true,
+      "verifiedBy": [
+        {
+          "method": "Runtime Mermaid check mm.source.code (tests/runtime/lib/mermaid.mjs)",
+          "evidence": "research/evidence/phase3-step9",
+          "result": "see research/14 §6.21"
+        }
+      ]
+    },
+    {
+      "id": "qd12.unsupported",
+      "qd": "Q-D12",
+      "description": "Mermaid kinds other than Flowchart and Sequence (class, state, gantt, pie, ER, git graph, mindmap) are not themed: they keep Obsidian's inverted rendering, which stays readable",
+      "platforms": [
+        "desktop",
+        "tablet",
+        "phone"
+      ],
+      "mandatory": false,
+      "unverified": {
+        "reason": "Q-D12 covers Flowchart and Sequence only; the other kinds keep Obsidian's filter (checked by mm.<view>.unsupported, reported UNSUPPORTED, never PASS)",
+        "risk": "These diagrams show Obsidian's inverted light colours, not Inkdrop's; an Obsidian update that drops the filter would leave them light on dark"
+      }
     }
   ]
 }

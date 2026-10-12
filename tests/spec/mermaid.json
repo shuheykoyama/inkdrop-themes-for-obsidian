@@ -1,0 +1,155 @@
+{
+  "description": "Mermaid diagrams (Q-D12, step 9, research/14 §6.21). The runtime Mermaid checks (tests/runtime/lib/mermaid.mjs) render every block of `note` twice in the isolated Obsidian: as Obsidian draws it with the theme applied, and as a REFERENCE -- the same text, the same bundled Mermaid, the base theme and themeVariables resolved from this theme's --ink-mermaid-* tokens, which is what Inkdrop's Mermaid plugin does (inkdropapp/mermaid@384e9f5 packages/mermaid/src/theme.ts). `tokens` maps each themeVariable to the --ink-mermaid-<token> that Inkdrop's theme.ts reads it from (--mermaid-<token>), limited to the ones the palette declares; Mermaid derives the rest from them as in Inkdrop. `kinds` are the supported diagram kinds (svg[aria-roledescription]); `unsupported` the other kinds of the note, which keep Obsidian's inverting filter and are reported as UNSUPPORTED, never PASS. `image` is the note's test image, whose filter must stay none. `required` lists, per kind, element types (a tag and classes it must have) of which at least one element must be drawn, over all blocks of that kind.",
+  "note": "Mermaid.md",
+  "kinds": [
+    "flowchart-v2",
+    "sequence"
+  ],
+  "unsupported": [
+    "class",
+    "stateDiagram",
+    "gantt",
+    "pie",
+    "er",
+    "gitGraph",
+    "mindmap"
+  ],
+  "obsidianFilter": "invert(1) hue-rotate(180deg) saturate(1.25)",
+  "image": "half-transparent.png",
+  "tokens": {
+    "background": "background-color",
+    "textColor": "text-color",
+    "titleColor": "title-color",
+    "lineColor": "line-color",
+    "mainBkg": "node-background-color",
+    "nodeBkg": "node-background-color",
+    "secondBkg": "cluster-background-color",
+    "nodeBorder": "node-border-color",
+    "border1": "node-border-color",
+    "nodeTextColor": "node-text-color",
+    "labelBackgroundColor": "edge-label-background-color",
+    "clusterBkg": "cluster-background-color",
+    "clusterBorder": "cluster-border-color",
+    "edgeLabelBackground": "edge-label-background-color",
+    "rectBkgColor": "cluster-background-color",
+    "actorBkg": "actor-background-color",
+    "actorBorder": "actor-border-color",
+    "actorTextColor": "actor-text-color",
+    "actorLineColor": "actor-line-color",
+    "signalColor": "signal-color",
+    "signalTextColor": "signal-text-color",
+    "labelBoxBkgColor": "label-box-background-color",
+    "labelBoxBorderColor": "label-box-border-color",
+    "labelTextColor": "label-text-color",
+    "loopTextColor": "loop-text-color",
+    "activationBkgColor": "activation-background-color",
+    "activationBorderColor": "activation-border-color",
+    "sequenceNumberColor": "sequence-number-color",
+    "noteBkgColor": "note-background-color",
+    "noteBorderColor": "note-border-color",
+    "noteTextColor": "note-text-color",
+    "primaryTextColor": "primary-text-color"
+  },
+  "required": {
+    "flowchart-v2": [
+      [
+        "rect",
+        "label-container"
+      ],
+      [
+        "polygon",
+        "label-container"
+      ],
+      [
+        "circle",
+        "label-container"
+      ],
+      [
+        "path",
+        "label-container"
+      ],
+      [
+        "g",
+        "cluster"
+      ],
+      [
+        "g",
+        "cluster-label"
+      ],
+      [
+        "span",
+        "nodeLabel"
+      ],
+      [
+        "path",
+        "flowchart-link"
+      ],
+      [
+        "span",
+        "edgeLabel"
+      ],
+      [
+        "div",
+        "labelBkg"
+      ]
+    ],
+    "sequence": [
+      [
+        "rect",
+        "actor"
+      ],
+      [
+        "line",
+        "actor-line"
+      ],
+      [
+        "circle",
+        ""
+      ],
+      [
+        "line",
+        "messageLine0"
+      ],
+      [
+        "line",
+        "messageLine1"
+      ],
+      [
+        "text",
+        "messageText"
+      ],
+      [
+        "rect",
+        "activation0"
+      ],
+      [
+        "rect",
+        "note"
+      ],
+      [
+        "text",
+        "noteText"
+      ],
+      [
+        "polygon",
+        "labelBox"
+      ],
+      [
+        "text",
+        "labelText"
+      ],
+      [
+        "line",
+        "loopLine"
+      ],
+      [
+        "text",
+        "loopText"
+      ],
+      [
+        "text",
+        "sequenceNumber"
+      ]
+    ]
+  }
+}

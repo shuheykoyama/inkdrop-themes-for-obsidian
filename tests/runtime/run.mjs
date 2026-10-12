@@ -14,7 +14,8 @@
 // Status values: PASS (desktop = the real macOS app), PASS (EMULATED) (tablet / phone via
 // app.emulateMobile(true) on desktop; never counts as a device check, research/14 §2.3), FAIL, and for the
 // syntax fidelity of code blocks DIFF (text whose colour differs from Inkdrop's, with the reason; never a
-// PASS, tests/runtime/lib/syntax.mjs).
+// PASS, tests/runtime/lib/syntax.mjs), and for the Mermaid kinds the theme does not colour UNSUPPORTED
+// (Obsidian's own inverted rendering, checked to stay readable; never a PASS, tests/runtime/lib/mermaid.mjs).
 // Platforms run in the order desktop, tablet, phone, phone-nonfloating; the window size and emulation are
 // restored at the end. The isolated instance's own test vault is the only place settings change.
 // --self-test runs tests/runtime/self-test-spec.json, whose cases declare the outcome the runner must
@@ -26,6 +27,7 @@ import { parseArgs } from "node:util";
 import { declarations, norm, parseColor, parseComputedColor, sameColor, substitute } from "../lib/css.mjs";
 import { checkErrors, loadChecks, loadRequirements, PLATFORMS, POINTER_STATES, runtimeSpecFiles, STATES, THEMES } from "../lib/spec.mjs";
 import { escape, evaluate, pointer, typeText } from "./lib/cdp.mjs";
+import { judgeMermaid } from "./lib/mermaid.mjs";
 import { judgeSyntax, syntaxVars } from "./lib/syntax.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
@@ -105,6 +107,16 @@ const codeDump = readFileSync(path.join(repo, "tests/runtime/code-tokens.js"), "
 async function syntaxPage() {
   return evaluate(args.port, `window.__CODE = ${JSON.stringify({ note: syntaxSpec.note, vars: syntaxVars(syntaxSpec, inkdropTokens) })};\n${codeDump}`);
 }
+// Mermaid (Q-D12, step 9): every diagram of tests/spec/mermaid.json's note is dumped
+// (tests/runtime/mermaid-dump.js) and judged against a reference rendering (tests/runtime/lib/mermaid.mjs).
+const mermaidSpec = JSON.parse(readFileSync(path.join(repo, "tests/spec/mermaid.json"), "utf8"));
+const mermaidDump = readFileSync(path.join(repo, "tests/runtime/mermaid-dump.js"), "utf8");
+async function mermaidPage(view, opts = {}, spec = mermaidSpec) {
+  const input = { note: spec.note, view, tokens: spec.tokens, kinds: spec.kinds, unsupported: spec.unsupported, reference: "inkdrop", ...opts };
+  return evaluate(args.port, `window.__MERMAID = ${JSON.stringify(input)};\n${mermaidDump}`);
+}
+// Obsidian's base colour scheme of the isolated vault ("obsidian" = dark, "moonstone" = light).
+const setScheme = (scheme) => evaluate(args.port, `(async () => { app.changeTheme(${JSON.stringify(scheme)}); await new Promise((r) => setTimeout(r, 800)); return document.body.classList.contains(${JSON.stringify(scheme === "moonstone" ? "theme-light" : "theme-dark")}); })()`);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const results = [];
 const environment = {};
@@ -257,13 +269,30 @@ try {
         if (!selfTest) {
           const where = { theme, platform, appearance: pass === 2 ? "opaque (after translucent)" : appearance, state: "syntax" };
           results.push(...judgeSyntax(syntaxSpec, inkdropTokens, await syntaxPage(), where, platform === "desktop" ? "PASS" : "PASS (EMULATED)"));
+          const ok = platform === "desktop" ? "PASS" : "PASS (EMULATED)";
+          const mwhere = { ...where, state: "mermaid" };
+          for (const view of ["reading", "live", "source"]) results.push(...judgeMermaid(mermaidSpec, await mermaidPage(view), "dark", mwhere, ok));
+          if (platform === "desktop" && appearance === "opaque" && pass === 1) {
+            // Re-render in place (new SVGs, new random ids) must keep the colours.
+            results.push(...judgeMermaid(mermaidSpec, await mermaidPage("reading", { rerender: true }), "dark", { ...where, state: "mermaid re-render" }, ok));
+            // Light: the theme is dark-only, so Obsidian's light rendering (Mermaid's defaults, no filter) must stay.
+            const light = await setScheme("moonstone");
+            try {
+              const lwhere = { ...where, state: "mermaid light" };
+              results.push({ id: "runner.light-scheme", ...lwhere, status: light ? ok : "FAIL", detail: light ? "theme-light" : "light scheme not applied" });
+              for (const view of ["reading", "live"]) results.push(...judgeMermaid(mermaidSpec, await mermaidPage(view, { reference: "default" }), "light", lwhere, ok));
+            } finally {
+              await setScheme("obsidian");
+            }
+          }
         }
       }
     }
   }
 } finally {
-  // Restore the isolated window: desktop, original size, opaque, original floating-navigation setting.
+  // Restore the isolated window: desktop, original size, opaque, dark, original floating-navigation setting.
   await setPlatform("desktop", original);
+  await setScheme("obsidian");
   await evaluate(args.port, `(() => { app.customCss.setTranslucency(false); app.vault.setConfig("floatingNavigation", ${JSON.stringify(floatingBefore)}); return 1; })()`);
 }
 // Syntax self-test (desktop, Solarized Dark, opaque): each case changes the page CSS or the oracle and
@@ -321,6 +350,45 @@ if (selfTest) {
       detail: failed.length ? `${failed.length} FAIL: ${failed.slice(0, 2).map((r) => `${r.id} ${r.detail.slice(0, 120)}`).join(" | ")}` : `${res.length} results, none FAIL`, selfTest: c.expect });
   }
   await evaluate(args.port, `(() => { document.getElementById("ink-syntax-self-test")?.remove(); return 1; })()`);
+
+  // Mermaid self-test (desktop, Solarized Dark, opaque, Reading view unless `view`): each case changes the page
+  // CSS, Obsidian's SVG (inline styles), the spec or the colour scheme, and declares whether the Mermaid
+  // judgement must still pass. A case FAILs when any result FAILs; `only` requires every failing result's id to
+  // end with one of these suffixes. UNSUPPORTED counts as passing here (it is not a failure).
+  const D = '.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"]';
+  // The inline cases leave the user-styled node alone (its style attribute already sets fill).
+  const mutateMermaid = (fn) => { const s = structuredClone(mermaidSpec); fn(s); return s; };
+  const mcases = [
+    { name: "positive control (theme and spec as committed)", expect: "PASS" },
+    { name: "positive control, Live Preview", expect: "PASS", view: "live" },
+    { name: "positive control, light scheme (Mermaid's defaults)", expect: "PASS", scheme: "light" },
+    { name: "inversion filter not lifted", expect: "FAIL", css: ".theme-dark .markdown-rendered .mermaid > svg { filter: invert(1) hue-rotate(180deg) saturate(1.25) !important; }", only: [".filter"] },
+    { name: "wrong token on node shapes", expect: "FAIL", css: `${D} g.node rect.label-container { fill: var(--ink-mermaid-cluster-background-color) !important; }`, only: [".colours"] },
+    { name: "spec maps mainBkg to another token", expect: "FAIL", spec: mutateMermaid((s) => { s.tokens.mainBkg = "cluster-background-color"; s.tokens.nodeBkg = "cluster-background-color"; }), only: [".colours"] },
+    { name: "missing elements (clusters not drawn)", expect: "FAIL", css: ".theme-dark .markdown-rendered .mermaid g.cluster { display: none !important; }", only: [".elements"] },
+    { name: "Mermaid inline style without !important loses to the theme", expect: "PASS", inline: [{ selector: 'g.node rect.label-container:not([style*="fill"])', property: "fill", value: "rgb(51, 51, 51)" }] },
+    { name: "theme loses to an inline style with !important", expect: "FAIL", inline: [{ selector: 'g.node rect.label-container:not([style*="fill"])', property: "fill", value: "rgb(51, 51, 51)", priority: "important" }], only: [".colours"] },
+    { name: "user linkStyle overridden by the theme", expect: "FAIL", css: `${D} path.flowchart-link { stroke: var(--ink-mermaid-line-color) !important; }`, only: [".colours"] },
+    { name: "light scheme leak (rule without .theme-dark)", expect: "FAIL", scheme: "light", css: '.markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] g.node rect.label-container { fill: var(--ink-mermaid-node-background-color) !important; }', only: [".colours"] },
+    { name: "filter lifted on every kind (unsupported kinds lose their inversion)", expect: "FAIL", css: ".theme-dark .markdown-rendered .mermaid > svg { filter: none !important; }", only: [".unsupported"] },
+    { name: "leak into a non-Mermaid image", expect: "FAIL", css: ".theme-dark .markdown-rendered img { filter: hue-rotate(90deg) !important; }", only: [".others"] },
+  ];
+  for (const c of mcases) {
+    await evaluate(args.port, `(() => { document.getElementById("ink-mermaid-self-test")?.remove(); ${c.css ? `document.head.createEl("style", { attr: { id: "ink-mermaid-self-test" }, text: ${JSON.stringify(c.css)} });` : ""} return 1; })()`);
+    const light = c.scheme === "light";
+    let res;
+    try {
+      if (light && !(await setScheme("moonstone"))) res = [{ id: "runner.light-scheme", status: "FAIL", detail: "light scheme not applied" }];
+      else res = judgeMermaid(c.spec ?? mermaidSpec, await mermaidPage(c.view ?? "reading", { inline: c.inline, ...(light ? { reference: "default" } : {}) }, c.spec ?? mermaidSpec), light ? "light" : "dark", {}, "PASS");
+    } finally {
+      if (light) await setScheme("obsidian");
+    }
+    const failed = res.filter((r) => r.status === "FAIL");
+    if (c.only && failed.some((r) => !c.only.some((x) => r.id.endsWith(x)))) failed.push({ id: "mm.self-test", detail: `a result other than ${c.only.join(" / ")} failed: ${failed.filter((r) => !c.only.some((x) => r.id.endsWith(x))).map((r) => r.id).join(", ")}` });
+    results.push({ id: "mm.self-test", theme: THEMES[0], platform: "desktop", appearance: "opaque", state: c.name, status: failed.length ? "FAIL" : "PASS",
+      detail: failed.length ? `${failed.length} FAIL: ${failed.slice(0, 2).map((r) => `${r.id} ${r.detail.slice(0, 120)}`).join(" | ")}` : `${res.length} results, none FAIL`, selfTest: c.expect });
+  }
+  await evaluate(args.port, `(() => { document.getElementById("ink-mermaid-self-test")?.remove(); return 1; })()`);
 }
 
 // The restore itself is checked: desktop, original size, not translucent, original floating-navigation setting.
@@ -344,11 +412,12 @@ for (const r of results) {
     console.log(line);
     // DIFF (syntax fidelity) is reported, never counted as PASS, and does not fail the run: the class check
     // (syn.<view>.classes) fails when a class gets a colour Inkdrop never gives its text.
-    if (!r.status.startsWith("PASS") && r.status !== "DIFF") bad++;
+    // UNSUPPORTED (Mermaid kinds the theme does not colour) likewise: reported, never PASS, not a failure.
+    if (!r.status.startsWith("PASS") && r.status !== "DIFF" && r.status !== "UNSUPPORTED") bad++;
   }
 }
 if (args.out) writeFileSync(args.out, `${JSON.stringify({ measuredAt: new Date().toISOString(), environment, selfTest, results }, null, 1)}\n`);
 console.log(selfTest
   ? (bad ? `\n${bad} self-test case(s) did NOT produce the declared outcome` : `\nall ${results.length} self-test results produced the declared outcome`)
-  : (bad ? `\n${bad} runtime check(s) FAILED` : `\nall ${results.length} runtime checks passed or are reported as DIFF (${results.filter((r) => r.status === "PASS (EMULATED)").length} PASS (EMULATED), ${results.filter((r) => r.status === "DIFF").length} DIFF; Obsidian ${environment.appVersion}, Electron ${environment.electron})`));
+  : (bad ? `\n${bad} runtime check(s) FAILED` : `\nall ${results.length} runtime checks passed or are reported as DIFF / UNSUPPORTED (${results.filter((r) => r.status === "PASS (EMULATED)").length} PASS (EMULATED), ${results.filter((r) => r.status === "DIFF").length} DIFF, ${results.filter((r) => r.status === "UNSUPPORTED").length} UNSUPPORTED; Obsidian ${environment.appVersion}, Electron ${environment.electron})`));
 process.exit(bad ? 1 : 0);
