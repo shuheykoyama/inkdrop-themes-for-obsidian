@@ -1,0 +1,16 @@
+N/A ui.toggle.on-user-accent [solarized-dark, phone, user-accent] (desktop check) -- not on a phone: element not found
+N/A ui.font.user-override-first [solarized-dark, phone, user-font] (desktop check) -- not on a phone: element not displayed (size [0,0])
+UNSUPPORTED mm.reading.unsupported [solarized-dark, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.live.unsupported [solarized-dark, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.reading.unsupported [solarized-dark, phone, mermaid re-render] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.light.reading.unsupported [solarized-dark, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+UNSUPPORTED mm.light.live.unsupported [solarized-dark, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+N/A ui.toggle.on-user-accent [kanagawa-dragon, phone, user-accent] (desktop check) -- not on a phone: element not found
+N/A ui.font.user-override-first [kanagawa-dragon, phone, user-font] (desktop check) -- not on a phone: element not displayed (size [0,0])
+UNSUPPORTED mm.reading.unsupported [kanagawa-dragon, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.live.unsupported [kanagawa-dragon, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.reading.unsupported [kanagawa-dragon, phone, mermaid re-render] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.light.reading.unsupported [kanagawa-dragon, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+UNSUPPORTED mm.light.live.unsupported [kanagawa-dragon, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+
+910 results on iPhone 12 Pro, iOS 27.0, Obsidian 1.14.4 (389): PASS 795, FAIL 0, DIFF 101, UNSUPPORTED 10, N/A 4 (desktop checks measured on the device: 404)

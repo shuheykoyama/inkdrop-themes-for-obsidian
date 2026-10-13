@@ -1845,3 +1845,150 @@ RV5 で直した Reading view の 4 クラス（Python の `builtin`・`decorato
 ### 6.22 次の作業
 
 工程 9 のレビューを待つ。工程 10 には進まない。
+
+### 6.23 工程 10: モバイル実機（2026-10-13 実装、レビュー待ち）
+
+工程 9 は `37bb5b5` で承認済み。工程 9 から引き継いだ決定（Mermaid は Flowchart と Sequence だけで、他の 7 図種は UNSUPPORTED。KD のガターの右線はなし。構文の DIFF 606 件は既知）は変えていない。V-39 は実施していない（Inkdrop は起動していない）。
+
+**工程 9 の記述の訂正**（Mermaid のカスケード）
+
+- §6.21 と `components/mermaid.css` の説明では、利用者の `style`・`classDef` を「`!important` 付きのインライン、または ID で絞った規則」で出すと書いていた。
+- Mermaid 11.13.0 で測り直すと、`style`・`classDef` はどちらも、図形とラベルへの `!important` 付きのインラインで出る。`classDef` は加えて、ID で絞った `!important` 付きの規則も出す。
+- テーマの規則に負けないのは、重要度付きのインラインが、スタイルシートの重要度付きの規則にすべて勝つため。ID で絞った規則が勝つからではない。
+- §6.21 の 2 か所、`mermaid.css` の説明、許可リストの理由の文を直した。CSS の規則と判定の結果は変わらない。
+
+**実機の範囲**（ユーザーの判断）
+
+| 端末 | 状態 | 備考 |
+|---|---|---|
+| iPhone 12 Pro（iOS 27.0。Obsidian は 1 回目 1.14.4、2 回目 1.14.5） | **PASS（device）** | 下の 2 回の実機の実行 |
+| iPad | **BLOCKED（今回は対象外）** | ユーザーの判断で、今回は検証しない |
+| Android（phone / tablet） | **BLOCKED** | 端末も adb もない |
+
+- 端末の UA は `iPhone OS 18_7` のまま変わらない（iOS が UA を固定している）。OS の版は Xcode の `devicectl` の値（27.0）を正とした。
+- 2 回目の実行の前に、iPhone の Obsidian が 1.14.5 に自動で更新されていた（結果ファイルの `apiVersion` と UA で確認）。デスクトップの検証は 1.14.4 のまま。
+- ユーザーの普段の Vault・Sync・iCloud には触れていない。テスト専用の Vault（`InkdropThemeTest`）を「このiPhone内」に置いて使った。
+
+**検証の方法: テストキット**（`tests/device/`）
+
+- iOS の Obsidian には、デスクトップの CDP のような外からの操作の口がない。そのため、検査をテスト Vault の中のプラグインとして端末へ持ち込んだ。
+- `build-kit.mjs` がテスト Vault（両テーマと自前のプラグイン `ink-device-check`。ネットワークには触れない）と zip を作る。
+  - プラグインは、デスクトップのランナーと同じページ側のスクリプト（`probe.js`・`code-tokens.js`・`mermaid-dump.js`）を、同じ仕様（`tests/spec/`）のジョブで実行する。
+  - 「Run checks」は測定値を、「Screenshot tour」は 38 ステップの表示と撮影の時間帯を、Vault の `device-results/` に書く。
+  - デスクトップの検査のうち、スマホにもある状態（Markdown のビュー、エディタ、利用者の設定、クイックスイッチャー）のものは、モバイルの仕様の候補として実機でも測る（`extra`）。
+- 判定は Mac の `judge.mjs` で行う。デスクトップのランナーと同じ判定のコード（`tests/runtime/lib/checks.mjs`、`syntax.mjs`、`mermaid.mjs`）を使う。
+  - そのため、`run.mjs` の判定の関数を `lib/checks.mjs` に移した。デスクトップの判定は変えていない。
+  - `extra` の検査で、要素がスマホにない、または表示されていないものは **N/A**（FAIL ではない）とした。
+  - 実機の結果は PASS（device）で、エミュレーションの結果を実機の PASS にすることはない。`device.environment` は、モバイルのクラスがあって `emulate-mobile` がないことを確かめる。Mac のエミュレーションで試運転すると、この検査がすべて FAIL する（試運転の結果は `evidence/phase3-step10/dry-run/`）。
+- `probe.js` はアプリの版を Electron から読んでいた。端末には Electron がないので、プラグインが API から渡す値を先に使う。`mermaid-dump.js` は、起動直後の端末では Mermaid がまだ読み込まれていないため、先に図を 1 つ描かせる。
+
+**1 回目の実機の実行**（AirDrop での受け渡し、iOS の Obsidian 1.14.4）
+
+- **設定フォルダの名前**: 最初のキットは設定フォルダを `ink-test-config` にしていた。Obsidian の設定フォルダ名はドットで始まる必要があり、ユーザーが `.ink-test-config` と入力したため、キットの中身と食い違ってプラグインが出なかった。キットを標準の `.obsidian` に直した。「ファイル」アプリでは見えないが、展開すれば残る。
+- 結果: 902 件。PASS 783、FAIL 6、DIFF 101、UNSUPPORTED 10、N/A 2。**モバイルの検査はすべて PASS** で、FAIL 6 件はすべて `extra` だった。
+  - `leak.quick-switcher.opaque`（両テーマ）: モバイルのクイックスイッチャーは app.css の `.is-mobile .prompt` が 90% の透明度にする（`color-mix(… var(--blur-opacity-m) …)`）。もとの色はテーマの `--ink-modal-box-content-background`。→ ユーザーの判断（下）。
+  - `ui.font.user-override-first`（両テーマ）: 測る要素がスマホでは表示されない。→ N/A の扱いを加えた。
+  - `md.reading.hr-width`（両テーマ）: 区切り線は 0.25em。実機の文字の大きさが約 13.67 px のため 3.33 px になる（デスクトップは 16 px で 4 px）。→ 検査を em 単位にした（下）。
+- 撮影はユーザーが行い（約 40 枚）、撮影の時刻を時間帯と照らして各ステップに対応づけた。すべて目視で確認した。
+  - **Properties の枠**が両テーマとも `#111` になっていた。app.css の `.is-mobile .metadata-content` が `--background-primary-alt` で塗り、それが `.is-mobile.theme-dark` の `--color-base-10`（`#111`）を指すため。デスクトップでは目立たないが、テーマの色ではない。
+  - フローティングのナビゲーションバーを、テーマの不透明な色（当時の実装）と Obsidian 標準の半透明で並べた（`device-run1/navbar-compare.png`）。KD は不透明にすると、バーがページより暗くなる。
+  - コードブロックの言語名の表示が本文に重なる箇所は、Obsidian の絶対配置による（推定。テーマを外した比較はしていない）。
+
+**ユーザーの決定**（09 §0.1.1）
+
+| 事項 | 決定 | 実装 |
+|---|---|---|
+| フローティングのナビゲーションバー | **B: Obsidian 標準**（半透明。色はテーマの色から作られる） | `platform/mobile.css` の規則を `.is-phone:not(.is-floating-nav)` に限り、フローティングでないバーだけノートリスト色にする |
+| モバイルのクイックスイッチャー | **iOS 版 Obsidian に合わせる**（90%） | テーマでは何もしない。モバイルの検査 `mobile.prompt.background` で 90% を確かめ、デスクトップの `leak.quick-switcher.opaque` はキットで置き換える |
+| `--background-primary-alt` | **Inkdrop のプレビューのコードブロックの面** | `mapping/workspace.css` |
+| `--background-secondary-alt` | **Inkdrop の popup 色** | 同上 |
+
+- `--background-primary-alt` は、モバイルの Properties の枠、設定の項目、ファイルの埋め込み、Bases などで使われる。`--background-secondary-alt` は、カード、空の脚注のポップオーバー、PDF の注釈のポップアップなど。
+- デスクトップでもこの 2 つの変数の値は変わる。デスクトップの検査（`ui.surface-alt.*`）を加え、他の検査が変わらないことを確かめた。
+
+**検査の追加と変更**（`tests/spec/`）
+
+- `mobile.navbar.floating`（phone）: Obsidian 標準の表現で、`--interactive-normal`（モバイルでは `--background-secondary` に白 10% を混ぜた色）の 65%。仕様にこの合成を書けるよう、色の検査に `mixWhite`・`alpha` を加えた。
+- `mobile.navbar.background` は、フローティングでないバー（`phone-nonfloating`）だけにした。
+- `mobile.prompt.background`（tablet・phone）: `--ink-modal-box-content-background` の 90%。
+- `mobile.md.reading.properties`: Reading view の Properties の枠が、プレビューのコードブロックの面になる。
+- `md.reading.hr-width` と `mobile.md.reading.hr-width`: 新しい種類 `em` で、要素の文字の大きさに対する比（0.25）として判定する（±0.5 px）。
+- `ui.surface-alt.primary-alt`・`.secondary-alt`（デスクトップ・tablet・phone）。
+- Safari の計算値は `color(srgb r g b / a)` の形で返る。色の読み取りがこれも読めるようにした。
+- 静的テストの「モバイルの範囲」の判定は、`.is-phone:not(...)` のような擬似クラスの後置きも許すようにした（陰性テストの対象も合わせて直した）。
+
+**2 回目の実機の実行**（ケーブル、iOS の Obsidian 1.14.5）
+
+- ユーザーの希望（手作業を減らす）で、iPhone を Mac にケーブルでつないだ。
+  - `xcrun devicectl` で接続を読み取った（有線、ペアリング済み）。読み取りだけ。
+  - Safari の Web インスペクタでテスト Vault のページに入り、値を照合した（下）。iPhone の Web インスペクタの設定はユーザーがオンにした。
+  - **pymobiledevice3 v11.29.0**（Python、新しい依存。`uv tool install` でリポジトリの外に入れた。消すときは `uv tool uninstall pymobiledevice3`）を使った。用途は次の 2 つ。
+    - Apple のトンネルに相乗りする `remote start-tunnel --native`（root 不要）を通した `developer dvt screenshot` でのスクリーンショット
+    - Web インスペクタを CDP として開く `webinspector cdp`
+  - これらを `tests/device/cable.mjs`（Node）がまとめる。どのコマンドも、開いている Vault が `InkdropThemeTest` であることを確かめてから動く。手作業は、キットの取り込みと、撮影ツアーのキーボードの 2 回のタップだけになった。
+  - Safari の Web インスペクタのプロトコルは `awaitPromise` を無視するので、値をページ内に置いてから読み出す形にした。
+- **古いプラグインが残っていた**: キットを入れ替えた後も、iPhone の Obsidian は約 1 時間、再読み込みされていなかった。最初の「Run checks」は古いプラグイン（ジョブの CSS の長さが前のキットのもの）のまま動いた。判定で気づき、`cable.mjs reload` で再読み込みしてから測り直した。前の結果は判定から外した。→ キットを入れ替えたら再読み込みする手順にした。
+- **Web インスペクタでの照合**（Run checks とは別の読み取り）
+
+| 状態 | エディタの背景 | `--background-primary-alt` |
+|---|---|---|
+| テーマなし（Obsidian の既定） | `rgb(0, 0, 0)`（`--color-base-00`） | `#111`（`--color-base-10`） |
+| SD | `rgb(0, 33, 41)` = `#002129` | `hsl(192deg 100% 11% / 40%)` = neutral-800 の 40% |
+| KD | `rgb(30, 29, 26)` = `#1e1d1a` | `hsl(0deg 4% 9% / 50%)` = black2 の 50% |
+
+- **結果**: 910 件。**PASS 795、FAIL 0**、DIFF 101、UNSUPPORTED 10、N/A 4（`extra` は 404 件）。
+
+| 検査 | SD | KD |
+|---|---|---|
+| `mobile.navbar.floating` | PASS `color(srgb 0.1 0.2584 0.298 / 0.65)` | PASS `color(srgb 0.18424 0.17776 0.17776 / 0.65)` |
+| `mobile.navbar.background`（フローティングでない） | PASS `rgb(0, 45, 56)` | PASS `rgb(24, 22, 22)` |
+| `mobile.prompt.background` | PASS `color(srgb 0 0.128 0.16 / 0.9)` | PASS `color(srgb 0.1177 0.11385 0.1023 / 0.9)` |
+| `mobile.md.reading.properties` | PASS `rgba(0, 45, 56, 0.4)` | PASS `rgba(24, 22, 22, 0.5)` |
+| `mobile.md.reading.hr-width` | PASS 3.333333 px（13.666667 px の 0.25em） | 同左 |
+
+- テーマの適用（`device.theme-applied`）、実機の環境（`device.environment`）、ドロワー、Markdown の 3 ビュー、エディタ（行番号とアクティブ行）、構文の色、Mermaid（Flowchart・Sequence と利用者の色。他の 7 図種は UNSUPPORTED）も、1 回目と同じくすべて PASS。DIFF 101 件は構文の忠実度で、デスクトップの DIFF と同じ種類。
+- N/A 4 件: `ui.toggle.on-user-accent`（スマホに要素がない）と `ui.font.user-override-first`（表示されない）。各テーマ 2 件ずつ。
+- **撮影**: 38 枚すべて、ケーブル経由で撮った。両テーマを並べてすべて目視で確認した。
+  - 37 枚は、撮影の開始と終了が、ツアーの記録にある各ステップの保持の時間帯に収まる。31 番は、終わりが時間帯を 0.06 秒過ぎた。画面はキーボードと KD の状態のままで、使える。
+  - Properties の枠がテーマの面になった。フローティングのバーは Obsidian 標準の半透明、フローティングでないバーはノートリスト色、クイックスイッチャーは 90% の半透明。
+  - 10・11・29・30 番（キーボードを出さないエディタのステップ）でも、キーボードが出たままになった。1 回目には出ていない。Web インスペクタの接続中は、プラグインがエディタにフォーカスするだけでキーボードが出るためと推定する（未確認）。行番号とアクティブ行は見えるので、撮り直していない。
+  - 29 番にはニュースアプリの通知が写り込んだ。証跡には入れていない。
+
+**デスクトップの回帰**（隔離インスタンス、Obsidian 1.14.4、最終のコード）
+
+| 環境 | self-test | 実行時テスト（全体 3581 件） |
+|---|---|---|
+| Electron 43.7.7 | 413 件すべて宣言どおり | FAIL 0（PASS 2208、PASS (EMULATED) 737、DIFF 606、UNSUPPORTED 30） |
+| Electron 39.5.1（1 回目） | 413 件すべて宣言どおり | FAIL 2: SD の `ui.popover.background`・`ui.tooltip.background`（要素が見つからない） |
+| Electron 39.5.1（2 回目） | — | FAIL 6: `ui.settings.active-item` 3 件（表示されない）、KD の `ed.fold.*` 3 件（要素が見つからない） |
+| Electron 39.5.1（3 回目） | — | FAIL 6: SD の Live Preview で `runner.ed-prepared`（ガターが準備されない）と、ガターの検査 5 件 |
+
+- 39.5.1 の FAIL は、回ごとに違う検査が、要素が見つからない・表示されない・準備できない形で落ちた。どれも他の回では PASS している。43.7.7 では 0 件。テーマの回帰ではなく、39.5.1 でのランナーの不安定さと判断した。工程 9 の `self.popover-open` の一時的な FAIL と合わせて、工程 11 に引き継ぐ。
+- 静的テスト（`npm test`、陰性テスト 48 件）、画面の陰性テスト（6 件）、クリーンルーム（静的 196 件 PASS、`dist/` の 4 ファイルがローカルのビルドと同一）はすべて PASS。
+- 構文の DIFF 606 件・UNSUPPORTED 30 件は工程 9 から変わらない。不透明のデスクトップの色、translucent の CSS がモバイルに漏れないこと、工程 5 の左上の角、工程 7 のアクティブ行も検査に含まれ、PASS した。
+
+**スクリプトの言語**
+
+| スクリプト | 言語 | 理由 |
+|---|---|---|
+| `tests/device/build-kit.mjs`・`judge.mjs`、`tests/runtime/lib/checks.mjs` | Node | デスクトップのランナーと判定のコードを共有するため |
+| キットのプラグイン（`build-kit.mjs` が生成） | ブラウザの JS | 端末の Obsidian の中でページ側のスクリプトを実行するため |
+| `tests/device/cable.mjs` | Node | CDP（Web インスペクタ）の操作と、pymobiledevice3 の呼び出し |
+| pymobiledevice3 | Python（外部ツール） | ケーブル経由のスクリーンショットと Web インスペクタの橋渡し。リポジトリには入れていない |
+| 作業用の試運転・撮影の照合（リポジトリには入れていない） | Node・fish | 隔離インスタンスの操作と、ローカルの手順の補助 |
+
+**未検証事項とリスク**
+
+- **リリースの要件との差**: Q-D10 は iOS・Android の phone と tablet の実機検証を必須にしている。今回 PASS（device）なのは iPhone だけ。iPad（今回は対象外）と Android（端末がない）は BLOCKED で、正式サポートを宣言する前に次のどれかが要る。
+  - (a) iPad と Android の端末を用意して、同じキットで検証する（キットはそのまま使える。Android はケーブル側の自動化がないので、AirDrop の代わりのファイルの受け渡しが要る）。
+  - (b) 実機検証が終わるまで、iPad と Android を「互換性を考慮するが保証しない」扱いにする（Q-D10 の範囲の変更で、ユーザーの判断が要る）。
+  - (c) 外部の実機サービスを使う（費用と、テスト Vault を外部に出すことの判断が要る）。
+- iOS の Obsidian の版は 1.14.5、デスクトップは 1.14.4 で検証した。版の差による影響は見つかっていない。
+- 10・11・29・30 番の撮影でキーボードが出た理由は推定で、確かめていない。
+- タブレットのクイックスイッチャー（`mobile.prompt.background` の tablet）は、エミュレーションでしか確かめていない（PASS (EMULATED)）。
+- 39.5.1 のランナーの不安定さ（工程 11 へ）。
+- 引き継ぎ: V-39（承認待ち）、RV4 からの残り（V-35、`ed.unrendered`、`.suggestion-container`、RV3 の Markdown の差、Windows・Linux）。
+
+### 6.24 次の作業
+
+工程 10 のレビューを待つ。工程 11 には進まない。

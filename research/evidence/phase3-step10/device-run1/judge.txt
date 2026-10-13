@@ -1,0 +1,20 @@
+N/A ui.toggle.on-user-accent [solarized-dark, phone, user-accent] (desktop check) -- not on a phone: element not found
+FAIL leak.quick-switcher.opaque [solarized-dark, phone, quick-switcher-open] (desktop check) -- value not a colour: "color(srgb 0 0.128 0.16 / 0.9)"
+FAIL ui.font.user-override-first [solarized-dark, phone, user-font] (desktop check) -- element not displayed (size [0,0])
+FAIL md.reading.hr-width [solarized-dark, phone, md-reading] (desktop check) -- "3.333333px" != "4px"
+UNSUPPORTED mm.reading.unsupported [solarized-dark, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.live.unsupported [solarized-dark, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.reading.unsupported [solarized-dark, phone, mermaid re-render] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.light.reading.unsupported [solarized-dark, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+UNSUPPORTED mm.light.live.unsupported [solarized-dark, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+N/A ui.toggle.on-user-accent [kanagawa-dragon, phone, user-accent] (desktop check) -- not on a phone: element not found
+FAIL leak.quick-switcher.opaque [kanagawa-dragon, phone, quick-switcher-open] (desktop check) -- value not a colour: "color(srgb 0.1177 0.11385 0.1023 / 0.9)"
+FAIL ui.font.user-override-first [kanagawa-dragon, phone, user-font] (desktop check) -- element not displayed (size [0,0])
+FAIL md.reading.hr-width [kanagawa-dragon, phone, md-reading] (desktop check) -- "3.333333px" != "4px"
+UNSUPPORTED mm.reading.unsupported [kanagawa-dragon, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.live.unsupported [kanagawa-dragon, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.reading.unsupported [kanagawa-dragon, phone, mermaid re-render] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.light.reading.unsupported [kanagawa-dragon, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+UNSUPPORTED mm.light.live.unsupported [kanagawa-dragon, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+
+902 results on iPhone 12 Pro, iOS 27.0, Obsidian 1.14.4 (389): PASS 783, FAIL 6, DIFF 101, UNSUPPORTED 10, N/A 2 (desktop checks measured on the device: 406)

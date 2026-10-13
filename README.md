@@ -59,6 +59,14 @@ the way Inkdrop does (Mermaid's base theme, themeVariables from the theme's `--i
 `tests/spec/mermaid.json`) and compares every element's colours with Obsidian's themed SVG; kinds other than
 Flowchart and Sequence are reported as UNSUPPORTED. The isolated test vault is marked as trusted for Mermaid
 (Obsidian 1.14 asks once per vault) by the runner itself (research/evidence/phase3-step9/README.md).
+Devices (Q-D10): `node tests/device/build-kit.mjs <out_dir>` builds a test vault (`InkdropThemeTest`, both themes
+and a measuring plugin of its own) and its zip. On the device, open the unzipped folder as a vault of its own,
+turn off restricted mode, enable "Inkdrop theme device check" and run its "Run checks" and "Screenshot tour"
+commands; judge the results file on the Mac with
+`node tests/device/judge.mjs <results-*.json> --out <report.json> --label "<device, OS, app>"`. With an iPhone
+on a cable and pymobiledevice3 (`uv tool install pymobiledevice3`, outside the repo),
+`node tests/device/cable.mjs` runs both commands, takes the screenshots and copies the files back; reload
+Obsidian (`cable.mjs <port> reload`) after replacing the kit (research/evidence/phase3-step10/README.md).
 
 | Path | Contents |
 |---|---|
@@ -70,4 +78,5 @@ Flowchart and Sequence are reported as UNSUPPORTED. The isolated test vault is m
 | `tests/static/` | S1-S6, lint allow-list, negative self-tests |
 | `tests/spec/` | Required items and runtime checks |
 | `tests/runtime/` | Isolated Obsidian runner |
+| `tests/device/` | Device kit, its judge and the cable driver |
 | `tests/visual/` | Region sampler for native screenshots |
