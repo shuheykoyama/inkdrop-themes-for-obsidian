@@ -2641,8 +2641,8 @@
       "appearance": [
         "opaque"
       ],
-      "kind": "text",
-      "value": "4px"
+      "kind": "em",
+      "value": "0.25"
     },
     {
       "id": "md.reading.codeblock",
@@ -3629,6 +3629,30 @@
         "opaque"
       ],
       "token": "--ink-editor-background"
+    },
+    {
+      "id": "ui.surface-alt.primary-alt",
+      "requirement": "ui.surface-alt",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-content",
+      "document": "main",
+      "property": "--background-primary-alt",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-mde-preview-codeblock-background-color"
+    },
+    {
+      "id": "ui.surface-alt.secondary-alt",
+      "requirement": "ui.surface-alt",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-content",
+      "document": "main",
+      "property": "--background-secondary-alt",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-popup-background"
     }
   ]
 }

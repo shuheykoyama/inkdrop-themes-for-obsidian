@@ -9,6 +9,13 @@
 .theme-dark {
   --background-primary: var(--ink-editor-background);
   --background-secondary: var(--ink-note-list-bar-background);
+
+  /* The surface a little off the editor (Properties on mobile, setting items, file embeds, Bases, ...) =
+     Inkdrop's preview code block surface; the raised cards and popups (.card, empty footnote popovers, PDF
+     annotation popups) = Inkdrop's popup. Without these, mobile paints app.css's .is-mobile.theme-dark
+     --color-base-10 (#111) there (step 10, research/14 §6.23). */
+  --background-primary-alt: var(--ink-mde-preview-codeblock-background-color);
+  --background-secondary-alt: var(--ink-popup-background);
   --ribbon-background: var(--ink-sidebar-background);
   --ribbon-background-collapsed: var(--ink-sidebar-background);
   --titlebar-background: var(--ink-note-list-bar-background);

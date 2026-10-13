@@ -14,10 +14,11 @@
   --titlebar-background-focused: var(--ink-note-list-bar-background);
 }
 
-/* Phone navigation bar (not displayed on tablets). .is-phone .mod-raised paints var(--raised-background);
-   app.css resets it with .is-phone:not(.is-floating-nav) .mobile-navbar (0,3,0), so this needs at least
-   (0,3,0); with .theme-dark it has (0,4,0). Whether Obsidian's translucent look of the floating bar is kept is an
-   open decision (research/09 §0.1.3); this keeps the confirmed colour. */
-.theme-dark.is-mobile .mobile-navbar.mod-raised {
+/* Phone navigation bar (not displayed on tablets). .is-phone .mod-raised paints var(--raised-background).
+   The floating bar keeps Obsidian's own translucent look (--blur-background, from the theme's colours), as
+   the quick switcher and menus keep their 90% (research/09 §0.1.3, decided in step 10). The bar that does not
+   float = Inkdrop note list: app.css sets it with .is-phone:not(.is-floating-nav) .mobile-navbar (0,3,0);
+   this has (0,4,0). */
+.theme-dark.is-phone:not(.is-floating-nav) .mobile-navbar {
   --raised-background: var(--ink-note-list-bar-background);
 }

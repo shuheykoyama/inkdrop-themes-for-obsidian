@@ -89,7 +89,7 @@ const CASES = [
   { name: "translucent check on an emulated platform", fail: /^FAIL S6 runtime checks are well formed -- .*translucent exists on desktop/m,
     mutate: (r) => edit(r, "tests/spec/runtime/mobile.json", '"platform": ["tablet", "phone"],\n      "appearance": ["opaque"]', '"platform": ["tablet", "phone"],\n      "appearance": ["opaque", "translucent"]') },
   { name: "unknown platform", fail: /^FAIL S6 runtime checks are well formed -- .*platform must list/m,
-    mutate: (r) => edit(r, "tests/spec/runtime/mobile.json", '"platform": ["phone", "phone-nonfloating"],', '"platform": ["watch"],') },
+    mutate: (r) => edit(r, "tests/spec/runtime/mobile.json", '"platform": ["phone-nonfloating"],', '"platform": ["watch"],') },
   // --- step 4: translucent ---
   { name: "!important removed from the tab-strip override (would lose to app.css)", fail: /^FAIL S5 solarized-dark no stale allow-list entries/m,
     mutate: (r) => edit(r, "src/common/platform/translucent.css", "background-color: var(--ink-note-list-bar-background-acrylic) !important;", "background-color: var(--ink-note-list-bar-background-acrylic);") },

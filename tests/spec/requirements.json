@@ -128,7 +128,7 @@
     {
       "id": "qd1.mobile-navigation",
       "qd": "Q-D1",
-      "description": "Phone navigation bar = Inkdrop note list background (floating and non-floating); tablets have none",
+      "description": "Phone navigation bar: not floating = Inkdrop note list background; floating = Obsidian's own translucent bar, derived from the theme's colours (step 10 decision, research/09 §0.1.3); tablets have none",
       "platforms": [
         "phone",
         "tablet"
@@ -256,6 +256,16 @@
         "desktop"
       ],
       "mandatory": false
+    },
+    {
+      "id": "mobile.prompt",
+      "qd": "Q-D10",
+      "description": "Mobile quick switcher keeps Obsidian's iOS look: 90% of the theme's modal box colour (step 10 decision)",
+      "platforms": [
+        "phone",
+        "tablet"
+      ],
+      "mandatory": true
     },
     {
       "id": "qd22.real-fullscreen",
@@ -577,6 +587,17 @@
         "reason": "Inkdrop has no in-note property form, so there are no values to check against (06 E31)",
         "risk": "Property labels and inputs inherit the editor scope's text colour (KD: the editor foreground) and the UI borders; a mismatch with Inkdrop cannot exist, but their look is untested"
       }
+    },
+    {
+      "id": "ui.surface-alt",
+      "qd": "Q-D1",
+      "description": "--background-primary-alt (Properties on mobile, setting items, file embeds, Bases) = Inkdrop preview code block surface; --background-secondary-alt (cards, popups) = Inkdrop popup (step 10 decision)",
+      "platforms": [
+        "desktop",
+        "tablet",
+        "phone"
+      ],
+      "mandatory": true
     },
     {
       "id": "qd23.active-line",

@@ -281,7 +281,7 @@ try {
   // full screen (the condition app.css uses), and every rule of mobile.css only on mobile.
   const SCOPES = {
     "src/common/platform/translucent.css": /^(?:\.theme-dark)?\.is-translucent:not\(\.is-fullscreen\)(?:[ .]|$)/,
-    "src/common/platform/mobile.css": /^(?:\.theme-dark)?\.is-(?:mobile|tablet|phone)(?:[ .]|$)/,
+    "src/common/platform/mobile.css": /^(?:\.theme-dark)?\.is-(?:mobile|tablet|phone)(?:[ .:]|$)/,
   };
   for (const [rel, re] of Object.entries(SCOPES)) {
     const f = path.join(root, rel);
