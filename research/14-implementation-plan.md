@@ -1696,7 +1696,7 @@ RV5 で直した Reading view の 4 クラス（Python の `builtin`・`decorato
   - 図の種類は SVG の `aria-roledescription` に入る（`flowchart-v2`・`sequence`・`class`・`stateDiagram`・`gantt`・`pie`・`er`・`gitGraph`・`mindmap`）。
   - **ID は描画ごとに変わる**（`m<16 桁の 16 進>`）。シーケンス図のマーカーの ID は `<ID>-arrowhead` などになる。クラス名と `aria-roledescription` は再描画しても同じ。
 - **色の置き場所**: SVG の中の `<style>` に、図の ID で絞った規則として入る（`#m… { fill: #333 }`、`#m… .node rect { fill; stroke }` など。詳細度 1-0-0 以上）。
-  - 要素のインラインの `style` は次のものだけ: Flowchart のラベルの `div` の配置、利用者の `style`・`classDef`（`!important` 付きのインライン、または ID で絞った規則）、`linkStyle`（`!important` なしのインライン）。
+  - 要素のインラインの `style` は次のものだけ: Flowchart のラベルの `div` の配置、利用者の `style`・`classDef`（どちらも図形とラベルへの `!important` 付きのインライン。`classDef` は加えて ID で絞った `!important` 付きの規則 `#<ID> .<class>>*` なども出る）、`linkStyle`（`!important` なしのインライン）。（工程 10 で訂正。当初は「`!important` 付きのインライン、または ID で絞った規則」と書いていた。§6.23）
   - `fill`・`stroke` の属性があるのは次のものだけ: Sequence の一部のマーカー（`stick*ArrowHead` は黒の属性）、`linkStyle` で色を付けたエッジ専用の矢じり（`…-pointEnd__0f0` に `stroke`・`fill` 属性）。
 - **ラベル**: Flowchart のノード・エッジ・クラスタのラベルは HTML（`foreignObject > div > span.nodeLabel > p`、エッジは `span.edgeLabel`、背景は `div.labelBkg`）。Sequence はすべて SVG の `text`。
 - **themeVariables と要素の対応**（`v10/sentinel.json`）: themeVariable ごとに別の色を与えて描き、各要素の色から逆引きした。
@@ -1723,7 +1723,7 @@ RV5 で直した Reading view の 4 クラス（Python の `builtin`・`decorato
   - 他の図種・画像・アイコンの SVG には触れない。
 - 色の宣言は 40 件すべて `!important`（上の詳細度の理由による）。許可リストに理由付きで 40 件を載せた。
 - 利用者の色は残す。
-  - `style`・`classDef` は、Mermaid が `!important` 付きのインラインか ID で絞った規則で出すので、テーマの規則に勝つ。
+  - `style`・`classDef` は、Mermaid がどちらも `!important` 付きのインラインで出す。重要度付きのインラインは、スタイルシートの重要度付きの規則にすべて勝つ（`classDef` の ID で絞った規則も `!important` 付きで、詳細度もテーマの規則より高い）。そのため、テーマの規則には勝つ。（工程 10 で訂正。§6.23）
   - `linkStyle` の線は `:not([style*="stroke:"])` で、その専用の矢じりは `:not([stroke])` で除外した。
 - Mermaid のキャメルケースのクラス（`nodeLabel` など）は、公式 lint の規則に合わせて `[class~="nodeLabel"]` と書いた（詳細度は同じ）。
 - 図の背景（`background`）は、Inkdrop でも `transparent` で、Obsidian の SVG にも背景はない。

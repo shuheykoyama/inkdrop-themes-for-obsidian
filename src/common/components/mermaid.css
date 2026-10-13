@@ -9,10 +9,14 @@
 
    Scope: only the SVGs Mermaid marks as these two diagrams (aria-roledescription, set by Mermaid itself and
    the same on every render; the ids change), in Reading view and in Live Preview (both inside
-   .markdown-rendered). Other diagram types keep Obsidian's inverted rendering. A user's own colours stay:
-   `style` / `classDef` are emitted with !important inline or with the diagram id, and edges with a
-   `linkStyle` stroke (and their arrowheads, drawn with stroke / fill attributes) are left out below. Mermaid's camelCase classes are written [class~="nodeLabel"] (the
-   official lint wants kebab-case class selectors; the specificity is the same). */
+   .markdown-rendered). Other diagram types keep Obsidian's inverted rendering. A user's own colours stay
+   (measured on Mermaid 11.13.0): `style` and `classDef` are both emitted as inline declarations with
+   !important on the shape and the label (`classDef` also as #<id> .<class> rules with !important), and an
+   important inline declaration beats any important stylesheet rule (the id-scoped ones also have the higher
+   specificity). `linkStyle` is emitted inline without !important, which the !important rules below would
+   beat, so edges with a `linkStyle` stroke (and their arrowheads, drawn with stroke / fill attributes) are
+   left out below. Mermaid's camelCase classes are written [class~="nodeLabel"] (the official lint wants
+   kebab-case class selectors; the specificity is the same). */
 
 /* No inversion for the two diagrams: their colours are set here. */
 .theme-dark .markdown-rendered .mermaid > svg:is([aria-roledescription="flowchart-v2"], [aria-roledescription="sequence"]) {

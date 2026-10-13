@@ -91,7 +91,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg:is([aria-roledescription=\"flowchart-v2\"], [aria-roledescription=\"sequence\"])",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -100,7 +100,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"flowchart-v2\"] .node :is(rect, circle, ellipse, polygon, path)",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -109,7 +109,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"flowchart-v2\"] .node :is(rect, circle, ellipse, polygon, path)",
       "property": "stroke",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -118,7 +118,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"flowchart-v2\"] .cluster rect",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -127,7 +127,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"flowchart-v2\"] .cluster rect",
       "property": "stroke",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -136,7 +136,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"flowchart-v2\"] .cluster-label :is(span, p)",
       "property": "color",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -145,7 +145,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"flowchart-v2\"] .cluster-label text",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -154,7 +154,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"flowchart-v2\"] :is(.label, [class~=\"nodeLabel\"], span[class~=\"edgeLabel\"])",
       "property": "color",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -163,7 +163,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"flowchart-v2\"] :is(.label, [class~=\"nodeLabel\"], span[class~=\"edgeLabel\"])",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -172,7 +172,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"flowchart-v2\"] :is(.node, [class~=\"edgeLabel\"]) .label text",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -181,7 +181,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"flowchart-v2\"] .flowchart-link:not([style*=\"stroke:\"])",
       "property": "stroke",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -190,7 +190,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"flowchart-v2\"] :is(.marker, [class~=\"arrowMarkerPath\"]:not([stroke]))",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -199,7 +199,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"flowchart-v2\"] :is(.marker, [class~=\"arrowMarkerPath\"]:not([stroke]))",
       "property": "stroke",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -208,7 +208,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"flowchart-v2\"] :is([class~=\"edgeLabel\"], [class~=\"edgeLabel\"] p)",
       "property": "background-color",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -217,7 +217,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"flowchart-v2\"] [class~=\"labelBkg\"]",
       "property": "background-color",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -226,7 +226,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"flowchart-v2\"] [class~=\"edgeLabel\"] rect",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -235,7 +235,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] line",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -244,7 +244,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] line",
       "property": "stroke",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -253,7 +253,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] :is(.actor, .actor-man circle)",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -262,7 +262,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] :is(.actor, .actor-man circle)",
       "property": "stroke",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -271,7 +271,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] text.actor > tspan",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -280,7 +280,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] .actor-line",
       "property": "stroke",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -289,7 +289,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] :is([class~=\"messageLine0\"], [class~=\"messageLine1\"])",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -298,7 +298,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] :is([class~=\"messageLine0\"], [class~=\"messageLine1\"])",
       "property": "stroke",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -307,7 +307,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] marker:is([id$=\"-arrowhead\"], [id$=\"-crosshead\"]) path",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -316,7 +316,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] marker:is([id$=\"-arrowhead\"], [id$=\"-crosshead\"]) path",
       "property": "stroke",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -325,7 +325,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] marker[id$=\"-sequencenumber\"]",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -334,7 +334,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] [class~=\"messageText\"]",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -343,7 +343,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] [class~=\"sequenceNumber\"]",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -352,7 +352,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] :is(.activation0, .activation1, .activation2)",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -361,7 +361,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] :is(.activation0, .activation1, .activation2)",
       "property": "stroke",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -370,7 +370,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] .note",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -379,7 +379,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] .note",
       "property": "stroke",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -388,7 +388,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] :is([class~=\"noteText\"], [class~=\"noteText\"] > tspan)",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -397,7 +397,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] [class~=\"loopLine\"]",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -406,7 +406,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] [class~=\"loopLine\"]",
       "property": "stroke",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -415,7 +415,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] [class~=\"labelBox\"]",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -424,7 +424,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] [class~=\"labelBox\"]",
       "property": "stroke",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -433,7 +433,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] :is([class~=\"labelText\"], [class~=\"labelText\"] > tspan)",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     },
     {
@@ -442,7 +442,7 @@
       "selector": ".theme-dark .markdown-rendered .mermaid > svg[aria-roledescription=\"sequence\"] :is([class~=\"loopText\"], [class~=\"loopText\"] > tspan)",
       "property": "fill",
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
-      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays, as Mermaid emits it with !important inline or id-scoped.",
+      "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
     }
   ]
