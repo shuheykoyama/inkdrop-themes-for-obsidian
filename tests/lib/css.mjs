@@ -161,12 +161,16 @@ export function hexToRgb(hex) {
   return { rgb: [n(0), n(2), n(4)], a: h.length === 8 ? n(6) / 255 : 1 };
 }
 
-// Computed-style colour string ("rgb(r, g, b)" / "rgba(r, g, b, a)") -> {rgb, a}; null if anything else
-// (e.g. "none", "", a gradient), so an unparseable value can never compare equal.
+// Computed-style colour string ("rgb(r, g, b)" / "rgba(r, g, b, a)", or "color(srgb r g b [/ a])" with 0-1
+// channels, as color-mix() computes) -> {rgb, a}; null if anything else (e.g. "none", "", a gradient), so an
+// unparseable value can never compare equal.
 export function parseComputedColor(s) {
-  const m = /^rgba?\(([\d.]+), ([\d.]+), ([\d.]+)(?:, ([\d.]+))?\)$/.exec(String(s ?? "").trim());
-  if (!m) return null;
-  return { rgb: [Number(m[1]), Number(m[2]), Number(m[3])], a: m[4] === undefined ? 1 : Number(m[4]) };
+  const v = String(s ?? "").trim();
+  const m = /^rgba?\(([\d.]+), ([\d.]+), ([\d.]+)(?:, ([\d.]+))?\)$/.exec(v);
+  if (m) return { rgb: [Number(m[1]), Number(m[2]), Number(m[3])], a: m[4] === undefined ? 1 : Number(m[4]) };
+  const c = /^color\(srgb ([\d.e-]+) ([\d.e-]+) ([\d.e-]+)(?: \/ ([\d.]+))?\)$/.exec(v);
+  if (c) return { rgb: [c[1], c[2], c[3]].map((x) => Number(x) * 255), a: c[4] === undefined ? 1 : Number(c[4]) };
+  return null;
 }
 
 // Any colour expression the palette uses, after var() substitution: hsl(H S% L% [/ A%]), rgb() / rgba() in

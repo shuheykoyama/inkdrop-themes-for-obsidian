@@ -150,14 +150,19 @@
     const visible = el.checkVisibility({ visibilityProperty: true, checkVisibilityCSS: true });
     // c.pseudo ("::before" / "::after" / "::marker"): the property of that pseudo-element of the element (e.g. the
     // corner app.css paints with .workspace-ribbon.mod-primary::before).
-    const value = doc.defaultView.getComputedStyle(el, c.pseudo ?? null).getPropertyValue(c.property).trim();
-    return { found: true, count: all.length, displayed: visible && r.width > 0 && r.height > 0, size: [Math.round(r.width), Math.round(r.height)], value: value === "" ? null : value };
+    const cs = doc.defaultView.getComputedStyle(el, c.pseudo ?? null);
+    const value = cs.getPropertyValue(c.property).trim();
+    // kind "em": the element's font size, which the value is relative to.
+    const fontSize = c.kind === "em" ? cs.fontSize : undefined;
+    return { found: true, count: all.length, displayed: visible && r.width > 0 && r.height > 0, size: [Math.round(r.width), Math.round(r.height)], value: value === "" ? null : value, fontSize };
   };
 
   window.__INK_MEASURE = async () => {
   const ua = navigator.userAgent;
   const out = {
-    appVersion: window.require("electron").ipcRenderer.sendSync("version"),
+    // Desktop: the app version from Electron's main process. A device has no Electron; the device runner
+    // (tests/device) passes the version it read through the plugin API instead.
+    appVersion: window.__INK.appVersion ?? window.require("electron").ipcRenderer.sendSync("version"),
     electron: (/Electron\/([\d.]+)/.exec(ua) || [])[1] ?? null,
     theme: app.customCss.theme,
     themeCssLength: app.customCss.styleEl.textContent.length,

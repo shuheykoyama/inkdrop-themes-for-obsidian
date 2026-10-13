@@ -66,6 +66,8 @@
     leaf.view.previewMode.rerender(true);
     await sleep(800);
   }
+  // Obsidian loads Mermaid with the first diagram it draws: on a fresh start (a device) draw one first.
+  for (let i = 0; i < 30 && !window.mermaid && blocks.length; i++) await scrollTo(blocks[0].line);
   // themeVariables from the theme's tokens, resolved to computed colours as Inkdrop's plugin resolves its own.
   const probe = document.body.createEl("span");
   const themeVariables = Object.fromEntries(Object.entries(tokens).map(([k, t]) => { probe.style.color = `var(--ink-mermaid-${t})`; return [k, getComputedStyle(probe).color]; }));

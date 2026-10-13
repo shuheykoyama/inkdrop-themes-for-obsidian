@@ -24,9 +24,10 @@ import { spawnSync } from "node:child_process";
 import { cpSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
-import { declarations, norm, parseColor, parseComputedColor, sameColor, substitute } from "../lib/css.mjs";
+import { declarations } from "../lib/css.mjs";
 import { checkErrors, loadChecks, loadRequirements, PLATFORMS, POINTER_STATES, runtimeSpecFiles, STATES, THEMES } from "../lib/spec.mjs";
 import { escape, evaluate, pointer, typeText } from "./lib/cdp.mjs";
+import { judge } from "./lib/checks.mjs";
 import { judgeMermaid } from "./lib/mermaid.mjs";
 import { judgeSyntax, syntaxVars } from "./lib/syntax.mjs";
 
@@ -48,53 +49,6 @@ if (specErrors.length) { console.error(`invalid spec:\n  ${specErrors.join("\n  
 // ---------- build, so the measured CSS is the current source ----------
 const built = spawnSync(process.execPath, [path.join(repo, "scripts/build.mjs")], { encoding: "utf8" });
 if (built.status !== 0) { console.error(built.stderr); process.exit(1); }
-
-// Expected colour of a check in one theme: a palette token resolved through the theme's own
-// declarations, or a literal value. null if it cannot be resolved (which makes the check FAIL).
-function expectedColor(c, defs) {
-  if (c.value !== undefined) return parseColor(c.value);
-  if (!defs.has(c.token)) return null;
-  return parseColor(substitute(defs.get(c.token), defs));
-}
-
-function judge(c, m, defs) {
-  const expect = c.expect ?? "match";
-  if (!m) return ["FAIL", "no measurement returned"];
-  if (expect === "absent") return m.found ? ["FAIL", `expected absent (${c.reason}), found ${m.count}`] : ["PASS", `absent: ${c.reason}`];
-  if (expect === "hidden") {
-    if (!m.found) return ["FAIL", `expected hidden (${c.reason}), element not found`];
-    return m.displayed ? ["FAIL", `expected hidden (${c.reason}), element is displayed ${m.size}`] : ["PASS", `hidden: ${c.reason}`];
-  }
-  if (!m.found) return ["FAIL", `element not found${m.error ? ` (${m.error})` : ""}`];
-  if (!m.displayed) return ["FAIL", `element not displayed (size ${JSON.stringify(m.size)})`];
-  const kind = c.kind ?? "color";
-  if (kind === "first-color" || kind === "var") {
-    // first-color: the first rgb()/rgba() in the value (box-shadow); var: a custom property holding a colour,
-    // parsed as rgb()/rgba() or, as Chromium keeps custom properties as written, as hsl().
-    const raw = m.value ?? "";
-    const got = kind === "first-color" ? parseComputedColor((/rgba?\([^)]*\)/.exec(raw) || [""])[0]) : parseColor(raw);
-    if (!got) return ["FAIL", `no colour in value: ${JSON.stringify(m.value)}`];
-    const exp = expectedColor(c, defs);
-    if (!exp) return ["FAIL", `expected colour unresolved (${c.token ?? c.value})`];
-    return sameColor(got, exp) ? ["PASS", m.value] : ["FAIL", `${m.value} != rgba(${exp.rgb.map((x) => x.toFixed(1))}, ${exp.a})`];
-  }
-  if (kind === "first-family") {
-    const first = (m.value ?? "").split(",")[0].trim().replace(/^["']|["']$/g, "");
-    const want = (c.value ?? "").replace(/^["']|["']$/g, "");
-    return first === want ? ["PASS", m.value.slice(0, 60)] : ["FAIL", `${first} != ${want}`];
-  }
-  if (kind === "text") {
-    const exp = c.value !== undefined ? c.value : defs.has(c.token) ? substitute(defs.get(c.token), defs) : null;
-    if (exp === null) return ["FAIL", `expected value unresolved (${c.token})`];
-    if (m.value === null) return ["FAIL", "value not readable"];
-    return norm(m.value) === norm(exp) ? ["PASS", m.value] : ["FAIL", `${JSON.stringify(m.value)} != ${JSON.stringify(exp)}`];
-  }
-  const got = parseComputedColor(m.value);
-  if (!got) return ["FAIL", `value not a colour: ${JSON.stringify(m.value)}`];
-  const exp = expectedColor(c, defs);
-  if (!exp) return ["FAIL", `expected colour unresolved (${c.token ?? c.value})`];
-  return sameColor(got, exp) ? ["PASS", m.value] : ["FAIL", `${m.value} != rgba(${exp.rgb.map((x) => x.toFixed(1))}, ${exp.a})`];
-}
 
 // ---------- run ----------
 const probe = readFileSync(path.join(repo, "tests/runtime/probe.js"), "utf8");
@@ -234,7 +188,7 @@ try {
           const todo = forPlatform.filter((c) => c.appearance.includes(appearance) && (c.state ?? "default") === state && (!c.themes || c.themes.includes(theme)));
           if (!todo.length) continue;
           const deferMeasure = POINTER_STATES.includes(state);
-          const input = { theme: manifest.name, translucent: appearance === "translucent", platform, state, deferMeasure, checks: todo.map(({ id, selector, pseudo, scrollTo, document, property }) => ({ id, selector, pseudo, scrollTo, document, property })) };
+          const input = { theme: manifest.name, translucent: appearance === "translucent", platform, state, deferMeasure, checks: todo.map(({ id, selector, pseudo, scrollTo, document, property, kind }) => ({ id, selector, pseudo, scrollTo, document, property, kind })) };
           let overlaysLeft = 0;
           let page = await evaluate(args.port, `window.__INK = ${JSON.stringify(input)};\n${probe}`);
           if (deferMeasure) {

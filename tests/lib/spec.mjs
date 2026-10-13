@@ -38,7 +38,10 @@ export const POINTER_STATES = ["menu-open", "popover-open", "tooltip-open", "ed-
 // in the value (e.g. the colour of a box-shadow); var: a custom property whose computed value is a colour
 // (checks a variable where no visible element uses it in the test, e.g. hover-only colours).
 // first-family: the first family name of a font-family value, quotes removed.
-const KINDS = ["color", "text", "first-color", "var", "first-family"];
+// em: a length of `value` em, against the element's computed font size.
+// mixWhite / alpha (colour kinds): the expected colour mixed with white, then made translucent, as app.css
+// derives mobile surfaces from the theme's colours.
+const KINDS = ["color", "text", "first-color", "var", "first-family", "em"];
 
 export function loadRequirements(specDir) {
   return JSON.parse(readFileSync(path.join(specDir, "requirements.json"), "utf8")).requirements;
@@ -67,6 +70,8 @@ export function checkErrors(c, requirementIds) {
   if (c.pseudo !== undefined && !["::before", "::after", "::marker", "::selection"].includes(c.pseudo)) e.push(`${where}: pseudo must be ::before, ::after, ::marker or ::selection`);
   if (c.themes !== undefined && !(Array.isArray(c.themes) && c.themes.length && c.themes.every((t) => THEMES.includes(t)))) e.push(`${where}: themes must list ${THEMES.join("/")}`);
   if (!KINDS.includes(c.kind ?? "color")) e.push(`${where}: kind must be one of ${KINDS.join("/")}`);
+  if (c.kind === "em" && !(typeof c.value === "string" && Number(c.value) > 0)) e.push(`${where}: kind em needs a positive value`);
+  for (const k of ["mixWhite", "alpha"]) if (c[k] !== undefined && !(typeof c[k] === "number" && c[k] >= 0 && c[k] <= 1 && ["color", "first-color", "var"].includes(c.kind ?? "color"))) e.push(`${where}: ${k} is a number 0-1 on a colour kind`);
   const expect = c.expect ?? "match";
   if (!EXPECTS.includes(expect)) e.push(`${where}: expect must be one of ${EXPECTS.join("/")}`);
   if (expect === "match" && !(typeof c.token === "string") === !(typeof c.value === "string")) e.push(`${where}: expect match needs exactly one of token / value`);
