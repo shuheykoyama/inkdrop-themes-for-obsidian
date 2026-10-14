@@ -13,4 +13,4 @@ UNSUPPORTED mm.reading.unsupported [kanagawa-dragon, phone, mermaid re-render] -
 UNSUPPORTED mm.light.reading.unsupported [kanagawa-dragon, phone, mermaid light] -- 7 kinds keep filter none (not themed)
 UNSUPPORTED mm.light.live.unsupported [kanagawa-dragon, phone, mermaid light] -- 7 kinds keep filter none (not themed)
 
-910 results on iPhone 12 Pro, iOS 27.0, Obsidian 1.14.4 (389): PASS 795, FAIL 0, DIFF 101, UNSUPPORTED 10, N/A 4 (desktop checks measured on the device: 404)
+910 results on iPhone 12 Pro, iOS 27.0, Obsidian 1.14.5 (iOS app): PASS 795, FAIL 0, DIFF 101, UNSUPPORTED 10, N/A 4 (desktop checks measured on the device: 404)

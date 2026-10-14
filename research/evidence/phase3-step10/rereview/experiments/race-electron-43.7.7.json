@@ -1,0 +1,62 @@
+{
+ "trials": 40,
+ "reverted": 2,
+ "statCalls": 156,
+ "newerThanConfigTs": 9,
+ "newerWhileMemTrue": 9,
+ "examples": [
+  {
+   "f": "appearance.json",
+   "t": 1791896673651,
+   "mtime": 1791896673141,
+   "configTs": 1791896673140,
+   "newer": true,
+   "mem": true
+  },
+  {
+   "f": "appearance.json",
+   "t": 1791896691364,
+   "mtime": 1791896690853,
+   "configTs": 1791896690852,
+   "newer": true,
+   "mem": true
+  },
+  {
+   "f": "appearance.json",
+   "t": 1791896717984,
+   "mtime": 1791896717475,
+   "configTs": 1791896717474,
+   "newer": true,
+   "mem": true
+  }
+ ],
+ "writeSample": [
+  {
+   "t": 1791896668037,
+   "mtime": 1791896668037,
+   "value": false
+  },
+  {
+   "t": 1791896669337,
+   "mtime": 1791896669336,
+   "value": true
+  },
+  {
+   "t": 1791896671837,
+   "mtime": 1791896671837,
+   "value": false
+  }
+ ],
+ "mtimeMinusWriteResolved": [
+  0,
+  -1,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  -1
+ ]
+}

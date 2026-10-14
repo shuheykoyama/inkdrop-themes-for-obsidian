@@ -43,7 +43,7 @@ node tests/device/build-kit.mjs <out_dir>           # <out_dir>/InkdropThemeTest
 node tests/device/judge.mjs <results-*.json> --out <report.json> --label "<端末, OS, アプリ>"
 ```
 
-ケーブルでつないだ iPhone では、次の 2 つを別のシェルで起動してから `cable.mjs` を使う（`cable.mjs` の冒頭の説明を参照）。
+ケーブルでつないだ iPhone では、次の 2 つを別のシェルで起動してから `cable.mjs` を使う（`cable.mjs` の冒頭の説明を参照）。検証済みの版は **pymobiledevice3 11.29.0**（`uv tool install pymobiledevice3==11.29.0`、iOS 27.0、macOS 26.5.2）。
 
 ```sh
 pymobiledevice3 remote start-tunnel --native --script-mode   # "<host> <port>" を出す
@@ -52,3 +52,14 @@ node tests/device/cable.mjs 9244 reload                      # キットを入�
 node tests/device/cable.mjs 9244 checks <out_dir>
 node tests/device/cable.mjs 9244 tour <host> <port> <out_dir>
 ```
+
+## iPhone の設定の復元
+
+| 項目 | 変更した人 | 復元 |
+|---|---|---|
+| 自動ロック（ツアーの間「なし」） | ユーザー | **ユーザーが元に戻したことを確認済み**（2026-10-13） |
+| Safari の Web インスペクタ（オン） | ユーザー | **ユーザーがオフに戻したことを確認済み**（2026-10-13） |
+| おやすみモード | ユーザー（任意） | **ユーザーが解除したことを確認済み**（2026-10-13） |
+| このコンピュータの信頼（ペアリング） | ユーザー（接続時） | 未確認。今回の接続の前から信頼済みだったかは記録していない。解除は依頼していない（iPhone の「設定 → 一般 → 転送またはリセット → リセット → 位置情報とプライバシーをリセット」で解除できる） |
+| 開発者モード | 変更していない（接続時にすでに有効） | 対象外 |
+| テスト Vault `InkdropThemeTest`（制限モードの解除とプラグインの有効化を含む。設定はこの Vault の中だけ） | ユーザー | レビューが終わるまで残す。削除は「ファイル」→「このiPhone内」→「Obsidian」から |

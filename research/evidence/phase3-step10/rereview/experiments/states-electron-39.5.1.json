@@ -1,0 +1,228 @@
+{
+ "settings": {
+  "n": 20,
+  "missing": 0,
+  "max": 0,
+  "over1500": 0,
+  "over700": 0,
+  "all": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "fold": {
+  "n": 20,
+  "missing": 12,
+  "max": 0,
+  "over1500": 0,
+  "over700": 0,
+  "all": [
+   0,
+   null,
+   0,
+   null,
+   0,
+   null,
+   0,
+   null,
+   0,
+   null,
+   0,
+   null,
+   0,
+   null,
+   0,
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ "foldMisses": [
+  {
+   "ok": true,
+   "ms": null,
+   "focused": "cm-content cm-lineWrapping",
+   "sel": {
+    "line": 20,
+    "ch": 1
+   }
+  },
+  {
+   "ok": true,
+   "ms": null,
+   "focused": "cm-content cm-lineWrapping",
+   "sel": {
+    "line": 20,
+    "ch": 1
+   }
+  },
+  {
+   "ok": true,
+   "ms": null,
+   "focused": "cm-content cm-lineWrapping",
+   "sel": {
+    "line": 20,
+    "ch": 1
+   }
+  },
+  {
+   "ok": true,
+   "ms": null,
+   "focused": "cm-content cm-lineWrapping",
+   "sel": {
+    "line": 20,
+    "ch": 1
+   }
+  },
+  {
+   "ok": true,
+   "ms": null,
+   "focused": "cm-content cm-lineWrapping",
+   "sel": {
+    "line": 20,
+    "ch": 1
+   }
+  },
+  {
+   "ok": true,
+   "ms": null,
+   "focused": "cm-content cm-lineWrapping",
+   "sel": {
+    "line": 20,
+    "ch": 1
+   }
+  },
+  {
+   "ok": true,
+   "ms": null,
+   "focused": "cm-content cm-lineWrapping",
+   "sel": {
+    "line": 20,
+    "ch": 1
+   }
+  },
+  {
+   "ok": true,
+   "ms": null,
+   "focused": "cm-content cm-lineWrapping",
+   "sel": {
+    "line": 20,
+    "ch": 1
+   }
+  },
+  {
+   "ok": true,
+   "ms": null,
+   "focused": "cm-content cm-lineWrapping",
+   "sel": {
+    "line": 20,
+    "ch": 1
+   }
+  },
+  {
+   "ok": true,
+   "ms": null,
+   "focused": "cm-content cm-lineWrapping",
+   "sel": {
+    "line": 20,
+    "ch": 1
+   }
+  },
+  {
+   "ok": true,
+   "ms": null,
+   "focused": "cm-content cm-lineWrapping",
+   "sel": {
+    "line": 20,
+    "ch": 1
+   }
+  },
+  {
+   "ok": true,
+   "ms": null,
+   "focused": "cm-content cm-lineWrapping",
+   "sel": {
+    "line": 20,
+    "ch": 1
+   }
+  }
+ ],
+ "popover": {
+  "n": 20,
+  "missing": 0,
+  "max": 314,
+  "over1500": 0,
+  "over700": 0,
+  "all": [
+   314,
+   307,
+   305,
+   307,
+   308,
+   306,
+   306,
+   308,
+   306,
+   307,
+   306,
+   305,
+   305,
+   307,
+   306,
+   306,
+   305,
+   306,
+   307,
+   307
+  ]
+ },
+ "tooltip": {
+  "n": 20,
+  "missing": 0,
+  "max": 309,
+  "over1500": 0,
+  "over700": 0,
+  "all": [
+   306,
+   306,
+   305,
+   308,
+   305,
+   307,
+   306,
+   306,
+   307,
+   304,
+   309,
+   306,
+   305,
+   305,
+   305,
+   309,
+   308,
+   306,
+   306,
+   304
+  ]
+ }
+}

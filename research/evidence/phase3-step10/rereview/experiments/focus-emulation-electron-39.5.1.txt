@@ -1,0 +1,8 @@
+{"label":"no emulation 0","docFocus":false,"winFocused":false,"popover":306,"tooltip":304,"fold":[1,true,true],"settings":200,"docFocusAfter":true}
+{"label":"no emulation 1","docFocus":true,"winFocused":true,"popover":306,"tooltip":303,"fold":[1,true,true],"settings":200,"docFocusAfter":true}
+{"label":"no emulation 2","docFocus":true,"winFocused":true,"popover":306,"tooltip":303,"fold":[1,true,true],"settings":200,"docFocusAfter":false}
+{"label":"focus emulation","docFocus":true,"winFocused":false,"popover":305,"tooltip":302,"fold":[1,true,true],"settings":200,"docFocusAfter":true}
+{"label":"focus emulation 2","docFocus":true,"winFocused":true,"popover":304,"tooltip":304,"fold":[1,true,true],"settings":200,"docFocusAfter":true}
+{"label":"no emulation again 0","docFocus":true,"winFocused":true,"popover":305,"tooltip":303,"fold":[1,true,true],"settings":200,"docFocusAfter":true}
+{"label":"no emulation again 1","docFocus":true,"winFocused":true,"popover":306,"tooltip":302,"fold":[1,true,true],"settings":200,"docFocusAfter":true}
+{"label":"no emulation again 2","docFocus":true,"winFocused":true,"popover":304,"tooltip":304,"fold":[1,true,true],"settings":200,"docFocusAfter":true}
