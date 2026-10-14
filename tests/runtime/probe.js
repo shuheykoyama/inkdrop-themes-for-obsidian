@@ -12,6 +12,29 @@
   const ws = app.workspace;
   const mobile = platform !== "desktop";
 
+  // Vault settings. Obsidian 1.14.4 saves the config 1 s after setConfig, and its own file watcher then runs
+  // reloadConfig about 0.5 s after each save. When appearance.json's mtime comes out 1 ms past configTs (the
+  // Date.now() taken right after the save), reloadConfig takes the save for an outside change and re-reads
+  // app.json, which puts back the value on disk over one set in the meantime (measured on Electron 39.5.1 and
+  // 43.7.7, research/14 §6.25). So every setting is written to disk at once and must still hold after that
+  // reload window; `configWanted` is checked again at measuring time (runner.config-prepared).
+  const configWanted = {};
+  const configLog = [];
+  const sameConfig = (key, value) => JSON.stringify(app.vault.getConfig(key) ?? null) === JSON.stringify(value ?? null);
+  const setConfigNow = async (key, value) => {
+    configWanted[key] = value;
+    // Up to 3 writes: a reload already under way when the value was set can still put the old one back once.
+    let writes = 0;
+    while (writes < 3) {
+      writes++;
+      app.vault.setConfig(key, value);
+      await app.vault.saveConfig();
+      await sleep(700);
+      if (sameConfig(key, value)) break;
+    }
+    configLog.push({ key, value, writes, held: sameConfig(key, value) });
+  };
+
   // Theme: the theme folder must be known to Obsidian before setTheme / loadTheme accept it. Right after a
   // reload (mobile emulation) Obsidian's own load of the previously selected theme can still be queued and
   // overwrite ours, so repeat until the selected theme and its stylesheet stay the same for a moment.
@@ -43,7 +66,7 @@
     // The runner turns it off before switching to emulation; the self-test state turns it on on purpose.
     app.customCss.setTranslucency(state === "self-test-translucent-leak");
     // Floating navigation is a vault setting (app.json floatingNavigation) applied by this method.
-    app.vault.setConfig("floatingNavigation", platform !== "phone-nonfloating");
+    await setConfigNow("floatingNavigation", platform !== "phone-nonfloating");
     app.updateFloatingNavigationDisplay();
     ws.leftSplit.collapse();
     ws.rightSplit.collapse();
@@ -62,16 +85,16 @@
     // The File Explorer's leaf becomes the active one: its list "has focus" (Inkdrop's 5 px bar state).
     if (state === "file-explorer-focused" && fe) ws.setActiveLeaf(fe, { focus: true });
   }
-  if (state === "user-accent") app.vault.setConfig("accentColor", "#e06c75");
+  if (state === "user-accent") await setConfigNow("accentColor", "#e06c75");
   if (state === "fullscreen-class") document.body.classList.add("is-fullscreen");
   if (state === "quick-switcher-open") app.commands.executeCommandById("switcher:open");
-  if (state === "user-font") app.vault.setConfig("interfaceFontFamily", "Courier New");
+  if (state === "user-font") await setConfigNow("interfaceFontFamily", "Courier New");
   // Markdown states (step 6): "Markdown elements" in the leaf of "Sample note" (restored afterwards), in one
   // view mode. The text and code fonts of md-user-fonts are the user's settings that must win (Q-D8).
   const MD_MODES = { "md-source": { mode: "source", source: true }, "md-live": { mode: "source", source: false }, "md-reading": { mode: "preview" }, "md-user-fonts": { mode: "source", source: false } };
   const mdLeaf = MD_MODES[state] ? leafOf("Sample note") : null;
   if (mdLeaf) {
-    if (state === "md-user-fonts") { app.vault.setConfig("textFontFamily", "Courier New"); app.vault.setConfig("monospaceFontFamily", "Menlo"); }
+    if (state === "md-user-fonts") { await setConfigNow("textFontFamily", "Courier New"); await setConfigNow("monospaceFontFamily", "Menlo"); }
     await mdLeaf.setViewState({ type: "markdown", state: { file: "Markdown elements.md", ...MD_MODES[state] }, active: true });
     ws.setActiveLeaf(mdLeaf, { focus: true });
     // Wait (up to 5 s) until the view has drawn the note: the reading view renders its sections lazily.
@@ -94,39 +117,44 @@
     "ed-search": { source: true, lines: true, at: "Second paragraph", search: "alpha" },
     "ed-fold": { source: true, lines: true, at: "## Folded", fold: true },
     "ed-suggest": { source: true, lines: true, at: "Last line." },
+    // Runner self-test only: prepared like ed-source / ed-fold, then the prepared state is taken away before
+    // measuring (the setting reverted in memory as reloadConfig does; the fold opened), which
+    // runner.ed-prepared / runner.config-prepared must report as FAIL.
+    "self-test-ed-gutter-lost": { source: true, lines: true, at: "Second paragraph" },
+    "self-test-fold-lost": { source: true, lines: true, at: "## Folded", fold: true },
   };
   const ed = ED_STATES[state];
   const edLeaf = ed ? leafOf("Sample note") : null;
   const edBefore = ed ? { lines: app.vault.getConfig("showLineNumber") ?? false } : null;
-  let edAttempts = 0;
+  const edPrep = {};
+  const foldPlaceholder = () => edLeaf.view.contentEl.querySelector(".cm-foldPlaceholder");
   if (edLeaf) {
-    app.vault.setConfig("showLineNumber", ed.lines);
+    await setConfigNow("showLineNumber", ed.lines);
     await edLeaf.setViewState({ type: "markdown", state: { file: "Editor chrome.md", mode: "source", source: ed.source }, active: true });
     ws.setActiveLeaf(edLeaf, { focus: true });
     for (let i = 0; i < 25 && !edLeaf.view.contentEl.querySelector(".cm-content .cm-line"); i++) await sleep(200);
-    // The line-number gutter follows the setting a moment later, and on Electron 39 it sometimes did not follow
-    // at all or came back after it had gone (the setting changing again on its own after a moment is the
-    // suspected cause; not proven). Wait (up to 5 s) until the gutter is as asked, then check that it stays so
-    // for 1 s; otherwise set the setting again, up to 3 times. runner.ed-prepared reports the attempts and the
-    // setting at measuring time.
+    // The line-number gutter follows the setting a moment later: wait (up to 5 s) until it is as asked, then
+    // check that it stays so for 1 s. runner.ed-prepared reports the gutter and the setting at measuring time.
     const gutterAsAsked = () => !!edLeaf.view.contentEl.querySelector(".cm-gutters") === ed.lines;
-    for (let attempt = 1; attempt <= 3; attempt++) {
-      edAttempts = attempt;
-      if (attempt > 1) {
-        app.vault.setConfig("showLineNumber", !ed.lines);
-        await sleep(300);
-        app.vault.setConfig("showLineNumber", ed.lines);
-      }
-      for (let i = 0; i < 25 && !gutterAsAsked(); i++) await sleep(200);
-      await sleep(1000);
-      if (gutterAsAsked()) break;
-    }
+    for (let i = 0; i < 25 && !gutterAsAsked(); i++) await sleep(200);
+    await sleep(1000);
+    edPrep.gutterHeld = gutterAsAsked();
     const editor = edLeaf.view.editor;
     editor.focus();
     const line = editor.getValue().split("\n").findIndex((l) => l.includes(ed.at));
     if (ed.select) editor.setSelection({ line, ch: 0 }, { line, ch: ed.select });
     else editor.setCursor({ line, ch: state === "ed-suggest" ? editor.getLine(line).length : 1 });
-    if (ed.fold) app.commands.executeCommandById("editor:toggle-fold");
+    if (ed.fold) {
+      // Obsidian remembers the folds of each file and puts them back when the file opens, so a toggle alone
+      // can open the fold instead (it did after an earlier fold of the same note was left in place). Open
+      // every fold first, then fold the heading, and wait (up to 3 s) for the placeholder.
+      app.commands.executeCommandById("editor:unfold-all");
+      for (let i = 0; i < 15 && foldPlaceholder(); i++) await sleep(200);
+      edPrep.unfoldedFirst = !foldPlaceholder();
+      editor.setCursor({ line, ch: 1 });
+      app.commands.executeCommandById("editor:toggle-fold");
+      for (let i = 0; i < 15 && !foldPlaceholder(); i++) await sleep(200);
+    }
     if (ed.search) {
       app.commands.executeCommandById("editor:open-search");
       await sleep(300);
@@ -137,8 +165,11 @@
   }
   // DOM menus: macOS defaults to native OS menus, which no theme can style; the test vault switches them off.
   const nativeMenusBefore = app.vault.getConfig("nativeMenus") ?? null;
-  if (state === "menu-open") app.vault.setConfig("nativeMenus", false);
+  if (state === "menu-open") await setConfigNow("nativeMenus", false);
   await sleep(800);
+  // Runner self-test only: take the prepared state away again (see ED_STATES).
+  if (state === "self-test-ed-gutter-lost") { app.vault.config.showLineNumber = false; app.vault.trigger("config-changed", "showLineNumber"); await sleep(800); }
+  if (state === "self-test-fold-lost") { app.commands.executeCommandById("editor:unfold-all"); await sleep(500); }
 
   // Measure one element in a given document. Visibility = checkVisibility() (display, content-visibility,
   // visibility) AND a non-empty box; `value` is the computed property (custom properties trimmed) or null.
@@ -167,13 +198,18 @@
     theme: app.customCss.theme,
     themeCssLength: app.customCss.styleEl.textContent.length,
     bodyClasses: [...document.body.classList],
+    // Whether the page has focus (the runner holds CDP focus emulation; editor commands need it).
+    focused: document.hasFocus(),
     results: {},
   };
-  // Editor chrome states: whether the state was really prepared (the note, the mode and the line-number
-  // gutter as asked) at measuring time; the runner turns this into runner.ed-prepared.
+  // Whether every setting the probe asked for still holds at measuring time (runner.config-prepared), with how
+  // many writes each took.
+  out.configPrepared = { held: Object.entries(configWanted).every(([k, v]) => sameConfig(k, v)), now: Object.fromEntries(Object.keys(configWanted).map((k) => [k, app.vault.getConfig(k) ?? null])), wanted: { ...configWanted }, writes: configLog.map((x) => ({ ...x })) };
+  // Editor chrome states: whether the state was really prepared (the note, the mode, the line-number gutter as
+  // asked and, for ed-fold, a folded heading) at measuring time; the runner turns this into runner.ed-prepared.
   if (ed) {
     const v = ws.activeLeaf?.view;
-    out.edPrepared = { leafFound: !!edLeaf, file: v?.file?.basename ?? null, source: v?.getState?.().source ?? null, gutters: !!v?.contentEl?.querySelector(".cm-gutters"), want: ed.lines, setting: app.vault.getConfig("showLineNumber") ?? null, attempts: edAttempts };
+    out.edPrepared = { leafFound: !!edLeaf, file: v?.file?.basename ?? null, source: v?.getState?.().source ?? null, gutters: !!v?.contentEl?.querySelector(".cm-gutters"), want: ed.lines, setting: app.vault.getConfig("showLineNumber") ?? null, ...edPrep, ...(ed.fold ? { folded: !!foldPlaceholder() } : {}) };
   }
   for (const c of checks.filter((x) => x.document === "main")) {
     // c.scrollTo: text of a line of the Markdown note to scroll into view first (CodeMirror draws only the
@@ -193,42 +229,62 @@
     // Obsidian 1.14.4 opens Settings in a popout window (body.is-popout-modal): measure in the modal's own
     // document (research/13 §2.1.1). If the modal is not there, every settings check reports found: false.
     app.setting.open();
-    await sleep(700);
+    const searchInput = app.setting.searchComponent?.inputEl ?? null;
+    if (searchInput) { searchInput.readOnly = true; searchInput.blur(); }
+    // Wait (up to 3 s) until the modal is there and the active tab's nav item has a box; runner.settings-prepared
+    // reports it. When it has none, the report says why: Obsidian hides the whole tab list while the settings
+    // search has text (onSearchChanged), and the popout window starts at 0 x 0. The popout takes the macOS focus
+    // with its search box focused, so typing meant for another app landed there (2 characters in one Electron
+    // 39 run, research/14 §6.25): the search box is made read-only and unfocused at once while the probe has
+    // Settings open, a search that already has text is emptied, and only lengths are reported (never the text).
+    const activeItem = () => { const mm = app.setting.modalEl; const d = mm && mm.isConnected ? mm.ownerDocument : null; const e = d && d.querySelector(".modal.mod-settings .vertical-tab-nav-item.is-active"); return e && e.getBoundingClientRect().width > 0 ? e : null; };
+    await sleep(200);
+    const strayLength = app.setting.searchComponent?.getValue?.()?.length ?? 0;
+    if (strayLength) { app.setting.searchComponent.setValue(""); app.setting.onSearchChanged(); }
+    const t0 = performance.now();
+    if (state === "self-test-settings-search") { await sleep(300); app.setting.searchComponent?.setValue("zzzz"); app.setting.onSearchChanged?.(); }
+    while (!activeItem() && performance.now() - t0 < 3000) await sleep(100);
+    const settingsMs = Math.round(performance.now() - t0);
+    await sleep(300);
     const m = app.setting.modalEl;
     const doc = m && m.isConnected ? m.ownerDocument : null;
     out.settingsDocument = doc ? { sameAsMain: doc === document, bodyClasses: [...doc.body.classList] } : null;
+    out.settingsPrepared = { activeItemShown: !!activeItem(), ms: settingsMs, tab: app.setting.activeTab?.id ?? null, searchLength: app.setting.searchComponent?.getValue?.()?.length ?? null, strayCleared: strayLength, tabListShown: !!doc?.querySelector(".vertical-tab-header-group-container")?.checkVisibility(), window: doc ? [doc.defaultView.innerWidth, doc.defaultView.innerHeight] : null };
     for (const c of settingsChecks) out.results[c.id] = doc ? measure(doc, c) : { found: false, count: 0, displayed: false, size: null, value: null, error: "settings document not found" };
+    if (state === "self-test-settings-search") { app.setting.searchComponent?.setValue(""); app.setting.onSearchChanged?.(); }
+    if (searchInput) searchInput.readOnly = false;
     app.setting.close();
     await sleep(400);
   }
 
   // Undo the per-state settings so the next probe starts from the same vault state.
-  if (state === "user-accent") { app.vault.setConfig("accentColor", ""); await sleep(300); }
+  if (state === "user-accent") await setConfigNow("accentColor", "");
   if (state === "fullscreen-class") document.body.classList.remove("is-fullscreen");
   if (state === "quick-switcher-open") {
     document.querySelector(".modal-container")?.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
     await sleep(300);
   }
-  if (state === "user-font") { app.vault.setConfig("interfaceFontFamily", ""); await sleep(300); }
-  if (state === "menu-open") { document.querySelectorAll(".menu").forEach((m) => m.remove()); app.vault.setConfig("nativeMenus", nativeMenusBefore); }
+  if (state === "user-font") await setConfigNow("interfaceFontFamily", "");
+  if (state === "menu-open") { document.querySelectorAll(".menu").forEach((m) => m.remove()); await setConfigNow("nativeMenus", nativeMenusBefore); }
   if (state === "file-explorer-focused") ws.setActiveLeaf(leafOf("Sample note"), { focus: true });
   if (edLeaf) {
     const editor = edLeaf.view.editor;
     if (ed.search) edLeaf.view.containerEl.querySelectorAll(".document-search-close-button").forEach((b) => b.click());
-    if (ed.fold) { editor.setCursor({ line: editor.getValue().split("\n").findIndex((l) => l.includes(ed.at)), ch: 1 }); app.commands.executeCommandById("editor:toggle-fold"); }
+    // Open the fold again and check it is gone, so no remembered fold reaches the next state.
+    if (ed.fold) { app.commands.executeCommandById("editor:unfold-all"); for (let i = 0; i < 15 && foldPlaceholder(); i++) await sleep(200); }
     if (state === "ed-suggest") {
       // The runner typed " [[Oth" at the end of the last line; close the suggestions and restore the line.
       document.querySelectorAll(".suggestion-container").forEach((s) => s.remove());
       const last = editor.lineCount() - 1;
       editor.setLine(last, "Last line.");
     }
-    app.vault.setConfig("showLineNumber", edBefore.lines);
+    await setConfigNow("showLineNumber", edBefore.lines);
     await edLeaf.setViewState({ type: "markdown", state: { file: "Sample note.md", mode: "source", source: false }, active: true });
     ws.setActiveLeaf(edLeaf, { focus: true });
     await sleep(300);
   }
   if (mdLeaf) {
-    if (state === "md-user-fonts") { app.vault.setConfig("textFontFamily", ""); app.vault.setConfig("monospaceFontFamily", ""); }
+    if (state === "md-user-fonts") { await setConfigNow("textFontFamily", ""); await setConfigNow("monospaceFontFamily", ""); }
     await mdLeaf.setViewState({ type: "markdown", state: { file: "Sample note.md", mode: "source", source: false }, active: true });
     ws.setActiveLeaf(mdLeaf, { focus: true });
     await sleep(300);

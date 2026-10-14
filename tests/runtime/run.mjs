@@ -26,7 +26,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 import { declarations } from "../lib/css.mjs";
 import { checkErrors, loadChecks, loadRequirements, PLATFORMS, POINTER_STATES, runtimeSpecFiles, STATES, THEMES } from "../lib/spec.mjs";
-import { escape, evaluate, pointer, typeText } from "./lib/cdp.mjs";
+import { escape, evaluate, holdFocus, pointer, typeText } from "./lib/cdp.mjs";
 import { judge } from "./lib/checks.mjs";
 import { judgeMermaid } from "./lib/mermaid.mjs";
 import { judgeSyntax, syntaxVars } from "./lib/syntax.mjs";
@@ -59,6 +59,7 @@ const syntaxSpec = JSON.parse(readFileSync(path.join(repo, "tests/spec/syntax.js
 const inkdropTokens = JSON.parse(readFileSync(path.join(repo, syntaxSpec.inkdrop), "utf8"));
 const codeDump = readFileSync(path.join(repo, "tests/runtime/code-tokens.js"), "utf8");
 async function syntaxPage() {
+  progress("syntax dump");
   return evaluate(args.port, `window.__CODE = ${JSON.stringify({ note: syntaxSpec.note, vars: syntaxVars(syntaxSpec, inkdropTokens) })};\n${codeDump}`);
 }
 // Mermaid (Q-D12, step 9): every diagram of tests/spec/mermaid.json's note is dumped
@@ -66,12 +67,17 @@ async function syntaxPage() {
 const mermaidSpec = JSON.parse(readFileSync(path.join(repo, "tests/spec/mermaid.json"), "utf8"));
 const mermaidDump = readFileSync(path.join(repo, "tests/runtime/mermaid-dump.js"), "utf8");
 async function mermaidPage(view, opts = {}, spec = mermaidSpec) {
+  progress("mermaid dump", view, JSON.stringify(opts));
   const input = { note: spec.note, view, tokens: spec.tokens, kinds: spec.kinds, unsupported: spec.unsupported, reference: "inkdrop", ...opts };
   return evaluate(args.port, `window.__MERMAID = ${JSON.stringify(input)};\n${mermaidDump}`);
 }
 // Obsidian's base colour scheme of the isolated vault ("obsidian" = dark, "moonstone" = light).
-const setScheme = (scheme) => evaluate(args.port, `(async () => { app.changeTheme(${JSON.stringify(scheme)}); await new Promise((r) => setTimeout(r, 800)); return document.body.classList.contains(${JSON.stringify(scheme === "moonstone" ? "theme-light" : "theme-dark")}); })()`);
+// It is a vault setting, which Obsidian 1.14.4's own config reload can put back (research/14 §6.25): written to
+// disk at once and checked after the reload window, up to 3 times.
+const setScheme = (scheme) => evaluate(args.port, `(async () => { for (let i = 0; i < 3; i++) { app.changeTheme(${JSON.stringify(scheme)}); await app.vault.saveConfig(); await new Promise((r) => setTimeout(r, 800)); if (document.body.classList.contains(${JSON.stringify(scheme === "moonstone" ? "theme-light" : "theme-dark")}) && app.vault.getConfig("theme") === ${JSON.stringify(scheme)}) return true; } return false; })()`);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// INK_PROGRESS=1 prints each step to stderr with the time (to see where a run stops).
+const progress = (...m) => { if (process.env.INK_PROGRESS) console.error(new Date().toISOString(), ...m); };
 const results = [];
 const environment = {};
 
@@ -106,9 +112,29 @@ async function setPlatform(platform, original) {
 }
 
 // States that need a genuine pointer (research/14 §6.8): the probe prepares the state and the runner moves /
-// clicks through CDP Input, measures, then puts the pointer back on a neutral spot, presses Escape and
-// waits for the overlay to close.
+// clicks through CDP Input, waits until the overlay is really there, measures, then puts the pointer back on a
+// neutral spot, presses Escape and waits for the overlay to close. interact() returns what it saw, which
+// becomes runner.pointer-prepared (FAIL when the overlay never came).
 const center = (sel) => evaluate(args.port, `(() => { const e = document.querySelector(${JSON.stringify(sel)}); if (!e) return null; const r = e.getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; })()`);
+// Poll in the page (every 100 ms, up to `ms`) until `selector` matches; the time it took, or null.
+const appeared = (selector, ms) => evaluate(args.port, `(async () => { const t0 = performance.now(); while (performance.now() - t0 < ${ms}) { if (document.querySelector(${JSON.stringify(selector)})) return Math.round(performance.now() - t0); await new Promise((r) => setTimeout(r, 100)); } return null; })()`);
+// What lies under a point and whether the window has focus: recorded when an overlay did not come.
+const under = (x, y) => evaluate(args.port, `(() => { const e = document.elementFromPoint(${x}, ${y}); return { under: e ? (e.className || e.tagName).toString().slice(0, 80) : null, focus: document.hasFocus(), visibility: document.visibilityState }; })()`);
+// The overlay each pointer state must produce, and where the pointer goes. In the self-test state
+// "self-test-pointer-missed" the pointer goes to the status bar, where no link preview can open.
+const POINTER = {
+  "popover-open": { target: ".workspace-leaf.mod-active .cm-hmd-internal-link, .workspace-leaf.mod-active .internal-link", modifiers: 4, overlay: ".popover.hover-popover" },
+  "tooltip-open": { target: ".workspace-ribbon.mod-primary .side-dock-ribbon-action", overlay: ".tooltip" },
+  "self-test-pointer-missed": { target: ".status-bar", modifiers: 4, overlay: ".popover.hover-popover" },
+};
+// Runner self-test: the states that take a prepared state away on purpose, and the runner check that must
+// then FAIL (tests/runtime/self-test-spec.json; the probe does the taking away, research/14 §6.25).
+const SELF_TEST_BREAKS = {
+  "self-test-ed-gutter-lost": ["runner.ed-prepared", "runner.config-prepared"],
+  "self-test-fold-lost": ["runner.ed-prepared"],
+  "self-test-settings-search": ["runner.settings-prepared"],
+  "self-test-pointer-missed": ["runner.pointer-prepared"],
+};
 let menuWarmedUp = false;
 async function interact(state) {
   if (state === "menu-open") {
@@ -116,32 +142,47 @@ async function interact(state) {
     // independent of the theme: observed with and without retries); open and close one menu once first.
     if (!menuWarmedUp) {
       const f = await center(".workspace-split.mod-left-split .nav-file-title");
-      if (f) { await pointer(args.port, { x: f[0], y: f[1], click: true, button: "right" }); await sleep(700); await escape(args.port); await sleep(400); }
+      if (f) { await pointer(args.port, { x: f[0], y: f[1], click: true, button: "right" }); await appeared(".menu", 3000); await escape(args.port); await sleep(400); }
       menuWarmedUp = true;
     }
     const file = await center(".workspace-split.mod-left-split .nav-file-title");
-    if (file) { await pointer(args.port, { x: file[0], y: file[1], click: true, button: "right" }); await sleep(700); }
-    const item = await center(".menu .menu-item:not(.is-label)");
+    if (file) await pointer(args.port, { x: file[0], y: file[1], click: true, button: "right" });
+    const menuMs = file ? await appeared(".menu .menu-item:not(.is-label)", 3000) : null;
+    const item = menuMs === null ? null : await center(".menu .menu-item:not(.is-label)");
     // Move onto the first row until it gets its "selected" class: the very first menu of a session ignored
     // the first pointer moves (later menus react at once). At most 4 attempts; the check itself still
     // fails if the row never becomes selected.
-    for (let i = 0; item && i < 4; i++) {
+    let selected = false;
+    for (let i = 0; item && i < 4 && !selected; i++) {
       await pointer(args.port, { x: item[0] - 2 + (i % 2) * 4, y: item[1] });
-      await sleep(400);
-      if (await evaluate(args.port, "!!document.querySelector('.menu .menu-item.selected')")) break;
+      selected = (await appeared(".menu .menu-item.selected", 400)) !== null;
     }
-  } else if (state === "popover-open") {
-    const link = await center(".workspace-leaf.mod-active .cm-hmd-internal-link, .workspace-leaf.mod-active .internal-link");
-    if (link) { await pointer(args.port, { x: link[0], y: link[1], modifiers: 4 }); await sleep(1500); }
-  } else if (state === "ed-suggest") {
+    return { overlay: ".menu .menu-item.selected", shown: selected, target: !!file, ms: menuMs };
+  }
+  if (state === "ed-suggest") {
     // The probe put the cursor at the end of the last line of "Editor chrome"; typing "[[" opens Obsidian's
     // link suggestions (a .suggestion-container on the body).
     await typeText(args.port, " [[Oth");
-    await sleep(800);
-  } else if (state === "tooltip-open") {
-    const button = await center(".workspace-ribbon.mod-primary .side-dock-ribbon-action");
-    if (button) { await pointer(args.port, { x: button[0], y: button[1] }); await sleep(1500); }
+    const ms = await appeared(".suggestion-container", 3000);
+    return { overlay: ".suggestion-container", shown: ms !== null, ms };
   }
+  // Hover states. The overlay appeared about 0.3 s after the pointer arrived in 20 of 20 trials on each kind
+  // (Electron 39.5.1, research/14 §6.25); wait up to 3 s for it. If it does not come, record what is under the
+  // pointer and the window state, move away and come back, at most 3 times; every attempt is reported.
+  const p = POINTER[state];
+  const attempts = [];
+  for (let i = 0; i < 3; i++) {
+    const at = await center(p.target);
+    if (!at) { attempts.push({ target: false }); break; }
+    await pointer(args.port, { x: at[0], y: at[1], modifiers: p.modifiers ?? 0 });
+    const ms = await appeared(p.overlay, 3000);
+    if (ms !== null) { attempts.push({ ms }); return { overlay: p.overlay, shown: true, attempts }; }
+    attempts.push({ ms: null, ...(await under(at[0], at[1])) });
+    const away = await center(".status-bar");
+    if (away) await pointer(args.port, { x: away[0] - 40, y: away[1] });
+    await sleep(500);
+  }
+  return { overlay: p.overlay, shown: false, attempts };
 }
 // Returns how many pointer overlays are still open after up to 4 s: a hover popover closes on its own a
 // moment after the pointer leaves, and one left behind would colour the next state's measurements. The
@@ -161,6 +202,10 @@ async function releasePointer() {
 }
 
 const original = await evaluate(args.port, "(() => electronWindow.getSize())()");
+// The page keeps focus as far as it can tell for the whole run (CDP focus emulation, not the macOS focus);
+// taken again after every platform switch, which reloads the page. runner.focus checks it at measuring time.
+let releaseFocus = await holdFocus(args.port);
+const refocus = async () => { releaseFocus(); releaseFocus = await holdFocus(args.port); };
 const floatingBefore = await evaluate(args.port, "(() => app.vault.getConfig('floatingNavigation') ?? null)()");
 for (const theme of THEMES) {
   const manifest = JSON.parse(readFileSync(path.join(repo, "dist", theme, "manifest.json"), "utf8"));
@@ -174,6 +219,7 @@ try {
     const forPlatform = checks.filter((c) => (c.platform ?? ["desktop"]).includes(platform));
     if (!forPlatform.length) continue;
     await setPlatform(platform, original);
+    await refocus();
     for (const theme of THEMES) {
       const manifest = JSON.parse(readFileSync(path.join(repo, "dist", theme, "manifest.json"), "utf8"));
       const css = readFileSync(path.join(repo, "dist", theme, "theme.css"), "utf8");
@@ -190,9 +236,11 @@ try {
           const deferMeasure = POINTER_STATES.includes(state);
           const input = { theme: manifest.name, translucent: appearance === "translucent", platform, state, deferMeasure, checks: todo.map(({ id, selector, pseudo, scrollTo, document, property, kind }) => ({ id, selector, pseudo, scrollTo, document, property, kind })) };
           let overlaysLeft = 0;
+          let interaction = null;
+          progress("probe", platform, theme, appearance, pass, state);
           let page = await evaluate(args.port, `window.__INK = ${JSON.stringify(input)};\n${probe}`);
           if (deferMeasure) {
-            await interact(state);
+            interaction = await interact(state);
             page = await evaluate(args.port, "window.__INK_MEASURE()");
             overlaysLeft = await releasePointer();
           }
@@ -208,12 +256,22 @@ try {
             ? !cls.includes("is-mobile") && cls.includes("is-translucent") === (appearance === "translucent")
             : cls.includes("is-mobile") && cls.includes(platform === "tablet" ? "is-tablet" : "is-phone") && cls.includes("is-floating-nav") === (platform !== "phone-nonfloating") && !cls.includes("is-translucent");
           results.push({ id: "runner.environment", ...where, status: envOk ? ok : "FAIL", detail: cls.filter((x) => /^(is-|emulate-)/.test(x)).join(" "), selfTest: selfTest ? (state === "self-test-translucent-leak" ? "FAIL" : "PASS") : undefined });
-          if (deferMeasure) results.push({ id: "runner.pointer-released", ...where, status: overlaysLeft === 0 ? ok : "FAIL", detail: `${overlaysLeft} overlay(s) still open`, selfTest: selfTest ? "PASS" : undefined });
+          // The runner's own checks that the state was really there. In the self-test, the states that take a
+          // prepared state away on purpose must make the named check FAIL.
+          const prep = (id) => (selfTest ? ((SELF_TEST_BREAKS[state] ?? []).includes(id) ? "FAIL" : "PASS") : undefined);
+          if (deferMeasure) {
+            results.push({ id: "runner.pointer-prepared", ...where, status: interaction?.shown ? ok : "FAIL", detail: JSON.stringify(interaction), selfTest: prep("runner.pointer-prepared") });
+            results.push({ id: "runner.pointer-released", ...where, status: overlaysLeft === 0 ? ok : "FAIL", detail: `${overlaysLeft} overlay(s) still open`, selfTest: selfTest ? "PASS" : undefined });
+          }
+          results.push({ id: "runner.focus", ...where, status: page.focused ? ok : "FAIL", detail: `document.hasFocus() ${page.focused}`, selfTest: selfTest ? "PASS" : undefined });
+          const cp = page.configPrepared;
+          if (cp && Object.keys(cp.wanted).length) results.push({ id: "runner.config-prepared", ...where, status: cp.held ? ok : "FAIL", detail: JSON.stringify(cp), selfTest: prep("runner.config-prepared") });
           if (page.edPrepared) {
             const e = page.edPrepared;
-            const prepared = e.leafFound && e.file === "Editor chrome" && e.gutters === e.want;
-            results.push({ id: "runner.ed-prepared", ...where, status: prepared ? ok : "FAIL", detail: JSON.stringify(e), selfTest: selfTest ? "PASS" : undefined });
+            const prepared = e.leafFound && e.file === "Editor chrome" && e.gutters === e.want && e.folded !== false;
+            results.push({ id: "runner.ed-prepared", ...where, status: prepared ? ok : "FAIL", detail: JSON.stringify(e), selfTest: prep("runner.ed-prepared") });
           }
+          if (page.settingsPrepared) results.push({ id: "runner.settings-prepared", ...where, status: page.settingsPrepared.activeItemShown ? ok : "FAIL", detail: JSON.stringify(page.settingsPrepared), selfTest: prep("runner.settings-prepared") });
           results.push({ id: "runner.modals-closed", ...where, status: page.modalsLeftOpen === 0 ? ok : "FAIL", detail: `${page.modalsLeftOpen} open`, selfTest: selfTest ? "PASS" : undefined });
           for (const c of todo) {
             const [status, detail] = judge(c, page.results[c.id], defs);
@@ -246,6 +304,7 @@ try {
 } finally {
   // Restore the isolated window: desktop, original size, opaque, dark, original floating-navigation setting.
   await setPlatform("desktop", original);
+  await refocus();
   await setScheme("obsidian");
   await evaluate(args.port, `(() => { app.customCss.setTranslucency(false); app.vault.setConfig("floatingNavigation", ${JSON.stringify(floatingBefore)}); return 1; })()`);
 }

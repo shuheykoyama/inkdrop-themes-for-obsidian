@@ -638,6 +638,89 @@
       ],
       "token": "--ink-editor-tooltip-background-color",
       "selfTest": "FAIL"
+    },
+    {
+      "id": "self.fold-prepared",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-foldPlaceholder",
+      "document": "main",
+      "property": "background-color",
+      "state": "ed-fold",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-fold-placeholder-background-color",
+      "selfTest": "PASS"
+    },
+    {
+      "id": "self.ed-gutter-lost",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-gutters",
+      "document": "main",
+      "property": "color",
+      "state": "self-test-ed-gutter-lost",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-gutter-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.fold-lost",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-foldPlaceholder",
+      "document": "main",
+      "property": "background-color",
+      "state": "self-test-fold-lost",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-editor-fold-placeholder-background-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.settings-search-hides-tabs",
+      "selector": ".modal.mod-settings .vertical-tab-nav-item.is-active",
+      "document": "settings",
+      "property": "background-color",
+      "state": "self-test-settings-search",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-preferences-sidebar-item-active-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.settings-active-item",
+      "selector": ".modal.mod-settings .vertical-tab-nav-item.is-active",
+      "document": "settings",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-preferences-sidebar-item-active-background",
+      "selfTest": "PASS"
+    },
+    {
+      "id": "self.pointer-missed",
+      "selector": ".popover.hover-popover",
+      "document": "main",
+      "property": "background-color",
+      "state": "self-test-pointer-missed",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-popup-background",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.tooltip-open",
+      "selector": ".tooltip",
+      "document": "main",
+      "property": "background-color",
+      "state": "tooltip-open",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-tooltip-background",
+      "selfTest": "PASS"
     }
   ]
 }

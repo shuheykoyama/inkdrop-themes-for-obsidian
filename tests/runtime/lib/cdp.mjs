@@ -40,6 +40,17 @@ export async function evaluate(port, expression, timeoutMs = 180000) {
   }
 }
 
+// Keep the main window's page focused as far as the page can tell (document.hasFocus(), CodeMirror's
+// hasFocus), without taking the macOS focus from whatever app the person at the Mac is using: CDP focus
+// emulation, which lasts as long as this session stays open. Returns a function that ends it. Obsidian's
+// editor commands act only on a focused editor (editor:toggle-fold toggles Properties instead), and the
+// isolated window loses the OS focus whenever another window takes it (research/14 §6.25).
+export async function holdFocus(port) {
+  const s = await connect(port);
+  await s.send("Emulation.setFocusEmulationEnabled", { enabled: true });
+  return () => s.close();
+}
+
 // Real input in the main window (CDP Input domain): move the mouse to (x, y) CSS px, optionally with
 // modifiers (bit field: 1 Alt, 2 Ctrl, 4 Meta, 8 Shift), and click (left or right button) if asked. Used
 // for states that need a genuine pointer: :hover, menus opened by a click, link previews opened by

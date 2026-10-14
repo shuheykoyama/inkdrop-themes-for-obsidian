@@ -17,7 +17,11 @@ export const PLATFORMS = ["desktop", "tablet", "phone", "phone-nonfloating"];
 // is-fullscreen class to body for the measurement (simulates only the class Obsidian sets in full screen);
 // on mobile "default" has both drawers closed.
 // "self-test-translucent-leak" turns translucency on in a mobile probe: allowed only in the runner's own
-// negative spec, to prove that an opaque mobile check refuses a translucent window.
+// negative spec, to prove that an opaque mobile check refuses a translucent window. Likewise the other
+// "self-test-*" states take a prepared state away on purpose (step 10 re-review, research/14 §6.25):
+// "self-test-ed-gutter-lost" (the line-number setting reverted in memory), "self-test-fold-lost" (the fold
+// opened again), "self-test-settings-search" (text in the settings search hides the tab list),
+// "self-test-pointer-missed" (the pointer hovers where no link preview opens).
 // Step 5: "file-explorer-focused" (the File Explorer leaf is the active one), "user-font" (an interface font in
 // the test vault's settings), and three states the runner opens with a real pointer through CDP:
 // "menu-open" (right-click a file, pointer on the first item; DOM menus), "popover-open" (Cmd + hover on an
@@ -32,8 +36,9 @@ export const STATES = ["default", "user-accent", "user-font", "quick-switcher-op
   "menu-open", "popover-open", "tooltip-open", "md-source", "md-live", "md-reading", "md-user-fonts",
   "ed-source", "ed-live", "ed-source-no-lines", "ed-live-no-lines", "ed-code-line", "ed-widget-line", "ed-selection",
   "ed-search", "ed-fold", "ed-suggest",
-  "left-drawer-open", "right-drawer-open", "self-test-translucent-leak"];
-export const POINTER_STATES = ["menu-open", "popover-open", "tooltip-open", "ed-suggest"];
+  "left-drawer-open", "right-drawer-open", "self-test-translucent-leak",
+  "self-test-ed-gutter-lost", "self-test-fold-lost", "self-test-settings-search", "self-test-pointer-missed"];
+export const POINTER_STATES = ["menu-open", "popover-open", "tooltip-open", "ed-suggest", "self-test-pointer-missed"];
 // color: a computed colour property; text: exact string (e.g. --accent-h); first-color: the first rgb()/rgba()
 // in the value (e.g. the colour of a box-shadow); var: a custom property whose computed value is a colour
 // (checks a variable where no visible element uses it in the test, e.g. hover-only colours).
@@ -65,7 +70,7 @@ export function checkErrors(c, requirementIds) {
   if (!Array.isArray(platforms) || !platforms.length || platforms.some((p) => !PLATFORMS.includes(p))) e.push(`${where}: platform must list ${PLATFORMS.join("/")}`);
   if (c.appearance?.includes("translucent") && platforms.some((p) => p !== "desktop")) e.push(`${where}: translucent exists on desktop (macOS) only`);
   if (!STATES.includes(c.state ?? "default")) e.push(`${where}: state must be one of ${STATES.join("/")}`);
-  if (requirementIds && c.state === "self-test-translucent-leak") e.push(`${where}: state self-test-translucent-leak is for the runner's self-test only`);
+  if (requirementIds && String(c.state).startsWith("self-test-")) e.push(`${where}: state ${c.state} is for the runner's self-test only`);
   if (c.scrollTo !== undefined && !(typeof c.scrollTo === "string" && c.scrollTo && String(c.state).startsWith("md-"))) e.push(`${where}: scrollTo is a non-empty line text and needs an md-* state`);
   if (c.pseudo !== undefined && !["::before", "::after", "::marker", "::selection"].includes(c.pseudo)) e.push(`${where}: pseudo must be ::before, ::after, ::marker or ::selection`);
   if (c.themes !== undefined && !(Array.isArray(c.themes) && c.themes.length && c.themes.every((t) => THEMES.includes(t)))) e.push(`${where}: themes must list ${THEMES.join("/")}`);
