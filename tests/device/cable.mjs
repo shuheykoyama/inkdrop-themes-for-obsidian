@@ -8,7 +8,12 @@
 //   pymobiledevice3 remote start-tunnel --native --script-mode   # prints "<host> <port>" (Apple's tunnel, no root)
 //   pymobiledevice3 webinspector cdp --port <cdpPort>            # Web Inspector as a CDP endpoint
 // Every command except `shot` first checks that the vault open in Obsidian is InkdropThemeTest and stops
-// otherwise, so a user vault is never driven.
+// otherwise, so a user vault is never driven. In the tour, right before each screenshot, the page must also
+// be visible (Obsidian in the foreground, not behind another app or the lock screen) with the test vault open;
+// otherwise that step is not shot and is reported. A screenshot takes the whole screen, and the moment between
+// that check and the capture (about 2.5 s) cannot be checked: a notification or another app arriving then is
+// in the image, so every image is still inspected by eye. `shot` alone checks nothing (it has no page).
+// Verified with pymobiledevice3 11.29.0 (iOS 27.0, macOS 26.5.2).
 //
 // usage: node tests/device/cable.mjs <cdpPort> <command> [args]
 //   probe                          vault, theme, iOS (frozen UA value), viewport, kit commands (read only)
@@ -145,6 +150,12 @@ if (cmd === "probe") {
       await sleep(3500 + 3000);
     }
     const name = `${String(seen).padStart(2, "0")}-${label.replace(/[^a-z0-9]+/gi, "-").replace(/-+$/, "")}.png`;
+    const front = await s.evaluate(`({ vault: app.vault.getName(), visibility: document.visibilityState })`).catch((e) => ({ error: String(e) }));
+    if (front.vault !== VAULT || front.visibility !== "visible") {
+      shots.push({ n: seen, label, error: `not shot: Obsidian not in the foreground with ${VAULT} (${JSON.stringify(front)})` });
+      console.log(`${seen}/${total} NOT SHOT ${JSON.stringify(front)}`);
+      continue;
+    }
     try {
       shots.push({ n: seen, label, ...shot(host, rsdPort, path.join(outDir, name)) });
       console.log(`${seen}/${total} shot ${name} (${Date.now() - t0} ms after the notice)`);

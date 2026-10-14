@@ -151,10 +151,25 @@ module.exports = class InkDeviceCheck extends Plugin {
     const before = { floatingNavigation: v.getConfig("floatingNavigation"), theme: this.app.customCss.theme, scheme: v.getConfig("theme") };
     try { return await fn(); } finally {
       v.setConfig("floatingNavigation", before.floatingNavigation);
+      await v.saveConfig();
       this.app.updateFloatingNavigationDisplay?.();
-      if (before.scheme) this.app.changeTheme(before.scheme);
+      if (before.scheme) await this.setScheme(before.scheme);
       if (before.theme !== undefined) await this.selectTheme(before.theme);
     }
+  }
+
+  // Obsidian's base colour scheme ("obsidian" = dark, "moonstone" = light) is a vault setting, which Obsidian
+  // 1.14.4's own config reload can put back to the value on disk about 1.5 s later (research/14 §6.25): write it
+  // to disk at once and check it held after that window, up to 3 times. Returns whether it holds.
+  async setScheme(scheme) {
+    const want = scheme === "moonstone" ? "theme-light" : "theme-dark";
+    for (let i = 0; i < 3; i++) {
+      this.app.changeTheme(scheme);
+      await this.app.vault.saveConfig();
+      await sleep(800);
+      if (document.body.classList.contains(want) && this.app.vault.getConfig("theme") === scheme) return true;
+    }
+    return false;
   }
 
   async runChecks() {
@@ -174,8 +189,12 @@ module.exports = class InkDeviceCheck extends Plugin {
               await this.selectTheme(job.themeName);
               if (job.kind === "syntax") rec.page = await SCRIPTS.syntax(job.input);
               else {
-                if (job.scheme === "light") { this.app.changeTheme("moonstone"); await sleep(800); rec.lightApplied = document.body.classList.contains("theme-light"); }
-                try { rec.page = await SCRIPTS.mermaid(job.input); } finally { if (job.scheme === "light") { this.app.changeTheme("obsidian"); await sleep(800); } }
+                if (job.scheme === "light") rec.lightApplied = await this.setScheme("moonstone");
+                try {
+                  rec.page = await SCRIPTS.mermaid(job.input);
+                  // The light scheme must still be there after the diagrams were read.
+                  if (job.scheme === "light") rec.lightApplied = rec.lightApplied && document.body.classList.contains("theme-light");
+                } finally { if (job.scheme === "light") await this.setScheme("obsidian"); }
               }
               rec.theme = this.app.customCss.theme;
               rec.themeCssLength = this.app.customCss.styleEl.textContent.length;
