@@ -1,0 +1,50 @@
+PASS integration self-test: a new folder is created with its marker
+PASS integration self-test: a missing parent is an error, nothing is created
+PASS integration self-test: an existing folder is refused for a full run, nothing changes
+PASS integration self-test: re-use is refused for a folder run-all.mjs did not make, nothing changes
+PASS integration self-test: re-use is allowed for an output of run-all.mjs
+PASS integration self-test: a folder inside an Obsidian vault is refused, nothing is created
+PASS integration self-test: an output folder through a link to the vault is refused, nothing is created in the vault
+PASS integration self-test: an output folder through a link to a link to the vault is refused, nothing is created in the vault
+PASS integration self-test: an output folder through a link to a folder inside the vault is refused, nothing is created in the vault
+PASS integration self-test: an output folder through a deeper new path under a link into the vault is refused, nothing is created in the vault
+PASS integration self-test: re-use of an output inside the vault through a link is refused
+PASS integration self-test: a link to a folder outside any vault is still allowed
+PASS integration self-test: run-all.mjs on an existing folder: exit 2, nothing written
+PASS integration self-test: run-all.mjs --only compare,gate on a foreign folder: exit 2, summary.json not overwritten
+PASS integration self-test: compare without the runs' files: each missing file is a problem, exit 1
+PASS integration self-test: exit 0 is ok, output kept
+PASS integration self-test: exit 3 is a failed step and a problem
+PASS integration self-test: a command that cannot start is a failed step
+PASS integration self-test: a child killed by a signal is a failed step
+PASS integration self-test: a timeout is a failed step and stops the child and its grandchild
+PASS integration self-test: a child that ignores SIGTERM is killed after the grace time
+PASS integration self-test: timeout, the parent and the grandchild end on SIGTERM: no grandchild left when the step returns
+PASS integration self-test: timeout, the parent ends on SIGTERM, the grandchild ignores it: no grandchild left when the step returns
+PASS integration self-test: timeout, the parent and the grandchild both ignore SIGTERM: no grandchild left when the step returns
+PASS integration self-test: SIGTERM to run-all while a step and its grandchild ignore SIGTERM: exit 130, complete: false, nothing left
+PASS integration self-test: identical runs are the same
+PASS integration self-test: the same results in another order are the same
+PASS integration self-test: a missing check is found (key on one side only)
+PASS integration self-test: an extra check is found
+PASS integration self-test: a lost repetition of a key is found
+PASS integration self-test: an extra repetition of a key is found
+PASS integration self-test: a changed state is found
+PASS integration self-test: a state that moved to the other theme is found (same totals)
+PASS integration self-test: a result on another platform is a different check
+PASS integration self-test: a result in another view state is a different check
+PASS integration self-test: a result of another appearance is a different check
+PASS integration self-test: an unexpected state is found even when both runs have it
+PASS integration self-test: a changed measured value alone is recorded, not a state difference
+PASS integration self-test: a result without a theme does not match one with a theme
+PASS integration self-test: a FAIL in both runs is the same state but a problem of the file
+PASS integration self-test: a good run file has no problem
+PASS integration self-test: an empty run file is a problem
+PASS integration self-test: a self-test file where a run was expected is a problem
+PASS integration self-test: a self-test file with every declared outcome has no problem
+PASS integration self-test: a self-test result without its declared outcome is a problem
+PASS integration self-test: dry run: device.environment FAILs only -> no problem
+PASS integration self-test: dry run: another FAIL is a regression
+PASS integration self-test: dry run: no device.environment FAIL means the emulation did not take
+
+all 48 integration self-test cases behaved as expected
