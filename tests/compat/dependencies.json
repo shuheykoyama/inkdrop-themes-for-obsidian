@@ -1,0 +1,32 @@
+{
+ "_comment": "Inputs of tests/compat/inventory.mjs (research/14 §6.30.3, step 11C). `generated`: class names Obsidian builds by joining strings, so they are in no app.css selector and not spelled out in its scripts; `evidence` is the joining code, which must be in the scripts; with `restInScripts` the part after the prefix must be a word in the scripts too, or the class must be named by a runtime check (tests/spec/runtime). `rules`: app.css rules the theme sources rely on by name (comments in src/ and the `overrides` of tests/static/lint-allowlist.json). selector: one selector of the app.css rule, as written there; property; value: a part of the declared value (optional); important (optional); absent: the theme relies on no such rule existing (matched on selectors containing the text). citedBy: where the sources name it.",
+ "generated": [
+  { "pattern": "^cm-", "evidence": "\"cm-\"+e", "restInScripts": true, "why": "CodeMirror token types, each prefixed with cm- (app.js)" },
+  { "pattern": "^language-", "evidence": "\"language-\"+", "why": "the language of a code fence in the note (app.js; Prism)" },
+  { "pattern": "^mod-(left|right)-split$", "evidence": "mod-{side}-split", "why": "the side docks (app.js)" }
+ ],
+ "rules": [
+  { "selector": ".is-translucent:not(.is-fullscreen) .mod-top .workspace-tab-header-container", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:44", "tests/static/lint-allowlist.json"] },
+  { "selector": ".is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:59", "tests/static/lint-allowlist.json"] },
+  { "selector": ".is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:29", "tests/static/lint-allowlist.json"] },
+  { "selector": ".is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary:before", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:51", "tests/static/lint-allowlist.json"] },
+  { "selector": ".is-translucent:not(.is-fullscreen) .workspace-split", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:6"] },
+  { "selector": ".is-translucent:not(.is-fullscreen) .workspace-tabs .workspace-leaf", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:6"] },
+  { "selector": ".is-translucent:not(.is-fullscreen)", "property": "--divider-color", "value": "rgba(0, 0, 0, 0.15)", "citedBy": ["src/common/platform/translucent.css:18"] },
+  { "selector": ".is-mobile.theme-dark", "property": "--color-base-10", "value": "#111", "citedBy": ["src/common/mapping/workspace.css:15"] },
+  { "selector": ".is-tablet.theme-dark", "property": "--titlebar-background", "value": "var(--background-primary)", "citedBy": ["src/common/platform/mobile.css:11"] },
+  { "selector": ".is-phone:not(.is-floating-nav) .mobile-navbar", "property": "--raised-background", "value": "var(--background-primary)", "citedBy": ["src/common/platform/mobile.css:20"] },
+  { "selector": ".markdown-source-view.mod-cm6 .cm-gutters", "property": "color", "value": "var(--text-faint)", "important": true, "citedBy": ["src/common/components/editor.css:22"] },
+  { "selector": ".markdown-source-view.mod-cm6 .cm-gutters", "property": "border-right", "value": "none", "important": true, "citedBy": ["src/common/components/editor.css:26"] },
+  { "selector": ".popover", "property": "background-color", "value": "var(--background-primary)", "citedBy": ["src/common/components/overlays.css:4"] },
+  { "selector": ".suggestion-container", "property": "background-color", "value": "var(--background-primary)", "citedBy": ["src/common/components/overlays.css:6", "src/common/components/editor.css:72"] },
+  { "selector": ".cm-tooltip.cm-tooltip-autocomplete", "property": "background-color", "value": "var(--background-primary)", "citedBy": ["src/common/components/overlays.css:6", "src/common/components/editor.css:72"] },
+  { "selector": "body:not(.is-phone) .vertical-tab-nav-item.is-active", "property": "background-color", "value": "var(--background-modifier-hover)", "citedBy": ["src/common/components/overlays.css:12"] },
+  { "selector": ".mod-macos:not(.is-mobile) .mod-settings", "property": "--dropdown-background", "value": "transparent", "citedBy": ["src/common/components/overlays.css:18"] },
+  { "selector": ".suggestion-item.is-selected", "property": "background-color", "value": "var(--background-modifier-hover)", "citedBy": ["src/common/components/overlays.css:30"] },
+  { "selector": ".checkbox-container", "property": "background-color", "value": "var(--background-modifier-border-hover)", "citedBy": ["src/common/components/overlays.css:40"] },
+  { "selector": ".callout", "property": "border-color", "value": "color-mix(in oklch, var(--callout-color)", "citedBy": ["src/common/components/markdown.css:237"] },
+  { "selector": ".theme-dark", "property": "--color-accent-1", "value": "calc(var(--accent-h) - 3)", "citedBy": ["src/palette/solarized-dark.css:527", "src/palette/kanagawa-dragon.css:504"] },
+  { "selector": ".tree-item-self.is-active", "property": "box-shadow", "absent": true, "citedBy": ["src/common/components/navigation.css:12"] }
+ ]
+}
