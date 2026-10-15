@@ -1,6 +1,7 @@
 # Static tests only (research/14 §3.1): build reproducibility, value fidelity against research/data,
 # layer rules, the official stylelint config, spec validation, and the negative self-tests (static and the
-# release judgement of tests/release; the judgement itself reads git history and runs locally).
+# release judgement of tests/release and the integrated regression's own logic; the judgement and the
+# integrated regression themselves read git history / need macOS and run locally).
 # The runtime (isolated Obsidian on macOS) and visual checks need a local desktop and are not run here.
 name: static
 
@@ -25,3 +26,4 @@ jobs:
       - run: npm run test:static
       - run: npm run test:static-self
       - run: npm run test:release-self
+      - run: npm run test:integration-self
