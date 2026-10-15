@@ -110,6 +110,10 @@ const CASES = [
     mutate: (r) => edit(r, "tests/spec/requirements.json", '"themes": ["kanagawa-dragon"], "appVersion": "1.14.4"', '"themes": ["kanagawa"], "appVersion": "1.14.4"') },
   { name: "accepts names PASS (only DIFF / UNSUPPORTED may be accepted)", fail: /^FAIL S6 every requirement is covered/m,
     mutate: (r) => edit(r, "tests/spec/requirements.json", '"id": "qd13.fidelity",', '"id": "qd13.fidelity", "accepts": { "PASS": "x" },') },
+  { name: "verifiedBy scope without a status", fail: /^FAIL S6 every requirement is covered/m,
+    mutate: (r) => edit(r, "tests/spec/requirements.json", '"status": "PASS",\n          "scope": {"os": "macOS", "device": "desktop", "themes": ["kanagawa-dragon"]', '"scope": {"os": "macOS", "device": "desktop", "themes": ["kanagawa-dragon"]') },
+  { name: "verifiedBy status that is not PASS / FAIL / UNVERIFIED", fail: /^FAIL S6 every requirement is covered/m,
+    mutate: (r) => edit(r, "tests/spec/requirements.json", '"status": "PASS",\n          "scope": {"os": "macOS", "device": "desktop", "themes": ["kanagawa-dragon"]', '"status": "OK",\n          "scope": {"os": "macOS", "device": "desktop", "themes": ["kanagawa-dragon"]') },
   // --- S2: manifests (Q-D20) ---
   { name: "minAppVersion back to 1.14.0 in src/manifests (SD)", fail: /^FAIL S2 solarized-dark manifest minAppVersion is 1\.14\.4/m,
     mutate: (r) => edit(r, "src/manifests/solarized-dark.json", '"minAppVersion": "1.14.4"', '"minAppVersion": "1.14.0"') },

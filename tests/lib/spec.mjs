@@ -109,6 +109,8 @@ export function requirementErrors(requirements, checks) {
       if (!["macOS", "iOS", "Android", "Windows", "Linux"].includes(s?.os) || !["desktop", "phone", "tablet"].includes(s?.device)
         || !Array.isArray(s?.themes) || !s.themes.length || s.themes.some((t) => !THEMES.includes(t)) || !/^\d+\.\d+\.\d+$/.test(s?.appVersion ?? ""))
         e.push(`${r.id}: verifiedBy scope needs os, device, themes (${THEMES.join(" / ")}) and appVersion x.y.z`);
+      // The outcome of a scoped record is explicit; the free text of `result` is never read as a PASS.
+      if (!["PASS", "FAIL", "UNVERIFIED"].includes(v.status)) e.push(`${r.id}: a verifiedBy entry with a scope needs status PASS / FAIL / UNVERIFIED`);
     }
     // accepts: a state other than PASS that counts for the release, with the decision it rests on.
     if (r.accepts !== undefined && (typeof r.accepts !== "object" || !Object.keys(r.accepts).length || Object.entries(r.accepts).some(([k, v]) => !["DIFF", "UNSUPPORTED"].includes(k) || typeof v !== "string" || !v.trim())))

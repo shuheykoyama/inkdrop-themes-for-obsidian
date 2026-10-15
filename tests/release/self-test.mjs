@@ -27,11 +27,24 @@ const desktopRun = (over = {}) => ({
     res("runner.theme-applied", undefined, t, "desktop", "PASS"),
   ]), ...over,
 });
-const deviceRun = (os, device, over = {}) => ({
-  file: `${os}-${device}.json`, label: `${os} ${device}`, kind: "device-report", os, device, appVersion: "1.14.5", at: "t", commit: "abc", method: "m", rejected: null,
-  results: THEMES.flatMap((t) => [res("c.all.mobile", "r.all", t, "phone", "PASS"), res("device.theme-applied", undefined, t, "phone", "PASS")]), ...over,
-});
+// A device report as the kit writes it: one probe state per theme with its device.environment check (body
+// classes of the device) and the environment flags; results on the platform of the device class.
+const deviceRun = (os, device, over = {}) => {
+  const platform = device === "tablet" ? "tablet" : "phone";
+  const classes = `is-mobile ${os === "iOS" ? "is-ios" : "is-android"} is-${device}`;
+  return {
+    file: `${os}-${device}.json`, label: `${os} ${device}`, kind: "device-report", os, device, appVersion: "1.14.5", at: "t", commit: "abc", method: "m",
+    platformFlags: { isMobile: true, isPhone: device === "phone", isTablet: device === "tablet", isIosApp: os === "iOS", isAndroidApp: os === "Android" },
+    results: THEMES.flatMap((t) => [res("c.all.mobile", "r.all", t, platform, "PASS"), res("device.theme-applied", undefined, t, platform, "PASS"), res("device.environment", undefined, t, platform, "PASS", { detail: classes })]), ...over,
+  };
+};
 const allRuns = () => [desktopRun(), deviceRun("iOS", "phone"), deviceRun("iOS", "tablet"), deviceRun("Android", "phone"), deviceRun("Android", "tablet")];
+const withDesk = (results) => [desktopRun({ results }), ...allRuns().slice(1)];
+const deskWith = (f) => desktopRun().results.map((x) => (x.id === "c.desk" ? f(x) : x));
+const reqsAccepting = (accepts) => requirements().map((q) => (q.id === "r.desk" ? { ...q, accepts } : q));
+// The iOS phone report changed by f; the judgement must reject it (a note) and never count the iOS phone.
+const rejectsPhone = (f) => () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: allRuns().map((x) => (x.os === "iOS" && x.device === "phone" ? f(x) : x)) });
+const phoneRejected = (re) => (r) => !r.met && r.notes.some((n) => re.test(n)) && unit(r, "r.all", "solarized-dark", "iOS", "phone")[0].state === "EMULATED ONLY";
 const inputs = (over = {}) => ({
   minAppVersion: "1.14.4", latestPublic: { macOS: { version: "1.14.4" } },
   targets: [
@@ -40,14 +53,15 @@ const inputs = (over = {}) => ({
     { os: "Windows", device: "desktop", gated: false, note: "not guaranteed" },
   ], ...over,
 });
+// r.desk verified only by a record for Kanagawa Dragon, with the given status and result text.
+const recorded = (status, result = "recorded") => requirements().map((q) => (q.id === "r.desk" ? { ...q, verifiedBy: [{ method: "native capture", evidence: "e", result, ...(status === undefined ? {} : { status }), scope: { os: "macOS", device: "desktop", themes: ["kanagawa-dragon"], appVersion: "1.14.4" } }] } : q));
 // The runs without any result of r.desk (for the cases where only a recorded verification covers it).
 const withoutDesk = () => allRuns().map((x) => ({ ...x, results: x.results.filter((y) => y.requirement !== "r.desk") }));
 const unit = (r, req, theme, os, device) => r.units.filter((u) => u.requirement === req && u.theme === theme && u.os === os && u.device === device);
 const target = (r, os, device) => r.targets.find((t) => t.os === os && t.device === device);
-const tablet = (results) => results.map((x) => ({ ...x, platform: x.platform === "phone" ? "tablet" : x.platform }));
 
 const CASES = [
-  { name: "positive control: everything measured on every gated target -> met", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: allRuns().map((x) => (x.device === "tablet" ? { ...x, results: tablet(x.results) } : x)) }),
+  { name: "positive control: everything measured on every gated target -> met", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: allRuns() }),
     expect: (r) => r.met && r.units.every((u) => u.state === "PASS" || u.os === "Windows") && target(r, "Windows", "desktop").met === null },
   { name: "the non-mandatory requirement makes no unit", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: allRuns() }),
     expect: (r) => !r.units.some((u) => u.requirement === "r.optional") },
@@ -57,8 +71,25 @@ const CASES = [
     expect: (r) => !r.met && unit(r, "r.all", "kanagawa-dragon", "Android", "phone")[0].state === "NO RESULT" },
   { name: "declared BLOCKED target -> BLOCKED, not met", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs({ targets: inputs().targets.map((t) => (t.os === "Android" ? { ...t, blocked: { reason: "no device" } } : t)) }), runs: allRuns().filter((x) => x.os !== "Android") }),
     expect: (r) => !r.met && unit(r, "r.all", "solarized-dark", "Android", "tablet")[0].state === "BLOCKED" },
-  { name: "a device report whose device.environment failed (desktop dry run) is rejected", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: [...allRuns().filter((x) => !(x.os === "iOS" && x.device === "phone")), deviceRun("iOS", "phone", { rejected: "52 device.environment checks failed (not a device run)" })] }),
-    expect: (r) => !r.met && unit(r, "r.all", "solarized-dark", "iOS", "phone")[0].state === "EMULATED ONLY" && r.notes.some((n) => /rejected/.test(n)) },
+  // --- device reports: accepted only with every environment check present, passing and consistent ---
+  { name: "device report: device.environment FAIL (the kit's dry run on the Mac) is rejected", run: rejectsPhone((x) => ({ ...x, results: x.results.map((y) => (y.id === "device.environment" ? { ...y, status: "FAIL", detail: "is-frameless emulate-mobile is-phone is-mobile" } : y)) })),
+    expect: phoneRejected(/device\.environment checks did not pass/) },
+  { name: "device report: no device.environment check at all is rejected", run: rejectsPhone((x) => ({ ...x, results: x.results.filter((y) => y.id !== "device.environment") })),
+    expect: phoneRejected(/no device\.environment check/) },
+  { name: "device report: the environment check of one probe state missing is rejected", run: rejectsPhone((x) => ({ ...x, results: x.results.filter((y) => !(y.id === "device.environment" && y.theme === "kanagawa-dragon")) })),
+    expect: phoneRejected(/no device\.environment check for 1 probe states/) },
+  { name: "device report: environment check passes but shows emulation is rejected", run: rejectsPhone((x) => ({ ...x, results: x.results.map((y) => (y.id === "device.environment" ? { ...y, detail: `${y.detail} emulate-mobile` } : y)) })),
+    expect: phoneRejected(/disagree with the recorded environment/) },
+  { name: "device report: flags say tablet, body classes say phone is rejected", run: rejectsPhone((x) => ({ ...x, platformFlags: { ...x.platformFlags, isPhone: false, isTablet: true } })),
+    expect: (r) => !r.met && r.notes.some((n) => /disagree with the recorded environment|not a tablet/.test(n)) },
+  { name: "device report: flags say iOS, body classes say Android is rejected", run: rejectsPhone((x) => ({ ...x, results: x.results.map((y) => (y.id === "device.environment" ? { ...y, detail: "is-mobile is-android is-phone" } : y)) })),
+    expect: phoneRejected(/disagree with the recorded environment \(is-ios is-phone\)/) },
+  { name: "device report: both iOS and Android flags is rejected", run: rejectsPhone((x) => ({ ...x, platformFlags: { ...x.platformFlags, isAndroidApp: true } })),
+    expect: (r) => !r.met && r.notes.some((n) => /not exactly one of an iOS \/ Android app/.test(n)) },
+  { name: "device report: phone jobs measured on a tablet are rejected", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: allRuns().map((x) => (x.os === "iOS" && x.device === "tablet" ? { ...x, results: x.results.map((y) => ({ ...y, platform: "phone" })) } : x)) }),
+    expect: (r) => !r.met && r.notes.some((n) => /platform phone, not a tablet/.test(n)) },
+  { name: "device report: the accepted control (as the kit writes it) is not rejected", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: allRuns() }),
+    expect: (r) => r.notes.length === 0 && unit(r, "r.all", "kanagawa-dragon", "Android", "tablet")[0].state === "PASS" },
   { name: "a check's result missing -> NO RESULT", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: [desktopRun({ results: desktopRun().results.filter((x) => !(x.id === "c.desk" && x.theme === "kanagawa-dragon")) }), ...allRuns().slice(1)] }),
     expect: (r) => !r.met && unit(r, "r.desk", "kanagawa-dragon", "macOS", "desktop")[0].state === "NO RESULT" && unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0].state === "PASS" },
   { name: "a FAIL among PASSes -> FAIL", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: [desktopRun({ results: [...desktopRun().results, res("c.desk", "r.desk", "solarized-dark", "desktop", "FAIL", { appearance: "translucent" })] }), ...allRuns().slice(1)] }),
@@ -68,11 +99,26 @@ const CASES = [
   { name: "DIFF without an accepted decision -> DIFF, does not count", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: [desktopRun({ results: desktopRun().results.map((x) => (x.id === "c.desk" ? { ...x, status: "DIFF" } : x)) }), ...allRuns().slice(1)] }),
     expect: (r) => !r.met && unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0].state === "DIFF" && !unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0].counts },
   { name: "DIFF with an accepted decision counts (and says which)", run: () => judgeRelease({ requirements: requirements().map((q) => (q.id === "r.desk" ? { ...q, accepts: { DIFF: "decision X" } } : q)), checks: checks(), inputs: inputs(), runs: [desktopRun({ results: desktopRun().results.map((x) => (x.id === "c.desk" ? { ...x, status: "DIFF" } : x)) }), ...allRuns().slice(1)] }),
-    expect: (r) => { const u = unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0]; return u.state === "DIFF" && u.counts && u.accepted === "decision X"; } },
+    expect: (r) => { const u = unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0]; return u.state === "DIFF" && u.counts && u.accepted.DIFF === "decision X"; } },
   { name: "UNSUPPORTED without an accepted decision does not count", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: [desktopRun({ results: desktopRun().results.map((x) => (x.id === "c.desk" ? { ...x, status: "UNSUPPORTED" } : x)) }), ...allRuns().slice(1)] }),
     expect: (r) => !r.met && unit(r, "r.desk", "kanagawa-dragon", "macOS", "desktop")[0].state === "UNSUPPORTED" },
   { name: "only N/A results -> N/A, does not count", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: [desktopRun({ results: desktopRun().results.map((x) => (x.id === "c.desk" ? { ...x, status: "N/A" } : x)) }), ...allRuns().slice(1)] }),
     expect: (r) => !r.met && unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0].state === "N/A" },
+  { name: "PASS + N/A -> N/A, the PASS of another check does not cover it", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: withDesk([...desktopRun().results, res("c.desk", "r.desk", "solarized-dark", "desktop", "N/A", { appearance: "translucent" })]) }),
+    expect: (r) => { const u = unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0]; return !r.met && u.state === "N/A" && !u.counts && u.notCounting.includes("N/A"); } },
+  { name: "a check excluded by the spec is listed apart, not as N/A", run: () => judgeRelease({ requirements: requirements(), checks: [...checks(), { id: "c.desk.kd", requirement: "r.desk", appearance: ["opaque"], themes: ["kanagawa-dragon"] }], inputs: inputs(), runs: withDesk([...desktopRun().results, res("c.desk.kd", "r.desk", "kanagawa-dragon", "desktop", "PASS")]) }),
+    expect: (r) => { const u = unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0]; return u.state === "PASS" && u.counts && u.excludedBySpec.includes("c.desk.kd"); } },
+  // --- accepted states are judged per part, never from the unit's state alone ---
+  { name: "PASS + DIFF, DIFF not accepted -> does not count", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: withDesk([...desktopRun().results, res("c.desk", "r.desk", "solarized-dark", "desktop", "DIFF", { appearance: "translucent" })]) }),
+    expect: (r) => { const u = unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0]; return !r.met && u.state === "DIFF" && !u.counts; } },
+  { name: "PASS + DIFF, DIFF accepted -> counts", run: () => judgeRelease({ requirements: reqsAccepting({ DIFF: "decision D" }), checks: checks(), inputs: inputs(), runs: withDesk([...desktopRun().results, res("c.desk", "r.desk", "solarized-dark", "desktop", "DIFF", { appearance: "translucent" })]) }),
+    expect: (r) => { const u = unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0]; return u.counts && u.accepted.DIFF === "decision D"; } },
+  { name: "DIFF + UNSUPPORTED, only DIFF accepted -> does not count", run: () => judgeRelease({ requirements: reqsAccepting({ DIFF: "decision D" }), checks: checks(), inputs: inputs(), runs: withDesk([...deskWith((x) => ({ ...x, status: "DIFF" })), res("c.desk", "r.desk", "solarized-dark", "desktop", "UNSUPPORTED", { appearance: "translucent" })]) }),
+    expect: (r) => { const u = unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0]; return !r.met && !u.counts && u.notCounting.join() === "UNSUPPORTED"; } },
+  { name: "DIFF + UNSUPPORTED, both accepted -> counts", run: () => judgeRelease({ requirements: reqsAccepting({ DIFF: "decision D", UNSUPPORTED: "decision U" }), checks: checks(), inputs: inputs(), runs: withDesk([...deskWith((x) => ({ ...x, status: "DIFF" })), res("c.desk", "r.desk", "solarized-dark", "desktop", "UNSUPPORTED", { appearance: "translucent" })]) }),
+    expect: (r) => { const u = unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0]; return u.counts && u.accepted.DIFF === "decision D" && u.accepted.UNSUPPORTED === "decision U"; } },
+  { name: "FAIL + accepted DIFF -> FAIL, does not count", run: () => judgeRelease({ requirements: reqsAccepting({ DIFF: "decision D" }), checks: checks(), inputs: inputs(), runs: withDesk([...deskWith((x) => ({ ...x, status: "DIFF" })), res("c.desk", "r.desk", "solarized-dark", "desktop", "FAIL", { appearance: "translucent" })]) }),
+    expect: (r) => { const u = unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0]; return !r.met && u.state === "FAIL" && !u.counts; } },
   { name: "extra (desktop-candidate) device results never count for a phone", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: [desktopRun(), deviceRun("iOS", "phone", { results: deviceRun("iOS", "phone").results.map((x) => ({ ...x, extra: true })) }), ...allRuns().slice(2)] }),
     expect: (r) => !r.met && unit(r, "r.all", "solarized-dark", "iOS", "phone")[0].state === "NO RESULT" },
   { name: "a version below the minimum does not count", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: [desktopRun({ appVersion: "1.14.3" }), ...allRuns().slice(1)] }),
@@ -81,11 +127,19 @@ const CASES = [
     expect: (r) => !r.met && unit(r, "r.desk", "solarized-dark", "macOS", "desktop").length === 2 && target(r, "macOS", "desktop").missing.every((m) => /latest public version 1\.14\.6/.test(m.reason)) },
   { name: "an UNVERIFIED requirement -> UNVERIFIED, not met", run: () => judgeRelease({ requirements: requirements().map((q) => (q.id === "r.desk" ? { ...q, unverified: { reason: "x", risk: "y" } } : q)), checks: checks().filter((c) => c.requirement !== "r.desk"), inputs: inputs(), runs: allRuns() }),
     expect: (r) => !r.met && unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0].state === "UNVERIFIED" },
-  { name: "a recorded verification counts only for its scope (one theme)", run: () => judgeRelease({ requirements: requirements().map((q) => (q.id === "r.desk" ? { ...q, verifiedBy: [{ method: "native capture", evidence: "e", result: "PASS", scope: { os: "macOS", device: "desktop", themes: ["kanagawa-dragon"], appVersion: "1.14.4" } }] } : q)), checks: checks().filter((c) => c.requirement !== "r.desk"), inputs: inputs(), runs: withoutDesk() }),
+  { name: "a recorded verification counts only for its scope (one theme)", run: () => judgeRelease({ requirements: requirements().map((q) => (q.id === "r.desk" ? { ...q, verifiedBy: [{ method: "native capture", evidence: "e", result: "PASS", status: "PASS", scope: { os: "macOS", device: "desktop", themes: ["kanagawa-dragon"], appVersion: "1.14.4" } }] } : q)), checks: checks().filter((c) => c.requirement !== "r.desk"), inputs: inputs(), runs: withoutDesk() }),
     expect: (r) => !r.met && unit(r, "r.desk", "kanagawa-dragon", "macOS", "desktop")[0].state === "PASS" && unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0].state === "NO RESULT" },
+  { name: "a recorded verification with status FAIL -> FAIL", run: () => judgeRelease({ requirements: recorded("FAIL"), checks: checks().filter((c) => c.requirement !== "r.desk"), inputs: inputs(), runs: withoutDesk() }),
+    expect: (r) => unit(r, "r.desk", "kanagawa-dragon", "macOS", "desktop")[0].state === "FAIL" },
+  { name: "a recorded verification with status UNVERIFIED -> UNVERIFIED", run: () => judgeRelease({ requirements: recorded("UNVERIFIED"), checks: checks().filter((c) => c.requirement !== "r.desk"), inputs: inputs(), runs: withoutDesk() }),
+    expect: (r) => unit(r, "r.desk", "kanagawa-dragon", "macOS", "desktop")[0].state === "UNVERIFIED" },
+  { name: "a recorded verification with an invalid status (OK) is not a PASS", run: () => judgeRelease({ requirements: recorded("OK"), checks: checks().filter((c) => c.requirement !== "r.desk"), inputs: inputs(), runs: withoutDesk() }),
+    expect: (r) => { const u = unit(r, "r.desk", "kanagawa-dragon", "macOS", "desktop")[0]; return u.state === "UNVERIFIED" && !u.counts; } },
+  { name: "a recorded verification without a status is not a PASS, whatever its result text says", run: () => judgeRelease({ requirements: recorded(undefined, "PASS on every theme"), checks: checks().filter((c) => c.requirement !== "r.desk"), inputs: inputs(), runs: withoutDesk() }),
+    expect: (r) => { const u = unit(r, "r.desk", "kanagawa-dragon", "macOS", "desktop")[0]; return u.state === "UNVERIFIED" && !u.counts; } },
   { name: "a recorded verification without a scope does not count", run: () => judgeRelease({ requirements: requirements().map((q) => (q.id === "r.desk" ? { ...q, verifiedBy: [{ method: "see notes", evidence: "e", result: "see notes" }] } : q)), checks: checks().filter((c) => c.requirement !== "r.desk"), inputs: inputs(), runs: withoutDesk() }),
     expect: (r) => unit(r, "r.desk", "solarized-dark", "macOS", "desktop")[0].state === "NO RESULT" },
-  { name: "an ungated target (Windows) without results is UNVERIFIED and does not decide the verdict", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: allRuns().map((x) => (x.device === "tablet" ? { ...x, results: tablet(x.results) } : x)) }),
+  { name: "an ungated target (Windows) without results is UNVERIFIED and does not decide the verdict", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: allRuns() }),
     expect: (r) => r.met && unit(r, "r.desk", "solarized-dark", "Windows", "desktop")[0].state === "UNVERIFIED" },
   { name: "every unit keeps its evidence (file, version, commit) and its checks", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: allRuns() }),
     expect: (r) => r.units.filter((u) => u.state === "PASS").every((u) => u.evidence.length && u.evidence.every((e) => e.file && e.appVersion && e.commit) && u.parts.every((p) => p.check && p.method)) },

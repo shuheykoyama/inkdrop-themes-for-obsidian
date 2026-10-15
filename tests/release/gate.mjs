@@ -15,10 +15,13 @@
 //   EMULATED ONLY a phone / tablet target has only desktop-emulation results (PASS (EMULATED)); not a device PASS
 //   DIFF          a fidelity difference (syntax); judged, not a failure, not a PASS
 //   UNSUPPORTED   a diagram kind the theme does not colour (Mermaid); judged, not a PASS
-//   N/A           every result of the unit is "not applicable" (nothing was measured)
+//   N/A           a check of the unit could not be measured there ("not applicable" at measurement time)
 //   PASS          measured on the real target (macOS desktop app, or the device) and as expected
-// A unit counts for the release only as PASS, or as DIFF / UNSUPPORTED when the requirement declares that state
-// accepted (`accepts` in requirements.json, with the decision it rests on). Everything else does not count.
+// A unit counts for the release only when EVERY part of it counts: a PASS, or a DIFF / UNSUPPORTED that the
+// requirement accepts (`accepts` in requirements.json, with the decision it rests on). One part that does not
+// count (an unaccepted DIFF, an N/A, a FAIL, ...) keeps the whole unit out, whatever its other parts are.
+// Not applicable by the spec (a check whose platforms / themes / appearances exclude the unit) is different:
+// such a check is not part of the unit at all and is listed in `excludedBySpec`; it never hides a measurement.
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -38,8 +41,8 @@ const cmpVersion = (a, b) => {
 
 // One result file as a run: where it ran (OS, device class, Obsidian version) and its results.
 // Desktop runtime files: OS from the inputs (the runner runs on macOS only), the version from the file.
-// Device reports: OS, device class and version from the environment the kit recorded on the device. A report
-// with a failed device.environment check is not a device run (e.g. the kit's desktop dry run) and is rejected.
+// Device reports: OS, device class and version from the environment the kit recorded on the device; whether
+// the report is accepted as a device run is decided by deviceRunProblem() below.
 function readRun(entry, repo, commitOf) {
   const file = path.join(repo, entry.file);
   if (!existsSync(file)) throw new Error(`inputs: ${entry.file} does not exist`);
@@ -54,12 +57,38 @@ function readRun(entry, repo, commitOf) {
   if (entry.kind === "device-report") {
     const p = data.environment?.platform ?? {};
     const os = p.isIosApp ? "iOS" : p.isAndroidApp ? "Android" : null;
-    const envFails = data.results.filter((r) => r.id === "device.environment" && r.status !== "PASS").length;
-    return { ...source, os, device: p.isTablet ? "tablet" : "phone", appVersion: data.environment?.apiVersion, at: data.judgedAt,
-      method: "Computed Style on the device (ink-device-check kit, judged by tests/device/judge.mjs)", results: data.results,
-      rejected: !os ? "the environment is not an iOS / Android app" : envFails ? `${envFails} device.environment checks failed (not a device run)` : null };
+    return { ...source, os, device: p.isTablet ? "tablet" : "phone", platformFlags: p, appVersion: data.environment?.apiVersion, at: data.judgedAt,
+      method: "Computed Style on the device (ink-device-check kit, judged by tests/device/judge.mjs)", results: data.results };
   }
   throw new Error(`inputs: ${entry.file}: unknown kind ${entry.kind}`);
+}
+
+// Why a device report is not accepted as a device run, or null. Every probe state of the report (each theme x
+// platform x state that has results, other than the syntax and Mermaid jobs, which have no state of their own)
+// needs a device.environment check, and every one must PASS and agree with the environment the kit recorded:
+// one OS and one device class in the flags, the body classes of that OS and class, no desktop emulation, and
+// result platforms of that class. No environment check at all, one missing, one failed or one that disagrees
+// rejects the whole report (e.g. the kit's dry run on the Mac, where device.environment fails on purpose).
+export function deviceRunProblem(run) {
+  const f = run.platformFlags ?? {};
+  if (!!f.isIosApp === !!f.isAndroidApp) return "the environment is not exactly one of an iOS / Android app";
+  if (!!f.isPhone === !!f.isTablet || !f.isMobile) return "the environment is not exactly one of a phone / tablet";
+  const env = run.results.filter((r) => r.id === "device.environment");
+  if (!env.length) return "no device.environment check";
+  const failed = env.filter((r) => r.status !== "PASS");
+  if (failed.length) return `${failed.length} device.environment checks did not pass (not a device run)`;
+  const osClass = f.isIosApp ? "is-ios" : "is-android";
+  const devClass = f.isTablet ? "is-tablet" : "is-phone";
+  const wrong = env.filter((r) => { const c = String(r.detail ?? "").split(/\s+/); return !c.includes("is-mobile") || !c.includes(osClass) || !c.includes(devClass) || c.includes("emulate-mobile"); });
+  if (wrong.length) return `${wrong.length} device.environment checks disagree with the recorded environment (${osClass} ${devClass}): ${wrong[0].detail}`;
+  const platforms = SPEC_PLATFORMS[f.isTablet ? "tablet" : "phone"];
+  const off = run.results.filter((r) => !platforms.includes(r.platform));
+  if (off.length) return `${off.length} results are for platform ${off[0].platform}, not a ${f.isTablet ? "tablet" : "phone"} (e.g. the kit's phone jobs on a tablet)`;
+  const key = (r) => [r.theme, r.platform, r.state].join("|");
+  const envKeys = new Set(env.map(key));
+  const missing = [...new Set(run.results.filter((r) => !/^(syntax|mermaid)/.test(r.state)).map(key))].filter((k) => !envKeys.has(k));
+  if (missing.length) return `no device.environment check for ${missing.length} probe states (e.g. ${missing[0]})`;
+  return null;
 }
 
 // The judgement. `config`: { requirements, checks, inputs, runs } (runs as readRun returns them), so that the
@@ -68,7 +97,10 @@ export function judgeRelease({ requirements, checks, inputs, runs }) {
   const minVersion = inputs.minAppVersion;
   const units = [];
   const notes = [];
-  for (const run of runs) if (run.rejected) notes.push(`rejected ${run.file}: ${run.rejected}`);
+  for (const run of runs) {
+    run.rejected = run.kind === "device-report" ? deviceRunProblem(run) : null;
+    if (run.rejected) notes.push(`rejected ${run.file}: ${run.rejected}`);
+  }
   // Preparation failures: runner.* / device.* checks carry no requirement; a failure in one (theme, platform,
   // appearance, state) of one run makes every requirement check of that state FAIL.
   const prepKey = (run, r) => [run.file, r.theme, r.platform, r.appearance, r.state].join("|");
@@ -111,9 +143,12 @@ export function judgeRelease({ requirements, checks, inputs, runs }) {
         for (const [appVersion, sources] of byVersion) {
           const parts = [];
           const evidence = [];
+          const excluded = new Set();
           for (const src of sources) {
             if (src.recorded) {
-              parts.push({ state: "PASS", check: null, method: src.recorded.method, why: src.recorded.result });
+              // The record's own status decides (S6 checks it); anything but PASS / FAIL / UNVERIFIED is not a PASS.
+              const st = ["PASS", "FAIL", "UNVERIFIED"].includes(src.recorded.status) ? src.recorded.status : "UNVERIFIED";
+              parts.push({ state: st, check: null, method: src.recorded.method, why: st === src.recorded.status ? src.recorded.result : `recorded status ${JSON.stringify(src.recorded.status)} is not PASS / FAIL / UNVERIFIED` });
               evidence.push({ file: src.recorded.evidence, kind: "recorded verification", appVersion, at: src.recorded.scope.date ?? null, commit: null });
               continue;
             }
@@ -121,7 +156,9 @@ export function judgeRelease({ requirements, checks, inputs, runs }) {
             evidence.push({ file: run.file, label: run.label, kind: run.kind, appVersion, electron: run.electron ?? null, at: run.at, commit: run.commit });
             // Every spec check of this requirement that applies here must have a result (desktop: any appearance;
             // device: the kit measures the opaque checks).
-            const expected = reqChecks.filter((c) => (!c.themes || c.themes.includes(theme)) && (c.platform ?? ["desktop"]).some((p) => SPEC_PLATFORMS[target.device].includes(p)) && (run.kind === "desktop-runtime" || c.appearance.includes("opaque")));
+            const applies = (c) => (!c.themes || c.themes.includes(theme)) && (c.platform ?? ["desktop"]).some((p) => SPEC_PLATFORMS[target.device].includes(p)) && (run.kind === "desktop-runtime" || c.appearance.includes("opaque"));
+            const expected = reqChecks.filter(applies);
+            for (const c of reqChecks.filter((x) => !applies(x))) excluded.add(c.id);
             for (const c of expected) if (!rs.some((r) => r.id === c.id)) parts.push({ state: "NO RESULT", check: c.id, why: `no result in ${run.file}` });
             for (const r of rs) {
               const prep = prepFailed.get(prepKey(run, r));
@@ -132,20 +169,24 @@ export function judgeRelease({ requirements, checks, inputs, runs }) {
           }
           // A requirement without spec checks (syntax, Mermaid, recorded verifications) needs some result here.
           if (!parts.length) parts.push({ state: "NO RESULT", check: null, why: "no result for this requirement at this version" });
-          // N/A parts say nothing was measured; they decide the unit only when nothing else is there.
-          const measured = parts.filter((p) => p.state !== "N/A");
-          const state = measured.length ? worst(measured.map((p) => p.state)) : "N/A";
-          units.push({ ...base, appVersion, state, evidence, parts });
+          // The worst part is the unit's state; an N/A part is a check that could not be measured here and is
+          // never outweighed by the PASS of another check.
+          const state = worst(parts.map((p) => p.state));
+          units.push({ ...base, appVersion, state, evidence, parts, excludedBySpec: [...excluded].filter((id) => !parts.some((p) => p.check === id)) });
         }
       }
     }
   }
-  // Does a unit count for the release? PASS, or an accepted DIFF / UNSUPPORTED (requirements.json `accepts`).
+  // Does a unit count for the release? Only when every part counts: PASS, or a DIFF / UNSUPPORTED that the
+  // requirement accepts (requirements.json `accepts`). The accepted states used are listed on the unit.
   const reqById = new Map(requirements.map((r) => [r.id, r]));
   for (const u of units) {
-    const accepted = reqById.get(u.requirement).accepts?.[u.state];
-    u.counts = u.state === "PASS" || (["DIFF", "UNSUPPORTED"].includes(u.state) && !!accepted);
-    if (accepted && u.counts && u.state !== "PASS") u.accepted = accepted;
+    const accepts = reqById.get(u.requirement).accepts ?? {};
+    const partCounts = (p) => p.state === "PASS" || (["DIFF", "UNSUPPORTED"].includes(p.state) && typeof accepts[p.state] === "string" && !!accepts[p.state].trim());
+    u.counts = u.parts.length > 0 && u.parts.every(partCounts);
+    u.notCounting = [...new Set(u.parts.filter((p) => !partCounts(p)).map((p) => p.state))];
+    const used = [...new Set(u.parts.filter((p) => p.state !== "PASS" && partCounts(p)).map((p) => p.state))];
+    if (used.length) u.accepted = Object.fromEntries(used.map((s) => [s, accepts[s]]));
     u.versionOk = u.appVersion !== null && cmpVersion(u.appVersion, minVersion) >= 0;
   }
   // Per gated target: every mandatory requirement x theme needs a counting unit at a version >= the minimum,
