@@ -14,6 +14,7 @@
     "test:static-self": "node tests/static/self-test.mjs",
     "test:release-self": "node tests/release/self-test.mjs",
     "test:release": "node tests/release/gate.mjs",
+    "test:integration": "node tests/integration/run-all.mjs",
     "test:clean-room": "bash tests/clean-room.sh",
     "test:runtime": "node tests/runtime/run.mjs",
     "test:visual-self": "python3 -I tests/visual/self-test.py",

@@ -221,6 +221,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   }
   // The commit that last changed an evidence file (its provenance); "uncommitted" when it has local changes.
   const commitOf = (file) => {
+    if (file.startsWith("..") || path.isAbsolute(file)) return "outside the repository";
     try {
       const dirty = execFileSync("git", ["status", "--porcelain", "--", file], { cwd: repo, encoding: "utf8" }).trim();
       if (dirty) return "uncommitted";
