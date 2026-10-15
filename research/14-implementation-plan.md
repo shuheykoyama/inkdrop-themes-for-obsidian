@@ -2428,3 +2428,101 @@ Q-D10 のサポート範囲と、これまでに承認された設計判断は�
   - `dist/` の manifest が作り直したビルドとバイト単位で同一であること。
   - 陰性テストは 3 件（src を 1.14.0 に戻す、`dist/` だけ古い、`dist/` の manifest がない）。静的テストの陰性テストは 48 件から 51 件になった。
 - 変えていないもの: 過去の検証の事実と証跡（工程 1〜10 の記録、`evidence/`）。どれも 1.14.4（iOS は 1.14.5）での結果で、記録は当時のまま。§6.30 の計画の 1.14.0 に関する記述は、レビュー時点の記録として残し、解決の注記を付けた。実機キットのプラグイン（`ink-device-check`）の `minAppVersion: 1.14.0` は、テーマではなく検査用のプラグインの値なので変えていない。
+
+### 6.33 工程 11A: 棚卸しとリリースの判定の集計（2026-10-15、レビュー待ち）
+
+**作ったもの**
+
+- `tests/release/gate.mjs`: リリースの合格条件（§2.3）を、結果ファイルと仕様だけから判定する。
+- `tests/release/inputs.json`: 判定に入れる結果ファイルと、Q-D10 の対象（OS × デバイスの区分）。BLOCKED の対象は理由を書く。手で書くのはこのファイルだけ。
+- `tests/release/self-test.mjs`: 陰性テスト 21 件。`npm test` と CI に入れた。
+- `requirements.json`: Runtime の検査でない記録された検証（`verifiedBy`）3 件に、範囲（`scope`: OS、デバイス、テーマ、版、Electron、日付）を書き足した。判定は、記録された検証をその範囲でだけ数える。範囲のない `verifiedBy`（Runtime の検査を説明しているだけのもの）は数えない。
+- 新しい項目の形は、静的テスト（S6）で検査する。陰性テストを 2 件足し、静的テストの陰性テストは 53 件になった。
+  - `scope` の OS・デバイス・テーマ・版の形
+  - `accepts` は DIFF・UNSUPPORTED だけで、根拠の判断を書くこと
+
+**判定の単位と状態の意味**
+
+単位は、必須項目 × テーマ × OS × デバイスの区分 × Obsidian の版。必須項目が適用されない区分（`platforms` にないもの）は単位を作らない。1 つの単位に複数の検査があれば最も悪い状態にし、内訳（検査の ID、外観、状態、方法、結果ファイル）を残す。
+
+| 状態（悪い順） | 意味 | リリースに数えるか |
+|---|---|---|
+| FAIL | 検査が失敗した。または、その状態の準備（`runner.*`・`device.*`）が失敗した | 数えない |
+| NO RESULT | 仕様が求める検査の結果がない。空欄にしない | 数えない |
+| BLOCKED | 端末や配布物がなく、実行できない（`inputs.json` に理由） | 数えない |
+| UNVERIFIED | `requirements.json` で UNVERIFIED（理由とリスク付き）。対象外の OS（Windows・Linux）で結果がないものも、§2.3 のとおりこれにする | 数えない（Windows・Linux は判定に入れない） |
+| EMULATED ONLY | phone・tablet で、デスクトップのエミュレーション（PASS (EMULATED)）しかない | 数えない。実機の PASS の代わりにしない |
+| DIFF | 構文の忠実度の差。FAIL ではない | 必須項目の `accepts` に根拠の判断があるときだけ数える |
+| UNSUPPORTED | Mermaid の非対応の図種。FAIL ではない | 同上 |
+| N/A | 単位の結果がすべて「適用外」（何も測っていない） | 数えない |
+| PASS | 実際の対象（macOS のデスクトップ、または実機）で測り、期待どおり | 数える |
+
+ほかの規則:
+
+- 実機の判定の結果のうち、デスクトップの検査を候補として実機で測ったもの（`extra`）は数えない。
+- `device.environment` が FAIL した実機の判定（Mac での試運転など）は、実機の結果として受け付けない（記録に残す）。
+- 対象ごとに、必須項目 × テーマのすべてに、最小対応版（Q-D20、1.14.4）以上の版で数える単位が要る。公開の最新版が分かっている対象（macOS の 1.14.4）では、その版での単位も要る。
+- 各単位から、結果ファイル、そのコミット、版、Electron、測った日時、検査の方法までたどれる。
+
+**陰性テスト**（21 件、すべて期待どおり）: 次を確かめた。
+
+- 全部そろえば合格する（陽性の対照）
+- 必須でない項目は単位にならない
+- 実機の結果を外すと EMULATED ONLY、エミュレーションもなければ NO RESULT になる
+- BLOCKED の対象、`device.environment` が FAIL した判定（受け付けない）
+- 検査の結果の欠落（NO RESULT）、FAIL の混在、準備の失敗（FAIL）
+- `accepts` のない DIFF と UNSUPPORTED は数えない。`accepts` のある DIFF は数え、根拠を示す
+- N/A だけの単位は数えない。`extra` の結果は数えない
+- 最小対応版より古い版は数えない。版の違う結果は別の単位になる。公開の最新版での確認がなければ合格しない
+- UNVERIFIED の項目
+- 記録された検証は範囲（テーマ）の中でだけ数える。範囲のないものは数えない
+- 対象外の OS は判定を左右しない
+- すべての単位に証跡が付く
+
+**判定の結果**（`evidence/phase3-step11/11a/`。入力は §6.25 の E39・E43 の最終の実行と、iPhone の 2 回目の判定）
+
+| 対象 | 単位 | 内訳 | 判定 |
+|---|---|---|---|
+| macOS desktop | 138 | PASS 133、DIFF 2、UNVERIFIED 2、NO RESULT 1 | 不合格 |
+| iOS phone | 34 | PASS 30、DIFF 2、UNVERIFIED 2 | 不合格 |
+| iOS tablet | 34 | BLOCKED 32、UNVERIFIED 2 | 不合格 |
+| Android phone | 34 | BLOCKED 32、UNVERIFIED 2 | 不合格 |
+| Android tablet | 34 | BLOCKED 32、UNVERIFIED 2 | 不合格 |
+| Windows・Linux desktop | 各 138 | UNVERIFIED 138 | 判定に入れない（Q-D10） |
+
+**リリースの合格条件: 未達成**（§6.29 と同じ）。FAIL の単位は 0。数えない単位の内訳は次のとおり。
+
+- 既知のもの:
+  - `qd1.titlebar-visible-frame`（macOS、UNVERIFIED）
+  - `qd1.mobile-drawer-header`（phone・tablet、UNVERIFIED）
+  - iPad と Android（BLOCKED）
+- **新たに見えたもの**:
+  1. **`qd22.real-fullscreen` の Solarized Dark が NO RESULT。** 実際の macOS のフルスクリーンは、2026-10-11 に Kanagawa Dragon だけで確かめていた（記録の結果に「Solarized Dark は試していない。規則は共通で値だけが違う」とある）。この項目は検証済みとして扱われてきた。テーマごとに判定すると、SD は実測がない。規則が共通であることは推論で、実測ではない。確かめるには macOS の実際のフルスクリーン（デスクトップの Space を動かす）が要るので、ユーザーの承認が要る（11G）。
+  2. **`qd13.fidelity`（必須）は DIFF**（macOS と iOS の phone、両テーマ）。構文の DIFF 606 件は RV5 以降、既知の差として承認されてきた。ただし、DIFF をリリースの合格に数えるかは、これまで決めていない。判定は、決まっていないものを合格に数えない。数えるには、根拠の判断（RV5 の判断）を `accepts` に書く必要がある。これは RV7（ユーザーとレビュー）の判断事項で、11A では書いていない。
+
+**引き継ぎの一覧**（理由・リスク・確認に必要な環境と承認）
+
+| 事項 | 種類 | 理由とリスク | 確認に必要なもの | 扱う工程 |
+|---|---|---|---|---|
+| `qd1.titlebar-visible-frame`（必須） | UNVERIFIED | 既定のフレームではタイトルバーが出ない。タイトルバーが出るフレームの利用者に、ノートリスト以外の色が見えるおそれ | 隔離インスタンスのフレーム設定と再起動（承認は不要） | 11B・11D |
+| `qd1.mobile-drawer-header`（必須） | UNVERIFIED | ヘッダーは自分の背景を塗らないので、Computed Style では見え方が分からない | 実機の撮影の画素の確認（実機の操作、承認が要る） | 11G |
+| `qd22.real-fullscreen` の SD（必須） | NO RESULT（今回見えた） | SD の実際のフルスクリーンは未実測。規則が共通という推論だけ | macOS の実際のフルスクリーン（承認が要る） | 11G |
+| `qd13.fidelity` の DIFF（必須） | 判断待ち | DIFF をリリースに数えるか未決定 | RV7 の判断 | 11H |
+| iPad、Android（phone・tablet） | BLOCKED | 端末がない、または今回は対象外。リリース不合格のまま | 端末（承認が要る）、または Q-D10 の範囲の判断（ユーザー） | 11G・11H |
+| RV6 の照合を入れたキット | UNVERIFIED（iOS） | iOS でマーカーを読めるか未確認。読めなければキットは止まる（安全側） | iPhone での再実行（承認が要る） | 11G |
+| V-35、V-39 の残り、V-33 | 未実施 | Inkdrop 側の追加の基準がない（アクティブ行の重なり、12 言語の描画、オーバーレイの形） | Inkdrop の操作（承認が要る） | 11G |
+| RV3 の Markdown の差（Source mode の表、言語名、括弧、引用のバー）、閲覧ビューのチェックボックス、字体の大きさ | 判断済みの差 | DOM・lint の制約と判断による | 既存の基準画像 | 11D |
+| `.suggestion-container` が他の候補リストにも当たる（RV4） | 既知の波及 | Obsidian の同じ部品のため | 実行時テスト・撮影 | 11D |
+| `md.properties`、`ed.unrendered`、`qd13.not-reproducible`、`qd12.unsupported` | UNVERIFIED（必須でない） | 各項目の `unverified` のとおり | — | 11D（一覧に載せる） |
+| Electron 39.5.1 の popover・tooltip の FAIL（§6.23） | 原因が未特定 | 再発すれば `runner.pointer-prepared` が FAIL し、記録が残る | 隔離インスタンス | 11B |
+| iOS（1.14.5）とデスクトップ（1.14.4）の版の差 | 記録 | 版の差による影響は見つかっていない | 11C | 11C |
+| ツアーの 10・11・29・30 番でキーボードが出た理由 | 推定 | 撮影の内容には影響していない | 実機（承認が要る） | 11G（必要なら） |
+| 壁紙・「透明度を下げる」の影響（R-macos） | 未確認 | translucent の見え方が環境で変わりうる | macOS の表示設定（承認が要る） | 11G（必要なら） |
+| コントラスト、`!important` の判定 | 未実施 | §6.30.3 の 11E | 隔離インスタンス | 11E |
+| Windows・Linux | UNVERIFIED（判定に入れない） | Q-D10 | 実機 | — |
+
+**影響範囲**: デスクトップのランナー（`tests/runtime/`）は変えていない。共有の `tests/lib/spec.mjs` は、静的テストだけが使う `requirementErrors` に、形の検査を足しただけ。ランナーは `requirements.json` から ID だけを読み、ID は変えていない。そのため、E39・E43 の 3859 件は再実行していない。テーマの CSS、期待値、許容範囲、DIFF 606 件・UNSUPPORTED 30 件の判断は変えていない。
+
+### 6.34 次の作業
+
+工程 11A のレビューを待つ。11B には、レビューの結果に従って進む。

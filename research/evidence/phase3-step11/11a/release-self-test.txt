@@ -1,0 +1,23 @@
+PASS release self-test: positive control: everything measured on every gated target -> met
+PASS release self-test: the non-mandatory requirement makes no unit
+PASS release self-test: device run removed -> EMULATED ONLY (desktop emulation only), never PASS, not met
+PASS release self-test: no device run and no emulation -> NO RESULT
+PASS release self-test: declared BLOCKED target -> BLOCKED, not met
+PASS release self-test: a device report whose device.environment failed (desktop dry run) is rejected
+PASS release self-test: a check's result missing -> NO RESULT
+PASS release self-test: a FAIL among PASSes -> FAIL
+PASS release self-test: a failed preparation (runner.*) makes the state's PASS a FAIL
+PASS release self-test: DIFF without an accepted decision -> DIFF, does not count
+PASS release self-test: DIFF with an accepted decision counts (and says which)
+PASS release self-test: UNSUPPORTED without an accepted decision does not count
+PASS release self-test: only N/A results -> N/A, does not count
+PASS release self-test: extra (desktop-candidate) device results never count for a phone
+PASS release self-test: a version below the minimum does not count
+PASS release self-test: two versions stay apart; the latest public one must be among the counting units
+PASS release self-test: an UNVERIFIED requirement -> UNVERIFIED, not met
+PASS release self-test: a recorded verification counts only for its scope (one theme)
+PASS release self-test: a recorded verification without a scope does not count
+PASS release self-test: an ungated target (Windows) without results is UNVERIFIED and does not decide the verdict
+PASS release self-test: every unit keeps its evidence (file, version, commit) and its checks
+
+all 21 release self-test cases behaved as expected
