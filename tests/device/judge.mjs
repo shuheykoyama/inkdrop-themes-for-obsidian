@@ -55,7 +55,9 @@ for (const rec of run.results) {
     results.push({ id: "device.environment", ...where, status: envOk ? "PASS" : "FAIL", detail: cls.filter((x) => /^(is-|emulate-)/.test(x)).join(" ") });
     if (page.edPrepared) {
       const e = page.edPrepared;
-      results.push({ id: "device.ed-prepared", ...where, status: e.leafFound && e.file === "Editor chrome" && e.gutters === e.want ? "PASS" : "FAIL", detail: JSON.stringify(e) });
+      // As the desktop runner's runner.ed-prepared: a fold that did not happen fails here (kits before the
+      // re-review of step 10 did not record `folded`, so it is undefined there and not a failure).
+      results.push({ id: "device.ed-prepared", ...where, status: e.leafFound && e.file === "Editor chrome" && e.gutters === e.want && e.folded !== false ? "PASS" : "FAIL", detail: JSON.stringify(e) });
     }
     for (const id of job.checkIds) {
       const c = checks.get(id);
