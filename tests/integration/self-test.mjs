@@ -6,7 +6,7 @@
 // usage: node tests/integration/self-test.mjs
 import { spawn, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { existsSync, lstatSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { chmodSync, existsSync, lstatSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { classifyDryRun, compareResults, createRunner, MARKER, prepareOut, runProblems } from "./lib.mjs";
@@ -85,19 +85,27 @@ const alive = (pid) => { try { process.kill(pid, 0); return true; } catch { retu
 
 // ---------- 3. interrupting run-all.mjs ----------
 {
-  // A real run (kit-build only) interrupted with SIGTERM: exit 130, summary complete: false, the running child's
-  // group stopped (no process with this output folder in its command line is left).
+  // The real run-all.mjs, interrupted with SIGTERM while a step hangs: `npm` is replaced (PATH) by a stand-in
+  // that starts a grandchild and waits, so the first step (build) hangs the same way on every platform.
+  // Expected: exit 130, summary.json with complete: false, the step's whole group stopped, no process left.
   const out = path.join(tmp, "interrupted");
-  const child = spawn(process.execPath, [path.join(repo, "tests/integration/run-all.mjs"), out, "--only", "kit-build"], { stdio: "ignore" });
+  const bin = path.join(tmp, "bin");
+  mkdirSync(bin);
+  const pidFile = path.join(tmp, "npm-grandchild.pid");
+  writeFileSync(path.join(bin, "npm"), `#!/bin/sh\nsleep 120 & echo $! > '${pidFile}'\nsleep 120\n`);
+  chmodSync(path.join(bin, "npm"), 0o755);
+  const child = spawn(process.execPath, [path.join(repo, "tests/integration/run-all.mjs"), out, "--only", "static"], { stdio: "ignore", env: { ...process.env, PATH: `${bin}:${process.env.PATH}` } });
   const done = new Promise((r) => child.on("close", (status, signal) => r({ status, signal })));
-  for (let i = 0; i < 100 && !existsSync(path.join(out, "kit-build.txt")); i++) await sleep(100);
-  await sleep(500);
+  for (let i = 0; i < 100 && !existsSync(pidFile); i++) await sleep(100);
+  const gpid = existsSync(pidFile) ? Number(readFileSync(pidFile, "utf8")) : null;
   child.kill("SIGTERM");
   const { status } = await done;
   await sleep(1500);
   const s = existsSync(path.join(out, "summary.json")) ? JSON.parse(readFileSync(path.join(out, "summary.json"), "utf8")) : null;
-  const left = spawnSync("pgrep", ["-f", out], { encoding: "utf8" }).stdout.trim();
-  check("SIGTERM: exit 130, summary.json says complete: false and interrupted, no process left", status === 130 && s?.complete === false && s?.interrupted === "SIGTERM" && s.problems.includes("interrupted by SIGTERM") && left === "", { status, s: s && { complete: s.complete, interrupted: s.interrupted }, left });
+  const left = spawnSync("pgrep", ["-f", pidFile], { encoding: "utf8" }).stdout.trim();
+  check("SIGTERM while a step hangs: exit 130, complete: false, the step's group stopped, no process left",
+    gpid !== null && status === 130 && s?.complete === false && s?.interrupted === "SIGTERM" && s.problems.includes("interrupted by SIGTERM") && !alive(gpid) && left === "",
+    { gpid, status, s: s && { complete: s.complete, interrupted: s.interrupted }, gAlive: gpid && alive(gpid), left });
 }
 
 // ---------- 4. comparing runs ----------
