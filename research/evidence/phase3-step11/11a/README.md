@@ -6,7 +6,7 @@
 |---|---|
 | `release-gate.json` | `node tests/release/gate.mjs --out …` の全単位（必須項目 × テーマ × OS × デバイスの区分 × 版）。各単位に、状態、内訳（検査の ID、外観、状態、方法）、証跡（結果ファイル、コミット、版、Electron、日時）が付く |
 | `release-gate.txt` | 同じ実行の要約。リリースの合格条件は NOT MET |
-| `release-self-test.txt` | `node tests/release/self-test.mjs` の出力（21 件すべて期待どおり） |
+| `release-self-test.txt` | `node tests/release/self-test.mjs` の出力（40 件すべて期待どおり。独立レビューの修正で 21 件から増やした。§6.35） |
 
 入力の結果ファイル:
 
