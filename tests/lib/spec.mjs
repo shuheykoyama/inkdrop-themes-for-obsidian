@@ -101,6 +101,18 @@ export function requirementErrors(requirements, checks) {
     const vb = r.verifiedBy;
     if (vb !== undefined && (!Array.isArray(vb) || !vb.length || vb.some((v) => !["method", "evidence", "result"].every((k) => typeof v?.[k] === "string" && v[k].trim()))))
       e.push(`${r.id}: verifiedBy needs method, evidence and result for every entry`);
+    // A scope says where a recorded verification was made; the release judgement (tests/release/gate.mjs)
+    // counts it only there.
+    for (const v of Array.isArray(vb) ? vb : []) {
+      const s = v?.scope;
+      if (s === undefined) continue;
+      if (!["macOS", "iOS", "Android", "Windows", "Linux"].includes(s?.os) || !["desktop", "phone", "tablet"].includes(s?.device)
+        || !Array.isArray(s?.themes) || !s.themes.length || s.themes.some((t) => !THEMES.includes(t)) || !/^\d+\.\d+\.\d+$/.test(s?.appVersion ?? ""))
+        e.push(`${r.id}: verifiedBy scope needs os, device, themes (${THEMES.join(" / ")}) and appVersion x.y.z`);
+    }
+    // accepts: a state other than PASS that counts for the release, with the decision it rests on.
+    if (r.accepts !== undefined && (typeof r.accepts !== "object" || !Object.keys(r.accepts).length || Object.entries(r.accepts).some(([k, v]) => !["DIFF", "UNSUPPORTED"].includes(k) || typeof v !== "string" || !v.trim())))
+      e.push(`${r.id}: accepts may only name DIFF / UNSUPPORTED, each with the decision it rests on`);
     const covered = checks.some((c) => c.requirement === r.id) || (Array.isArray(vb) && vb.length > 0);
     const unverified = r.unverified && typeof r.unverified.reason === "string" && r.unverified.reason.trim() && typeof r.unverified.risk === "string" && r.unverified.risk.trim();
     if (r.unverified && !unverified) e.push(`${r.id}: unverified needs both reason and risk`);

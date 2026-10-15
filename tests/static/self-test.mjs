@@ -105,6 +105,11 @@ const CASES = [
     mutate: (r) => edit(r, "src/common/components/markdown.css", ".theme-dark .callout {", ".callout {") },
   { name: "verifiedBy without evidence", fail: /^FAIL S6 every requirement is covered .*verifiedBy needs method, evidence and result/m,
     mutate: (r) => edit(r, "tests/spec/requirements.json", '"evidence": "research/evidence/phase3-v38/measurements/obsidian-real-fullscreen.json"', '"evidence": ""') },
+  // --- S6: release-judgement fields (step 11A) ---
+  { name: "verifiedBy scope names an unknown theme", fail: /^FAIL S6 every requirement is covered/m,
+    mutate: (r) => edit(r, "tests/spec/requirements.json", '"themes": ["kanagawa-dragon"], "appVersion": "1.14.4"', '"themes": ["kanagawa"], "appVersion": "1.14.4"') },
+  { name: "accepts names PASS (only DIFF / UNSUPPORTED may be accepted)", fail: /^FAIL S6 every requirement is covered/m,
+    mutate: (r) => edit(r, "tests/spec/requirements.json", '"id": "qd13.fidelity",', '"id": "qd13.fidelity", "accepts": { "PASS": "x" },') },
   // --- S2: manifests (Q-D20) ---
   { name: "minAppVersion back to 1.14.0 in src/manifests (SD)", fail: /^FAIL S2 solarized-dark manifest minAppVersion is 1\.14\.4/m,
     mutate: (r) => edit(r, "src/manifests/solarized-dark.json", '"minAppVersion": "1.14.4"', '"minAppVersion": "1.14.0"') },

@@ -279,7 +279,8 @@
         {
           "method": "Real macOS full screen of the isolated Obsidian window (Electron 43.7.7, translucency on) with the user's approval; computed styles before, during and after",
           "evidence": "research/evidence/phase3-v38/measurements/obsidian-real-fullscreen.json",
-          "result": "PASS on 2026-10-11 for Kanagawa Dragon: during full screen body has is-fullscreen and every surface shows the opaque Inkdrop colour; acrylic again after leaving. Solarized Dark was not put in full screen (the rules are shared; only the values differ)"
+          "result": "PASS on 2026-10-11 for Kanagawa Dragon: during full screen body has is-fullscreen and every surface shows the opaque Inkdrop colour; acrylic again after leaving. Solarized Dark was not put in full screen (the rules are shared; only the values differ)",
+          "scope": {"os": "macOS", "device": "desktop", "themes": ["kanagawa-dragon"], "appVersion": "1.14.4", "electron": ["43.7.7"], "date": "2026-10-11"}
         }
       ]
     },
@@ -295,7 +296,8 @@
         {
           "method": "V-38: native captures of Inkdrop 6.1.5 (acrylic) and the isolated Obsidian 1.14.4 / Electron 43.7.7 (translucent), same session (about 10 s apart per pair), same geometry, backdrop and capture method; flat regions paired by Q-D1 (tests/visual/v38-compare.py)",
           "evidence": "research/evidence/phase3-v38/ (measurements/v38-compare-gray-active.csv)",
-          "result": "PASS on 2026-10-11: gray backdrop, active window, 14 of 14 pairs (both themes x ribbon, docks, vault profile, tab strips, editor) at dE2000 0.00"
+          "result": "PASS on 2026-10-11: gray backdrop, active window, 14 of 14 pairs (both themes x ribbon, docks, vault profile, tab strips, editor) at dE2000 0.00",
+          "scope": {"os": "macOS", "device": "desktop", "themes": ["solarized-dark", "kanagawa-dragon"], "appVersion": "1.14.4", "electron": ["43.7.7"], "date": "2026-10-11"}
         }
       ]
     },
@@ -680,7 +682,8 @@
         {
           "method": "Native captures (tests/visual/capture-obsidian.sh, CAPTURE_LINES=on, CAPTURE_CURSOR) measured by tests/visual/q23-check.nu: flat regions of the gutter element, the gap and the line; Q23-5a against the opaque composite, Q23-5b across both boundaries, dE2000 <= 1.0",
           "evidence": "research/evidence/phase3-step7/native-39.5.1, native-43.7.7, native-39.5.1-no-gap-fill",
-          "result": "PASS on 2026-10-12, Electron 39.5.1 and 43.7.7: Solarized Dark and Kanagawa Dragon, Source and Live Preview, opaque and translucent (16 captures). Without the gap fill both themes FAIL (negative)"
+          "result": "PASS on 2026-10-12, Electron 39.5.1 and 43.7.7: Solarized Dark and Kanagawa Dragon, Source and Live Preview, opaque and translucent (16 captures). Without the gap fill both themes FAIL (negative)",
+          "scope": {"os": "macOS", "device": "desktop", "themes": ["solarized-dark", "kanagawa-dragon"], "appVersion": "1.14.4", "electron": ["39.5.1", "43.7.7"], "date": "2026-10-12"}
         }
       ]
     },
