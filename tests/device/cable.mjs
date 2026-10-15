@@ -7,12 +7,16 @@
 // started in other shells:
 //   pymobiledevice3 remote start-tunnel --native --script-mode   # prints "<host> <port>" (Apple's tunnel, no root)
 //   pymobiledevice3 webinspector cdp --port <cdpPort>            # Web Inspector as a CDP endpoint
-// Every command except `shot` first checks that the vault open in Obsidian is InkdropThemeTest and stops
-// otherwise, so a user vault is never driven. In the tour, right before each screenshot, the page must also
-// be visible (Obsidian in the foreground, not behind another app or the lock screen) with the test vault open;
-// otherwise that step is not shot and is reported. A screenshot takes the whole screen, and the moment between
-// that check and the capture (about 2.5 s) cannot be checked: a notification or another app arriving then is
-// in the image, so every image is still inspected by eye. `shot` alone checks nothing (it has no page).
+// Every command first checks that the vault open in Obsidian is InkdropThemeTest and holds the kit's marker
+// (`.obsidian/inkdrop-device-kit.json`, written by build-kit.mjs) and, with the kit's plugin loaded, that
+// the marker's kit id is the plugin's; it stops otherwise with the reason, so a user vault, even one of the
+// same name, is never driven. The plugin checks the same itself and refuses to run otherwise; `checks` and
+// `tour` then stop with its reason as well. Right before every screenshot
+// (each step of the tour, and `shot`), the page must also be visible (Obsidian in the foreground, not behind
+// another app or the lock screen) with the test vault open; otherwise nothing is shot and that is reported.
+// A screenshot takes the whole screen, and the moment between that check and the capture (about 2.5 s) cannot
+// be checked: a notification or another app arriving then is in the image, so every image is still inspected
+// by eye.
 // Verified with pymobiledevice3 11.29.0 (iOS 27.0, macOS 26.5.2).
 //
 // usage: node tests/device/cable.mjs <cdpPort> <command> [args]
@@ -21,7 +25,7 @@
 //   checks <outDir>                run "Run checks" and copy the new results file to <outDir>
 //   tour <host> <port> <outDir>    run "Screenshot tour" and take a screenshot inside every step's hold
 //   pull <outDir>                  copy device-results/*.json out of the test vault (read only)
-//   shot <host> <port> <out.png>   one screenshot
+//   shot <host> <port> <out.png>   one screenshot, only with the test vault in the foreground
 import { spawnSync } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -29,6 +33,8 @@ import path from "node:path";
 const [port, cmd, ...rest] = process.argv.slice(2);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const VAULT = "InkdropThemeTest";
+const MARKER = "inkdrop-device-kit.json";
+const MARKER_KIND = "inkdrop-themes-for-obsidian device kit";
 
 // One WebSocket session to the Obsidian page (Safari's own tabs are http(s) pages and are never picked).
 async function session() {
@@ -66,8 +72,29 @@ async function session() {
     }
   };
   const name = await evaluate("app.vault.getName()");
-  if (name !== VAULT) { ws.close(); throw new Error(`the open vault is not ${VAULT}; stopping`); }
+  if (name !== VAULT) { ws.close(); throw new Error(`the open vault is "${name}", not ${VAULT}; stopping`); }
+  // With the kit's plugin loaded, its own check (name, marker and its kit id); without it, the marker alone.
+  const plugin = await evaluate(`(async () => { const p = app.plugins.plugins["ink-device-check"]; return p ? { why: await p.notTheKitVault() } : null; })()`);
+  if (plugin?.why) { ws.close(); throw new Error(`${plugin.why}; stopping`); }
+  const marker = await evaluate(`app.vault.adapter.read(app.vault.configDir + "/${MARKER}").then((t) => { try { const m = JSON.parse(t); return { kind: m.kind, vault: m.vault, kitId: m.kitId }; } catch { return { error: "not JSON" }; } }, (e) => ({ error: String(e) }))`);
+  if (marker.error || marker.kind !== MARKER_KIND || marker.vault !== VAULT) { ws.close(); throw new Error(`${VAULT} has no kit marker of build-kit.mjs (${JSON.stringify(marker)}); stopping`); }
   return { evaluate, close: () => ws.close() };
+}
+
+// Why nothing may be shot now, or null: the test vault must be open and the page visible.
+async function notInFront(s) {
+  const front = await s.evaluate(`({ vault: app.vault.getName(), visibility: document.visibilityState })`).catch((e) => ({ error: String(e) }));
+  return front.vault === VAULT && front.visibility === "visible" ? null : `Obsidian not in the foreground with ${VAULT} (${JSON.stringify(front)})`;
+}
+
+// Runs one of the plugin's commands; throws with the plugin's reason when it refused (see build-kit.mjs).
+async function runCommand(s, id) {
+  const ran = await s.evaluate(`(() => { const p = app.plugins.plugins["ink-device-check"]; if (!p) return { error: "the kit's plugin is not loaded" }; const before = p.refused?.at ?? null; app.commands.executeCommandById("ink-device-check:${id}"); return { before }; })()`);
+  if (ran.error) throw new Error(ran.error);
+  return async () => {
+    const r = await s.evaluate(`app.plugins.plugins["ink-device-check"]?.refused ?? null`).catch(() => null);
+    if (r && r.at !== ran.before) throw new Error(`the kit's plugin refused: ${r.why}`);
+  };
 }
 
 const LIST = `(async () => (await app.vault.adapter.exists("device-results")) ? (await app.vault.adapter.list("device-results")).files : [])()`;
@@ -113,11 +140,12 @@ if (cmd === "probe") {
   const [outDir] = rest;
   const s = await session();
   const before = await s.evaluate(LIST);
-  await s.evaluate(`(() => { app.commands.executeCommandById("ink-device-check:run-checks"); return 1; })()`);
+  const refused = await runCommand(s, "run-checks");
   // About 6 minutes on an iPhone 12 Pro.
   let added = [];
   for (let k = 0; k < 360 && !added.length; k++) {
     await sleep(5000);
+    await refused();
     added = (await s.evaluate(LIST).catch(() => [])).filter((f) => !before.includes(f) && f.includes("results-"));
   }
   if (!added.length) throw new Error("no new results file within 30 minutes");
@@ -128,7 +156,9 @@ if (cmd === "probe") {
   mkdirSync(outDir, { recursive: true });
   const s = await session();
   const before = await s.evaluate(LIST);
-  await s.evaluate(`(() => { app.commands.executeCommandById("ink-device-check:screenshot-tour"); return 1; })()`);
+  const refused = await runCommand(s, "screenshot-tour");
+  await sleep(1000);
+  await refused();
   const shots = [];
   let seen = 0;
   let total = Infinity;
@@ -137,7 +167,7 @@ if (cmd === "probe") {
   for (let tries = 0; tries < 4000 && seen < total; tries++) {
     const notice = await s.evaluate(`[...document.querySelectorAll(".notice")].map((n) => n.textContent).find((t) => /^\\d+\\/\\d+ /.test(t)) ?? null`).catch(() => null);
     const m = notice && notice.match(/^(\d+)\/(\d+) (.*)$/);
-    if (!m || Number(m[1]) <= seen) { await sleep(300); continue; }
+    if (!m || Number(m[1]) <= seen) { await refused(); await sleep(300); continue; }
     seen = Number(m[1]);
     total = Number(m[2]);
     const label = m[3];
@@ -150,10 +180,10 @@ if (cmd === "probe") {
       await sleep(3500 + 3000);
     }
     const name = `${String(seen).padStart(2, "0")}-${label.replace(/[^a-z0-9]+/gi, "-").replace(/-+$/, "")}.png`;
-    const front = await s.evaluate(`({ vault: app.vault.getName(), visibility: document.visibilityState })`).catch((e) => ({ error: String(e) }));
-    if (front.vault !== VAULT || front.visibility !== "visible") {
-      shots.push({ n: seen, label, error: `not shot: Obsidian not in the foreground with ${VAULT} (${JSON.stringify(front)})` });
-      console.log(`${seen}/${total} NOT SHOT ${JSON.stringify(front)}`);
+    const why = await notInFront(s);
+    if (why) {
+      shots.push({ n: seen, label, error: `not shot: ${why}` });
+      console.log(`${seen}/${total} NOT SHOT ${why}`);
       continue;
     }
     try {
@@ -176,6 +206,10 @@ if (cmd === "probe") {
   await copyOut(s, (await s.evaluate(LIST)).filter((f) => f.endsWith(".json")), rest[0]);
   s.close();
 } else if (cmd === "shot") {
+  const s = await session();
+  const why = await notInFront(s);
+  s.close();
+  if (why) throw new Error(`not shot: ${why}`);
   console.log(shot(rest[0], rest[1], rest[2]));
 } else {
   console.error("usage: node tests/device/cable.mjs <cdpPort> probe|reload|checks|tour|pull|shot ...");

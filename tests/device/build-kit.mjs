@@ -4,21 +4,115 @@
 // mermaid-dump.js) on the device and writes what it measured to device-results/ in the vault. Judging happens
 // on the Mac (tests/device/judge.mjs) with the desktop runner's own judgement code.
 //
-// usage: node tests/device/build-kit.mjs <out_dir>
+// usage: node tests/device/build-kit.mjs <out_dir> [--replace]
 //   -> <out_dir>/InkdropThemeTest/ (the vault) and <out_dir>/InkdropThemeTest.zip
 // The vault's config folder is the standard `.obsidian` (the vault is a test vault of its own; Obsidian only
 // accepts config folder names that start with a dot). iOS's Files app hides it, but unzipping keeps it.
+//
+// Safety (research/14 §6.27):
+// - The kit carries a marker, `.obsidian/inkdrop-device-kit.json`: a random kit id, which the plugin also
+//   carries, and the SHA-256 of every other file of the kit. The plugin runs nothing unless the open vault is
+//   named InkdropThemeTest AND has this marker with its own kit id, so neither a vault of the same name nor a
+//   vault the plugin folder was copied into is ever driven.
+// - Nothing that is already there is overwritten or deleted by default: an existing InkdropThemeTest/ or
+//   InkdropThemeTest.zip in <out_dir> stops the build. `--replace` replaces them only when they are an
+//   unchanged kit of ours (every file listed in its marker with the same hash, nothing else, the zip's entries
+//   likewise); anything else (results written on a device, notes, another vault) stops it. The old kit's files
+//   are then removed one by one (no recursive delete). <out_dir> must not be inside an Obsidian vault.
+// - The new kit is built in a fresh staging folder in <out_dir> first and moved into place at the end.
 import { execFileSync, spawnSync } from "node:child_process";
-import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { createHash, randomUUID } from "node:crypto";
+import { cpSync, existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, renameSync, rmdirSync, statSync, unlinkSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { loadChecks, POINTER_STATES, runtimeSpecFiles, THEMES } from "../lib/spec.mjs";
 import { syntaxVars } from "../runtime/lib/syntax.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
-const out = path.resolve(process.argv[2] ?? "");
-if (!process.argv[2]) { console.error("usage: node tests/device/build-kit.mjs <out_dir>"); process.exit(2); }
+const args = process.argv.slice(2);
+const replace = args.includes("--replace");
+const outArg = args.filter((a) => a !== "--replace");
+if (outArg.length !== 1 || outArg[0].startsWith("-")) { console.error("usage: node tests/device/build-kit.mjs <out_dir> [--replace]"); process.exit(2); }
+const out = path.resolve(outArg[0]);
 const CONFIG = ".obsidian";
-const vault = path.join(out, "InkdropThemeTest");
+const VAULT_NAME = "InkdropThemeTest";
+const MARKER = "inkdrop-device-kit.json"; // in the config folder, outside the plugin's own folder
+const MARKER_KIND = "inkdrop-themes-for-obsidian device kit";
+const vault = path.join(out, VAULT_NAME);
+const zip = path.join(out, `${VAULT_NAME}.zip`);
+const refuse = (why) => { console.error(`build-kit: refusing: ${why}\nnothing was changed in ${out}`); process.exit(1); };
+
+// ---------- what is already there ----------
+const sha256 = (buf) => createHash("sha256").update(buf).digest("hex");
+// Every file and folder under dir, as paths relative to dir with "/" (symbolic links are reported, not followed).
+function walk(dir, rel = "") {
+  const found = { files: [], dirs: [], other: [] };
+  for (const e of readdirSync(path.join(dir, rel), { withFileTypes: true })) {
+    const r = rel ? `${rel}/${e.name}` : e.name;
+    if (e.isDirectory()) { found.dirs.push(r); const sub = walk(dir, r); for (const k of Object.keys(found)) found[k].push(...sub[k]); }
+    else if (e.isFile()) found.files.push(r);
+    else found.other.push(r);
+  }
+  return found;
+}
+const parseMarker = (text, where) => {
+  let m;
+  try { m = JSON.parse(text); } catch { return { why: `${where}: the marker is not JSON` }; }
+  if (m?.kind !== MARKER_KIND || m.vault !== VAULT_NAME || typeof m.kitId !== "string" || !m.files || typeof m.files !== "object") return { why: `${where}: the marker is not a device kit marker of this repository` };
+  return { marker: m };
+};
+// Why the existing vault folder is not an unchanged kit of ours (null when it is one).
+function vaultNotOurs() {
+  if (lstatSync(vault).isSymbolicLink() || !lstatSync(vault).isDirectory()) return `${vault} is not a folder`;
+  const markerPath = path.join(vault, CONFIG, MARKER);
+  if (!existsSync(markerPath)) return `${vault} has no kit marker (${CONFIG}/${MARKER}); it is not a kit made here`;
+  const { marker, why } = parseMarker(readFileSync(markerPath, "utf8"), vault);
+  if (why) return why;
+  const found = walk(vault);
+  if (found.other.length) return `${vault} holds links or other non-files: ${found.other.slice(0, 5).join(", ")}`;
+  const listed = new Set([...Object.keys(marker.files), `${CONFIG}/${MARKER}`]);
+  const extra = found.files.filter((f) => !listed.has(f));
+  if (extra.length) return `${vault} holds files that are not part of the kit (for example results written on a device): ${extra.slice(0, 5).join(", ")}${extra.length > 5 ? ` and ${extra.length - 5} more` : ""}`;
+  const missing = Object.keys(marker.files).filter((f) => !found.files.includes(f));
+  if (missing.length) return `${vault} lacks kit files: ${missing.slice(0, 5).join(", ")}`;
+  const changed = Object.entries(marker.files).filter(([f, h]) => sha256(readFileSync(path.join(vault, f))) !== h).map(([f]) => f);
+  if (changed.length) return `${vault} has kit files changed since the build: ${changed.slice(0, 5).join(", ")}`;
+  const needed = new Set([...listed].flatMap((f) => f.split("/").slice(0, -1).map((_, i, a) => a.slice(0, i + 1).join("/"))));
+  const emptyDirs = found.dirs.filter((d) => !needed.has(d));
+  if (emptyDirs.length) return `${vault} holds folders that are not part of the kit: ${emptyDirs.slice(0, 5).join(", ")}`;
+  return null;
+}
+// Why the existing zip is not an unchanged kit zip of ours (null when it is one).
+function zipNotOurs() {
+  if (lstatSync(zip).isSymbolicLink() || !lstatSync(zip).isFile()) return `${zip} is not a file`;
+  const list = spawnSync("unzip", ["-Z1", zip], { encoding: "utf8" });
+  if (list.status !== 0) return `${zip} cannot be read as a zip (${(list.stderr || "").trim().slice(0, 200)})`;
+  const entries = list.stdout.split("\n").filter(Boolean);
+  const markerEntry = `${VAULT_NAME}/${CONFIG}/${MARKER}`;
+  if (!entries.includes(markerEntry)) return `${zip} has no kit marker; it is not a kit made here`;
+  const read = (entry) => execFileSync("unzip", ["-p", zip, entry], { maxBuffer: 1 << 28 });
+  const { marker, why } = parseMarker(read(markerEntry).toString("utf8"), zip);
+  if (why) return why;
+  const files = entries.filter((e) => !e.endsWith("/"));
+  const extra = files.filter((e) => e !== markerEntry && !(e.startsWith(`${VAULT_NAME}/`) && e.slice(VAULT_NAME.length + 1) in marker.files));
+  if (extra.length) return `${zip} holds entries that are not part of the kit: ${extra.slice(0, 5).join(", ")}`;
+  const changed = Object.entries(marker.files).filter(([f, h]) => !files.includes(`${VAULT_NAME}/${f}`) || sha256(read(`${VAULT_NAME}/${f}`)) !== h).map(([f]) => f);
+  if (changed.length) return `${zip} has kit files missing or changed: ${changed.slice(0, 5).join(", ")}`;
+  return null;
+}
+function checkExisting() {
+  for (let d = out; ; d = path.dirname(d)) {
+    if (existsSync(path.join(d, ".obsidian"))) refuse(`${d} is an Obsidian vault (it has .obsidian); choose an output folder outside any vault`);
+    if (path.dirname(d) === d) break;
+  }
+  if (existsSync(out) && !statSync(out).isDirectory()) refuse(`${out} is not a folder`);
+  // lstat, not exists: a dangling symbolic link is "there" as well.
+  const present = [vault, zip].filter((p) => { try { lstatSync(p); return true; } catch { return false; } });
+  if (!present.length) return;
+  if (!replace) refuse(`${present.join(" and ")} already ${present.length > 1 ? "exist" : "exists"}; pass --replace to replace an unchanged kit made here, or choose a new output folder`);
+  const why = (present.includes(vault) ? vaultNotOurs() : null) ?? (present.includes(zip) ? zipNotOurs() : null);
+  if (why) refuse(`${why}; move it away yourself if it is no longer needed`);
+}
+checkExisting();
 
 const built = spawnSync(process.execPath, [path.join(repo, "scripts/build.mjs")], { encoding: "utf8" });
 if (built.status !== 0) { console.error(built.stderr); process.exit(1); }
@@ -106,6 +200,8 @@ const SCRIPTS = {
   syntax: ${asFunction("tests/runtime/code-tokens.js", "__CODE")},
   mermaid: ${asFunction("tests/runtime/mermaid-dump.js", "__MERMAID")},
 };
+// The vault this plugin may drive: its name and the marker build-kit.mjs put in the config folder.
+const KIT = ${JSON.stringify({ vault: VAULT_NAME, marker: MARKER, kind: MARKER_KIND, kitId: "@KIT_ID@" })};
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const stamp = () => new Date().toISOString().replace(/[:.]/g, "-");
 
@@ -113,6 +209,33 @@ module.exports = class InkDeviceCheck extends Plugin {
   onload() {
     this.addCommand({ id: "run-checks", name: "Run checks (writes device-results/)", callback: () => this.runChecks() });
     this.addCommand({ id: "screenshot-tour", name: "Screenshot tour", callback: () => this.runTour() });
+  }
+
+  // Why this vault must not be driven, or null when it is the kit's own test vault: the name must be
+  // InkdropThemeTest and the config folder must hold the kit's marker with this plugin's kit id (a vault of
+  // the same name, or one the plugin folder was copied into, has no such marker). Reads only.
+  async notTheKitVault() {
+    const name = this.app.vault.getName();
+    if (name !== KIT.vault) return 'the open vault is "' + name + '", not ' + KIT.vault;
+    const file = this.app.vault.configDir + "/" + KIT.marker;
+    let text;
+    try { text = await this.app.vault.adapter.read(file); } catch (e) { return "this vault has no kit marker " + file + " (" + e + ")"; }
+    let m;
+    try { m = JSON.parse(text); } catch { return "the kit marker " + file + " is not JSON"; }
+    if (m?.kind !== KIT.kind || m.vault !== KIT.vault) return "the kit marker " + file + " is not a device kit marker of this repository";
+    if (m.kitId !== KIT.kitId) return "the kit marker belongs to another kit (" + m.kitId + "; this plugin is " + KIT.kitId + ")";
+    return null;
+  }
+
+  // The entry check of every command, before any setting, file or workspace is touched. On a refusal it says
+  // why (a notice and the console) and keeps it in this.refused for the cable driver; it writes nothing.
+  async refuse(what) {
+    const why = await this.notTheKitVault().catch((e) => "the vault check failed: " + e);
+    if (!why) return null;
+    this.refused = { what, why, at: new Date().toISOString() };
+    console.error("ink-device-check: " + what + " refused: " + why);
+    new Notice("Inkdrop device check: " + what + " refused: " + why, 15000);
+    return why;
   }
 
   async selectTheme(name) {
@@ -173,7 +296,9 @@ module.exports = class InkDeviceCheck extends Plugin {
   }
 
   async runChecks() {
-    if (this.busy) return;
+    if (this.busy) return "busy";
+    const refused = await this.refuse("Run checks");
+    if (refused) return refused;
     this.busy = true;
     const startedAt = new Date().toISOString();
     const results = [];
@@ -211,7 +336,9 @@ module.exports = class InkDeviceCheck extends Plugin {
   }
 
   async runTour() {
-    if (this.busy) return;
+    if (this.busy) return "busy";
+    const refused = await this.refuse("Screenshot tour");
+    if (refused) return refused;
     this.busy = true;
     const log = [];
     try {
@@ -265,10 +392,15 @@ module.exports = class InkDeviceCheck extends Plugin {
 `;
 
 // ---------- the vault ----------
-rmSync(vault, { recursive: true, force: true });
+// Built in a fresh staging folder (mkdir without `recursive` fails if it exists), moved into place at the end.
 mkdirSync(out, { recursive: true });
-cpSync(path.join(repo, "tests/fixtures/vault"), vault, { recursive: true, filter: (src) => !src.includes(`${path.sep}.obsidian`) });
-const config = path.join(vault, CONFIG);
+const staging = path.join(out, `.${VAULT_NAME}.staging-${process.pid}-${Date.now()}`);
+mkdirSync(staging);
+const newVault = path.join(staging, VAULT_NAME);
+const newZip = path.join(staging, `${VAULT_NAME}.zip`);
+const kitId = randomUUID();
+cpSync(path.join(repo, "tests/fixtures/vault"), newVault, { recursive: true, filter: (src) => !src.includes(`${path.sep}.obsidian`) });
+const config = path.join(newVault, CONFIG);
 cpSync(path.join(repo, "tests/fixtures/vault/.obsidian"), config, { recursive: true });
 for (const th of themes) {
   const dir = path.join(config, "themes", th.name);
@@ -278,9 +410,27 @@ for (const th of themes) {
 const pdir = path.join(config, "plugins", "ink-device-check");
 mkdirSync(pdir, { recursive: true });
 writeFileSync(path.join(pdir, "manifest.json"), `${JSON.stringify({ id: "ink-device-check", name: "Inkdrop theme device check (test vault only)", version: "0.0.1", minAppVersion: "1.14.0", description: "Measures the theme's runtime checks on this device and writes them to device-results/.", author: "inkdrop-themes-for-obsidian", isDesktopOnly: false }, null, 2)}\n`);
-writeFileSync(path.join(pdir, "main.js"), main);
+writeFileSync(path.join(pdir, "main.js"), main.replace('"@KIT_ID@"', JSON.stringify(kitId)));
 writeFileSync(path.join(config, "community-plugins.json"), `${JSON.stringify(["ink-device-check"])}\n`);
-const zip = path.join(out, "InkdropThemeTest.zip");
-rmSync(zip, { force: true });
-execFileSync("ditto", ["-c", "-k", "--keepParent", "--norsrc", vault, zip]);
-console.log(`vault ${vault}\nzip ${zip}\njobs ${jobs.length} (probe ${jobs.filter((j) => j.kind === "probe").length}, extra ${jobs.filter((j) => j.extra).length}), checks ${jobs.reduce((n, j) => n + (j.checks?.length ?? 0), 0)}, tour steps ${tour.length}`);
+// The marker: the kit id and the hash of every other file, so that --replace can tell an unchanged kit.
+const files = Object.fromEntries(walk(newVault).files.sort().map((f) => [f, sha256(readFileSync(path.join(newVault, f)))]));
+writeFileSync(path.join(config, MARKER), `${JSON.stringify({ kind: MARKER_KIND, vault: VAULT_NAME, kitId, builtAt: new Date().toISOString(), files }, null, 1)}\n`);
+execFileSync("ditto", ["-c", "-k", "--keepParent", "--norsrc", newVault, newZip]);
+
+// ---------- into place ----------
+// Checked again right before anything is removed (the build took a while); the old kit's files go one by one,
+// then its folders deepest first with a plain rmdir, which fails on anything left over.
+checkExisting();
+if (existsSync(vault)) {
+  // Only the files the old marker lists (and the marker): a file that appeared since the check stays, and the
+  // rmdir of its folder then fails instead of removing it.
+  const listed = [...Object.keys(JSON.parse(readFileSync(path.join(vault, CONFIG, MARKER), "utf8")).files), `${CONFIG}/${MARKER}`];
+  const dirs = [...new Set(listed.flatMap((f) => f.split("/").slice(0, -1).map((_, i, a) => a.slice(0, i + 1).join("/"))))];
+  for (const f of listed) unlinkSync(path.join(vault, f));
+  for (const d of dirs.sort((a, b) => b.split("/").length - a.split("/").length)) rmdirSync(path.join(vault, d));
+  rmdirSync(vault);
+}
+renameSync(newVault, vault);
+renameSync(newZip, zip);
+rmdirSync(staging);
+console.log(`vault ${vault}\nzip ${zip}\nkit id ${kitId}\njobs ${jobs.length} (probe ${jobs.filter((j) => j.kind === "probe").length}, extra ${jobs.filter((j) => j.extra).length}), checks ${jobs.reduce((n, j) => n + (j.checks?.length ?? 0), 0)}, tour steps ${tour.length}`);
