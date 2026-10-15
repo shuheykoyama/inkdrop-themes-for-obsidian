@@ -95,10 +95,13 @@ const alive = (pid) => { try { process.kill(pid, 0); return true; } catch { retu
   // A child that starts a grandchild and hangs: the timeout stops both (the whole process group).
   const pidFile = path.join(out, "grandchild.pid");
   const t0 = Date.now();
-  x = await run.step("hangs", "sh", ["-c", `sleep 60 & echo $! > '${pidFile}'; sleep 60`], { timeoutMs: 800, graceMs: 500 });
+  // The timeouts here leave the shell time to start and write the grandchild's PID: under npm, starting `sh`
+  // occasionally took longer than 800 ms (the step timed out before the echo; seen in step 11C).
+  x = await run.step("hangs", "sh", ["-c", `sleep 60 & echo $! > '${pidFile}'; sleep 60`], { timeoutMs: 5000, graceMs: 500 });
   await sleep(800);
-  const gpid = Number(readFileSync(pidFile, "utf8"));
-  check("a timeout is a failed step and stops the child and its grandchild", !x.ok && x.timedOut && Date.now() - t0 < 10000 && !alive(gpid) && summary.problems.some((p) => /hangs: timed out/.test(p)), { gpid, alive: alive(gpid) });
+  let gpid = NaN;
+  try { gpid = Number(readFileSync(pidFile, "utf8")); } catch {}
+  check("a timeout is a failed step and stops the child and its grandchild", !x.ok && x.timedOut && Date.now() - t0 < 10000 && gpid > 0 && !alive(gpid) && summary.problems.some((p) => /hangs: timed out/.test(p)), { gpid, alive: alive(gpid) });
   // A child that ignores SIGTERM: SIGKILL after the grace time.
   x = await run.step("ignores-term", process.execPath, ["-e", "process.on('SIGTERM', () => {}); setInterval(() => {}, 1000)"], { timeoutMs: 500, graceMs: 500 });
   check("a child that ignores SIGTERM is killed after the grace time", !x.ok && x.timedOut && x.signal === "SIGKILL");
@@ -112,9 +115,10 @@ const alive = (pid) => { try { process.kill(pid, 0); return true; } catch { retu
   ];
   for (const [i, [label, script]] of GROUPS.entries()) {
     const pf = path.join(out, `group-${i}.pid`);
-    x = await run.step(`group-${i}`, "sh", ["-c", script.replace("@PID", pf)], { timeoutMs: 700, graceMs: 700 });
-    const g = Number(readFileSync(pf, "utf8"));
-    check(`timeout, ${label}: no grandchild left when the step returns`, !x.ok && x.timedOut && x.groupStopped === true && !alive(g), { g, alive: alive(g), groupStopped: x.groupStopped });
+    x = await run.step(`group-${i}`, "sh", ["-c", script.replace("@PID", pf)], { timeoutMs: 5000, graceMs: 700 });
+    let g = NaN;
+    try { g = Number(readFileSync(pf, "utf8")); } catch {}
+    check(`timeout, ${label}: no grandchild left when the step returns`, !x.ok && x.timedOut && x.groupStopped === true && g > 0 && !alive(g), { g, alive: alive(g), groupStopped: x.groupStopped });
   }
 }
 
