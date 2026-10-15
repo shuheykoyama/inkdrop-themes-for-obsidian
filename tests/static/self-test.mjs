@@ -105,6 +105,13 @@ const CASES = [
     mutate: (r) => edit(r, "src/common/components/markdown.css", ".theme-dark .callout {", ".callout {") },
   { name: "verifiedBy without evidence", fail: /^FAIL S6 every requirement is covered .*verifiedBy needs method, evidence and result/m,
     mutate: (r) => edit(r, "tests/spec/requirements.json", '"evidence": "research/evidence/phase3-v38/measurements/obsidian-real-fullscreen.json"', '"evidence": ""') },
+  // --- S2: manifests (Q-D20) ---
+  { name: "minAppVersion back to 1.14.0 in src/manifests (SD)", fail: /^FAIL S2 solarized-dark manifest minAppVersion is 1\.14\.4/m,
+    mutate: (r) => edit(r, "src/manifests/solarized-dark.json", '"minAppVersion": "1.14.4"', '"minAppVersion": "1.14.0"') },
+  { name: "stale dist/ manifest (KD minAppVersion 1.14.0)", fail: /^FAIL S2 kanagawa-dragon dist\/ manifest.json is byte-identical to a fresh build/m,
+    mutate: (r) => edit(r, "dist/kanagawa-dragon/manifest.json", '"minAppVersion": "1.14.4"', '"minAppVersion": "1.14.0"') },
+  { name: "dist/ manifest missing (SD)", fail: /^FAIL S2 solarized-dark dist\/ manifest.json is byte-identical to a fresh build/m,
+    mutate: (r) => rmSync(path.join(r, "dist/solarized-dark/manifest.json")) },
   { name: "missing source file", fail: /^FAIL S2 build run a exits 0/m,
     mutate: (r) => rmSync(path.join(r, "src/common/mapping/workspace.css")) },
   { name: "colour literal outside the palette", fail: /^FAIL S4 src\/common\/mapping\/workspace\.css no colour literals/m,
@@ -149,6 +156,10 @@ for (const c of CASES) {
     for (const f of DATA) cpSync(path.join(repo, "research/data", f), path.join(root, "research/data", f));
     mkdirSync(path.join(root, MEASURED_DIR), { recursive: true });
     for (const f of MEASURED) cpSync(path.join(repo, MEASURED_DIR, f), path.join(root, MEASURED_DIR, f));
+    for (const t of ["solarized-dark", "kanagawa-dragon"]) {
+      mkdirSync(path.join(root, "dist", t), { recursive: true });
+      cpSync(path.join(repo, "dist", t, "manifest.json"), path.join(root, "dist", t, "manifest.json"));
+    }
     c.mutate(root);
     const res = spawnSync(process.execPath, [path.join(repo, "tests/static/run.mjs"), "--root", root], { encoding: "utf8" });
     const ok = c.pass ? res.status === 0 : res.status !== 0 && c.fail.test(res.stdout);

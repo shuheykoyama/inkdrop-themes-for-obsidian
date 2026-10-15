@@ -1,6 +1,7 @@
 // Static tests S1-S7 (research/14 §3.1). Node only; run in CI on every push.
 //   S1 value fidelity: palette vs research/data (Inkdrop's primary data), outputs keep the declarations
 //   S2 build reproducibility and output hygiene (deterministic, parses, no @import / @charset / empty rules,
+//      manifests: minAppVersion = Q-D20, build = src/manifests, dist/ = a fresh build,
 //      missing source -> non-zero exit)
 //   S3 references: every var(--ink-*) is defined; no variable of the other theme; no clash with Obsidian names
 //   S4 layer rules: colour literals only in the palette, no nesting, every !important allow-listed
@@ -26,6 +27,8 @@ import { checkErrors, loadChecks, loadRequirements, requirementErrors, runtimeSp
 const repo = path.resolve(import.meta.dirname, "..", "..");
 const { values: args } = parseArgs({ options: { root: { type: "string" } } });
 const root = path.resolve(args.root ?? repo);
+// Q-D20 (research/09): the minimum supported Obsidian version, 1.14.4 since 2026-10-15 (was 1.14.0).
+const MIN_APP_VERSION = "1.14.4";
 const THEMES = {
   "solarized-dark": { csv: "inkdrop-solarized-dark-tokens.csv", foreign: /--kanagawa-/ },
   // KD may legitimately use Inkdrop's base --hsl-* triplets (Q-D9), so no name pattern marks SD values in
@@ -61,6 +64,17 @@ try {
     check(`S2 ${t} deterministic (two builds byte-identical)`, a !== null && a === b);
     outputs[t] = a ?? "";
     check(`S2 ${t} manifest.json written`, existsSync(path.join(tmp, "a", t, "manifest.json")));
+    // Q-D20: the minimum Obsidian version, in the source, in a fresh build and in dist/ (the files that are
+    // shipped). dist/ must be what the current sources build to (`npm run build` first).
+    const readJson = (f) => { try { return JSON.parse(readFileSync(f, "utf8")); } catch { return null; } };
+    const srcManifest = readJson(path.join(root, "src", "manifests", `${t}.json`));
+    const builtText = existsSync(path.join(tmp, "a", t, "manifest.json")) ? readFileSync(path.join(tmp, "a", t, "manifest.json"), "utf8") : null;
+    const built = builtText && JSON.parse(builtText);
+    const distFile = path.join(root, "dist", t, "manifest.json");
+    const distText = existsSync(distFile) ? readFileSync(distFile, "utf8") : null;
+    check(`S2 ${t} manifest minAppVersion is ${MIN_APP_VERSION} (Q-D20) in src/manifests, the build and dist/`, srcManifest?.minAppVersion === MIN_APP_VERSION && built?.minAppVersion === MIN_APP_VERSION && readJson(distFile)?.minAppVersion === MIN_APP_VERSION, `src ${srcManifest?.minAppVersion}, build ${built?.minAppVersion}, dist ${distText === null ? "missing" : readJson(distFile)?.minAppVersion}`);
+    check(`S2 ${t} built manifest has the fields and values of src/manifests`, built !== null && JSON.stringify(built) === JSON.stringify(srcManifest));
+    check(`S2 ${t} dist/ manifest.json is byte-identical to a fresh build`, distText !== null && distText === builtText, distText === null ? `${path.relative(root, distFile)} missing (run npm run build)` : "");
   }
 
   // ---------- S2: output hygiene ----------
