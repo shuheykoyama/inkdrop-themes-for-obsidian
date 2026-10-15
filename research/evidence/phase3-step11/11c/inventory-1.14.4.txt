@@ -1,0 +1,6 @@
+Obsidian 1.14.4 (app.css sha256 866e50ac84dd, 22559 lines; Mermaid 11.13.0)
+  variables: {"obsidian":113,"theme":524}
+  classes: {"script":51,"app.css":130,"generated":20}
+  attributes: {"script":4,"app.css":5}
+  rules: {"cited":22,"holding":22}
+no problems

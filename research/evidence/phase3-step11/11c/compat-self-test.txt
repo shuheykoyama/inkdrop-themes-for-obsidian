@@ -1,0 +1,26 @@
+PASS compat self-test: a build with every dependency has no problem
+PASS compat self-test: an Obsidian variable is categorised with its app.css line
+PASS compat self-test: the theme's own variable is categorised as theme
+PASS compat self-test: a class in an app.css selector / only in the scripts / built by joining
+PASS compat self-test: a cited rule is found with its declaration line; an absent one holds
+PASS compat self-test: a variable the theme reads and nobody declares is a problem
+PASS compat self-test: a class in no app.css selector and no script is a problem
+PASS compat self-test: a class the scripts no longer name is a problem
+PASS compat self-test: a generated class whose joining code is gone is a problem
+PASS compat self-test: a generated class whose rest is in no script and no runtime check is a problem
+PASS compat self-test: ... but is accepted when a runtime check names it
+PASS compat self-test: a cited rule whose value changed is a problem (and shows the new value)
+PASS compat self-test: a cited rule that lost its !important is a problem
+PASS compat self-test: a cited rule whose selector is gone is a problem
+PASS compat self-test: a rule cited as absent that now exists is a problem
+PASS compat self-test: the same build loses nothing
+PASS compat self-test: moved lines are not losses
+PASS compat self-test: a variable the theme sets that Obsidian no longer declares is lost
+PASS compat self-test: a class Obsidian no longer has is lost
+PASS compat self-test: a cited rule no longer as cited is lost
+PASS compat self-test: an asar is read file by file
+PASS compat self-test: a gzipped asar gives app.css, the version, the scripts and Mermaid's version
+PASS compat self-test: every citedBy points at a comment line naming app.css or an allowlist override naming the selector
+PASS compat self-test: the theme sources are read (both palettes, the common layers, both entries)
+
+all 24 compat self-test cases behaved as expected

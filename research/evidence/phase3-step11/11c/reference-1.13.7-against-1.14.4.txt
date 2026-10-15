@@ -1,0 +1,29 @@
+Obsidian 1.13.7 (app.css sha256 f612f1e8f364, 21708 lines; Mermaid 11.13.0)
+  variables: {"obsidian":110,"theme":527}
+  classes: {"script":51,"app.css":125,"generated":18,"missing":7}
+  attributes: {"script":4,"app.css":4,"missing":1}
+  rules: {"cited":22,"holding":20}
+  PROBLEM class cm-highlight-blue (src/common/components/markdown.css:109) is in no app.css selector and in none of the app's scripts (matches ^cm-, but its rest is in no script and no runtime check)
+  PROBLEM class cm-highlight-green (src/common/components/markdown.css:109) is in no app.css selector and in none of the app's scripts (matches ^cm-, but its rest is in no script and no runtime check)
+  PROBLEM class cm-highlight-orange (src/common/components/markdown.css:109) is in no app.css selector and in none of the app's scripts (matches ^cm-, but its rest is in no script and no runtime check)
+  PROBLEM class cm-highlight-purple (src/common/components/markdown.css:109) is in no app.css selector and in none of the app's scripts (matches ^cm-, but its rest is in no script and no runtime check)
+  PROBLEM class cm-highlight-red (src/common/components/markdown.css:109) is in no app.css selector and in none of the app's scripts (matches ^cm-, but its rest is in no script and no runtime check)
+  PROBLEM class cm-highlight-yellow (src/common/components/markdown.css:109) is in no app.css selector and in none of the app's scripts (matches ^cm-, but its rest is in no script and no runtime check)
+  PROBLEM class mod-primary (src/common/components/navigation.css:6) is in no app.css selector and in none of the app's scripts
+  PROBLEM attribute data-highlight (src/common/components/markdown.css:192) is in no app.css selector and in none of the app's scripts
+  PROBLEM app.css has no .is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary { background-color: transparent !important }; cited by src/common/platform/translucent.css:59, tests/static/lint-allowlist.json
+  PROBLEM app.css has no .is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary:before { background-color: transparent !important }; cited by src/common/platform/translucent.css:51, tests/static/lint-allowlist.json
+  LOST variable --highlight-background: obsidian in 1.14.4, theme in 1.13.7
+  LOST variable --notice-background: obsidian in 1.14.4, theme in 1.13.7
+  LOST variable --tooltip-background: obsidian in 1.14.4, theme in 1.13.7
+  LOST class cm-highlight-blue: app.css in 1.14.4, missing in 1.13.7
+  LOST class cm-highlight-green: app.css in 1.14.4, missing in 1.13.7
+  LOST class cm-highlight-orange: app.css in 1.14.4, missing in 1.13.7
+  LOST class cm-highlight-purple: app.css in 1.14.4, missing in 1.13.7
+  LOST class cm-highlight-red: app.css in 1.14.4, missing in 1.13.7
+  LOST class cm-highlight-yellow: app.css in 1.14.4, missing in 1.13.7
+  LOST class mod-primary: app.css in 1.14.4, missing in 1.13.7
+  LOST attribute data-highlight: app.css in 1.14.4, missing in 1.13.7
+  LOST rule .is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary { background-color }: as cited in 1.14.4, no longer as cited in 1.13.7
+  LOST rule .is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary:before { background-color }: as cited in 1.14.4, no longer as cited in 1.13.7
+10 problems, 13 lost
