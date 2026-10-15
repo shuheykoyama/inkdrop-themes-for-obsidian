@@ -2,7 +2,7 @@
 // tests/integration/self-test.mjs can test them: where the output may go, how a child process is run (timeout,
 // interruption, its whole process group), and how two runs of results are compared.
 import { spawn, spawnSync } from "node:child_process";
-import { closeSync, existsSync, lstatSync, mkdirSync, openSync, readFileSync, writeFileSync } from "node:fs";
+import { closeSync, existsSync, lstatSync, mkdirSync, openSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 export const MARKER = ".run-all-output.json";
@@ -13,9 +13,20 @@ const MARKER_KIND = "inkdrop-themes-for-obsidian integrated regression output";
 // Re-using one is allowed only for the read-only steps and only for a folder this script made (its marker).
 // Returns null, or throws with the reason; nothing is written when it throws.
 export function prepareOut(out, { reuse }) {
-  for (let d = out; ; d = path.dirname(d)) {
-    if (existsSync(path.join(d, ".obsidian"))) throw new Error(`${d} is an Obsidian vault (it has .obsidian); choose an output folder outside any vault`);
-    if (path.dirname(d) === d) break;
+  // The vault check runs on the path as given AND on its real path: the deepest part that exists is resolved
+  // (symbolic links, including a link at `out` itself), so a link that leads into a vault is refused too.
+  const vaultAbove = (start) => {
+    for (let d = start; ; d = path.dirname(d)) {
+      if (existsSync(path.join(d, ".obsidian"))) return d;
+      if (path.dirname(d) === d) return null;
+    }
+  };
+  let existing = out;
+  while (!existsSync(existing) && path.dirname(existing) !== existing) existing = path.dirname(existing);
+  const real = path.join(realpathSync(existing), path.relative(existing, out));
+  for (const p of [out, real]) {
+    const v = vaultAbove(p);
+    if (v) throw new Error(`${p === out ? out : `${out} (really ${real})`} is inside an Obsidian vault (${v} has .obsidian); choose an output folder outside any vault`);
   }
   let exists = false;
   try { lstatSync(out); exists = true; } catch {}
@@ -31,16 +42,34 @@ export function prepareOut(out, { reuse }) {
 }
 
 // ---------- child processes ----------
-// Runs one command in its own process group with its output in <out>/<name>.txt. A timeout or an interruption
-// stops the whole group (SIGTERM, then SIGKILL after `graceMs`), so no grandchild is left behind. ok only for
-// exit 0 without a signal, a timeout or a spawn error. `run.current` is the running child (for interrupts).
+// Stopping a process group: SIGTERM to the whole group, wait until it is empty or `graceMs` has passed, then
+// SIGKILL to the whole group whatever happened (a member that ignores SIGTERM, a parent that died on SIGTERM
+// while its child ignores it), then wait for it to empty. `groupGone` is true once no member is left (ESRCH).
+const groupGone = (pgid) => { try { process.kill(-pgid, 0); return false; } catch (e) { return e.code === "ESRCH"; } };
+const signalGroup = (pgid, sig) => { try { process.kill(-pgid, sig); } catch {} };
+// Synchronous form, for a signal handler that exits right after (no timer would fire). A zombie of the direct
+// child keeps the group "present" while the event loop is blocked, so each wait is bounded.
+const pause = (ms) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+export function terminateGroupSync(pgid, graceMs) {
+  signalGroup(pgid, "SIGTERM");
+  for (let t = 0; t < graceMs && !groupGone(pgid); t += 100) pause(100);
+  signalGroup(pgid, "SIGKILL");
+  for (let t = 0; t < 3000 && !groupGone(pgid); t += 100) pause(100);
+}
+export async function terminateGroup(pgid, graceMs) {
+  signalGroup(pgid, "SIGTERM");
+  for (let t = 0; t < graceMs && !groupGone(pgid); t += 100) await new Promise((r) => setTimeout(r, 100));
+  signalGroup(pgid, "SIGKILL");
+  for (let t = 0; t < 5000 && !groupGone(pgid); t += 100) await new Promise((r) => setTimeout(r, 100));
+  return groupGone(pgid);
+}
+
+// Runs one command in its own process group with its output in <out>/<name>.txt. A timeout stops the whole
+// group (terminateGroup) before the step returns, so no grandchild is left behind; an interruption does the same
+// synchronously (run.current.killGroup). ok only for exit 0 without a signal, a timeout or a spawn error.
+// A step that ends normally keeps its group (obsidian-isolated.sh start leaves Obsidian running on purpose).
 export function createRunner(out, summary, { log = () => {} } = {}) {
   const run = { current: null };
-  const killGroup = (child, graceMs) => {
-    try { process.kill(-child.pid, "SIGTERM"); } catch {}
-    const t = setTimeout(() => { try { process.kill(-child.pid, "SIGKILL"); } catch {} }, graceMs);
-    t.unref();
-  };
   run.step = (name, cmd, args, { env = {}, cwd, timeoutMs = 30 * 60 * 1000, graceMs = 10000, okStatus = [0] } = {}) => new Promise((resolve) => {
     log(`start ${name}`);
     const t0 = Date.now();
@@ -49,18 +78,21 @@ export function createRunner(out, summary, { log = () => {} } = {}) {
     let timedOut = false;
     let spawnError = null;
     const child = spawn(cmd, args, { cwd, env: { ...process.env, ...env }, stdio: ["ignore", fd, fd], detached: true });
-    run.current = { child, name, killGroup: () => killGroup(child, graceMs) };
-    const timer = setTimeout(() => { timedOut = true; killGroup(child, graceMs); }, timeoutMs);
+    run.current = { child, name, killGroup: () => (child.pid ? terminateGroupSync(child.pid, graceMs) : undefined) };
+    let stopped = Promise.resolve(true);
+    const timer = setTimeout(() => { timedOut = true; stopped = child.pid ? terminateGroup(child.pid, graceMs) : Promise.resolve(true); }, timeoutMs);
     child.on("error", (e) => { spawnError = String(e.message ?? e); });
-    child.on("close", (status, signal) => {
+    child.on("close", async (status, signal) => {
       clearTimeout(timer);
+      // After a timeout, the step returns only once its whole group is gone (or reports that it is not).
+      const groupStopped = await stopped;
       closeSync(fd);
       run.current = null;
       const text = readFileSync(file, "utf8");
       const last = text.trim().split("\n").filter(Boolean).slice(-1)[0] ?? "";
       const ok = !timedOut && !spawnError && signal === null && okStatus.includes(status);
-      const why = timedOut ? `timed out after ${Math.round(timeoutMs / 1000)} s` : spawnError ? `could not start: ${spawnError}` : signal ? `killed by ${signal}` : `exit ${status}`;
-      const rec = { name, ok, status, signal, timedOut, error: spawnError, seconds: Math.round((Date.now() - t0) / 1000), last: last.slice(0, 300) };
+      const why = timedOut ? `timed out after ${Math.round(timeoutMs / 1000)} s${groupStopped ? "" : "; its process group could not be emptied"}` : spawnError ? `could not start: ${spawnError}` : signal ? `killed by ${signal}` : `exit ${status}`;
+      const rec = { name, ok, status, signal, timedOut, groupStopped, error: spawnError, seconds: Math.round((Date.now() - t0) / 1000), last: last.slice(0, 300) };
       summary.steps.push(rec);
       log(`${ok ? "ok  " : "FAIL"} ${name} (${why}, ${rec.seconds} s) ${last.slice(0, 160)}`);
       if (!ok) summary.problems.push(`${name}: ${why}: ${last.slice(0, 200)}`);

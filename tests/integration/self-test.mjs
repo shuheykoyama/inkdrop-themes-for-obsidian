@@ -6,7 +6,7 @@
 // usage: node tests/integration/self-test.mjs
 import { spawn, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { chmodSync, existsSync, lstatSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { chmodSync, existsSync, lstatSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, symlinkSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { classifyDryRun, compareResults, createRunner, MARKER, prepareOut, runProblems } from "./lib.mjs";
@@ -44,6 +44,27 @@ const alive = (pid) => { try { process.kill(pid, 0); return true; } catch { retu
   mkdirSync(path.join(vault, ".obsidian"), { recursive: true });
   before = snapshot(vault);
   check("a folder inside an Obsidian vault is refused, nothing is created", /Obsidian vault/.test(throws(() => prepareOut(path.join(vault, "out"), { reuse: false })) ?? "") && snapshot(vault) === before);
+  // Symbolic links into the (mock) vault: the real path is checked as well.
+  mkdirSync(path.join(vault, "sub"));
+  symlinkSync(vault, path.join(tmp, "link-to-vault"));
+  symlinkSync(path.join(vault, "sub"), path.join(tmp, "link-to-vault-sub"));
+  mkdirSync(path.join(tmp, "plain"));
+  symlinkSync(path.join(tmp, "link-to-vault"), path.join(tmp, "plain", "chained"));
+  before = snapshot(vault);
+  // A link to the vault itself shows .obsidian on the given path already; a link to a folder inside the vault
+  // does not (its own ancestors are outside), so only the real path finds the vault ("really" in the reason).
+  for (const [label, p, re] of [["a link to the vault", path.join(tmp, "link-to-vault", "out"), /inside an Obsidian vault/],
+    ["a link to a link to the vault", path.join(tmp, "plain", "chained", "out"), /inside an Obsidian vault/],
+    ["a link to a folder inside the vault", path.join(tmp, "link-to-vault-sub", "out"), /\(really .*a-vault\/sub\/out\) is inside an Obsidian vault/],
+    ["a deeper new path under a link into the vault", path.join(tmp, "link-to-vault-sub", "a", "b"), /\(really .*a-vault\/sub\/a\/b\) is inside an Obsidian vault/]])
+    check(`an output folder through ${label} is refused, nothing is created in the vault`, re.test(throws(() => prepareOut(p, { reuse: false })) ?? "") && snapshot(vault) === before, throws(() => prepareOut(p, { reuse: false })));
+  // Re-use of a run-all output that lives inside the vault, reached through a link named outside it.
+  mkdirSync(path.join(vault, "old-run"));
+  writeFileSync(path.join(vault, "old-run", MARKER), `${JSON.stringify({ kind: "inkdrop-themes-for-obsidian integrated regression output" })}\n`);
+  symlinkSync(path.join(vault, "old-run"), path.join(tmp, "link-to-old-run"));
+  before = snapshot(vault);
+  check("re-use of an output inside the vault through a link is refused", /inside an Obsidian vault/.test(throws(() => prepareOut(path.join(tmp, "link-to-old-run"), { reuse: true })) ?? "") && snapshot(vault) === before);
+  check("a link to a folder outside any vault is still allowed", (symlinkSync(path.join(tmp, "plain"), path.join(tmp, "link-to-plain")), throws(() => prepareOut(path.join(tmp, "link-to-plain", "out"), { reuse: false })) === null) && existsSync(path.join(tmp, "plain", "out", MARKER)));
   // The script itself: refuses before writing anything (exit 2) for an existing folder, for re-use without marker.
   const cli = (...a) => spawnSync(process.execPath, [path.join(repo, "tests/integration/run-all.mjs"), ...a], { encoding: "utf8", timeout: 60000 });
   before = snapshot(user);
@@ -81,6 +102,20 @@ const alive = (pid) => { try { process.kill(pid, 0); return true; } catch { retu
   // A child that ignores SIGTERM: SIGKILL after the grace time.
   x = await run.step("ignores-term", process.execPath, ["-e", "process.on('SIGTERM', () => {}); setInterval(() => {}, 1000)"], { timeoutMs: 500, graceMs: 500 });
   check("a child that ignores SIGTERM is killed after the grace time", !x.ok && x.timedOut && x.signal === "SIGKILL");
+  // Timeouts with a grandchild: the step returns only after the whole group is gone.
+  //   both end on SIGTERM / the parent ends on SIGTERM, the grandchild ignores it / both ignore it.
+  // A process ignores SIGTERM with `trap '' TERM`; an ignored signal stays ignored across exec and fork.
+  const GROUPS = [
+    ["the parent and the grandchild end on SIGTERM", "sleep 120 & echo $! > '@PID'; sleep 120"],
+    ["the parent ends on SIGTERM, the grandchild ignores it", "(trap '' TERM; exec sleep 120) & echo $! > '@PID'; sleep 120"],
+    ["the parent and the grandchild both ignore SIGTERM", "trap '' TERM; sleep 120 & echo $! > '@PID'; sleep 120"],
+  ];
+  for (const [i, [label, script]] of GROUPS.entries()) {
+    const pf = path.join(out, `group-${i}.pid`);
+    x = await run.step(`group-${i}`, "sh", ["-c", script.replace("@PID", pf)], { timeoutMs: 700, graceMs: 700 });
+    const g = Number(readFileSync(pf, "utf8"));
+    check(`timeout, ${label}: no grandchild left when the step returns`, !x.ok && x.timedOut && x.groupStopped === true && !alive(g), { g, alive: alive(g), groupStopped: x.groupStopped });
+  }
 }
 
 // ---------- 3. interrupting run-all.mjs ----------
@@ -92,7 +127,8 @@ const alive = (pid) => { try { process.kill(pid, 0); return true; } catch { retu
   const bin = path.join(tmp, "bin");
   mkdirSync(bin);
   const pidFile = path.join(tmp, "npm-grandchild.pid");
-  writeFileSync(path.join(bin, "npm"), `#!/bin/sh\nsleep 120 & echo $! > '${pidFile}'\nsleep 120\n`);
+  // The hardest case: the step and its grandchild both ignore SIGTERM (SIGKILL must follow before run-all exits).
+  writeFileSync(path.join(bin, "npm"), `#!/bin/sh\ntrap '' TERM\nsleep 120 & echo $! > '${pidFile}'\nsleep 120\n`);
   chmodSync(path.join(bin, "npm"), 0o755);
   const child = spawn(process.execPath, [path.join(repo, "tests/integration/run-all.mjs"), out, "--only", "static"], { stdio: "ignore", env: { ...process.env, PATH: `${bin}:${process.env.PATH}` } });
   const done = new Promise((r) => child.on("close", (status, signal) => r({ status, signal })));
@@ -103,7 +139,7 @@ const alive = (pid) => { try { process.kill(pid, 0); return true; } catch { retu
   await sleep(1500);
   const s = existsSync(path.join(out, "summary.json")) ? JSON.parse(readFileSync(path.join(out, "summary.json"), "utf8")) : null;
   const left = spawnSync("pgrep", ["-f", pidFile], { encoding: "utf8" }).stdout.trim();
-  check("SIGTERM while a step hangs: exit 130, complete: false, the step's group stopped, no process left",
+  check("SIGTERM to run-all while a step and its grandchild ignore SIGTERM: exit 130, complete: false, nothing left",
     gpid !== null && status === 130 && s?.complete === false && s?.interrupted === "SIGTERM" && s.problems.includes("interrupted by SIGTERM") && !alive(gpid) && left === "",
     { gpid, status, s: s && { complete: s.complete, interrupted: s.interrupted }, gAlive: gpid && alive(gpid), left });
 }
