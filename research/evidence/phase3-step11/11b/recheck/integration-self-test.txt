@@ -13,7 +13,7 @@ PASS integration self-test: a command that cannot start is a failed step
 PASS integration self-test: a child killed by a signal is a failed step
 PASS integration self-test: a timeout is a failed step and stops the child and its grandchild
 PASS integration self-test: a child that ignores SIGTERM is killed after the grace time
-PASS integration self-test: SIGTERM: exit 130, summary.json says complete: false and interrupted, no process left
+PASS integration self-test: SIGTERM while a step hangs: exit 130, complete: false, the step's group stopped, no process left
 PASS integration self-test: identical runs are the same
 PASS integration self-test: the same results in another order are the same
 PASS integration self-test: a missing check is found (key on one side only)
