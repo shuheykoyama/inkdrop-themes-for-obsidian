@@ -1,0 +1,237 @@
+{
+ "mode": "build",
+ "results": [
+  {
+   "id": "build.fresh",
+   "ok": true,
+   "detail": "jobs 66 (probe 52, extra 32), checks 442, tour steps 38"
+  },
+  {
+   "id": "build.marker",
+   "ok": true,
+   "detail": {
+    "kitId": "bd44b66c-2427-4241-9dfc-b018b24b3cdf",
+    "files": 17
+   }
+  },
+  {
+   "id": "build.zip-marker",
+   "ok": true
+  },
+  {
+   "id": "build.no-staging-left",
+   "ok": true,
+   "detail": [
+    "InkdropThemeTest",
+    "InkdropThemeTest.zip"
+   ]
+  },
+  {
+   "id": "build.again-without-replace.refused",
+   "ok": true,
+   "detail": {
+    "status": 1,
+    "stderr": "build-kit: refusing: /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/kit-build-work/fresh/InkdropThemeTest and /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-o"
+   }
+  },
+  {
+   "id": "build.again-without-replace.unchanged",
+   "ok": true,
+   "detail": "29 entries"
+  },
+  {
+   "id": "build.replace-unchanged-kit",
+   "ok": true,
+   "detail": {
+    "status": 0,
+    "kitIds": [
+     "bd44b66c-2427-4241-9dfc-b018b24b3cdf",
+     "e9ced23f-5007-44ef-9b62-ea97f0ef571b"
+    ],
+    "stderr": ""
+   }
+  },
+  {
+   "id": "build.unidentified-folder.refused",
+   "ok": true,
+   "detail": {
+    "status": 1,
+    "stderr": "build-kit: refusing: /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/kit-build-work/notes/InkdropThemeTest already exists; pass --replace to replace an unchanged kit made here, or choose a new outp"
+   }
+  },
+  {
+   "id": "build.unidentified-folder.unchanged",
+   "ok": true,
+   "detail": "5 entries"
+  },
+  {
+   "id": "build.unidentified-folder-replace.refused",
+   "ok": true,
+   "detail": {
+    "status": 1,
+    "stderr": "build-kit: refusing: /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/kit-build-work/notes/InkdropThemeTest has no kit marker (.obsidian/inkdrop-device-kit.json); it is not a kit made here; move it "
+   }
+  },
+  {
+   "id": "build.unidentified-folder-replace.unchanged",
+   "ok": true,
+   "detail": "5 entries"
+  },
+  {
+   "id": "build.kit-with-results-replace.refused",
+   "ok": true,
+   "detail": {
+    "status": 1,
+    "stderr": "build-kit: refusing: /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/kit-build-work/used/InkdropThemeTest holds files that are not part of the kit (for example results written on a device): device-"
+   }
+  },
+  {
+   "id": "build.kit-with-results-replace.unchanged",
+   "ok": true,
+   "detail": "31 entries"
+  },
+  {
+   "id": "build.kit-edited-replace.refused",
+   "ok": true,
+   "detail": {
+    "status": 1,
+    "stderr": "build-kit: refusing: /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/kit-build-work/edited/InkdropThemeTest has kit files changed since the build: .obsidian/plugins/ink-device-check/main.js; move i"
+   }
+  },
+  {
+   "id": "build.kit-edited-replace.unchanged",
+   "ok": true,
+   "detail": "29 entries"
+  },
+  {
+   "id": "build.kit-extra-folder-replace.refused",
+   "ok": true,
+   "detail": {
+    "status": 1,
+    "stderr": "build-kit: refusing: /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/kit-build-work/empty-dir/InkdropThemeTest holds folders that are not part of the kit: Inbox; move it away yourself if it is no l"
+   }
+  },
+  {
+   "id": "build.kit-extra-folder-replace.unchanged",
+   "ok": true,
+   "detail": "30 entries"
+  },
+  {
+   "id": "build.fake-marker-replace.refused",
+   "ok": true,
+   "detail": {
+    "status": 1,
+    "stderr": "build-kit: refusing: /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/kit-build-work/fake-marker/InkdropThemeTest: the marker is not a device kit marker of this repository; move it away yourself if "
+   }
+  },
+  {
+   "id": "build.fake-marker-replace.unchanged",
+   "ok": true,
+   "detail": "5 entries"
+  },
+  {
+   "id": "build.unidentified-zip.refused",
+   "ok": true,
+   "detail": {
+    "status": 1,
+    "stderr": "build-kit: refusing: /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/kit-build-work/zips/InkdropThemeTest.zip already exists; pass --replace to replace an unchanged kit made here, or choose a new o"
+   }
+  },
+  {
+   "id": "build.unidentified-zip.unchanged",
+   "ok": true,
+   "detail": "2 entries"
+  },
+  {
+   "id": "build.unidentified-zip-replace.refused",
+   "ok": true,
+   "detail": {
+    "status": 1,
+    "stderr": "build-kit: refusing: /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/kit-build-work/zips/InkdropThemeTest.zip cannot be read as a zip ([/private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheyko"
+   }
+  },
+  {
+   "id": "build.unidentified-zip-replace.unchanged",
+   "ok": true,
+   "detail": "2 entries"
+  },
+  {
+   "id": "build.other-zip-replace.refused",
+   "ok": true,
+   "detail": {
+    "status": 1,
+    "stderr": "build-kit: refusing: /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/kit-build-work/other-zip/InkdropThemeTest.zip has no kit marker; it is not a kit made here; move it away yourself if it is no lo"
+   }
+  },
+  {
+   "id": "build.other-zip-replace.unchanged",
+   "ok": true,
+   "detail": "5 entries"
+  },
+  {
+   "id": "build.kit-zip-extra-entry-replace.refused",
+   "ok": true,
+   "detail": {
+    "status": 1,
+    "stderr": "build-kit: refusing: /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/kit-build-work/zip-extra/InkdropThemeTest.zip holds entries that are not part of the kit: InkdropThemeTest/added.md; move it awa"
+   }
+  },
+  {
+   "id": "build.kit-zip-extra-entry-replace.unchanged",
+   "ok": true,
+   "detail": "29 entries"
+  },
+  {
+   "id": "build.symlink-replace.refused",
+   "ok": true,
+   "detail": {
+    "status": 1,
+    "stderr": "build-kit: refusing: /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/kit-build-work/linked/InkdropThemeTest is not a folder; move it away yourself if it is no longer needed"
+   }
+  },
+  {
+   "id": "build.symlink-replace.unchanged",
+   "ok": true,
+   "detail": "173 entries"
+  },
+  {
+   "id": "build.inside-a-vault.refused",
+   "ok": true,
+   "detail": {
+    "status": 1,
+    "stderr": "build-kit: refusing: /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/kit-build-work/a-vault is an Obsidian vault (it has .obsidian); choose an output folder outside any vault"
+   }
+  },
+  {
+   "id": "build.inside-a-vault.unchanged",
+   "ok": true,
+   "detail": "3 entries"
+  },
+  {
+   "id": "judge.ed-prepared-not-folded",
+   "ok": true,
+   "detail": {
+    "folded": false,
+    "got": "FAIL",
+    "want": "FAIL"
+   }
+  },
+  {
+   "id": "judge.ed-prepared-folded",
+   "ok": true,
+   "detail": {
+    "folded": true,
+    "got": "PASS",
+    "want": "PASS"
+   }
+  },
+  {
+   "id": "judge.ed-prepared-not-recorded",
+   "ok": true,
+   "detail": {
+    "got": "PASS",
+    "want": "PASS"
+   }
+  }
+ ]
+}

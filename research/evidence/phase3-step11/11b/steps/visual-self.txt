@@ -1,0 +1,8 @@
+PASS visual self-test: same colour on both sides of the border passes
+PASS visual self-test: different colour fails continuity
+PASS visual self-test: region including the 1 px border is not flat
+PASS visual self-test: region including text is not flat, and its pair is not judged
+PASS visual self-test: wrong reference colour fails
+PASS visual self-test: right reference colour passes
+
+all 6 visual self-test cases behaved as expected

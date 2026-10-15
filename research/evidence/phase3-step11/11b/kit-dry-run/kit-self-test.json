@@ -1,0 +1,40 @@
+{
+ "mode": "dry-run",
+ "results": [
+  {
+   "id": "dry.emulated-phone",
+   "ok": true
+  },
+  {
+   "id": "dry.accepted",
+   "ok": true
+  },
+  {
+   "id": "dry.run-checks",
+   "ok": true,
+   "detail": {
+    "files": [
+     "results-2026-10-15T12-26-30-624Z.json"
+    ]
+   }
+  },
+  {
+   "id": "dry.screenshot-tour",
+   "ok": true,
+   "detail": {
+    "files": [
+     "tour-2026-10-15T12-37-29-094Z.json"
+    ]
+   }
+  },
+  {
+   "id": "dry.judged",
+   "ok": true,
+   "detail": {
+    "total": 910,
+    "fail": 52,
+    "other": []
+   }
+  }
+ ]
+}

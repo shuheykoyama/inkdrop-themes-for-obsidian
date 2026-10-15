@@ -1,0 +1,70 @@
+2026-10-15T10:28:37.013Z start build
+2026-10-15T10:28:39.164Z ok   build (exit 0, 2 s) built: dist/kanagawa-dragon/theme.css
+2026-10-15T10:28:39.164Z start static
+2026-10-15T10:28:45.398Z ok   static (exit 0, 6 s) all checks passed
+2026-10-15T10:28:45.399Z start static-self
+2026-10-15T10:32:28.331Z ok   static-self (exit 0, 223 s) all 55 self-test cases behaved as expected
+2026-10-15T10:32:28.332Z start release-self
+2026-10-15T10:32:29.783Z ok   release-self (exit 0, 1 s) all 40 release self-test cases behaved as expected
+2026-10-15T10:32:29.783Z start visual-self
+2026-10-15T10:32:30.487Z ok   visual-self (exit 0, 1 s) all 6 visual self-test cases behaved as expected
+2026-10-15T10:32:30.487Z start clean-room
+2026-10-15T10:32:41.401Z ok   clean-room (exit 0, 11 s) PASS clean-room dist/solarized-dark/manifest.json identical to local build
+2026-10-15T10:32:41.401Z start kit-build
+2026-10-15T10:33:17.793Z ok   kit-build (exit 0, 36 s) all 34 kit self-test checks PASS
+2026-10-15T10:33:17.793Z start e39-run1-start
+2026-10-15T10:33:24.029Z ok   e39-run1-start (exit 0, 6 s) /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/e39-run1-
+2026-10-15T10:33:24.029Z start e39-run1
+2026-10-15T10:53:25.398Z ok   e39-run1 (exit 0, 1201 s) 2026-10-15T10:53:18.868Z mermaid dump source {}
+2026-10-15T10:53:25.398Z start e39-run1-stop
+2026-10-15T10:53:41.666Z ok   e39-run1-stop (exit 0, 16 s) stopped isolated Obsidian (pid 43196)
+2026-10-15T10:53:41.666Z start e39-self-test-start
+2026-10-15T10:53:47.224Z ok   e39-self-test-start (exit 0, 6 s) /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/e39-self-
+2026-10-15T10:53:47.224Z start e39-self-test
+2026-10-15T11:05:38.561Z ok   e39-self-test (exit 0, 711 s) 2026-10-15T11:05:33.961Z mermaid dump reading {}
+2026-10-15T11:05:38.561Z start e39-self-test-stop
+2026-10-15T11:05:39.611Z ok   e39-self-test-stop (exit 0, 1 s) stopped isolated Obsidian (pid 43820)
+2026-10-15T11:05:39.612Z start e39-run2-start
+2026-10-15T11:05:45.097Z ok   e39-run2-start (exit 0, 5 s) /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/e39-run2-
+2026-10-15T11:05:45.097Z start e39-run2
+2026-10-15T11:25:42.126Z ok   e39-run2 (exit 0, 1197 s) 2026-10-15T11:25:35.623Z mermaid dump source {}
+2026-10-15T11:25:42.126Z start e39-run2-stop
+2026-10-15T11:25:58.394Z ok   e39-run2-stop (exit 0, 16 s) stopped isolated Obsidian (pid 44646)
+2026-10-15T11:25:58.394Z start e43-installer-check-before
+2026-10-15T11:26:19.138Z ok   e43-installer-check-before (exit 0, 21 s) (LaunchServices records, not kept)
+2026-10-15T11:26:19.138Z start e43-run1-start
+2026-10-15T11:26:25.615Z ok   e43-run1-start (exit 0, 6 s) /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/e43-run1-
+2026-10-15T11:26:25.615Z start e43-run1
+2026-10-15T11:46:10.535Z ok   e43-run1 (exit 0, 1185 s) 2026-10-15T11:46:04.194Z mermaid dump source {}
+2026-10-15T11:46:10.535Z start e43-run1-stop
+2026-10-15T11:46:11.578Z ok   e43-run1-stop (exit 0, 1 s) stopped isolated Obsidian (pid 45717)
+2026-10-15T11:46:11.579Z start e43-self-test-start
+2026-10-15T11:46:16.758Z ok   e43-self-test-start (exit 0, 5 s) /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/e43-self-
+2026-10-15T11:46:16.758Z start e43-self-test
+2026-10-15T11:57:54.866Z ok   e43-self-test (exit 0, 698 s) 2026-10-15T11:57:50.786Z mermaid dump reading {}
+2026-10-15T11:57:54.866Z start e43-self-test-stop
+2026-10-15T11:57:55.909Z ok   e43-self-test-stop (exit 0, 1 s) stopped isolated Obsidian (pid 46530)
+2026-10-15T11:57:55.909Z start e43-run2-start
+2026-10-15T11:58:01.043Z ok   e43-run2-start (exit 0, 5 s) /private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/11b-run2/e43-run2-
+2026-10-15T11:58:01.043Z start e43-run2
+2026-10-15T12:17:31.259Z ok   e43-run2 (exit 0, 1170 s) 2026-10-15T12:17:24.962Z mermaid dump source {}
+2026-10-15T12:17:31.260Z start e43-run2-stop
+2026-10-15T12:17:32.311Z ok   e43-run2-stop (exit 0, 1 s) stopped isolated Obsidian (pid 47308)
+2026-10-15T12:17:32.311Z start e43-installer-restore
+2026-10-15T12:17:34.462Z ok   e43-installer-restore (exit 0, 2 s) candidate: /Applications/Obsidian.app
+2026-10-15T12:17:34.462Z start e43-installer-check-after
+2026-10-15T12:17:53.665Z ok   e43-installer-check-after (exit 0, 19 s) (LaunchServices records, not kept)
+2026-10-15T12:17:53.666Z start kit-plugin
+2026-10-15T12:19:15.260Z ok   kit-plugin (exit 0, 82 s) all 63 kit self-test checks PASS
+2026-10-15T12:19:15.260Z start kit-dry-run
+2026-10-15T12:37:31.106Z ok   kit-dry-run (exit 0, 1096 s) all 5 kit self-test checks PASS
+2026-10-15T12:37:31.502Z same E39.5.1 run 1 vs baseline: 3859 / 3859 results, 0 state differences, 0+0 keys on one side only, 74 detail differences
+2026-10-15T12:37:31.645Z same E39.5.1 run 1 vs run 2: 3859 / 3859 results, 0 state differences, 0+0 keys on one side only, 42 detail differences
+2026-10-15T12:37:31.888Z same E43.7.7 run 1 vs baseline: 3859 / 3859 results, 0 state differences, 0+0 keys on one side only, 68 detail differences
+2026-10-15T12:37:32.007Z same E43.7.7 run 1 vs run 2: 3859 / 3859 results, 0 state differences, 0+0 keys on one side only, 101 detail differences
+2026-10-15T12:37:32.030Z kit dry run: 910 results, FAIL 52 = 52 device.environment (expected in emulation) + 0 other (regression)
+2026-10-15T12:37:32.033Z start gate
+2026-10-15T12:37:32.917Z ok   gate (exit 0, 1 s) Linux desktop (not gated: Q-D10): -; 138 units {"UNVERIFIED":138}; Q-D10: not guaranteed until verified on a real machine; UNVERIFIED, not a release failure
+2026-10-15T12:37:32.967Z release judgement: NOT MET (not a test failure); 0 units differ from the saved judgement
+2026-10-15T12:37:32.980Z kit dry run as a device report: rejected (52 device.environment checks did not pass (not a device run))
+2026-10-15T12:37:32.983Z integrated regression: no problem
