@@ -38,10 +38,14 @@ UA の OS は `iPhone OS 18_7` と出るが、iOS が固定している値で、
 ## 再現
 
 ```sh
-node tests/device/build-kit.mjs <out_dir>           # <out_dir>/InkdropThemeTest.zip
+node tests/device/build-kit.mjs <out_dir>           # <out_dir>/InkdropThemeTest.zip（新しい出力先）
+node tests/device/build-kit.mjs <out_dir> --replace # 作り直し: 前回のキットが生成したときのままの場合だけ置き換える
 # 端末: 展開したフォルダを Vault として開き、制限モードを切り、"Inkdrop theme device check" を有効にする
+#       （Vault 名を InkdropThemeTest から変えない。プラグインは名前とマーカーが合わないと何もしない）
 node tests/device/judge.mjs <results-*.json> --out <report.json> --label "<端末, OS, アプリ>"
 ```
+
+出力先にすでに `InkdropThemeTest/` か `InkdropThemeTest.zip` があると、`build-kit.mjs` は何も変えずに止まる。`--replace` を付けても、置き換えるのは、キットのマーカー（`.obsidian/inkdrop-device-kit.json`）に載っているファイルだけが生成時のハッシュのまま残っている場合だけ。端末で書いた結果（`device-results/`）やノートが入っていれば止まるので、必要なものを別の場所へ移してから、新しい出力先で作り直す。出力先が Obsidian の Vault の中（祖先に `.obsidian` がある）のときも止まる。安全対策の陰性テストは `node tests/device/kit-self-test.mjs build|plugin|dry-run <新しい作業フォルダ>`（§6.27、証拠は `rv6/`）。
 
 ケーブルでつないだ iPhone では、次の 2 つを別のシェルで起動してから `cable.mjs` を使う（`cable.mjs` の冒頭の説明を参照）。検証済みの版は **pymobiledevice3 11.29.0**（`uv tool install pymobiledevice3==11.29.0`、iOS 27.0、macOS 26.5.2）。
 

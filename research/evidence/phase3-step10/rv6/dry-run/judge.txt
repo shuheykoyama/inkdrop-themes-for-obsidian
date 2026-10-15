@@ -1,0 +1,68 @@
+FAIL device.environment [solarized-dark, phone, left-drawer-open] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, right-drawer-open] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, default] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, quick-switcher-open] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, md-reading] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, md-live] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, ed-live] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone-nonfloating, left-drawer-open] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile
+FAIL device.environment [solarized-dark, phone-nonfloating, right-drawer-open] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile
+FAIL device.environment [solarized-dark, phone-nonfloating, default] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile
+FAIL device.environment [solarized-dark, phone, user-accent] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+N/A ui.toggle.on-user-accent [solarized-dark, phone, user-accent] (desktop check) -- not on a phone: element not found
+FAIL device.environment [solarized-dark, phone, quick-switcher-open] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, user-font] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+N/A ui.font.user-override-first [solarized-dark, phone, user-font] (desktop check) -- not on a phone: element not displayed (size [0,0])
+FAIL device.environment [solarized-dark, phone, md-live] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, md-source] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, md-reading] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, md-user-fonts] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, ed-source] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, ed-source-no-lines] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, ed-live] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, ed-live-no-lines] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, ed-code-line] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, ed-widget-line] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, ed-selection] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, ed-search] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, phone, ed-fold] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav is-hidden-nav
+UNSUPPORTED mm.reading.unsupported [solarized-dark, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.live.unsupported [solarized-dark, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.reading.unsupported [solarized-dark, phone, mermaid re-render] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.light.reading.unsupported [solarized-dark, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+UNSUPPORTED mm.light.live.unsupported [solarized-dark, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+FAIL device.environment [kanagawa-dragon, phone, left-drawer-open] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, right-drawer-open] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, default] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, quick-switcher-open] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, md-reading] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, md-live] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, ed-live] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone-nonfloating, left-drawer-open] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile
+FAIL device.environment [kanagawa-dragon, phone-nonfloating, right-drawer-open] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile
+FAIL device.environment [kanagawa-dragon, phone-nonfloating, default] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile
+FAIL device.environment [kanagawa-dragon, phone, user-accent] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+N/A ui.toggle.on-user-accent [kanagawa-dragon, phone, user-accent] (desktop check) -- not on a phone: element not found
+FAIL device.environment [kanagawa-dragon, phone, quick-switcher-open] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, user-font] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+N/A ui.font.user-override-first [kanagawa-dragon, phone, user-font] (desktop check) -- not on a phone: element not displayed (size [0,0])
+FAIL device.environment [kanagawa-dragon, phone, md-live] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, md-source] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, md-reading] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, md-user-fonts] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, ed-source] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, ed-source-no-lines] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, ed-live] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, ed-live-no-lines] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, ed-code-line] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, ed-widget-line] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, ed-selection] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, ed-search] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, phone, ed-fold] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav is-hidden-nav
+UNSUPPORTED mm.reading.unsupported [kanagawa-dragon, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.live.unsupported [kanagawa-dragon, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.reading.unsupported [kanagawa-dragon, phone, mermaid re-render] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.light.reading.unsupported [kanagawa-dragon, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+UNSUPPORTED mm.light.live.unsupported [kanagawa-dragon, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+
+910 results on Mac, isolated Obsidian 1.14.4 (Electron 39.5.1), mobile emulation (phone): PASS 743, FAIL 52, DIFF 101, UNSUPPORTED 10, N/A 4 (desktop checks measured on the device: 404)

@@ -1,0 +1,385 @@
+{
+ "mode": "plugin",
+ "results": [
+  {
+   "id": "plugin.test-vault.accepted",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "id": "cable.test-vault.probe",
+   "ok": true,
+   "detail": "{\n  vault: 'InkdropThemeTest',\n  theme: '',\n  ua: [ 'obsidian/1.11.7' ],\n  viewport: [ 1024, 800, 2 ],\n  uptime: 8,\n  commands: [ 'ink-device-check:run-checks', 'ink-device-check:screenshot-tour' ]\n}"
+  },
+  {
+   "id": "cable.test-vault.shot-taken",
+   "ok": true,
+   "detail": "{\n  file: 'shot.png',\n  before: '2026-10-15T06:46:43.275Z',\n  after: '2026-10-15T06:46:43.958Z'\n}"
+  },
+  {
+   "id": "plugin.other-name.reason",
+   "ok": true,
+   "detail": "the open vault is \"OtherVault\", not InkdropThemeTest"
+  },
+  {
+   "id": "plugin.other-name.refused",
+   "ok": true,
+   "detail": {
+    "direct": [
+     "the open vault is \"OtherVault\", not InkdropThemeTest",
+     "the open vault is \"OtherVault\", not InkdropThemeTest"
+    ],
+    "refused": "Screenshot tour"
+   }
+  },
+  {
+   "id": "plugin.other-name.diagnosis-shown",
+   "ok": true,
+   "detail": [
+    "Inkdrop device check: Run checks refused: the open vault is \"OtherVault\", not InkdropThemeTest",
+    "Inkdrop device check: Screenshot tour refused: the open vault is \"OtherVault\", not InkdropThemeTest",
+    "Inkdrop device check: Run checks refused: the open vault is \"OtherVault\", not InkdropThemeTest",
+    "Inkdrop device check: Screenshot tour refused: the open vault is \"OtherVault\", not InkdropThemeTest"
+   ]
+  },
+  {
+   "id": "plugin.other-name.no-file-written",
+   "ok": true,
+   "detail": "30 entries"
+  },
+  {
+   "id": "plugin.other-name.no-setting-or-workspace-change",
+   "ok": true,
+   "detail": "config, theme, layout, body classes, active file"
+  },
+  {
+   "id": "cable.other-name.probe-stopped",
+   "ok": true,
+   "detail": "Error: the open vault is \"OtherVault\", not InkdropThemeTest; stopping"
+  },
+  {
+   "id": "cable.other-name.checks-stopped",
+   "ok": true,
+   "detail": "Error: the open vault is \"OtherVault\", not InkdropThemeTest; stopping"
+  },
+  {
+   "id": "cable.other-name.tour-stopped",
+   "ok": true,
+   "detail": "Error: the open vault is \"OtherVault\", not InkdropThemeTest; stopping"
+  },
+  {
+   "id": "cable.other-name.pull-stopped",
+   "ok": true,
+   "detail": "Error: the open vault is \"OtherVault\", not InkdropThemeTest; stopping"
+  },
+  {
+   "id": "cable.other-name.shot-stopped",
+   "ok": true,
+   "detail": "Error: the open vault is \"OtherVault\", not InkdropThemeTest; stopping"
+  },
+  {
+   "id": "cable.other-name.no-screenshot",
+   "ok": true,
+   "detail": {
+    "calls": 0
+   }
+  },
+  {
+   "id": "cable.other-name.no-file-written",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "id": "plugin.no-marker.reason",
+   "ok": true,
+   "detail": "this vault has no kit marker .obsidian/inkdrop-device-kit.json (Error: ENOENT: no such file or directory, open '/private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/rv6/plugin5/no-marker/InkdropThemeTest/.obsidian/inkdrop-device-kit.json')"
+  },
+  {
+   "id": "plugin.no-marker.refused",
+   "ok": true,
+   "detail": {
+    "direct": [
+     "this vault has no kit marker .obsidian/inkdrop-device-kit.json (Error: ENOENT: no such file or directory, open '/private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/rv6/plugin5/no-marker/InkdropThemeTest/.obsidian/inkdrop-device-kit.json')",
+     "this vault has no kit marker .obsidian/inkdrop-device-kit.json (Error: ENOENT: no such file or directory, open '/private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/rv6/plugin5/no-marker/InkdropThemeTest/.obsidian/inkdrop-device-kit.json')"
+    ],
+    "refused": "Screenshot tour"
+   }
+  },
+  {
+   "id": "plugin.no-marker.diagnosis-shown",
+   "ok": true,
+   "detail": [
+    "Inkdrop device check: Run checks refused: this vault has no kit marker .obsidian/inkdrop-device-kit.json (Error: ENOENT:",
+    "Inkdrop device check: Screenshot tour refused: this vault has no kit marker .obsidian/inkdrop-device-kit.json (Error: EN",
+    "Inkdrop device check: Run checks refused: this vault has no kit marker .obsidian/inkdrop-device-kit.json (Error: ENOENT:",
+    "Inkdrop device check: Screenshot tour refused: this vault has no kit marker .obsidian/inkdrop-device-kit.json (Error: EN"
+   ]
+  },
+  {
+   "id": "plugin.no-marker.no-file-written",
+   "ok": true,
+   "detail": "29 entries"
+  },
+  {
+   "id": "plugin.no-marker.no-setting-or-workspace-change",
+   "ok": true,
+   "detail": "config, theme, layout, body classes, active file"
+  },
+  {
+   "id": "cable.no-marker.probe-stopped",
+   "ok": true,
+   "detail": "Error: this vault has no kit marker .obsidian/inkdrop-device-kit.json (Error: ENOENT: no such file or directory, open '/private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/rv6/plugin5/no-marker/InkdropThemeTest/"
+  },
+  {
+   "id": "cable.no-marker.checks-stopped",
+   "ok": true,
+   "detail": "Error: this vault has no kit marker .obsidian/inkdrop-device-kit.json (Error: ENOENT: no such file or directory, open '/private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/rv6/plugin5/no-marker/InkdropThemeTest/"
+  },
+  {
+   "id": "cable.no-marker.tour-stopped",
+   "ok": true,
+   "detail": "Error: this vault has no kit marker .obsidian/inkdrop-device-kit.json (Error: ENOENT: no such file or directory, open '/private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/rv6/plugin5/no-marker/InkdropThemeTest/"
+  },
+  {
+   "id": "cable.no-marker.pull-stopped",
+   "ok": true,
+   "detail": "Error: this vault has no kit marker .obsidian/inkdrop-device-kit.json (Error: ENOENT: no such file or directory, open '/private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/rv6/plugin5/no-marker/InkdropThemeTest/"
+  },
+  {
+   "id": "cable.no-marker.shot-stopped",
+   "ok": true,
+   "detail": "Error: this vault has no kit marker .obsidian/inkdrop-device-kit.json (Error: ENOENT: no such file or directory, open '/private/tmp/claude-501/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-themes-for-obsidian/38c62ed5-d626-4281-bdde-d17524257d3f/scratchpad/rv6/plugin5/no-marker/InkdropThemeTest/"
+  },
+  {
+   "id": "cable.no-marker.no-screenshot",
+   "ok": true,
+   "detail": {
+    "calls": 0
+   }
+  },
+  {
+   "id": "cable.no-marker.no-file-written",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "id": "plugin.marker-not-json.reason",
+   "ok": true,
+   "detail": "the kit marker .obsidian/inkdrop-device-kit.json is not JSON"
+  },
+  {
+   "id": "plugin.marker-not-json.refused",
+   "ok": true,
+   "detail": {
+    "direct": [
+     "the kit marker .obsidian/inkdrop-device-kit.json is not JSON",
+     "the kit marker .obsidian/inkdrop-device-kit.json is not JSON"
+    ],
+    "refused": "Screenshot tour"
+   }
+  },
+  {
+   "id": "plugin.marker-not-json.diagnosis-shown",
+   "ok": true,
+   "detail": [
+    "Inkdrop device check: Run checks refused: the kit marker .obsidian/inkdrop-device-kit.json is not JSON",
+    "Inkdrop device check: Screenshot tour refused: the kit marker .obsidian/inkdrop-device-kit.json is not JSON",
+    "Inkdrop device check: Run checks refused: the kit marker .obsidian/inkdrop-device-kit.json is not JSON",
+    "Inkdrop device check: Screenshot tour refused: the kit marker .obsidian/inkdrop-device-kit.json is not JSON"
+   ]
+  },
+  {
+   "id": "plugin.marker-not-json.no-file-written",
+   "ok": true,
+   "detail": "30 entries"
+  },
+  {
+   "id": "plugin.marker-not-json.no-setting-or-workspace-change",
+   "ok": true,
+   "detail": "config, theme, layout, body classes, active file"
+  },
+  {
+   "id": "cable.marker-not-json.probe-stopped",
+   "ok": true,
+   "detail": "Error: the kit marker .obsidian/inkdrop-device-kit.json is not JSON; stopping"
+  },
+  {
+   "id": "cable.marker-not-json.checks-stopped",
+   "ok": true,
+   "detail": "Error: the kit marker .obsidian/inkdrop-device-kit.json is not JSON; stopping"
+  },
+  {
+   "id": "cable.marker-not-json.tour-stopped",
+   "ok": true,
+   "detail": "Error: the kit marker .obsidian/inkdrop-device-kit.json is not JSON; stopping"
+  },
+  {
+   "id": "cable.marker-not-json.pull-stopped",
+   "ok": true,
+   "detail": "Error: the kit marker .obsidian/inkdrop-device-kit.json is not JSON; stopping"
+  },
+  {
+   "id": "cable.marker-not-json.shot-stopped",
+   "ok": true,
+   "detail": "Error: the kit marker .obsidian/inkdrop-device-kit.json is not JSON; stopping"
+  },
+  {
+   "id": "cable.marker-not-json.no-screenshot",
+   "ok": true,
+   "detail": {
+    "calls": 0
+   }
+  },
+  {
+   "id": "cable.marker-not-json.no-file-written",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "id": "plugin.marker-other-kind.reason",
+   "ok": true,
+   "detail": "the kit marker .obsidian/inkdrop-device-kit.json is not a device kit marker of this repository"
+  },
+  {
+   "id": "plugin.marker-other-kind.refused",
+   "ok": true,
+   "detail": {
+    "direct": [
+     "the kit marker .obsidian/inkdrop-device-kit.json is not a device kit marker of this repository",
+     "the kit marker .obsidian/inkdrop-device-kit.json is not a device kit marker of this repository"
+    ],
+    "refused": "Screenshot tour"
+   }
+  },
+  {
+   "id": "plugin.marker-other-kind.diagnosis-shown",
+   "ok": true,
+   "detail": [
+    "Inkdrop device check: Run checks refused: the kit marker .obsidian/inkdrop-device-kit.json is not a device kit marker of",
+    "Inkdrop device check: Screenshot tour refused: the kit marker .obsidian/inkdrop-device-kit.json is not a device kit mark",
+    "Inkdrop device check: Run checks refused: the kit marker .obsidian/inkdrop-device-kit.json is not a device kit marker of",
+    "Inkdrop device check: Screenshot tour refused: the kit marker .obsidian/inkdrop-device-kit.json is not a device kit mark"
+   ]
+  },
+  {
+   "id": "plugin.marker-other-kind.no-file-written",
+   "ok": true,
+   "detail": "30 entries"
+  },
+  {
+   "id": "plugin.marker-other-kind.no-setting-or-workspace-change",
+   "ok": true,
+   "detail": "config, theme, layout, body classes, active file"
+  },
+  {
+   "id": "cable.marker-other-kind.probe-stopped",
+   "ok": true,
+   "detail": "Error: the kit marker .obsidian/inkdrop-device-kit.json is not a device kit marker of this repository; stopping"
+  },
+  {
+   "id": "cable.marker-other-kind.checks-stopped",
+   "ok": true,
+   "detail": "Error: the kit marker .obsidian/inkdrop-device-kit.json is not a device kit marker of this repository; stopping"
+  },
+  {
+   "id": "cable.marker-other-kind.tour-stopped",
+   "ok": true,
+   "detail": "Error: the kit marker .obsidian/inkdrop-device-kit.json is not a device kit marker of this repository; stopping"
+  },
+  {
+   "id": "cable.marker-other-kind.pull-stopped",
+   "ok": true,
+   "detail": "Error: the kit marker .obsidian/inkdrop-device-kit.json is not a device kit marker of this repository; stopping"
+  },
+  {
+   "id": "cable.marker-other-kind.shot-stopped",
+   "ok": true,
+   "detail": "Error: the kit marker .obsidian/inkdrop-device-kit.json is not a device kit marker of this repository; stopping"
+  },
+  {
+   "id": "cable.marker-other-kind.no-screenshot",
+   "ok": true,
+   "detail": {
+    "calls": 0
+   }
+  },
+  {
+   "id": "cable.marker-other-kind.no-file-written",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "id": "plugin.marker-other-kit.reason",
+   "ok": true,
+   "detail": "the kit marker belongs to another kit (00000000-0000-4000-8000-000000000000; this plugin is 3bcbd364-9566-43a9-8909-c2c9d7838abb)"
+  },
+  {
+   "id": "plugin.marker-other-kit.refused",
+   "ok": true,
+   "detail": {
+    "direct": [
+     "the kit marker belongs to another kit (00000000-0000-4000-8000-000000000000; this plugin is 3bcbd364-9566-43a9-8909-c2c9d7838abb)",
+     "the kit marker belongs to another kit (00000000-0000-4000-8000-000000000000; this plugin is 3bcbd364-9566-43a9-8909-c2c9d7838abb)"
+    ],
+    "refused": "Screenshot tour"
+   }
+  },
+  {
+   "id": "plugin.marker-other-kit.diagnosis-shown",
+   "ok": true,
+   "detail": [
+    "Inkdrop device check: Run checks refused: the kit marker belongs to another kit (00000000-0000-4000-8000-000000000000; t",
+    "Inkdrop device check: Screenshot tour refused: the kit marker belongs to another kit (00000000-0000-4000-8000-0000000000",
+    "Inkdrop device check: Run checks refused: the kit marker belongs to another kit (00000000-0000-4000-8000-000000000000; t",
+    "Inkdrop device check: Screenshot tour refused: the kit marker belongs to another kit (00000000-0000-4000-8000-0000000000"
+   ]
+  },
+  {
+   "id": "plugin.marker-other-kit.no-file-written",
+   "ok": true,
+   "detail": "30 entries"
+  },
+  {
+   "id": "plugin.marker-other-kit.no-setting-or-workspace-change",
+   "ok": true,
+   "detail": "config, theme, layout, body classes, active file"
+  },
+  {
+   "id": "cable.marker-other-kit.probe-stopped",
+   "ok": true,
+   "detail": "Error: the kit marker belongs to another kit (00000000-0000-4000-8000-000000000000; this plugin is 3bcbd364-9566-43a9-8909-c2c9d7838abb); stopping"
+  },
+  {
+   "id": "cable.marker-other-kit.checks-stopped",
+   "ok": true,
+   "detail": "Error: the kit marker belongs to another kit (00000000-0000-4000-8000-000000000000; this plugin is 3bcbd364-9566-43a9-8909-c2c9d7838abb); stopping"
+  },
+  {
+   "id": "cable.marker-other-kit.tour-stopped",
+   "ok": true,
+   "detail": "Error: the kit marker belongs to another kit (00000000-0000-4000-8000-000000000000; this plugin is 3bcbd364-9566-43a9-8909-c2c9d7838abb); stopping"
+  },
+  {
+   "id": "cable.marker-other-kit.pull-stopped",
+   "ok": true,
+   "detail": "Error: the kit marker belongs to another kit (00000000-0000-4000-8000-000000000000; this plugin is 3bcbd364-9566-43a9-8909-c2c9d7838abb); stopping"
+  },
+  {
+   "id": "cable.marker-other-kit.shot-stopped",
+   "ok": true,
+   "detail": "Error: the kit marker belongs to another kit (00000000-0000-4000-8000-000000000000; this plugin is 3bcbd364-9566-43a9-8909-c2c9d7838abb); stopping"
+  },
+  {
+   "id": "cable.marker-other-kit.no-screenshot",
+   "ok": true,
+   "detail": {
+    "calls": 0
+   }
+  },
+  {
+   "id": "cable.marker-other-kit.no-file-written",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}
