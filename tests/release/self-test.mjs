@@ -59,6 +59,12 @@ const recorded = (status, result = "recorded") => requirements().map((q) => (q.i
 const withoutDesk = () => allRuns().map((x) => ({ ...x, results: x.results.filter((y) => y.requirement !== "r.desk") }));
 const unit = (r, req, theme, os, device) => r.units.filter((u) => u.requirement === req && u.theme === theme && u.os === os && u.device === device);
 const target = (r, os, device) => r.targets.find((t) => t.os === os && t.device === device);
+// A desktop requirement measured in the custom window frame only, and the run of an instance started with it
+// (f changes or drops its results).
+const frameReqs = () => [...requirements(), { id: "r.frame", qd: "Q-D1", description: "title bar", platforms: ["desktop"], mandatory: true }];
+const frameChecks = () => [...checks(), { id: "c.frame", requirement: "r.frame", appearance: ["opaque"], frame: "custom" }];
+const frameRun = (f = (x) => x) => desktopRun({ file: "frame.json", label: "custom frame", frame: "custom",
+  results: THEMES.flatMap((t) => [res("c.frame", "r.frame", t, "desktop", "PASS"), res("runner.theme-applied", undefined, t, "desktop", "PASS")]).map(f).filter(Boolean) });
 
 const CASES = [
   { name: "positive control: everything measured on every gated target -> met", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: allRuns() }),
@@ -143,6 +149,17 @@ const CASES = [
     expect: (r) => r.met && unit(r, "r.desk", "solarized-dark", "Windows", "desktop")[0].state === "UNVERIFIED" },
   { name: "every unit keeps its evidence (file, version, commit) and its checks", run: () => judgeRelease({ requirements: requirements(), checks: checks(), inputs: inputs(), runs: allRuns() }),
     expect: (r) => r.units.filter((u) => u.state === "PASS").every((u) => u.evidence.length && u.evidence.every((e) => e.file && e.appVersion && e.commit) && u.parts.every((p) => p.check && p.method)) },
+  // --- window frames (step 11F): a check for the custom frame applies to the custom-frame run only ---
+  { name: "custom-frame check: the frame run PASSes, the Hidden run is not asked for it -> PASS, met", run: () => judgeRelease({ requirements: frameReqs(), checks: frameChecks(), inputs: inputs(), runs: [...allRuns(), frameRun()] }),
+    expect: (r) => r.met && unit(r, "r.frame", "solarized-dark", "macOS", "desktop")[0].state === "PASS" && unit(r, "r.desk", "kanagawa-dragon", "macOS", "desktop")[0].state === "PASS" },
+  { name: "custom-frame check without the frame run -> NO RESULT, not met", run: () => judgeRelease({ requirements: frameReqs(), checks: frameChecks(), inputs: inputs(), runs: allRuns() }),
+    expect: (r) => !r.met && unit(r, "r.frame", "solarized-dark", "macOS", "desktop")[0].state === "NO RESULT" },
+  { name: "custom-frame check FAILs in the frame run -> FAIL", run: () => judgeRelease({ requirements: frameReqs(), checks: frameChecks(), inputs: inputs(), runs: [...allRuns(), frameRun((x) => (x.id === "c.frame" && x.theme === "kanagawa-dragon" ? { ...x, status: "FAIL" } : x))] }),
+    expect: (r) => !r.met && unit(r, "r.frame", "kanagawa-dragon", "macOS", "desktop")[0].state === "FAIL" && unit(r, "r.frame", "solarized-dark", "macOS", "desktop")[0].state === "PASS" },
+  { name: "custom-frame check missing for one theme in the frame run -> NO RESULT for that theme", run: () => judgeRelease({ requirements: frameReqs(), checks: frameChecks(), inputs: inputs(), runs: [...allRuns(), frameRun((x) => (x.id === "c.frame" && x.theme === "solarized-dark" ? null : x))] }),
+    expect: (r) => !r.met && unit(r, "r.frame", "solarized-dark", "macOS", "desktop")[0].state === "NO RESULT" },
+  { name: "a frame check's result in a Hidden run (frame not recorded) does not stand in for the frame run", run: () => judgeRelease({ requirements: frameReqs(), checks: frameChecks(), inputs: inputs(), runs: [desktopRun({ results: [...desktopRun().results, ...THEMES.map((t) => res("c.frame", "r.frame", t, "desktop", "PASS"))] }), ...allRuns().slice(1)] }),
+    expect: (r) => !r.met && unit(r, "r.frame", "solarized-dark", "macOS", "desktop")[0].state === "NO RESULT" },
 ];
 
 let failures = 0;

@@ -105,15 +105,11 @@
     {
       "id": "qd1.titlebar-visible-frame",
       "qd": "Q-D1",
-      "description": "Title bar = Inkdrop note list background where a frame style displays it",
+      "description": "Title bar = Inkdrop note list background where a frame style displays it (the Obsidian frame, `custom`: opaque = note list, translucent = note list acrylic as the tab strips); measured in an isolated instance started with that frame (research/14 §6.54)",
       "platforms": [
         "desktop"
       ],
-      "mandatory": true,
-      "unverified": {
-        "reason": "The default Hidden frame does not display .titlebar. Displaying it needs another window-frame setting and a restart of the isolated instance, not automated yet (step 5 or 11).",
-        "risk": "Users of a frame style that shows the title bar could see a colour other than the note list if a rule outranks --titlebar-background there."
-      }
+      "mandatory": true
     },
     {
       "id": "qd1.mobile-drawers",

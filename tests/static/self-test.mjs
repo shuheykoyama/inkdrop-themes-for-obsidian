@@ -90,6 +90,11 @@ const CASES = [
     mutate: (r) => edit(r, "tests/spec/runtime/mobile.json", '"platform": ["tablet", "phone"],\n      "appearance": ["opaque"]', '"platform": ["tablet", "phone"],\n      "appearance": ["opaque", "translucent"]') },
   { name: "unknown platform", fail: /^FAIL S6 runtime checks are well formed -- .*platform must list/m,
     mutate: (r) => edit(r, "tests/spec/runtime/mobile.json", '"platform": ["phone-nonfloating"],', '"platform": ["watch"],') },
+  // --- step 11F: window frames ---
+  { name: "unknown window frame", fail: /^FAIL S6 runtime checks are well formed -- .*frame must be hidden, custom or native/m,
+    mutate: (r) => edit(r, "tests/spec/runtime/desktop.json", '"frame": "custom",\n      "token": "--ink-note-list-bar-background"\n', '"frame": "obsidian",\n      "token": "--ink-note-list-bar-background"\n') },
+  { name: "window frame on a mobile check", fail: /^FAIL S6 runtime checks are well formed -- .*frame must be hidden, custom or native, on desktop only/m,
+    mutate: (r) => edit(r, "tests/spec/runtime/mobile.json", '"platform": ["phone-nonfloating"],', '"platform": ["phone-nonfloating"],\n      "frame": "custom",') },
   // --- step 4: translucent ---
   { name: "!important removed from the tab-strip override (would lose to app.css)", fail: /^FAIL S5 solarized-dark no stale allow-list entries/m,
     mutate: (r) => edit(r, "src/common/platform/translucent.css", "background-color: var(--ink-note-list-bar-background-acrylic) !important;", "background-color: var(--ink-note-list-bar-background-acrylic);") },

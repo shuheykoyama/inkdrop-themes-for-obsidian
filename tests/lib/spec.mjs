@@ -73,6 +73,9 @@ export function checkErrors(c, requirementIds) {
   if (requirementIds && String(c.state).startsWith("self-test-")) e.push(`${where}: state ${c.state} is for the runner's self-test only`);
   if (c.scrollTo !== undefined && !(typeof c.scrollTo === "string" && c.scrollTo && String(c.state).startsWith("md-"))) e.push(`${where}: scrollTo is a non-empty line text and needs an md-* state`);
   if (c.pseudo !== undefined && !["::before", "::after", "::marker", "::selection"].includes(c.pseudo)) e.push(`${where}: pseudo must be ::before, ::after, ::marker or ::selection`);
+  // frame: the window frame the check needs (Settings > Appearance > Window frame style); default Hidden, the
+  // macOS default. A check for another frame runs in an instance started with that frame (desktop only).
+  if (c.frame !== undefined && !(["hidden", "custom", "native"].includes(c.frame) && platforms.every((p) => p === "desktop"))) e.push(`${where}: frame must be hidden, custom or native, on desktop only`);
   if (c.themes !== undefined && !(Array.isArray(c.themes) && c.themes.length && c.themes.every((t) => THEMES.includes(t)))) e.push(`${where}: themes must list ${THEMES.join("/")}`);
   if (!KINDS.includes(c.kind ?? "color")) e.push(`${where}: kind must be one of ${KINDS.join("/")}`);
   if (c.kind === "em" && !(typeof c.value === "string" && Number(c.value) > 0)) e.push(`${where}: kind em needs a positive value`);

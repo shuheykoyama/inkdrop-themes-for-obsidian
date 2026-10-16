@@ -11,11 +11,17 @@
 #            ~/Library/Application Support/obsidian, copied read-only into the temporary user data dir;
 #   current: OBSIDIAN_APP=<copy made by tests/runtime/current-installer.sh> OBSIDIAN_ASAR=none
 #            (installer 1.14.4, Electron 43.7.7, its bundled app).
+# OBSIDIAN_FRAME=hidden|custom|native (optional) starts the instance with that window frame (Settings >
+# Appearance > Window frame style). Obsidian 1.14.4 keeps it as `frame` in the user data dir's obsidian.json
+# and reads it when a window opens, so it is written there before the start: only the temporary user data
+# dir is touched, never the user's own Obsidian settings.
 set -euo pipefail
 cmd="$1"; work="$2"
 root="$(cd "$(dirname "$0")/../.." && pwd)"
 app="${OBSIDIAN_APP:-/Applications/Obsidian.app}"
 asar="${OBSIDIAN_ASAR:-$HOME/Library/Application Support/obsidian/obsidian-1.14.4.asar}"
+frame="${OBSIDIAN_FRAME:-}"
+case "$frame" in ""|hidden|custom|native) ;; *) echo "OBSIDIAN_FRAME must be hidden, custom or native" >&2; exit 2 ;; esac
 
 if [ "$cmd" = start ]; then
   if curl -s --max-time 1 http://127.0.0.1:9333/json/version > /dev/null; then
@@ -26,7 +32,11 @@ if [ "$cmd" = start ]; then
   [ "$asar" = none ] || cp "$asar" "$work/userdata/"
   rm -rf "$work/vault"
   cp -R "$root/tests/fixtures/vault" "$work/vault"
-  printf '{"vaults":{"inkthemetest0001":{"path":"%s","ts":0,"open":true}}}' "$work/vault" > "$work/userdata/obsidian.json"
+  if [ -n "$frame" ]; then
+    printf '{"vaults":{"inkthemetest0001":{"path":"%s","ts":0,"open":true}},"frame":"%s"}' "$work/vault" "$frame" > "$work/userdata/obsidian.json"
+  else
+    printf '{"vaults":{"inkthemetest0001":{"path":"%s","ts":0,"open":true}}}' "$work/vault" > "$work/userdata/obsidian.json"
+  fi
   # No background throttling: with the screen locked or asleep the page counts as hidden and Chromium stretches
   # its timers (a 300 ms wait took over a second, later up to a minute), which stalled whole runs.
   "$app/Contents/MacOS/Obsidian" --user-data-dir="$work/userdata" \

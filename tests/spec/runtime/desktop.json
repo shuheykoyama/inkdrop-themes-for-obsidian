@@ -135,6 +135,30 @@
       "reason": "Hidden frame (the macOS default) does not display .titlebar (research/11 §7); its colour shows through the top tab strips, checked above"
     },
     {
+      "id": "desktop.titlebar.custom-frame",
+      "requirement": "qd1.titlebar-visible-frame",
+      "selector": ".titlebar",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "frame": "custom",
+      "token": "--ink-note-list-bar-background"
+    },
+    {
+      "id": "desktop.titlebar.custom-frame.translucent",
+      "requirement": "qd1.titlebar-visible-frame",
+      "selector": ".titlebar",
+      "document": "main",
+      "property": "background-color",
+      "appearance": [
+        "translucent"
+      ],
+      "frame": "custom",
+      "token": "--ink-note-list-bar-background-acrylic"
+    },
+    {
       "id": "desktop.ribbon-corner.background",
       "requirement": "qd1.ribbon-corner",
       "selector": ".workspace-ribbon.mod-primary",

@@ -51,7 +51,8 @@ function readRun(entry, repo, commitOf) {
   if (entry.kind === "desktop-runtime") {
     if (!["macOS", "Windows", "Linux"].includes(entry.os)) throw new Error(`inputs: ${entry.file}: a desktop run needs os macOS / Windows / Linux`);
     if (data.selfTest) throw new Error(`inputs: ${entry.file} is a self-test run`);
-    return { ...source, os: entry.os, appVersion: data.environment?.appVersion, electron: data.environment?.electron, at: data.measuredAt,
+    // The window frame the run measured (tests/runtime/run.mjs records it; files before step 11F ran Hidden).
+    return { ...source, os: entry.os, appVersion: data.environment?.appVersion, electron: data.environment?.electron, frame: data.environment?.frame ?? "hidden", at: data.measuredAt,
       method: "Computed Style in the isolated desktop Obsidian (CDP, tests/runtime/run.mjs)", results: data.results };
   }
   if (entry.kind === "device-report") {
@@ -156,11 +157,17 @@ export function judgeRelease({ requirements, checks, inputs, runs }) {
             evidence.push({ file: run.file, label: run.label, kind: run.kind, appVersion, electron: run.electron ?? null, at: run.at, commit: run.commit });
             // Every spec check of this requirement that applies here must have a result (desktop: any appearance;
             // device: the kit measures the opaque checks).
-            const applies = (c) => (!c.themes || c.themes.includes(theme)) && (c.platform ?? ["desktop"]).some((p) => SPEC_PLATFORMS[target.device].includes(p)) && (run.kind === "desktop-runtime" || c.appearance.includes("opaque"));
+            // A check made for a window frame (c.frame, default Hidden) applies only to a run with that frame: the
+            // custom-frame checks to the custom-frame run (research/14 §6.54), the others to the Hidden runs.
+            const applies = (c) => (!c.themes || c.themes.includes(theme)) && (c.platform ?? ["desktop"]).some((p) => SPEC_PLATFORMS[target.device].includes(p)) && (run.kind === "desktop-runtime" || c.appearance.includes("opaque"))
+              && (c.frame ?? "hidden") === (run.kind === "desktop-runtime" ? run.frame ?? "hidden" : "hidden");
             const expected = reqChecks.filter(applies);
             for (const c of reqChecks.filter((x) => !applies(x))) excluded.add(c.id);
             for (const c of expected) if (!rs.some((r) => r.id === c.id)) parts.push({ state: "NO RESULT", check: c.id, why: `no result in ${run.file}` });
-            for (const r of rs) {
+            // A result of a check made for another frame than the run's is not counted (a Hidden run cannot stand
+            // in for the custom-frame run).
+            const runFrame = run.kind === "desktop-runtime" ? run.frame ?? "hidden" : "hidden";
+            for (const r of rs.filter((x) => { const c = reqChecks.find((y) => y.id === x.id); return !c || (c.frame ?? "hidden") === runFrame; })) {
               const prep = prepFailed.get(prepKey(run, r));
               const s = prep ? "FAIL" : r.status === "PASS (EMULATED)" ? "EMULATED ONLY" : r.status;
               if (!ORDER.includes(s)) throw new Error(`${run.file}: unknown status ${r.status} (${r.id})`);

@@ -201,6 +201,15 @@ async function releasePointer() {
   return left;
 }
 
+// The window frame of the instance (Settings > Appearance > Window frame style; obsidian-isolated.sh
+// OBSIDIAN_FRAME): only the checks made for it are measured (c.frame, default Hidden), and it is recorded. A
+// run in another frame than Hidden measures its frame's desktop checks only (no other platform, no syntax or
+// Mermaid dumps, which do not depend on the frame) and is a release input of its own (research/14 §6.54).
+const frame = (await evaluate(args.port, "(() => window.require('electron').ipcRenderer.sendSync('frame') || 'hidden')()")) ?? "hidden";
+environment.frame = frame;
+if (selfTest && frame !== "hidden") { console.error(`the self-test runs in the Hidden frame only (this instance: ${frame})`); process.exit(2); }
+const inFrame = checks.filter((c) => (c.frame ?? "hidden") === frame);
+if (!inFrame.length) { console.error(`no check is made for the ${frame} frame`); process.exit(2); }
 const original = await evaluate(args.port, "(() => electronWindow.getSize())()");
 // The page keeps focus as far as it can tell for the whole run (CDP focus emulation, not the macOS focus);
 // taken again after every platform switch, which reloads the page. runner.focus checks it at measuring time.
@@ -216,7 +225,7 @@ for (const theme of THEMES) {
 }
 try {
   for (const platform of PLATFORMS) {
-    const forPlatform = checks.filter((c) => (c.platform ?? ["desktop"]).includes(platform));
+    const forPlatform = inFrame.filter((c) => (c.platform ?? ["desktop"]).includes(platform));
     if (!forPlatform.length) continue;
     await setPlatform(platform, original);
     await refocus();
@@ -278,7 +287,7 @@ try {
             results.push({ id: c.id, requirement: c.requirement, ...where, status: status === "PASS" ? ok : status, detail, measured: page.results[c.id], selfTest: c.selfTest });
           }
         }
-        if (!selfTest) {
+        if (!selfTest && frame === "hidden") {
           const where = { theme, platform, appearance: pass === 2 ? "opaque (after translucent)" : appearance, state: "syntax" };
           results.push(...judgeSyntax(syntaxSpec, inkdropTokens, await syntaxPage(), where, platform === "desktop" ? "PASS" : "PASS (EMULATED)"));
           const ok = platform === "desktop" ? "PASS" : "PASS (EMULATED)";
