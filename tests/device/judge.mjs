@@ -37,6 +37,9 @@ const defs = (theme) => {
 
 const results = [];
 const device = env.platform.isTablet ? "tablet" : "phone";
+// Kits from step 11F record the device class whose jobs they ran: it must be this device's (part of every
+// device.environment check below; older kits ran the phone jobs only and record none).
+const kitDeviceOk = run.device === undefined || run.device === device;
 for (const rec of run.results) {
   const job = rec.job;
   const where = { theme: job.theme, platform: job.kind === "probe" ? job.platform : device, appearance: "opaque", state: job.kind === "probe" ? job.state : job.kind === "syntax" ? "syntax" : `mermaid${job.scheme === "light" ? " light" : ""}${job.rerender ? " re-render" : ""}` };
@@ -51,8 +54,8 @@ for (const rec of run.results) {
     // setting as the job asked.
     const cls = page.bodyClasses;
     const envOk = cls.includes("is-mobile") && !cls.includes("emulate-mobile") && !cls.includes("is-translucent") && cls.includes(device === "tablet" ? "is-tablet" : "is-phone")
-      && (device === "tablet" || cls.includes("is-floating-nav") === (job.platform !== "phone-nonfloating"));
-    results.push({ id: "device.environment", ...where, status: envOk ? "PASS" : "FAIL", detail: cls.filter((x) => /^(is-|emulate-)/.test(x)).join(" ") });
+      && (device === "tablet" || cls.includes("is-floating-nav") === (job.platform !== "phone-nonfloating")) && kitDeviceOk;
+    results.push({ id: "device.environment", ...where, status: envOk ? "PASS" : "FAIL", detail: cls.filter((x) => /^(is-|emulate-)/.test(x)).join(" ") + (kitDeviceOk ? "" : ` (the kit ran the ${run.device} jobs on a ${device})`) });
     if (page.edPrepared) {
       const e = page.edPrepared;
       // As the desktop runner's runner.ed-prepared: a fold that did not happen fails here (kits before the

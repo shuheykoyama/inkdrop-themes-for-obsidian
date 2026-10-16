@@ -130,36 +130,41 @@ const themes = THEMES.map((t) => {
   const manifest = JSON.parse(readFileSync(path.join(repo, "dist", t, "manifest.json"), "utf8"));
   return { key: t, name: manifest.name, cssLength: readFileSync(path.join(repo, "dist", t, "theme.css"), "utf8").length };
 });
+// Every job names the device class it is for (`device`): the plugin runs the phone jobs on a phone and the
+// tablet jobs on a tablet (Platform.isTablet), the syntax and Mermaid jobs ("any") on both. Results of the
+// other class's jobs would be on the wrong platform, which the release judgement rejects (research/14 §6.35).
 const jobs = [];
 for (const th of themes) {
-  for (const platform of ["phone", "phone-nonfloating"]) {
+  for (const platform of ["phone", "phone-nonfloating", "tablet"]) {
     const list = forPlatform(platform).filter((c) => !c.themes || c.themes.includes(th.key));
     for (const state of [...new Set(list.map((c) => c.state ?? "default"))]) {
-      jobs.push({ kind: "probe", theme: th.key, themeName: th.name, cssLength: th.cssLength, platform, state, extra: false, checks: list.filter((c) => (c.state ?? "default") === state).map(pick) });
+      jobs.push({ kind: "probe", device: platform === "tablet" ? "tablet" : "phone", theme: th.key, themeName: th.name, cssLength: th.cssLength, platform, state, extra: false, checks: list.filter((c) => (c.state ?? "default") === state).map(pick) });
     }
   }
   const mobileIds = new Set(forPlatform("phone").map((c) => c.id));
   const extra = checks.filter((c) => (c.platform ?? ["desktop"]).includes("desktop") && c.appearance.includes("opaque") && EXTRA_STATES(c.state ?? "default") && !mobileIds.has(c.id) && !SUPERSEDED.has(c.id) && (!c.themes || c.themes.includes(th.key)));
   for (const state of [...new Set(extra.map((c) => c.state))]) {
-    jobs.push({ kind: "probe", theme: th.key, themeName: th.name, cssLength: th.cssLength, platform: "phone", state, extra: true, checks: extra.filter((c) => c.state === state).map(pick) });
+    jobs.push({ kind: "probe", device: "phone", theme: th.key, themeName: th.name, cssLength: th.cssLength, platform: "phone", state, extra: true, checks: extra.filter((c) => c.state === state).map(pick) });
   }
   const syntaxSpec = JSON.parse(readFileSync(path.join(repo, "tests/spec/syntax.json"), "utf8"));
   const inkdropTokens = JSON.parse(readFileSync(path.join(repo, syntaxSpec.inkdrop), "utf8"));
-  jobs.push({ kind: "syntax", theme: th.key, themeName: th.name, input: { note: syntaxSpec.note, vars: syntaxVars(syntaxSpec, inkdropTokens) } });
+  jobs.push({ kind: "syntax", device: "any", theme: th.key, themeName: th.name, input: { note: syntaxSpec.note, vars: syntaxVars(syntaxSpec, inkdropTokens) } });
   const m = JSON.parse(readFileSync(path.join(repo, "tests/spec/mermaid.json"), "utf8"));
   const base = { note: m.note, tokens: m.tokens, kinds: m.kinds, unsupported: m.unsupported, reference: "inkdrop" };
-  for (const view of ["reading", "live", "source"]) jobs.push({ kind: "mermaid", theme: th.key, themeName: th.name, scheme: "dark", input: { ...base, view } });
-  jobs.push({ kind: "mermaid", theme: th.key, themeName: th.name, scheme: "dark", rerender: true, input: { ...base, view: "reading", rerender: true } });
-  for (const view of ["reading", "live"]) jobs.push({ kind: "mermaid", theme: th.key, themeName: th.name, scheme: "light", input: { ...base, view, reference: "default" } });
+  for (const view of ["reading", "live", "source"]) jobs.push({ kind: "mermaid", device: "any", theme: th.key, themeName: th.name, scheme: "dark", input: { ...base, view } });
+  jobs.push({ kind: "mermaid", device: "any", theme: th.key, themeName: th.name, scheme: "dark", rerender: true, input: { ...base, view: "reading", rerender: true } });
+  for (const view of ["reading", "live"]) jobs.push({ kind: "mermaid", device: "any", theme: th.key, themeName: th.name, scheme: "light", input: { ...base, view, reference: "default" } });
 }
 
 // ---------- screenshot tour ----------
 // Each step prepares a state, shows its name for 3 s, then leaves `wait` seconds for a screenshot (the
 // notice is gone by then) and restores. The tour log records the start time of each step, so the screenshots'
 // own timestamps tell which step they show.
+// The phone tour; a tablet gets the steps of its own below (no navigation-bar or keyboard steps: a tablet has
+// no bottom navigation bar, and the keyboard step needs a person's tap).
 const tour = [];
 for (const th of themes) {
-  const s = (label, step) => tour.push({ theme: th.key, themeName: th.name, label: `${th.key} ${label}`, wait: 9, ...step });
+  const s = (label, step) => tour.push({ device: "phone", theme: th.key, themeName: th.name, label: `${th.key} ${label}`, wait: 9, ...step });
   s("phone, floating navigation", { platform: "phone", state: "default" });
   s("phone, navigation not floating", { platform: "phone-nonfloating", state: "default" });
   s("left drawer", { platform: "phone", state: "left-drawer-open" });
@@ -179,6 +184,16 @@ for (const th of themes) {
   s("Mermaid other kinds and image, Reading view", { platform: "phone", state: "default", open: { file: "Mermaid.md", mode: "preview", scroll: "## Class" } });
   s("quick switcher", { platform: "phone", state: "quick-switcher-open" });
   s("accent colour of the user", { platform: "phone", state: "user-accent" });
+  const t = (label, step) => tour.push({ device: "tablet", theme: th.key, themeName: th.name, label: `${th.key} tablet, ${label}`, wait: 9, platform: "tablet", ...step });
+  t("default", { state: "default" });
+  t("left sidebar", { state: "left-drawer-open" });
+  t("right sidebar", { state: "right-drawer-open" });
+  t("Markdown, Live Preview", { state: "md-live" });
+  t("Markdown, Reading view", { state: "md-reading" });
+  t("editor, Live Preview, line numbers", { state: "ed-live" });
+  t("code blocks, Reading view", { state: "default", open: { file: "Code blocks.md", mode: "preview" } });
+  t("Mermaid flowchart, Reading view", { state: "default", open: { file: "Mermaid.md", mode: "preview", scroll: "## Flowchart" } });
+  t("quick switcher", { state: "quick-switcher-open" });
 }
 
 // ---------- the plugin ----------
@@ -302,10 +317,13 @@ module.exports = class InkDeviceCheck extends Plugin {
     this.busy = true;
     const startedAt = new Date().toISOString();
     const results = [];
+    // Only the jobs of this device class (and those for any device).
+    const device = Platform.isTablet ? "tablet" : "phone";
+    const jobs = JOBS.filter((j) => j.device === "any" || j.device === device);
     try {
       await this.keepSettings(async () => {
-        for (const [i, job] of JOBS.entries()) {
-          new Notice("Inkdrop checks " + (i + 1) + "/" + JOBS.length + ": " + job.kind + " " + job.theme + " " + (job.state ?? job.input?.view ?? ""), 1500);
+        for (const [i, job] of jobs.entries()) {
+          new Notice("Inkdrop checks " + (i + 1) + "/" + jobs.length + ": " + job.kind + " " + job.theme + " " + (job.state ?? job.input?.view ?? ""), 1500);
           const rec = { job: { ...job, checks: undefined, input: undefined, checkIds: job.checks?.map((c) => c.id) }, startedAt: new Date().toISOString() };
           try {
             if (job.kind === "probe") {
@@ -328,7 +346,7 @@ module.exports = class InkDeviceCheck extends Plugin {
           results.push(rec);
         }
       });
-      const file = await this.write("results", { kind: "ink-device-check results", startedAt, finishedAt: new Date().toISOString(), environment: this.environment(), results });
+      const file = await this.write("results", { kind: "ink-device-check results", device, startedAt, finishedAt: new Date().toISOString(), environment: this.environment(), results });
       new Notice("Inkdrop checks done: " + file, 10000);
     } catch (e) {
       new Notice("Inkdrop checks failed: " + e, 10000);
@@ -341,9 +359,11 @@ module.exports = class InkDeviceCheck extends Plugin {
     if (refused) return refused;
     this.busy = true;
     const log = [];
+    const device = Platform.isTablet ? "tablet" : "phone";
+    const steps = TOUR.filter((x) => x.device === device);
     try {
       await this.keepSettings(async () => {
-        for (const [i, step] of TOUR.entries()) {
+        for (const [i, step] of steps.entries()) {
           const rec = { n: i + 1, label: step.label, startedAt: new Date().toISOString() };
           try {
             await SCRIPTS.probe({ theme: step.themeName, translucent: false, platform: step.platform, state: step.state, deferMeasure: true, checks: [], appVersion: apiVersion });
@@ -361,7 +381,7 @@ module.exports = class InkDeviceCheck extends Plugin {
                 await sleep(400);
               }
             }
-            new Notice((i + 1) + "/" + TOUR.length + " " + step.label, 3000);
+            new Notice((i + 1) + "/" + steps.length + " " + step.label, 3000);
             await sleep(3500);
             rec.shootFrom = new Date().toISOString();
             await sleep(step.wait * 1000);
@@ -382,7 +402,7 @@ module.exports = class InkDeviceCheck extends Plugin {
           log.push(rec);
         }
       });
-      const file = await this.write("tour", { kind: "ink-device-check tour", environment: this.environment(), steps: log });
+      const file = await this.write("tour", { kind: "ink-device-check tour", device, environment: this.environment(), steps: log });
       new Notice("Screenshot tour done: " + file, 10000);
     } catch (e) {
       new Notice("Screenshot tour failed: " + e, 10000);
@@ -433,4 +453,5 @@ if (existsSync(vault)) {
 renameSync(newVault, vault);
 renameSync(newZip, zip);
 rmdirSync(staging);
-console.log(`vault ${vault}\nzip ${zip}\nkit id ${kitId}\njobs ${jobs.length} (probe ${jobs.filter((j) => j.kind === "probe").length}, extra ${jobs.filter((j) => j.extra).length}), checks ${jobs.reduce((n, j) => n + (j.checks?.length ?? 0), 0)}, tour steps ${tour.length}`);
+const per = (d) => jobs.filter((j) => j.device === d || j.device === "any");
+console.log(`vault ${vault}\nzip ${zip}\nkit id ${kitId}\njobs ${jobs.length} (probe ${jobs.filter((j) => j.kind === "probe").length}, extra ${jobs.filter((j) => j.extra).length}), checks ${jobs.reduce((n, j) => n + (j.checks?.length ?? 0), 0)}; on a phone ${per("phone").length} jobs, on a tablet ${per("tablet").length}; tour steps phone ${tour.filter((x) => x.device === "phone").length}, tablet ${tour.filter((x) => x.device === "tablet").length}`);

@@ -6,7 +6,8 @@
 //
 // usage: node tests/device/kit-self-test.mjs build   <work_dir>   build-kit.mjs never changes what is there; judge.mjs fails a missed fold
 //        node tests/device/kit-self-test.mjs plugin  <work_dir>   the plugin and cable.mjs refuse other vaults
-//        node tests/device/kit-self-test.mjs dry-run <work_dir>   the kit in its own vault, mobile emulation
+//        node tests/device/kit-self-test.mjs dry-run <work_dir>   the kit in its own vault, mobile emulation (phone)
+//        node tests/device/kit-self-test.mjs dry-run-tablet <work_dir>   the same, tablet emulation (the tablet jobs)
 // <work_dir> must not exist yet; everything the test makes stays in it (nothing is deleted).
 import { execFileSync, spawn, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
@@ -16,7 +17,7 @@ import { evaluate, holdFocus } from "../runtime/lib/cdp.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
 const [mode, workArg] = process.argv.slice(2);
-if (!["build", "plugin", "dry-run"].includes(mode) || !workArg) { console.error("usage: node tests/device/kit-self-test.mjs build|plugin|dry-run <work_dir>"); process.exit(2); }
+if (!["build", "plugin", "dry-run", "dry-run-tablet"].includes(mode) || !workArg) { console.error("usage: node tests/device/kit-self-test.mjs build|plugin|dry-run|dry-run-tablet <work_dir>"); process.exit(2); }
 const work = path.resolve(workArg);
 mkdirSync(work); // fails when it exists
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -268,9 +269,11 @@ if (mode === "plugin") {
   finish();
 }
 
-if (mode === "dry-run") {
-  // The kit as a device gets it: its own vault folder InkdropThemeTest, mobile emulation (phone), the CDP focus
-  // held as on a device. device.environment FAILs (52) are expected: this is not a device.
+if (mode === "dry-run" || mode === "dry-run-tablet") {
+  // The kit as a device gets it: its own vault folder InkdropThemeTest, mobile emulation (phone, or tablet with
+  // the tablet's window size), the CDP focus held as on a device. device.environment FAILs (52 on the phone) are
+  // expected: this is not a device.
+  const tablet = mode === "dry-run-tablet";
   const dir = path.join(work, "dry");
   const vault = path.join(dir, "InkdropThemeTest");
   mkdirSync(dir);
@@ -278,13 +281,13 @@ if (mode === "dry-run") {
   const app = await launch(dir, vault);
   let release = await holdFocus(PORT);
   try {
-    await evaluate(PORT, `(() => { electronWindow.setSize(400, 860); app.emulateMobile(true); return 1; })()`);
+    await evaluate(PORT, `(() => { electronWindow.setSize(${tablet ? "1024, 800" : "400, 860"}); app.emulateMobile(true); return 1; })()`);
     await sleep(3000);
     for (let i = 0; i < 60; i++) { try { if (await evaluate(PORT, "(() => !!(window.app && app.workspace.layoutReady))()", 5000)) break; } catch {} await sleep(1000); }
     release(); release = await holdFocus(PORT);
     // The emulation's reload comes back with the plugin disabled; enable it again in this window.
     await evaluate(PORT, `(async () => { if (!app.plugins.plugins["ink-device-check"]) { await app.plugins.setEnable(true); await app.plugins.loadManifests(); await app.plugins.enablePluginAndSave("ink-device-check"); } return 1; })()`);
-    check("dry.emulated-phone", await evaluate(PORT, `document.body.classList.contains("is-phone")`));
+    check(tablet ? "dry.emulated-tablet" : "dry.emulated-phone", await evaluate(PORT, `document.body.classList.contains("${tablet ? "is-tablet" : "is-phone"}") && app.isMobile`));
     check("dry.accepted", (await evaluate(PORT, `app.plugins.plugins["ink-device-check"].notTheKitVault()`)) === null);
     for (const [id, want] of [["run-checks", "results-"], ["screenshot-tour", "tour-"]]) {
       const ret = await evaluate(PORT, `app.plugins.plugins["ink-device-check"].${id === "run-checks" ? "runChecks" : "runTour"}()`, 3600000);
@@ -294,11 +297,28 @@ if (mode === "dry-run") {
     }
   } finally { release(); await app.stop(); }
   const res = readdirSync(work).find((f) => f.startsWith("results-"));
-  const judged = spawnSync(process.execPath, [path.join(repo, "tests/device/judge.mjs"), path.join(work, res), "--out", path.join(work, "report-emulated.json"), "--label", "Mac, isolated Obsidian 1.14.4, mobile emulation (phone)"], { encoding: "utf8" });
+  const judged = spawnSync(process.execPath, [path.join(repo, "tests/device/judge.mjs"), path.join(work, res), "--out", path.join(work, "report-emulated.json"), "--label", `Mac, isolated Obsidian 1.14.4, mobile emulation (${tablet ? "tablet" : "phone"})`], { encoding: "utf8" });
   writeFileSync(path.join(work, "judge.txt"), judged.stdout);
   const report = JSON.parse(readFileSync(path.join(work, "report-emulated.json"), "utf8"));
   const list = report.results ?? report;
   const fails = list.filter((r) => r.status === "FAIL");
-  check("dry.judged", list.length === 910 && fails.every((r) => r.id === "device.environment" || /^device\.environment/.test(r.id)) && fails.length === 52, { total: list.length, fail: fails.length, other: fails.filter((r) => !/^device\.environment/.test(r.id)).map((r) => r.id).slice(0, 5) });
+  const raw = JSON.parse(readFileSync(path.join(work, res), "utf8"));
+  if (!tablet) check("dry.judged", raw.device === "phone" && list.length === 916 && fails.every((r) => r.id === "device.environment" || /^device\.environment/.test(r.id)) && fails.length === 52, { device: raw.device, total: list.length, fail: fails.length, other: fails.filter((r) => !/^device\.environment/.test(r.id)).map((r) => r.id).slice(0, 5) });
+  else {
+    // The tablet run: only the tablet jobs and the jobs for any device ran, every result is on the tablet, the
+    // only failures are the environment checks (one per probe state: not a real device), and the release
+    // judgement does not take it as a device run.
+    const probes = raw.results.filter((r) => r.job.kind === "probe");
+    check("dry.tablet-jobs", raw.device === "tablet" && raw.results.length > 0 && raw.results.every((r) => r.job.device === "tablet" || r.job.device === "any") && probes.length > 0 && probes.every((r) => r.job.platform === "tablet" && !r.job.extra),
+      { device: raw.device, jobs: raw.results.length, probes: probes.length, other: raw.results.filter((r) => !["tablet", "any"].includes(r.job.device)).map((r) => `${r.job.kind} ${r.job.platform}`).slice(0, 5) });
+    check("dry.tablet-judged", list.length > 0 && list.every((r) => r.platform === "tablet") && fails.every((r) => r.id === "device.environment") && fails.length === probes.length,
+      { total: list.length, fail: fails.length, probes: probes.length, platforms: [...new Set(list.map((r) => r.platform))], other: fails.filter((r) => r.id !== "device.environment").map((r) => r.id).slice(0, 5) });
+    const { deviceRunProblem } = await import("../release/gate.mjs");
+    const flags = raw.environment.platform;
+    const why = deviceRunProblem({ platformFlags: flags, results: list });
+    check("dry.tablet-not-a-device-run", !!why, why);
+    const tour = JSON.parse(readFileSync(path.join(work, readdirSync(work).find((f) => f.startsWith("tour-"))), "utf8"));
+    check("dry.tablet-tour", tour.device === "tablet" && tour.steps.length > 0 && tour.steps.every((x) => /tablet,/.test(x.label) && !x.error), { device: tour.device, steps: tour.steps.length, errors: tour.steps.filter((x) => x.error).map((x) => x.label).slice(0, 3) });
+  }
   finish();
 }
