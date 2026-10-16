@@ -12,11 +12,13 @@ Requires Node 22+.
 ```sh
 npm ci                       # pinned dependencies (package-lock.json)
 npm run build                # dist/<theme>/theme.css and manifest.json (development names)
-npm test                     # static tests S1-S6 and their negative self-tests (also run in CI)
+npm test                     # static tests S1-S8 and the negative self-tests (also run in CI)
 npm run test:clean-room      # reinstall in a temporary directory and compare the outputs byte for byte
 npm run test:visual-self     # negative tests of the region sampler (synthetic image, Python 3)
 npm run test:visual-v04      # the region sampler reproduces the V-04 measurements (research/12)
 ```
+
+Setup, restoring and the known limits of all the test tools: [`tests/README.md`](tests/README.md).
 
 Runtime checks (macOS, Obsidian 1.14.4 installed). They use an isolated instance with its own user data
 directory and a copy of `tests/fixtures/vault`; the user's vaults and settings are never opened.
