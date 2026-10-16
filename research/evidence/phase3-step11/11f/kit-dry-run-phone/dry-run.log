@@ -1,0 +1,6 @@
+PASS dry.emulated-phone
+PASS dry.accepted
+PASS dry.run-checks  {"files":["results-2026-10-16T16-13-45-327Z.json"]}
+PASS dry.screenshot-tour  {"files":["tour-2026-10-16T16-24-52-759Z.json"]}
+PASS dry.judged  {"device":"phone","total":916,"fail":52,"other":[]}
+all 5 kit self-test checks PASS

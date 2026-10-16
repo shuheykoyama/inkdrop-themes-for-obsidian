@@ -1,0 +1,68 @@
+{
+ "mode": "dry-run-tablet",
+ "results": [
+  {
+   "id": "dry.emulated-tablet",
+   "ok": true
+  },
+  {
+   "id": "dry.accepted",
+   "ok": true
+  },
+  {
+   "id": "dry.run-checks",
+   "ok": true,
+   "detail": {
+    "files": [
+     "results-2026-10-16T15-59-52-581Z.json"
+    ]
+   }
+  },
+  {
+   "id": "dry.screenshot-tour",
+   "ok": true,
+   "detail": {
+    "files": [
+     "tour-2026-10-16T16-04-47-403Z.json"
+    ]
+   }
+  },
+  {
+   "id": "dry.tablet-jobs",
+   "ok": true,
+   "detail": {
+    "device": "tablet",
+    "jobs": 28,
+    "probes": 14,
+    "other": []
+   }
+  },
+  {
+   "id": "dry.tablet-judged",
+   "ok": true,
+   "detail": {
+    "total": 406,
+    "fail": 14,
+    "probes": 14,
+    "platforms": [
+     "tablet"
+    ],
+    "other": []
+   }
+  },
+  {
+   "id": "dry.tablet-not-a-device-run",
+   "ok": true,
+   "detail": "14 device.environment checks did not pass (not a device run)"
+  },
+  {
+   "id": "dry.tablet-tour",
+   "ok": true,
+   "detail": {
+    "device": "tablet",
+    "steps": 18,
+    "errors": []
+   }
+  }
+ ]
+}

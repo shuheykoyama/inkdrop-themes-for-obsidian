@@ -1,0 +1,10 @@
+PASS dry.emulated-tablet
+PASS dry.accepted
+PASS dry.run-checks  {"files":["results-2026-10-16T15-59-52-581Z.json"]}
+PASS dry.screenshot-tour  {"files":["tour-2026-10-16T16-04-47-403Z.json"]}
+PASS dry.tablet-jobs  {"device":"tablet","jobs":28,"probes":14,"other":[]}
+PASS dry.tablet-judged  {"total":406,"fail":14,"probes":14,"platforms":["tablet"],"other":[]}
+PASS dry.tablet-not-a-device-run  14 device.environment checks did not pass (not a device run)
+PASS dry.tablet-tour  {"device":"tablet","steps":18,"errors":[]}
+all 8 kit self-test checks PASS
+exit 0

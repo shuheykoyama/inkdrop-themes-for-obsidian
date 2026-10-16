@@ -3120,3 +3120,209 @@ translucent は同じ時刻のネイティブ撮影同士でしか比べられ�
 ### 6.52 次の作業
 
 工程 11E のレビューを待つ。工程 11F 以降への移行は、次回のレビューの結果に従う。
+
+### 6.53 工程 11E の最終承認と 11F の着手（2026-10-16）
+
+`78ce7a4` のレビューで、工程 11E は **APPROVE** となった（コード・証跡・CI をレビューし、品質の検査の完了条件を満たすと判断された）。工程 11F への着手も承認された。
+
+| 項目 | 記録 |
+|---|---|
+| 工程 11E | APPROVE |
+| 工程 11F | 着手を承認 |
+| stylelint | error 0、許可した warning 51 件 |
+| `!important` | 両テーマで 88 件を測定。必要 43 宣言、検証不足 1 宣言、冗長 0 |
+| コントラスト | 140 個を測定。4.5 未満は 39 個。Q-D15 により調整しない |
+| 実行時の回帰 | E39・E43 とも 3,871 件、FAIL 0 |
+| CI | SUCCESS |
+| リリースの判定 | 引き続き NOT MET |
+
+**§6.51.7 の提案への判断**:
+
+1. **SVG テキストラベル**: 案 (a) を条件付きで採用する。SVG 全体で `color`・`background-color` を比べないようにする単純な修正は認めない。
+   - 先に、今の SVG ラベルのブロックで、参照の SVG と Obsidian の SVG を同じレンダラー・同じ条件で描き、画素の差がないことを確かめる。
+   - そのうえで、描画に寄与するプロパティを要素の種類ごとに区別した判定を設計する。条件:
+     - SVG の `text` と、`foreignObject` の中の HTML のラベルを区別する。
+     - `currentColor` を使う要素は、`color` への依存を考える。
+     - 描かれる fill・stroke・opacity・フィルタなどの検査は残す。
+     - HTML のラベルの文字色・背景色を検査から落とさない。
+     - 実際に描画が変わるように値を変えた陰性テストを足す。
+     - SVG ラベルを含むテストのノートを通常の回帰に入れ、両 Electron で確かめる。
+     - 既存の検査が見つけていた実際の表示の不具合を、新しい判定が見逃さないことを示す。
+   - 画素の差が見つかった場合、または適切な検査の条件を定義できない場合は、期待値を変えずに、その時点でレビューに報告する。
+   - 11F の中の独立した保守の作業として扱い、結果を記録する。
+2. **#10 の `!important`**: 今のまま残す（外さない）。検証不足の記録を残す。モバイル・ホバープレビューの追加の実験は不要。
+3. **依存 3 件の更新**: 見送る。`postcss`・`postcss-import`・`caniuse-lite` の版は今のまま。明確な不具合やセキュリティ上の理由がない限り、RV7 まで不要な依存の更新はしない。
+
+**11F で行うこと**（§6.30.3 の 11F に加えて）:
+
+- 統合のランナーと実機キットの準備・実行・復元・既知の制約を、保守の文書にまとめる。新しい環境で、文書に従って隔離インスタンスを起動・検証できることを確かめる。
+- iPad 用に、キットに tablet のジョブを足す。実機を使わずにできる静的テスト・陰性テスト・エミュレーションで確かめる。
+- `qd1.titlebar-visible-frame` を、隔離インスタンスの custom frame の設定で確かめる。普段の Obsidian の設定は変えない。
+- E43 で 1 回起きた構文の陽性対照の FAIL を、既知の不安定さとして記録する。再び起きたときに原因を追える証跡を残すようにする。リトライで FAIL を隠さない。
+- `pymobiledevice3` の検証済みの版と、キットのハッシュが変わることの影響を記録する。
+
+**安全と権限**: 普段の Vault・Inkdrop・実機には触れない。macOS の表示設定・Space は、個別の承認なしに変えない。Q-D の判断、SVG ラベル以外の期待値・許容差、テーマ CSS の挙動は変えない。Q-D10 の対象は縮めない。iPhone・iPad・Android の実機の検証は、引き続き 11G の個別の承認事項。
+
+### 6.54 工程 11F: ランナーとキットの保守（2026-10-17、レビュー待ち）
+
+§6.53 の 11F を実施した。証拠は [`evidence/phase3-step11/11f/`](evidence/phase3-step11/11f/README.md)。Obsidian は隔離インスタンスだけで、普段の Vault・設定・Inkdrop・実機・macOS の表示設定と Space には触れていない。テーマ CSS、Q-D の判断、SVG ラベル以外の期待値・許容差は変えていない。E43 を使うたびに LaunchServices を戻し、`check` の出力が前後で同一であることを確かめた（run-all の中、画素と監査のあと、追加の画素と診断のあと、新しい環境の確認のあと）。
+
+コミット: `fcafd43`（Mermaid の判定）、`c2f917e`（画素の道具）、`ceb3ff1`（custom frame）、`2af9964`（tablet のキット）、`f257060`（構文の診断）、`ead9208`（run-all）、`9cb4565`・`54d6078`（保守の文書）。
+
+#### 6.54.1 SVG ラベル: 画素の検証
+
+道具: `tests/visual/mermaid-pixels.mjs`。隔離インスタンスの同じページ・同じレンダラーで、Obsidian がテーマ付きで描いた図と、参照（Inkdrop の描き方の SVG。`mm.*.colours` の参照と同じもの）を並べて撮り、画素で比べる。
+
+- **置き方**: 参照は図の直後に通常の流れで置き、`position: relative` で x 座標と y の端数を Obsidian の図に合わせる。Mermaid は一部の曲線の制御点を乱数で決めるので、その要素の `d`・`points` は Obsidian の図から写す（block 0 で 4 要素）。
+- **2 通りの比較**: 「描いたまま」と、比べるプロパティを両方の側で計算値（8 ビット）に固定した「固定」。合否は固定の側で決める。差 0 のときだけ PASS。
+- **揺れの除外**: 同じ側の撮影どうしで値が変わる画素を除く。Obsidian の側は、その場で 5 枚と、スペーサーで +37・+91 px ずらした 2 枚（スクロールアンカーは切る）。参照の側は 3 つの複製を各 2 枚。除いた画素が 2 % を超えたら不合格。
+- **対照**: 同じ図を 2 回撮った差（揺れの大きさの記録）と、rect 1 つに inline の fill を足して差が見えること（43,000〜54,000 画素）。
+- うまくいかなかった方法（記録）: fixed と absolute の重ね置きは、合成の違いで 1〜3/255 の差が出た。スクロールアンカーを切る前は、ずらした撮影が動かなかった。
+
+**結果**（テストのノート、両テーマ、4 図。block 2 が SVG ラベルのブロック）:
+
+| 実行 | SVG ラベル（block 2）の固定 | その他（block 0・1・3）の固定 | 描いたまま（参考） |
+|---|---|---|---|
+| E39 | 両テーマ 0 画素 | 両テーマ 0 画素 | 最大 2/255 |
+| E43 1 回目 | 両テーマ 0 画素 | **block 0 で SD 9 画素（最大 4/255）、KD 6 画素（最大 3/255）**。block 1・3 は 0 | 最大 4/255 |
+| E43 2 回目・3 回目 | 両テーマ 0 画素 | 両テーマ 0 画素 | 最大 2/255 |
+| E43（11F の開発中の 1 回、新しい環境の確認の 1 回） | 両テーマ 0 画素 | 両テーマ 0 画素 | 最大 2/255 |
+
+- **SVG ラベルのブロックは、全 6 回・両 Electron・両テーマで差 0**。固定のとき、描画に使われない 3 つのプロパティ（`text`・`tspan` の `color`、エッジラベルの `rect` の `background-color`、大きさ 0 の `rect` の `stroke`）は Obsidian の値のまま残した。それでも差が 0 なので、この 3 つは画面に表れない。
+- **E43 1 回目の block 0 の差**（HTML ラベルの flowchart で、SVG ラベルのブロックではない）: 差の画素は図の右上の一帯（x 649〜1015、y 58〜90）の、線とその背景の中間色の画素（アンチエイリアス）だけ。多くの位置で、同じ側の撮影どうしでも値が 1〜2 段揺れている（`e43-block0-pixels-*.txt`）。色の違いなら面全体に出るので、これは描画の揺れが除外の網から漏れたものとみている。ただし原因は特定していない。道具の合否（固定で差 0）と除外の条件は変えていない。この回は FAIL のまま記録した。
+- 描いたままの差（最大 2/255、1 回目の block 0 だけ 4/255）は、テーマの `hsl()` の色が描画では端数のまま使われ、計算値の文字列では丸められるためと考えている（固定すると消える）。差の画素数は実行ごとに大きく変わる（例: SD block 0 で 3,041〜37,215）。理由は分かっていない。
+- E39 の SD の block 2 では、除いた画素が 1,119（1.77 %）で、上限の 2 % に近かった。
+
+#### 6.54.2 判定の変更と陰性テスト
+
+`tests/runtime/lib/mermaid.mjs` の `.colours` は、要素の種類ごとに、描画に使われるプロパティだけを比べる（§6.53 の条件 (a)）。
+
+| 要素 | 比べるプロパティ |
+|---|---|
+| HTML（`foreignObject` の中のラベル） | fill・stroke・color・background-color・opacity（文字色と背景色を残す） |
+| `foreignObject` | 上と同じ + filter |
+| その他の SVG の要素（`text`・`rect`・`path` など） | fill・stroke・opacity・fill-opacity・stroke-opacity・filter。fill か stroke が `currentColor` のときは color も |
+| 大きさ 0 の `rect`・`circle`・`ellipse` | 描かれない（SVG 2）ので比べない。両方の側で描かれないときだけ。片方だけなら FAIL。数を詳細に出す |
+| 古いキットのダンプ（`ns` などの項目がない） | 前と同じく、全要素の 4 色 |
+
+- ダンプ（`mermaid-dump.js`）は、要素ごとに名前空間（svg / html）、描かれない形か、opacity の 3 つ、filter を記録する。Chromium は `currentColor` を計算値で rgb に解決するので、`color` が効く要素では fill にその色が出る。
+- 陰性テスト:
+  - CI（`tests/runtime/mermaid-judge-self-test.mjs`、25 件）: 作ったダンプで、描かれるプロパティの変化は FAIL、描かれないものは PASS、`currentColor`、描かれない形の片側だけ、古いダンプ、を確かめる。
+  - 実行時（`run.mjs --self-test` の 10 件、両 Electron）: 実際の図に inline で値を入れる。SVG ラベルの text の fill（FAIL）、text の color（fill が明示なので PASS）、fill を `currentColor` にして color を変える（FAIL）、エッジラベルの rect の opacity（FAIL）と background-color（PASS）、描かれない rect に大きさを与える（FAIL）、HTML ラベルの文字色（FAIL）と背景色（FAIL）、ノードの形の filter（FAIL）、エッジの stroke-opacity（FAIL）。
+- SVG ラベルのブロックをテストのノート（`tests/fixtures/vault/Mermaid.md`）に入れた。監査のための別のファイル（`tests/quality/mermaid-svg-labels.md`）と、監査の「基準の FAIL を差し引く」処理は消した。監査は、未変更のテーマに FAIL があれば止まる、元の厳しさに戻った。
+- **既存の不具合を見逃さないこと**: 新しい判定で `!important` の監査（E43）をやり直した。88 件すべてで判定が 11E と同じ（必要 86、検証不足 2 = #10 × 2 テーマ）。FAIL する検査の数も全件同じで、検査の網羅の漏れは 0。11E では監査のときだけ足したブロックで測った #11・#14・#20 も、通常のノートで両テーマとも FAIL として捉える（変化した要素 8・8・2）。
+- 通常の回帰（run-all、両 Electron）: 両テーマで `mm.*.flowchart-v2.colours` が PASS。詳細は「描かれない 15 要素は比べていない」。描かれない要素のうち値に違いがあったのは、cluster ラベルの `rect.background` の stroke（テーマの `.cluster rect` が当たる）だけ。
+
+#### 6.54.3 custom frame のタイトルバー
+
+- **方法**: `obsidian-isolated.sh` に `OBSIDIAN_FRAME`（`hidden`・`custom`・`native`）を足した。起動の前に、一時の user data の `obsidian.json` に `"frame"` を書く。Obsidian 1.14.4 はウィンドウを開くときに `ipcRenderer.sendSync("frame")` でこれを読む（§6.51.6 の見込みを、起動して確かめた）。普段の Obsidian の設定には触れない。
+- 検査に `frame` を持たせた（既定は hidden）。ランナーは、インスタンスの frame を `environment.frame` に記録し、その frame の検査だけを測る。hidden 以外のときは、デスクトップの検査だけを測る（構文と Mermaid のダンプは frame に依存しないので測らない）。リリースの判定は、検査の frame と同じ frame の実行の結果だけを数える。S6 は、未知の frame とモバイルの検査の frame を拒む。
+- 新しい検査 2 件（`qd1.titlebar-visible-frame`）: `desktop.titlebar.custom-frame`（不透明、期待値 `--ink-note-list-bar-background`）、`desktop.titlebar.custom-frame.translucent`（translucent、期待値 `--ink-note-list-bar-background-acrylic`。translucent ではタブ帯・ドックがノートリストの acrylic の色になるのと同じ扱い）。
+
+**実測**（run-all、E39・E43 で同じ値）: `.titlebar` は表示され、大きさ 1024×30。
+
+| | SD | KD |
+|---|---|---|
+| 不透明（2 回: translucent の前と後） | `rgb(0, 45, 56)` PASS | `rgb(24, 22, 22)` PASS |
+| translucent | `rgba(0, 0, 0, 0)` **FAIL**（期待 `rgba(0, 32.6, 40.8, 0.7)`） | `rgba(0, 0, 0, 0)` **FAIL**（期待 `rgba(23.9, 22, 22, 0.7)`） |
+
+- **translucent の FAIL の原因**: app.css 1.14.4 L6575〜6578 の `.is-translucent:not(.is-fullscreen) .titlebar, … .app-container { background-color: var(--workspace-background-translucent); }`（`!important` なし、詳細度 0-3-0）。テーマは、この変数を `--ink-page-background-acrylic` にしている（`src/common/platform/translucent.css`。Inkdrop の acrylic で透明）。そのため、タイトルバーは透明になり、下のウィンドウの半透明がそのまま見える。
+- **CSS は変えていない**（承認事項）。直す場合の案: `.theme-dark.is-translucent:not(.is-fullscreen) .titlebar { background-color: var(--ink-note-list-bar-background-acrylic); }`（詳細度 0-4-0 で app.css に勝つので `!important` は不要）。直すか、translucent の期待値を別に定めるかの判断を仰ぐ（§6.54.9）。
+- その結果、リリースの判定で `qd1.titlebar-visible-frame` は両テーマとも UNVERIFIED から FAIL になった（判定は引き続き NOT MET）。
+
+#### 6.54.4 tablet のキット
+
+- キット（`build-kit.mjs`）のジョブとツアーの各段に、端末の区分（phone・tablet・any）を持たせた。プラグインは `Platform.isTablet` で区分を選ぶ。tablet では tablet の probe 14 件、構文 2 件と Mermaid 12 件（any）を走らせ、ツアーは 9 段 × 2 テーマ。tablet にはナビゲーションバーとキーボードの段がない。区分は結果とツアーのファイルに `device` として書く。
+- 判定（`judge.mjs`）: キットが別の区分のジョブを走らせた結果は `device.environment` を FAIL にする（区分の項目がない古いキットの結果は、前と同じに扱う）。
+- 実機を使わない確認:
+  - `kit-self-test.mjs dry-run-tablet`（tablet のエミュレーション、1024×800）: 8 件すべて PASS。ジョブ 28 件（tablet と any だけ）、判定 406 件はすべて tablet、FAIL は `device.environment`（probe 1 件ごとに 1 件、計 14）だけで、リリースの判定は端末の実行として受け付けない。ツアーは 18 段で誤りなし。
+  - `dry-run`（phone）: 5 件すべて PASS。916 件、FAIL は `device.environment` の 52 件だけ。
+  - キットの組み立て（34 件）とプラグイン（63 件）の自己テストも PASS。
+- **自分の誤り（直した）**:
+  - 最初の run-all では dry run が 2 件とも止まった。テストの中で、ページの側から `require("obsidian")` を呼んでいたため（そのモジュールはプラグインからしか読めない）。tablet かどうかは、プラグインが書く `device` で確かめるように直した。
+  - phone の件数の期待値が 11B の 910 のままだった。11D の Source mode のリンクの下線の検査 6 件（`cdad755`、すべて PASS）で 916 になっていた。11B のあと run-all を回していなかったので気づかなかった。916 に直した（件数の誤りで、判定の期待値ではない）。
+
+#### 6.54.5 保守の文書と新しい環境での確認
+
+`tests/README.md`（英語）に、道具ごとに次のことをまとめた。
+
+- 必要なものと検証した版。
+- 隔離インスタンスの起動・停止（E39・E43・frame・LaunchServices・フォーカス・スリープ）。
+- 実行時間（実行時の検査 約 20 分、陰性テスト 約 12 分、custom frame 約 2 分、run-all 約 3 時間）。
+- 品質と画素の道具。
+- 実機キット（phone・tablet、安全の目印、ハッシュの変化、dry run）。
+- 既知の制約の表、元に戻す手順。
+
+ルートの README から参照している。
+
+新しい環境での確認: ローカルのリポジトリを scratch に新しく clone し、文書のコマンドだけで次を行った（証拠の `fresh-environment/`）。
+
+| 手順（文書の節） | 結果 |
+|---|---|
+| `git clone`、`npm ci`、`npm run build`（§1） | 成功（Node 22.22.0、npm 10.9.4） |
+| `npm test` | 静的テストと陰性テスト（6 種）がすべて宣言どおり |
+| E39 を `OBSIDIAN_FRAME=custom` で起動し、custom frame の実行をして停止（§2・§3） | 不透明 PASS、translucent FAIL（§6.54.3 と同じ値）。約 30 秒 |
+| E43 を起動し、`mermaid-pixels.mjs` を実行して停止（§2・§5） | 8 図すべて PASS |
+| `current-installer.sh restore` と `check`（§8） | 前後の `check` が同一 |
+| キットの組み立てと `kit-self-test.mjs build`（§6） | 34 件 PASS。phone 66 ジョブ、tablet 28 ジョブ、ツアー phone 38 段・tablet 18 段 |
+| 残ったインスタンス | 0 |
+
+文書の誤りは 1 つだけだった。custom frame の実行時間を「約 2 分」と書いていたが、実際は 10〜30 秒だった。「1 分未満」に直した（`54d6078`）。
+
+#### 6.54.6 構文の陽性対照の不安定さ（既知の不安定さとして記録）
+
+- 11E の E43 で 1 回、構文の陽性対照が「code element not rendered」で FAIL した（§6.51.5）。11F の run-all（両 Electron の陰性テスト 703 件）では起きていない。原因は分かっていない。
+- 再び起きたときに追えるよう、`code-tokens.js` は、Reading view でブロックが見つからないとき、次を FAIL の詳細に足す: 行・言語、スクロールの位置、描かれている言語、使用済みの数、セクションの数、visibility、フォーカス、アクティブなリーフか、1.5 秒後に現れたか。
+- ブロックは FAIL のままで、やり直さない（1.5 秒後の値は記録だけで、合否には使わない）。陰性テストの結果は、FAIL の詳細を `measured` に全部残す。
+- 隔離インスタンスで、`js` の `<code>` を問い合わせから隠して再現し、記録が出ることを確かめた（`syntax-diagnosis/`）。
+- `tests/README.md` §7 に既知の制約として書いた。
+
+#### 6.54.7 pymobiledevice3 とキットのハッシュ
+
+- **pymobiledevice3**: 検証済みは 11.29.0（`uv tool list` で入っている版）。PyPI の最新は 11.33.0（2026-10-16 公開、2026-10-17 に確認）。更新していない。11G で実機の作業が承認されるまで 11.29.0 のままにする。上げるときは、`cable.mjs probe` で先に確かめて記録する。
+- **キットのハッシュ**: キットは、生成したテーマ、テストの Vault、ページのスクリプト（`probe.js`・`code-tokens.js`・`mermaid-dump.js`）を同梱する。11F では次が変わったので、次に作るキットはファイルのハッシュも、キットの id も変わる。
+  - Mermaid のノートに SVG ラベルのブロックを足した。
+  - `mermaid-dump.js` と `code-tokens.js` を変えた。
+  - プラグインに tablet のジョブを足した。
+- 承認済みの iPhone の結果（工程 10）は古いキットのもの。新しいキットの結果は、実機で測り直すまで数えない（11G で、毎回の承認のもと）。
+- 古いキットのダンプも判定できる（§6.54.2 の最後の行）。
+
+#### 6.54.8 テスト
+
+- `npm test`: static 61（+2: 未知の frame、モバイルの frame）、release 45（+5: frame）、integration 48、compat 24、quality 20、Mermaid の判定 25（新規）。すべて宣言どおり。CI にも足した。
+- run-all（11E の回帰の結果を基準にして実行）:
+  - 実行時: E39・E43 とも 3,871 件で FAIL 0。内訳は 11E と同じ（PASS 2,430、PASS (EMULATED) 805、DIFF 606、UNSUPPORTED 30）。
+  - 基準との比較: 状態の差 0。詳細だけの差は次のとおり。
+    - Mermaid の flowchart（ブロックの追加と、詳細の文言）。
+    - `runner.environment`・`runner.pointer-prepared`。
+    - E39 の `ui.popover.background` の大きさ（ホバープレビューの高さ。色は同じ）。
+    - E43 の `leak.quick-switcher.translucent`（1 回目と 2 回目の間でも変わる）。
+  - 陰性テスト: 両 Electron とも 703 件（11E の 693 件 + 10 件）すべて宣言どおり。
+  - custom frame: 両 Electron とも translucent の 2 件が FAIL（§6.54.3）。そのほかは PASS。
+  - キット: 組み立て 34 件、プラグイン 63 件が PASS。dry run は 2 件とも、§6.54.4 の自分の誤りで止まった。直したあと、単独で実行して PASS した。
+  - リリースの判定: NOT MET（11E と同じ）。保存した判定との差は `qd1.titlebar-visible-frame` × 2 だけ（UNVERIFIED → FAIL）。
+- 画素（§6.54.1）と監査（§6.54.2）は run-all のあとに実行した。画素の道具と監査の 2 つの不具合は、そのとき見つけて直した。
+  - 新しく起動したインスタンスで、画面の準備（layoutReady）を待たずに始めていた。
+  - 監査が、hidden frame のインスタンスで custom frame の検査まで測っていた。
+
+#### 6.54.9 判断を仰ぐ事項（実施していない）
+
+1. **translucent の custom frame のタイトルバー**: 次のどちらにするか。
+   - (a) テーマに §6.54.3 の規則を足す（CSS の変更。`!important` なし）。
+   - (b) translucent の期待値を別に定める（例: 透明のままを許す）。
+   決めるまで、検査は FAIL のまま。
+2. **E43 1 回目の画素の差（block 0 のエッジ）**: SVG ラベルのブロックには差がなく、§6.53 の条件の対象のブロックではない。ただし、画素の差が出たので報告する。判定の変更（§6.54.2）をこのまま使ってよいかを判断してほしい。道具の合否と除外の条件は変えていない。
+
+#### 6.54.10 未解決のリスク
+
+- **画素の道具の揺れ**: block 0 のエッジの揺れが、除外の網から漏れることがある（E43 の 5 回中 1 回。E39 は 1 回で 0）。除いた画素が 2 % に近い図がある（E39 の SD の block 2、1.77 %）。
+- **判定の範囲**: HTML ラベルの内側の要素に付いた filter は比べない（`foreignObject` の filter は比べる）。11E までの判定も filter を比べていなかった。
+- **custom frame**: 測ったのは 1.14.4、デスクトップの macOS、既定の状態、1024×800 の main window だけ。`native` の frame（OS のタイトルバー）、ポップアウト、非アクティブのウィンドウは測っていない。translucent はネイティブの撮影で見ていない（CDP の計算値だけ）。
+- **tablet**: エミュレーションだけ。iPad の実機は 11G。Android は機器がない。
+- **構文の陽性対照**: 原因は分かっていない。記録の仕組みを足しただけ。
+- **`tests/release/inputs.json`**: 古い結果を参照したまま。11H で、最終の証跡（この時点では 11F の `regress/`。custom frame の実行を独立した入力として含む）に差し替える。
+- **11E から引き継ぐもの**: `!important` の網羅（モバイル、ホバープレビューなど）、コントラストの下地、11D から引き継ぐもの（§6.51.8）。
+
+### 6.55 次の作業
+
+工程 11F のレビューを待つ。工程 11G 以降への移行は、11F のレビューの結果に従う。

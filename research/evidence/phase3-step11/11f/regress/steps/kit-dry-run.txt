@@ -1,0 +1,9 @@
+file://<repo>/tests/runtime/lib/cdp.mjs:35
+    if (res?.exceptionDetails) throw new Error(`page exception: ${JSON.stringify(res.exceptionDetails).slice(0, 500)}`);
+                                     ^
+
+Error: page exception: {"exceptionId":1,"text":"Uncaught","lineNumber":1392,"columnNumber":2,"scriptId":"61","exception":{"type":"object","subtype":"error","className":"Error","description":"Error: Cannot find module 'obsidian'\nRequire stack:\n- electron/js2c/renderer_init\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1390:15)\n    at a._resolveFilename (node:electron/js2c/renderer_init:2:4859)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1032:19)\n    at resolveForCJSWithHooks (no
+    at evaluate (file://<repo>/tests/runtime/lib/cdp.mjs:35:38)
+    at async file://<repo>/tests/device/kit-self-test.mjs:290:66
+
+Node.js v22.22.0

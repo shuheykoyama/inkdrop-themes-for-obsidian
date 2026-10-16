@@ -1,0 +1,24 @@
+INFO solarized-dark control: the same diagram shot twice: 317 pixels differ (max channel 15) -- the renderer's unsteadiness, left out below
+PASS solarized-dark control: an inline fill on one rect. is seen (43481 pixels differ)
+FAIL solarized-dark block 0 (flowchart-v2, flowchart LR, 1024x247, geometry of 4 element(s) taken from Obsidian's): as drawn 3041 of 252928 pixels differ (max channel 4; 344 unsteady left out); computed values frozen 9 of 252928 pixels differ (max channel 4; 285 unsteady left out)
+PASS solarized-dark block 1 (flowchart-v2, flowchart LR, 434x70, geometry of 0 element(s) taken from Obsidian's): as drawn 196 of 30380 pixels differ (max channel 1; 0 unsteady left out); computed values frozen 0 of 30380 pixels differ (max channel 0; 0 unsteady left out)
+     computed value not exactly the reference's: 1x rect.background stroke: rgba(88, 110, 116, 0.5) | reference none
+     computed value not exactly the reference's: 1x rect.background background-color: rgba(232, 232, 232, 0.8) | reference rgba(0, 45, 56, 0.85)
+     computed value not exactly the reference's: 1x text color: rgb(51, 51, 51) | reference rgb(173, 184, 184)
+     computed value not exactly the reference's: 1x tspan.text-outer-tspan.row color: rgb(51, 51, 51) | reference rgb(173, 184, 184)
+     computed value not exactly the reference's: 2x tspan.text-inner-tspan color: rgb(51, 51, 51) | reference rgb(173, 184, 184)
+PASS solarized-dark block 2 (flowchart-v2, %%{init: {"flowchart": {"htmlLabels": fa, 214x296, geometry of 0 element(s) taken from Obsidian's): as drawn 501 of 63344 pixels differ (max channel 2; 0 unsteady left out); computed values frozen 0 of 63344 pixels differ (max channel 0; 0 unsteady left out)
+PASS solarized-dark block 3 (sequence, sequenceDiagram, 450x650, geometry of 0 element(s) taken from Obsidian's): as drawn 16966 of 292500 pixels differ (max channel 2; 1 unsteady left out); computed values frozen 0 of 292500 pixels differ (max channel 0; 73 unsteady left out)
+INFO kanagawa-dragon control: the same diagram shot twice: 0 pixels differ (max channel 0) -- the renderer's unsteadiness, left out below
+PASS kanagawa-dragon control: an inline fill on one rect. is seen (54189 pixels differ)
+FAIL kanagawa-dragon block 0 (flowchart-v2, flowchart LR, 1024x247, geometry of 4 element(s) taken from Obsidian's): as drawn 15277 of 252928 pixels differ (max channel 3; 286 unsteady left out); computed values frozen 6 of 252928 pixels differ (max channel 3; 313 unsteady left out)
+PASS kanagawa-dragon block 1 (flowchart-v2, flowchart LR, 434x70, geometry of 0 element(s) taken from Obsidian's): as drawn 820 of 30380 pixels differ (max channel 2; 0 unsteady left out); computed values frozen 0 of 30380 pixels differ (max channel 0; 0 unsteady left out)
+     computed value not exactly the reference's: 1x rect.background stroke: rgba(98, 94, 91, 0.4) | reference none
+     computed value not exactly the reference's: 1x rect.background background-color: rgba(232, 232, 232, 0.8) | reference rgba(45, 79, 103, 0.7)
+     computed value not exactly the reference's: 1x text color: rgb(51, 51, 51) | reference rgba(197, 201, 197, 0.9)
+     computed value not exactly the reference's: 1x tspan.text-outer-tspan.row color: rgb(51, 51, 51) | reference rgba(197, 201, 197, 0.9)
+     computed value not exactly the reference's: 2x tspan.text-inner-tspan color: rgb(51, 51, 51) | reference rgba(197, 201, 197, 0.9)
+PASS kanagawa-dragon block 2 (flowchart-v2, %%{init: {"flowchart": {"htmlLabels": fa, 214x296, geometry of 0 element(s) taken from Obsidian's): as drawn 13765 of 63344 pixels differ (max channel 2; 0 unsteady left out); computed values frozen 0 of 63344 pixels differ (max channel 0; 0 unsteady left out)
+PASS kanagawa-dragon block 3 (sequence, sequenceDiagram, 450x650, geometry of 0 element(s) taken from Obsidian's): as drawn 9832 of 292500 pixels differ (max channel 2; 74 unsteady left out); computed values frozen 0 of 292500 pixels differ (max channel 0; 74 unsteady left out)
+
+8 diagrams compared, 4 controls; 2 problem(s)

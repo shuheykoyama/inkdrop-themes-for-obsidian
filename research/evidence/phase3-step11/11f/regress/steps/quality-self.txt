@@ -1,0 +1,22 @@
+PASS quality self-test: removes the !important of the named declaration only
+PASS quality self-test: the selector is matched after whitespace normalisation (a rule spread over lines)
+PASS quality self-test: a declaration inside @media is reached
+PASS quality self-test: no such rule -> refused
+PASS quality self-test: the declaration exists without !important -> refused
+PASS quality self-test: two matching !important declarations -> refused (ambiguous)
+PASS quality self-test: a selector that is only part of a rule's list -> refused
+PASS quality self-test: a change caught by a check -> 必要
+PASS quality self-test: a change no check catches -> 必要 with a coverage gap
+PASS quality self-test: no change, a state not measured -> 検証不足 (never 冗長)
+PASS quality self-test: no change in every state it applies to -> 冗長
+PASS quality self-test: no FAIL alone is not 冗長 while a state is unmeasured
+PASS quality self-test: white on black is 21:1
+PASS quality self-test: a colour on itself is 1:1
+PASS quality self-test: the order of the two colours does not matter
+PASS quality self-test: #767676 on white is 4.54:1 (the known AA grey)
+PASS quality self-test: #777777 on white is 4.48:1, below AA
+PASS quality self-test: levels: 7 AAA, 4.5 AA, 3 AA large, below
+PASS quality self-test: source-over: 50% white on black is 127.5 grey; opaque stays
+PASS quality self-test: a translucent text colour is composited before the ratio (not compared raw)
+
+all 20 quality self-test cases behaved as expected

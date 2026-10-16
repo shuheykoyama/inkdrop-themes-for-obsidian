@@ -1,0 +1,101 @@
+2026-10-16T13:31:49.385Z start build
+2026-10-16T13:31:56.439Z ok   build (exit 0, 7 s) built: dist/kanagawa-dragon/theme.css
+2026-10-16T13:31:56.439Z start static
+2026-10-16T13:32:16.346Z ok   static (exit 0, 20 s) all checks passed
+2026-10-16T13:32:16.348Z start static-self
+2026-10-16T13:40:27.385Z ok   static-self (exit 0, 491 s) all 61 self-test cases behaved as expected
+2026-10-16T13:40:27.385Z start release-self
+2026-10-16T13:40:29.401Z ok   release-self (exit 0, 2 s) all 45 release self-test cases behaved as expected
+2026-10-16T13:40:29.401Z start integration-self
+2026-10-16T13:41:11.140Z ok   integration-self (exit 0, 42 s) all 48 integration self-test cases behaved as expected
+2026-10-16T13:41:11.141Z start compat-self
+2026-10-16T13:41:13.015Z ok   compat-self (exit 0, 2 s) all 24 compat self-test cases behaved as expected
+2026-10-16T13:41:13.015Z start quality-self
+2026-10-16T13:41:14.370Z ok   quality-self (exit 0, 1 s) all 20 quality self-test cases behaved as expected
+2026-10-16T13:41:14.370Z start mermaid-judge-self
+2026-10-16T13:41:15.712Z ok   mermaid-judge-self (exit 0, 1 s) all 25 mermaid judge self-test cases behaved as expected
+2026-10-16T13:41:15.712Z start visual-self
+2026-10-16T13:41:29.227Z ok   visual-self (exit 0, 14 s) all 15 visual self-test cases behaved as expected
+2026-10-16T13:41:29.227Z start clean-room
+2026-10-16T13:41:39.076Z ok   clean-room (exit 0, 10 s) PASS clean-room dist/solarized-dark/manifest.json identical to local build
+2026-10-16T13:41:39.076Z start kit-build
+2026-10-16T13:42:11.971Z ok   kit-build (exit 0, 33 s) all 34 kit self-test checks PASS
+2026-10-16T13:42:11.972Z start e39-run1-start
+2026-10-16T13:42:18.185Z ok   e39-run1-start (exit 0, 6 s) <work>/run-all/e39-ru
+2026-10-16T13:42:18.185Z start e39-run1
+2026-10-16T14:02:38.818Z ok   e39-run1 (exit 0, 1221 s) all 3871 runtime checks passed or are reported as DIFF / UNSUPPORTED (805 PASS (EMULATED), 606 DIFF, 30 UNSUPPORTED; Obsidian 1.14.4, Electron 39.5.1)
+2026-10-16T14:02:38.818Z start e39-run1-stop
+2026-10-16T14:02:55.063Z ok   e39-run1-stop (exit 0, 16 s) stopped isolated Obsidian (pid 12374)
+2026-10-16T14:02:55.063Z start e39-self-test-start
+2026-10-16T14:03:01.334Z ok   e39-self-test-start (exit 0, 6 s) <work>/run-all/e39-se
+2026-10-16T14:03:01.334Z start e39-self-test
+2026-10-16T14:15:46.827Z ok   e39-self-test (exit 0, 765 s) all 703 self-test results produced the declared outcome
+2026-10-16T14:15:46.828Z start e39-self-test-stop
+2026-10-16T14:15:47.882Z ok   e39-self-test-stop (exit 0, 1 s) stopped isolated Obsidian (pid 13217)
+2026-10-16T14:15:47.883Z start e39-run2-start
+2026-10-16T14:15:53.038Z ok   e39-run2-start (exit 0, 5 s) <work>/run-all/e39-ru
+2026-10-16T14:15:53.038Z start e39-run2
+2026-10-16T14:36:56.713Z ok   e39-run2 (exit 0, 1264 s) all 3871 runtime checks passed or are reported as DIFF / UNSUPPORTED (805 PASS (EMULATED), 606 DIFF, 30 UNSUPPORTED; Obsidian 1.14.4, Electron 39.5.1)
+2026-10-16T14:36:56.714Z start e39-run2-stop
+2026-10-16T14:37:12.914Z ok   e39-run2-stop (exit 0, 16 s) stopped isolated Obsidian (pid 13977)
+2026-10-16T14:37:12.914Z start e39-frame-start
+2026-10-16T14:37:18.070Z ok   e39-frame-start (exit 0, 5 s) <work>/run-all/e39-fr
+2026-10-16T14:37:18.070Z start e39-frame
+2026-10-16T14:37:28.135Z FAIL e39-frame (exit 1, 10 s) 2 runtime check(s) FAILED
+2026-10-16T14:37:28.136Z start e39-frame-stop
+2026-10-16T14:37:44.317Z ok   e39-frame-stop (exit 0, 16 s) stopped isolated Obsidian (pid 14632)
+2026-10-16T14:37:44.317Z start e43-installer-check-before
+2026-10-16T14:37:56.976Z ok   e43-installer-check-before (exit 0, 13 s) path:                       <LaunchServices path removed>
+2026-10-16T14:37:56.976Z start e43-run1-start
+2026-10-16T14:38:03.134Z ok   e43-run1-start (exit 0, 6 s) <work>/run-all/e43-ru
+2026-10-16T14:38:03.134Z start e43-run1
+2026-10-16T14:58:19.601Z ok   e43-run1 (exit 0, 1216 s) all 3871 runtime checks passed or are reported as DIFF / UNSUPPORTED (805 PASS (EMULATED), 606 DIFF, 30 UNSUPPORTED; Obsidian 1.14.4, Electron 43.7.7)
+2026-10-16T14:58:19.602Z start e43-run1-stop
+2026-10-16T14:58:20.715Z ok   e43-run1-stop (exit 0, 1 s) stopped isolated Obsidian (pid 15008)
+2026-10-16T14:58:20.715Z start e43-self-test-start
+2026-10-16T14:58:27.472Z ok   e43-self-test-start (exit 0, 7 s) <work>/run-all/e43-se
+2026-10-16T14:58:27.473Z start e43-self-test
+2026-10-16T15:11:13.693Z ok   e43-self-test (exit 0, 766 s) all 703 self-test results produced the declared outcome
+2026-10-16T15:11:13.694Z start e43-self-test-stop
+2026-10-16T15:11:14.779Z ok   e43-self-test-stop (exit 0, 1 s) stopped isolated Obsidian (pid 15785)
+2026-10-16T15:11:14.779Z start e43-run2-start
+2026-10-16T15:11:21.099Z ok   e43-run2-start (exit 0, 6 s) <work>/run-all/e43-ru
+2026-10-16T15:11:21.099Z start e43-run2
+2026-10-16T15:31:17.601Z ok   e43-run2 (exit 0, 1197 s) all 3871 runtime checks passed or are reported as DIFF / UNSUPPORTED (805 PASS (EMULATED), 606 DIFF, 30 UNSUPPORTED; Obsidian 1.14.4, Electron 43.7.7)
+2026-10-16T15:31:17.602Z start e43-run2-stop
+2026-10-16T15:31:18.696Z ok   e43-run2-stop (exit 0, 1 s) stopped isolated Obsidian (pid 16448)
+2026-10-16T15:31:18.696Z start e43-frame-start
+2026-10-16T15:31:25.751Z ok   e43-frame-start (exit 0, 7 s) <work>/run-all/e43-fr
+2026-10-16T15:31:25.752Z start e43-frame
+2026-10-16T15:31:36.837Z FAIL e43-frame (exit 1, 11 s) 2 runtime check(s) FAILED
+2026-10-16T15:31:36.838Z start e43-frame-stop
+2026-10-16T15:31:37.962Z ok   e43-frame-stop (exit 0, 1 s) stopped isolated Obsidian (pid 17319)
+2026-10-16T15:31:37.962Z start e43-installer-restore
+2026-10-16T15:31:41.488Z ok   e43-installer-restore (exit 0, 4 s) candidate: /Applications/Obsidian.app
+2026-10-16T15:31:41.489Z start e43-installer-check-after
+2026-10-16T15:32:19.588Z ok   e43-installer-check-after (exit 0, 38 s) path:                       <LaunchServices path removed>
+2026-10-16T15:32:19.589Z start kit-plugin
+2026-10-16T15:34:30.320Z ok   kit-plugin (exit 0, 131 s) all 63 kit self-test checks PASS
+2026-10-16T15:34:30.320Z start kit-dry-run
+2026-10-16T15:34:47.583Z FAIL kit-dry-run (exit 1, 17 s) Node.js v22.22.0
+2026-10-16T15:34:47.583Z start kit-dry-run-tablet
+2026-10-16T15:35:03.128Z FAIL kit-dry-run-tablet (exit 1, 16 s) Node.js v22.22.0
+2026-10-16T15:35:03.621Z same E39.5.1 run 1 vs baseline: 3871 / 3871 results, 0 state differences, 0+0 keys on one side only, 0 repetition differences, 0 unexpected states, 132 detail differences
+2026-10-16T15:35:03.668Z same E39.5.1 run 1 vs run 2: 3871 / 3871 results, 0 state differences, 0+0 keys on one side only, 0 repetition differences, 0 unexpected states, 35 detail differences
+2026-10-16T15:35:03.971Z same E43.7.7 run 1 vs baseline: 3871 / 3871 results, 0 state differences, 0+0 keys on one side only, 0 repetition differences, 0 unexpected states, 115 detail differences
+2026-10-16T15:35:03.998Z same E43.7.7 run 1 vs run 2: 3871 / 3871 results, 0 state differences, 0+0 keys on one side only, 0 repetition differences, 0 unexpected states, 62 detail differences
+2026-10-16T15:35:04.001Z start gate
+2026-10-16T15:35:04.734Z ok   gate (exit 0, 1 s) Linux desktop (not gated: Q-D10): -; 138 units {"UNVERIFIED":138}; Q-D10: not guaranteed until verified on a real machine; UNVERIFIED, not a release failure
+2026-10-16T15:35:04.767Z release judgement: NOT MET (not a test failure); 2 units differ from the saved judgement
+2026-10-16T15:35:04.769Z 10 problems:
+  e39-frame: exit 1: 2 runtime check(s) FAILED
+  e43-frame: exit 1: 2 runtime check(s) FAILED
+  kit-dry-run: exit 1: Node.js v22.22.0
+  kit-dry-run-tablet: exit 1: Node.js v22.22.0
+  the measured spec or sources changed since the baseline (f7dd00a); compare the unchanged checks only: src/common/components/markdown.css | 13 ++++++++++++;  src/palette/kanagawa-dragon.css    |  2 +-;  src/palette/solarized-dark.css     |  2 +-;  tests/runtime/mermaid-dump.js      |  3 ++-;  tests/runtime/self-test-spec.json  | 28 +++++++++++++++++++++++++;  tests/spec/runtime/desktop.json    | 42 ++++++++++++++++++++++++++++++++++++++
+  E39.5.1 frame: 2 FAIL (e.g. desktop.titlebar.custom-frame.translucent|solarized-dark|desktop|translucent|default)
+  E43.7.7 frame: 2 FAIL (e.g. desktop.titlebar.custom-frame.translucent|solarized-dark|desktop|translucent|default)
+  kit dry run: missing kit-dry-run-work/report-emulated.json
+  gate: 2 units differ from the saved judgement
+  gate: kit dry run: missing kit-dry-run-work/report-emulated.json
+exit 1

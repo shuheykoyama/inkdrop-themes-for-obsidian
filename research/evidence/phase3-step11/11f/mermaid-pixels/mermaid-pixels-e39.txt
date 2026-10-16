@@ -1,0 +1,24 @@
+INFO solarized-dark control: the same diagram shot twice: 331 pixels differ (max channel 25) -- the renderer's unsteadiness, left out below
+PASS solarized-dark control: an inline fill on one rect. is seen (43604 pixels differ)
+PASS solarized-dark block 0 (flowchart-v2, flowchart LR, 1024x247, geometry of 4 element(s) taken from Obsidian's): as drawn 3274 of 252928 pixels differ (max channel 2; 408 unsteady left out); computed values frozen 0 of 252928 pixels differ (max channel 0; 340 unsteady left out)
+PASS solarized-dark block 1 (flowchart-v2, flowchart LR, 434x70, geometry of 0 element(s) taken from Obsidian's): as drawn 130 of 30380 pixels differ (max channel 1; 1 unsteady left out); computed values frozen 0 of 30380 pixels differ (max channel 0; 1 unsteady left out)
+     computed value not exactly the reference's: 1x rect.background stroke: rgba(88, 110, 116, 0.5) | reference none
+     computed value not exactly the reference's: 1x rect.background background-color: rgba(232, 232, 232, 0.8) | reference rgba(0, 45, 56, 0.85)
+     computed value not exactly the reference's: 1x text color: rgb(51, 51, 51) | reference rgb(173, 184, 184)
+     computed value not exactly the reference's: 1x tspan.text-outer-tspan.row color: rgb(51, 51, 51) | reference rgb(173, 184, 184)
+     computed value not exactly the reference's: 2x tspan.text-inner-tspan color: rgb(51, 51, 51) | reference rgb(173, 184, 184)
+PASS solarized-dark block 2 (flowchart-v2, %%{init: {"flowchart": {"htmlLabels": fa, 214x296, geometry of 0 element(s) taken from Obsidian's): as drawn 654 of 63344 pixels differ (max channel 1; 1119 unsteady left out); computed values frozen 0 of 63344 pixels differ (max channel 0; 280 unsteady left out)
+PASS solarized-dark block 3 (sequence, sequenceDiagram, 450x650, geometry of 0 element(s) taken from Obsidian's): as drawn 16182 of 292500 pixels differ (max channel 2; 18 unsteady left out); computed values frozen 0 of 292500 pixels differ (max channel 0; 16 unsteady left out)
+INFO kanagawa-dragon control: the same diagram shot twice: 0 pixels differ (max channel 0) -- the renderer's unsteadiness, left out below
+PASS kanagawa-dragon control: an inline fill on one rect. is seen (54271 pixels differ)
+PASS kanagawa-dragon block 0 (flowchart-v2, flowchart LR, 1024x247, geometry of 4 element(s) taken from Obsidian's): as drawn 11771 of 252928 pixels differ (max channel 2; 583 unsteady left out); computed values frozen 0 of 252928 pixels differ (max channel 0; 472 unsteady left out)
+PASS kanagawa-dragon block 1 (flowchart-v2, flowchart LR, 434x70, geometry of 0 element(s) taken from Obsidian's): as drawn 963 of 30380 pixels differ (max channel 2; 2 unsteady left out); computed values frozen 0 of 30380 pixels differ (max channel 0; 2 unsteady left out)
+     computed value not exactly the reference's: 1x rect.background stroke: rgba(98, 94, 91, 0.4) | reference none
+     computed value not exactly the reference's: 1x rect.background background-color: rgba(232, 232, 232, 0.8) | reference rgba(45, 79, 103, 0.7)
+     computed value not exactly the reference's: 1x text color: rgb(51, 51, 51) | reference rgba(197, 201, 197, 0.9)
+     computed value not exactly the reference's: 1x tspan.text-outer-tspan.row color: rgb(51, 51, 51) | reference rgba(197, 201, 197, 0.9)
+     computed value not exactly the reference's: 2x tspan.text-inner-tspan color: rgb(51, 51, 51) | reference rgba(197, 201, 197, 0.9)
+PASS kanagawa-dragon block 2 (flowchart-v2, %%{init: {"flowchart": {"htmlLabels": fa, 214x296, geometry of 0 element(s) taken from Obsidian's): as drawn 2283 of 63344 pixels differ (max channel 2; 58 unsteady left out); computed values frozen 0 of 63344 pixels differ (max channel 0; 0 unsteady left out)
+PASS kanagawa-dragon block 3 (sequence, sequenceDiagram, 450x650, geometry of 0 element(s) taken from Obsidian's): as drawn 10758 of 292500 pixels differ (max channel 2; 131 unsteady left out); computed values frozen 0 of 292500 pixels differ (max channel 0; 126 unsteady left out)
+
+8 diagrams compared, 4 controls; every diagram the same as its reference, controls as required

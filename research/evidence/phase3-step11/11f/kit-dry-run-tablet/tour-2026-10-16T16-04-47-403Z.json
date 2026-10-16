@@ -1,0 +1,774 @@
+{
+ "kind": "ink-device-check tour",
+ "device": "tablet",
+ "environment": {
+  "apiVersion": "1.14.4",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) obsidian/1.11.7 Chrome/142.0.7444.265 Electron/39.5.1 Safari/537.36",
+  "platform": {
+   "isMobile": true,
+   "isPhone": false,
+   "isTablet": true,
+   "isIosApp": true,
+   "isAndroidApp": false
+  },
+  "screen": [
+   1080,
+   1920
+  ],
+  "inner": [
+   1024,
+   800
+  ],
+  "devicePixelRatio": 1,
+  "safeArea": {
+   "top": "59px",
+   "right": "0px",
+   "bottom": "34px",
+   "left": "0px"
+  },
+  "bodyClasses": [
+   "mod-macos",
+   "is-frameless",
+   "is-hidden-frameless",
+   "obsidian-app",
+   "emulate-mobile",
+   "is-tablet",
+   "is-mobile",
+   "show-inline-title",
+   "is-floating-nav",
+   "auto-full-screen",
+   "show-ribbon",
+   "show-view-header",
+   "theme-dark",
+   "mod-toolbar-open"
+  ]
+ },
+ "steps": [
+  {
+   "n": 1,
+   "label": "solarized-dark tablet, default",
+   "startedAt": "2026-10-16T15:59:52.813Z",
+   "shootFrom": "2026-10-16T15:59:58.532Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(0, 33, 41)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-tablet"
+   },
+   "shootUntil": "2026-10-16T16:00:07.534Z"
+  },
+  {
+   "n": 2,
+   "label": "solarized-dark tablet, left sidebar",
+   "startedAt": "2026-10-16T16:00:07.534Z",
+   "shootFrom": "2026-10-16T16:00:13.216Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(0, 33, 41)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-tablet"
+   },
+   "shootUntil": "2026-10-16T16:00:22.218Z"
+  },
+  {
+   "n": 3,
+   "label": "solarized-dark tablet, right sidebar",
+   "startedAt": "2026-10-16T16:00:22.218Z",
+   "shootFrom": "2026-10-16T16:00:27.970Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(0, 33, 41)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-tablet"
+   },
+   "shootUntil": "2026-10-16T16:00:36.972Z"
+  },
+  {
+   "n": 4,
+   "label": "solarized-dark tablet, Markdown, Live Preview",
+   "startedAt": "2026-10-16T16:00:36.972Z",
+   "shootFrom": "2026-10-16T16:00:42.776Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(0, 33, 41)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-tablet"
+   },
+   "shootUntil": "2026-10-16T16:00:51.778Z"
+  },
+  {
+   "n": 5,
+   "label": "solarized-dark tablet, Markdown, Reading view",
+   "startedAt": "2026-10-16T16:00:52.184Z",
+   "shootFrom": "2026-10-16T16:00:58.203Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(0, 33, 41)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-16T16:01:07.205Z"
+  },
+  {
+   "n": 6,
+   "label": "solarized-dark tablet, editor, Live Preview, line numbers",
+   "startedAt": "2026-10-16T16:01:07.677Z",
+   "shootFrom": "2026-10-16T16:01:15.656Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "mod-toolbar-open"
+    ],
+    "navbar": null,
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "cm-content cm-lineWrapping"
+   },
+   "shootUntil": "2026-10-16T16:01:24.658Z"
+  },
+  {
+   "n": 7,
+   "label": "solarized-dark tablet, code blocks, Reading view",
+   "startedAt": "2026-10-16T16:01:25.777Z",
+   "shootFrom": "2026-10-16T16:01:32.364Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(0, 33, 41)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-16T16:01:41.366Z"
+  },
+  {
+   "n": 8,
+   "label": "solarized-dark tablet, Mermaid flowchart, Reading view",
+   "startedAt": "2026-10-16T16:01:41.533Z",
+   "shootFrom": "2026-10-16T16:01:52.429Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(0, 33, 41)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-16T16:02:01.432Z"
+  },
+  {
+   "n": 9,
+   "label": "solarized-dark tablet, quick switcher",
+   "startedAt": "2026-10-16T16:02:01.914Z",
+   "shootFrom": "2026-10-16T16:02:07.578Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(0, 33, 41)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "prompt-input"
+   },
+   "shootUntil": "2026-10-16T16:02:16.579Z"
+  },
+  {
+   "n": 10,
+   "label": "kanagawa-dragon tablet, default",
+   "startedAt": "2026-10-16T16:02:16.886Z",
+   "shootFrom": "2026-10-16T16:02:22.582Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "mod-toolbar-open"
+    ],
+    "navbar": null,
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "cm-content cm-lineWrapping"
+   },
+   "shootUntil": "2026-10-16T16:02:31.583Z"
+  },
+  {
+   "n": 11,
+   "label": "kanagawa-dragon tablet, left sidebar",
+   "startedAt": "2026-10-16T16:02:31.584Z",
+   "shootFrom": "2026-10-16T16:02:37.254Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(30, 29, 26)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-tablet"
+   },
+   "shootUntil": "2026-10-16T16:02:46.256Z"
+  },
+  {
+   "n": 12,
+   "label": "kanagawa-dragon tablet, right sidebar",
+   "startedAt": "2026-10-16T16:02:46.256Z",
+   "shootFrom": "2026-10-16T16:02:51.906Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(30, 29, 26)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-tablet"
+   },
+   "shootUntil": "2026-10-16T16:03:00.909Z"
+  },
+  {
+   "n": 13,
+   "label": "kanagawa-dragon tablet, Markdown, Live Preview",
+   "startedAt": "2026-10-16T16:03:00.909Z",
+   "shootFrom": "2026-10-16T16:03:06.647Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(30, 29, 26)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-tablet"
+   },
+   "shootUntil": "2026-10-16T16:03:15.648Z"
+  },
+  {
+   "n": 14,
+   "label": "kanagawa-dragon tablet, Markdown, Reading view",
+   "startedAt": "2026-10-16T16:03:16.034Z",
+   "shootFrom": "2026-10-16T16:03:21.971Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(30, 29, 26)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-16T16:03:30.972Z"
+  },
+  {
+   "n": 15,
+   "label": "kanagawa-dragon tablet, editor, Live Preview, line numbers",
+   "startedAt": "2026-10-16T16:03:31.425Z",
+   "shootFrom": "2026-10-16T16:03:39.386Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "mod-toolbar-open"
+    ],
+    "navbar": null,
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "cm-content cm-lineWrapping"
+   },
+   "shootUntil": "2026-10-16T16:03:48.388Z"
+  },
+  {
+   "n": 16,
+   "label": "kanagawa-dragon tablet, code blocks, Reading view",
+   "startedAt": "2026-10-16T16:03:49.491Z",
+   "shootFrom": "2026-10-16T16:03:56.062Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(30, 29, 26)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-16T16:04:05.064Z"
+  },
+  {
+   "n": 17,
+   "label": "kanagawa-dragon tablet, Mermaid flowchart, Reading view",
+   "startedAt": "2026-10-16T16:04:05.241Z",
+   "shootFrom": "2026-10-16T16:04:16.030Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(30, 29, 26)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-16T16:04:25.033Z"
+  },
+  {
+   "n": 18,
+   "label": "kanagawa-dragon tablet, quick switcher",
+   "startedAt": "2026-10-16T16:04:25.474Z",
+   "shootFrom": "2026-10-16T16:04:31.135Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-tablet",
+     "is-mobile",
+     "show-inline-title",
+     "is-floating-nav",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(30, 29, 26)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     1024,
+     800,
+     0
+    ],
+    "activeElement": "prompt-input"
+   },
+   "shootUntil": "2026-10-16T16:04:40.136Z"
+  }
+ ]
+}

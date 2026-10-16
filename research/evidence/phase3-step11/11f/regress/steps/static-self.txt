@@ -1,0 +1,63 @@
+PASS self-test: baseline (no mutation) passes
+PASS self-test: palette value changed (KD dragonBlack3 lightness 11% -> 12%)
+PASS self-test: alpha changed (SD active line 50% -> 40%)
+PASS self-test: Inkdrop hsl() converted to HEX (SD editor background)
+PASS self-test: Inkdrop rgb() converted to hsl() (SD transparent white)
+PASS self-test: lint-notation value changed (8% -> 9%)
+PASS self-test: reference changed to another token with the same resolved colour
+PASS self-test: palette value flattened (reference replaced by its resolved hsl())
+PASS self-test: KD value replaced by SD's (theme mixing)
+PASS self-test: acrylic value changed (KD sidebar 50% -> 60%)
+PASS self-test: acrylic token removed
+PASS self-test: required token removed (Q-D23 active line)
+PASS self-test: referenced token removed (dangling var())
+PASS self-test: wrong source line
+PASS self-test: light-dark() marker missing
+PASS self-test: notation marker on a value that was not rewritten
+PASS self-test: Inkdrop's legacy rgba() kept without the lint notation
+PASS self-test: derived accent hue differs from the primary colour
+PASS self-test: derived entry with an unknown derivation
+PASS self-test: derived entry without the derived marker
+PASS self-test: shorthand-derived colour differs from its shorthand
+PASS self-test: alpha-derived colour differs from the stated alpha
+PASS self-test: Inkdrop measured background differs (S7)
+PASS self-test: Inkdrop measured region missing (S7)
+PASS self-test: translucent check on an emulated platform
+PASS self-test: unknown platform
+PASS self-test: unknown window frame
+PASS self-test: window frame on a mobile check
+PASS self-test: !important removed from the tab-strip override (would lose to app.css)
+PASS self-test: translucent rule without the fullscreen exclusion
+PASS self-test: acrylic colour written as a literal in translucent.css
+PASS self-test: translucent rule outside the translucent scope
+PASS self-test: mobile rule outside the mobile scope
+PASS self-test: Markdown rule outside .theme-dark
+PASS self-test: verifiedBy without evidence
+PASS self-test: verifiedBy scope names an unknown theme
+PASS self-test: accepts names PASS (only DIFF / UNSUPPORTED may be accepted)
+PASS self-test: verifiedBy scope without a status
+PASS self-test: verifiedBy status that is not PASS / FAIL / UNVERIFIED
+PASS self-test: minAppVersion back to 1.14.0 in src/manifests (SD)
+PASS self-test: stale dist/ manifest (KD minAppVersion 1.14.0)
+PASS self-test: dist/ manifest missing (SD)
+PASS self-test: missing source file
+PASS self-test: colour literal outside the palette
+PASS self-test: CSS nesting in a common file
+PASS self-test: unlisted !important
+PASS self-test: unlisted stylelint warning (!important) fails S5
+PASS self-test: stylelint error (custom-property-pattern) fails S5
+PASS self-test: allow-listed warning passes (positive control)
+PASS self-test: stale allow-list entry
+PASS self-test: allow-listed !important without the overridden app.css rule
+PASS self-test: SD palette uses a Kanagawa variable
+PASS self-test: reference to an undefined --ink-* token
+PASS self-test: check expects absence without a reason
+PASS self-test: requirement without a check and not UNVERIFIED
+PASS self-test: check names an undefined token
+PASS self-test: check names an unknown pseudo-element
+PASS self-test: a plugin-only field in the theme manifest (id)
+PASS self-test: the manifest loses its author
+PASS self-test: a version that is not x.y.z
+PASS self-test: a url() that fetches from the network
+
+all 61 self-test cases behaved as expected

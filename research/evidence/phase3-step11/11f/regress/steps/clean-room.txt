@@ -1,0 +1,9 @@
+
+added 177 packages in 2s
+built: dist/solarized-dark/theme.css
+built: dist/kanagawa-dragon/theme.css
+clean-room static tests: 214 PASS, 0 FAIL
+PASS clean-room dist/kanagawa-dragon/theme.css identical to local build
+PASS clean-room dist/solarized-dark/theme.css identical to local build
+PASS clean-room dist/kanagawa-dragon/manifest.json identical to local build
+PASS clean-room dist/solarized-dark/manifest.json identical to local build

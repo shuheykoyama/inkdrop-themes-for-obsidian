@@ -1,0 +1,38 @@
+9cb4565 docs: add maintenance notes for the test tools
+== 2026-10-16T16:58:46Z node v22.22.0, npm 10.9.4
+== 2026-10-16T16:58:46Z npm ci
+
+added 177 packages in 1s
+== 2026-10-16T16:58:47Z npm run build
+built: dist/solarized-dark/theme.css
+built: dist/kanagawa-dragon/theme.css
+== 2026-10-16T16:58:48Z npm test
+all checks passed
+all 61 self-test cases behaved as expected
+all 45 release self-test cases behaved as expected
+all 48 integration self-test cases behaved as expected
+all 24 compat self-test cases behaved as expected
+all 20 quality self-test cases behaved as expected
+all 25 mermaid judge self-test cases behaved as expected
+npm test exit 0
+== 2026-10-16T17:02:53Z section 2, E39, OBSIDIAN_FRAME=custom
+vault: tmp/tmp.eH9iQugU6N/vault
+== 2026-10-16T17:02:59Z section 3, custom-frame run
+PASS runner.restore [-, desktop, -, -] -- size 1024,800 (was 1024,800), floating true, no mobile / translucent classes
+
+2 runtime check(s) FAILED
+stopped isolated Obsidian (pid 35284)
+== 2026-10-16T17:03:25Z section 2, E43
+vault: tmp/tmp.qmqttljIpL/vault
+== 2026-10-16T17:03:49Z section 5, mermaid-pixels on E43
+8 diagrams compared, 4 controls; every diagram the same as its reference, controls as required
+stopped isolated Obsidian (pid 35378)
+== 2026-10-16T17:04:14Z section 8
+LaunchServices check: identical before and after
+== 2026-10-16T17:04:32Z section 6, kit
+kit id 1c92cccb-75fe-40f7-97ed-5d96b25fd891
+jobs 80 (probe 66, extra 32), checks 480; on a phone 66 jobs, on a tablet 28; tour steps phone 38, tablet 18
+all 34 kit self-test checks PASS
+== 2026-10-16T17:05:10Z left instances
+0
+== 2026-10-16T17:05:10Z end

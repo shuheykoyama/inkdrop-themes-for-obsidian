@@ -1,0 +1,219 @@
+PASS S2 build run a exits 0
+PASS S2 build run b exits 0
+PASS S2 solarized-dark deterministic (two builds byte-identical)
+PASS S2 solarized-dark manifest.json written
+PASS S2 solarized-dark manifest minAppVersion is 1.14.4 (Q-D20) in src/manifests, the build and dist/ -- src 1.14.4, build 1.14.4, dist 1.14.4
+PASS S2 solarized-dark built manifest has the fields and values of src/manifests
+PASS S2 solarized-dark dist/ manifest.json is byte-identical to a fresh build
+PASS S2 kanagawa-dragon deterministic (two builds byte-identical)
+PASS S2 kanagawa-dragon manifest.json written
+PASS S2 kanagawa-dragon manifest minAppVersion is 1.14.4 (Q-D20) in src/manifests, the build and dist/ -- src 1.14.4, build 1.14.4, dist 1.14.4
+PASS S2 kanagawa-dragon built manifest has the fields and values of src/manifests
+PASS S2 kanagawa-dragon dist/ manifest.json is byte-identical to a fresh build
+PASS S2 solarized-dark output parses as CSS
+PASS S2 solarized-dark no @import rule left -- 0
+PASS S2 solarized-dark no @charset / BOM
+PASS S2 solarized-dark no empty / comment-only rules
+PASS S2 kanagawa-dragon output parses as CSS
+PASS S2 kanagawa-dragon no @import rule left -- 0
+PASS S2 kanagawa-dragon no @charset / BOM
+PASS S2 kanagawa-dragon no empty / comment-only rules
+PASS S8 solarized-dark the build has exactly manifest.json and theme.css -- manifest.json, theme.css
+PASS S8 solarized-dark manifest has name, version, minAppVersion, author as strings -- {"name":"DEV solarized-dark (unnamed)","version":"0.0.0","minAppVersion":"1.14.4","author":"TBD"}
+PASS S8 solarized-dark manifest has no field outside Obsidian's theme manifest
+PASS S8 solarized-dark manifest version is semver (x.y.z) -- 0.0.0
+PASS S8 solarized-dark theme.css starts with the build header
+PASS S8 solarized-dark no url() other than data: URIs (nothing fetched from the network)
+INFO S8 solarized-dark sizes: theme.css 136183 bytes, manifest.json 115 bytes
+PASS S8 kanagawa-dragon the build has exactly manifest.json and theme.css -- manifest.json, theme.css
+PASS S8 kanagawa-dragon manifest has name, version, minAppVersion, author as strings -- {"name":"DEV kanagawa-dragon (unnamed)","version":"0.0.0","minAppVersion":"1.14.4","author":"TBD"}
+PASS S8 kanagawa-dragon manifest has no field outside Obsidian's theme manifest
+PASS S8 kanagawa-dragon manifest version is semver (x.y.z) -- 0.0.0
+PASS S8 kanagawa-dragon theme.css starts with the build header
+PASS S8 kanagawa-dragon no url() other than data: URIs (nothing fetched from the network)
+INFO S8 kanagawa-dragon sizes: theme.css 138671 bytes, manifest.json 116 bytes
+PASS S2 missing source -> non-zero exit -- status 1
+PASS S2 missing source -> error names the file -- build failed: solarized-dark: postcss-import: /var/folders/nr/mx_6nn1s3d7_fswfq7dkgxf40000gn/T/ink-static-NqTwak/broken-src/themes/solarized-dark.css:4:1: Failed to find '../common/mapping/workspace.css'
+PASS S1 solarized-dark derived accent h/s/l = HSL triplet of --ink-primary-color -- 205 69% 49% vs hsl(205deg 69% 49% / 90%)
+PASS S1 solarized-dark derived colours = the colour part of their Inkdrop shorthand, or the token at the stated alpha
+PASS S1 solarized-dark derived entries are each marked "derived:"
+PASS S1 solarized-dark palette is not empty -- 491 declarations
+PASS S1 solarized-dark every declaration is an Inkdrop token (naming rule)
+PASS S1 solarized-dark 491 declarations = Inkdrop's declaration (values, alpha, references)
+PASS S1 solarized-dark colour notation as Inkdrop declared it, except the marked lint notation (no conversion)
+PASS S1 solarized-dark 8 lint-notation values denote the same colours / font names as Inkdrop's
+PASS S1 solarized-dark source comments = research/data (40 light-dark, 8 notation, 7 acrylic marked)
+PASS S1 solarized-dark resolved values = Inkdrop's resolved values
+PASS S1 solarized-dark 347 opaque colours = research/data 8-bit values (+-1/255)
+PASS S1 solarized-dark all 358 required tokens present (mapping candidates + families)
+PASS S1 solarized-dark all 7 theme acrylic overrides present
+PASS S1 solarized-dark output keeps every palette declaration verbatim
+PASS S1 solarized-dark no colour literal outside the palette in the output
+PASS S1 kanagawa-dragon derived accent h/s/l = HSL triplet of --ink-primary-color -- 199 19% 62% vs hsl(199deg 19% 62%)
+PASS S1 kanagawa-dragon derived colours = the colour part of their Inkdrop shorthand, or the token at the stated alpha
+PASS S1 kanagawa-dragon derived entries are each marked "derived:"
+PASS S1 kanagawa-dragon palette is not empty -- 466 declarations
+PASS S1 kanagawa-dragon every declaration is an Inkdrop token (naming rule)
+PASS S1 kanagawa-dragon 466 declarations = Inkdrop's declaration (values, alpha, references)
+PASS S1 kanagawa-dragon colour notation as Inkdrop declared it, except the marked lint notation (no conversion)
+PASS S1 kanagawa-dragon 8 lint-notation values denote the same colours / font names as Inkdrop's
+PASS S1 kanagawa-dragon source comments = research/data (21 light-dark, 8 notation, 7 acrylic marked)
+PASS S1 kanagawa-dragon resolved values = Inkdrop's resolved values
+PASS S1 kanagawa-dragon 320 opaque colours = research/data 8-bit values (+-1/255)
+PASS S1 kanagawa-dragon all 358 required tokens present (mapping candidates + families)
+PASS S1 kanagawa-dragon all 7 theme acrylic overrides present
+PASS S1 kanagawa-dragon output keeps every palette declaration verbatim
+PASS S1 kanagawa-dragon no colour literal outside the palette in the output
+token counts: {"solarized-dark":{"declarations":491,"acrylic":7,"lightDark":40,"notation":8,"hexChecked":347},"kanagawa-dragon":{"declarations":466,"acrylic":7,"lightDark":21,"notation":8,"hexChecked":320}}
+PASS S7 solarized-dark --ink-sidebar-background = Inkdrop sidebar background (rgb(7, 53, 65)) -- rgba(6.8,53.1,64.6, 1)
+PASS S7 solarized-dark --ink-note-list-bar-background = Inkdrop note-list background (rgb(0, 45, 56)) -- rgba(0.0,44.9,56.1, 1)
+PASS S7 solarized-dark --ink-editor-background = Inkdrop editor-layout background (rgb(0, 33, 41)) -- rgba(0.0,32.6,40.8, 1)
+PASS S7 solarized-dark --ink-editor-background-color = Inkdrop cm-editor background (rgb(0, 33, 41)) -- rgba(0.0,32.6,40.8, 1)
+PASS S7 kanagawa-dragon --ink-sidebar-background = Inkdrop sidebar background (rgb(17, 17, 14)) -- rgba(16.7,16.7,13.9, 1)
+PASS S7 kanagawa-dragon --ink-note-list-bar-background = Inkdrop note-list background (rgb(24, 22, 22)) -- rgba(23.9,22.0,22.0, 1)
+PASS S7 kanagawa-dragon --ink-editor-background = Inkdrop editor-layout background (rgb(30, 29, 26)) -- rgba(30.0,29.0,26.1, 1)
+PASS S7 kanagawa-dragon --ink-editor-background-color = Inkdrop cm-editor background (rgb(30, 29, 26)) -- rgba(30.0,29.0,26.1, 1)
+PASS S3 solarized-dark every var() reference to a palette name is defined
+PASS S3 solarized-dark no variable of the other theme
+PASS S3 solarized-dark each --ink-* token defined once
+PASS S3 solarized-dark palette names do not clash with Obsidian 1.14.4 variables
+PASS S3 kanagawa-dragon every var() reference to a palette name is defined
+PASS S3 kanagawa-dragon each --ink-* token defined once
+PASS S3 kanagawa-dragon palette names do not clash with Obsidian 1.14.4 variables
+PASS S4 src/themes/kanagawa-dragon.css entry holds only @import rules
+PASS S4 src/themes/kanagawa-dragon.css no colour literals outside the palette
+PASS S4 src/themes/kanagawa-dragon.css no CSS nesting
+PASS S4 src/themes/kanagawa-dragon.css every !important is allow-listed
+PASS S4 src/themes/solarized-dark.css entry holds only @import rules
+PASS S4 src/themes/solarized-dark.css no colour literals outside the palette
+PASS S4 src/themes/solarized-dark.css no CSS nesting
+PASS S4 src/themes/solarized-dark.css every !important is allow-listed
+PASS S4 src/common/components/editor.css no colour literals outside the palette
+PASS S4 src/common/components/editor.css no CSS nesting
+PASS S4 src/common/components/editor.css every !important is allow-listed
+PASS S4 src/common/components/markdown.css no colour literals outside the palette
+PASS S4 src/common/components/markdown.css no CSS nesting
+PASS S4 src/common/components/markdown.css every !important is allow-listed
+PASS S4 src/common/components/mermaid.css no colour literals outside the palette
+PASS S4 src/common/components/mermaid.css no CSS nesting
+PASS S4 src/common/components/mermaid.css every !important is allow-listed
+PASS S4 src/common/components/navigation.css no colour literals outside the palette
+PASS S4 src/common/components/navigation.css no CSS nesting
+PASS S4 src/common/components/navigation.css every !important is allow-listed
+PASS S4 src/common/components/overlays.css no colour literals outside the palette
+PASS S4 src/common/components/overlays.css no CSS nesting
+PASS S4 src/common/components/overlays.css every !important is allow-listed
+PASS S4 src/common/components/syntax.css no colour literals outside the palette
+PASS S4 src/common/components/syntax.css no CSS nesting
+PASS S4 src/common/components/syntax.css every !important is allow-listed
+PASS S4 src/common/mapping/accent.css no colour literals outside the palette
+PASS S4 src/common/mapping/accent.css no CSS nesting
+PASS S4 src/common/mapping/accent.css every !important is allow-listed
+PASS S4 src/common/mapping/borders.css no colour literals outside the palette
+PASS S4 src/common/mapping/borders.css no CSS nesting
+PASS S4 src/common/mapping/borders.css every !important is allow-listed
+PASS S4 src/common/mapping/editor.css no colour literals outside the palette
+PASS S4 src/common/mapping/editor.css no CSS nesting
+PASS S4 src/common/mapping/editor.css every !important is allow-listed
+PASS S4 src/common/mapping/markdown.css no colour literals outside the palette
+PASS S4 src/common/mapping/markdown.css no CSS nesting
+PASS S4 src/common/mapping/markdown.css every !important is allow-listed
+PASS S4 src/common/mapping/states.css no colour literals outside the palette
+PASS S4 src/common/mapping/states.css no CSS nesting
+PASS S4 src/common/mapping/states.css every !important is allow-listed
+PASS S4 src/common/mapping/syntax.css no colour literals outside the palette
+PASS S4 src/common/mapping/syntax.css no CSS nesting
+PASS S4 src/common/mapping/syntax.css every !important is allow-listed
+PASS S4 src/common/mapping/text.css no colour literals outside the palette
+PASS S4 src/common/mapping/text.css no CSS nesting
+PASS S4 src/common/mapping/text.css every !important is allow-listed
+PASS S4 src/common/mapping/ui.css no colour literals outside the palette
+PASS S4 src/common/mapping/ui.css no CSS nesting
+PASS S4 src/common/mapping/ui.css every !important is allow-listed
+PASS S4 src/common/mapping/workspace.css no colour literals outside the palette
+PASS S4 src/common/mapping/workspace.css no CSS nesting
+PASS S4 src/common/mapping/workspace.css every !important is allow-listed
+PASS S4 src/common/platform/mobile.css no colour literals outside the palette
+PASS S4 src/common/platform/mobile.css no CSS nesting
+PASS S4 src/common/platform/mobile.css every !important is allow-listed
+PASS S4 src/common/platform/translucent.css no colour literals outside the palette
+PASS S4 src/common/platform/translucent.css no CSS nesting
+PASS S4 src/common/platform/translucent.css every !important is allow-listed
+PASS S4 src/common/platform/translucent.css every selector is inside its platform scope
+PASS S4 src/common/platform/mobile.css every selector is inside its platform scope
+PASS S4 src/common/components/editor.css every selector is under .theme-dark
+PASS S4 src/common/components/markdown.css every selector is under .theme-dark
+PASS S4 src/common/components/mermaid.css every selector is under .theme-dark
+PASS S4 src/common/components/navigation.css every selector is under .theme-dark
+PASS S4 src/common/components/overlays.css every selector is under .theme-dark
+PASS S4 src/common/components/syntax.css every selector is under .theme-dark
+PASS S4 src/common/mapping/accent.css every selector is under .theme-dark
+PASS S4 src/common/mapping/borders.css every selector is under .theme-dark
+PASS S4 src/common/mapping/editor.css every selector is under .theme-dark
+PASS S4 src/common/mapping/markdown.css every selector is under .theme-dark
+PASS S4 src/common/mapping/states.css every selector is under .theme-dark
+PASS S4 src/common/mapping/syntax.css every selector is under .theme-dark
+PASS S4 src/common/mapping/text.css every selector is under .theme-dark
+PASS S4 src/common/mapping/ui.css every selector is under .theme-dark
+PASS S4 src/common/mapping/workspace.css every selector is under .theme-dark
+PASS S4 src/common/platform/mobile.css every selector is under .theme-dark
+PASS S4 src/common/platform/translucent.css every selector is under .theme-dark
+PASS S4 allow-list !important .theme-dark.is-translucent:not(.is-fullscreen) .workspace-tabs .workspace-tab-header-container { background-color } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary { background-color } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile { background-color } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary::before { background-color } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg:is([aria-roledescription="flowchart-v2"], [aria-roledescription="sequence"]) { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .node :is(rect, circle, ellipse, polygon, path) { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .node :is(rect, circle, ellipse, polygon, path) { stroke } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .cluster rect { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .cluster rect { stroke } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .cluster-label :is(span, p) { color } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .cluster-label text { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.label, [class~="nodeLabel"], span[class~="edgeLabel"]) { color } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.label, [class~="nodeLabel"], span[class~="edgeLabel"]) { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.node, [class~="edgeLabel"]) .label text { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .flowchart-link:not([style*="stroke:"]) { stroke } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.marker, [class~="arrowMarkerPath"]:not([stroke])) { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.marker, [class~="arrowMarkerPath"]:not([stroke])) { stroke } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is([class~="edgeLabel"], [class~="edgeLabel"] p) { background-color } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] [class~="labelBkg"] { background-color } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] [class~="edgeLabel"] rect { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] line { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] line { stroke } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is(.actor, .actor-man circle) { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is(.actor, .actor-man circle) { stroke } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] text.actor > tspan { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] .actor-line { stroke } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~="messageLine0"], [class~="messageLine1"]) { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~="messageLine0"], [class~="messageLine1"]) { stroke } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] marker:is([id$="-arrowhead"], [id$="-crosshead"]) path { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] marker:is([id$="-arrowhead"], [id$="-crosshead"]) path { stroke } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] marker[id$="-sequencenumber"] { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="messageText"] { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="sequenceNumber"] { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is(.activation0, .activation1, .activation2) { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is(.activation0, .activation1, .activation2) { stroke } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] .note { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] .note { stroke } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~="noteText"], [class~="noteText"] > tspan) { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="loopLine"] { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="loopLine"] { stroke } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="labelBox"] { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="labelBox"] { stroke } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~="labelText"], [class~="labelText"] > tspan) { fill } names the app.css rule it overrides
+PASS S4 allow-list !important .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~="loopText"], [class~="loopText"] > tspan) { fill } names the app.css rule it overrides
+PASS S5 solarized-dark stylelint ran without invalid options or parse errors -- []
+PASS S5 solarized-dark stylelint errors = 0
+PASS S5 solarized-dark every stylelint warning is allow-listed with a reason
+PASS S5 solarized-dark no stale allow-list entries
+PASS S5 kanagawa-dragon stylelint ran without invalid options or parse errors -- []
+PASS S5 kanagawa-dragon stylelint errors = 0
+PASS S5 kanagawa-dragon every stylelint warning is allow-listed with a reason
+PASS S5 kanagawa-dragon no stale allow-list entries
+PASS S5 every allow-list entry has a reason
+PASS S6 runtime checks are well formed
+PASS S6 every requirement is covered by a check or recorded as UNVERIFIED (reason + risk)
+PASS S6 solarized-dark every token named by a check is defined
+PASS S6 kanagawa-dragon every token named by a check is defined
+
+all checks passed

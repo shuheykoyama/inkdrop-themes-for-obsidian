@@ -1,0 +1,10 @@
+{
+ "simulated": "language-js <code> hidden from the Reading-view query",
+ "errors": [
+  {
+   "view": "reading",
+   "lang": "js",
+   "error": "code element not rendered {\"line\":3,\"lang\":\"js\",\"scroll\":2.99468085106383,\"present\":[\"language-ts\",\"language-python\",\"language-css\",\"language-html\",\"language-json\",\"language-sh\"],\"usedOfLang\":0,\"sections\":10,\"visibility\":\"visible\",\"focus\":false,\"leafActive\":true,\"foundAfter1500ms\":false,\"presentAfter1500ms\":[\"language-ts\",\"language-python\",\"language-css\",\"language-html\",\"language-json\",\"language-sh\"]}"
+  }
+ ]
+}

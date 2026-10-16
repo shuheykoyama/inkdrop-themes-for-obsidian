@@ -1,0 +1,93 @@
+{
+ "_comment": "step 11B: this run's desktop results in place of the saved ones; Inputs of tests/release/gate.mjs (step 11A, research/14 §6.30.3): the result files that count for the release judgement and the targets of Q-D10. Only result files of the final code of a reviewed step belong here. Desktop runtime files carry their Obsidian and Electron versions; device reports carry the device's environment. BLOCKED targets say why (research/14 §6.23).",
+ "minAppVersion": "1.14.4",
+ "latestPublic": {
+  "macOS": {
+   "version": "1.14.4",
+   "checked": "2026-10-15",
+   "source": "https://obsidian.md/changelog/ (desktop 1.14.4 public, 2026-10-05)"
+  }
+ },
+ "runs": [
+  {
+   "kind": "desktop-runtime",
+   "os": "macOS",
+   "label": "this run, Electron 39.5.1 run 1",
+   "file": "../../../../../..<work>/run-all/runtime-electron-39.5.1-run1.json"
+  },
+  {
+   "kind": "desktop-runtime",
+   "os": "macOS",
+   "label": "this run, Electron 39.5.1 custom-frame run",
+   "file": "../../../../../..<work>/run-all/runtime-electron-39.5.1-frame.json"
+  },
+  {
+   "kind": "desktop-runtime",
+   "os": "macOS",
+   "label": "this run, Electron 43.7.7 run 1",
+   "file": "../../../../../..<work>/run-all/runtime-electron-43.7.7-run1.json"
+  },
+  {
+   "kind": "desktop-runtime",
+   "os": "macOS",
+   "label": "this run, Electron 43.7.7 custom-frame run",
+   "file": "../../../../../..<work>/run-all/runtime-electron-43.7.7-frame.json"
+  },
+  {
+   "kind": "device-report",
+   "label": "iPhone 12 Pro, iOS 27.0, Obsidian 1.14.5 (step 10, second device run; kit before RV6)",
+   "file": "research/evidence/phase3-step10/device-run2/report.json"
+  }
+ ],
+ "targets": [
+  {
+   "os": "macOS",
+   "device": "desktop",
+   "gated": true
+  },
+  {
+   "os": "iOS",
+   "device": "phone",
+   "gated": true
+  },
+  {
+   "os": "iOS",
+   "device": "tablet",
+   "gated": true,
+   "blocked": {
+    "reason": "iPad not verified in step 10 (the user's decision); BLOCKED, still in the supported range (Q-D10)",
+    "since": "2026-10-13"
+   }
+  },
+  {
+   "os": "Android",
+   "device": "phone",
+   "gated": true,
+   "blocked": {
+    "reason": "no Android device and no adb (step 10)",
+    "since": "2026-10-13"
+   }
+  },
+  {
+   "os": "Android",
+   "device": "tablet",
+   "gated": true,
+   "blocked": {
+    "reason": "no Android device and no adb (step 10)",
+    "since": "2026-10-13"
+   }
+  },
+  {
+   "os": "Windows",
+   "device": "desktop",
+   "gated": false,
+   "note": "Q-D10: not guaranteed until verified on a real machine; UNVERIFIED, not a release failure"
+  },
+  {
+   "os": "Linux",
+   "device": "desktop",
+   "gated": false,
+   "note": "Q-D10: not guaranteed until verified on a real machine; UNVERIFIED, not a release failure"
+  }
+ ]
+}
