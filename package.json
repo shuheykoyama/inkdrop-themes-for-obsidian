@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "npm run test:static && npm run test:static-self && npm run test:release-self && npm run test:integration-self && npm run test:compat-self",
+    "test": "npm run test:static && npm run test:static-self && npm run test:release-self && npm run test:integration-self && npm run test:compat-self && npm run test:quality-self",
     "test:static": "node tests/static/run.mjs",
     "test:static-self": "node tests/static/self-test.mjs",
     "test:release-self": "node tests/release/self-test.mjs",
@@ -18,6 +18,9 @@
     "test:integration-self": "node tests/integration/self-test.mjs",
     "test:compat": "node tests/compat/inventory.mjs",
     "test:compat-self": "node tests/compat/self-test.mjs",
+    "test:quality-self": "node tests/quality/self-test.mjs",
+    "test:important-audit": "node tests/quality/important-audit.mjs",
+    "test:contrast": "node tests/quality/contrast.mjs",
     "test:clean-room": "bash tests/clean-room.sh",
     "test:runtime": "node tests/runtime/run.mjs",
     "test:visual-self": "python3 -I tests/visual/self-test.py",

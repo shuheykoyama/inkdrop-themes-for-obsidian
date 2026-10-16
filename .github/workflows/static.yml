@@ -1,6 +1,7 @@
 # Static tests only (research/14 §3.1): build reproducibility, value fidelity against research/data,
 # layer rules, the official stylelint config, spec validation, and the negative self-tests (static and the
-# release judgement of tests/release, the integrated regression's own logic and the compatibility inventory's;
+# release judgement of tests/release, the integrated regression's own logic, the compatibility inventory's and
+# the step 11E quality helpers' (the !important experiment and the contrast record need an isolated Obsidian);
 # the judgement, the integrated regression and the inventory itself read git history / need macOS or an
 # Obsidian build and run locally).
 # The runtime (isolated Obsidian on macOS) and visual checks need a local desktop and are not run here.
@@ -29,3 +30,4 @@ jobs:
       - run: npm run test:release-self
       - run: npm run test:integration-self
       - run: npm run test:compat-self
+      - run: npm run test:quality-self
