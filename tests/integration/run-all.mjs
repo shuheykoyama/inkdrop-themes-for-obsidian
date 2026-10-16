@@ -9,12 +9,15 @@
 //   Steps, in order:
 //     static      build, static tests, static / release / visual self-tests, clean-room build
 //     kit-build   tests/device/kit-self-test.mjs build (kit builder never changes what is there; judge.mjs)
-//     e39         Electron 39.5.1: runtime run 1, runner self-test, runtime run 2 (a fresh isolated instance each)
+//     e39         Electron 39.5.1: runtime run 1, runner self-test, runtime run 2 (a fresh isolated instance each),
+//                 and the custom-frame run (an instance started with OBSIDIAN_FRAME=custom: the title-bar checks)
 //     e43         Electron 43.7.7 (current installer copy): the same, with the LaunchServices check around it
-//     kit         tests/device/kit-self-test.mjs plugin and dry-run (the kit on the Mac, mobile emulation)
+//     kit         tests/device/kit-self-test.mjs plugin, dry-run and dry-run-tablet (the kit on the Mac, mobile
+//                 emulation: phone, then tablet)
 //     compare     each result file on its own (no FAIL; self-tests as declared), each runtime run against the
 //                 baseline and run 1 against run 2 (keys, repetitions, states, unexpected states)
-//     gate        tests/release/gate.mjs on this run's results (run 1 of each Electron + the device report);
+//     gate        tests/release/gate.mjs on this run's results (run 1 and the custom-frame run of each Electron +
+//                 the device report);
 //                 also checks that the kit's dry-run report is rejected as a device run
 //   Every child runs in its own process group with a timeout; a timeout, a signal or a failed start is a failed
 //   step. SIGINT / SIGTERM / SIGHUP stop the running child's group and every isolated Obsidian started here,
@@ -88,8 +91,9 @@ async function isolated(name, env, fn) {
 const runFile = (label, run) => path.join(out, `runtime-electron-${label}-${run}.json`);
 async function electron(label, env) {
   const tag = `e${label.split(".")[0]}`;
-  for (const run of ["run1", "self-test", "run2"]) {
-    await isolated(`${tag}-${run}`, env, (vault) => step(`${tag}-${run}`, process.execPath, ["tests/runtime/run.mjs", "--vault", vault, "--out", runFile(label, run), ...(run === "self-test" ? ["--self-test"] : [])], { env: { ...env, INK_PROGRESS: "1" }, timeoutMs: 90 * MIN }));
+  for (const run of ["run1", "self-test", "run2", "frame"]) {
+    const runEnv = run === "frame" ? { ...env, OBSIDIAN_FRAME: "custom" } : env;
+    await isolated(`${tag}-${run}`, runEnv, (vault) => step(`${tag}-${run}`, process.execPath, ["tests/runtime/run.mjs", "--vault", vault, "--out", runFile(label, run), ...(run === "self-test" ? ["--self-test"] : [])], { env: { ...runEnv, INK_PROGRESS: "1" }, timeoutMs: 90 * MIN }));
   }
 }
 
@@ -99,6 +103,9 @@ if (only.includes("static")) {
   await step("static-self", "npm", ["run", "-s", "test:static-self"]);
   await step("release-self", "npm", ["run", "-s", "test:release-self"]);
   await step("integration-self", process.execPath, ["tests/integration/self-test.mjs"]);
+  await step("compat-self", "npm", ["run", "-s", "test:compat-self"]);
+  await step("quality-self", "npm", ["run", "-s", "test:quality-self"]);
+  await step("mermaid-judge-self", "npm", ["run", "-s", "test:mermaid-judge-self"]);
   await step("visual-self", "python3", ["-I", "tests/visual/self-test.py"]);
   await step("clean-room", "bash", ["tests/clean-room.sh"]);
 }
@@ -121,6 +128,7 @@ if (only.includes("e43")) {
 if (only.includes("kit")) {
   await step("kit-plugin", process.execPath, ["tests/device/kit-self-test.mjs", "plugin", path.join(out, "kit-plugin-work")], { timeoutMs: 30 * MIN });
   await step("kit-dry-run", process.execPath, ["tests/device/kit-self-test.mjs", "dry-run", path.join(out, "kit-dry-run-work")], { timeoutMs: 90 * MIN });
+  await step("kit-dry-run-tablet", process.execPath, ["tests/device/kit-self-test.mjs", "dry-run-tablet", path.join(out, "kit-dry-run-tablet-work")], { timeoutMs: 90 * MIN });
 }
 
 // ---------- comparisons ----------
@@ -142,7 +150,7 @@ if (only.includes("compare")) {
   summary.specSinceBaseline = specChanged.length ? specChanged : "unchanged (runtime checks, syntax, Mermaid, runner, fixtures, CSS sources; only src/manifests changed: minAppVersion, not measured)";
   if (specChanged.length) summary.problems.push(`the measured spec or sources changed since the baseline (f7dd00a); compare the unchanged checks only: ${specChanged.join("; ")}`);
   for (const label of ["39.5.1", "43.7.7"]) {
-    const files = Object.fromEntries(["run1", "run2", "self-test"].map((run) => [run, need(runFile(label, run), `E${label} ${run}`)]));
+    const files = Object.fromEntries(["run1", "run2", "self-test", "frame"].map((run) => [run, need(runFile(label, run), `E${label} ${run}`)]));
     for (const [run, data] of Object.entries(files)) if (data) for (const p of runProblems(data, { selfTest: run === "self-test" })) summary.problems.push(`E${label} ${run}: ${p}`);
     if (files["self-test"]) summary.comparisons.push({ name: `E${label} self-test`, count: files["self-test"].results.length, problems: runProblems(files["self-test"], { selfTest: true }) });
     if (files.run1) compare(`E${label} run 1 vs baseline`, readJson(BASELINE[label]).results, files.run1.results, BASELINE[label], "run 1");
@@ -160,10 +168,10 @@ if (only.includes("compare")) {
 // ---------- the release judgement on this run's results ----------
 if (only.includes("gate")) {
   const inputs = readJson("tests/release/inputs.json");
-  const mine = ["39.5.1", "43.7.7"].map((l) => runFile(l, "run1"));
-  if (mine.every((f) => existsSync(f))) {
+  const mine = ["39.5.1", "43.7.7"].flatMap((l) => [["run 1", runFile(l, "run1")], ["custom-frame run", runFile(l, "frame")]].map(([what, f]) => ({ l, what, f })));
+  if (mine.every((m) => existsSync(m.f))) {
     const runs = [
-      ...mine.map((f, i) => ({ kind: "desktop-runtime", os: "macOS", label: `this run, Electron ${["39.5.1", "43.7.7"][i]} run 1`, file: path.relative(repo, f) })),
+      ...mine.map((m) => ({ kind: "desktop-runtime", os: "macOS", label: `this run, Electron ${m.l} ${m.what}`, file: path.relative(repo, m.f) })),
       ...inputs.runs.filter((r) => r.kind === "device-report"),
     ];
     const file = path.join(out, "release-inputs.json");
