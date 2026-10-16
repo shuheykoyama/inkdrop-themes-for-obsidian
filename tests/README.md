@@ -53,7 +53,7 @@ bash tests/runtime/obsidian-isolated.sh stop "$W"  # stops only the process this
 |---|---|---|
 | `node tests/runtime/run.mjs --vault "$V" --out <f.json>` | every check of `tests/spec/runtime/*.json` for both themes: desktop opaque / translucent / opaque again, then the tablet, phone and phone-nonfloating emulation; the syntax and Mermaid dumps | about 20 min |
 | `... --self-test` | the runner's negative tests (`tests/runtime/self-test-spec.json` and the syntax / Mermaid cases in `run.mjs`): each case declares PASS or FAIL | about 12 min |
-| the same in an `OBSIDIAN_FRAME=custom` instance | the custom-frame checks only (title bar), desktop | about 2 min |
+| the same in an `OBSIDIAN_FRAME=custom` instance | the custom-frame checks only (title bar), desktop | under 1 min |
 
 - Statuses: PASS, PASS (EMULATED) (tablet / phone emulation; never a device result), FAIL, DIFF (syntax
   fidelity), UNSUPPORTED (Mermaid kinds the theme does not colour). The exit status is 1 when anything FAILs.
