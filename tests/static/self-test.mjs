@@ -151,6 +151,15 @@ const CASES = [
     mutate: (r) => edit(r, "tests/spec/runtime/desktop.json", '"token": "--ink-note-list-bar-background"', '"token": "--ink-note-list-background"') },
   { name: "check names an unknown pseudo-element", fail: /^FAIL S6 runtime checks are well formed/m,
     mutate: (r) => edit(r, "tests/spec/runtime/desktop.json", '"pseudo": "::before"', '"pseudo": ":before"') },
+  // --- S8: the distributed files (step 11E) ---
+  { name: "a plugin-only field in the theme manifest (id)", fail: /^FAIL S8 solarized-dark manifest has no field outside Obsidian's theme manifest/m,
+    mutate: (r) => edit(r, "src/manifests/solarized-dark.json", '"author": "TBD"', '"author": "TBD",\n  "id": "solarized-dark"') },
+  { name: "the manifest loses its author", fail: /^FAIL S8 kanagawa-dragon manifest has name, version, minAppVersion, author as strings/m,
+    mutate: (r) => edit(r, "src/manifests/kanagawa-dragon.json", ',\n  "author": "TBD"', "") },
+  { name: "a version that is not x.y.z", fail: /^FAIL S8 solarized-dark manifest version is semver/m,
+    mutate: (r) => edit(r, "src/manifests/solarized-dark.json", '"version": "0.0.0"', '"version": "0.1"') },
+  { name: "a url() that fetches from the network", fail: /^FAIL S8 kanagawa-dragon no url\(\) other than data: URIs/m,
+    mutate: (r) => appendTo(r, "src/common/components/navigation.css", "\n.theme-dark .status-bar {\n  background-image: url(\"https://example.com/a.png\");\n}\n") },
 ];
 
 let failures = 0;
