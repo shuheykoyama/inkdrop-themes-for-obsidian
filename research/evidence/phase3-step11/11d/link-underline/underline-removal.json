@@ -1,0 +1,66 @@
+{
+  "WITH solarized-dark | source": {
+    "linkText": "underline",
+    "linkMark": "underline",
+    "url": "underline",
+    "wikiText": "underline",
+    "wikiBracket": "none",
+    "liveUnderline": "(none found)"
+  },
+  "WITH solarized-dark | live": {
+    "linkText": "none",
+    "linkMark": "(none found)",
+    "url": "(none found)",
+    "wikiText": "none",
+    "wikiBracket": "none",
+    "liveUnderline": "underline"
+  },
+  "NORULE solarized-dark | source": {
+    "linkText": "none",
+    "linkMark": "none",
+    "url": "underline",
+    "wikiText": "none",
+    "wikiBracket": "none",
+    "liveUnderline": "(none found)"
+  },
+  "NORULE solarized-dark | live": {
+    "linkText": "none",
+    "linkMark": "(none found)",
+    "url": "(none found)",
+    "wikiText": "none",
+    "wikiBracket": "none",
+    "liveUnderline": "underline"
+  },
+  "WITH kanagawa-dragon | source": {
+    "linkText": "underline",
+    "linkMark": "underline",
+    "url": "underline",
+    "wikiText": "underline",
+    "wikiBracket": "none",
+    "liveUnderline": "(none found)"
+  },
+  "WITH kanagawa-dragon | live": {
+    "linkText": "none",
+    "linkMark": "(none found)",
+    "url": "(none found)",
+    "wikiText": "none",
+    "wikiBracket": "none",
+    "liveUnderline": "underline"
+  },
+  "NORULE kanagawa-dragon | source": {
+    "linkText": "none",
+    "linkMark": "none",
+    "url": "underline",
+    "wikiText": "none",
+    "wikiBracket": "none",
+    "liveUnderline": "(none found)"
+  },
+  "NORULE kanagawa-dragon | live": {
+    "linkText": "none",
+    "linkMark": "(none found)",
+    "url": "(none found)",
+    "wikiText": "none",
+    "wikiBracket": "none",
+    "liveUnderline": "underline"
+  }
+}

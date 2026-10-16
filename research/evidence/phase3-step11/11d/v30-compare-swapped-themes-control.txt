@@ -1,0 +1,47 @@
+solarized-dark   sidebar~ribbon                             [8.0, 53.0, 64.0]    [16.0, 16.0, 14.0]   dE2000=16.74 FAIL
+solarized-dark   note-list~left-dock                        [1.0, 45.0, 56.0]    [24.0, 22.0, 22.0]   dE2000=16.14 FAIL
+solarized-dark   note-list~left-tab-strip                   [1.0, 45.0, 56.0]    [24.0, 22.0, 22.0]   dE2000=16.14 FAIL
+solarized-dark   note-list~root-tab-strip                   [1.0, 45.0, 56.0]    [24.0, 22.0, 22.0]   dE2000=16.14 FAIL
+solarized-dark   note-list~status-bar                       [1.0, 45.0, 56.0]    [24.0, 22.0, 22.0]   dE2000=16.14 FAIL
+solarized-dark   editor~active-tab                          [1.0, 33.0, 41.0]    [30.0, 29.0, 26.0]   dE2000=12.53 FAIL
+solarized-dark   editor~view-header                         [1.0, 33.0, 41.0]    [30.0, 29.0, 26.0]   dE2000=12.53 FAIL
+solarized-dark   editor~editor (Live Preview)               [1.0, 33.0, 41.0]    [30.0, 29.0, 26.0]   dE2000=12.53 FAIL
+solarized-dark   editor~editor (Source mode)                [1.0, 33.0, 41.0]    [30.0, 29.0, 26.0]   dE2000=12.53 FAIL
+solarized-dark   code-block~code-block (Live Preview)       [1.0, 38.0, 47.0]    [27.0, 25.0, 24.0]   dE2000=13.86 FAIL
+solarized-dark   code-block~code-block (Source mode)        [1.0, 38.0, 47.0]    [27.0, 25.0, 24.0]   dE2000=13.86 FAIL
+solarized-dark   selected-note~open-file                    [9.0, 64.0, 87.0]    [31.0, 42.0, 57.0]   dE2000=10.81 FAIL
+solarized-dark   selected-note~open-file (list focused)     [9.0, 64.0, 87.0]    [31.0, 42.0, 57.0]   dE2000=10.81 FAIL
+solarized-dark   focus-bar~focus-bar                        [21.0, 95.0, 136.0]  [43.0, 72.0, 93.0]   dE2000=9.55  FAIL
+solarized-dark   hovered-row~hovered-row                    [8.0, 53.0, 64.0]    [39.0, 38.0, 38.0]   dE2000=14.76 DIFF (decided)
+solarized-dark   editor~editor (line numbers on)            [1.0, 33.0, 41.0]    [30.0, 29.0, 26.0]   dE2000=12.53 FAIL
+solarized-dark   active-line~active-line                    [1.0, 39.0, 48.0]    [32.6, 31.4, 29.4]   dE2000=13.3  FAIL
+solarized-dark   active-gutter~active-gutter                [1.0, 39.0, 48.0]    [33.0, 31.0, 29.0]   dE2000=13.82 FAIL
+solarized-dark   gutter~gutter                              [1.0, 33.0, 41.0]    [30.0, 29.0, 26.0]   dE2000=12.53 FAIL
+solarized-dark   code-block~code-block (line numbers on)    [1.0, 38.0, 47.0]    [27.0, 25.0, 24.0]   dE2000=13.86 FAIL
+solarized-dark   preview~reading-view                       [1.0, 33.0, 41.0]    [30.0, 29.0, 26.0]   dE2000=12.53 FAIL
+solarized-dark   preview-code-block~reading-code-block      [1.0, 38.0, 47.0]    [27.0, 25.0, 24.0]   dE2000=13.86 FAIL
+kanagawa-dragon  sidebar~ribbon                             [16.0, 16.0, 14.0]   [8.0, 53.0, 64.0]    dE2000=16.74 FAIL
+kanagawa-dragon  note-list~left-dock                        [24.0, 22.0, 22.0]   [1.0, 45.0, 56.0]    dE2000=16.14 FAIL
+kanagawa-dragon  note-list~left-tab-strip                   [24.0, 22.0, 22.0]   [1.0, 45.0, 56.0]    dE2000=16.14 FAIL
+kanagawa-dragon  note-list~root-tab-strip                   [24.0, 22.0, 22.0]   [1.0, 45.0, 56.0]    dE2000=16.14 FAIL
+kanagawa-dragon  note-list~status-bar                       [24.0, 22.0, 22.0]   [1.0, 45.0, 56.0]    dE2000=16.14 FAIL
+kanagawa-dragon  editor~active-tab                          [30.0, 29.0, 26.0]   [1.0, 33.0, 41.0]    dE2000=12.53 FAIL
+kanagawa-dragon  editor~view-header                         [30.0, 29.0, 26.0]   [1.0, 33.0, 41.0]    dE2000=12.53 FAIL
+kanagawa-dragon  editor~editor (Live Preview)               [30.0, 29.0, 26.0]   [1.0, 33.0, 41.0]    dE2000=12.53 FAIL
+kanagawa-dragon  editor~editor (Source mode)                [30.0, 29.0, 26.0]   [1.0, 33.0, 41.0]    dE2000=12.53 FAIL
+kanagawa-dragon  code-block~code-block (Live Preview)       [27.0, 25.0, 24.0]   [1.0, 38.0, 47.0]    dE2000=13.86 FAIL
+kanagawa-dragon  code-block~code-block (Source mode)        [27.0, 25.0, 24.0]   [1.0, 38.0, 47.0]    dE2000=13.86 FAIL
+kanagawa-dragon  selected-note~open-file                    [31.0, 42.0, 58.0]   [9.0, 64.0, 87.0]    dE2000=11.02 FAIL
+kanagawa-dragon  selected-note~open-file (list focused)     [31.0, 42.0, 58.0]   [9.0, 64.0, 87.0]    dE2000=11.02 FAIL
+kanagawa-dragon  focus-bar~focus-bar                        [42.0, 71.0, 93.0]   [22.0, 94.0, 136.0]  dE2000=9.47  FAIL
+kanagawa-dragon  hovered-row~hovered-row                    [16.0, 16.0, 14.0]   [18.0, 59.0, 69.0]   dE2000=17.77 DIFF (decided)
+kanagawa-dragon  editor~editor (line numbers on)            [30.0, 29.0, 26.0]   [1.0, 33.0, 41.0]    dE2000=12.53 FAIL
+kanagawa-dragon  active-line~active-line                    [33.0, 31.0, 29.0]   [0.6, 38.5, 48.0]    dE2000=13.78 FAIL
+kanagawa-dragon  active-gutter~active-gutter                [33.0, 31.0, 29.0]   [1.0, 39.0, 48.0]    dE2000=13.82 FAIL
+kanagawa-dragon  gutter~gutter                              [30.0, 29.0, 26.0]   [1.0, 33.0, 41.0]    dE2000=12.53 FAIL
+kanagawa-dragon  code-block~code-block (line numbers on)    [27.0, 25.0, 24.0]   [1.0, 38.0, 47.0]    dE2000=13.86 FAIL
+kanagawa-dragon  preview~reading-view                       [30.0, 29.0, 26.0]   [1.0, 33.0, 41.0]    dE2000=12.53 FAIL
+kanagawa-dragon  preview-code-block~reading-code-block      [27.0, 25.0, 24.0]   [1.0, 38.0, 47.0]    dE2000=13.86 FAIL
+
+44 pairs: 2 DIFF (decided), 42 FAIL
+swap exit 1

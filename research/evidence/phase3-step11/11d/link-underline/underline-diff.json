@@ -1,0 +1,93 @@
+[
+  [
+    "Sample note.md",
+    "cm-formatting cm-formatting-link cm-link|[",
+    "none",
+    "->",
+    "underline"
+  ],
+  [
+    "Sample note.md",
+    "cm-link|link",
+    "none",
+    "->",
+    "underline"
+  ],
+  [
+    "Sample note.md",
+    "cm-formatting cm-formatting-link cm-link|]",
+    "none",
+    "->",
+    "underline"
+  ],
+  [
+    "Sample note.md",
+    "cm-hmd-internal-link|Other note",
+    "none",
+    "->",
+    "underline"
+  ],
+  [
+    "Markdown elements.md",
+    "cm-formatting cm-formatting-link cm-link|[",
+    "none",
+    "->",
+    "underline"
+  ],
+  [
+    "Markdown elements.md",
+    "cm-link|link",
+    "none",
+    "->",
+    "underline"
+  ],
+  [
+    "Markdown elements.md",
+    "cm-formatting cm-formatting-link cm-link|]",
+    "none",
+    "->",
+    "underline"
+  ],
+  [
+    "Markdown elements.md",
+    "cm-hmd-internal-link|Other note",
+    "none",
+    "->",
+    "underline"
+  ],
+  [
+    "Markdown elements.md",
+    "cm-hmd-internal-link|Unresolved note",
+    "none",
+    "->",
+    "underline"
+  ],
+  [
+    "Editor chrome.md",
+    "cm-formatting cm-formatting-link cm-link cm-list-1|[",
+    "none",
+    "->",
+    "underline"
+  ],
+  [
+    "Editor chrome.md",
+    "cm-link cm-list-1|link",
+    "none",
+    "->",
+    "underline"
+  ],
+  [
+    "Editor chrome.md",
+    "cm-formatting cm-formatting-link cm-link cm-list-1|]",
+    "none",
+    "->",
+    "underline"
+  ],
+  [
+    "Editor chrome.md",
+    "cm-hmd-internal-link cm-list-1|Other note",
+    "none",
+    "->",
+    "underline"
+  ]
+]

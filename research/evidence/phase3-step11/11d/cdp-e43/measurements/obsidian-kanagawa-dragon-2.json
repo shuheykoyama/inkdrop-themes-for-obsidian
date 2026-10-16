@@ -1,0 +1,51 @@
+{
+ "capture": {
+  "method": "CDP Page.captureScreenshot, Emulation.setDeviceMetricsOverride 1024x800 deviceScaleFactor 1 (the V-30 method)",
+  "capturedAt": "2026-10-16T05:46:16.306Z",
+  "file": "screenshots/obsidian-kanagawa-dragon-2.png",
+  "pixels": [
+   1024,
+   800
+  ],
+  "sha256": "160f926ff9d7abe99312670374104b2e6677e0aeb6edd234284e8f78e86c43d2",
+  "theme": "kanagawa-dragon",
+  "state": "2",
+  "spec": {
+   "view": "live",
+   "focus": "explorer",
+   "lines": false
+  }
+ },
+ "setup": {
+  "parsed": true,
+  "theme": "DEV kanagawa-dragon (unnamed)",
+  "themeCssLength": 138639,
+  "viewport": [
+   1024,
+   800,
+   1
+  ],
+  "mode": "source",
+  "source": false,
+  "lineNumbers": false,
+  "activeLeafType": "file-explorer",
+  "hover": null,
+  "electron": "43.7.7",
+  "chrome": "150.0.7871.250",
+  "appVersion": "1.14.4"
+ },
+ "after": {
+  "body": [
+   "is-floating-nav",
+   "is-focused",
+   "is-frameless",
+   "is-hidden-frameless",
+   "mod-macos",
+   "theme-dark"
+  ],
+  "activeElement": "theme-dark mod-macos is-frameless is-hidden-frameless obsidian-app show-inline-t",
+  "hasFocus": true,
+  "selection": null,
+  "hovered": null
+ }
+}

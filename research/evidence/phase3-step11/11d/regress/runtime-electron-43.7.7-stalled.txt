@@ -1,0 +1,10 @@
+<repo>/tests/runtime/lib/cdp.mjs:33
+    const timeout = new Promise((_, reject) => { timer = setTimeout(() => reject(new Error(`page did not answer within ${timeoutMs / 1000} s`)), timeoutMs); });
+                                                                                 ^
+
+Error: page did not answer within 180 s
+    at Timeout.<anonymous> (<repo>/tests/runtime/lib/cdp.mjs:33:82)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7)
+
+Node.js v22.22.0

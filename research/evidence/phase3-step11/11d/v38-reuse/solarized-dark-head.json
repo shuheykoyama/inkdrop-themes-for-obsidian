@@ -1,0 +1,2118 @@
+{
+  "body": [
+    "auto-full-screen",
+    "is-floating-nav",
+    "is-focused",
+    "is-frameless",
+    "is-hidden-frameless",
+    "is-translucent",
+    "mod-macos",
+    "obsidian-app",
+    "show-inline-title",
+    "show-ribbon",
+    "show-view-header",
+    "theme-dark"
+  ],
+  "theme": "DEV solarized-dark (unnamed)",
+  "out": {
+    "ribbon": [
+      {
+        "point": [
+          8,
+          282
+        ],
+        "chain": [
+          [
+            "div.mod-primary.side-dock-ribbon.workspace-ribbon",
+            "rgba(0, 45, 56, 0.5)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      },
+      {
+        "point": [
+          22,
+          460
+        ],
+        "chain": [
+          [
+            "div.mod-primary.side-dock-ribbon.workspace-ribbon",
+            "rgba(0, 45, 56, 0.5)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      },
+      {
+        "point": [
+          36,
+          638
+        ],
+        "chain": [
+          [
+            "div.mod-primary.side-dock-ribbon.workspace-ribbon",
+            "rgba(0, 45, 56, 0.5)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      }
+    ],
+    "left-tabstrip": [
+      {
+        "point": [
+          182,
+          8
+        ],
+        "chain": [
+          [
+            "div.workspace-tab-header-spacer",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-tab-header-container",
+            "rgba(0, 33, 41, 0.7)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-top.mod-top-left-space.workspace-tabs",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-horizontal.mod-left-split.mod-primary-split.mod-sidedock.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      },
+      {
+        "point": [
+          220,
+          20
+        ],
+        "chain": [
+          [
+            "div.workspace-tab-header-spacer",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-tab-header-container",
+            "rgba(0, 33, 41, 0.7)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-top.mod-top-left-space.workspace-tabs",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-horizontal.mod-left-split.mod-primary-split.mod-sidedock.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      },
+      {
+        "point": [
+          258,
+          32
+        ],
+        "chain": [
+          [
+            "div.workspace-tab-header-spacer",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-tab-header-container",
+            "rgba(0, 33, 41, 0.7)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-top.mod-top-left-space.workspace-tabs",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-horizontal.mod-left-split.mod-primary-split.mod-sidedock.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      }
+    ],
+    "left-dock": [
+      {
+        "point": [
+          62,
+          202
+        ],
+        "chain": [
+          [
+            "div.is-clickable.nav-file-title.tappable.tree-item-self",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.nav-file.tree-item",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.nav-files-container.node-insert-event",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-leaf-content",
+            "rgba(0, 33, 41, 0.7)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-leaf",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-tab-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-top.mod-top-left-space.workspace-tabs",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-horizontal.mod-left-split.mod-primary-split.mod-sidedock.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      },
+      {
+        "point": [
+          170,
+          410
+        ],
+        "chain": [
+          [
+            "div.nav-files-container.node-insert-event",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-leaf-content",
+            "rgba(0, 33, 41, 0.7)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-leaf",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-tab-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-top.mod-top-left-space.workspace-tabs",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-horizontal.mod-left-split.mod-primary-split.mod-sidedock.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      },
+      {
+        "point": [
+          278,
+          618
+        ],
+        "chain": [
+          [
+            "div.nav-files-container.node-insert-event",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-leaf-content",
+            "rgba(0, 33, 41, 0.7)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-leaf",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-tab-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-top.mod-top-left-space.workspace-tabs",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-horizontal.mod-left-split.mod-primary-split.mod-sidedock.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      }
+    ],
+    "vault-profile": [
+      {
+        "point": [
+          132,
+          670
+        ],
+        "chain": [
+          [
+            "div.workspace-drawer-vault-switcher",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-sidedock-vault-profile",
+            "rgba(0, 33, 41, 0.7)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-horizontal.mod-left-split.mod-primary-split.mod-sidedock.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      },
+      {
+        "point": [
+          185,
+          677
+        ],
+        "chain": [
+          [
+            "div.workspace-drawer-vault-switcher",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-sidedock-vault-profile",
+            "rgba(0, 33, 41, 0.7)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-horizontal.mod-left-split.mod-primary-split.mod-sidedock.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      },
+      {
+        "point": [
+          238,
+          684
+        ],
+        "chain": [
+          [
+            "div.workspace-sidedock-vault-profile",
+            "rgba(0, 33, 41, 0.7)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-horizontal.mod-left-split.mod-primary-split.mod-sidedock.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      }
+    ],
+    "root-tabstrip": [
+      {
+        "point": [
+          562,
+          8
+        ],
+        "chain": [
+          [
+            "div.workspace-tab-header-spacer",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-tab-header-container",
+            "rgba(0, 33, 41, 0.7)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-active.mod-top.workspace-tabs",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-root.mod-vertical.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      },
+      {
+        "point": [
+          725,
+          20
+        ],
+        "chain": [
+          [
+            "div.workspace-tab-header-spacer",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-tab-header-container",
+            "rgba(0, 33, 41, 0.7)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-active.mod-top.workspace-tabs",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-root.mod-vertical.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      },
+      {
+        "point": [
+          888,
+          32
+        ],
+        "chain": [
+          [
+            "div.workspace-tab-header-spacer",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-tab-header-container",
+            "rgba(0, 33, 41, 0.7)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-active.mod-top.workspace-tabs",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-root.mod-vertical.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      }
+    ],
+    "editor": [
+      {
+        "point": [
+          852,
+          262
+        ],
+        "chain": [
+          [
+            "div.metadata-content",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.metadata-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.cm-sizer",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.cm-scroller",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.cm-editor.ͼ1.ͼ2",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.cm-s-obsidian.is-folding.is-live-preview.is-readable-line-width.markdown-source-view.mod-cm6.node-insert-event.show-properties",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.view-content",
+            "rgba(0, 33, 41, 0.9)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-leaf-content",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-active.workspace-leaf",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-tab-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-active.mod-top.workspace-tabs",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-root.mod-vertical.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      },
+      {
+        "point": [
+          890,
+          455
+        ],
+        "chain": [
+          [
+            "div.HyperMD-header.HyperMD-header-2.cm-line",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.cm-content.cm-lineWrapping",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.cm-contentContainer",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.cm-sizer",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.cm-scroller",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.cm-editor.ͼ1.ͼ2",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.cm-s-obsidian.is-folding.is-live-preview.is-readable-line-width.markdown-source-view.mod-cm6.node-insert-event.show-properties",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.view-content",
+            "rgba(0, 33, 41, 0.9)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-leaf-content",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-active.workspace-leaf",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-tab-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-active.mod-top.workspace-tabs",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-root.mod-vertical.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      },
+      {
+        "point": [
+          928,
+          648
+        ],
+        "chain": [
+          [
+            "div.cm-scroller",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.cm-editor.ͼ1.ͼ2",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.cm-s-obsidian.is-folding.is-live-preview.is-readable-line-width.markdown-source-view.mod-cm6.node-insert-event.show-properties",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.view-content",
+            "rgba(0, 33, 41, 0.9)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-leaf-content",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-active.workspace-leaf",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-tab-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-active.mod-top.workspace-tabs",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-root.mod-vertical.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      }
+    ],
+    "right-dock": [
+      {
+        "point": [
+          962,
+          242
+        ],
+        "chain": [
+          [
+            "div.node-insert-event.view-content",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-leaf-content",
+            "rgba(0, 33, 41, 0.7)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-leaf",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-tab-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-top.mod-top-right-space.workspace-tabs",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-horizontal.mod-right-split.mod-secondary-split.mod-sidedock.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      },
+      {
+        "point": [
+          1070,
+          440
+        ],
+        "chain": [
+          [
+            "div.node-insert-event.view-content",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-leaf-content",
+            "rgba(0, 33, 41, 0.7)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-leaf",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-tab-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-top.mod-top-right-space.workspace-tabs",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-horizontal.mod-right-split.mod-secondary-split.mod-sidedock.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      },
+      {
+        "point": [
+          1178,
+          638
+        ],
+        "chain": [
+          [
+            "div.node-insert-event.view-content",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-leaf-content",
+            "rgba(0, 33, 41, 0.7)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-leaf",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.workspace-tab-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-top.mod-top-right-space.workspace-tabs",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.mod-horizontal.mod-right-split.mod-secondary-split.mod-sidedock.workspace-split",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.is-left-sidedock-open.is-primary-sidedock-open.is-right-sidedock-open.is-secondary-sidedock-open.workspace",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.horizontal-main-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "div.app-container",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "body.auto-full-screen.is-floating-nav.is-focused.is-frameless.is-hidden-frameless.is-translucent.mod-macos.obsidian-app.show-inline-title.show-ribbon.show-view-header.theme-dark",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ],
+          [
+            "html.",
+            "rgba(0, 0, 0, 0)",
+            "none",
+            "1",
+            "none",
+            "normal",
+            "none"
+          ]
+        ]
+      }
+    ]
+  }
+}

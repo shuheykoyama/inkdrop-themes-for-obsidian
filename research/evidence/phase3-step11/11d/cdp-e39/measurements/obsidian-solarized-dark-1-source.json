@@ -1,0 +1,51 @@
+{
+ "capture": {
+  "method": "CDP Page.captureScreenshot, Emulation.setDeviceMetricsOverride 1024x800 deviceScaleFactor 1 (the V-30 method)",
+  "capturedAt": "2026-10-16T05:46:41.705Z",
+  "file": "screenshots/obsidian-solarized-dark-1-source.png",
+  "pixels": [
+   1024,
+   800
+  ],
+  "sha256": "3a3c033c7cf79b1586a1d9878c290769235b9c548aa9c068c6450219e16c95b8",
+  "theme": "solarized-dark",
+  "state": "1-source",
+  "spec": {
+   "view": "source",
+   "focus": "editor",
+   "lines": false
+  }
+ },
+ "setup": {
+  "parsed": true,
+  "theme": "DEV solarized-dark (unnamed)",
+  "themeCssLength": 136151,
+  "viewport": [
+   1024,
+   800,
+   1
+  ],
+  "mode": "source",
+  "source": true,
+  "lineNumbers": false,
+  "activeLeafType": "markdown",
+  "hover": null,
+  "electron": "39.5.1",
+  "chrome": "142.0.7444.265",
+  "appVersion": "1.14.4"
+ },
+ "after": {
+  "body": [
+   "is-floating-nav",
+   "is-focused",
+   "is-frameless",
+   "is-hidden-frameless",
+   "mod-macos",
+   "theme-dark"
+  ],
+  "activeElement": "cm-content cm-lineWrapping",
+  "hasFocus": true,
+  "selection": "",
+  "hovered": null
+ }
+}
