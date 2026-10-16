@@ -1,0 +1,31 @@
+{
+  "_comment": "Step 11D: flat background regions of the Inkdrop V-30 captures (research/evidence/phase2-p0/inkdrop/<sd|kd>-<state>.png, CDP, 1024x800 CSS px, scale 1) and of the Obsidian captures made the same way (tests/visual/capture-obsidian-cdp.mjs). Rectangles are CSS px = image px [x, y, w, h]. Surfaces are paired by Q-D1 (sidebar <-> ribbon; note list <-> docks, tab strips and status bar; editor <-> editor, view header and active tab) and by the state colours they show. expect 'same': the colours must agree (CIEDE2000 <= limit); 'decided': a recorded decision makes them differ on purpose (the 'decision' names it), so a difference is reported as DIFF (decided), never as PASS.",
+  "limit_de2000": 1.0,
+  "max_sd": 1.0,
+  "themes": { "solarized-dark": "sd", "kanagawa-dragon": "kd" },
+  "inkdrop_states": { "1": "1-default", "2": "2-notelist-focus", "3": "3-sidebar-hover", "4": "4-editor-selection", "5": "5-preview" },
+  "pairs": [
+    { "id": "sidebar~ribbon", "inkdrop": ["1", [10, 460, 180, 290]], "obsidian": ["1-live", [6, 260, 30, 500]], "expect": "same", "basis": "Q-D1: ribbon = Inkdrop sidebar" },
+    { "id": "note-list~left-dock", "inkdrop": ["1", [210, 230, 280, 540]], "obsidian": ["1-live", [60, 320, 270, 420]], "expect": "same", "basis": "Q-D1: docks = note list" },
+    { "id": "note-list~left-tab-strip", "inkdrop": ["1", [210, 230, 280, 540]], "obsidian": ["1-live", [190, 8, 110, 24]], "expect": "same", "basis": "Q-D1: dock tab strips = note list" },
+    { "id": "note-list~root-tab-strip", "inkdrop": ["1", [210, 230, 280, 540]], "obsidian": ["1-live", [600, 6, 340, 26]], "expect": "same", "basis": "Q-D1: centre tab strip = note list" },
+    { "id": "note-list~status-bar", "inkdrop": ["1", [210, 230, 280, 540]], "obsidian": ["1-live", [645, 780, 6, 14]], "expect": "same", "basis": "Q-D1: status bar = note list" },
+    { "id": "editor~active-tab", "inkdrop": ["1", [520, 650, 490, 140]], "obsidian": ["1-live", [470, 12, 50, 18]], "expect": "same", "basis": "Q-D1: active tab = editor" },
+    { "id": "editor~view-header", "inkdrop": ["1", [520, 650, 490, 140]], "obsidian": ["1-live", [520, 45, 400, 26]], "expect": "same", "basis": "Q-D1: view header = editor" },
+    { "id": "editor~editor (Live Preview)", "inkdrop": ["1", [520, 650, 490, 140]], "obsidian": ["1-live", [600, 105, 380, 40]], "expect": "same", "basis": "Q-D1: editor = editor" },
+    { "id": "editor~editor (Source mode)", "inkdrop": ["1", [520, 650, 490, 140]], "obsidian": ["1-source", [600, 105, 380, 40]], "expect": "same", "basis": "Q-D1: editor = editor" },
+    { "id": "code-block~code-block (Live Preview)", "inkdrop": ["1", [720, 445, 280, 60]], "obsidian": ["1-live", [650, 728, 250, 40]], "expect": "same", "basis": "step 6: editor code block = --md-codeblock-background-color" },
+    { "id": "code-block~code-block (Source mode)", "inkdrop": ["1", [720, 445, 280, 60]], "obsidian": ["1-source", [700, 640, 250, 70]], "expect": "same", "basis": "step 6: editor code block = --md-codeblock-background-color" },
+    { "id": "selected-note~open-file", "inkdrop": ["1", [330, 122, 160, 8]], "obsidian": ["1-live", [180, 277, 140, 16]], "expect": "same", "basis": "step 5: open file = --note-list-view-item-selected-background" },
+    { "id": "selected-note~open-file (list focused)", "inkdrop": ["2", [330, 122, 160, 8]], "obsidian": ["2", [180, 277, 140, 16]], "expect": "same", "basis": "step 5: open file = --note-list-view-item-selected-background" },
+    { "id": "focus-bar~focus-bar", "inkdrop": ["2", [201, 125, 3, 70]], "obsidian": ["2", [57, 277, 3, 16]], "expect": "same", "basis": "step 5: 5 px bar = --note-list-view-item-active-background while the list has focus" },
+    { "id": "hovered-row~hovered-row", "inkdrop": ["3", [100, 252, 70, 16]], "obsidian": ["3", [160, 250, 160, 16]], "expect": "decided", "decision": "research/14 §6.8 decision 2: the File Explorer row hover keeps Obsidian's default (Inkdrop's note-list hover is not observed, V-33 in 11G; Inkdrop's sidebar rows do not change on hover)", "basis": "step 5 (research/14 §6.8)" },
+    { "id": "editor~editor (line numbers on)", "inkdrop": ["4", [540, 650, 470, 140]], "obsidian": ["4", [600, 105, 380, 40]], "expect": "same", "basis": "Q-D1: editor = editor" },
+    { "id": "active-line~active-line", "inkdrop": ["4", [900, 194, 110, 12]], "obsidian": ["4", [700, 333, 280, 16]], "expect": "same", "basis": "Q-D23: --editor-active-line-background-color over the editor" },
+    { "id": "active-gutter~active-gutter", "inkdrop": ["4", [502, 194, 8, 12]], "obsidian": ["4", [378, 333, 3, 16]], "expect": "same", "basis": "Q-D23: --editor-active-line-gutter-background-color" },
+    { "id": "gutter~gutter", "inkdrop": ["4", [502, 300, 6, 300]], "obsidian": ["4", [378, 400, 3, 120]], "expect": "same", "basis": "Q-D23: --editor-gutter-background-color (transparent)" },
+    { "id": "code-block~code-block (line numbers on)", "inkdrop": ["4", [740, 445, 270, 60]], "obsidian": ["4", [700, 640, 250, 70]], "expect": "same", "basis": "step 6" },
+    { "id": "preview~reading-view", "inkdrop": ["5", [600, 745, 400, 45]], "obsidian": ["5", [600, 105, 380, 40]], "expect": "same", "basis": "Q-D1 / Q-D14: the preview surface" },
+    { "id": "preview-code-block~reading-code-block", "inkdrop": ["5", [700, 548, 300, 85]], "obsidian": ["5", [650, 685, 250, 60]], "expect": "same", "basis": "step 6: --mde-preview-codeblock-background-color" }
+  ]
+}

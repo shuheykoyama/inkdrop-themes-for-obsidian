@@ -79,5 +79,74 @@ with tempfile.TemporaryDirectory() as d:
         ok = status == want_status and want_text in out
         print(f"{'PASS' if ok else 'FAIL'} visual self-test: {name}" + ("" if ok else f" -- exit {status}; {out.strip()[-300:]}"))
         failures += not ok
-print(f"\n{failures} visual self-test case(s) FAILED" if failures else f"\nall {len(CASES)} visual self-test cases behaved as expected")
+
+# ---------- tests/visual/v30-compare.py (step 11D) ----------
+# Synthetic 1024x800 "captures": a flat surface with a 2 px border at x = 500, and a block of another colour.
+COMPARE = Path(__file__).resolve().parent / "v30-compare.py"
+SURF, BLOCK = (1, 33, 41), (1, 38, 47)
+
+
+def write_capture(path, surface=SURF, block=BLOCK):
+    def px(x, y):
+        if x in (500, 501):
+            return BORDER
+        if 600 <= x < 700 and 100 <= y < 200:
+            return block
+        return surface
+    raw = b"".join(b"\x00" + b"".join(bytes(px(x, y)) for x in range(1024)) for y in range(800))
+    chunk = lambda t, d: struct.pack(">I", len(d)) + t + d + struct.pack(">I", zlib.crc32(t + d) & 0xFFFFFFFF)
+    path.write_bytes(b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", 1024, 800, 8, 2, 0, 0, 0))
+                     + chunk(b"IDAT", zlib.compress(raw)) + chunk(b"IEND", b""))
+
+
+def compare(tmp, pairs, obsidian_surface=SURF, obsidian_block=BLOCK, drop_obsidian=False):
+    ink, obs = tmp / "ink", tmp / "obs"
+    ink.mkdir(exist_ok=True); obs.mkdir(exist_ok=True)
+    write_capture(ink / "sd-1-default.png")
+    target = obs / "obsidian-solarized-dark-1-live.png"
+    target.unlink(missing_ok=True)
+    if not drop_obsidian:
+        write_capture(target, obsidian_surface, obsidian_block)
+    cfg = tmp / "v30.json"
+    cfg.write_text(json.dumps({"limit_de2000": 1.0, "max_sd": 1.0, "themes": {"solarized-dark": "sd"},
+                               "inkdrop_states": {"1": "1-default"}, "pairs": pairs}))
+    res = subprocess.run([sys.executable, "-I", str(COMPARE), str(ink), str(obs), str(tmp / "v30.csv"), "--config", str(cfg)],
+                         capture_output=True, text=True)
+    return res.returncode, res.stdout + res.stderr
+
+
+def pair(expect="same", ink=(10, 10, 100, 100), obs=(10, 10, 100, 100), **extra):
+    return {"id": "p", "inkdrop": ["1", list(ink)], "obsidian": ["1-live", list(obs)], "expect": expect, "basis": "test", **extra}
+
+
+V30_CASES = [
+    # name, compare() arguments, expected exit status, text that must appear in the output
+    ("same surface colour in both captures passes", {"pairs": [pair()]}, 0, "PASS"),
+    ("a block of the same colour elsewhere in the other capture passes", {"pairs": [pair(ink=(610, 110, 50, 50), obs=(620, 120, 50, 50))]}, 0, "PASS"),
+    ("another surface colour fails (a new difference)", {"pairs": [pair()], "obsidian_surface": (7, 53, 64)}, 1, "FAIL"),
+    ("a region across the border is not flat and fails, whatever the colours", {"pairs": [pair(ink=(480, 10, 40, 40), obs=(480, 10, 40, 40))]}, 1, "FAIL (not flat"),
+    ("a region across a colour edge is not flat", {"pairs": [pair(obs=(580, 120, 60, 40))]}, 1, "FAIL (not flat"),
+    ("a decided difference is reported as DIFF (decided), not as PASS", {"pairs": [pair("decided", decision="d")], "obsidian_surface": (18, 59, 69)}, 0, "DIFF (decided)"),
+    ("a decided pair whose colours agree fails (the record no longer matches)", {"pairs": [pair("decided", decision="d")]}, 1, "FAIL (decided pair agrees)"),
+    ("a missing Obsidian capture fails", {"pairs": [pair()], "drop_obsidian": True}, 1, "FAIL (image missing)"),
+]
+
+with tempfile.TemporaryDirectory() as d:
+    tmp = Path(d)
+    for name, kw, want_status, want_text in V30_CASES:
+        status, out = compare(tmp, **kw)
+        ok = status == want_status and want_text in out
+        print(f"{'PASS' if ok else 'FAIL'} visual self-test: v30-compare: {name}" + ("" if ok else f" -- exit {status}; {out.strip()[-300:]}"))
+        failures += not ok
+    # A capture of another size is not a V-30 capture (CDP at 1024x800, scale 1): refused.
+    big = tmp / "obs" / "obsidian-solarized-dark-1-live.png"
+    write_png(big)  # the 200x100 synthetic image of the cases above
+    res = subprocess.run([sys.executable, "-I", str(COMPARE), str(tmp / "ink"), str(tmp / "obs"), str(tmp / "v30.csv"), "--config", str(tmp / "v30.json")],
+                         capture_output=True, text=True)
+    ok = res.returncode != 0 and "not the V-30 1024x800" in res.stderr
+    print(f"{'PASS' if ok else 'FAIL'} visual self-test: v30-compare: a capture that is not 1024x800 is refused")
+    failures += not ok
+
+total = len(CASES) + len(V30_CASES) + 1
+print(f"\n{failures} visual self-test case(s) FAILED" if failures else f"\nall {total} visual self-test cases behaved as expected")
 sys.exit(1 if failures else 0)
