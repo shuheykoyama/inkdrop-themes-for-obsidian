@@ -501,7 +501,7 @@
   --ink-vertical-menu-background-acrylic: hsl(var(--kanagawa-dragon-black1)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/ui.css:563 | acrylic */
 
   /* Derived, not Inkdrop tokens: Obsidian's accent takes hue, saturation and lightness separately
-     (--accent-h/-s/-l; the hue is unitless because app.css computes calc(var(--accent-h) - 1)). The three
+     (--accent-h/-s/-l; the hue is unitless because app.css 1.14.4 computes .theme-dark --color-accent-1 as calc(var(--accent-h) - 3)). The three
      numbers are the HSL triplet of --ink-primary-color (Q-D6); its alpha (SD 90%) has no counterpart in
      Obsidian's accent. tests/static/run.mjs (S1) checks them against --ink-primary-color. */
   --ink-derived-accent-h: 199; /* derived: --ink-primary-color hue */
