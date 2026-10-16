@@ -86,7 +86,8 @@
   host.style.cssText = "position: absolute; left: -10000px; top: 0;";
   const seen = new Set();
   for (const [n, b] of blocks.entries()) {
-    const head = b.code.trim().split(/\s/)[0];
+    // The diagram type is the first word after any %%{init}%% directive or %% comment lines.
+    const head = b.code.split("\n").filter((l) => !l.trim().startsWith("%%")).join("\n").trim().split(/\s/)[0];
     const want = /^(flowchart|graph)$/.test(head) ? "flowchart-v2" : head === "sequenceDiagram" ? "sequence" : null;
     if (!want || !kinds.includes(want)) {
       // Another kind: only its filter (Obsidian's inversion keeps it readable).
