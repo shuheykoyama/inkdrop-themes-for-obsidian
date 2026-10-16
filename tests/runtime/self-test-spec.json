@@ -509,6 +509,34 @@
       "selfTest": "FAIL"
     },
     {
+      "id": "self.md-source-wiki-bracket-underline",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-link-start",
+      "document": "main",
+      "property": "text-decoration-line",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "underline",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.md-source-footnote-underline",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-hmd-footnote.cm-link",
+      "document": "main",
+      "property": "text-decoration-line",
+      "state": "md-source",
+      "scrollTo": "[^1]: Footnote text",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "underline",
+      "selfTest": "FAIL"
+    },
+    {
       "id": "self.md-source-live-only-element",
       "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-table-widget th",
       "document": "main",

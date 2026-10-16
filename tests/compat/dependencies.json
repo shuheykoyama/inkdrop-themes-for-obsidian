@@ -25,7 +25,7 @@
   { "selector": ".mod-macos:not(.is-mobile) .mod-settings", "property": "--dropdown-background", "value": "transparent", "citedBy": ["src/common/components/overlays.css:18"] },
   { "selector": ".suggestion-item.is-selected", "property": "background-color", "value": "var(--background-modifier-hover)", "citedBy": ["src/common/components/overlays.css:30"] },
   { "selector": ".checkbox-container", "property": "background-color", "value": "var(--background-modifier-border-hover)", "citedBy": ["src/common/components/overlays.css:40"] },
-  { "selector": ".callout", "property": "border-color", "value": "color-mix(in oklch, var(--callout-color)", "citedBy": ["src/common/components/markdown.css:237"] },
+  { "selector": ".callout", "property": "border-color", "value": "color-mix(in oklch, var(--callout-color)", "citedBy": ["src/common/components/markdown.css:250"] },
   { "selector": ".theme-dark", "property": "--color-accent-1", "value": "calc(var(--accent-h) - 3)", "citedBy": ["src/palette/solarized-dark.css:527", "src/palette/kanagawa-dragon.css:504"] },
   { "selector": ".tree-item-self.is-active", "property": "box-shadow", "absent": true, "citedBy": ["src/common/components/navigation.css:12"] }
  ]

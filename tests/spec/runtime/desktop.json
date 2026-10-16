@@ -2062,6 +2062,48 @@
       "token": "--ink-syntax-link-color"
     },
     {
+      "id": "md.source.link-text-underline",
+      "requirement": "qd4.links",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-link:not(.cm-formatting)",
+      "document": "main",
+      "property": "text-decoration-line",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "underline"
+    },
+    {
+      "id": "md.source.link-mark-underline",
+      "requirement": "qd4.links",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-formatting-link.cm-link",
+      "document": "main",
+      "property": "text-decoration-line",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "underline"
+    },
+    {
+      "id": "md.source.internal-link-underline",
+      "requirement": "qd4.links",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-hmd-internal-link:not(.cm-hmd-embed)",
+      "document": "main",
+      "property": "text-decoration-line",
+      "state": "md-source",
+      "scrollTo": "Body with",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "underline"
+    },
+    {
       "id": "md.source.quote-text",
       "requirement": "md.blockquote",
       "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-quote:not(.cm-formatting)",

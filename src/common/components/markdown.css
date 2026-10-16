@@ -22,6 +22,19 @@
   color: var(--ink-syntax-url-color);
 }
 
+/* Link underline in Source mode (E14, E15, Q-D4): Inkdrop's editor draws .tok-link with
+   --syntax-link-text-decoration, which covers the link text and its brackets ([link] of [link](url); the URL
+   is .tok-url, underlined above through --link-external-decoration). Obsidian underlines links in Live
+   Preview only (.cm-underline); in Source mode .cm-link (the text and the brackets of a Markdown link) and
+   .cm-hmd-internal-link (the text of a wiki link) have no decoration. Wiki brackets ([[ ]]) stay as they
+   are: Inkdrop has no wiki links (step 6, research/14 §6.13). Left out: footnotes and bare [text]
+   (.cm-hmd-barelink, not links to Inkdrop's parser) and Markdown inside code blocks (.cm-hmd-codeblock, the
+   syntax colours of step 8). Live Preview keeps Obsidian's own underline. */
+.theme-dark .markdown-source-view.mod-cm6:not(.is-live-preview) .cm-link:not(.cm-hmd-barelink, .cm-hmd-codeblock),
+.theme-dark .markdown-source-view.mod-cm6:not(.is-live-preview) .cm-hmd-internal-link:not(.cm-hmd-embed, .cm-hmd-codeblock) {
+  text-decoration-line: var(--ink-syntax-link-text-decoration);
+}
+
 /* Markdown marks (E10, V-25): Inkdrop tags HeaderMark, EmphasisMark, StrikethroughMark, CodeMark, LinkMark and
    TableDelimiter as processingInstruction (.tok-processing-instruction, the app's CodeMirror token table), so
    #, **, *, ~~, backticks, code fences, link brackets, the parentheses around a URL and table pipes take that

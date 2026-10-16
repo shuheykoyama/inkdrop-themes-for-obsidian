@@ -86,6 +86,14 @@
       "refs": "research/14 §6.13"
     },
     {
+      "rule": "plugin/no-unsupported-browser-features",
+      "theme": "*",
+      "selector": ".theme-dark .markdown-source-view.mod-cm6:not(.is-live-preview) .cm-link:not(.cm-hmd-barelink, .cm-hmd-codeblock), .theme-dark .markdown-source-view.mod-cm6:not(.is-live-preview) .cm-hmd-internal-link:not(.cm-hmd-embed, .cm-hmd-codeblock)",
+      "property": "text-decoration-line",
+      "reason": "The lint's browser data reports text-decoration as only partially supported by Chrome. The declaration reproduces Inkdrop's .tok-link --syntax-link-text-decoration (underline) on links in Source mode, found missing by the step 11D comparison with V-30; the runtime checks measure it in Obsidian on Electron 39.5.1 and 43.7.7 (research/14 §6.48).",
+      "refs": "research/14 §6.48"
+    },
+    {
       "rule": "declaration-no-important",
       "theme": "*",
       "selector": ".theme-dark .markdown-rendered .mermaid > svg:is([aria-roledescription=\"flowchart-v2\"], [aria-roledescription=\"sequence\"])",
