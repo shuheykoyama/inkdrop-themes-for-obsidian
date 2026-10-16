@@ -53,8 +53,21 @@
         // Reading view renders lazily: scroll to the block, then take the first not yet used <code> of its language.
         v.currentMode.applyScroll(b.first);
         await sleep(500);
-        const code = [...v.contentEl.querySelectorAll(".markdown-rendered pre > code")].find((c) => c.classList.contains(`language-${b.lang}`) && !used.has(c));
-        if (code) { used.add(code); walk(code, 0, ranges); } else error = "code element not rendered";
+        const find = () => [...v.contentEl.querySelectorAll(".markdown-rendered pre > code")].find((c) => c.classList.contains(`language-${b.lang}`) && !used.has(c));
+        const code = find();
+        if (code) { used.add(code); walk(code, 0, ranges); } else {
+          error = "code element not rendered";
+          // Known instability (research/14 §6.54): seen once in 11E, cause not found. What the page looked like,
+          // for tracing it if it comes back. The block stays a failure: the second look (after 1.5 s) is
+          // recorded, never used.
+          const present = () => [...v.contentEl.querySelectorAll(".markdown-rendered pre > code")].map((c) => [...c.classList].find((x) => x.startsWith("language-")) ?? "(none)");
+          const diagnosis = { line: b.first, lang: b.lang, scroll: v.currentMode.getScroll?.() ?? null, present: present(), usedOfLang: [...used].filter((c) => c.classList.contains(`language-${b.lang}`)).length,
+            sections: v.contentEl.querySelectorAll(".markdown-preview-section > div").length, visibility: document.visibilityState, focus: document.hasFocus(), leafActive: app.workspace.activeLeaf === leaf };
+          await sleep(1500);
+          diagnosis.foundAfter1500ms = !!find();
+          diagnosis.presentAfter1500ms = present();
+          error += ` ${JSON.stringify(diagnosis)}`;
+        }
       } else {
         // Cursor outside the block; scroll it into view so CodeMirror draws its lines.
         v.editor.setCursor({ line: 0, ch: 0 });

@@ -368,8 +368,11 @@ if (selfTest) {
       const g = res.find((r) => r.id === `syn.${c.group.view}.classes`)?.measured?.find((x) => x.sig === c.group.sig);
       if (g?.class !== c.group.class) failed.push({ id: "syn.self-test", detail: `group ${c.group.sig} is ${g?.class ?? "missing"}, not ${c.group.class}` });
     }
+    // `measured` keeps every failing result's full detail (a missing block carries the page's state, for the
+    // known instability of the positive control, research/14 §6.54); the detail line is shortened.
     results.push({ id: "syn.self-test", theme: THEMES[0], platform: "desktop", appearance: "opaque", state: c.name, status: failed.length ? "FAIL" : "PASS",
-      detail: failed.length ? `${failed.length} FAIL: ${failed.slice(0, 2).map((r) => `${r.id} ${r.detail.slice(0, 120)}`).join(" | ")}` : `${res.length} results, none FAIL`, selfTest: c.expect });
+      detail: failed.length ? `${failed.length} FAIL: ${failed.slice(0, 2).map((r) => `${r.id} ${r.detail.slice(0, 120)}`).join(" | ")}` : `${res.length} results, none FAIL`, selfTest: c.expect,
+      measured: failed.length ? failed.map((r) => ({ id: r.id, detail: r.detail })) : undefined });
   }
   await evaluate(args.port, `(() => { document.getElementById("ink-syntax-self-test")?.remove(); return 1; })()`);
 
