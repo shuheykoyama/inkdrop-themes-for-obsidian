@@ -5,20 +5,15 @@
 //     tests/runtime/lib/mermaid.mjs (the mm.* checks), and every element's fill / stroke / color /
 //     background-color compared with the unmodified theme's dump;
 //   - the other entries (translucent strips): tests/runtime/probe.js with every desktop check of
-//     tests/spec/runtime/desktop.json measured while translucent in the default state, judged by
+//     tests/spec/runtime/desktop.json measured while translucent in the default state and frame, judged by
 //     tests/runtime/lib/checks.mjs, plus the entry's own selector and property read on its element.
 // A value that changes means the !important is needed in that state; the failing checks show whether the
 // runtime tests notice. tests/quality/lib.mjs#verdict turns that into 必要 / 冗長 / 検証不足.
-// The fixture note draws its flowchart labels as HTML; the rules for SVG text labels (htmlLabels: false) match
-// nothing there, so tests/quality/mermaid-svg-labels.md is appended to the isolated vault's copy of the note
-// for this experiment only. The unmodified theme already FAILs mm.*.flowchart-v2.colours on that block (in
-// properties SVG does not paint); such baseline FAILs are recorded, and an entry counts only the FAILs that
-// are new or changed against them.
 //
 // usage: node tests/quality/important-audit.mjs --vault <isolated vault> --out <result.json>
 // Requires the isolated instance on 127.0.0.1:9333 (tests/runtime/obsidian-isolated.sh) and a current build
-// (npm run build). Only the isolated vault's theme folder "AUDIT <theme>" and its copy of the Mermaid note are
-// written; the window is put back to opaque at the end.
+// (npm run build). Only the isolated vault's theme folder "AUDIT <theme>" is written; the window is put back to
+// opaque at the end.
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
@@ -40,7 +35,7 @@ const mermaidSpec = JSON.parse(readFileSync(path.join(repo, "tests/spec/mermaid.
 const mermaidDump = readFileSync(path.join(repo, "tests/runtime/mermaid-dump.js"), "utf8");
 const probe = readFileSync(path.join(repo, "tests/runtime/probe.js"), "utf8");
 const translucentChecks = loadChecks(runtimeSpecFiles(path.join(repo, "tests/spec")))
-  .filter((c) => (c.platform ?? ["desktop"]).includes("desktop") && c.appearance.includes("translucent") && (c.state ?? "default") === "default");
+  .filter((c) => (c.platform ?? ["desktop"]).includes("desktop") && c.appearance.includes("translucent") && (c.state ?? "default") === "default" && (c.frame ?? "hidden") === "hidden");
 const isMermaid = (e) => e.selector.includes(".mermaid > svg");
 
 // Install `css` as the isolated vault's theme "AUDIT <theme>" and wait until Obsidian has loaded exactly it.
@@ -99,18 +94,8 @@ async function measureTranslucent(themeName, css, entry) {
   return { results, own: own ? page.results["audit.own"] : null };
 }
 
-// Append the SVG-label block to the isolated vault's copy of the note (once), and wait until Obsidian reads it.
-const extra = readFileSync(path.join(repo, "tests/quality/mermaid-svg-labels.md"), "utf8");
-const notePath = path.join(args.vault, mermaidSpec.note);
-const note = readFileSync(notePath, "utf8");
-if (!note.includes(extra)) writeFileSync(notePath, `${note.trimEnd()}\n\n${extra}`);
-const noteLength = readFileSync(notePath, "utf8").length;
-if (!(await evaluate(port, `(async () => { for (let i = 0; i < 50; i++) { if ((await app.vault.cachedRead(app.vault.getAbstractFileByPath(${JSON.stringify(mermaidSpec.note)}))).length === ${noteLength}) return true; await new Promise((r) => setTimeout(r, 200)); } return false; })()`))) throw new Error("Obsidian did not pick up the appended Mermaid block");
-
-// A FAIL result as "id: detail", so a FAIL that is already there at baseline counts only when its detail changes.
-const failKey = (r) => `${r.id} [${r.view ?? ""}]: ${r.detail ?? ""}`;
 const release = await holdFocus(port);
-const report = { obsidian: null, electron: null, measuredAt: new Date().toISOString(), extraMermaid: "tests/quality/mermaid-svg-labels.md", baselineFailing: {}, entries: [] };
+const report = { obsidian: null, electron: null, measuredAt: new Date().toISOString(), entries: [] };
 try {
   for (const theme of THEMES) {
     const css = readFileSync(path.join(repo, "dist", theme, "theme.css"), "utf8");
@@ -119,14 +104,10 @@ try {
     const env = await evaluate(port, "(() => ({ app: window.require('electron').ipcRenderer.sendSync('version'), electron: (/Electron\\/([\\d.]+)/.exec(navigator.userAgent) || [])[1] }))()");
     report.obsidian = env.app; report.electron = env.electron;
     const baseMermaid = await measureMermaid();
-    // Mermaid baseline FAILs come from the appended block (see the header) and are recorded; a translucent
-    // baseline FAIL means the experiment cannot tell anything, so it stops.
-    const baseFails = Object.values(baseMermaid).flatMap((v) => v.results).filter((r) => r.status === "FAIL").map(failKey);
-    report.baselineFailing[theme] = baseFails;
-    for (const f of baseFails) console.log(`${theme.padEnd(16)} baseline FAIL (recorded): ${f.slice(0, 300)}`);
+    const baseFails = Object.values(baseMermaid).flatMap((v) => v.results).filter((r) => r.status === "FAIL").map((r) => `${r.id}: ${r.status}`);
     const baseTrans = await measureTranslucent(name, css, null);
     const baseTransFails = baseTrans.results.filter((r) => r.status === "FAIL").map((r) => r.id);
-    if (baseTransFails.length) throw new Error(`${theme}: the unmodified theme does not pass: ${baseTransFails.join(", ")}`);
+    if (baseFails.length || baseTransFails.length) throw new Error(`${theme}: the unmodified theme does not pass: ${[...baseFails, ...baseTransFails].join(", ")}`);
     for (const entry of entries) {
       const variant = withoutImportant(css, entry.selector, entry.property);
       // The entry's own declaration on the unmodified theme (translucent entries), read before the variant loads.
@@ -136,7 +117,7 @@ try {
       if (isMermaid(entry)) {
         const m = await measureMermaid();
         row.changed = mermaidDiff(baseMermaid, m);
-        row.failing = Object.values(m).flatMap((v) => v.results).filter((r) => r.status === "FAIL" && !baseFails.includes(failKey(r))).map((r) => r.id);
+        row.failing = Object.values(m).flatMap((v) => v.results).filter((r) => r.status === "FAIL").map((r) => r.id);
         // Measured: Reading view and Live Preview on the desktop, opaque. Where the rule also applies but the
         // experiment did not look: the mobile emulation (the runner measures Mermaid there too), hover previews,
         // Canvas cards, PDF export.

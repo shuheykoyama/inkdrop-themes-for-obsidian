@@ -385,6 +385,19 @@ if (selfTest) {
     { name: "light scheme leak (rule without .theme-dark)", expect: "FAIL", scheme: "light", css: '.markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] g.node rect.label-container { fill: var(--ink-mermaid-node-background-color) !important; }', only: [".colours"] },
     { name: "filter lifted on every kind (unsupported kinds lose their inversion)", expect: "FAIL", css: ".theme-dark .markdown-rendered .mermaid > svg { filter: none !important; }", only: [".unsupported"] },
     { name: "leak into a non-Mermaid image", expect: "FAIL", css: ".theme-dark .markdown-rendered img { filter: hue-rotate(90deg) !important; }", only: [".others"] },
+    // Painted properties per element type (research/14 §6.54): a change that paints differently FAILs, a change
+    // of a property the element does not paint does not. The SVG-label block (htmlLabels: false) has SVG text
+    // and an edge-label rect; the other flowcharts have HTML labels in foreignObject.
+    { name: "SVG label text fill changed (painted)", expect: "FAIL", inline: [{ selector: "g.edgeLabel text", property: "fill", value: "rgb(255, 0, 255)", priority: "important" }], only: [".colours"] },
+    { name: "SVG label text color changed, fill explicit (not painted)", expect: "PASS", inline: [{ selector: "g.edgeLabel text", property: "color", value: "rgb(255, 0, 255)", priority: "important" }] },
+    { name: "SVG label text fill: currentColor with another color (painted through color)", expect: "FAIL", inline: [{ selector: "g.edgeLabel text", property: "fill", value: "currentColor", priority: "important" }, { selector: "g.edgeLabel text", property: "color", value: "rgb(255, 0, 255)", priority: "important" }], only: [".colours"] },
+    { name: "SVG edge-label rect opacity changed (painted)", expect: "FAIL", inline: [{ selector: "g.edgeLabel rect.background", property: "opacity", value: "1", priority: "important" }], only: [".colours"] },
+    { name: "SVG edge-label rect background-color changed (not painted)", expect: "PASS", inline: [{ selector: "g.edgeLabel rect.background", property: "background-color", value: "rgb(255, 0, 255)", priority: "important" }] },
+    { name: "not-rendered rect given a size (rendered on one side only, with the theme's stroke)", expect: "FAIL", inline: [{ selector: "g.cluster-label rect.background", property: "width", value: "40px", priority: "important" }, { selector: "g.cluster-label rect.background", property: "height", value: "10px", priority: "important" }], only: [".colours"] },
+    { name: "HTML label text colour changed (painted)", expect: "FAIL", inline: [{ selector: "foreignObject span.nodeLabel", property: "color", value: "rgb(255, 0, 255)", priority: "important" }], only: [".colours"] },
+    { name: "HTML edge-label background changed (painted)", expect: "FAIL", inline: [{ selector: "foreignObject span.edgeLabel", property: "background-color", value: "rgb(255, 0, 255)", priority: "important" }], only: [".colours"] },
+    { name: "filter on node shapes (painted)", expect: "FAIL", inline: [{ selector: 'g.node rect.label-container:not([style*="fill"])', property: "filter", value: "blur(1px)", priority: "important" }], only: [".colours"] },
+    { name: "edge stroke-opacity changed (painted)", expect: "FAIL", inline: [{ selector: 'path.flowchart-link:not([style*="stroke:"])', property: "stroke-opacity", value: "0.3", priority: "important" }], only: [".colours"] },
   ];
   for (const c of mcases) {
     await evaluate(args.port, `(() => { document.getElementById("ink-mermaid-self-test")?.remove(); ${c.css ? `document.head.createEl("style", { attr: { id: "ink-mermaid-self-test" }, text: ${JSON.stringify(c.css)} });` : ""} return 1; })()`);

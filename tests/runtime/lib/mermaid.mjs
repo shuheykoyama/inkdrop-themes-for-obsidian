@@ -4,10 +4,23 @@
 //   .filter   the diagram's filter is the expected one: none (dark: the theme lifts Obsidian's inversion; light:
 //             Obsidian has none);
 //   .elements every element type the spec requires is drawn (exists, visible, with a box) in some block;
-//   .colours  every element of every block of that kind has the reference's fill, stroke, color and
-//             background-color (+-1/255, alpha +-0.01; "none" and other keywords exactly) and the two SVGs have
-//             the same elements. Dark: the reference is Inkdrop's rendering (base theme, themeVariables from
-//             the theme's tokens); light: Mermaid's defaults, as Obsidian draws them without the theme.
+//   .colours  every element of every block of that kind has the reference's values of the properties that
+//             paint it (+-1/255, alpha +-0.01, opacities +-0.01; "none" and other keywords exactly) and the two
+//             SVGs have the same elements. Dark: the reference is Inkdrop's rendering (base theme,
+//             themeVariables from the theme's tokens); light: Mermaid's defaults, as Obsidian draws them
+//             without the theme. The properties per element (research/14 §6.54):
+//               - HTML elements (the labels inside foreignObject): fill, stroke, color, background-color, opacity
+//                 (text colour and background are what an HTML label paints);
+//               - foreignObject: the same and filter;
+//               - other SVG elements: fill, stroke, opacity, fill-opacity, stroke-opacity, filter. color and
+//                 background-color are not painted by them (SVG text is painted with fill; an SVG shape has no
+//                 CSS background). color counts as well when fill or stroke is the keyword currentcolor (a
+//                 browser that reports it unresolved; Chromium reports the resolved colour, so the fill already
+//                 carries it);
+//               - a rect, circle or ellipse with a zero width, height or radius is not rendered (SVG 2) and is
+//                 not compared; their number is reported. It must be so on both sides.
+//             A dump without these fields (device kits before step 11F) is judged as before: fill, stroke, color
+//             and background-color on every element.
 // Per view: .unsupported -- the other kinds keep the filter they should have (dark: Obsidian's inversion, which
 // keeps them readable; light: none); reported UNSUPPORTED, never PASS, and FAIL when a filter differs or a kind
 // is not drawn. .others -- every other image and SVG of the note has no filter (the note's test image included).
@@ -15,10 +28,22 @@
 import { parseComputedColor, sameColor } from "../../lib/css.mjs";
 
 const PROPS = ["fill", "stroke", "color", "background-color"];
-const same = (a, b) => {
+const OPACITIES = ["opacity", "fill-opacity", "stroke-opacity"];
+const same = (p, a, b) => {
+  if (OPACITIES.includes(p) && a !== "" && b !== "" && !Number.isNaN(Number(a)) && !Number.isNaN(Number(b))) return Math.abs(Number(a) - Number(b)) <= 0.01;
   const ca = parseComputedColor(a), cb = parseComputedColor(b);
   return ca && cb ? sameColor(ca, cb) : a === b;
 };
+// The properties compared on element `a` (Obsidian's) and its reference `b`; null when neither is rendered.
+export function paintedProps(a, b) {
+  if (a.ns === undefined) return PROPS;
+  if (a.ns === "html") return [...PROPS, "opacity"];
+  if (a.tag === "foreignobject") return [...PROPS, "opacity", "filter"];
+  if (a.empty && b.empty) return null;
+  const props = ["fill", "stroke", ...OPACITIES, "filter"];
+  if ([a.fill, a.stroke, b.fill, b.stroke].some((v) => /^currentcolor$/i.test(v ?? ""))) props.push("color");
+  return props;
+}
 
 // `scheme` "dark" | "light"; `where` is spread into every result; `ok` is the status of a pass.
 export function judgeMermaid(spec, page, scheme, where, ok) {
@@ -45,22 +70,25 @@ export function judgeMermaid(spec, page, scheme, where, ok) {
       detail: [...missing, ...absent.map(([t, c]) => `no drawn ${t}${c ? `.${c.replace(/ /g, ".")}` : ""}`)].join("; ") || `${spec.required[kind].length} element types drawn` });
     // colours
     const diffs = new Map();
-    let elements = 0;
+    let elements = 0, notRendered = 0;
     for (const d of drawn) {
       if (d.actual.length !== d.reference.length) diffs.set(`block ${d.block}: ${d.actual.length} elements vs reference ${d.reference.length}`, 1);
       d.actual.forEach((a, i) => {
         const b = d.reference[i];
         elements++;
         if (!b || a.tag !== b.tag) { diffs.set(`block ${d.block}: element ${i} is ${a.tag} vs reference ${b?.tag}`, 1); return; }
-        for (const p of PROPS) {
-          if (same(a[p], b[p])) continue;
+        if (a.ns !== b.ns || (a.empty ?? false) !== (b.empty ?? false)) { diffs.set(`block ${d.block}: element ${i} (${a.tag}) is ${a.ns} ${a.empty ? "not rendered" : "rendered"} vs reference ${b.ns} ${b.empty ? "not rendered" : "rendered"}`, 1); return; }
+        const props = paintedProps(a, b);
+        if (!props) { notRendered++; return; }
+        for (const p of props) {
+          if (same(p, a[p], b[p])) continue;
           const k = `${a.tag}${a.cls ? `.${a.cls.replace(/ /g, ".")}` : ""} ${p} ${a[p]} vs ${b[p]}`;
           diffs.set(k, (diffs.get(k) ?? 0) + 1);
         }
       });
     }
     results.push({ id: `${prefix}.${kind}.colours`, requirement, ...where, status: !drawn.length || missing.length || diffs.size ? "FAIL" : ok,
-      detail: [...missing, ...[...diffs].slice(0, 4).map(([k, n]) => `${n}x ${k}`)].join("; ") + (diffs.size > 4 ? ` (+${diffs.size - 4} more)` : "") || `${drawn.length} diagram(s), ${elements} elements as the reference`,
+      detail: [...missing, ...[...diffs].slice(0, 4).map(([k, n]) => `${n}x ${k}`)].join("; ") + (diffs.size > 4 ? ` (+${diffs.size - 4} more)` : "") || `${drawn.length} diagram(s), ${elements} elements as the reference${notRendered ? ` (${notRendered} not rendered, not compared)` : ""}`,
       measured: diffs.size ? [...diffs].map(([k, n]) => ({ n, diff: k })) : undefined });
   }
   // Unsupported kinds: never PASS.

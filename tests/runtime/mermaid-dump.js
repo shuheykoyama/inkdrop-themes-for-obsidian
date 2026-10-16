@@ -73,12 +73,17 @@
   const themeVariables = Object.fromEntries(Object.entries(tokens).map(([k, t]) => { probe.style.color = `var(--ink-mermaid-${t})`; return [k, getComputedStyle(probe).color]; }));
   probe.remove();
   out.themeVariables = themeVariables;
-  const props = ["fill", "stroke", "color", "background-color"];
+  // The colours, and what else decides how a colour is painted (tests/runtime/lib/mermaid.mjs picks per element
+  // which of them are painted).
+  const props = ["fill", "stroke", "color", "background-color", "opacity", "fill-opacity", "stroke-opacity", "filter"];
+  const SVG_NS = "http://www.w3.org/2000/svg";
+  // A rect, circle or ellipse with a zero width, height or radius is not rendered at all (SVG 2, 10.2-10.4).
+  const empty = (e) => { if (!["rect", "circle", "ellipse"].includes(e.localName) || e.namespaceURI !== SVG_NS) return undefined; const b = e.getBBox(); return b.width === 0 || b.height === 0; };
   // shown: drawn with a box (markers' contents and the defs are never drawn themselves).
   const shown = (e) => { const r = e.getBoundingClientRect(); return e.checkVisibility({ opacityProperty: true, visibilityProperty: true }) && (r.width > 0 || r.height > 0); };
   const read = (svg, live) => [...svg.querySelectorAll("*")].filter((e) => !e.closest("style")).map((e) => {
     const cs = getComputedStyle(e);
-    return { tag: e.tagName.toLowerCase(), cls: [...e.classList].join(" "), shown: live ? shown(e) : undefined, ...Object.fromEntries(props.map((p) => [p, cs.getPropertyValue(p)])) };
+    return { tag: e.tagName.toLowerCase(), cls: [...e.classList].join(" "), ns: e.namespaceURI === SVG_NS ? "svg" : "html", empty: empty(e), shown: live ? shown(e) : undefined, ...Object.fromEntries(props.map((p) => [p, cs.getPropertyValue(p)])) };
   });
   // The visible text of a diagram (its <style> holds the random id, so it is left out).
   const label = (svg) => [...svg.querySelectorAll("text, foreignObject")].map((e) => e.textContent).join("|");
