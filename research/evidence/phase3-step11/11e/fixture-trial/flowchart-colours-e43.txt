@@ -1,0 +1,4 @@
+PASS mm.reading.flowchart-v2.colours [solarized-dark, desktop, opaque, mermaid] -- 2 diagram(s), 207 elements as the reference
+PASS mm.reading.flowchart-v2.colours [kanagawa-dragon, desktop, opaque, mermaid] -- 2 diagram(s), 207 elements as the reference
+mm.reading.unsupported [solarized-dark, desktop, opaque, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+mm.reading.unsupported [solarized-dark, desktop, opaque, mermaid re-render] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)

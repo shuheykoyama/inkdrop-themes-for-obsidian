@@ -1,0 +1,142 @@
+solarized-dark   opaque      body.source             5.31  AA
+solarized-dark   translucent body.source             5.17  AA
+solarized-dark   opaque      body.live               5.31  AA
+solarized-dark   translucent body.live               5.17  AA
+solarized-dark   opaque      body.reading            5.31  AA
+solarized-dark   translucent body.reading            5.17  AA
+solarized-dark   opaque      h1.source               5.06  AA
+solarized-dark   translucent h1.source               4.93  AA
+solarized-dark   opaque      h1.reading              5.06  AA
+solarized-dark   translucent h1.reading              4.93  AA
+solarized-dark   opaque      link.source             5.38  AA
+solarized-dark   translucent link.source             5.23  AA
+solarized-dark   opaque      link.live               5.38  AA
+solarized-dark   translucent link.live               5.23  AA
+solarized-dark   opaque      link.reading            5.38  AA
+solarized-dark   translucent link.reading            5.23  AA
+solarized-dark   opaque      internal-link.source    5.38  AA
+solarized-dark   translucent internal-link.source    5.23  AA
+solarized-dark   opaque      internal-link.reading   5.38  AA
+solarized-dark   translucent internal-link.reading   5.23  AA
+solarized-dark   opaque      quote.source            5.31  AA
+solarized-dark   translucent quote.source            5.17  AA
+solarized-dark   opaque      quote.reading            6.3  AA
+solarized-dark   translucent quote.reading           6.22  AA
+solarized-dark   opaque      inline-code.source      6.13  AA
+solarized-dark   translucent inline-code.source      5.97  AA
+solarized-dark   opaque      inline-code.reading     3.94  AA large
+solarized-dark   translucent inline-code.reading     3.83  AA large
+solarized-dark   opaque      codeblock.live          5.04  AA
+solarized-dark   translucent codeblock.live          4.96  AA
+solarized-dark   opaque      codeblock.reading       5.04  AA
+solarized-dark   translucent codeblock.reading       4.96  AA
+solarized-dark   opaque      table-head.reading      4.18  AA large
+solarized-dark   translucent table-head.reading      4.16  AA large
+solarized-dark   opaque      line-number             3.12  AA large
+solarized-dark   translucent line-number             3.03  AA large
+solarized-dark   opaque      line-number.active      2.92  below AA
+solarized-dark   translucent line-number.active      2.88  below AA
+solarized-dark   opaque      text-muted.editor        6.3  AA
+solarized-dark   translucent text-muted.editor       6.22  AA
+solarized-dark   opaque      text-faint.editor       2.55  below AA
+solarized-dark   translucent text-faint.editor       2.56  below AA
+solarized-dark   opaque      text-muted.dock         5.76  AA
+solarized-dark   translucent text-muted.dock         5.97  AA
+solarized-dark   opaque      text-faint.dock         2.48  below AA
+solarized-dark   translucent text-faint.dock         2.55  below AA
+solarized-dark   opaque      status-bar              5.76  AA
+solarized-dark   opaque      nav.item                4.63  AA
+solarized-dark   translucent nav.item                4.79  AA
+solarized-dark   opaque      nav.item.open           3.54  AA large
+solarized-dark   translucent nav.item.open           3.67  AA large
+solarized-dark   opaque      nav.item.open-focused   3.54  AA large
+solarized-dark   translucent nav.item.open-focused   3.67  AA large
+solarized-dark   opaque      nav.heading             2.69  below AA
+solarized-dark   translucent nav.heading             2.78  below AA
+solarized-dark   opaque      icon.ribbon             2.42  below AA
+solarized-dark   translucent icon.ribbon             2.46  below AA
+solarized-dark   opaque      icon.dock               2.48  below AA
+solarized-dark   translucent icon.dock               2.55  below AA
+solarized-dark   opaque      ui-link.editor          4.59  AA
+solarized-dark   translucent ui-link.editor          4.47  AA large
+solarized-dark   opaque      ui-text.error            3.6  AA large
+solarized-dark   translucent ui-text.error            3.5  AA large
+solarized-dark   opaque      ui-text.success         5.24  AA
+solarized-dark   translucent ui-text.success          5.1  AA
+solarized-dark   opaque      ui-text.warning         5.05  AA
+solarized-dark   translucent ui-text.warning         4.91  AA
+solarized-dark   opaque      menu                    5.95  AA
+solarized-dark   opaque      popover                 5.95  AA
+solarized-dark   opaque      tooltip                 5.95  AA
+kanagawa-dragon  opaque      body.source            10.06  AAA
+kanagawa-dragon  translucent body.source             9.72  AAA
+kanagawa-dragon  opaque      body.live              10.06  AAA
+kanagawa-dragon  translucent body.live               9.72  AAA
+kanagawa-dragon  opaque      body.reading            8.38  AAA
+kanagawa-dragon  translucent body.reading            8.12  AAA
+kanagawa-dragon  opaque      h1.source                  8  AAA
+kanagawa-dragon  translucent h1.source               7.72  AAA
+kanagawa-dragon  opaque      h1.reading                 8  AAA
+kanagawa-dragon  translucent h1.reading              7.72  AAA
+kanagawa-dragon  opaque      link.source             6.53  AA
+kanagawa-dragon  translucent link.source              6.3  AA
+kanagawa-dragon  opaque      link.live               6.53  AA
+kanagawa-dragon  translucent link.live                6.3  AA
+kanagawa-dragon  opaque      link.reading            5.54  AA
+kanagawa-dragon  translucent link.reading            5.35  AA
+kanagawa-dragon  opaque      internal-link.source    6.53  AA
+kanagawa-dragon  translucent internal-link.source     6.3  AA
+kanagawa-dragon  opaque      internal-link.reading   5.54  AA
+kanagawa-dragon  translucent internal-link.reading   5.35  AA
+kanagawa-dragon  opaque      quote.source            9.16  AAA
+kanagawa-dragon  translucent quote.source            8.85  AAA
+kanagawa-dragon  opaque      quote.reading           5.17  AA
+kanagawa-dragon  translucent quote.reading           5.05  AA
+kanagawa-dragon  opaque      inline-code.source      8.69  AAA
+kanagawa-dragon  translucent inline-code.source      8.52  AAA
+kanagawa-dragon  opaque      inline-code.reading     8.69  AAA
+kanagawa-dragon  translucent inline-code.reading     8.52  AAA
+kanagawa-dragon  opaque      codeblock.live         10.42  AAA
+kanagawa-dragon  translucent codeblock.live         10.25  AAA
+kanagawa-dragon  opaque      codeblock.reading       8.65  AAA
+kanagawa-dragon  translucent codeblock.reading       8.53  AAA
+kanagawa-dragon  opaque      table-head.reading       7.5  AAA
+kanagawa-dragon  translucent table-head.reading      7.39  AAA
+kanagawa-dragon  opaque      line-number             2.63  below AA
+kanagawa-dragon  translucent line-number             2.54  below AA
+kanagawa-dragon  opaque      line-number.active      2.55  below AA
+kanagawa-dragon  translucent line-number.active      2.48  below AA
+kanagawa-dragon  opaque      text-muted.editor       5.17  AA
+kanagawa-dragon  translucent text-muted.editor       5.05  AA
+kanagawa-dragon  opaque      text-faint.editor        2.1  below AA
+kanagawa-dragon  translucent text-faint.editor        2.1  below AA
+kanagawa-dragon  opaque      text-muted.dock         5.38  AA
+kanagawa-dragon  translucent text-muted.dock         4.99  AA
+kanagawa-dragon  opaque      text-faint.dock         2.09  below AA
+kanagawa-dragon  translucent text-faint.dock         2.09  below AA
+kanagawa-dragon  opaque      status-bar              5.38  AA
+kanagawa-dragon  opaque      nav.item               10.76  AAA
+kanagawa-dragon  translucent nav.item                9.54  AAA
+kanagawa-dragon  opaque      nav.item.open           8.68  AAA
+kanagawa-dragon  translucent nav.item.open           8.29  AAA
+kanagawa-dragon  opaque      nav.item.open-focused   8.68  AAA
+kanagawa-dragon  translucent nav.item.open-focused   8.29  AAA
+kanagawa-dragon  opaque      nav.heading             4.19  AA large
+kanagawa-dragon  translucent nav.heading             3.83  AA large
+kanagawa-dragon  opaque      icon.ribbon             2.06  below AA
+kanagawa-dragon  translucent icon.ribbon             2.08  below AA
+kanagawa-dragon  opaque      icon.dock               2.09  below AA
+kanagawa-dragon  translucent icon.dock               2.09  below AA
+kanagawa-dragon  opaque      ui-link.editor          6.51  AA
+kanagawa-dragon  translucent ui-link.editor          6.29  AA
+kanagawa-dragon  opaque      ui-text.error           4.86  AA
+kanagawa-dragon  translucent ui-text.error            4.7  AA
+kanagawa-dragon  opaque      ui-text.success         5.54  AA
+kanagawa-dragon  translucent ui-text.success         5.35  AA
+kanagawa-dragon  opaque      ui-text.warning          8.2  AAA
+kanagawa-dragon  translucent ui-text.warning         7.92  AAA
+kanagawa-dragon  opaque      menu                    9.54  AAA
+kanagawa-dragon  opaque      popover                  8.9  AAA
+kanagawa-dragon  opaque      tooltip                  8.9  AAA
+
+140 ratios; below 4.5 (normal text AA): 39

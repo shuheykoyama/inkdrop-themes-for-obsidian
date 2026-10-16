@@ -1,0 +1,498 @@
+{
+ "solarized-dark with reading": [
+  {
+   "el": "foreignobject",
+   "text": "Group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "div",
+   "text": "Group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "span.nodeLabel",
+   "text": "Group",
+   "color": "rgb(173, 184, 184)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "p",
+   "text": "Group",
+   "color": "rgb(255, 0, 0)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "g",
+   "text": "Text group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "rect.background",
+   "text": "",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgba(0, 45, 56, 0.4)"
+  },
+  {
+   "el": "text",
+   "text": "Text group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-outer-tspan.row",
+   "text": "Text group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": "Text",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": " group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  }
+ ],
+ "solarized-dark with live": [
+  {
+   "el": "foreignobject",
+   "text": "Group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "div",
+   "text": "Group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "span.nodeLabel",
+   "text": "Group",
+   "color": "rgb(173, 184, 184)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "p",
+   "text": "Group",
+   "color": "rgb(255, 0, 0)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "g",
+   "text": "Text group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "rect.background",
+   "text": "",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgba(0, 45, 56, 0.4)"
+  },
+  {
+   "el": "text",
+   "text": "Text group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-outer-tspan.row",
+   "text": "Text group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": "Text",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": " group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  }
+ ],
+ "solarized-dark without reading": [
+  {
+   "el": "foreignobject",
+   "text": "Group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "div",
+   "text": "Group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "span.nodeLabel",
+   "text": "Group",
+   "color": "rgb(173, 184, 184)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "p",
+   "text": "Group",
+   "color": "rgb(255, 0, 0)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "g",
+   "text": "Text group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "rect.background",
+   "text": "",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgba(0, 45, 56, 0.4)"
+  },
+  {
+   "el": "text",
+   "text": "Text group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-outer-tspan.row",
+   "text": "Text group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": "Text",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": " group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  }
+ ],
+ "solarized-dark without live": [
+  {
+   "el": "foreignobject",
+   "text": "Group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "div",
+   "text": "Group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "span.nodeLabel",
+   "text": "Group",
+   "color": "rgb(173, 184, 184)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "p",
+   "text": "Group",
+   "color": "rgb(255, 0, 0)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "g",
+   "text": "Text group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(173, 184, 184)"
+  },
+  {
+   "el": "rect.background",
+   "text": "",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgba(0, 45, 56, 0.4)"
+  },
+  {
+   "el": "text",
+   "text": "Text group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-outer-tspan.row",
+   "text": "Text group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": "Text",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": " group",
+   "color": "rgb(131, 148, 149)",
+   "fill": "rgb(255, 0, 0)"
+  }
+ ],
+ "kanagawa-dragon with reading": [
+  {
+   "el": "foreignobject",
+   "text": "Group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "div",
+   "text": "Group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "span.nodeLabel",
+   "text": "Group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "p",
+   "text": "Group",
+   "color": "rgb(255, 0, 0)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "g",
+   "text": "Text group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "rect.background",
+   "text": "",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(24, 22, 22, 0.5)"
+  },
+  {
+   "el": "text",
+   "text": "Text group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-outer-tspan.row",
+   "text": "Text group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": "Text",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": " group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  }
+ ],
+ "kanagawa-dragon with live": [
+  {
+   "el": "foreignobject",
+   "text": "Group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "div",
+   "text": "Group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "span.nodeLabel",
+   "text": "Group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "p",
+   "text": "Group",
+   "color": "rgb(255, 0, 0)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "g",
+   "text": "Text group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "rect.background",
+   "text": "",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(24, 22, 22, 0.5)"
+  },
+  {
+   "el": "text",
+   "text": "Text group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-outer-tspan.row",
+   "text": "Text group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": "Text",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": " group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  }
+ ],
+ "kanagawa-dragon without reading": [
+  {
+   "el": "foreignobject",
+   "text": "Group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "div",
+   "text": "Group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "span.nodeLabel",
+   "text": "Group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "p",
+   "text": "Group",
+   "color": "rgb(255, 0, 0)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "g",
+   "text": "Text group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "rect.background",
+   "text": "",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(24, 22, 22, 0.5)"
+  },
+  {
+   "el": "text",
+   "text": "Text group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-outer-tspan.row",
+   "text": "Text group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": "Text",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": " group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  }
+ ],
+ "kanagawa-dragon without live": [
+  {
+   "el": "foreignobject",
+   "text": "Group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "div",
+   "text": "Group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "span.nodeLabel",
+   "text": "Group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "p",
+   "text": "Group",
+   "color": "rgb(255, 0, 0)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "g",
+   "text": "Text group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(197, 201, 197, 0.9)"
+  },
+  {
+   "el": "rect.background",
+   "text": "",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgba(24, 22, 22, 0.5)"
+  },
+  {
+   "el": "text",
+   "text": "Text group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-outer-tspan.row",
+   "text": "Text group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": "Text",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  },
+  {
+   "el": "tspan.text-inner-tspan",
+   "text": " group",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "fill": "rgb(255, 0, 0)"
+  }
+ ]
+}

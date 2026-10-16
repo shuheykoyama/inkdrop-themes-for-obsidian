@@ -1,0 +1,39 @@
+{
+  "flowcharts": 2,
+  "foreignObject": true,
+  "10 cluster-label span/p color": {
+    "count": 2,
+    "values": [
+      "rgb(173, 184, 184)"
+    ],
+    "mermaidStyleRules": [
+      "#ID .cluster-label text{fill:#ID;",
+      "#ID .cluster-label span{color:#ID;",
+      "#ID .cluster-label span p{background-color:transparent;"
+    ]
+  },
+  "11 cluster-label text fill": {
+    "count": 0,
+    "values": [],
+    "mermaidStyleRules": [
+      "#ID .cluster-label text{fill:#ID;",
+      "#ID .cluster-label span{color:#ID;",
+      "#ID .cluster-label span p{background-color:transparent;"
+    ]
+  },
+  "14 .label text fill": {
+    "count": 0,
+    "values": [],
+    "mermaidStyleRules": [
+      "#ID .label text,#ID span{fill:#ID;color:#ID;",
+      "#ID .rough-node .label text,#ID .node .label text,#ID .image-shape .label,#ID .icon-shape .label{text-anchor:middle;"
+    ]
+  },
+  "20 edgeLabel rect fill": {
+    "count": 0,
+    "values": [],
+    "mermaidStyleRules": [
+      "#ID .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);"
+    ]
+  }
+}

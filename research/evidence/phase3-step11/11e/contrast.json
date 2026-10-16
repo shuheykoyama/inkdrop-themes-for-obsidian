@@ -1,0 +1,3969 @@
+{
+ "source": {
+  "runtime": "research/evidence/phase3-step11/11e/regress/runtime-electron-43.7.7.json",
+  "v38": "research/evidence/phase3-v38/measurements/v38-compare-gray-active.csv",
+  "obsidian": {
+   "appVersion": "1.14.4",
+   "electron": "43.7.7"
+  }
+ },
+ "ratios": [
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "body.source",
+   "label": "本文（Source mode）",
+   "text": "md.source.body",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 5.31,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "body.source",
+   "label": "本文（Source mode）",
+   "text": "md.source.body",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 5.17,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "body.live",
+   "label": "本文（Live Preview）",
+   "text": "md.live.body",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 5.31,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "body.live",
+   "label": "本文（Live Preview）",
+   "text": "md.live.body",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 5.17,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "body.reading",
+   "label": "本文（Reading view）",
+   "text": "md.reading.body",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 5.31,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "body.reading",
+   "label": "本文（Reading view）",
+   "text": "md.reading.body",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 5.17,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "h1.source",
+   "label": "見出し 1（Source mode）",
+   "text": "md.source.h1",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    179,
+    134,
+    0,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    179,
+    134,
+    0
+   ],
+   "ratio": 5.06,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "h1.source",
+   "label": "見出し 1（Source mode）",
+   "text": "md.source.h1",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    179,
+    134,
+    0,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    179,
+    134,
+    0
+   ],
+   "ratio": 4.93,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "h1.reading",
+   "label": "見出し 1（Reading view）",
+   "text": "md.reading.h1",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    179,
+    134,
+    0,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    179,
+    134,
+    0
+   ],
+   "ratio": 5.06,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "h1.reading",
+   "label": "見出し 1（Reading view）",
+   "text": "md.reading.h1",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    179,
+    134,
+    0,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    179,
+    134,
+    0
+   ],
+   "ratio": 4.93,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "link.source",
+   "label": "リンク（Source mode）",
+   "text": "md.source.link-text",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    42,
+    162,
+    152,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    42,
+    162,
+    152
+   ],
+   "ratio": 5.38,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "link.source",
+   "label": "リンク（Source mode）",
+   "text": "md.source.link-text",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    42,
+    162,
+    152,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    42,
+    162,
+    152
+   ],
+   "ratio": 5.23,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "link.live",
+   "label": "リンク（Live Preview）",
+   "text": "md.live.link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    42,
+    162,
+    152,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    42,
+    162,
+    152
+   ],
+   "ratio": 5.38,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "link.live",
+   "label": "リンク（Live Preview）",
+   "text": "md.live.link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    42,
+    162,
+    152,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    42,
+    162,
+    152
+   ],
+   "ratio": 5.23,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "link.reading",
+   "label": "リンク（Reading view）",
+   "text": "md.reading.link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    42,
+    162,
+    152,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    42,
+    162,
+    152
+   ],
+   "ratio": 5.38,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "link.reading",
+   "label": "リンク（Reading view）",
+   "text": "md.reading.link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    42,
+    162,
+    152,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    42,
+    162,
+    152
+   ],
+   "ratio": 5.23,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "internal-link.source",
+   "label": "内部リンク（Source mode）",
+   "text": "md.source.internal-link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    42,
+    162,
+    152,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    42,
+    162,
+    152
+   ],
+   "ratio": 5.38,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "internal-link.source",
+   "label": "内部リンク（Source mode）",
+   "text": "md.source.internal-link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    42,
+    162,
+    152,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    42,
+    162,
+    152
+   ],
+   "ratio": 5.23,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "internal-link.reading",
+   "label": "内部リンク（Reading view）",
+   "text": "md.reading.internal-link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    42,
+    162,
+    152,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    42,
+    162,
+    152
+   ],
+   "ratio": 5.38,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "internal-link.reading",
+   "label": "内部リンク（Reading view）",
+   "text": "md.reading.internal-link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    42,
+    162,
+    152,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    42,
+    162,
+    152
+   ],
+   "ratio": 5.23,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "quote.source",
+   "label": "引用（Source mode）",
+   "text": "md.source.quote-text",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 5.31,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "quote.source",
+   "label": "引用（Source mode）",
+   "text": "md.source.quote-text",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 5.17,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "quote.reading",
+   "label": "引用（Reading view）",
+   "text": "md.reading.quote-text",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    253,
+    246,
+    226,
+    0.6
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    151.8,
+    160.8,
+    152
+   ],
+   "ratio": 6.3,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "quote.reading",
+   "label": "引用（Reading view）",
+   "text": "md.reading.quote-text",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    253,
+    246,
+    226,
+    0.6
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    154.6,
+    161.6,
+    152.8
+   ],
+   "ratio": 6.22,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "inline-code.source",
+   "label": "インラインコード（Source mode）",
+   "text": "md.source.inline-code-text",
+   "on": [
+    "desktop.editor.background",
+    "md.source.inline-code"
+   ],
+   "textColour": [
+    173,
+    184,
+    184,
+    1
+   ],
+   "background": [
+    26.4,
+    56.1,
+    63.5
+   ],
+   "composited": [
+    173,
+    184,
+    184
+   ],
+   "ratio": 6.13,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "inline-code.source",
+   "label": "インラインコード（Source mode）",
+   "text": "md.source.inline-code-text",
+   "on": [
+    "desktop.editor.background",
+    "md.source.inline-code"
+   ],
+   "textColour": [
+    173,
+    184,
+    184,
+    1
+   ],
+   "background": [
+    31.3,
+    57.5,
+    64.9
+   ],
+   "composited": [
+    173,
+    184,
+    184
+   ],
+   "ratio": 5.97,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "inline-code.reading",
+   "label": "インラインコード（Reading view）",
+   "text": "md.reading.inline-code-text",
+   "on": [
+    "desktop.editor.background",
+    "md.reading.inline-code"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    26.4,
+    56.1,
+    63.5
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 3.94,
+   "level": "AA large"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "inline-code.reading",
+   "label": "インラインコード（Reading view）",
+   "text": "md.reading.inline-code-text",
+   "on": [
+    "desktop.editor.background",
+    "md.reading.inline-code"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    31.3,
+    57.5,
+    64.9
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 3.83,
+   "level": "AA large"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "codeblock.live",
+   "label": "コードブロックの文字（Live Preview）",
+   "text": "md.live.codeblock-text",
+   "on": [
+    "desktop.editor.background",
+    "md.live.codeblock"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    0,
+    37.8,
+    47
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 5.04,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "codeblock.live",
+   "label": "コードブロックの文字（Live Preview）",
+   "text": "md.live.codeblock-text",
+   "on": [
+    "desktop.editor.background",
+    "md.live.codeblock"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    4.2,
+    39,
+    48.2
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 4.96,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "codeblock.reading",
+   "label": "コードブロックの文字（Reading view）",
+   "text": "md.reading.codeblock-text",
+   "on": [
+    "desktop.editor.background",
+    "md.reading.codeblock"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    0,
+    37.8,
+    47
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 5.04,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "codeblock.reading",
+   "label": "コードブロックの文字（Reading view）",
+   "text": "md.reading.codeblock-text",
+   "on": [
+    "desktop.editor.background",
+    "md.reading.codeblock"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    4.2,
+    39,
+    48.2
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 4.96,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "table-head.reading",
+   "label": "表の見出し（Reading view）",
+   "text": "md.reading.table-head",
+   "on": [
+    "desktop.editor.background",
+    "md.reading.table-head-row"
+   ],
+   "textColour": [
+    179,
+    134,
+    0,
+    1
+   ],
+   "background": [
+    5.6,
+    49,
+    60.2
+   ],
+   "composited": [
+    179,
+    134,
+    0
+   ],
+   "ratio": 4.18,
+   "level": "AA large"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "table-head.reading",
+   "label": "表の見出し（Reading view）",
+   "text": "md.reading.table-head",
+   "on": [
+    "desktop.editor.background",
+    "md.reading.table-head-row"
+   ],
+   "textColour": [
+    179,
+    134,
+    0,
+    1
+   ],
+   "background": [
+    7,
+    49.4,
+    60.6
+   ],
+   "composited": [
+    179,
+    134,
+    0
+   ],
+   "ratio": 4.16,
+   "level": "AA large"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "line-number",
+   "label": "行番号",
+   "text": "ed.source.gutter-color",
+   "on": [
+    "desktop.editor.background",
+    "ed.source.gutter-background"
+   ],
+   "textColour": [
+    88,
+    110,
+    116,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    88,
+    110,
+    116
+   ],
+   "ratio": 3.12,
+   "level": "AA large"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "line-number",
+   "label": "行番号",
+   "text": "ed.source.gutter-color",
+   "on": [
+    "desktop.editor.background",
+    "ed.source.gutter-background"
+   ],
+   "textColour": [
+    88,
+    110,
+    116,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    88,
+    110,
+    116
+   ],
+   "ratio": 3.03,
+   "level": "AA large"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "line-number.active",
+   "label": "行番号（アクティブ行）",
+   "text": "ed.source.gutter-color",
+   "on": [
+    "desktop.editor.background",
+    "ed.source.active-gutter"
+   ],
+   "textColour": [
+    88,
+    110,
+    116,
+    1
+   ],
+   "background": [
+    0,
+    39,
+    48.5
+   ],
+   "composited": [
+    88,
+    110,
+    116
+   ],
+   "ratio": 2.92,
+   "level": "below AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "line-number.active",
+   "label": "行番号（アクティブ行）",
+   "text": "ed.source.gutter-color",
+   "on": [
+    "desktop.editor.background",
+    "ed.source.active-gutter"
+   ],
+   "textColour": [
+    88,
+    110,
+    116,
+    1
+   ],
+   "background": [
+    3.5,
+    40,
+    49.5
+   ],
+   "composited": [
+    88,
+    110,
+    116
+   ],
+   "ratio": 2.88,
+   "level": "below AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "text-muted.editor",
+   "label": "弱い文字 muted（エディタ）",
+   "text": "ui.text.muted",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    253,
+    246,
+    226,
+    0.6
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    151.8,
+    160.8,
+    152
+   ],
+   "ratio": 6.3,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "text-muted.editor",
+   "label": "弱い文字 muted（エディタ）",
+   "text": "ui.text.muted",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    253,
+    246,
+    226,
+    0.6
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    154.6,
+    161.6,
+    152.8
+   ],
+   "ratio": 6.22,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "text-faint.editor",
+   "label": "弱い文字 faint（エディタ）",
+   "text": "ui.text.faint",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    253,
+    246,
+    226,
+    0.3
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    75.9,
+    96.9,
+    96.5
+   ],
+   "ratio": 2.55,
+   "level": "below AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "text-faint.editor",
+   "label": "弱い文字 faint（エディタ）",
+   "text": "ui.text.faint",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    253,
+    246,
+    226,
+    0.3
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    80.8,
+    98.3,
+    97.9
+   ],
+   "ratio": 2.56,
+   "level": "below AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "text-muted.dock",
+   "label": "弱い文字 muted（ドック）",
+   "text": "ui.text.muted",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    253,
+    246,
+    226,
+    0.6
+   ],
+   "background": [
+    0,
+    45,
+    56
+   ],
+   "composited": [
+    151.8,
+    165.6,
+    158
+   ],
+   "ratio": 5.76,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "text-muted.dock",
+   "label": "弱い文字 muted（ドック）",
+   "text": "ui.text.muted",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    253,
+    246,
+    226,
+    0.6
+   ],
+   "background": [
+    19,
+    41,
+    46
+   ],
+   "composited": [
+    159.4,
+    164,
+    154
+   ],
+   "ratio": 5.97,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "text-faint.dock",
+   "label": "弱い文字 faint（ドック）",
+   "text": "ui.text.faint",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    253,
+    246,
+    226,
+    0.3
+   ],
+   "background": [
+    0,
+    45,
+    56
+   ],
+   "composited": [
+    75.9,
+    105.3,
+    107
+   ],
+   "ratio": 2.48,
+   "level": "below AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "text-faint.dock",
+   "label": "弱い文字 faint（ドック）",
+   "text": "ui.text.faint",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    253,
+    246,
+    226,
+    0.3
+   ],
+   "background": [
+    19,
+    41,
+    46
+   ],
+   "composited": [
+    89.2,
+    102.5,
+    100
+   ],
+   "ratio": 2.55,
+   "level": "below AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "status-bar",
+   "label": "ステータスバーの文字（muted）",
+   "text": "ui.text.muted",
+   "on": [
+    "desktop.status-bar.background"
+   ],
+   "textColour": [
+    253,
+    246,
+    226,
+    0.6
+   ],
+   "background": [
+    0,
+    45,
+    56
+   ],
+   "composited": [
+    151.8,
+    165.6,
+    158
+   ],
+   "ratio": 5.76,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "nav.item",
+   "label": "File Explorer の項目",
+   "text": "ui.nav.item-color",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    0,
+    45,
+    56
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 4.63,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "nav.item",
+   "label": "File Explorer の項目",
+   "text": "ui.nav.item-color",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    19,
+    41,
+    46
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 4.79,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "nav.item.open",
+   "label": "File Explorer の開いているファイル",
+   "text": "ui.nav.item-color",
+   "on": [
+    "desktop.left-dock.background",
+    "ui.nav.active-fill"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    7.8,
+    63.8,
+    87
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 3.54,
+   "level": "AA large"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "nav.item.open",
+   "label": "File Explorer の開いているファイル",
+   "text": "ui.nav.item-color",
+   "on": [
+    "desktop.left-dock.background",
+    "ui.nav.active-fill"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    23,
+    60.6,
+    79
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 3.67,
+   "level": "AA large"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "nav.item.open-focused",
+   "label": "File Explorer の開いているファイル（リストにフォーカス）",
+   "text": "ui.nav.item-color",
+   "on": [
+    "desktop.left-dock.background",
+    "ui.nav.active-fill.focused"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    7.8,
+    63.8,
+    87
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 3.54,
+   "level": "AA large"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "nav.item.open-focused",
+   "label": "File Explorer の開いているファイル（リストにフォーカス）",
+   "text": "ui.nav.item-color",
+   "on": [
+    "desktop.left-dock.background",
+    "ui.nav.active-fill.focused"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    23,
+    60.6,
+    79
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 3.67,
+   "level": "AA large"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "nav.heading",
+   "label": "ナビの見出し",
+   "text": "ui.nav.heading.var",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    90.90750000000001,
+    95.84175,
+    189.5925,
+    1
+   ],
+   "background": [
+    0,
+    45,
+    56
+   ],
+   "composited": [
+    90.9,
+    95.8,
+    189.6
+   ],
+   "ratio": 2.69,
+   "level": "below AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "nav.heading",
+   "label": "ナビの見出し",
+   "text": "ui.nav.heading.var",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    90.90750000000001,
+    95.84175,
+    189.5925,
+    1
+   ],
+   "background": [
+    19,
+    41,
+    46
+   ],
+   "composited": [
+    90.9,
+    95.8,
+    189.6
+   ],
+   "ratio": 2.78,
+   "level": "below AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "icon.ribbon",
+   "label": "アイコン（Ribbon）",
+   "text": "ui.icon.color",
+   "on": [
+    "desktop.ribbon.background"
+   ],
+   "textColour": [
+    253,
+    246,
+    226,
+    0.3
+   ],
+   "background": [
+    7,
+    53,
+    65
+   ],
+   "composited": [
+    80.8,
+    110.9,
+    113.3
+   ],
+   "ratio": 2.42,
+   "level": "below AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "icon.ribbon",
+   "label": "アイコン（Ribbon）",
+   "text": "ui.icon.color",
+   "on": [
+    "desktop.ribbon.background"
+   ],
+   "textColour": [
+    253,
+    246,
+    226,
+    0.3
+   ],
+   "background": [
+    32,
+    53,
+    58
+   ],
+   "composited": [
+    98.3,
+    110.9,
+    108.4
+   ],
+   "ratio": 2.46,
+   "level": "below AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "icon.dock",
+   "label": "アイコン（ドック）",
+   "text": "ui.icon.color",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    253,
+    246,
+    226,
+    0.3
+   ],
+   "background": [
+    0,
+    45,
+    56
+   ],
+   "composited": [
+    75.9,
+    105.3,
+    107
+   ],
+   "ratio": 2.48,
+   "level": "below AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "icon.dock",
+   "label": "アイコン（ドック）",
+   "text": "ui.icon.color",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    253,
+    246,
+    226,
+    0.3
+   ],
+   "background": [
+    19,
+    41,
+    46
+   ],
+   "composited": [
+    89.2,
+    102.5,
+    100
+   ],
+   "ratio": 2.55,
+   "level": "below AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "ui-link.editor",
+   "label": "UI のリンク（エディタの面）",
+   "text": "md.ui-link.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    38.73450000000001,
+    139.3192500000001,
+    211.16549999999998,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    38.7,
+    139.3,
+    211.2
+   ],
+   "ratio": 4.59,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "ui-link.editor",
+   "label": "UI のリンク（エディタの面）",
+   "text": "md.ui-link.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    38.73450000000001,
+    139.3192500000001,
+    211.16549999999998,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    38.7,
+    139.3,
+    211.2
+   ],
+   "ratio": 4.47,
+   "level": "AA large"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "ui-text.error",
+   "label": "エラーの文字",
+   "text": "ui.text.error.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    219.504,
+    48.592800000000004,
+    45.696000000000005,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    219.5,
+    48.6,
+    45.7
+   ],
+   "ratio": 3.6,
+   "level": "AA large"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "ui-text.error",
+   "label": "エラーの文字",
+   "text": "ui.text.error.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    219.504,
+    48.592800000000004,
+    45.696000000000005,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    219.5,
+    48.6,
+    45.7
+   ],
+   "ratio": 3.5,
+   "level": "AA large"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "ui-text.success",
+   "label": "成功の文字",
+   "text": "ui.text.success.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    132.6,
+    153,
+    0,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    132.6,
+    153,
+    0
+   ],
+   "ratio": 5.24,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "ui-text.success",
+   "label": "成功の文字",
+   "text": "ui.text.success.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    132.6,
+    153,
+    0,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    132.6,
+    153,
+    0
+   ],
+   "ratio": 5.1,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "ui-text.warning",
+   "label": "警告の文字",
+   "text": "ui.text.warning.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    178.5,
+    133.87499999999997,
+    0,
+    1
+   ],
+   "background": [
+    0,
+    33,
+    41
+   ],
+   "composited": [
+    178.5,
+    133.9,
+    0
+   ],
+   "ratio": 5.05,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "translucent",
+   "pair": "ui-text.warning",
+   "label": "警告の文字",
+   "text": "ui.text.warning.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    178.5,
+    133.87499999999997,
+    0,
+    1
+   ],
+   "background": [
+    7,
+    35,
+    43
+   ],
+   "composited": [
+    178.5,
+    133.9,
+    0
+   ],
+   "ratio": 4.91,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "menu",
+   "label": "メニューの文字",
+   "text": "ui.text.normal",
+   "on": [
+    "ui.menu.background"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    0,
+    20,
+    26
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 5.95,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "popover",
+   "label": "Popover の文字",
+   "text": "ui.text.normal",
+   "on": [
+    "ui.popover.background"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    0,
+    20,
+    26
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 5.95,
+   "level": "AA"
+  },
+  {
+   "theme": "solarized-dark",
+   "appearance": "opaque",
+   "pair": "tooltip",
+   "label": "ツールチップの文字",
+   "text": "ui.text.normal",
+   "on": [
+    "ui.tooltip.background"
+   ],
+   "textColour": [
+    131,
+    148,
+    149,
+    1
+   ],
+   "background": [
+    0,
+    20,
+    26
+   ],
+   "composited": [
+    131,
+    148,
+    149
+   ],
+   "ratio": 5.95,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "body.source",
+   "label": "本文（Source mode）",
+   "text": "md.source.body",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    1
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    197,
+    201,
+    197
+   ],
+   "ratio": 10.06,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "body.source",
+   "label": "本文（Source mode）",
+   "text": "md.source.body",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    1
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    197,
+    201,
+    197
+   ],
+   "ratio": 9.72,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "body.live",
+   "label": "本文（Live Preview）",
+   "text": "md.live.body",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    1
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    197,
+    201,
+    197
+   ],
+   "ratio": 10.06,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "body.live",
+   "label": "本文（Live Preview）",
+   "text": "md.live.body",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    1
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    197,
+    201,
+    197
+   ],
+   "ratio": 9.72,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "body.reading",
+   "label": "本文（Reading view）",
+   "text": "md.reading.body",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    0.9
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    180.3,
+    183.8,
+    179.9
+   ],
+   "ratio": 8.38,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "body.reading",
+   "label": "本文（Reading view）",
+   "text": "md.reading.body",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    0.9
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    180.6,
+    184.1,
+    180.3
+   ],
+   "ratio": 8.12,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "h1.source",
+   "label": "見出し 1（Source mode）",
+   "text": "md.source.h1",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    195,
+    177,
+    136,
+    1
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    195,
+    177,
+    136
+   ],
+   "ratio": 8,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "h1.source",
+   "label": "見出し 1（Source mode）",
+   "text": "md.source.h1",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    195,
+    177,
+    136,
+    1
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    195,
+    177,
+    136
+   ],
+   "ratio": 7.72,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "h1.reading",
+   "label": "見出し 1（Reading view）",
+   "text": "md.reading.h1",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    195,
+    177,
+    136,
+    1
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    195,
+    177,
+    136
+   ],
+   "ratio": 8,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "h1.reading",
+   "label": "見出し 1（Reading view）",
+   "text": "md.reading.h1",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    195,
+    177,
+    136,
+    1
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    195,
+    177,
+    136
+   ],
+   "ratio": 7.72,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "link.source",
+   "label": "リンク（Source mode）",
+   "text": "md.source.link-text",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    140,
+    165,
+    177,
+    1
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    140,
+    165,
+    177
+   ],
+   "ratio": 6.53,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "link.source",
+   "label": "リンク（Source mode）",
+   "text": "md.source.link-text",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    140,
+    165,
+    177,
+    1
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    140,
+    165,
+    177
+   ],
+   "ratio": 6.3,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "link.live",
+   "label": "リンク（Live Preview）",
+   "text": "md.live.link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    140,
+    165,
+    177,
+    1
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    140,
+    165,
+    177
+   ],
+   "ratio": 6.53,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "link.live",
+   "label": "リンク（Live Preview）",
+   "text": "md.live.link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    140,
+    165,
+    177,
+    1
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    140,
+    165,
+    177
+   ],
+   "ratio": 6.3,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "link.reading",
+   "label": "リンク（Reading view）",
+   "text": "md.reading.link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    137,
+    153,
+    122,
+    1
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    137,
+    153,
+    122
+   ],
+   "ratio": 5.54,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "link.reading",
+   "label": "リンク（Reading view）",
+   "text": "md.reading.link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    137,
+    153,
+    122,
+    1
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    137,
+    153,
+    122
+   ],
+   "ratio": 5.35,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "internal-link.source",
+   "label": "内部リンク（Source mode）",
+   "text": "md.source.internal-link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    140,
+    165,
+    177,
+    1
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    140,
+    165,
+    177
+   ],
+   "ratio": 6.53,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "internal-link.source",
+   "label": "内部リンク（Source mode）",
+   "text": "md.source.internal-link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    140,
+    165,
+    177,
+    1
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    140,
+    165,
+    177
+   ],
+   "ratio": 6.3,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "internal-link.reading",
+   "label": "内部リンク（Reading view）",
+   "text": "md.reading.internal-link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    137,
+    153,
+    122,
+    1
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    137,
+    153,
+    122
+   ],
+   "ratio": 5.54,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "internal-link.reading",
+   "label": "内部リンク（Reading view）",
+   "text": "md.reading.internal-link",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    137,
+    153,
+    122,
+    1
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    137,
+    153,
+    122
+   ],
+   "ratio": 5.35,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "quote.source",
+   "label": "引用（Source mode）",
+   "text": "md.source.quote-text",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    200,
+    192,
+    146,
+    1
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    200,
+    192,
+    146
+   ],
+   "ratio": 9.16,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "quote.source",
+   "label": "引用（Source mode）",
+   "text": "md.source.quote-text",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    200,
+    192,
+    146,
+    1
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    200,
+    192,
+    146
+   ],
+   "ratio": 8.85,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "quote.reading",
+   "label": "引用（Reading view）",
+   "text": "md.reading.quote-text",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    200,
+    192,
+    146,
+    0.7
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    149,
+    143.1,
+    110
+   ],
+   "ratio": 5.17,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "quote.reading",
+   "label": "引用（Reading view）",
+   "text": "md.reading.quote-text",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    200,
+    192,
+    146,
+    0.7
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    149.9,
+    144,
+    111.2
+   ],
+   "ratio": 5.05,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "inline-code.source",
+   "label": "インラインコード（Source mode）",
+   "text": "md.source.inline-code-text",
+   "on": [
+    "desktop.editor.background",
+    "md.source.inline-code"
+   ],
+   "textColour": [
+    200,
+    192,
+    146,
+    1
+   ],
+   "background": [
+    34.5,
+    33.5,
+    32
+   ],
+   "composited": [
+    200,
+    192,
+    146
+   ],
+   "ratio": 8.69,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "inline-code.source",
+   "label": "インラインコード（Source mode）",
+   "text": "md.source.inline-code-text",
+   "on": [
+    "desktop.editor.background",
+    "md.source.inline-code"
+   ],
+   "textColour": [
+    200,
+    192,
+    146,
+    1
+   ],
+   "background": [
+    36,
+    35,
+    34
+   ],
+   "composited": [
+    200,
+    192,
+    146
+   ],
+   "ratio": 8.52,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "inline-code.reading",
+   "label": "インラインコード（Reading view）",
+   "text": "md.reading.inline-code-text",
+   "on": [
+    "desktop.editor.background",
+    "md.reading.inline-code"
+   ],
+   "textColour": [
+    200,
+    192,
+    146,
+    1
+   ],
+   "background": [
+    34.5,
+    33.5,
+    32
+   ],
+   "composited": [
+    200,
+    192,
+    146
+   ],
+   "ratio": 8.69,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "inline-code.reading",
+   "label": "インラインコード（Reading view）",
+   "text": "md.reading.inline-code-text",
+   "on": [
+    "desktop.editor.background",
+    "md.reading.inline-code"
+   ],
+   "textColour": [
+    200,
+    192,
+    146,
+    1
+   ],
+   "background": [
+    36,
+    35,
+    34
+   ],
+   "composited": [
+    200,
+    192,
+    146
+   ],
+   "ratio": 8.52,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "codeblock.live",
+   "label": "コードブロックの文字（Live Preview）",
+   "text": "md.live.codeblock-text",
+   "on": [
+    "desktop.editor.background",
+    "md.live.codeblock"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    1
+   ],
+   "background": [
+    27,
+    25.5,
+    24
+   ],
+   "composited": [
+    197,
+    201,
+    197
+   ],
+   "ratio": 10.42,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "codeblock.live",
+   "label": "コードブロックの文字（Live Preview）",
+   "text": "md.live.codeblock-text",
+   "on": [
+    "desktop.editor.background",
+    "md.live.codeblock"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    1
+   ],
+   "background": [
+    28.5,
+    27,
+    26
+   ],
+   "composited": [
+    197,
+    201,
+    197
+   ],
+   "ratio": 10.25,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "codeblock.reading",
+   "label": "コードブロックの文字（Reading view）",
+   "text": "md.reading.codeblock-text",
+   "on": [
+    "desktop.editor.background",
+    "md.reading.codeblock"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    0.9
+   ],
+   "background": [
+    27,
+    25.5,
+    24
+   ],
+   "composited": [
+    180,
+    183.5,
+    179.7
+   ],
+   "ratio": 8.65,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "codeblock.reading",
+   "label": "コードブロックの文字（Reading view）",
+   "text": "md.reading.codeblock-text",
+   "on": [
+    "desktop.editor.background",
+    "md.reading.codeblock"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    0.9
+   ],
+   "background": [
+    28.5,
+    27,
+    26
+   ],
+   "composited": [
+    180.2,
+    183.6,
+    179.9
+   ],
+   "ratio": 8.53,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "table-head.reading",
+   "label": "表の見出し（Reading view）",
+   "text": "md.reading.table-head",
+   "on": [
+    "desktop.editor.background",
+    "md.reading.table-head-row"
+   ],
+   "textColour": [
+    195,
+    177,
+    136,
+    1
+   ],
+   "background": [
+    35.4,
+    34.4,
+    33.2
+   ],
+   "composited": [
+    195,
+    177,
+    136
+   ],
+   "ratio": 7.5,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "table-head.reading",
+   "label": "表の見出し（Reading view）",
+   "text": "md.reading.table-head",
+   "on": [
+    "desktop.editor.background",
+    "md.reading.table-head-row"
+   ],
+   "textColour": [
+    195,
+    177,
+    136,
+    1
+   ],
+   "background": [
+    36.6,
+    35.6,
+    34.8
+   ],
+   "composited": [
+    195,
+    177,
+    136
+   ],
+   "ratio": 7.39,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "line-number",
+   "label": "行番号",
+   "text": "ed.source.gutter-color",
+   "on": [
+    "desktop.editor.background",
+    "ed.source.gutter-background"
+   ],
+   "textColour": [
+    98,
+    94,
+    91,
+    1
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    98,
+    94,
+    91
+   ],
+   "ratio": 2.63,
+   "level": "below AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "line-number",
+   "label": "行番号",
+   "text": "ed.source.gutter-color",
+   "on": [
+    "desktop.editor.background",
+    "ed.source.gutter-background"
+   ],
+   "textColour": [
+    98,
+    94,
+    91,
+    1
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    98,
+    94,
+    91
+   ],
+   "ratio": 2.54,
+   "level": "below AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "line-number.active",
+   "label": "行番号（アクティブ行）",
+   "text": "ed.source.gutter-color",
+   "on": [
+    "desktop.editor.background",
+    "ed.source.active-gutter"
+   ],
+   "textColour": [
+    98,
+    94,
+    91,
+    1
+   ],
+   "background": [
+    32.7,
+    31.7,
+    29.6
+   ],
+   "composited": [
+    98,
+    94,
+    91
+   ],
+   "ratio": 2.55,
+   "level": "below AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "line-number.active",
+   "label": "行番号（アクティブ行）",
+   "text": "ed.source.gutter-color",
+   "on": [
+    "desktop.editor.background",
+    "ed.source.active-gutter"
+   ],
+   "textColour": [
+    98,
+    94,
+    91,
+    1
+   ],
+   "background": [
+    34.8,
+    33.8,
+    32.4
+   ],
+   "composited": [
+    98,
+    94,
+    91
+   ],
+   "ratio": 2.48,
+   "level": "below AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "text-muted.editor",
+   "label": "弱い文字 muted（エディタ）",
+   "text": "ui.text.muted",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    200,
+    192,
+    146,
+    0.7
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    149,
+    143.1,
+    110
+   ],
+   "ratio": 5.17,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "text-muted.editor",
+   "label": "弱い文字 muted（エディタ）",
+   "text": "ui.text.muted",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    200,
+    192,
+    146,
+    0.7
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    149.9,
+    144,
+    111.2
+   ],
+   "ratio": 5.05,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "text-faint.editor",
+   "label": "弱い文字 faint（エディタ）",
+   "text": "ui.text.faint",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    0.3
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    80.1,
+    80.6,
+    77.3
+   ],
+   "ratio": 2.1,
+   "level": "below AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "text-faint.editor",
+   "label": "弱い文字 faint（エディタ）",
+   "text": "ui.text.faint",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    0.3
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    82.2,
+    82.7,
+    80.1
+   ],
+   "ratio": 2.1,
+   "level": "below AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "text-muted.dock",
+   "label": "弱い文字 muted（ドック）",
+   "text": "ui.text.muted",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    200,
+    192,
+    146,
+    0.7
+   ],
+   "background": [
+    24,
+    22,
+    22
+   ],
+   "composited": [
+    147.2,
+    141,
+    108.8
+   ],
+   "ratio": 5.38,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "text-muted.dock",
+   "label": "弱い文字 muted（ドック）",
+   "text": "ui.text.muted",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    200,
+    192,
+    146,
+    0.7
+   ],
+   "background": [
+    36,
+    33,
+    33
+   ],
+   "composited": [
+    150.8,
+    144.3,
+    112.1
+   ],
+   "ratio": 4.99,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "text-faint.dock",
+   "label": "弱い文字 faint（ドック）",
+   "text": "ui.text.faint",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    0.3
+   ],
+   "background": [
+    24,
+    22,
+    22
+   ],
+   "composited": [
+    75.9,
+    75.7,
+    74.5
+   ],
+   "ratio": 2.09,
+   "level": "below AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "text-faint.dock",
+   "label": "弱い文字 faint（ドック）",
+   "text": "ui.text.faint",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    0.3
+   ],
+   "background": [
+    36,
+    33,
+    33
+   ],
+   "composited": [
+    84.3,
+    83.4,
+    82.2
+   ],
+   "ratio": 2.09,
+   "level": "below AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "status-bar",
+   "label": "ステータスバーの文字（muted）",
+   "text": "ui.text.muted",
+   "on": [
+    "desktop.status-bar.background"
+   ],
+   "textColour": [
+    200,
+    192,
+    146,
+    0.7
+   ],
+   "background": [
+    24,
+    22,
+    22
+   ],
+   "composited": [
+    147.2,
+    141,
+    108.8
+   ],
+   "ratio": 5.38,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "nav.item",
+   "label": "File Explorer の項目",
+   "text": "ui.nav.item-color",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    1
+   ],
+   "background": [
+    24,
+    22,
+    22
+   ],
+   "composited": [
+    197,
+    201,
+    197
+   ],
+   "ratio": 10.76,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "nav.item",
+   "label": "File Explorer の項目",
+   "text": "ui.nav.item-color",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    1
+   ],
+   "background": [
+    36,
+    33,
+    33
+   ],
+   "composited": [
+    197,
+    201,
+    197
+   ],
+   "ratio": 9.54,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "nav.item.open",
+   "label": "File Explorer の開いているファイル",
+   "text": "ui.nav.item-color",
+   "on": [
+    "desktop.left-dock.background",
+    "ui.nav.active-fill"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    1
+   ],
+   "background": [
+    31,
+    41.6,
+    57.7
+   ],
+   "composited": [
+    197,
+    201,
+    197
+   ],
+   "ratio": 8.68,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "nav.item.open",
+   "label": "File Explorer の開いているファイル",
+   "text": "ui.nav.item-color",
+   "on": [
+    "desktop.left-dock.background",
+    "ui.nav.active-fill"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    1
+   ],
+   "background": [
+    34.6,
+    44.9,
+    61
+   ],
+   "composited": [
+    197,
+    201,
+    197
+   ],
+   "ratio": 8.29,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "nav.item.open-focused",
+   "label": "File Explorer の開いているファイル（リストにフォーカス）",
+   "text": "ui.nav.item-color",
+   "on": [
+    "desktop.left-dock.background",
+    "ui.nav.active-fill.focused"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    1
+   ],
+   "background": [
+    31,
+    41.6,
+    57.7
+   ],
+   "composited": [
+    197,
+    201,
+    197
+   ],
+   "ratio": 8.68,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "nav.item.open-focused",
+   "label": "File Explorer の開いているファイル（リストにフォーカス）",
+   "text": "ui.nav.item-color",
+   "on": [
+    "desktop.left-dock.background",
+    "ui.nav.active-fill.focused"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    1
+   ],
+   "background": [
+    34.6,
+    44.9,
+    61
+   ],
+   "composited": [
+    197,
+    201,
+    197
+   ],
+   "ratio": 8.29,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "nav.heading",
+   "label": "ナビの見出し",
+   "text": "ui.nav.heading.var",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    137.70000000000002,
+    146.88,
+    168.29999999999998,
+    0.8
+   ],
+   "background": [
+    24,
+    22,
+    22
+   ],
+   "composited": [
+    115,
+    121.9,
+    139
+   ],
+   "ratio": 4.19,
+   "level": "AA large"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "nav.heading",
+   "label": "ナビの見出し",
+   "text": "ui.nav.heading.var",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    137.70000000000002,
+    146.88,
+    168.29999999999998,
+    0.8
+   ],
+   "background": [
+    36,
+    33,
+    33
+   ],
+   "composited": [
+    117.4,
+    124.1,
+    141.2
+   ],
+   "ratio": 3.83,
+   "level": "AA large"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "icon.ribbon",
+   "label": "アイコン（Ribbon）",
+   "text": "ui.icon.color",
+   "on": [
+    "desktop.ribbon.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    0.3
+   ],
+   "background": [
+    17,
+    17,
+    14
+   ],
+   "composited": [
+    71,
+    72.2,
+    68.9
+   ],
+   "ratio": 2.06,
+   "level": "below AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "icon.ribbon",
+   "label": "アイコン（Ribbon）",
+   "text": "ui.icon.color",
+   "on": [
+    "desktop.ribbon.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    0.3
+   ],
+   "background": [
+    39,
+    39,
+    37
+   ],
+   "composited": [
+    86.4,
+    87.6,
+    85
+   ],
+   "ratio": 2.08,
+   "level": "below AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "icon.dock",
+   "label": "アイコン（ドック）",
+   "text": "ui.icon.color",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    0.3
+   ],
+   "background": [
+    24,
+    22,
+    22
+   ],
+   "composited": [
+    75.9,
+    75.7,
+    74.5
+   ],
+   "ratio": 2.09,
+   "level": "below AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "icon.dock",
+   "label": "アイコン（ドック）",
+   "text": "ui.icon.color",
+   "on": [
+    "desktop.left-dock.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    0.3
+   ],
+   "background": [
+    36,
+    33,
+    33
+   ],
+   "composited": [
+    84.3,
+    83.4,
+    82.2
+   ],
+   "ratio": 2.09,
+   "level": "below AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "ui-link.editor",
+   "label": "UI のリンク（エディタの面）",
+   "text": "md.ui-link.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    139.689,
+    164.8507,
+    176.511,
+    1
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    139.7,
+    164.9,
+    176.5
+   ],
+   "ratio": 6.51,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "ui-link.editor",
+   "label": "UI のリンク（エディタの面）",
+   "text": "md.ui-link.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    139.689,
+    164.8507,
+    176.511,
+    1
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    139.7,
+    164.9,
+    176.5
+   ],
+   "ratio": 6.29,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "ui-text.error",
+   "label": "エラーの文字",
+   "text": "ui.text.error.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    195.84,
+    115.87199999999997,
+    110.15999999999998,
+    1
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    195.8,
+    115.9,
+    110.2
+   ],
+   "ratio": 4.86,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "ui-text.error",
+   "label": "エラーの文字",
+   "text": "ui.text.error.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    195.84,
+    115.87199999999997,
+    110.15999999999998,
+    1
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    195.8,
+    115.9,
+    110.2
+   ],
+   "ratio": 4.7,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "ui-text.success",
+   "label": "成功の文字",
+   "text": "ui.text.success.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    137.19170000000003,
+    152.949,
+    122.45100000000001,
+    1
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    137.2,
+    152.9,
+    122.5
+   ],
+   "ratio": 5.54,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "ui-text.success",
+   "label": "成功の文字",
+   "text": "ui.text.success.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    137.19170000000003,
+    152.949,
+    122.45100000000001,
+    1
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    137.2,
+    152.9,
+    122.5
+   ],
+   "ratio": 5.35,
+   "level": "AA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "ui-text.warning",
+   "label": "警告の文字",
+   "text": "ui.text.warning.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    255,
+    158.1,
+    61.199999999999996,
+    1
+   ],
+   "background": [
+    30,
+    29,
+    26
+   ],
+   "composited": [
+    255,
+    158.1,
+    61.2
+   ],
+   "ratio": 8.2,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "translucent",
+   "pair": "ui-text.warning",
+   "label": "警告の文字",
+   "text": "ui.text.warning.var",
+   "on": [
+    "desktop.editor.background"
+   ],
+   "textColour": [
+    255,
+    158.1,
+    61.199999999999996,
+    1
+   ],
+   "background": [
+    33,
+    32,
+    30
+   ],
+   "composited": [
+    255,
+    158.1,
+    61.2
+   ],
+   "ratio": 7.92,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "menu",
+   "label": "メニューの文字",
+   "text": "ui.text.normal",
+   "on": [
+    "ui.menu.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    0.9
+   ],
+   "background": [
+    13,
+    12,
+    12
+   ],
+   "composited": [
+    178.6,
+    182.1,
+    178.5
+   ],
+   "ratio": 9.54,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "popover",
+   "label": "Popover の文字",
+   "text": "ui.text.normal",
+   "on": [
+    "ui.popover.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    0.9
+   ],
+   "background": [
+    24,
+    22,
+    22
+   ],
+   "composited": [
+    179.7,
+    183.1,
+    179.5
+   ],
+   "ratio": 8.9,
+   "level": "AAA"
+  },
+  {
+   "theme": "kanagawa-dragon",
+   "appearance": "opaque",
+   "pair": "tooltip",
+   "label": "ツールチップの文字",
+   "text": "ui.text.normal",
+   "on": [
+    "ui.tooltip.background"
+   ],
+   "textColour": [
+    197,
+    201,
+    197,
+    0.9
+   ],
+   "background": [
+    24,
+    22,
+    22
+   ],
+   "composited": [
+    179.7,
+    183.1,
+    179.5
+   ],
+   "ratio": 8.9,
+   "level": "AAA"
+  }
+ ],
+ "problems": []
+}

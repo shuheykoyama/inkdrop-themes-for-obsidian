@@ -1,0 +1,90 @@
+solarized-dark   必要  changed 1  failing 3  .theme-dark.is-translucent:not(.is-fullscreen) .workspace-tabs .workspace-tab-header-conta { background-color }
+solarized-dark   必要  changed 1  failing 1  .theme-dark.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary { background-color }
+solarized-dark   必要  changed 1  failing 1  .theme-dark.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile { background-color }
+solarized-dark   必要  changed 1  failing 1  .theme-dark.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary::before { background-color }
+solarized-dark   必要  changed 158  failing 4  .theme-dark .markdown-rendered .mermaid > svg:is([aria-roledescription="flowchart-v2"], [a { fill }
+solarized-dark   必要  changed 48  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .node : { fill }
+solarized-dark   必要  changed 50  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .node : { stroke }
+solarized-dark   必要  changed 2  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .cluste { fill }
+solarized-dark   必要  changed 2  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .cluste { stroke }
+solarized-dark   検証不足  changed 0  failing 0  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .cluste { color }
+solarized-dark   検証不足  changed 0  failing 0  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .cluste { fill }
+solarized-dark   必要  changed 204  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.la { color }
+solarized-dark   必要  changed 72  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.la { fill }
+solarized-dark   検証不足  changed 0  failing 0  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.no { fill }
+solarized-dark   必要  changed 18  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .flowch { stroke }
+solarized-dark   必要  changed 26  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.ma { fill }
+solarized-dark   必要  changed 26  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.ma { stroke }
+solarized-dark   必要  changed 44  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is([cl { background-color }
+solarized-dark   必要  changed 20  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] [class~ { background-color }
+solarized-dark   検証不足  changed 0  failing 0  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] [class~ { fill }
+solarized-dark   必要  changed 32  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] line { fill }
+solarized-dark   必要  changed 28  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] line { stroke }
+solarized-dark   必要  changed 16  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is(.actor, { fill }
+solarized-dark   必要  changed 16  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is(.actor, { stroke }
+solarized-dark   必要  changed 8  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] text.actor  { fill }
+solarized-dark   必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] .actor-line { stroke }
+solarized-dark   必要  changed 12  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~ { fill }
+solarized-dark   必要  changed 12  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~ { stroke }
+solarized-dark   必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] marker:is([ { fill }
+solarized-dark   必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] marker:is([ { stroke }
+solarized-dark   必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] marker[id$= { fill }
+solarized-dark   必要  changed 12  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="me { fill }
+solarized-dark   必要  changed 12  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="se { fill }
+solarized-dark   必要  changed 2  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is(.activa { fill }
+solarized-dark   必要  changed 2  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is(.activa { stroke }
+solarized-dark   必要  changed 2  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] .note { fill }
+solarized-dark   必要  changed 2  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] .note { stroke }
+solarized-dark   必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~ { fill }
+solarized-dark   必要  changed 18  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="lo { fill }
+solarized-dark   必要  changed 18  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="lo { stroke }
+solarized-dark   必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="la { fill }
+solarized-dark   必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="la { stroke }
+solarized-dark   必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~ { fill }
+solarized-dark   必要  changed 10  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~ { fill }
+kanagawa-dragon  必要  changed 1  failing 3  .theme-dark.is-translucent:not(.is-fullscreen) .workspace-tabs .workspace-tab-header-conta { background-color }
+kanagawa-dragon  必要  changed 1  failing 1  .theme-dark.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary { background-color }
+kanagawa-dragon  必要  changed 1  failing 1  .theme-dark.is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile { background-color }
+kanagawa-dragon  必要  changed 1  failing 1  .theme-dark.is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary::before { background-color }
+kanagawa-dragon  必要  changed 158  failing 4  .theme-dark .markdown-rendered .mermaid > svg:is([aria-roledescription="flowchart-v2"], [a { fill }
+kanagawa-dragon  必要  changed 48  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .node : { fill }
+kanagawa-dragon  必要  changed 50  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .node : { stroke }
+kanagawa-dragon  必要  changed 2  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .cluste { fill }
+kanagawa-dragon  必要  changed 2  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .cluste { stroke }
+kanagawa-dragon  検証不足  changed 0  failing 0  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .cluste { color }
+kanagawa-dragon  検証不足  changed 0  failing 0  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .cluste { fill }
+kanagawa-dragon  必要  changed 204  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.la { color }
+kanagawa-dragon  必要  changed 72  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.la { fill }
+kanagawa-dragon  検証不足  changed 0  failing 0  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.no { fill }
+kanagawa-dragon  必要  changed 18  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] .flowch { stroke }
+kanagawa-dragon  必要  changed 26  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.ma { fill }
+kanagawa-dragon  必要  changed 26  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is(.ma { stroke }
+kanagawa-dragon  必要  changed 44  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] :is([cl { background-color }
+kanagawa-dragon  必要  changed 20  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] [class~ { background-color }
+kanagawa-dragon  検証不足  changed 0  failing 0  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] [class~ { fill }
+kanagawa-dragon  必要  changed 32  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] line { fill }
+kanagawa-dragon  必要  changed 28  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] line { stroke }
+kanagawa-dragon  必要  changed 16  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is(.actor, { fill }
+kanagawa-dragon  必要  changed 16  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is(.actor, { stroke }
+kanagawa-dragon  必要  changed 8  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] text.actor  { fill }
+kanagawa-dragon  必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] .actor-line { stroke }
+kanagawa-dragon  必要  changed 12  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~ { fill }
+kanagawa-dragon  必要  changed 12  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~ { stroke }
+kanagawa-dragon  必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] marker:is([ { fill }
+kanagawa-dragon  必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] marker:is([ { stroke }
+kanagawa-dragon  必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] marker[id$= { fill }
+kanagawa-dragon  必要  changed 12  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="me { fill }
+kanagawa-dragon  必要  changed 12  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="se { fill }
+kanagawa-dragon  必要  changed 2  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is(.activa { fill }
+kanagawa-dragon  必要  changed 2  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is(.activa { stroke }
+kanagawa-dragon  必要  changed 2  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] .note { fill }
+kanagawa-dragon  必要  changed 2  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] .note { stroke }
+kanagawa-dragon  必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~ { fill }
+kanagawa-dragon  必要  changed 18  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="lo { fill }
+kanagawa-dragon  必要  changed 18  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="lo { stroke }
+kanagawa-dragon  必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="la { fill }
+kanagawa-dragon  必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] [class~="la { stroke }
+kanagawa-dragon  必要  changed 4  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~ { fill }
+kanagawa-dragon  必要  changed 10  failing 2  .theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="sequence"] :is([class~ { fill }
+
+88 entry x theme results: {"必要":80,"検証不足":8}

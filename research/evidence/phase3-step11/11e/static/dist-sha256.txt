@@ -1,0 +1,4 @@
+155e25208819cb4b51602c010203e6791e4319bb7f418b4cb7028e405d2dc691  dist/kanagawa-dragon/manifest.json
+f45d3daeceab5c770ff9f3111c41fbdc987848cb7ffe814a4b6040fb3f19f7e5  dist/kanagawa-dragon/theme.css
+15f08cdd760f25f98b73b0596a1e33c8000c0343c0c79111506a946bc22561a4  dist/solarized-dark/manifest.json
+c41138a754f612e23e8c1752a28a1b3359df852aa83453a2ade6987ad001450b  dist/solarized-dark/theme.css

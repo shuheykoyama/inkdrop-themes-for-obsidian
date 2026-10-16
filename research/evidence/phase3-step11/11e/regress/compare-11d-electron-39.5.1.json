@@ -1,0 +1,44 @@
+{
+ "problemsNew": [],
+ "count": [
+  3871,
+  3871
+ ],
+ "breakdown": [
+  {
+   "DIFF": 606,
+   "PASS (EMULATED)": 805,
+   "PASS": 2430,
+   "UNSUPPORTED": 30
+  },
+  {
+   "DIFF": 606,
+   "PASS (EMULATED)": 805,
+   "PASS": 2430,
+   "UNSUPPORTED": 30
+  }
+ ],
+ "onlyA": 0,
+ "onlyB": 0,
+ "repeatDiff": 0,
+ "stateDiff": 0,
+ "detailDiff": 62,
+ "onlyBsamples": [],
+ "stateDiffSamples": []
+}
+md.source.highlight-underline solarized-dark opaque PASS "rgb(220, 49, 46)"
+md.source.link-text-underline solarized-dark opaque PASS "underline"
+md.source.link-mark-underline solarized-dark opaque PASS "underline"
+md.source.internal-link-underline solarized-dark opaque PASS "underline"
+md.source.highlight-underline solarized-dark opaque (after translucent) PASS "rgb(220, 49, 46)"
+md.source.link-text-underline solarized-dark opaque (after translucent) PASS "underline"
+md.source.link-mark-underline solarized-dark opaque (after translucent) PASS "underline"
+md.source.internal-link-underline solarized-dark opaque (after translucent) PASS "underline"
+md.source.highlight-underline kanagawa-dragon opaque PASS "rgb(255, 158, 61)"
+md.source.link-text-underline kanagawa-dragon opaque PASS "underline"
+md.source.link-mark-underline kanagawa-dragon opaque PASS "underline"
+md.source.internal-link-underline kanagawa-dragon opaque PASS "underline"
+md.source.highlight-underline kanagawa-dragon opaque (after translucent) PASS "rgb(255, 158, 61)"
+md.source.link-text-underline kanagawa-dragon opaque (after translucent) PASS "underline"
+md.source.link-mark-underline kanagawa-dragon opaque (after translucent) PASS "underline"
+md.source.internal-link-underline kanagawa-dragon opaque (after translucent) PASS "underline"

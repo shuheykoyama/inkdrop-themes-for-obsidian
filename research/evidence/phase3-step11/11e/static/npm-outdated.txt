@@ -1,0 +1,3 @@
+Package         Current  Wanted  Latest  Location                     Depended by
+postcss          8.5.29  8.5.29  8.5.30  node_modules/postcss         inkdrop-themes-for-obsidian
+postcss-import   17.0.0  17.0.0  17.0.1  node_modules/postcss-import  inkdrop-themes-for-obsidian
