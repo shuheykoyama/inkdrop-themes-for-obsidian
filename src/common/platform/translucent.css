@@ -26,6 +26,14 @@
   background-color: var(--ink-note-list-bar-background-acrylic);
 }
 
+/* Title bar of the Obsidian frame (custom; Hidden frame does not display it): note list (Q-D1) like the tab
+   strips. app.css paints .is-translucent:not(.is-fullscreen) .titlebar (0,3,0, no !important) with
+   --workspace-background-translucent, which is the page's acrylic above (transparent); one class more
+   (.theme-dark) wins without !important. */
+.theme-dark.is-translucent:not(.is-fullscreen) .titlebar {
+  background-color: var(--ink-note-list-bar-background-acrylic);
+}
+
 /* Vault profile at the bottom of the left dock: note list like the dock (Q-D1). app.css forces
    .is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile (0,3,0) to transparent !important;
    when opaque it paints --background-secondary. One class more (.theme-dark) and !important win. */

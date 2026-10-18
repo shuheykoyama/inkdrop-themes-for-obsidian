@@ -6,13 +6,14 @@
   { "pattern": "^mod-(left|right)-split$", "evidence": "mod-{side}-split", "why": "the side docks (app.js)" }
  ],
  "rules": [
-  { "selector": ".is-translucent:not(.is-fullscreen) .mod-top .workspace-tab-header-container", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:44", "tests/static/lint-allowlist.json"] },
-  { "selector": ".is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:59", "tests/static/lint-allowlist.json"] },
-  { "selector": ".is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:29", "tests/static/lint-allowlist.json"] },
-  { "selector": ".is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary:before", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:51", "tests/static/lint-allowlist.json"] },
+  { "selector": ".is-translucent:not(.is-fullscreen) .mod-top .workspace-tab-header-container", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:52", "tests/static/lint-allowlist.json"] },
+  { "selector": ".is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:67", "tests/static/lint-allowlist.json"] },
+  { "selector": ".is-translucent:not(.is-fullscreen) .workspace-sidedock-vault-profile", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:37", "tests/static/lint-allowlist.json"] },
+  { "selector": ".is-translucent:not(.is-fullscreen) .workspace-ribbon.mod-primary:before", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:59", "tests/static/lint-allowlist.json"] },
   { "selector": ".is-translucent:not(.is-fullscreen) .workspace-split", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:6"] },
   { "selector": ".is-translucent:not(.is-fullscreen) .workspace-tabs .workspace-leaf", "property": "background-color", "value": "transparent", "important": true, "citedBy": ["src/common/platform/translucent.css:6"] },
   { "selector": ".is-translucent:not(.is-fullscreen)", "property": "--divider-color", "value": "rgba(0, 0, 0, 0.15)", "citedBy": ["src/common/platform/translucent.css:18"] },
+  { "selector": ".is-translucent:not(.is-fullscreen) .titlebar", "property": "background-color", "value": "var(--workspace-background-translucent)", "citedBy": ["src/common/platform/translucent.css:30"] },
   { "selector": ".is-mobile.theme-dark", "property": "--color-base-10", "value": "#111", "citedBy": ["src/common/mapping/workspace.css:15"] },
   { "selector": ".is-tablet.theme-dark", "property": "--titlebar-background", "value": "var(--background-primary)", "citedBy": ["src/common/platform/mobile.css:11"] },
   { "selector": ".is-phone:not(.is-floating-nav) .mobile-navbar", "property": "--raised-background", "value": "var(--background-primary)", "citedBy": ["src/common/platform/mobile.css:20"] },
