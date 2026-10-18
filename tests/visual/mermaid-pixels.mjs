@@ -3,24 +3,32 @@
 // diagram text, the same bundled Mermaid, base theme + themeVariables from the theme's --ink-mermaid-* tokens,
 // as tests/runtime/mermaid-dump.js renders it) are drawn by the same renderer under the same conditions and
 // compared pixel by pixel: the same Chromium page, the same place and CSS size, the same backdrop, one CDP
-// Page.captureScreenshot each (deviceScaleFactor 1). The reference is laid over Obsidian's diagram in a fixed
-// layer inside .mermaid but not its child, so the `.mermaid > svg` rules of the theme and app.css do not reach it.
+// Page.captureScreenshot each (deviceScaleFactor 1). The reference is drawn in normal flow right after the
+// .mermaid element (not its child), so the `.mermaid > svg` rules of the theme and app.css do not reach it.
 //
-// Controls, per theme: Obsidian's diagram shot twice (must be identical: the method is stable) and a shot after
-// one painted value of Obsidian's SVG was changed inline (must differ: the method sees a painted change).
+// What it is for: the colours and the other painted properties. The reference takes the geometry (`d`,
+// `points`) of the shapes Mermaid draws with random curves from Obsidian's diagram (showReference), so this is
+// no independent check of the shapes themselves.
+//
+// Controls, per theme: Obsidian's diagram shot twice (the renderer's unsteadiness, recorded), and shots after
+// one painted value of Obsidian's SVG was changed inline, which must differ: a shape's fill, an SVG text's fill
+// and a filter on an HTML label. Every inline change (these and the frozen values) is undone by putting back
+// each touched element's style attribute as it was, also when a step throws; the SVG's style attributes and
+// computed values are compared before and after, and a difference is a failure. --restore-self-test runs only
+// the negative tests of that restore.
 //
 // Runs in the ISOLATED Obsidian only (tests/runtime/obsidian-isolated.sh, CDP on 127.0.0.1:9333); writes only
 // the isolated vault's theme folders "PIXELS <theme>". Reports what it found; exit 1 when a diagram differs
 // or a control does not behave as it must.
 //
-// usage: node tests/visual/mermaid-pixels.mjs --vault <isolated vault> --out <result.json> [--png <dir>]
+// usage: node tests/visual/mermaid-pixels.mjs --vault <isolated vault> --out <result.json> [--png <dir>] [--restore-self-test]
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 import { THEMES } from "../lib/spec.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
-const { values: args } = parseArgs({ options: { vault: { type: "string" }, out: { type: "string" }, png: { type: "string" }, port: { type: "string", default: "9333" } } });
+const { values: args } = parseArgs({ options: { vault: { type: "string" }, out: { type: "string" }, png: { type: "string" }, "restore-self-test": { type: "boolean" }, port: { type: "string", default: "9333" } } });
 if (!args.vault || !args.out) { console.error("usage: node tests/visual/mermaid-pixels.mjs --vault <vault> --out <json> [--png <dir>]"); process.exit(2); }
 const spec = JSON.parse(readFileSync(path.join(repo, "tests/spec/mermaid.json"), "utf8"));
 
@@ -70,18 +78,61 @@ const compare = (a, b) => evaluate(async ({ a, b }) => {
   }
   return { size: [A[0].w, A[0].h], pixels: A[0].w * A[0].h, unsteady, differing, maxChannelDiff: max, histogram, box };
 }, { a, b });
+// Page helpers for changing Obsidian's SVG and putting it back exactly. touch() keeps the style attribute of
+// each element about to be changed (null: it had none); restore() puts every kept attribute back as it was
+// (or removes the attribute), so values Mermaid set inline, their priority and an absent attribute all come
+// back. snapshot() is every element's style attribute and computed painted values, to compare before / after.
+const installHelpers = () => evaluate(() => {
+  const PAINTED = ["fill", "stroke", "color", "background-color", "opacity", "fill-opacity", "stroke-opacity", "filter"];
+  const els = () => [...window.__PIX.svg.querySelectorAll("*")].filter((e) => !e.closest("style"));
+  window.__PIXH = {
+    els,
+    saved: [],
+    touch(list) {
+      if (this.saved.length) throw new Error("a change is already in place");
+      this.saved = list.map((e) => [e, e.getAttribute("style")]);
+    },
+    restore() {
+      const n = this.saved.length;
+      for (const [e, v] of this.saved) v === null ? e.removeAttribute("style") : e.setAttribute("style", v);
+      this.saved = [];
+      return n;
+    },
+    snapshot: () => els().map((e) => { const cs = getComputedStyle(e); return [e.getAttribute("style"), ...PAINTED.map((p) => cs.getPropertyValue(p))].join("|"); }),
+  };
+  return true;
+});
+const snapshot = () => evaluate(() => window.__PIXH.snapshot());
+const restore = () => evaluate(() => window.__PIXH?.restore() ?? 0);
+// The elements whose snapshot entries differ (index: before | after), at most 5.
+const snapshotDiff = (a, b) => a.map((x, i) => (x === b[i] ? null : `${i}: ${x} | ${b[i]}`)).filter(Boolean).concat(a.length === b.length ? [] : [`${a.length} vs ${b.length} elements`]).slice(0, 5);
+// Run `fn` with a change made by `apply` (a page function that touches and changes elements), then restore,
+// also when `fn` throws; returns fn's result and whether the SVG is exactly as before (`restored`).
+async function withChange(apply, arg, fn) {
+  const before = await snapshot();
+  let result;
+  try {
+    result = { value: await evaluate(apply, arg) };
+    result.value2 = await fn(result.value);
+  } finally {
+    await restore();
+    const diff = snapshotDiff(before, await snapshot());
+    if (result) result.restored = diff.length ? diff : true;
+    else if (diff.length) console.log(`FAIL restore after an error: ${diff.join("; ")}`);
+  }
+  return result;
+}
 // The precision control: every element of Obsidian's SVG gets its own computed fill, stroke, color and
-// background-color back as inline !important values, i.e. the 8-bit values getComputedStyle reports (the theme's
-// hsl() tokens are painted with fractional channels, which the computed strings round). Undone with `false`.
-const freeze = (on) => evaluate((on) => {
+// background-color as inline !important values, i.e. the 8-bit values getComputedStyle reports (the theme's
+// hsl() tokens are painted with fractional channels, which the computed strings round).
+const FREEZE = () => {
   const PROPS = ["fill", "stroke", "color", "background-color"];
-  const els = [...window.__PIX.svg.querySelectorAll("*")].filter((e) => !e.closest("style"));
-  if (on) {
-    const values = els.map((e) => { const cs = getComputedStyle(e); return PROPS.map((p) => cs.getPropertyValue(p)); });
-    els.forEach((e, i) => PROPS.forEach((p, j) => e.style.setProperty(p, values[i][j], "important")));
-  } else els.forEach((e) => PROPS.forEach((p) => e.style.removeProperty(p)));
+  const els = window.__PIXH.els();
+  const values = els.map((e) => { const cs = getComputedStyle(e); return PROPS.map((p) => cs.getPropertyValue(p)); });
+  window.__PIXH.touch(els);
+  els.forEach((e, i) => PROPS.forEach((p, j) => e.style.setProperty(p, values[i][j], "important")));
   return els.length;
-}, on);
+};
 
 // Install the built theme in the isolated vault and select it (stylesheet loaded, length as built).
 async function useTheme(theme) {
@@ -256,16 +307,27 @@ const showReference = () => evaluate(() => {
   return { placed: [placed.x, placed.y, placed.width, placed.height], svg: [r.x, r.y, r.width, r.height], elements: here.length, contextDiffs, notExactlyTheSame: [...exact].map(([k, n]) => `${n}x ${k}`), geometrySynced, copies: placedAll, inViewport: placedAll.every((c) => c[1] + c[3] <= innerHeight) };
 });
 const hideReference = () => evaluate(() => { for (const e of document.querySelectorAll(".ink-pixels-reference")) e.remove(); return true; });
-// The painted-change control: the first shown shape of Obsidian's SVG with a fill gets an inline fill that is
-// visibly different; undone afterwards.
-const perturb = (on) => evaluate((on) => {
+// The painted-change controls: one shown element of Obsidian's SVG gets a visibly different painted value
+// inline (through touch(), undone by restore()). `kind`: "shape" (the first shape with a fill: fill), "text"
+// (the first SVG text outside a foreignObject: fill), "html" (the first HTML node label: filter). false when
+// the diagram has no such element.
+const PERTURB = (kind) => {
   const svg = window.__PIX.svg;
-  const e = [...svg.querySelectorAll("rect, circle, ellipse, polygon, path")].find((x) => { const r = x.getBoundingClientRect(); return r.width > 4 && r.height > 4 && getComputedStyle(x).fill !== "none"; });
+  const shown = (x) => { const r = x.getBoundingClientRect(); return r.width > 4 && r.height > 4; };
+  const pick = {
+    shape: () => [...svg.querySelectorAll("rect, circle, ellipse, polygon, path")].find((x) => shown(x) && getComputedStyle(x).fill !== "none"),
+    text: () => [...svg.querySelectorAll("text")].find((x) => !x.closest("foreignObject") && shown(x) && getComputedStyle(x).fill !== "none"),
+    html: () => [...svg.querySelectorAll("foreignObject span.nodeLabel")].find(shown),
+  }[kind];
+  const e = pick();
   if (!e) return false;
-  if (on) e.style.setProperty("fill", "rgb(255, 0, 255)", "important");
-  else e.style.removeProperty("fill");
+  window.__PIXH.touch([e]);
+  if (kind === "html") e.style.setProperty("filter", "blur(2px)", "important");
+  else e.style.setProperty("fill", "rgb(255, 0, 255)", "important");
   return `${e.tagName.toLowerCase()}.${e.getAttribute("class") ?? ""}`;
-}, on);
+};
+// The number of pixels each control must change more than (a shape covers thousands; a label's glyphs fewer).
+const CONTROL_MIN = { shape: 1000, text: 20, html: 20 };
 
 // Obsidian's diagram at other places on the page: an empty div of a whole number of pixels is put right before
 // the .mermaid element (removed with 0), so the same SVG is drawn lower by exactly that much.
@@ -297,6 +359,44 @@ async function shootObsidian(rect, n) {
   return shots;
 }
 
+// --restore-self-test: the negative tests of the restore, on the first theme's first diagram. Each case declares
+// what it must show; returns the number of cases that did not.
+async function restoreSelfTest() {
+  const cases = [];
+  const say = (name, ok, detail) => { cases.push({ name, ok, detail }); console.log(`${ok ? "PASS" : "FAIL"} restore self-test: ${name}${detail ? ` -- ${JSON.stringify(detail)}` : ""}`); };
+  const inlineBefore = await evaluate(() => window.__PIXH.els().filter((e) => e.hasAttribute("style")).length);
+  say("the diagram has elements with a style attribute of Mermaid's (so a restore can lose them)", inlineBefore > 0, { elements: inlineBefore });
+  const f = await withChange(FREEZE, null, () => null);
+  say("freeze, then restore: every style attribute and computed value as before", f.restored === true, f.restored);
+  for (const kind of ["shape", "html"]) {
+    const r = await withChange(PERTURB, kind, () => null);
+    say(`${kind} control change, then restore: as before`, !!r.value && r.restored === true, { element: r.value, restored: r.restored });
+  }
+  const before = await snapshot();
+  let threw = false;
+  try { await withChange(FREEZE, null, () => { throw new Error("measurement failed"); }); } catch { threw = true; }
+  const afterError = snapshotDiff(before, await snapshot());
+  say("an error while frozen: the error comes through and the SVG is restored", threw && afterError.length === 0, afterError);
+  const twice = await evaluate(() => { window.__PIXH.touch([]); window.__PIXH.saved = [[null, null]]; try { window.__PIXH.touch([]); return false; } catch { return true; } finally { window.__PIXH.saved = []; } });
+  say("a second change while one is in place is refused", twice);
+  // Negative: the undo used before step 11F's review (removeProperty of the frozen properties) must be caught.
+  const old = await evaluate(() => {
+    const PROPS = ["fill", "stroke", "color", "background-color"];
+    const els = window.__PIXH.els();
+    window.__PIXH.touch(els);
+    const values = els.map((e) => { const cs = getComputedStyle(e); return PROPS.map((p) => cs.getPropertyValue(p)); });
+    els.forEach((e, i) => PROPS.forEach((p, j) => e.style.setProperty(p, values[i][j], "important")));
+    els.forEach((e) => PROPS.forEach((p) => e.style.removeProperty(p)));
+    return true;
+  });
+  const oldDiff = snapshotDiff(before, await snapshot());
+  await restore();
+  const back = snapshotDiff(before, await snapshot());
+  say("negative: the removeProperty undo changes the SVG, and the comparison sees it", old && oldDiff.length > 0, oldDiff.slice(0, 2));
+  say("after that, restore() puts the SVG back exactly", back.length === 0, back);
+  return cases.filter((c) => !c.ok).length;
+}
+
 const report = { measuredAt: new Date().toISOString(), environment: null, viewport: [1800, 3600], diagrams: [], controls: [] };
 let bad = 0;
 try {
@@ -309,9 +409,20 @@ try {
     await new Promise((r) => setTimeout(r, 500));
   }
   report.environment = await evaluate(() => ({ app: window.require("electron").ipcRenderer.sendSync("version"), userAgent: navigator.userAgent }));
-  for (const theme of THEMES) {
+  if (args["restore-self-test"]) {
+    await useTheme(THEMES[0]);
+    const blocks = await openNote();
+    if (!blocks.length || (await prepare(blocks[0], 0)).missing) throw new Error("no diagram to test the restore on");
+    await installHelpers();
+    bad = await restoreSelfTest();
+    report.restoreSelfTest = bad ? "FAIL" : "PASS";
+    await evaluate(() => { window.__PIX?.leaf?.detach(); delete window.__PIX; return true; });
+  }
+  for (const theme of args["restore-self-test"] ? [] : THEMES) {
     await useTheme(theme);
     const blocks = await openNote();
+    await installHelpers();
+    const controlsDone = new Set();
     for (const [n, b] of blocks.entries()) {
       const p = await prepare(b, n);
       if (p.missing) { report.diagrams.push({ theme, block: n, kind: b.kind, missing: true }); bad++; console.log(`FAIL ${theme} block ${n} (${b.kind}): not drawn`); continue; }
@@ -322,27 +433,30 @@ try {
       const obsidian = await shootObsidian(where, 5);
       // (The shots of one side differ among themselves only where the renderer is unsteady or the anti-aliasing
       // depends on the place: Obsidian's diagram is also shot 37 px and 91 px lower.)
-      // Controls on the first diagram of each theme: the shots of one side agree outside the unsteady pixels,
-      // and a painted change is seen.
+      // Controls: on the first diagram of each theme, two shots of the same side (recorded); and each painted
+      // change on the first diagram that has such an element, which must be seen and undone exactly.
       if (n === 0) {
         const again = await compare([obsidian[0]], [obsidian[1]]);
-        const tag = await perturb(true);
-        const changed = await compare(obsidian, [await shoot(p.rect)]);
-        await perturb(false);
-        const okChange = !!tag && changed.differing > 1000;
-        report.controls.push({ theme, block: n, twoShots: again, perturbed: { element: tag, ...changed } });
-        if (!okChange) bad++;
+        report.controls.push({ theme, block: n, kind: "two shots", ...again });
         console.log(`INFO ${theme} control: the same diagram shot twice: ${again.differing} pixels differ (max channel ${again.maxChannelDiff}) -- the renderer's unsteadiness, left out below`);
-        console.log(`${okChange ? "PASS" : "FAIL"} ${theme} control: an inline fill on one ${tag} is seen (${changed.differing} pixels differ)`);
+      }
+      for (const kind of Object.keys(CONTROL_MIN)) {
+        if (controlsDone.has(kind)) continue;
+        const r = await withChange(PERTURB, kind, async (tag) => (tag ? compare(obsidian, [await shoot(p.rect)]) : null));
+        if (!r.value) { if (r.restored !== true) { bad++; console.log(`FAIL ${theme} block ${n}: not restored after looking for a ${kind} control ${JSON.stringify(r.restored)}`); } continue; }
+        controlsDone.add(kind);
+        const ok = r.value2.differing > CONTROL_MIN[kind] && r.restored === true;
+        report.controls.push({ theme, block: n, kind, element: r.value, ...r.value2, restored: r.restored });
+        if (!ok) bad++;
+        console.log(`${ok ? "PASS" : "FAIL"} ${theme} control: ${kind} change on ${r.value} (block ${n}) is seen (${r.value2.differing} pixels differ, more than ${CONTROL_MIN[kind]}) and undone ${r.restored === true ? "exactly" : JSON.stringify(r.restored)}`);
       }
       const placed = await showReference();
       const reference = [];
       // Each copy shot twice.
       for (let k = 0; k < 2; k++) for (const c of placed.copies) reference.push(await shoot({ x: Math.round(c[0]), y: Math.round(c[1]), width: p.rect.width, height: p.rect.height }));
       await hideReference();
-      await freeze(true);
-      const frozen = await shootObsidian(where, 5);
-      await freeze(false);
+      const fr = await withChange(FREEZE, null, () => shootObsidian(where, 5));
+      const frozen = fr.value2;
       const asDrawn = await compare(obsidian, reference);
       const asComputed = await compare(frozen, reference);
       // The reference must sit exactly on the SVG and have the dump's computed values there.
@@ -354,9 +468,10 @@ try {
       // not judged here (the runtime checks compare the computed values with +-1/255).
       // The pixels left out must stay few (2 % of the diagram at most), or the comparison would say little.
       const fewLeftOut = asComputed.unsteady <= 0.02 * asComputed.pixels && asDrawn.unsteady <= 0.02 * asDrawn.pixels;
-      const ok = fits && fewLeftOut && asComputed.differing === 0;
+      const ok = fits && fewLeftOut && asComputed.differing === 0 && fr.restored === true;
+      if (fr.restored !== true) console.log(`FAIL ${theme} block ${n}: the SVG is not as before after the frozen shots ${JSON.stringify(fr.restored)}`);
       if (!fewLeftOut) console.log(`FAIL ${theme} block ${n}: too many pixels left out as unsteady (${asDrawn.unsteady} / ${asComputed.unsteady} of ${asDrawn.pixels})`);
-      report.diagrams.push({ theme, block: n, kind: b.kind, firstLine: b.code.split("\n")[0], rect: p.rect, placed, asDrawn, asComputed, ok });
+      report.diagrams.push({ theme, block: n, kind: b.kind, firstLine: b.code.split("\n")[0], rect: p.rect, placed, asDrawn, asComputed, restored: fr.restored, ok });
       if (!ok) bad++;
       for (const x of placed.notExactlyTheSame.slice(0, 8)) console.log(`     computed value not exactly the reference's: ${x}`);
       if (!fits) console.log(`FAIL ${theme} block ${n}: reference not in place or its computed values differ from the dump's ${JSON.stringify(placed)}`);
@@ -367,15 +482,16 @@ try {
         for (const [k, list] of Object.entries({ obsidian, reference, frozen })) list.forEach((d, i) => writeFileSync(path.join(args.png, `${theme}-block${n}-${k}-${i + 1}.png`), Buffer.from(d, "base64")));
       }
     }
+    for (const kind of Object.keys(CONTROL_MIN)) if (!controlsDone.has(kind)) { bad++; console.log(`FAIL ${theme} control: no diagram has an element for the ${kind} change`); }
     await evaluate(() => { window.__PIX?.leaf?.detach(); delete window.__PIX; return true; });
   }
 } finally {
   await hideReference().catch(() => {});
-  await freeze(false).catch(() => {});
+  await restore().catch(() => {});
   await shift(0).catch(() => {});
   await send("Emulation.clearDeviceMetricsOverride").catch(() => {});
   ws.close();
 }
 writeFileSync(args.out, `${JSON.stringify(report, null, 1)}\n`);
-console.log(`\n${report.diagrams.length} diagrams compared, ${report.controls.length * 2} controls; ${bad ? `${bad} problem(s)` : "every diagram the same as its reference, controls as required"}`);
+console.log(args["restore-self-test"] ? `\nrestore self-test: ${bad ? `${bad} case(s) FAILED` : "every case as declared"}` : `\n${report.diagrams.length} diagrams compared, ${report.controls.length} controls; ${bad ? `${bad} problem(s)` : "every diagram the same as its reference, controls as required"}`);
 process.exit(bad ? 1 : 0);
