@@ -1,0 +1,29 @@
+PASS mermaid judge self-test: the same dump passes
+PASS mermaid judge self-test: HTML label: color differs -> FAIL
+PASS mermaid judge self-test: HTML label: background-color differs -> FAIL
+PASS mermaid judge self-test: HTML label: opacity differs -> FAIL
+PASS mermaid judge self-test: HTML label: filter differs -> FAIL
+PASS mermaid judge self-test: foreignObject: filter differs -> FAIL
+PASS mermaid judge self-test: foreignObject: background-color differs -> FAIL
+PASS mermaid judge self-test: SVG text: fill differs -> FAIL
+PASS mermaid judge self-test: SVG text: stroke differs -> FAIL
+PASS mermaid judge self-test: SVG text: color differs, fill explicit -> PASS (not painted)
+PASS mermaid judge self-test: SVG text: fill is the keyword currentcolor and color differs -> FAIL
+PASS mermaid judge self-test: SVG text: stroke is currentColor (any case) and color differs -> FAIL
+PASS mermaid judge self-test: SVG rect: background-color differs -> PASS (an SVG shape has no CSS background)
+PASS mermaid judge self-test: SVG rect: opacity 0.5 vs 0.6 -> FAIL
+PASS mermaid judge self-test: SVG rect: opacity within 0.01 -> PASS
+PASS mermaid judge self-test: SVG rect: fill-opacity differs -> FAIL
+PASS mermaid judge self-test: SVG rect: stroke-opacity differs -> FAIL
+PASS mermaid judge self-test: SVG rect: filter differs -> FAIL
+PASS mermaid judge self-test: SVG rect: fill within 1/255 -> PASS (as before)
+PASS mermaid judge self-test: not rendered on both sides: stroke differs -> PASS, reported as not compared
+PASS mermaid judge self-test: rendered on Obsidian's side only -> FAIL
+PASS mermaid judge self-test: rendered on the reference's side only -> FAIL
+PASS mermaid judge self-test: an HTML element against an SVG one -> FAIL
+PASS mermaid judge self-test: older dump: SVG text color differs -> FAIL (judged as before)
+PASS mermaid judge self-test: older dump: the same -> PASS
+PASS mermaid judge self-test: paintedProps: SVG shape
+PASS mermaid judge self-test: paintedProps: HTML
+
+all 27 mermaid judge self-test cases behaved as expected

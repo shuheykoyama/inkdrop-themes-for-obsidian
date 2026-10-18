@@ -1,0 +1,14 @@
+{
+ "measuredAt": "2026-10-18T07:05:02.363Z",
+ "environment": {
+  "app": "1.14.4",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) obsidian/1.11.7 Chrome/142.0.7444.265 Electron/39.5.1 Safari/537.36"
+ },
+ "viewport": [
+  1800,
+  3600
+ ],
+ "diagrams": [],
+ "controls": [],
+ "restoreSelfTest": "PASS"
+}

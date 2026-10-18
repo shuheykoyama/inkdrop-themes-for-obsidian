@@ -1,0 +1,10 @@
+PASS restore self-test: the diagram has elements with a style attribute of Mermaid's (so a restore can lose them) -- {"elements":50}
+PASS restore self-test: freeze, then restore: every style attribute and computed value as before -- true
+PASS restore self-test: shape control change, then restore: as before -- {"element":"rect.","restored":true}
+PASS restore self-test: html control change, then restore: as before -- {"element":"span.nodeLabel","restored":true}
+PASS restore self-test: an error while frozen: the error comes through and the SVG is restored -- []
+PASS restore self-test: a second change while one is in place is refused
+PASS restore self-test: negative: the removeProperty undo changes the SVG, and the comparison sees it -- ["23: ;|none|rgb(42, 162, 152)|rgb(131, 148, 149)|rgba(0, 0, 0, 0)|1|1|1|none | |none|rgb(42, 162, 152)|rgb(131, 148, 149)|rgba(0, 0, 0, 0)|1|1|1|none","24: ;|none|rgb(42, 162, 152)|rgb(131, 148, 149)|rgba(0, 0, 0, 0)|1|1|1|none | |none|rgb(42, 162, 152)|rgb(131, 148, 149)|rgba(0, 0, 0, 0)|1|1|1|none"]
+PASS restore self-test: after that, restore() puts the SVG back exactly -- []
+
+restore self-test: every case as declared

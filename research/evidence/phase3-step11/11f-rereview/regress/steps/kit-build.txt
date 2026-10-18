@@ -1,0 +1,35 @@
+PASS build.fresh  jobs 80 (probe 66, extra 32), checks 480; on a phone 66 jobs, on a tablet 28; tour steps phone 38, tablet 18
+PASS build.marker  {"kitId":"90b1280f-599d-4121-a36a-34ff08f9c1f9","files":17}
+PASS build.zip-marker
+PASS build.no-staging-left  ["InkdropThemeTest","InkdropThemeTest.zip"]
+PASS build.again-without-replace.refused  {"status":1,"stderr":"build-kit: refusing: <work>/run-all/kit-build-work/fresh/InkdropThemeTest and <tmp>/-Users-shuhey-ghq-github-com-shuheykoyama-inkdrop-them"}
+PASS build.again-without-replace.unchanged  29 entries
+PASS build.replace-unchanged-kit  {"status":0,"kitIds":["90b1280f-599d-4121-a36a-34ff08f9c1f9","2cc71fd9-da02-4194-a665-8e56ee42aeb8"],"stderr":""}
+PASS build.unidentified-folder.refused  {"status":1,"stderr":"build-kit: refusing: <work>/run-all/kit-build-work/notes/InkdropThemeTest already exists; pass --replace to replace an unchanged kit made here, or choose a "}
+PASS build.unidentified-folder.unchanged  5 entries
+PASS build.unidentified-folder-replace.refused  {"status":1,"stderr":"build-kit: refusing: <work>/run-all/kit-build-work/notes/InkdropThemeTest has no kit marker (.obsidian/inkdrop-device-kit.json); it is not a kit made here; "}
+PASS build.unidentified-folder-replace.unchanged  5 entries
+PASS build.kit-with-results-replace.refused  {"status":1,"stderr":"build-kit: refusing: <work>/run-all/kit-build-work/used/InkdropThemeTest holds files that are not part of the kit (for example results written on a device):"}
+PASS build.kit-with-results-replace.unchanged  31 entries
+PASS build.kit-edited-replace.refused  {"status":1,"stderr":"build-kit: refusing: <work>/run-all/kit-build-work/edited/InkdropThemeTest has kit files changed since the build: .obsidian/plugins/ink-device-check/main.js"}
+PASS build.kit-edited-replace.unchanged  29 entries
+PASS build.kit-extra-folder-replace.refused  {"status":1,"stderr":"build-kit: refusing: <work>/run-all/kit-build-work/empty-dir/InkdropThemeTest holds folders that are not part of the kit: Inbox; move it away yourself if it"}
+PASS build.kit-extra-folder-replace.unchanged  30 entries
+PASS build.fake-marker-replace.refused  {"status":1,"stderr":"build-kit: refusing: <work>/run-all/kit-build-work/fake-marker/InkdropThemeTest: the marker is not a device kit marker of this repository; move it away your"}
+PASS build.fake-marker-replace.unchanged  5 entries
+PASS build.unidentified-zip.refused  {"status":1,"stderr":"build-kit: refusing: <work>/run-all/kit-build-work/zips/InkdropThemeTest.zip already exists; pass --replace to replace an unchanged kit made here, or choose"}
+PASS build.unidentified-zip.unchanged  2 entries
+PASS build.unidentified-zip-replace.refused  {"status":1,"stderr":"build-kit: refusing: <work>/run-all/kit-build-work/zips/InkdropThemeTest.zip cannot be read as a zip ([<tmp>/-Users-shuhey-ghq-github-com-"}
+PASS build.unidentified-zip-replace.unchanged  2 entries
+PASS build.other-zip-replace.refused  {"status":1,"stderr":"build-kit: refusing: <work>/run-all/kit-build-work/other-zip/InkdropThemeTest.zip has no kit marker; it is not a kit made here; move it away yourself if it "}
+PASS build.other-zip-replace.unchanged  5 entries
+PASS build.kit-zip-extra-entry-replace.refused  {"status":1,"stderr":"build-kit: refusing: <work>/run-all/kit-build-work/zip-extra/InkdropThemeTest.zip holds entries that are not part of the kit: InkdropThemeTest/added.md; mov"}
+PASS build.kit-zip-extra-entry-replace.unchanged  29 entries
+PASS build.symlink-replace.refused  {"status":1,"stderr":"build-kit: refusing: <work>/run-all/kit-build-work/linked/InkdropThemeTest is not a folder; move it away yourself if it is no longer needed"}
+PASS build.symlink-replace.unchanged  173 entries
+PASS build.inside-a-vault.refused  {"status":1,"stderr":"build-kit: refusing: <work>/run-all/kit-build-work/a-vault is an Obsidian vault (it has .obsidian); choose an output folder outside any vault"}
+PASS build.inside-a-vault.unchanged  3 entries
+PASS judge.ed-prepared-not-folded  {"folded":false,"got":"FAIL","want":"FAIL"}
+PASS judge.ed-prepared-folded  {"folded":true,"got":"PASS","want":"PASS"}
+PASS judge.ed-prepared-not-recorded  {"got":"PASS","want":"PASS"}
+all 34 kit self-test checks PASS

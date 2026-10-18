@@ -1,0 +1,17 @@
+PASS visual self-test: same colour on both sides of the border passes
+PASS visual self-test: different colour fails continuity
+PASS visual self-test: region including the 1 px border is not flat
+PASS visual self-test: region including text is not flat, and its pair is not judged
+PASS visual self-test: wrong reference colour fails
+PASS visual self-test: right reference colour passes
+PASS visual self-test: v30-compare: same surface colour in both captures passes
+PASS visual self-test: v30-compare: a block of the same colour elsewhere in the other capture passes
+PASS visual self-test: v30-compare: another surface colour fails (a new difference)
+PASS visual self-test: v30-compare: a region across the border is not flat and fails, whatever the colours
+PASS visual self-test: v30-compare: a region across a colour edge is not flat
+PASS visual self-test: v30-compare: a decided difference is reported as DIFF (decided), not as PASS
+PASS visual self-test: v30-compare: a decided pair whose colours agree fails (the record no longer matches)
+PASS visual self-test: v30-compare: a missing Obsidian capture fails
+PASS visual self-test: v30-compare: a capture that is not 1024x800 is refused
+
+all 15 visual self-test cases behaved as expected

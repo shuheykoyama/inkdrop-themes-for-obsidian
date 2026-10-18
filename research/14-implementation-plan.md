@@ -3326,3 +3326,136 @@ translucent は同じ時刻のネイティブ撮影同士でしか比べられ�
 ### 6.55 次の作業
 
 工程 11F のレビューを待つ。工程 11G 以降への移行は、11F のレビューの結果に従う。
+
+### 6.56 工程 11F の再レビュー対応（2026-10-18、再レビュー待ち）
+
+`78ce7a4..fab7442` の独立レビューで、工程 11F は **REQUEST CHANGES** となった。
+
+- 主な成果は確認された。ただし、判定器と検証の道具に追加の修正が要る、という判定。
+- 11G への移行は、この修正の独立レビューが終わるまで認めない。
+- リリースの判定は NOT MET のまま。
+- §6.54.9 の判断:
+  - 1 は案 (a)。CSS を直す。
+  - 2 は、SVG ラベルの要素別の判定の方針を維持する。E43 の block 0 の FAIL は消さない。許容差・除外の条件は緩めない。原因不明の差を PASS にしない。
+
+証拠は [`evidence/phase3-step11/11f-rereview/`](evidence/phase3-step11/11f-rereview/README.md)。修正のコミットは `1498c33`・`bcd6bc7`・`12d2b8f`・`d027f61`。CI（static、run 39098122239）は SUCCESS。
+
+#### 6.56.1 translucent のタイトルバー（`1498c33`）
+
+- `src/common/platform/translucent.css` に `.theme-dark.is-translucent:not(.is-fullscreen) .titlebar { background-color: var(--ink-note-list-bar-background-acrylic); }` を足した。両テーマに共通の規則で、`!important` はない。
+- カスケード:
+  - app.css 1.14.4 の `.is-translucent:not(.is-fullscreen) .titlebar, … .app-container`（L6575〜6578、詳細度 0-3-0、`!important` なし）に、`.theme-dark` の分だけ高い 0-4-0 で勝つ。
+  - 条件は app.css と同じ `.is-translucent:not(.is-fullscreen)`。
+  - 不透明（`--titlebar-background` によるノートリスト色）と全画面（`.is-fullscreen .titlebar { display: none }`）は変わらない。
+  - 変数 `--titlebar-background` や `--workspace-background-translucent` は変えていない。タブ帯・`.app-container` には影響しない。
+- 互換性の棚卸し（`tests/compat/dependencies.json`）に、この app.css の規則の引用を足した。新しい規則の挿入でずれた、ほかの引用の行番号も直した。1.14.4 の棚卸しでは、引用された 23 件すべてが有効で、問題 0。
+- **修正前後の測定**: 隔離インスタンス、E39・E43 × custom frame・hidden frame。修正前（`fab7442` のビルド）と修正後のテーマを入れ替えて測った（証拠の §1）。
+  - 修正前と違うのは、`.titlebar` の translucent の状態だけ。
+  - custom frame の translucent: SD は `rgba(0, 0, 0, 0)` → `rgba(0, 33, 41, 0.7)`、KD は `rgba(0, 0, 0, 0)` → `rgba(24, 22, 22, 0.7)`。
+  - 不透明、不透明に戻した状態、全画面の模擬（body に `is-fullscreen` を足す。本物の全画面にはしていない）は同じ。
+  - hidden frame では、タイトルバーは `display: none` のまま。
+  - ほかの面（`.app-container`、Ribbon、上のタブ帯、左ドック、エディタ、ステータスバー）は、全状態で同じ。
+  - 上部の CDP の画像も保存した。ただし、CDP の画像は macOS が合成する半透明を写さない（既知の制約）。
+- **検査**: run-all の custom frame の実行で、両 Electron・両テーマの不透明・translucent・不透明に戻した状態が、すべて PASS（`desktop.titlebar.custom-frame` と `.translucent`。期待値は変えていない）。リリースの判定で、`qd1.titlebar-visible-frame` は FAIL → PASS。
+
+#### 6.56.2 Mermaid の判定: HTML ラベルの filter（`bcd6bc7`）
+
+- `paintedProps()` で、HTML の要素も filter を比べるようにした（`foreignObject` は前から比べている）。
+  - 描画への寄与は画素で確かめた。HTML のノードラベルに `blur(2px)` を付けると、909〜916 画素が変わった。画素の道具の対照で、両 Electron・両テーマ（§6.56.3）。
+  - `foreignObject` と、その中の HTML 要素は、別の場合として残した。比べるプロパティは同じ。
+- SVG の要素の比べ方（§6.54.2）は変えていない。SVG ラベルの 3 つの既知の差（text の `color`、rect の `background-color`、描かれない rect の `stroke`）は、今も比べない。
+- 陰性テスト:
+  - CI は 25 → 27 件。HTML ラベルの filter と、`foreignObject` の filter の FAIL を足した。
+  - 実行時は 10 → 11 件。HTML のノードラベルに filter を付けて FAIL になる。実際の結果は「15x span.nodeLabel filter blur(2px) vs none」で、両 Electron で宣言どおり。
+  - 既存の `currentColor`・opacity・filter などの事例はすべて宣言どおりで、回帰はない。
+- 通常の回帰では、両 Electron・全プラットフォームで、`mm.*.colours` が PASS のまま。
+
+#### 6.56.3 画素の道具の復元（`12d2b8f`）
+
+- **不具合**: 固定の値と対照の変更を、`removeProperty` で戻していた。
+  - Mermaid が inline で付けた値（block 0 では 50 要素に style 属性がある）も消えていた。
+  - style 属性がなかった要素には、空の属性が残っていた。
+  - 戻すのは計測の後なので、11F の合否には影響しない。ただし、道具が計測の対象を変えてしまっていた。
+- **修正**:
+  - 変更の前に、触る要素の style 属性をそのまま保存する（属性がない場合は null）。
+  - 戻すときは、属性を書き戻すか消す。これで、元の値・priority・属性の有無がすべて戻る。
+  - 計測は `try`/`finally` の中で行い、例外が起きても戻す。
+  - 変更のたびに、SVG の全要素の style 属性と描画のプロパティの計算値を前後で比べる。違えば、その図を FAIL にする。
+  - 二重の変更は拒む。
+- **自己テスト**（`--restore-self-test`、8 件。両 Electron で、すべて宣言どおり）:
+  - 固定と対照の変更のあとに、元どおりになる。
+  - 例外のあとに、元どおりになる。
+  - 二重の変更を拒む。
+  - 陰性: 従来の `removeProperty` の戻し方では SVG が変わり、それを比較で検出できる。そのあとの復元で元どおりになる。
+- **対照**を 3 種にした。各テーマで、その要素を持つ最初の図で行う。
+  - 図形の fill（従来どおり、1,000 画素を超えること）。
+  - SVG テキストの fill（block 2 のエッジラベル。505 画素）。
+  - HTML ラベルの filter（909〜916 画素）。
+  - text と HTML の対照は、20 画素を超えることを求める。
+  - どれも検出でき、変更は正確に元に戻った。
+- 合否の基準（固定で差 0 画素）と、揺れの除外の条件（同じ側の撮影、2 % 以内）は変えていない。
+- 文書: 道具の冒頭と `tests/README.md` に次を書いた（`d027f61`）。参照は、Mermaid の乱数の曲線の幾何（`d`・`points`）を Obsidian の図から写す。そのため、この道具は色と描画のプロパティの比較用で、形の独立した検証ではない。
+
+#### 6.56.4 E43 の画素の差の扱い
+
+- 11F の E43 1 回目の block 0（HTML ラベルの図）の FAIL は、記録のまま残す（§6.54.1。証拠も消していない）。
+- 修正後の道具での再測定（`d027f61` の clone）: 両 Electron・両テーマで 8 図すべて PASS。SVG ラベル（block 2）は固定で差 0 画素。
+- 頻度の記録（固定で差が出た回 / 実行の回数）:
+
+  | 環境 | 回数 | 差が出た回 |
+  |---|---|---|
+  | E39 | 3（11F 1、再レビューの開発 1、最終 1） | 0 |
+  | E43 | 6（11F の開発 1、11F 3、新しい環境 1、最終 1） | 1（11F の 1 回目、block 0 のエッジの 6〜9 画素） |
+
+  SVG ラベルのブロックは、全 9 回・両テーマで差 0。
+- 原因は特定していない。継続して起きる FAIL は出ていない。
+
+#### 6.56.5 最終のソースでの検証と、旧証跡の扱い
+
+- **検証の対象**: `d027f61`。新しく clone し、`npm ci` と build をしてから実行した。作業ツリーは clean（run-all の `summary.json`: `dirty: false`、`complete: true`）。環境は macOS 26.5.2、Node 22.22.0、Obsidian 1.14.4（E39・E43）。
+- **run-all を全部実行した理由**: 次の 3 つが変わり、11F の証跡は再利用できないため。
+  - テーマ CSS（translucent の全状態に関わる）。
+  - Mermaid の判定（全プラットフォームの `mm.*`）。
+  - キット（テーマと判定を同梱する）。
+  - さらに、11F の証跡は `78ce7a4` の dirty なツリーで、custom frame と dry run が FAIL だった。
+- **結果**:
+  - 全 42 段が成功した。
+  - 実行時の検査は、E39・E43 とも 3,871 件で FAIL 0。基準（11F の run 1）との状態の差は 0。
+  - 陰性テストは 704 件。
+  - custom frame は 31 件すべて PASS。
+  - キットは、組み立て 34、プラグイン 63、phone の dry run 5（916 件、FAIL は `device.environment` の 52 件だけ）、tablet の dry run 8 が PASS。
+  - リリースの判定は NOT MET。保存した判定との差は `qd1.titlebar-visible-frame` × 2（PASS）。
+  - run-all の終了ステータスは 1。設計どおり、次の 2 つを「問題」として数えるため。
+    - 基準のあと、仕様とソースが変わった。
+    - 保存した判定と 2 単位違う。
+- **詳細だけの差**: 文字の要素の多くの高さが、11F より 1px 大きい（例: リンク 39×18 → 39×19）。
+  - 同じ隔離インスタンスで修正前のビルドを測ると、同じく 19 だった。テーマの修正によるものではない。
+  - 2026-10-16 以降の環境の変化とみているが、原因は特定していない。色の値は同じ。
+- `npm test`（static 61、release 45、integration 48、compat 24、quality 20、Mermaid の判定 27）、クリーンビルド、CI が成功した。
+- **旧証跡**（`evidence/phase3-step11/11f/`）は消していない。11F の時点の記録として残す。再利用したのは、次の 2 つの記録だけ。
+  - 修正前のタイトルバーの値（11F の custom frame の実行。今回、修正前のビルドで同じ値を測り直した）。
+  - E43 の 1 回目の画素の差。
+- `tests/release/inputs.json` は、11H で最終の証跡に差し替える。そのときは、この再レビューの `regress/` と custom frame の実行を使う。
+
+#### 6.56.6 残る不確実性と 11G への引き継ぎ
+
+- **translucent のタイトルバー**:
+  - 値は計算値と CDP の画像だけで確かめた。macOS が合成した見た目（ネイティブの撮影）は確かめていない。
+  - ポップアウト、非アクティブのウィンドウ、`native` の frame、本物の全画面は測っていない。全画面は class の模擬だけ。
+- **画素の道具**:
+  - E43 の block 0 のエッジの差（6 回中 1 回）の原因は不明。
+  - 形の忠実度は検証しない（幾何を写すため）。
+- **Mermaid の判定**: HTML ラベルについて、比べるのは文字色・背景色・opacity・filter。ほかの描画のプロパティ（`border`、`box-shadow`、`text-decoration` など）は比べない。11E までと同じ。
+- **環境**: 文字の高さの +1px の原因は不明。
+- **§6.54.10 から引き継ぐもの**:
+  - tablet はエミュレーションだけ。
+  - 構文の陽性対照の不安定さ。
+  - `inputs.json` の差し替え（11H）。
+  - `!important` の網羅。
+  - コントラストの下地。
+- §6.54.10 の「HTML ラベルの内側の filter を比べない」は、§6.56.2 で解消した。
+- **11G へ**: 新しいキット（11F・再レビューで、テーマ・ページのスクリプト・プラグインが変わり、ハッシュと id が変わる）を、iPhone で測り直す。iPad で、tablet のジョブを初めて測る。いずれも 11G の、毎回の承認のもと。
+
+### 6.57 次の作業
+
+工程 11F の再レビューを待つ。今回の修正の完了は、11F の自動承認を意味しない。工程 11G への移行は、再レビューの結果に従う。

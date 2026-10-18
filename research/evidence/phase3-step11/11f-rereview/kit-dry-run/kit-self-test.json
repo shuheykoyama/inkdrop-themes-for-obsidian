@@ -1,0 +1,41 @@
+{
+ "mode": "dry-run",
+ "results": [
+  {
+   "id": "dry.emulated-phone",
+   "ok": true
+  },
+  {
+   "id": "dry.accepted",
+   "ok": true
+  },
+  {
+   "id": "dry.run-checks",
+   "ok": true,
+   "detail": {
+    "files": [
+     "results-2026-10-18T06-45-51-044Z.json"
+    ]
+   }
+  },
+  {
+   "id": "dry.screenshot-tour",
+   "ok": true,
+   "detail": {
+    "files": [
+     "tour-2026-10-18T06-56-36-451Z.json"
+    ]
+   }
+  },
+  {
+   "id": "dry.judged",
+   "ok": true,
+   "detail": {
+    "device": "phone",
+    "total": 916,
+    "fail": 52,
+    "other": []
+   }
+  }
+ ]
+}

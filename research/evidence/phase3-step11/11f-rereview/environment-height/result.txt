@@ -1,0 +1,4 @@
+E39, isolated instance, 2026-10-18; solarized-dark; first a.external-link in Reading view of "Markdown elements.md":
+before {"theme":"H before","size":[39,19],"exact":19}
+after {"theme":"H after","size":[39,19],"exact":19}
+The 11F run (2026-10-16) measured this link 39 x 18 (md.reading.link); both builds measure 19 now, so the +1 px is not the fix.

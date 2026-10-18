@@ -1,0 +1,12 @@
+titlebar-e39-custom.json ({"app":"1.14.4","electron":"39.5.1","frame":"custom"}): 2 difference(s)
+  solarized-dark|translucent .titlebar: {"display":"flex","size":[1024,30],"visible":true,"background":"rgba(0, 0, 0, 0)"} -> {"display":"flex","size":[1024,30],"visible":true,"background":"rgba(0, 33, 41, 0.7)"}
+  kanagawa-dragon|translucent .titlebar: {"display":"flex","size":[1024,30],"visible":true,"background":"rgba(0, 0, 0, 0)"} -> {"display":"flex","size":[1024,30],"visible":true,"background":"rgba(24, 22, 22, 0.7)"}
+titlebar-e39-hidden.json ({"app":"1.14.4","electron":"39.5.1","frame":"hidden"}): 2 difference(s)
+  solarized-dark|translucent .titlebar: {"display":"none","size":[0,0],"visible":false,"background":"rgba(0, 0, 0, 0)"} -> {"display":"none","size":[0,0],"visible":false,"background":"rgba(0, 33, 41, 0.7)"}
+  kanagawa-dragon|translucent .titlebar: {"display":"none","size":[0,0],"visible":false,"background":"rgba(0, 0, 0, 0)"} -> {"display":"none","size":[0,0],"visible":false,"background":"rgba(24, 22, 22, 0.7)"}
+titlebar-e43-custom.json ({"app":"1.14.4","electron":"43.7.7","frame":"custom"}): 2 difference(s)
+  solarized-dark|translucent .titlebar: {"display":"flex","size":[1024,30],"visible":true,"background":"rgba(0, 0, 0, 0)"} -> {"display":"flex","size":[1024,30],"visible":true,"background":"rgba(0, 33, 41, 0.7)"}
+  kanagawa-dragon|translucent .titlebar: {"display":"flex","size":[1024,30],"visible":true,"background":"rgba(0, 0, 0, 0)"} -> {"display":"flex","size":[1024,30],"visible":true,"background":"rgba(24, 22, 22, 0.7)"}
+titlebar-e43-hidden.json ({"app":"1.14.4","electron":"43.7.7","frame":"hidden"}): 2 difference(s)
+  solarized-dark|translucent .titlebar: {"display":"none","size":[0,0],"visible":false,"background":"rgba(0, 0, 0, 0)"} -> {"display":"none","size":[0,0],"visible":false,"background":"rgba(0, 33, 41, 0.7)"}
+  kanagawa-dragon|translucent .titlebar: {"display":"none","size":[0,0],"visible":false,"background":"rgba(0, 0, 0, 0)"} -> {"display":"none","size":[0,0],"visible":false,"background":"rgba(24, 22, 22, 0.7)"}

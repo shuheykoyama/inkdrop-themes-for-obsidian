@@ -1,0 +1,25 @@
+release conditions (research/14 §2.3): NOT MET; minimum Obsidian 1.14.4
+
+macOS desktop: NOT met; 138 units {"NO RESULT":1,"DIFF":2,"PASS":135}
+  1 x no counting unit at >= 1.14.4: NO RESULT @1.14.4  [qd22.real-fullscreen|solarized-dark]
+  2 x no counting unit at >= 1.14.4: DIFF @1.14.4  [qd13.fidelity|solarized-dark; qd13.fidelity|kanagawa-dragon]
+
+iOS phone: NOT met; 34 units {"UNVERIFIED":2,"DIFF":2,"PASS":30}
+  2 x no counting unit at >= 1.14.4: UNVERIFIED  [qd1.mobile-drawer-header|solarized-dark; qd1.mobile-drawer-header|kanagawa-dragon]
+  2 x no counting unit at >= 1.14.4: DIFF @1.14.5  [qd13.fidelity|solarized-dark; qd13.fidelity|kanagawa-dragon]
+
+iOS tablet: NOT met; 34 units {"BLOCKED":32,"UNVERIFIED":2}; BLOCKED: iPad not verified in step 10 (the user's decision); BLOCKED, still in the supported range (Q-D10)
+  32 x no counting unit at >= 1.14.4: BLOCKED
+  2 x no counting unit at >= 1.14.4: UNVERIFIED  [qd1.mobile-drawer-header|solarized-dark; qd1.mobile-drawer-header|kanagawa-dragon]
+
+Android phone: NOT met; 34 units {"BLOCKED":32,"UNVERIFIED":2}; BLOCKED: no Android device and no adb (step 10)
+  32 x no counting unit at >= 1.14.4: BLOCKED
+  2 x no counting unit at >= 1.14.4: UNVERIFIED  [qd1.mobile-drawer-header|solarized-dark; qd1.mobile-drawer-header|kanagawa-dragon]
+
+Android tablet: NOT met; 34 units {"BLOCKED":32,"UNVERIFIED":2}; BLOCKED: no Android device and no adb (step 10)
+  32 x no counting unit at >= 1.14.4: BLOCKED
+  2 x no counting unit at >= 1.14.4: UNVERIFIED  [qd1.mobile-drawer-header|solarized-dark; qd1.mobile-drawer-header|kanagawa-dragon]
+
+Windows desktop (not gated: Q-D10): -; 138 units {"UNVERIFIED":138}; Q-D10: not guaranteed until verified on a real machine; UNVERIFIED, not a release failure
+
+Linux desktop (not gated: Q-D10): -; 138 units {"UNVERIFIED":138}; Q-D10: not guaranteed until verified on a real machine; UNVERIFIED, not a release failure

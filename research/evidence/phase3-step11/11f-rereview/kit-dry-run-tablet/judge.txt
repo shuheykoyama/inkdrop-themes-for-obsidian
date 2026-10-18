@@ -1,0 +1,26 @@
+FAIL device.environment [solarized-dark, tablet, left-drawer-open] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, tablet, right-drawer-open] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, tablet, quick-switcher-open] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, tablet, md-reading] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, tablet, default] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, tablet, md-live] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+FAIL device.environment [solarized-dark, tablet, ed-live] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+UNSUPPORTED mm.reading.unsupported [solarized-dark, tablet, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.live.unsupported [solarized-dark, tablet, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.reading.unsupported [solarized-dark, tablet, mermaid re-render] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.light.reading.unsupported [solarized-dark, tablet, mermaid light] -- 7 kinds keep filter none (not themed)
+UNSUPPORTED mm.light.live.unsupported [solarized-dark, tablet, mermaid light] -- 7 kinds keep filter none (not themed)
+FAIL device.environment [kanagawa-dragon, tablet, left-drawer-open] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, tablet, right-drawer-open] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, tablet, quick-switcher-open] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, tablet, md-reading] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, tablet, default] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, tablet, md-live] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+FAIL device.environment [kanagawa-dragon, tablet, ed-live] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+UNSUPPORTED mm.reading.unsupported [kanagawa-dragon, tablet, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.live.unsupported [kanagawa-dragon, tablet, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.reading.unsupported [kanagawa-dragon, tablet, mermaid re-render] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.light.reading.unsupported [kanagawa-dragon, tablet, mermaid light] -- 7 kinds keep filter none (not themed)
+UNSUPPORTED mm.light.live.unsupported [kanagawa-dragon, tablet, mermaid light] -- 7 kinds keep filter none (not themed)
+
+406 results on Mac, isolated Obsidian 1.14.4, mobile emulation (tablet): PASS 281, FAIL 14, DIFF 101, UNSUPPORTED 10, N/A 0 (desktop checks measured on the device: 0)
