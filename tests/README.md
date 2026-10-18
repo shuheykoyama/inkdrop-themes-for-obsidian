@@ -81,7 +81,8 @@ release is a result, not a failure; any FAIL or a missing result file is.
 |---|---|
 | `node tests/quality/important-audit.mjs --vault "$V" --out <f.json>` | Removes each allow-listed `!important` in turn and measures with the runtime tests' code (11E). About 15 min |
 | `node tests/quality/contrast.mjs <runtime.json> <v38-compare-gray-active.csv> --out <f.json>` | WCAG ratios from measured colours (recorded only, Q-D15) |
-| `node tests/visual/mermaid-pixels.mjs --vault "$V" --out <f.json> [--png <dir>]` | Mermaid: Obsidian's themed SVG and the reference drawn by the same renderer, compared pixel by pixel (11F). About 10 min |
+| `node tests/visual/mermaid-pixels.mjs --vault "$V" --out <f.json> [--png <dir>]` | Mermaid: Obsidian's themed SVG and the reference drawn by the same renderer, compared pixel by pixel (11F), with controls that a shape fill, an SVG text fill and a filter on an HTML label are seen. About 2 min. It compares colours and painted properties only: the reference takes the geometry of Mermaid's random curves from Obsidian's diagram, so shapes are not checked independently |
+| `... --restore-self-test` | Negative tests of the tool's own restore: every inline change it makes is undone by putting each element's style attribute back as it was, also after an error |
 | `python3 -I tests/visual/self-test.py` | The region sampler's and V-30 comparison's negative tests |
 
 ## 6. Device kit (`tests/device/`)
@@ -122,7 +123,7 @@ release is a result, not a failure; any FAIL or a missing result file is.
 | Mobile emulation reloads the window; the kit's plugin comes back disabled | dry run without results | the dry run enables it again |
 | Translucency is composited by macOS | CDP screenshots do not show it | translucent looks are compared on native captures only (V-38); runtime checks read Computed Style |
 | The syntax positive control once missed a Reading-view code block (E43, 11E; cause unknown) | `syn.self-test` FAIL "code element not rendered" | not retried: the result stays FAIL. The dump records what the page showed (`code-tokens.js`: languages drawn, scroll, sections, visibility, focus, and whether the block was there 1.5 s later); the full detail is in the result's `measured`. If it comes back, read that before running again |
-| Mermaid draws some shapes with random curves; anti-aliasing of slanted edges varies between shots and places | pixel differences on edges | `mermaid-pixels.mjs` takes Obsidian's geometry into the reference and leaves out pixels that vary between shots of the same side (at most 2 %) |
+| Mermaid draws some shapes with random curves; anti-aliasing of slanted edges varies between shots and places | pixel differences on edges | `mermaid-pixels.mjs` takes Obsidian's geometry into the reference and leaves out pixels that vary between shots of the same side (at most 2 %). Once (E43, 11F) 6 and 9 edge pixels of the large flowchart still differed with the values frozen: that run stays a FAIL; nothing is loosened (research/14 §6.54.1) |
 | Scroll anchoring keeps content in place when something is inserted above | a shifted shot that did not move | `mermaid-pixels.mjs` turns it off in its own leaf |
 | The cable screenshot takes about 2.5 s after the last check that Obsidian is in front | a notification in an image | every device image is looked at |
 
