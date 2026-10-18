@@ -408,6 +408,7 @@ if (selfTest) {
     { name: "not-rendered rect given a size (rendered on one side only, with the theme's stroke)", expect: "FAIL", inline: [{ selector: "g.cluster-label rect.background", property: "width", value: "40px", priority: "important" }, { selector: "g.cluster-label rect.background", property: "height", value: "10px", priority: "important" }], only: [".colours"] },
     { name: "HTML label text colour changed (painted)", expect: "FAIL", inline: [{ selector: "foreignObject span.nodeLabel", property: "color", value: "rgb(255, 0, 255)", priority: "important" }], only: [".colours"] },
     { name: "HTML edge-label background changed (painted)", expect: "FAIL", inline: [{ selector: "foreignObject span.edgeLabel", property: "background-color", value: "rgb(255, 0, 255)", priority: "important" }], only: [".colours"] },
+    { name: "filter on HTML node labels (painted)", expect: "FAIL", inline: [{ selector: "foreignObject span.nodeLabel", property: "filter", value: "blur(2px)", priority: "important" }], only: [".colours"] },
     { name: "filter on node shapes (painted)", expect: "FAIL", inline: [{ selector: 'g.node rect.label-container:not([style*="fill"])', property: "filter", value: "blur(1px)", priority: "important" }], only: [".colours"] },
     { name: "edge stroke-opacity changed (painted)", expect: "FAIL", inline: [{ selector: 'path.flowchart-link:not([style*="stroke:"])', property: "stroke-opacity", value: "0.3", priority: "important" }], only: [".colours"] },
   ];

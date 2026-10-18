@@ -32,6 +32,8 @@ check("the same dump passes", status("text", {}) === "PASS");
 check("HTML label: color differs -> FAIL", status("html", { color: "rgb(255, 0, 255)" }) === "FAIL");
 check("HTML label: background-color differs -> FAIL", status("html", { "background-color": "rgb(255, 0, 255)" }) === "FAIL");
 check("HTML label: opacity differs -> FAIL", status("html", { opacity: "0.4" }) === "FAIL");
+check("HTML label: filter differs -> FAIL", status("html", { filter: "blur(2px)" }) === "FAIL");
+check("foreignObject: filter differs -> FAIL", status("fo", { filter: "blur(2px)" }) === "FAIL");
 check("foreignObject: background-color differs -> FAIL", status("fo", { "background-color": "rgb(255, 0, 255)" }) === "FAIL");
 // SVG text and shapes: painted with fill / stroke.
 check("SVG text: fill differs -> FAIL", status("text", { fill: "rgb(255, 0, 255)" }) === "FAIL");
@@ -67,7 +69,7 @@ check("an HTML element against an SVG one -> FAIL", status("html", { ns: "svg" }
   check("older dump: the same -> PASS", old({}) === "PASS");
 }
 check("paintedProps: SVG shape", JSON.stringify(paintedProps(base.rect, base.rect)) === JSON.stringify(["fill", "stroke", "opacity", "fill-opacity", "stroke-opacity", "filter"]));
-check("paintedProps: HTML", JSON.stringify(paintedProps(base.html, base.html)) === JSON.stringify(["fill", "stroke", "color", "background-color", "opacity"]));
+check("paintedProps: HTML", JSON.stringify(paintedProps(base.html, base.html)) === JSON.stringify(["fill", "stroke", "color", "background-color", "opacity", "filter"]));
 
 const failed = results.filter((x) => !x).length;
 console.log(failed ? `\n${failed} of ${results.length} mermaid judge self-test cases FAILED` : `\nall ${results.length} mermaid judge self-test cases behaved as expected`);

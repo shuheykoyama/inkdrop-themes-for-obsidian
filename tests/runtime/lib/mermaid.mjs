@@ -9,9 +9,10 @@
 //             SVGs have the same elements. Dark: the reference is Inkdrop's rendering (base theme,
 //             themeVariables from the theme's tokens); light: Mermaid's defaults, as Obsidian draws them
 //             without the theme. The properties per element (research/14 §6.54):
-//               - HTML elements (the labels inside foreignObject): fill, stroke, color, background-color, opacity
-//                 (text colour and background are what an HTML label paints);
-//               - foreignObject: the same and filter;
+//               - HTML elements (the labels inside foreignObject): fill, stroke, color, background-color, opacity,
+//                 filter (text colour and background are what an HTML label paints; a filter on a label
+//                 element changes its pixels, research/14 §6.56);
+//               - foreignObject: the same;
 //               - other SVG elements: fill, stroke, opacity, fill-opacity, stroke-opacity, filter. color and
 //                 background-color are not painted by them (SVG text is painted with fill; an SVG shape has no
 //                 CSS background). color counts as well when fill or stroke is the keyword currentcolor (a
@@ -37,7 +38,9 @@ const same = (p, a, b) => {
 // The properties compared on element `a` (Obsidian's) and its reference `b`; null when neither is rendered.
 export function paintedProps(a, b) {
   if (a.ns === undefined) return PROPS;
-  if (a.ns === "html") return [...PROPS, "opacity"];
+  // An HTML label and the foreignObject around it paint the same way (CSS boxes): their text colour,
+  // background, opacity and filter. Kept as two cases: the element types are judged apart in the details.
+  if (a.ns === "html") return [...PROPS, "opacity", "filter"];
   if (a.tag === "foreignobject") return [...PROPS, "opacity", "filter"];
   if (a.empty && b.empty) return null;
   const props = ["fill", "stroke", ...OPACITIES, "filter"];
