@@ -1,0 +1,10 @@
+node tests/release/gate.mjs (inputs: tests/release/inputs.json as committed), before and after adding the Solarized Dark verifiedBy of qd22.real-fullscreen, 2026-10-21
+
+3,4c3,4
+< macOS desktop: NOT met; 138 units {"NO RESULT":5,"DIFF":2,"PASS":131}
+<   5 x no counting unit at >= 1.14.4: NO RESULT @1.14.4  [qd1.titlebar-visible-frame|solarized-dark; qd1.titlebar-visible-frame|kanagawa-dragon; qd22.real-fullscreen|solarized-dark; qd4.links|solarized-dark; qd4.links|kanagawa-dragon]
+---
+> macOS desktop: NOT met; 138 units {"NO RESULT":4,"DIFF":2,"PASS":132}
+>   4 x no counting unit at >= 1.14.4: NO RESULT @1.14.4  [qd1.titlebar-visible-frame|solarized-dark; qd1.titlebar-visible-frame|kanagawa-dragon; qd4.links|solarized-dark; qd4.links|kanagawa-dragon]
+
+changed units: qd22.real-fullscreen|solarized-dark|macOS|desktop NO RESULT -> PASS (1 of 550)
