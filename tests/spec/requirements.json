@@ -140,10 +140,15 @@
         "phone"
       ],
       "mandatory": true,
-      "unverified": {
-        "reason": "The header paints no background of its own (transparent in the PoC measurement), so its visible colour is the drawer's; a Computed Style check cannot show that. Needs a pixel check on a device (step 10).",
-        "risk": "A raised or blurred header layer on iOS / Android could change the visible colour."
-      }
+      "verifiedBy": [
+        {
+          "method": "Pixel check on device screenshots (step 11G G1, research/14 §6.65): the kit's tour opens each drawer, the plugin records the drawer geometry at the start and end of the hold and the cable driver right before and after the screenshot (all four must agree within 0.5 CSS px); tests/device/drawer-header.py samples the header's free strip and the drawer body's free band of the screenshot and requires both flat (per-channel sd <= 1.0) and CIEDE2000 <= 1.0 between them, for both themes x left and right drawers; every image inspected by eye. That the drawer body is the note list colour is checked separately (mobile.left-drawer.background, mobile.right-drawer.background)",
+          "evidence": "research/evidence/phase3-step11/11g-g1/ (tour/drawer-header.json, tour/shots.json, tour/tour-2026-10-20T08-19-09-315Z.json, tour/03-, 04-, 22-, 23-*.png; provenance.md)",
+          "result": "PASS on 2026-10-20 for both themes, left and right drawers: dE2000 0.009-0.014, max sd 0.20; the header paints no background of its own (rgba(0, 0, 0, 0), no backdrop filter). Only the iPhone 12 Pro, iOS 27.0, Obsidian 1.14.5 was measured; iPad and Android were not (no device verification planned, research/14 §6.61)",
+          "status": "PASS",
+          "scope": {"os": "iOS", "device": "phone", "themes": ["solarized-dark", "kanagawa-dragon"], "appVersion": "1.14.5", "model": "iPhone 12 Pro", "osVersion": "27.0", "date": "2026-10-20"}
+        }
+      ]
     },
     {
       "id": "qd6.accent-default",
