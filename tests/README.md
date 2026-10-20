@@ -84,6 +84,9 @@ release is a result, not a failure; any FAIL or a missing result file is.
 | `node tests/visual/mermaid-pixels.mjs --vault "$V" --out <f.json> [--png <dir>]` | Mermaid: Obsidian's themed SVG and the reference drawn by the same renderer, compared pixel by pixel (11F), with controls that a shape fill, an SVG text fill and a filter on an HTML label are seen. About 2 min. It compares colours and painted properties only: the reference takes the geometry of Mermaid's random curves from Obsidian's diagram, so shapes are not checked independently |
 | `... --restore-self-test` | Negative tests of the tool's own restore: every inline change it makes is undone by putting each element's style attribute back as it was, also after an error |
 | `python3 -I tests/visual/self-test.py` | The region sampler's and V-30 comparison's negative tests |
+| `CAPTURE_INKDROP=off bash tests/visual/capture-obsidian.sh ...` | A native capture that never hides or shows Inkdrop's window (without the variable it does, for V-38) |
+| `node tests/visual/g5-capture.mjs --themes <dir> --out <new dir> --tmp <dir>` | Step 11G G5: the 8 native captures of the custom-frame title bar (2 builds x 2 themes x opaque / translucent), each with its regions (`g5-regions.js`) and records; takes the screen for about 2 minutes, so only with the user's go. `--plan` lists them and does nothing else |
+| `python3 -I tests/visual/g5-judge.py <dir> --out <f.json>` | Judges those captures with `sample-regions.py` (flat regions, CIEDE2000 <= 1.0 between the title bar and the left tab strip; the pre-fix build must differ: the negative control). `tests/visual/g5-self-test.py` holds the negative tests (in `npm test` and CI) |
 
 ## 6. Device kit (`tests/device/`)
 

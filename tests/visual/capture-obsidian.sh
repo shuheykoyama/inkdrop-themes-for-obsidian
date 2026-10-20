@@ -8,11 +8,14 @@
 # Requires the isolated instance on 127.0.0.1:9333 and screen-recording permission already granted (this
 # script never changes privacy settings). Inspect every image before committing it: the capture is a
 # screen rectangle, so anything covering the window would be in it.
+# CAPTURE_INKDROP=off: Inkdrop's window is neither hidden nor shown (tests/visual/inkdrop-window.sh).
 set -euo pipefail
 theme="$1"; mode="$2"; bg="$3"; focus="$4"; vault="$5"; out="$6"; tmp="$7"
 root="$(cd "$(dirname "$0")/../.." && pwd)"
 v04="$root/research/evidence/phase2-v04/tools"
 cdp() { node "$root/research/evidence/phase2-p0/tools/cdp.mjs" 9333 "$@"; }
+# inkdrop_window hide|show (CAPTURE_INKDROP=off: never touch Inkdrop).
+. "$root/tests/visual/inkdrop-window.sh"
 # CAPTURE_NOTE / CAPTURE_VIEW / CAPTURE_SCROLL (optional, step 6): open that note in that view ("source",
 # "live", "reading"), scrolled to the line containing CAPTURE_SCROLL; the file name gets "-<view>[-<tag>]"
 # (CAPTURE_TAG). CAPTURE_LINES (on / off), CAPTURE_CURSOR (line text) and CAPTURE_ACTION (select / search)
@@ -31,7 +34,7 @@ cp "$src/theme.css" "$src/manifest.json" "$vault/.obsidian/themes/$manifest_name
 cdp eval "$tmp/setup.js" > "$tmp/setup.json"
 
 # V-38: the Inkdrop window (if one is running with its DevTools endpoint) uses the same rectangle; hide it.
-bash "$root/tests/visual/other-window.sh" hide inkdrop
+inkdrop_window hide
 cdp eval "$v04/obsidian-focus.js" > /dev/null
 "$tmp/bin/backdrop" "$bg" 300 150 1400 900 $([ "$focus" = inactive ] && echo activate) &
 bpid=$!
@@ -47,7 +50,7 @@ shot_time="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo '(() => ({ focused: electronWindow.isFocused(), cls: [...document.body.classList].filter((c) => /^is-(translucent|focused|fullscreen)$/.test(c)) }))()' > "$tmp/after.js"
 cdp eval "$tmp/after.js" > "$tmp/after.json"
 kill "$bpid"; wait "$bpid" 2>/dev/null || true
-bash "$root/tests/visual/other-window.sh" show inkdrop
+inkdrop_window show
 
 python3 -I - "$tmp/setup.json" "$tmp/focus.json" "$tmp/after.json" "$shot" "$shot_time" "$theme" "$mode" "$bg" "$focus" > "$out/measurements/$name.json" <<'EOF'
 import hashlib, json, subprocess, sys
