@@ -320,5 +320,13 @@ if (mode === "dry-run" || mode === "dry-run-tablet") {
     const tour = JSON.parse(readFileSync(path.join(work, readdirSync(work).find((f) => f.startsWith("tour-"))), "utf8"));
     check("dry.tablet-tour", tour.device === "tablet" && tour.steps.length > 0 && tour.steps.every((x) => /tablet,/.test(x.label) && !x.error), { device: tour.device, steps: tour.steps.length, errors: tour.steps.filter((x) => x.error).map((x) => x.label).slice(0, 3) });
   }
+  // Every open-drawer step of the tour records where the drawer header and body show only their background
+  // (tests/device/drawer-geometry.js), for the qd1.mobile-drawer-header pixel check.
+  {
+    const tour = JSON.parse(readFileSync(path.join(work, readdirSync(work).find((f) => f.startsWith("tour-"))), "utf8"));
+    const drawerSteps = tour.steps.filter((x) => /drawer|sidebar/.test(x.label));
+    const geo = drawerSteps.map((x) => ({ label: x.label, drawers: (x.measured?.drawerGeometry?.drawers ?? []).map((d) => ({ side: d.side, header: !!d.headerArea, body: !!d.bodyArea })) }));
+    check("dry.drawer-geometry", drawerSteps.length === 4 && geo.every((g) => g.drawers.length === 1 && g.drawers[0].header && g.drawers[0].body), geo);
+  }
   finish();
 }

@@ -214,6 +214,7 @@ const SCRIPTS = {
   probe: ${asFunction("tests/runtime/probe.js", "__INK")},
   syntax: ${asFunction("tests/runtime/code-tokens.js", "__CODE")},
   mermaid: ${asFunction("tests/runtime/mermaid-dump.js", "__MERMAID")},
+  drawer: ${asFunction("tests/device/drawer-geometry.js", "__DRAWER")},
 };
 // The vault this plugin may drive: its name and the marker build-kit.mjs put in the config folder.
 const KIT = ${JSON.stringify({ vault: VAULT_NAME, marker: MARKER, kind: MARKER_KIND, kitId: "@KIT_ID@" })};
@@ -393,6 +394,9 @@ module.exports = class InkDeviceCheck extends Plugin {
               visualViewport: window.visualViewport ? [Math.round(visualViewport.width), Math.round(visualViewport.height), Math.round(visualViewport.offsetTop)] : null,
               activeElement: document.activeElement ? document.activeElement.className.toString().slice(0, 80) : null,
             };
+            // An open drawer: where its header and body show nothing but their background, for the
+            // qd1.mobile-drawer-header pixel check (tests/device/drawer-header.py).
+            if (/drawer-open$/.test(step.state)) rec.measured.drawerGeometry = await SCRIPTS.drawer({ inset: 4 });
             rec.shootUntil = new Date().toISOString();
             if (step.open) await leaf.setViewState({ type: "markdown", state: { file: "Sample note.md", mode: "source", source: false }, active: true });
           } catch (e) { rec.error = String(e?.stack ?? e); }

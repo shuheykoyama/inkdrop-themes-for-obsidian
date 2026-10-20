@@ -2,7 +2,8 @@
 # layer rules, the official stylelint config, spec validation, and the negative self-tests (static and the
 # release judgement of tests/release, the integrated regression's own logic, the compatibility inventory's and
 # the step 11E quality helpers' (the !important experiment and the contrast record need an isolated Obsidian)
-# and the Mermaid colour judgement's (on made-up dumps);
+# the Mermaid colour judgement's (on made-up dumps) and the drawer header pixel check's (on synthetic
+# images, Python 3 of the runner, standard library only);
 # the judgement, the integrated regression and the inventory itself read git history / need macOS or an
 # Obsidian build and run locally).
 # The runtime (isolated Obsidian on macOS) and visual checks need a local desktop and are not run here.
@@ -33,3 +34,4 @@ jobs:
       - run: npm run test:compat-self
       - run: npm run test:quality-self
       - run: npm run test:mermaid-judge-self
+      - run: npm run test:drawer-header-self

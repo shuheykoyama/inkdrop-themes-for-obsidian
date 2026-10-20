@@ -110,6 +110,11 @@ release is a result, not a failure; any FAIL or a missing result file is.
   hashes and a new kit id. A device report stays tied to the kit it was measured with: the approved iPhone
   results (step 10, research/evidence/phase3-step10/) are those of the old kit; a new kit is measured on the
   devices again before its results count (11G, with approval each time).
+- **Drawer header** (`qd1.mobile-drawer-header`): each open-drawer step of the tour records where the drawer
+  header and body show only their background (`tests/device/drawer-geometry.js`, `measured.drawerGeometry`).
+  `python3 -I tests/device/drawer-header.py --tour <tour-*.json> --shots <cable tour dir> --out <f.json>`
+  samples the screenshots there (8- or 16-bit PNG) and requires both areas flat (sd <= 1.0) and the same colour
+  (CIEDE2000 <= 1.0); `tests/device/drawer-header-self-test.py` holds its negative tests (in `npm test` and CI).
 - No device: `node tests/device/kit-self-test.mjs build|plugin|dry-run|dry-run-tablet <new_work_dir>` (the
   dry runs drive the kit in an isolated instance with phone or tablet emulation; their `device.environment`
   checks FAIL by design, so a dry run is never accepted as a device run).
