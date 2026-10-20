@@ -1,0 +1,7 @@
+PASS dry.emulated-phone
+PASS dry.accepted
+PASS dry.run-checks  {"files":["results-2026-10-20T02-09-49-345Z.json"]}
+PASS dry.screenshot-tour  {"files":["tour-2026-10-20T02-20-44-864Z.json"]}
+PASS dry.judged  {"device":"phone","total":916,"fail":52,"other":[]}
+PASS dry.drawer-geometry  [{"label":"solarized-dark left drawer","drawers":[{"side":"left","header":true,"body":true}]},{"label":"solarized-dark right drawer","drawers":[{"side":"right","header":true,"body":true}]},{"label":"kanagawa-dragon left drawer","drawers":[{"side":"left","header":true,"body":true}]},{"label":"kanagawa-dragon right drawer","drawers":[{"side":"right","header":true,"body":true}]}]
+all 6 kit self-test checks PASS

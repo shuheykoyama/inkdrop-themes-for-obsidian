@@ -1,0 +1,242 @@
+{
+ "maxSd": 1.0,
+ "maxDE2000": 1.0,
+ "results": [
+  {
+   "label": "kanagawa-dragon-left.png",
+   "side": "left",
+   "png": "kanagawa-dragon-left.png",
+   "scale": 1.0,
+   "dpr": 1,
+   "header": {
+    "rect": [
+     0,
+     752.42,
+     327.59,
+     57.58
+    ],
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "backdropFilter": "none",
+    "boxShadow": "none"
+   },
+   "areas": {
+    "headerArea": {
+     "px": [
+      133,
+      757,
+      130,
+      49
+     ],
+     "mean": [
+      24.0,
+      22.0,
+      22.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "bodyArea": {
+     "px": [
+      20,
+      360,
+      287,
+      294
+     ],
+     "mean": [
+      23.98,
+      21.99,
+      21.99
+     ],
+     "sd": [
+      0.15,
+      0.096,
+      0.085
+     ]
+    }
+   },
+   "dE2000": 0.009,
+   "status": "PASS",
+   "detail": "dE2000 0.009 <= 1.0"
+  },
+  {
+   "label": "solarized-dark-left.png",
+   "side": "left",
+   "png": "solarized-dark-left.png",
+   "scale": 1.0,
+   "dpr": 1,
+   "header": {
+    "rect": [
+     0,
+     752.42,
+     327.59,
+     57.58
+    ],
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "backdropFilter": "none",
+    "boxShadow": "none"
+   },
+   "areas": {
+    "headerArea": {
+     "px": [
+      133,
+      757,
+      130,
+      49
+     ],
+     "mean": [
+      1.0,
+      45.0,
+      56.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "bodyArea": {
+     "px": [
+      20,
+      360,
+      287,
+      294
+     ],
+     "mean": [
+      1.01,
+      45.04,
+      55.96
+     ],
+     "sd": [
+      0.077,
+      0.193,
+      0.189
+     ]
+    }
+   },
+   "dE2000": 0.056,
+   "status": "PASS",
+   "detail": "dE2000 0.056 <= 1.0"
+  },
+  {
+   "label": "kanagawa-dragon-right.png",
+   "side": "right",
+   "png": "kanagawa-dragon-right.png",
+   "scale": 1.0,
+   "dpr": 1,
+   "header": {
+    "rect": [
+     62.41,
+     754,
+     327.59,
+     56
+    ],
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "backdropFilter": "none",
+    "boxShadow": "none"
+   },
+   "areas": {
+    "headerArea": {
+     "px": [
+      145,
+      758,
+      181,
+      48
+     ],
+     "mean": [
+      24.0,
+      22.0,
+      22.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "bodyArea": {
+     "px": [
+      83,
+      191,
+      287,
+      465
+     ],
+     "mean": [
+      23.99,
+      21.99,
+      22.0
+     ],
+     "sd": [
+      0.121,
+      0.077,
+      0.068
+     ]
+    }
+   },
+   "dE2000": 0.008,
+   "status": "PASS",
+   "detail": "dE2000 0.008 <= 1.0"
+  },
+  {
+   "label": "solarized-dark-right.png",
+   "side": "right",
+   "png": "solarized-dark-right.png",
+   "scale": 1.0,
+   "dpr": 1,
+   "header": {
+    "rect": [
+     62.41,
+     754,
+     327.59,
+     56
+    ],
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "backdropFilter": "none",
+    "boxShadow": "none"
+   },
+   "areas": {
+    "headerArea": {
+     "px": [
+      145,
+      758,
+      181,
+      48
+     ],
+     "mean": [
+      1.0,
+      45.0,
+      56.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "bodyArea": {
+     "px": [
+      83,
+      191,
+      287,
+      465
+     ],
+     "mean": [
+      1.0,
+      45.03,
+      55.98
+     ],
+     "sd": [
+      0.059,
+      0.158,
+      0.151
+     ]
+    }
+   },
+   "dE2000": 0.036,
+   "status": "PASS",
+   "detail": "dE2000 0.036 <= 1.0"
+  }
+ ]
+}

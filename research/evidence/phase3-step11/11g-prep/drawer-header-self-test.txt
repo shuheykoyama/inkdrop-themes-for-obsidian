@@ -1,0 +1,13 @@
+PASS drawer-header self-test: same colour, 8-bit: PASS (declared PASS) -- dE2000 0.000 <= 1.0
+PASS drawer-header self-test: same colour, 16-bit: PASS (declared PASS) -- dE2000 0.000 <= 1.0
+PASS drawer-header self-test: header one 8-bit step off (below the limit): PASS (declared PASS) -- dE2000 0.809 <= 1.0
+PASS drawer-header self-test: raised header: a lighter layer: FAIL (declared FAIL) -- dE2000 3.098 > 1.0
+PASS drawer-header self-test: text in the header area: FAIL (declared FAIL) -- not flat (measurement invalid): headerArea max sd > 1.0
+PASS drawer-header self-test: icon edge in the header area: FAIL (declared FAIL) -- not flat (measurement invalid): headerArea max sd > 1.0
+PASS drawer-header self-test: gradient in the body: FAIL (declared FAIL) -- not flat (measurement invalid): bodyArea max sd > 1.0
+PASS drawer-header self-test: no header area: FAIL (declared FAIL) -- header or body area missing, too small or outside the image
+PASS drawer-header self-test: area outside the image: FAIL (declared FAIL) -- header or body area missing, too small or outside the image
+PASS drawer-header self-test: scale is not the pixel ratio: FAIL (declared FAIL) -- screenshot scale 2.000 is not the device pixel ratio 3
+PASS drawer-header self-test: no open drawer: FAIL (declared FAIL) -- no open drawer in the geometry
+
+all 11 drawer-header self-test cases behaved as expected
