@@ -1,0 +1,25 @@
+{
+ "kind": "inkdrop-themes-for-obsidian device kit",
+ "vault": "InkdropThemeTest",
+ "kitId": "abfb7c19-790d-477f-ac54-7ca4184684b8",
+ "builtAt": "2026-10-20T05:52:29.486Z",
+ "files": {
+  ".obsidian/appearance.json": "2fb2e073d7a707f09ad45abdabf2f2fe3259ada63fbd8daaa90f7d11c62d1622",
+  ".obsidian/community-plugins.json": "7202d3ca2f40278064ff58d79f1d5f3e541edf903ef1c9de03545d37ec1cb742",
+  ".obsidian/plugins/ink-device-check/main.js": "77265585e1f20b1d2c447d8ab75094e977d11db3758426c6eb8add7fe001dd01",
+  ".obsidian/plugins/ink-device-check/manifest.json": "eb3ec8c3866ed5130d4f15da9306bbdc13562fde8e6eeb633dc20e123e0acffe",
+  ".obsidian/themes/DEV kanagawa-dragon (unnamed)/manifest.json": "155e25208819cb4b51602c010203e6791e4319bb7f418b4cb7028e405d2dc691",
+  ".obsidian/themes/DEV kanagawa-dragon (unnamed)/theme.css": "7a3715cae3767a1ed28e83bf667d0d17a482d39e1edf07282e78128e13a3b885",
+  ".obsidian/themes/DEV solarized-dark (unnamed)/manifest.json": "15f08cdd760f25f98b73b0596a1e33c8000c0343c0c79111506a946bc22561a4",
+  ".obsidian/themes/DEV solarized-dark (unnamed)/theme.css": "b98da149f049623fc953af0ac587a106b153bd158e11afad68c22e32ae3470ac",
+  "Code blocks.md": "40417912aaed06cc152308acee7de2d1fd8b9312bfa92341a9a9a8d40509dc56",
+  "Editor chrome.md": "010aec7b4c6b8f086e1e7125b0c81788e2ce9d5110f861bd740c745e59e8bf79",
+  "Folder A/In folder.md": "50090b1fd83bb2792cdca69ada245a74ce67c5aab35cc25e27e1b044baa66bda",
+  "Folder A/Sub/Deep.md": "ee2bb100dcf9d63847c17eae94aad1748574b04b240892975457dffe13fcb7f4",
+  "Markdown elements.md": "05013ff024e94c32a02a363ba999a4bedafd1f59626c3b82a6bac26f349259f1",
+  "Mermaid.md": "994dc1fa6b8baed682526d1b9791158a3b727e414a990f0f4721267341ad9385",
+  "Other note.md": "3084378ffbd5c1e9c61a22cbdc8d3d04ac50e349aca8089ffd4836a40de28547",
+  "Sample note.md": "18147b8c18ef74bae118dce7c2428430031818aeade70a43d4098bbd48ce1778",
+  "half-transparent.png": "d442f9703dce3f244d6a6b36d305acc852a9c4985a8854a61e32341dcad3d0ff"
+ }
+}

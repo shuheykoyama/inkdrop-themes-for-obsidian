@@ -1,0 +1,4 @@
+source commit: daac8e2 (clean tree)
+kit id: abfb7c19-790d-477f-ac54-7ca4184684b8
+InkdropThemeTest.zip SHA-256: 28d2a419049b0e7749083536dffb35f842e8af21c84d5d350951cf2307deecde
+jobs on a phone: 66; tour steps on a phone: 38

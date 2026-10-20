@@ -1,0 +1,30 @@
+{
+ "v": {
+  "vault": "InkdropThemeTest",
+  "plugin": true,
+  "methods": [
+   "constructor",
+   "onload",
+   "selectTheme",
+   "environment",
+   "write",
+   "keepSettings",
+   "runChecks",
+   "runTour"
+  ],
+  "marker": false,
+  "deviceResults": [
+   "device-results/results-2026-10-13T09-11-01-399Z.json",
+   "device-results/tour-2026-10-13T09-21-51-767Z.json",
+   "device-results/results-2026-10-13T08-07-36-497Z.json"
+  ],
+  "ua": [
+   "obsidian/1.14.5"
+  ],
+  "viewport": [
+   390,
+   844,
+   3
+  ]
+ }
+}

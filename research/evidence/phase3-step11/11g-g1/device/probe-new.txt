@@ -1,0 +1,8 @@
+{
+  vault: 'InkdropThemeTest',
+  theme: '',
+  ua: [ 'iPhone OS 18_7', 'obsidian/1.14.5' ],
+  viewport: [ 390, 844, 3 ],
+  uptime: 48,
+  commands: [ 'ink-device-check:run-checks', 'ink-device-check:screenshot-tour' ]
+}
