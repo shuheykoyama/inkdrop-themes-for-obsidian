@@ -7,6 +7,10 @@ changes one thing and declares PASS or FAIL:
   - text or an icon edge inside the header area, or a gradient in the body area, fails as not flat;
   - a missing area, an area outside the image, a scale that is not the pixel ratio, and a geometry without an
     open drawer fail.
+Tour mode (--tour): a made-up cable tour of the four drawer steps passes (phone and tablet labels); it fails when
+a step's geometry, its image or its screenshot entry is missing, a step or a screenshot is duplicated, the
+screenshot is of another step, the sides are swapped, the geometry changed during the step, or another step
+carries a drawer geometry.
 
 usage: python3 -I tests/device/drawer-header-self-test.py
 """
@@ -52,6 +56,61 @@ def run(tmp, name, pixel, geometry=GEOMETRY, depth=8):
     return ("PASS" if r.returncode == 0 else "FAIL"), res
 
 
+def tour(tmp, name, edit=lambda steps, shots: None, device="phone"):
+    """A made-up cable tour (tour log, shots.json, one image per step) of the four drawer steps, changed by
+    `edit(steps, shots)`; returns PASS / FAIL of drawer-header.py --tour and its result details."""
+    d = Path(tmp) / name
+    d.mkdir()
+    png(d / "drawer.png", lambda x, y: DRAWER)
+    fmt = "{theme} {side} drawer" if device == "phone" else "{theme} tablet, {side} sidebar"
+    steps, shots, n = [], [], 0
+    for theme in ("solarized-dark", "kanagawa-dragon"):
+        for side in ("left", "right"):
+            n += 1
+            label = fmt.format(theme=theme, side=side)
+            geo = json.loads(json.dumps({**GEOMETRY, "drawers": [{**GEOMETRY["drawers"][0], "side": side}]}))
+            file = f"{n:02d}.png"
+            (d / file).write_bytes((d / "drawer.png").read_bytes())
+            steps.append({"n": n, "label": label, "measured": {"drawerGeometryStart": geo, "drawerGeometry": json.loads(json.dumps(geo))}})
+            shots.append({"n": n, "label": label, "file": file, "geometryBefore": json.loads(json.dumps(geo)), "geometryAfter": json.loads(json.dumps(geo))})
+    steps.insert(0, {"n": 0, "label": "solarized-dark phone, floating navigation", "measured": {}})
+    edit(steps, shots)
+    (d / "tour.json").write_text(json.dumps({"kind": "tour", "device": device, "steps": steps}))
+    (d / "shots.json").write_text(json.dumps({"tourFile": "tour.json", "shots": shots}))
+    o = d / "out.json"
+    r = subprocess.run([sys.executable, "-I", str(SCRIPT), "--tour", str(d / "tour.json"), "--shots", str(d), "--out", str(o)], capture_output=True, text=True)
+    res = json.loads(o.read_text())["results"] if o.exists() else []
+    return ("PASS" if r.returncode == 0 else "FAIL"), res
+
+
+def swap_sides(steps, shots):
+    # The left-drawer step of the first theme carries a right drawer everywhere (plugin and cable).
+    for g in (steps[1]["measured"]["drawerGeometryStart"], steps[1]["measured"]["drawerGeometry"], shots[0]["geometryBefore"], shots[0]["geometryAfter"]):
+        g["drawers"][0]["side"] = "right"
+
+
+def moved(steps, shots):
+    # The drawer moved between the start of the hold and the screenshot (another screen state).
+    steps[2]["measured"]["drawerGeometryStart"]["drawers"][0]["bodyArea"][1] += 40
+
+
+TOUR_CASES = [
+    ("tour: all four drawers", "PASS", lambda st, sh: None, "phone"),
+    ("tour: all four drawers, tablet labels", "PASS", lambda st, sh: None, "tablet"),
+    ("tour: one step without its geometry", "FAIL", lambda st, sh: st[3]["measured"].pop("drawerGeometry"), "phone"),
+    ("tour: one screenshot without the geometry read before it", "FAIL", lambda st, sh: sh[1].pop("geometryBefore"), "phone"),
+    ("tour: one image missing (screenshot failed)", "FAIL", lambda st, sh: sh[2].update(file=None, error="not shot"), "phone"),
+    ("tour: one screenshot entry missing", "FAIL", lambda st, sh: sh.pop(3), "phone"),
+    ("tour: one drawer step missing", "FAIL", lambda st, sh: st.pop(4), "phone"),
+    ("tour: the same step twice", "FAIL", lambda st, sh: st.append(json.loads(json.dumps(st[1]))), "phone"),
+    ("tour: the same screenshot twice", "FAIL", lambda st, sh: sh.append(json.loads(json.dumps(sh[0]))), "phone"),
+    ("tour: the screenshot is of another step", "FAIL", lambda st, sh: sh[1].update(n=7), "phone"),
+    ("tour: left and right swapped", "FAIL", swap_sides, "phone"),
+    ("tour: the drawer geometry changed during the step", "FAIL", moved, "phone"),
+    ("tour: a drawer geometry on another step", "FAIL", lambda st, sh: st[0]["measured"].update(drawerGeometry=st[1]["measured"]["drawerGeometry"]), "phone"),
+]
+
+
 def main():
     flat = lambda x, y: DRAWER
     cases = [
@@ -75,7 +134,14 @@ def main():
             bad += not ok
             detail = "; ".join(r.get("detail", "") for r in res)
             print(f"{'PASS' if ok else 'FAIL'} drawer-header self-test: {name}: {got} (declared {want}) -- {detail}")
-    print(f"\n{'all' if not bad else bad} {'' if not bad else 'of '}{len(cases)} drawer-header self-test cases {'behaved as expected' if not bad else 'FAILED'}")
+        for i, (name, want, edit, device) in enumerate(TOUR_CASES):
+            got, res = tour(tmp, f"t{i}", edit, device)
+            ok = got == want
+            bad += not ok
+            detail = "; ".join(f"{r.get('label')}: {r.get('detail', '')}" for r in res if r.get("status") != "PASS") or f"{sum(r.get('status') == 'PASS' for r in res)} PASS"
+            print(f"{'PASS' if ok else 'FAIL'} drawer-header self-test: {name}: {got} (declared {want}) -- {detail}")
+    total = len(cases) + len(TOUR_CASES)
+    print(f"\n{f'all {total}' if not bad else f'{bad} of {total}'} drawer-header self-test cases {'behaved as expected' if not bad else 'FAILED'}")
     sys.exit(1 if bad else 0)
 
 

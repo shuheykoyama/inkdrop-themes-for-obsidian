@@ -230,6 +230,13 @@ module.exports = class InkDeviceCheck extends Plugin {
   // Why this vault must not be driven, or null when it is the kit's own test vault: the name must be
   // InkdropThemeTest and the config folder must hold the kit's marker with this plugin's kit id (a vault of
   // the same name, or one the plugin folder was copied into, has no such marker). Reads only.
+  // The drawer geometry now (tests/device/drawer-geometry.js), for the cable driver to read right before and
+  // right after each drawer screenshot; null when this is not the kit's vault.
+  async drawerGeometry() {
+    if (await this.refuse("drawer geometry")) return null;
+    return SCRIPTS.drawer({ inset: 4 });
+  }
+
   async notTheKitVault() {
     const name = this.app.vault.getName();
     if (name !== KIT.vault) return 'the open vault is "' + name + '", not ' + KIT.vault;
@@ -385,6 +392,12 @@ module.exports = class InkDeviceCheck extends Plugin {
             new Notice((i + 1) + "/" + steps.length + " " + step.label, 3000);
             await sleep(3500);
             rec.shootFrom = new Date().toISOString();
+            // An open drawer: where its header and body show nothing but their background, at the start and at
+            // the end of the hold (the screenshot is taken in between), for the qd1.mobile-drawer-header pixel
+            // check (tests/device/drawer-header.py requires the two to be the same).
+            const drawerStep = /drawer-open$/.test(step.state);
+            const drawerStart = drawerStep ? await SCRIPTS.drawer({ inset: 4 }) : null;
+            const drawerStartAt = drawerStep ? new Date().toISOString() : null;
             await sleep(step.wait * 1000);
             const nav = document.querySelector(".mobile-navbar");
             const ncs = nav ? getComputedStyle(nav) : null;
@@ -394,9 +407,12 @@ module.exports = class InkDeviceCheck extends Plugin {
               visualViewport: window.visualViewport ? [Math.round(visualViewport.width), Math.round(visualViewport.height), Math.round(visualViewport.offsetTop)] : null,
               activeElement: document.activeElement ? document.activeElement.className.toString().slice(0, 80) : null,
             };
-            // An open drawer: where its header and body show nothing but their background, for the
-            // qd1.mobile-drawer-header pixel check (tests/device/drawer-header.py).
-            if (/drawer-open$/.test(step.state)) rec.measured.drawerGeometry = await SCRIPTS.drawer({ inset: 4 });
+            if (drawerStep) {
+              rec.measured.drawerGeometryStart = drawerStart;
+              rec.measured.drawerGeometryStartAt = drawerStartAt;
+              rec.measured.drawerGeometry = await SCRIPTS.drawer({ inset: 4 });
+              rec.measured.drawerGeometryAt = new Date().toISOString();
+            }
             rec.shootUntil = new Date().toISOString();
             if (step.open) await leaf.setViewState({ type: "markdown", state: { file: "Sample note.md", mode: "source", source: false }, active: true });
           } catch (e) { rec.error = String(e?.stack ?? e); }

@@ -186,8 +186,15 @@ if (cmd === "probe") {
       console.log(`${seen}/${total} NOT SHOT ${why}`);
       continue;
     }
+    // An open-drawer step: the drawer geometry right before and right after the screenshot, from the same page
+    // (tests/device/drawer-header.py requires both to match the plugin's start and end of the hold), so the
+    // image is known to show the measured state without comparing the Mac's clock with the iPhone's.
+    const drawer = /(left|right) (drawer|sidebar)$/.test(label);
+    const geometry = () => s.evaluate(`app.plugins.plugins["ink-device-check"].drawerGeometry()`).catch((e) => ({ error: String(e) }));
+    const geometryBefore = drawer ? await geometry() : undefined;
     try {
-      shots.push({ n: seen, label, ...shot(host, rsdPort, path.join(outDir, name)) });
+      const taken = shot(host, rsdPort, path.join(outDir, name));
+      shots.push({ n: seen, label, ...taken, ...(drawer ? { geometryBefore, geometryAfter: await geometry() } : {}) });
       console.log(`${seen}/${total} shot ${name} (${Date.now() - t0} ms after the notice)`);
     } catch (e) { shots.push({ n: seen, label, error: String(e) }); console.log(`${seen}/${total} FAILED ${e}`); }
   }

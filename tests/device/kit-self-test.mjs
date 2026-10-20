@@ -2,7 +2,8 @@
 // `dry-run` also need the isolated Obsidian of the runtime tests (same app, asar and flags as
 // tests/runtime/obsidian-isolated.sh, with the vault folder named as the case needs; CDP on 127.0.0.1:9335).
 // No device is touched: the cable driver is pointed at the isolated Obsidian, and `pymobiledevice3` is a stand-in
-// that only records that it was called.
+// that records that it was called (`plugin`) or takes the screenshot of the isolated window over CDP (the dry
+// runs' tour).
 //
 // usage: node tests/device/kit-self-test.mjs build   <work_dir>   build-kit.mjs never changes what is there; judge.mjs fails a missed fold
 //        node tests/device/kit-self-test.mjs plugin  <work_dir>   the plugin and cable.mjs refuse other vaults
@@ -289,10 +290,39 @@ if (mode === "dry-run" || mode === "dry-run-tablet") {
     await evaluate(PORT, `(async () => { if (!app.plugins.plugins["ink-device-check"]) { await app.plugins.setEnable(true); await app.plugins.loadManifests(); await app.plugins.enablePluginAndSave("ink-device-check"); } return 1; })()`);
     check(tablet ? "dry.emulated-tablet" : "dry.emulated-phone", await evaluate(PORT, `document.body.classList.contains("${tablet ? "is-tablet" : "is-phone"}") && app.isMobile`));
     check("dry.accepted", (await evaluate(PORT, `app.plugins.plugins["ink-device-check"].notTheKitVault()`)) === null);
-    for (const [id, want] of [["run-checks", "results-"], ["screenshot-tour", "tour-"]]) {
-      const ret = await evaluate(PORT, `app.plugins.plugins["ink-device-check"].${id === "run-checks" ? "runChecks" : "runTour"}()`, 3600000);
-      const files = readdirSync(path.join(vault, "device-results")).filter((f) => f.startsWith(want));
-      check(`dry.${id}`, ret === undefined && files.length === 1, { ret, files });
+    {
+      const ret = await evaluate(PORT, `app.plugins.plugins["ink-device-check"].runChecks()`, 3600000);
+      const files = readdirSync(path.join(vault, "device-results")).filter((f) => f.startsWith("results-"));
+      check("dry.run-checks", ret === undefined && files.length === 1, { ret, files });
+      for (const f of files) cpSync(path.join(vault, "device-results", f), path.join(work, f));
+    }
+    // The tour through the cable driver (tests/device/cable.mjs tour), as on an iPhone: a stand-in for
+    // pymobiledevice3 takes each screenshot of the isolated window over CDP, so the drawer steps' geometry read
+    // right before and after each screenshot, and the drawer header check on the images, run end to end
+    // without a device.
+    {
+      const bin = path.join(work, "bin");
+      mkdirSync(bin);
+      const helper = path.join(bin, "cdp-shot.mjs");
+      writeFileSync(helper, `import { writeFileSync } from "node:fs";
+const [port, out] = process.argv.slice(2);
+const t = (await (await fetch("http://127.0.0.1:" + port + "/json/list")).json()).find((x) => x.type === "page" && /^app:\\/\\/obsidian\\.md\\/index\\.html/.test(x.url));
+const ws = new WebSocket(t.webSocketDebuggerUrl);
+await new Promise((r, j) => { ws.onopen = r; ws.onerror = j; });
+ws.onmessage = (ev) => { const m = JSON.parse(ev.data); if (m.id !== 1) return; if (m.error) { console.error(JSON.stringify(m.error)); process.exit(1); } writeFileSync(out, Buffer.from(m.result.data, "base64")); process.exit(0); };
+ws.send(JSON.stringify({ id: 1, method: "Page.captureScreenshot", params: { format: "png" } }));
+`);
+      // pymobiledevice3 developer dvt screenshot --rsd <host> <port> <out>: the 7th argument is the image.
+      writeFileSync(path.join(bin, "pymobiledevice3"), `#!/bin/sh\necho "$@" >> '${path.join(work, "pymobiledevice3-calls.txt")}'\nexec '${process.execPath}' '${helper}' ${PORT} "$7"\n`);
+      chmodSync(path.join(bin, "pymobiledevice3"), 0o755);
+      const tourDir = path.join(work, "cable-tour");
+      const t = spawnSync(process.execPath, [path.join(repo, "tests/device/cable.mjs"), String(PORT), "tour", "127.0.0.1", "1", tourDir], { encoding: "utf8", env: { ...process.env, PATH: `${bin}:${process.env.PATH}` }, timeout: 3600000 });
+      writeFileSync(path.join(work, "cable-tour.txt"), `${t.stdout}${t.stderr}`);
+      const files = readdirSync(path.join(vault, "device-results")).filter((f) => f.startsWith("tour-"));
+      const shots = existsSync(path.join(tourDir, "shots.json")) ? JSON.parse(readFileSync(path.join(tourDir, "shots.json"), "utf8")) : null;
+      const drawerShots = (shots?.shots ?? []).filter((x) => /(left|right) (drawer|sidebar)$/.test(x.label));
+      check("dry.screenshot-tour", t.status === 0 && files.length === 1 && !!shots?.tourFile && shots.shots.every((x) => x.file && !x.error) && drawerShots.length === 4 && drawerShots.every((x) => x.geometryBefore?.drawers && x.geometryAfter?.drawers),
+        { status: t.status, files, shots: shots?.shots.length, errors: (shots?.shots ?? []).filter((x) => x.error).map((x) => x.label).slice(0, 3), drawerShots: drawerShots.map((x) => ({ label: x.label, before: !!x.geometryBefore?.drawers, after: !!x.geometryAfter?.drawers })) });
       for (const f of files) cpSync(path.join(vault, "device-results", f), path.join(work, f));
     }
   } finally { release(); await app.stop(); }
@@ -320,13 +350,23 @@ if (mode === "dry-run" || mode === "dry-run-tablet") {
     const tour = JSON.parse(readFileSync(path.join(work, readdirSync(work).find((f) => f.startsWith("tour-"))), "utf8"));
     check("dry.tablet-tour", tour.device === "tablet" && tour.steps.length > 0 && tour.steps.every((x) => /tablet,/.test(x.label) && !x.error), { device: tour.device, steps: tour.steps.length, errors: tour.steps.filter((x) => x.error).map((x) => x.label).slice(0, 3) });
   }
+  // The drawer header check of tests/device/drawer-header.py on the cable tour: the four drawer steps, their
+  // four geometries in agreement, and the pixels (the emulation's drawers show the theme's colours).
+  {
+    const tourDir = path.join(work, "cable-tour");
+    const tourFile = readdirSync(tourDir).find((f) => f.startsWith("tour-"));
+    const dh = spawnSync("python3", ["-I", path.join(repo, "tests/device/drawer-header.py"), "--tour", path.join(tourDir, tourFile ?? "missing"), "--shots", tourDir, "--out", path.join(work, "drawer-header.json")], { encoding: "utf8" });
+    writeFileSync(path.join(work, "drawer-header.txt"), `${dh.stdout}${dh.stderr}`);
+    const judged = existsSync(path.join(work, "drawer-header.json")) ? JSON.parse(readFileSync(path.join(work, "drawer-header.json"), "utf8")).results : [];
+    check("dry.drawer-header-pixels", dh.status === 0 && judged.length === 4 && judged.every((r) => r.status === "PASS"), judged.map((r) => `${r.status} ${r.label}: ${r.detail}`));
+  }
   // Every open-drawer step of the tour records where the drawer header and body show only their background
-  // (tests/device/drawer-geometry.js), for the qd1.mobile-drawer-header pixel check.
+  // (tests/device/drawer-geometry.js), at the start and at the end of the hold.
   {
     const tour = JSON.parse(readFileSync(path.join(work, readdirSync(work).find((f) => f.startsWith("tour-"))), "utf8"));
     const drawerSteps = tour.steps.filter((x) => /drawer|sidebar/.test(x.label));
-    const geo = drawerSteps.map((x) => ({ label: x.label, drawers: (x.measured?.drawerGeometry?.drawers ?? []).map((d) => ({ side: d.side, header: !!d.headerArea, body: !!d.bodyArea })) }));
-    check("dry.drawer-geometry", drawerSteps.length === 4 && geo.every((g) => g.drawers.length === 1 && g.drawers[0].header && g.drawers[0].body), geo);
+    const geo = drawerSteps.map((x) => ({ label: x.label, start: x.measured?.drawerGeometryStartAt, end: x.measured?.drawerGeometryAt, drawers: [x.measured?.drawerGeometryStart, x.measured?.drawerGeometry].map((g) => (g?.drawers ?? []).map((d) => ({ side: d.side, header: !!d.headerArea, body: !!d.bodyArea }))) }));
+    check("dry.drawer-geometry", drawerSteps.length === 4 && geo.every((g) => g.start && g.end && g.drawers.every((ds) => ds.length === 1 && ds[0].header && ds[0].body)), geo);
   }
   finish();
 }
