@@ -283,6 +283,13 @@
           "result": "PASS on 2026-10-11 for Kanagawa Dragon: during full screen body has is-fullscreen and every surface shows the opaque Inkdrop colour; acrylic again after leaving. Solarized Dark was not put in full screen (the rules are shared; only the values differ)",
           "status": "PASS",
           "scope": {"os": "macOS", "device": "desktop", "themes": ["kanagawa-dragon"], "appVersion": "1.14.4", "electron": ["43.7.7"], "date": "2026-10-11"}
+        },
+        {
+          "method": "Real macOS full screen of the isolated Obsidian window (step 11G G4, research/14 §6.69; Electron 43.7.7, Hidden frame, translucency on) with the user's approval, entered and left with electronWindow.setFullScreen; the state confirmed by electronWindow.isFullScreen() and the body class is-fullscreen; computed background colours of 12 surfaces read opaque (reference), translucent before, during and after. No native pixel capture was taken",
+          "evidence": "research/evidence/phase3-step11/11g-g4/ (g4.json, run.txt)",
+          "result": "PASS on 2026-10-20 for Solarized Dark: during full screen isFullScreen() is true, body has is-fullscreen and all 12 surfaces equal the opaque values exactly; after leaving, is-fullscreen is gone and all 12 equal the translucent values again; opaque and translucent differ on every surface",
+          "status": "PASS",
+          "scope": {"os": "macOS", "device": "desktop", "themes": ["solarized-dark"], "appVersion": "1.14.4", "electron": ["43.7.7"], "date": "2026-10-20"}
         }
       ]
     },
