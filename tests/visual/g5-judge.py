@@ -1,7 +1,8 @@
 """Step 11G G5 judgement (research/14 section 6.73) of the 8 native captures of tests/visual/g5-capture.mjs.
 
 Per capture, from its <name>.g5.json (written right after the capture) the sampling regions are checked first:
-the frame is custom, the window is 1200 x 700 points, the capture was taken focused, the computed title bar is
+the frame is custom, the window is 1200 x 700 points at the capture rectangle (400, 250), the capture was taken
+focused, the recorded translucency is an explicit true / false matching the capture, the computed title bar is
 the expected one, the image's SHA-256 is the recorded one, and the title bar and left tab strip regions are
 present, big enough, inside the window and over the element itself (not over a child that paints). Then
 tests/visual/sample-regions.py measures the image (regions in window points, max sd 1.0, pair titlebar |
@@ -33,6 +34,7 @@ spec.loader.exec_module(sr)
 
 MAX_SD, MAX_DE = 1.0, 1.0
 WINDOW = (1200, 700)
+CAPTURE_RECT = (400, 250, 1200, 700)  # screencapture -R of capture-obsidian.sh, points
 CONDITIONS = [(b, t, m) for b in ("after", "before") for t in ("solarized-dark", "kanagawa-dragon") for m in ("translucent", "opaque")]
 
 
@@ -46,8 +48,14 @@ def check(rec, root):
         p.append(f"window is {w.get('innerWidth')} x {w.get('innerHeight')}, not 1200 x 700")
     if rec.get("focusedAfterShot") is not True:
         p.append("the window was not focused at the capture")
-    if (rec.get("translucent") is True) != (rec.get("mode") == "translucent"):
-        p.append(f"translucent is {rec.get('translucent')} for a {rec.get('mode')} capture")
+    # The recorded state must be an explicit true (translucent) or false (opaque); missing, null or a string is
+    # not the state of the capture.
+    tr = rec.get("translucent")
+    if not isinstance(tr, bool) or tr != (rec.get("mode") == "translucent"):
+        p.append(f"translucent is {tr!r} for a {rec.get('mode')} capture (true or false required)")
+    b = w.get("bounds") or {}
+    if (b.get("x"), b.get("y"), b.get("width"), b.get("height")) != CAPTURE_RECT:
+        p.append(f"window bounds {b} are not the capture rectangle {CAPTURE_RECT}")
     tb = (rec.get("regions") or {}).get("titlebar") or {}
     if tb.get("background") != rec.get("expectedTitlebar"):
         p.append(f"computed title bar {tb.get('background')} is not {rec.get('expectedTitlebar')}")

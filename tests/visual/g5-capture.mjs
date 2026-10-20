@@ -5,6 +5,9 @@
 // (CAPTURE_INKDROP=off: Inkdrop is never touched), reads the sampling regions after each capture
 // (tests/visual/g5-regions.js), stops the instance and prints SCREEN RELEASED, then restores LaunchServices.
 // It stops before the next capture when a condition is not as expected (frame, window size, computed title bar).
+// SCREEN RELEASED is printed only when its own instance is confirmed stopped and port 9333 closed
+// (tests/visual/g5-finish.mjs); the exit status tells a complete run (0) from incomplete captures (1), a screen
+// not confirmed released (3) and LaunchServices not restored (4).
 //
 // usage: node tests/visual/g5-capture.mjs --themes <dir> --out <new dir> --tmp <dir> [--plan]
 //   <dir>/<build>/<theme>/{theme.css,manifest.json} for build after / before (made in phase A; each manifest
@@ -15,6 +18,7 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
+import { finish } from "./g5-finish.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
 const { values: args } = parseArgs({ options: { themes: { type: "string" }, out: { type: "string" }, tmp: { type: "string" }, plan: { type: "boolean" } } });
@@ -82,15 +86,27 @@ try {
 } catch (e) {
   summary.stoppedEarly = String(e?.message ?? e);
 } finally {
-  // Only the instance this run started; the backdrop window of a capture closes with capture-obsidian.sh.
-  if (started) run("bash", ["tests/runtime/obsidian-isolated.sh", "stop", work]);
-  summary.screenReleasedAt = new Date().toISOString();
-  console.log("SCREEN RELEASED", summary.screenReleasedAt);
-  run("bash", ["tests/runtime/current-installer.sh", "restore"]);
+  // Only the instance this run started (its pid file in `work`); the backdrop window of a capture closes with
+  // capture-obsidian.sh. Then whether it is really gone: its process, and the CDP port.
+  // A pid file in `work` is this run's instance even when its start did not finish.
+  const pidFile = path.join(work, "obsidian.pid");
+  const ours = started || existsSync(pidFile);
+  const stop = ours ? run("bash", ["tests/runtime/obsidian-isolated.sh", "stop", work]) : null;
+  const pid = existsSync(pidFile) ? Number(readFileSync(pidFile, "utf8").trim()) : null;
+  let pidAlive = null;
+  if (pid) { try { process.kill(pid, 0); pidAlive = true; } catch { pidAlive = false; } } else if (!ours) pidAlive = false;
+  const portOpen = await fetch("http://127.0.0.1:9333/json/version", { signal: AbortSignal.timeout(2000) }).then(() => true, () => false);
+  // The screen is reported before LaunchServices is restored (it takes up to a minute and uses no screen).
+  const early = finish({ started: ours, stopStatus: stop?.status ?? null, pidAlive, portOpen });
+  if (early.released) summary.screenReleasedAt = new Date().toISOString();
+  console.log(early.screenLine, early.released ? summary.screenReleasedAt : "");
+  const restore = run("bash", ["tests/runtime/current-installer.sh", "restore"]);
   const after = run("bash", ["tests/runtime/current-installer.sh", "check"]).stdout;
   writeFileSync(path.join(args.out, "ls-after.txt"), after);
-  summary.launchServicesSame = after === readFileSync(path.join(args.out, "ls-before.txt"), "utf8");
-  summary.finishedAt = new Date().toISOString();
+  const f = finish({ started: ours, stopStatus: stop?.status ?? null, pidAlive, portOpen, restoreStatus: restore.status, lsSame: after === readFileSync(path.join(args.out, "ls-before.txt"), "utf8"), captures: summary.captures.length, total: conditions.length, stoppedEarly: summary.stoppedEarly });
+  Object.assign(summary, { stop: stop && { status: stop.status, out: stop.stdout.trim().slice(-200) }, pidAlive, portOpen, restoreStatus: restore.status, ...f, finishedAt: new Date().toISOString() });
   writeFileSync(path.join(args.out, "g5-run.json"), `${JSON.stringify(summary, null, 1)}\n`);
-  console.log(`${summary.captures.length} of ${conditions.length} captures; ${summary.stoppedEarly ? `stopped early: ${summary.stoppedEarly}` : "all taken"}; LaunchServices ${summary.launchServicesSame ? "as before" : "DIFFERENT"}`);
+  console.log(f.restoreLine);
+  console.log(f.captureLine);
+  process.exitCode = f.exitCode;
 }

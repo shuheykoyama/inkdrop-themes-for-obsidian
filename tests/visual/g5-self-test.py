@@ -6,10 +6,13 @@ Inkdrop is never touched:
   - capture-obsidian.sh reaches other-window.sh only through inkdrop_window;
   - g5-capture.mjs --plan: 8 distinct conditions (2 builds x 2 themes x 2 states), each with its own theme
     folder, output folder and image, every one with CAPTURE_INKDROP=off; the script names no Inkdrop endpoint.
+g5-finish.mjs: SCREEN RELEASED only when the instance's stop succeeded, its process is gone and port 9333 is
+closed; a failed or different LaunchServices restore and incomplete captures never end with exit 0.
 g5-judge.py on made-up captures (images at half scale, the regions as g5-regions.js reports them): all as
 expected passes; a title bar that differs with the fix fails; a pre-fix title bar the same as the tab strip, a
 missing capture, a region that is not flat, outside the window or too small, an unexpected computed title
-bar, another frame, an unfocused window and a changed image make it INVALID.
+bar, another frame, an unfocused window, a window away from the capture rectangle, a translucency that is
+missing, null or not a boolean, and a changed image make it INVALID.
 
 usage: python3 -I tests/visual/g5-self-test.py
 """
@@ -73,7 +76,7 @@ def captures(root, edit=lambda c, rec: None, title=lambda c: None):
                 rec = {"build": build, "theme": theme, "mode": mode, "image": f"{build}/screenshots/{name}.png",
                        "imageSha256": hashlib.sha256(img.read_bytes()).hexdigest(), "frame": "custom",
                        "translucent": mode == "translucent", "focusedAfterShot": True,
-                       "window": {"innerWidth": 1200, "innerHeight": 700}, "expectedTitlebar": expected,
+                       "window": {"innerWidth": 1200, "innerHeight": 700, "bounds": {"x": 400, "y": 250, "width": 1200, "height": 700}}, "expectedTitlebar": expected,
                        "regions": {"titlebar": {"rect": list(TB_RECT), "bigEnough": True, "background": expected, "centre": {"inside": True}},
                                    "left-tabstrip": {"rect": list(TAB_RECT), "bigEnough": True, "background": "x", "centre": {"inside": True}}}}
                 edit(c, rec)
@@ -118,6 +121,27 @@ def main():
         say("plan: every capture with CAPTURE_INKDROP=off", all(c["env"].get("CAPTURE_INKDROP") == "off" for c in plan))
         say("plan: 8 distinct image files", len({c["image"] for c in plan}) == 8)
         say("plan: the two builds use their own theme and output folders", all(f"/{c['build']}/" in c["themeDir"] + "/" and c["outDir"].endswith(c["build"]) for c in plan))
+        # The end of the capture run (tests/visual/g5-finish.mjs): what may be claimed after each restoring step.
+        ok = {"started": True, "stopStatus": 0, "pidAlive": False, "portOpen": False, "restoreStatus": 0, "lsSame": True, "captures": 8, "total": 8, "stoppedEarly": None}
+        finish_cases = [
+            ("all restored, 8 captures", {}, True, 0),
+            ("stop command failed", {"stopStatus": 1}, False, 3),
+            ("process still running", {"pidAlive": True}, False, 3),
+            ("process state unknown", {"pidAlive": None}, False, 3),
+            ("port 9333 still answering", {"portOpen": True}, False, 3),
+            ("LaunchServices restore failed", {"restoreStatus": 1}, True, 4),
+            ("LaunchServices check differs", {"lsSame": False}, True, 4),
+            ("stopped early", {"captures": 3, "stoppedEarly": "frame is not custom"}, True, 1),
+            ("7 of 8 captures", {"captures": 7}, True, 1),
+            ("nothing started, port closed, no captures", {"started": False, "stopStatus": None, "pidAlive": None, "captures": 0}, True, 1),
+        ]
+        script = "import { finish } from %s; const cases = JSON.parse(process.argv[1]); console.log(JSON.stringify(cases.map((c) => finish(c))));" % json.dumps(str(VIS / "g5-finish.mjs"))
+        got = json.loads(subprocess.run(["node", "--input-type=module", "-e", script, json.dumps([{**ok, **c} for _, c, _, _ in finish_cases])], capture_output=True, text=True, check=True).stdout)
+        for (name, _, released, code), r in zip(finish_cases, got):
+            claims = r["screenLine"].startswith("SCREEN RELEASED")
+            say(f"finish: {name}: released {r['released']}, exit {r['exitCode']} (declared {released}, {code})", r["released"] == released and claims == released and r["exitCode"] == code, r["screenLine"])
+        cap_code = "\n".join(l for l in (VIS / "g5-capture.mjs").read_text().splitlines() if not l.lstrip().startswith("//"))
+        say("g5-capture.mjs prints the screen line only from finish()", "SCREEN RELEASED" not in cap_code and "early.screenLine" in cap_code)
         # The judgement.
         cases = [
             ("all as expected", "PASS", {}),
@@ -131,6 +155,10 @@ def main():
             ("computed title bar not the expected one", "INVALID", {"edit": lambda c, rec: rec["regions"]["titlebar"].update(background="rgba(0, 0, 0, 0)") if c == ("after", "solarized-dark", "translucent") else None}),
             ("frame is not custom", "INVALID", {"edit": lambda c, rec: rec.update(frame="hidden") if c[0] == "after" else None}),
             ("window not focused at the capture", "INVALID", {"edit": lambda c, rec: rec.update(focusedAfterShot=False) if c == ("before", "solarized-dark", "translucent") else None}),
+            ("opaque capture without a recorded translucency", "INVALID", {"edit": lambda c, rec: rec.pop("translucent") if c == ("after", "solarized-dark", "opaque") else None}),
+            ("translucency recorded as null", "INVALID", {"edit": lambda c, rec: rec.update(translucent=None) if c == ("after", "kanagawa-dragon", "translucent") else None}),
+            ("translucency recorded as the string false", "INVALID", {"edit": lambda c, rec: rec.update(translucent="false") if c == ("before", "kanagawa-dragon", "opaque") else None}),
+            ("window not at the capture rectangle", "INVALID", {"edit": lambda c, rec: rec["window"]["bounds"].update(x=420) if c == ("before", "solarized-dark", "opaque") else None}),
             ("image changed after the capture", "INVALID", {"edit": lambda c, rec: rec.update(imageSha256="0" * 64) if c == ("after", "solarized-dark", "opaque") else None}),
         ]
         for i, (name, want, kw) in enumerate(cases):
