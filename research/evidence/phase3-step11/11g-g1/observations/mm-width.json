@@ -1,0 +1,116 @@
+{
+ "theme": "solarized-dark",
+ "isPhone": true,
+ "out": [
+  {
+   "kind": "flowchart-v2",
+   "svgWidth": 1024,
+   "mermaidBox": 342,
+   "column": 342,
+   "viewport": 390,
+   "widthAttr": "1024.1015625",
+   "inlineMaxWidth": null,
+   "cssMaxWidth": "none",
+   "mermaidOverflowX": "visible",
+   "scrolls": true,
+   "beyondViewport": 658
+  },
+  {
+   "kind": "flowchart-v2",
+   "svgWidth": 434,
+   "mermaidBox": 342,
+   "column": 342,
+   "viewport": 390,
+   "widthAttr": "434.3046875",
+   "inlineMaxWidth": null,
+   "cssMaxWidth": "none",
+   "mermaidOverflowX": "visible",
+   "scrolls": true,
+   "beyondViewport": 68
+  },
+  {
+   "kind": "flowchart-v2",
+   "svgWidth": 214,
+   "mermaidBox": 342,
+   "column": 342,
+   "viewport": 390,
+   "widthAttr": "213.984375",
+   "inlineMaxWidth": null,
+   "cssMaxWidth": "none",
+   "mermaidOverflowX": "visible",
+   "scrolls": false,
+   "beyondViewport": -152
+  },
+  {
+   "kind": "sequence",
+   "svgWidth": 450,
+   "mermaidBox": 342,
+   "column": 342,
+   "viewport": 390,
+   "widthAttr": "450",
+   "inlineMaxWidth": null,
+   "cssMaxWidth": "none",
+   "mermaidOverflowX": "visible",
+   "scrolls": true,
+   "beyondViewport": 84
+  }
+ ]
+}
+{
+ "theme": "(default)",
+ "isPhone": true,
+ "out": [
+  {
+   "kind": "flowchart-v2",
+   "svgWidth": 1024,
+   "mermaidBox": 342,
+   "column": 342,
+   "viewport": 390,
+   "widthAttr": "1024.1015625",
+   "inlineMaxWidth": null,
+   "cssMaxWidth": "none",
+   "mermaidOverflowX": "visible",
+   "scrolls": true,
+   "beyondViewport": 658
+  },
+  {
+   "kind": "flowchart-v2",
+   "svgWidth": 434,
+   "mermaidBox": 342,
+   "column": 342,
+   "viewport": 390,
+   "widthAttr": "434.3046875",
+   "inlineMaxWidth": null,
+   "cssMaxWidth": "none",
+   "mermaidOverflowX": "visible",
+   "scrolls": true,
+   "beyondViewport": 68
+  },
+  {
+   "kind": "flowchart-v2",
+   "svgWidth": 214,
+   "mermaidBox": 342,
+   "column": 342,
+   "viewport": 390,
+   "widthAttr": "213.984375",
+   "inlineMaxWidth": null,
+   "cssMaxWidth": "none",
+   "mermaidOverflowX": "visible",
+   "scrolls": false,
+   "beyondViewport": -152
+  },
+  {
+   "kind": "sequence",
+   "svgWidth": 450,
+   "mermaidBox": 342,
+   "column": 342,
+   "viewport": 390,
+   "widthAttr": "450",
+   "inlineMaxWidth": null,
+   "cssMaxWidth": "none",
+   "mermaidOverflowX": "visible",
+   "scrolls": true,
+   "beyondViewport": 84
+  }
+ ]
+}

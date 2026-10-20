@@ -4111,3 +4111,112 @@ G4（SD の本物の全画面）、G5（タイトルバーのネイティブの�
 ### 6.66 次の作業
 
 G1 の結果の独立のレビューを待つ。`qd1.mobile-drawer-header` の `verifiedBy` は、そのレビューのあとに決める。工程 11G のほかの項目（G4〜G8）は、それぞれ個別の承認が要る。
+
+### 6.67 工程 11G G1 の最終承認と G4 の計画（2026-10-21、G4 の承認待ち）
+
+`781458f` の独立レビューで、**G1 は APPROVE**。
+
+- iPhone での再実行は不要とされた。工程 11G の G1 は完了とする。
+- リリースの判定は NOT MET のまま。
+  - iOS tablet・Android phone・Android tablet は BLOCKED。
+  - `qd13.fidelity` は DIFF。
+  - macOS の検証は続ける。
+- Q-D10 の範囲の変更は、RV7 でユーザーが判断する。
+
+| 確認された項目 | 記録 |
+|---|---|
+| 実機 | iPhone 12 Pro、iOS 27.0、Obsidian 1.14.5 |
+| 検査 | 916 件。PASS 801、FAIL 0、DIFF 101、UNSUPPORTED 10、N/A 4。`device.environment` 52 件 PASS。工程 10 の 910 件と判定が一致し、新しい 6 件は PASS |
+| ツアー | 38/38 枚 |
+| `qd1.mobile-drawer-header` | 4/4 PASS |
+| 保全と復元 | 旧い結果の 3 件を保全した。新旧のテスト Vault を残した。iPhone の設定と Mac の中継を戻した |
+| CI | SUCCESS |
+
+#### 6.67.1 `qd1.mobile-drawer-header` の検証の記録
+
+`tests/spec/requirements.json` を、次のとおり変えた。
+
+- `unverified` を外した。
+- `verifiedBy` を 1 件足した。
+  - 方法: §6.65.5 の判定（4 つの幾何情報の一致、平らさ、CIEDE2000、目視）。
+  - 証拠: `11g-g1/`。
+  - 状態: PASS。
+  - 範囲: `os: iOS`、`device: phone`、両テーマ、`appVersion: 1.14.5`、`model: iPhone 12 Pro`、`osVersion: 27.0`、`date: 2026-10-20`。
+- 対象は左右のドロワーで、結果の文に、iPad と Android は測っていないことを書いた。
+
+リリースの判定（`node tests/release/gate.mjs`。入力は 11H で差し替える前のもの）:
+
+- iOS phone: PASS 32、DIFF 2。`qd1.mobile-drawer-header` の 2 単位が UNVERIFIED → PASS。
+- iOS tablet・Android phone・Android tablet: 34 単位すべて BLOCKED。前は BLOCKED 32、UNVERIFIED 2。
+  - 外した `unverified` の代わりに、対象側の BLOCKED が効いた。
+  - **PASS にはなっていない**（範囲が iOS phone だけなので）。
+
+#### 6.67.2 結果の来歴（事後の対応表）
+
+`11g-g1/provenance.md` に、事後に作った対応表であることを明記して、次を記録した。
+
+- ソースのコミット（`daac8e2`）と kit id。
+- キットの zip の SHA-256（`28d2a419…`。作成時・送付の直前・今回の 3 回で同じ値）。
+- 実機での目印の照合の証跡（probe 2 回、kit id の照会）。
+- 結果の JSON・`report.json`・ツアーの JSON・`shots.json`・ドロワーの判定・旧い結果の控え、の SHA-256。
+- 判定に使ったコードの、各ファイルの最終変更のコミット。
+
+証跡のファイルは、どれも原本（端末から写したとき、道具が書き出したとき）とバイト単位で同じ。結果の JSON に kit id を足したり、書き換えたり、署名し直したりはしていない。11H で入力を差し替えるときの参照の資料にする。
+
+#### 6.67.3 Mermaid の図が画面の右端の外まで続く件（観察）
+
+調べた範囲は、既存の画像、コード、隔離インスタンスの phone のエミュレーション（390×844）。iPhone は使っていない。証拠は `11g-g1/observations/mermaid-width.*`。
+
+- テーマの `src/common/components/mermaid.css` には、幅・`max-width`・`overflow` の規則がない。
+- app.css 1.14.4 は、Reading view の `.mermaid` に幅の制限を付けない。Live Preview の埋め込みにだけ `overflow-x: auto` がある。
+- 測定の結果:
+  - 図は `width` の値（1024px、434px、214px、450px）のまま描かれる。`max-width` はない。`.mermaid` の `overflow-x` は `visible`。
+  - 本文の欄（342px）より広い 3 つの図は、画面の右端の外まで続く。
+  - **テーマを当てた場合と、テーマなし（Obsidian の既定）の場合で、値はすべて同じ**。
+- 判断:
+  - これはテーマ由来ではない。Obsidian（同梱の Mermaid の設定）の描き方による。G1 の FAIL ではない。
+  - 実機の画像（15・34 番）の見え方とも合う。
+  - テーマで幅を合わせるかは、見た目の判断で、Q-D の範囲の外の新しい変更になる。必要なら、追加の確認の事項として RV7 で扱う。
+
+#### 6.67.4 G4: Solarized Dark の macOS の本物の全画面（計画。実施は承認待ち）
+
+- **目的**: `qd22.real-fullscreen`（Q-D22、必須）の SD は NO RESULT。KD は 2026-10-11 に PASS で、SD は「規則が共通」という推論だけ。
+- **環境**: 2026-10-11 の KD と同じにする。
+  - E43 の隔離インスタンス（Obsidian 1.14.4、Electron 43.7.7）、translucent を有効、SD は今のビルド（HEAD のソース）。
+  - 普段の Obsidian と Vault には触れない。
+- **手順**:
+  1. LaunchServices の `check`。E43 の隔離インスタンスを起動し、SD を入れる。
+  2. 基準を測る。不透明（translucent をオフ）で、各面の計算値を読む。
+     - 対象の面: Ribbon、ステータスバー、左右のドックとタブ帯、エディタ、Vault 名の領域、Ribbon の角。
+  3. translucent をオンにして、各面を読む（全画面の前）。
+  4. `electronWindow.setFullScreen(true)`。`isFullScreen()` と body の `is-fullscreen` を待ち、各面を読む（全画面の中）。
+  5. `setFullScreen(false)`。全画面を出たことを待ち、各面を読む（後）。
+  6. 隔離インスタンスを止める。LaunchServices を戻し、`check` を前と比べる。
+- **Space と画面への影響**:
+  - macOS は、全画面の窓のための Space を一時的に作り、画面をそこに切り替える（切り替えのアニメーションを含め、10〜20 秒ほど）。
+  - その間、隔離インスタンスの窓が画面全体を覆い、キーボードの入力先もそこに移ることがある。**その間は作業の手を止めていただく必要がある**。
+  - 全画面を出ると、macOS がその Space を消し、元のデスクトップに戻る。
+  - 画面がオンである必要がある（スリープ中にはしない）。表示の設定（解像度、配置、壁紙、透明度など）は変えない。
+- **復元と確認**:
+  - 手順 5 で全画面を出る。
+  - 出られない場合は、隔離インスタンスのプロセスを止める。窓が閉じると、全画面の Space も消える。
+  - 確認すること:
+    - `isFullScreen()` が false で、`is-fullscreen` が外れていること。
+    - プロセスが残っていないこと。
+    - LaunchServices の `check` が作業の前と同じであること。
+    - ユーザーが Mission Control などで、余分な Space が残っていないことを見ること。
+- **合格の条件**:
+  - 全画面の中では `is-fullscreen` が付き、すべての面が手順 2 の不透明の値と同じ。
+  - 全画面の前と後は `is-fullscreen` がなく、すべての面が手順 3 の translucent の値と同じ（acrylic に戻る）。
+  - 対照として、手順 2 と 3 で値が違う面があること。違いがなければ、全画面の切り替えを見分けられないので、測定は無効。
+  - 合格したら、`qd22.real-fullscreen` の `verifiedBy` に SD の記録を足す（範囲は macOS desktop、1.14.4、Electron 43.7.7、SD）。これは独立のレビューのあとに行う。
+- **所要時間**: 起動から片付けまで約 5 分。そのうち、手を止めていただくのは全画面の前後の約 1 分。
+- **承認が要る操作**:
+  - 隔離インスタンスの窓だけを、macOS の本物の全画面にすること（Space の一時的な作成と切り替え）。
+  - そのための実施の時刻。手を止めていただけるとき。
+
+G5（translucent のタイトルバーのネイティブの撮影）は、G4 のあとに、別に計画と承認を求める。G6〜G8（Inkdrop）は保留。
+
+### 6.68 次の作業
+
+G4 の個別の承認を待つ。承認と実施の時刻が決まるまで、Space を動かす操作はしない。
