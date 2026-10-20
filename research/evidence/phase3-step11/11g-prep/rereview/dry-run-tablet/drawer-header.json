@@ -1,0 +1,242 @@
+{
+ "maxSd": 1.0,
+ "maxDE2000": 1.0,
+ "results": [
+  {
+   "label": "solarized-dark tablet, left sidebar",
+   "side": "left",
+   "png": "02-solarized-dark-tablet-left-sidebar.png",
+   "scale": 2.0,
+   "dpr": 2,
+   "header": {
+    "rect": [
+     76,
+     692.41,
+     390,
+     57.59
+    ],
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "backdropFilter": "none",
+    "boxShadow": "none"
+   },
+   "areas": {
+    "headerArea": {
+     "px": [
+      596,
+      1393,
+      104,
+      99
+     ],
+     "mean": [
+      1.0,
+      45.0,
+      56.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "bodyArea": {
+     "px": [
+      192,
+      1029,
+      700,
+      347
+     ],
+     "mean": [
+      1.02,
+      45.01,
+      55.99
+     ],
+     "sd": [
+      0.125,
+      0.073,
+      0.093
+     ]
+    }
+   },
+   "dE2000": 0.012,
+   "status": "PASS",
+   "detail": "dE2000 0.012 <= 1.0"
+  },
+  {
+   "label": "solarized-dark tablet, right sidebar",
+   "side": "right",
+   "png": "03-solarized-dark-tablet-right-sidebar.png",
+   "scale": 2.0,
+   "dpr": 2,
+   "header": {
+    "rect": [
+     558,
+     694,
+     450,
+     56
+    ],
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "backdropFilter": "none",
+    "boxShadow": "none"
+   },
+   "areas": {
+    "headerArea": {
+     "px": [
+      1496,
+      1396,
+      288,
+      96
+     ],
+     "mean": [
+      1.0,
+      45.0,
+      56.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "bodyArea": {
+     "px": [
+      1156,
+      642,
+      820,
+      738
+     ],
+     "mean": [
+      1.01,
+      45.0,
+      56.0
+     ],
+     "sd": [
+      0.086,
+      0.054,
+      0.066
+     ]
+    }
+   },
+   "dE2000": 0.002,
+   "status": "PASS",
+   "detail": "dE2000 0.002 <= 1.0"
+  },
+  {
+   "label": "kanagawa-dragon tablet, left sidebar",
+   "side": "left",
+   "png": "11-kanagawa-dragon-tablet-left-sidebar.png",
+   "scale": 2.0,
+   "dpr": 2,
+   "header": {
+    "rect": [
+     76,
+     692.41,
+     390,
+     57.59
+    ],
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "backdropFilter": "none",
+    "boxShadow": "none"
+   },
+   "areas": {
+    "headerArea": {
+     "px": [
+      596,
+      1393,
+      104,
+      99
+     ],
+     "mean": [
+      24.0,
+      22.0,
+      22.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "bodyArea": {
+     "px": [
+      192,
+      1029,
+      700,
+      347
+     ],
+     "mean": [
+      23.98,
+      21.99,
+      21.99
+     ],
+     "sd": [
+      0.156,
+      0.096,
+      0.095
+     ]
+    }
+   },
+   "dE2000": 0.009,
+   "status": "PASS",
+   "detail": "dE2000 0.009 <= 1.0"
+  },
+  {
+   "label": "kanagawa-dragon tablet, right sidebar",
+   "side": "right",
+   "png": "12-kanagawa-dragon-tablet-right-sidebar.png",
+   "scale": 2.0,
+   "dpr": 2,
+   "header": {
+    "rect": [
+     558,
+     694,
+     450,
+     56
+    ],
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "backdropFilter": "none",
+    "boxShadow": "none"
+   },
+   "areas": {
+    "headerArea": {
+     "px": [
+      1496,
+      1396,
+      288,
+      96
+     ],
+     "mean": [
+      24.0,
+      22.0,
+      22.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "bodyArea": {
+     "px": [
+      1156,
+      642,
+      820,
+      738
+     ],
+     "mean": [
+      23.99,
+      22.0,
+      22.0
+     ],
+     "sd": [
+      0.107,
+      0.066,
+      0.065
+     ]
+    }
+   },
+   "dE2000": 0.007,
+   "status": "PASS",
+   "detail": "dE2000 0.007 <= 1.0"
+  }
+ ]
+}

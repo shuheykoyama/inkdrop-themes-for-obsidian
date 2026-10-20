@@ -1,0 +1,26 @@
+PASS drawer-header self-test: same colour, 8-bit: PASS (declared PASS) -- dE2000 0.000 <= 1.0
+PASS drawer-header self-test: same colour, 16-bit: PASS (declared PASS) -- dE2000 0.000 <= 1.0
+PASS drawer-header self-test: header one 8-bit step off (below the limit): PASS (declared PASS) -- dE2000 0.809 <= 1.0
+PASS drawer-header self-test: raised header: a lighter layer: FAIL (declared FAIL) -- dE2000 3.098 > 1.0
+PASS drawer-header self-test: text in the header area: FAIL (declared FAIL) -- not flat (measurement invalid): headerArea max sd > 1.0
+PASS drawer-header self-test: icon edge in the header area: FAIL (declared FAIL) -- not flat (measurement invalid): headerArea max sd > 1.0
+PASS drawer-header self-test: gradient in the body: FAIL (declared FAIL) -- not flat (measurement invalid): bodyArea max sd > 1.0
+PASS drawer-header self-test: no header area: FAIL (declared FAIL) -- header or body area missing, too small or outside the image
+PASS drawer-header self-test: area outside the image: FAIL (declared FAIL) -- header or body area missing, too small or outside the image
+PASS drawer-header self-test: scale is not the pixel ratio: FAIL (declared FAIL) -- screenshot scale 2.000 is not the device pixel ratio 3
+PASS drawer-header self-test: no open drawer: FAIL (declared FAIL) -- no open drawer in the geometry
+PASS drawer-header self-test: tour: all four drawers: PASS (declared PASS) -- 4 PASS
+PASS drawer-header self-test: tour: all four drawers, tablet labels: PASS (declared PASS) -- 4 PASS
+PASS drawer-header self-test: tour: one step without its geometry: FAIL (declared FAIL) -- kanagawa-dragon left drawer: drawer geometry missing: plugin end
+PASS drawer-header self-test: tour: one screenshot without the geometry read before it: FAIL (declared FAIL) -- solarized-dark right drawer: drawer geometry missing: before the screenshot
+PASS drawer-header self-test: tour: one image missing (screenshot failed): FAIL (declared FAIL) -- kanagawa-dragon left drawer: no screenshot image (not shot)
+PASS drawer-header self-test: tour: one screenshot entry missing: FAIL (declared FAIL) -- kanagawa-dragon right drawer: 0 screenshots for this step (one required)
+PASS drawer-header self-test: tour: one drawer step missing: FAIL (declared FAIL) -- kanagawa-dragon right drawer: 0 tour steps with this label (one required)
+PASS drawer-header self-test: tour: the same step twice: FAIL (declared FAIL) -- solarized-dark left drawer: 2 tour steps with this label (one required)
+PASS drawer-header self-test: tour: the same screenshot twice: FAIL (declared FAIL) -- solarized-dark left drawer: 2 screenshots for this step (one required)
+PASS drawer-header self-test: tour: the screenshot is of another step: FAIL (declared FAIL) -- solarized-dark right drawer: the screenshot is of step 7, the tour step is 2
+PASS drawer-header self-test: tour: left and right swapped: FAIL (declared FAIL) -- solarized-dark left drawer: not exactly one left drawer in the geometry: plugin start, plugin end, before the screenshot, after the screenshot
+PASS drawer-header self-test: tour: the drawer geometry changed during the step: FAIL (declared FAIL) -- solarized-dark right drawer: the drawer geometry changed during the step: plugin start differs from before the screenshot
+PASS drawer-header self-test: tour: a drawer geometry on another step: FAIL (declared FAIL) -- solarized-dark phone, floating navigation: drawer geometry on a step that is not one of the four drawer steps
+
+all 24 drawer-header self-test cases behaved as expected

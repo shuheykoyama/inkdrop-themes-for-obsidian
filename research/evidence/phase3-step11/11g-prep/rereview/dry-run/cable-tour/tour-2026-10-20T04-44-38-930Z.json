@@ -1,0 +1,1929 @@
+{
+ "kind": "ink-device-check tour",
+ "device": "phone",
+ "environment": {
+  "apiVersion": "1.14.4",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) obsidian/1.11.7 Chrome/142.0.7444.265 Electron/39.5.1 Safari/537.36",
+  "platform": {
+   "isMobile": true,
+   "isPhone": true,
+   "isTablet": false,
+   "isIosApp": true,
+   "isAndroidApp": false
+  },
+  "screen": [
+   2048,
+   1280
+  ],
+  "inner": [
+   400,
+   860
+  ],
+  "devicePixelRatio": 2,
+  "safeArea": {
+   "top": "59px",
+   "right": "0px",
+   "bottom": "34px",
+   "left": "0px"
+  },
+  "bodyClasses": [
+   "mod-macos",
+   "is-frameless",
+   "is-hidden-frameless",
+   "obsidian-app",
+   "emulate-mobile",
+   "is-phone",
+   "is-mobile",
+   "show-inline-title",
+   "auto-full-screen",
+   "show-ribbon",
+   "show-view-header",
+   "theme-dark",
+   "is-floating-nav"
+  ]
+ },
+ "steps": [
+  {
+   "n": 1,
+   "label": "solarized-dark phone, floating navigation",
+   "startedAt": "2026-10-20T04:33:51.414Z",
+   "shootFrom": "2026-10-20T04:33:57.046Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "is-floating-nav",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.1 0.2584 0.298 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone "
+   },
+   "shootUntil": "2026-10-20T04:34:06.046Z"
+  },
+  {
+   "n": 2,
+   "label": "solarized-dark phone, navigation not floating",
+   "startedAt": "2026-10-20T04:34:06.046Z",
+   "shootFrom": "2026-10-20T04:34:11.675Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(0, 45, 56)",
+     "backdropFilter": "none",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      780,
+      400,
+      80
+     ],
+     "raisedBackground": "hsl(192deg 100% 11%)"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone "
+   },
+   "shootUntil": "2026-10-20T04:34:20.677Z"
+  },
+  {
+   "n": 3,
+   "label": "solarized-dark left drawer",
+   "startedAt": "2026-10-20T04:34:20.677Z",
+   "shootFrom": "2026-10-20T04:34:26.334Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.1 0.2584 0.298 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      378,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone ",
+    "drawerGeometryStart": {
+     "dpr": 2,
+     "viewport": [
+      400,
+      860
+     ],
+     "inset": 4,
+     "drawers": [
+      {
+       "side": "left",
+       "drawer": [
+        0,
+        0,
+        336,
+        860
+       ],
+       "header": {
+        "rect": [
+         0,
+         768.41,
+         336,
+         57.59
+        ],
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backdropFilter": "none",
+        "boxShadow": "none"
+       },
+       "headerArea": [
+        221.98,
+        772.41,
+        50.02,
+        49.59
+       ],
+       "bodyArea": [
+        20,
+        406.27,
+        296,
+        264.14
+       ]
+      }
+     ]
+    },
+    "drawerGeometryStartAt": "2026-10-20T04:34:26.338Z",
+    "drawerGeometry": {
+     "dpr": 2,
+     "viewport": [
+      400,
+      860
+     ],
+     "inset": 4,
+     "drawers": [
+      {
+       "side": "left",
+       "drawer": [
+        0,
+        0,
+        336,
+        860
+       ],
+       "header": {
+        "rect": [
+         0,
+         768.41,
+         336,
+         57.59
+        ],
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backdropFilter": "none",
+        "boxShadow": "none"
+       },
+       "headerArea": [
+        221.98,
+        772.41,
+        50.02,
+        49.59
+       ],
+       "bodyArea": [
+        20,
+        406.27,
+        296,
+        264.14
+       ]
+      }
+     ]
+    },
+    "drawerGeometryAt": "2026-10-20T04:34:35.341Z"
+   },
+   "shootUntil": "2026-10-20T04:34:35.341Z"
+  },
+  {
+   "n": 4,
+   "label": "solarized-dark right drawer",
+   "startedAt": "2026-10-20T04:34:35.341Z",
+   "shootFrom": "2026-10-20T04:34:40.966Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.1 0.2584 0.298 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      -294,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone ",
+    "drawerGeometryStart": {
+     "dpr": 2,
+     "viewport": [
+      400,
+      860
+     ],
+     "inset": 4,
+     "drawers": [
+      {
+       "side": "right",
+       "drawer": [
+        64,
+        0,
+        336,
+        860
+       ],
+       "header": {
+        "rect": [
+         64,
+         770,
+         336,
+         56
+        ],
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backdropFilter": "none",
+        "boxShadow": "none"
+       },
+       "headerArea": [
+        253.73,
+        774,
+        82.27,
+        48
+       ],
+       "bodyArea": [
+        84,
+        190.78,
+        296,
+        481.22
+       ]
+      }
+     ]
+    },
+    "drawerGeometryStartAt": "2026-10-20T04:34:40.968Z",
+    "drawerGeometry": {
+     "dpr": 2,
+     "viewport": [
+      400,
+      860
+     ],
+     "inset": 4,
+     "drawers": [
+      {
+       "side": "right",
+       "drawer": [
+        64,
+        0,
+        336,
+        860
+       ],
+       "header": {
+        "rect": [
+         64,
+         770,
+         336,
+         56
+        ],
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backdropFilter": "none",
+        "boxShadow": "none"
+       },
+       "headerArea": [
+        253.73,
+        774,
+        82.27,
+        48
+       ],
+       "bodyArea": [
+        84,
+        190.78,
+        296,
+        481.22
+       ]
+      }
+     ]
+    },
+    "drawerGeometryAt": "2026-10-20T04:34:49.970Z"
+   },
+   "shootUntil": "2026-10-20T04:34:49.970Z"
+  },
+  {
+   "n": 5,
+   "label": "solarized-dark Markdown, Live Preview",
+   "startedAt": "2026-10-20T04:34:49.970Z",
+   "shootFrom": "2026-10-20T04:34:55.626Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.1 0.2584 0.298 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone "
+   },
+   "shootUntil": "2026-10-20T04:35:04.627Z"
+  },
+  {
+   "n": 6,
+   "label": "solarized-dark Markdown, Live Preview, table and callout",
+   "startedAt": "2026-10-20T04:35:04.957Z",
+   "shootFrom": "2026-10-20T04:35:13.026Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav",
+     "is-hidden-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.1 0.2584 0.298 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      862,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone "
+   },
+   "shootUntil": "2026-10-20T04:35:22.027Z"
+  },
+  {
+   "n": 7,
+   "label": "solarized-dark Markdown, Reading view",
+   "startedAt": "2026-10-20T04:35:22.356Z",
+   "shootFrom": "2026-10-20T04:35:28.217Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.1 0.2584 0.298 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-20T04:35:37.218Z"
+  },
+  {
+   "n": 8,
+   "label": "solarized-dark Markdown, Reading view, table and callout",
+   "startedAt": "2026-10-20T04:35:37.575Z",
+   "shootFrom": "2026-10-20T04:35:45.842Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.1 0.2584 0.298 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-20T04:35:54.843Z"
+  },
+  {
+   "n": 9,
+   "label": "solarized-dark Markdown, Source mode",
+   "startedAt": "2026-10-20T04:35:55.198Z",
+   "shootFrom": "2026-10-20T04:36:00.842Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.1 0.2584 0.298 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone "
+   },
+   "shootUntil": "2026-10-20T04:36:09.843Z"
+  },
+  {
+   "n": 10,
+   "label": "solarized-dark editor, Live Preview, line numbers",
+   "startedAt": "2026-10-20T04:36:10.244Z",
+   "shootFrom": "2026-10-20T04:36:18.110Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav",
+     "mod-toolbar-open"
+    ],
+    "navbar": null,
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "cm-content cm-lineWrapping"
+   },
+   "shootUntil": "2026-10-20T04:36:27.111Z"
+  },
+  {
+   "n": 11,
+   "label": "solarized-dark editor, Source mode, no line numbers",
+   "startedAt": "2026-10-20T04:36:28.172Z",
+   "shootFrom": "2026-10-20T04:36:36.034Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav",
+     "mod-toolbar-open"
+    ],
+    "navbar": null,
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "cm-content cm-lineWrapping"
+   },
+   "shootUntil": "2026-10-20T04:36:45.036Z"
+  },
+  {
+   "n": 12,
+   "label": "solarized-dark editor, keyboard: tap a line of text now",
+   "startedAt": "2026-10-20T04:36:46.097Z",
+   "shootFrom": "2026-10-20T04:36:53.960Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav",
+     "mod-toolbar-open"
+    ],
+    "navbar": null,
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "cm-content cm-lineWrapping"
+   },
+   "shootUntil": "2026-10-20T04:37:13.961Z"
+  },
+  {
+   "n": 13,
+   "label": "solarized-dark code blocks, Reading view",
+   "startedAt": "2026-10-20T04:37:15.004Z",
+   "shootFrom": "2026-10-20T04:37:21.478Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.1 0.2584 0.298 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-20T04:37:30.480Z"
+  },
+  {
+   "n": 14,
+   "label": "solarized-dark code blocks, Live Preview",
+   "startedAt": "2026-10-20T04:37:30.538Z",
+   "shootFrom": "2026-10-20T04:37:36.991Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.1 0.2584 0.298 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone "
+   },
+   "shootUntil": "2026-10-20T04:37:45.993Z"
+  },
+  {
+   "n": 15,
+   "label": "solarized-dark Mermaid flowchart, Reading view",
+   "startedAt": "2026-10-20T04:37:46.023Z",
+   "shootFrom": "2026-10-20T04:37:54.958Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.1 0.2584 0.298 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-20T04:38:03.959Z"
+  },
+  {
+   "n": 16,
+   "label": "solarized-dark Mermaid sequence, Reading view",
+   "startedAt": "2026-10-20T04:38:04.002Z",
+   "shootFrom": "2026-10-20T04:38:13.038Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav",
+     "is-hidden-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.1 0.2584 0.298 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      862,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-20T04:38:22.039Z"
+  },
+  {
+   "n": 17,
+   "label": "solarized-dark Mermaid other kinds and image, Reading view",
+   "startedAt": "2026-10-20T04:38:22.309Z",
+   "shootFrom": "2026-10-20T04:38:31.432Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.1 0.2584 0.298 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-20T04:38:40.433Z"
+  },
+  {
+   "n": 18,
+   "label": "solarized-dark quick switcher",
+   "startedAt": "2026-10-20T04:38:40.812Z",
+   "shootFrom": "2026-10-20T04:38:46.534Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.1 0.2584 0.298 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "prompt-input"
+   },
+   "shootUntil": "2026-10-20T04:38:55.536Z"
+  },
+  {
+   "n": 19,
+   "label": "solarized-dark accent colour of the user",
+   "startedAt": "2026-10-20T04:38:55.859Z",
+   "shootFrom": "2026-10-20T04:39:02.189Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.1 0.2584 0.298 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(192deg 100% 11%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone "
+   },
+   "shootUntil": "2026-10-20T04:39:11.191Z"
+  },
+  {
+   "n": 20,
+   "label": "kanagawa-dragon phone, floating navigation",
+   "startedAt": "2026-10-20T04:39:11.907Z",
+   "shootFrom": "2026-10-20T04:39:17.543Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.18424 0.17776 0.17776 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone "
+   },
+   "shootUntil": "2026-10-20T04:39:26.544Z"
+  },
+  {
+   "n": 21,
+   "label": "kanagawa-dragon phone, navigation not floating",
+   "startedAt": "2026-10-20T04:39:26.544Z",
+   "shootFrom": "2026-10-20T04:39:32.176Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark"
+    ],
+    "navbar": {
+     "backgroundColor": "rgb(24, 22, 22)",
+     "backdropFilter": "none",
+     "boxShadow": "none",
+     "rect": [
+      0,
+      780,
+      400,
+      80
+     ],
+     "raisedBackground": "hsl(0deg 4% 9%)"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone "
+   },
+   "shootUntil": "2026-10-20T04:39:41.178Z"
+  },
+  {
+   "n": 22,
+   "label": "kanagawa-dragon left drawer",
+   "startedAt": "2026-10-20T04:39:41.178Z",
+   "shootFrom": "2026-10-20T04:39:46.819Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.18424 0.17776 0.17776 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      378,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone ",
+    "drawerGeometryStart": {
+     "dpr": 2,
+     "viewport": [
+      400,
+      860
+     ],
+     "inset": 4,
+     "drawers": [
+      {
+       "side": "left",
+       "drawer": [
+        0,
+        0,
+        336,
+        860
+       ],
+       "header": {
+        "rect": [
+         0,
+         768.41,
+         336,
+         57.59
+        ],
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backdropFilter": "none",
+        "boxShadow": "none"
+       },
+       "headerArea": [
+        221.98,
+        772.41,
+        50.02,
+        49.59
+       ],
+       "bodyArea": [
+        20,
+        406.27,
+        296,
+        264.14
+       ]
+      }
+     ]
+    },
+    "drawerGeometryStartAt": "2026-10-20T04:39:46.822Z",
+    "drawerGeometry": {
+     "dpr": 2,
+     "viewport": [
+      400,
+      860
+     ],
+     "inset": 4,
+     "drawers": [
+      {
+       "side": "left",
+       "drawer": [
+        0,
+        0,
+        336,
+        860
+       ],
+       "header": {
+        "rect": [
+         0,
+         768.41,
+         336,
+         57.59
+        ],
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backdropFilter": "none",
+        "boxShadow": "none"
+       },
+       "headerArea": [
+        221.98,
+        772.41,
+        50.02,
+        49.59
+       ],
+       "bodyArea": [
+        20,
+        406.27,
+        296,
+        264.14
+       ]
+      }
+     ]
+    },
+    "drawerGeometryAt": "2026-10-20T04:39:55.824Z"
+   },
+   "shootUntil": "2026-10-20T04:39:55.824Z"
+  },
+  {
+   "n": 23,
+   "label": "kanagawa-dragon right drawer",
+   "startedAt": "2026-10-20T04:39:55.824Z",
+   "shootFrom": "2026-10-20T04:40:01.444Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.18424 0.17776 0.17776 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      -294,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone ",
+    "drawerGeometryStart": {
+     "dpr": 2,
+     "viewport": [
+      400,
+      860
+     ],
+     "inset": 4,
+     "drawers": [
+      {
+       "side": "right",
+       "drawer": [
+        64,
+        0,
+        336,
+        860
+       ],
+       "header": {
+        "rect": [
+         64,
+         770,
+         336,
+         56
+        ],
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backdropFilter": "none",
+        "boxShadow": "none"
+       },
+       "headerArea": [
+        253.73,
+        774,
+        82.27,
+        48
+       ],
+       "bodyArea": [
+        84,
+        190.78,
+        296,
+        481.22
+       ]
+      }
+     ]
+    },
+    "drawerGeometryStartAt": "2026-10-20T04:40:01.445Z",
+    "drawerGeometry": {
+     "dpr": 2,
+     "viewport": [
+      400,
+      860
+     ],
+     "inset": 4,
+     "drawers": [
+      {
+       "side": "right",
+       "drawer": [
+        64,
+        0,
+        336,
+        860
+       ],
+       "header": {
+        "rect": [
+         64,
+         770,
+         336,
+         56
+        ],
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backdropFilter": "none",
+        "boxShadow": "none"
+       },
+       "headerArea": [
+        253.73,
+        774,
+        82.27,
+        48
+       ],
+       "bodyArea": [
+        84,
+        190.78,
+        296,
+        481.22
+       ]
+      }
+     ]
+    },
+    "drawerGeometryAt": "2026-10-20T04:40:10.448Z"
+   },
+   "shootUntil": "2026-10-20T04:40:10.448Z"
+  },
+  {
+   "n": 24,
+   "label": "kanagawa-dragon Markdown, Live Preview",
+   "startedAt": "2026-10-20T04:40:10.448Z",
+   "shootFrom": "2026-10-20T04:40:16.100Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.18424 0.17776 0.17776 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone "
+   },
+   "shootUntil": "2026-10-20T04:40:25.101Z"
+  },
+  {
+   "n": 25,
+   "label": "kanagawa-dragon Markdown, Live Preview, table and callout",
+   "startedAt": "2026-10-20T04:40:25.431Z",
+   "shootFrom": "2026-10-20T04:40:33.499Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav",
+     "is-hidden-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.18424 0.17776 0.17776 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      862,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone "
+   },
+   "shootUntil": "2026-10-20T04:40:42.499Z"
+  },
+  {
+   "n": 26,
+   "label": "kanagawa-dragon Markdown, Reading view",
+   "startedAt": "2026-10-20T04:40:42.825Z",
+   "shootFrom": "2026-10-20T04:40:48.667Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.18424 0.17776 0.17776 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-20T04:40:57.668Z"
+  },
+  {
+   "n": 27,
+   "label": "kanagawa-dragon Markdown, Reading view, table and callout",
+   "startedAt": "2026-10-20T04:40:58.021Z",
+   "shootFrom": "2026-10-20T04:41:06.276Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.18424 0.17776 0.17776 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-20T04:41:15.276Z"
+  },
+  {
+   "n": 28,
+   "label": "kanagawa-dragon Markdown, Source mode",
+   "startedAt": "2026-10-20T04:41:15.645Z",
+   "shootFrom": "2026-10-20T04:41:21.290Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.18424 0.17776 0.17776 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone "
+   },
+   "shootUntil": "2026-10-20T04:41:30.291Z"
+  },
+  {
+   "n": 29,
+   "label": "kanagawa-dragon editor, Live Preview, line numbers",
+   "startedAt": "2026-10-20T04:41:30.660Z",
+   "shootFrom": "2026-10-20T04:41:38.521Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav",
+     "mod-toolbar-open"
+    ],
+    "navbar": null,
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "cm-content cm-lineWrapping"
+   },
+   "shootUntil": "2026-10-20T04:41:47.519Z"
+  },
+  {
+   "n": 30,
+   "label": "kanagawa-dragon editor, Source mode, no line numbers",
+   "startedAt": "2026-10-20T04:41:48.554Z",
+   "shootFrom": "2026-10-20T04:41:56.397Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav",
+     "mod-toolbar-open"
+    ],
+    "navbar": null,
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "cm-content cm-lineWrapping"
+   },
+   "shootUntil": "2026-10-20T04:42:05.395Z"
+  },
+  {
+   "n": 31,
+   "label": "kanagawa-dragon editor, keyboard: tap a line of text now",
+   "startedAt": "2026-10-20T04:42:06.464Z",
+   "shootFrom": "2026-10-20T04:42:14.324Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav",
+     "mod-toolbar-open"
+    ],
+    "navbar": null,
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "cm-content cm-lineWrapping"
+   },
+   "shootUntil": "2026-10-20T04:42:34.322Z"
+  },
+  {
+   "n": 32,
+   "label": "kanagawa-dragon code blocks, Reading view",
+   "startedAt": "2026-10-20T04:42:35.362Z",
+   "shootFrom": "2026-10-20T04:42:41.828Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.18424 0.17776 0.17776 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-20T04:42:50.829Z"
+  },
+  {
+   "n": 33,
+   "label": "kanagawa-dragon code blocks, Live Preview",
+   "startedAt": "2026-10-20T04:42:50.883Z",
+   "shootFrom": "2026-10-20T04:42:57.337Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.18424 0.17776 0.17776 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone "
+   },
+   "shootUntil": "2026-10-20T04:43:06.337Z"
+  },
+  {
+   "n": 34,
+   "label": "kanagawa-dragon Mermaid flowchart, Reading view",
+   "startedAt": "2026-10-20T04:43:06.366Z",
+   "shootFrom": "2026-10-20T04:43:15.399Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.18424 0.17776 0.17776 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-20T04:43:24.401Z"
+  },
+  {
+   "n": 35,
+   "label": "kanagawa-dragon Mermaid sequence, Reading view",
+   "startedAt": "2026-10-20T04:43:24.455Z",
+   "shootFrom": "2026-10-20T04:43:33.630Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav",
+     "is-hidden-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.18424 0.17776 0.17776 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      862,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-20T04:43:42.631Z"
+  },
+  {
+   "n": 36,
+   "label": "kanagawa-dragon Mermaid other kinds and image, Reading view",
+   "startedAt": "2026-10-20T04:43:42.914Z",
+   "shootFrom": "2026-10-20T04:43:51.992Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.18424 0.17776 0.17776 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "markdown-preview-view markdown-rendered node-insert-event is-readable-line-width"
+   },
+   "shootUntil": "2026-10-20T04:44:00.994Z"
+  },
+  {
+   "n": 37,
+   "label": "kanagawa-dragon quick switcher",
+   "startedAt": "2026-10-20T04:44:01.042Z",
+   "shootFrom": "2026-10-20T04:44:06.681Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.18424 0.17776 0.17776 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "prompt-input"
+   },
+   "shootUntil": "2026-10-20T04:44:15.682Z"
+  },
+  {
+   "n": 38,
+   "label": "kanagawa-dragon accent colour of the user",
+   "startedAt": "2026-10-20T04:44:15.996Z",
+   "shootFrom": "2026-10-20T04:44:22.326Z",
+   "measured": {
+    "bodyClasses": [
+     "mod-macos",
+     "is-frameless",
+     "is-hidden-frameless",
+     "obsidian-app",
+     "emulate-mobile",
+     "is-phone",
+     "is-mobile",
+     "show-inline-title",
+     "auto-full-screen",
+     "show-ribbon",
+     "show-view-header",
+     "theme-dark",
+     "is-floating-nav"
+    ],
+    "navbar": {
+     "backgroundColor": "color(srgb 0.18424 0.17776 0.17776 / 0.65)",
+     "backdropFilter": "blur(6px) saturate(1.5) brightness(1.15)",
+     "boxShadow": "none",
+     "rect": [
+      42,
+      776,
+      316,
+      52
+     ],
+     "raisedBackground": "color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent) linear-gradient(color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%), color-mix(in srgb, color-mix(in srgb, hsl(0deg 4% 9%) 90%, white 10%) 65%, transparent))"
+    },
+    "visualViewport": [
+     400,
+     860,
+     0
+    ],
+    "activeElement": "mod-macos is-frameless is-hidden-frameless obsidian-app emulate-mobile is-phone "
+   },
+   "shootUntil": "2026-10-20T04:44:31.327Z"
+  }
+ ]
+}

@@ -1,0 +1,6 @@
+PASS solarized-dark tablet, left sidebar left: dE2000 0.012 <= 1.0
+PASS solarized-dark tablet, right sidebar right: dE2000 0.002 <= 1.0
+PASS kanagawa-dragon tablet, left sidebar left: dE2000 0.009 <= 1.0
+PASS kanagawa-dragon tablet, right sidebar right: dE2000 0.007 <= 1.0
+
+4 drawer(s) judged, 0 FAIL

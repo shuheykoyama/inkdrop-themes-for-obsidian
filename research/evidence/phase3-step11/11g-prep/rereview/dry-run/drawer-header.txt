@@ -1,0 +1,6 @@
+PASS solarized-dark left drawer left: dE2000 0.012 <= 1.0
+PASS solarized-dark right drawer right: dE2000 0.002 <= 1.0
+PASS kanagawa-dragon left drawer left: dE2000 0.015 <= 1.0
+PASS kanagawa-dragon right drawer right: dE2000 0.003 <= 1.0
+
+4 drawer(s) judged, 0 FAIL

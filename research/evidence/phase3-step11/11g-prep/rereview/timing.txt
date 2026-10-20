@@ -1,0 +1,8 @@
+kst-dry-run solarized-dark left drawer: start 2026-10-20T04:34:26.338Z, shot 2026-10-20T04:34:29.436Z .. 2026-10-20T04:34:29.681Z, end 2026-10-20T04:34:35.341Z; shot inside the hold: true (margins 3.1 s / 5.7 s)
+kst-dry-run solarized-dark right drawer: start 2026-10-20T04:34:40.968Z, shot 2026-10-20T04:34:44.116Z .. 2026-10-20T04:34:44.361Z, end 2026-10-20T04:34:49.970Z; shot inside the hold: true (margins 3.1 s / 5.6 s)
+kst-dry-run kanagawa-dragon left drawer: start 2026-10-20T04:39:46.822Z, shot 2026-10-20T04:39:49.989Z .. 2026-10-20T04:39:50.258Z, end 2026-10-20T04:39:55.824Z; shot inside the hold: true (margins 3.2 s / 5.6 s)
+kst-dry-run kanagawa-dragon right drawer: start 2026-10-20T04:40:01.445Z, shot 2026-10-20T04:40:04.692Z .. 2026-10-20T04:40:05.017Z, end 2026-10-20T04:40:10.448Z; shot inside the hold: true (margins 3.2 s / 5.4 s)
+kst-dry-run-tablet solarized-dark tablet, left sidebar: start 2026-10-20T04:48:25.805Z, shot 2026-10-20T04:48:28.995Z .. 2026-10-20T04:48:29.325Z, end 2026-10-20T04:48:34.808Z; shot inside the hold: true (margins 3.2 s / 5.5 s)
+kst-dry-run-tablet solarized-dark tablet, right sidebar: start 2026-10-20T04:48:40.465Z, shot 2026-10-20T04:48:43.759Z .. 2026-10-20T04:48:44.078Z, end 2026-10-20T04:48:49.467Z; shot inside the hold: true (margins 3.3 s / 5.4 s)
+kst-dry-run-tablet kanagawa-dragon tablet, left sidebar: start 2026-10-20T04:50:46.570Z, shot 2026-10-20T04:50:49.776Z .. 2026-10-20T04:50:50.072Z, end 2026-10-20T04:50:55.572Z; shot inside the hold: true (margins 3.2 s / 5.5 s)
+kst-dry-run-tablet kanagawa-dragon tablet, right sidebar: start 2026-10-20T04:51:01.194Z, shot 2026-10-20T04:51:04.210Z .. 2026-10-20T04:51:04.532Z, end 2026-10-20T04:51:10.195Z; shot inside the hold: true (margins 3.0 s / 5.7 s)

@@ -1,0 +1,8 @@
+PASS dry.emulated-phone
+PASS dry.accepted
+PASS dry.run-checks  {"files":["results-2026-10-20T04-33-51-177Z.json"]}
+PASS dry.screenshot-tour  {"status":0,"files":["tour-2026-10-20T04-44-38-930Z.json"],"shots":38,"errors":[],"drawerShots":[{"label":"solarized-dark left drawer","before":true,"after":true},{"label":"solarized-dark right drawer","before":true,"after":true},{"label":"kanagawa-dragon left drawer","before":true,"after":true},{"label":"kanagawa-dragon right drawer","before":true,"after":true}]}
+PASS dry.judged  {"device":"phone","total":916,"fail":52,"other":[]}
+PASS dry.drawer-header-pixels  ["PASS solarized-dark left drawer: dE2000 0.012 <= 1.0","PASS solarized-dark right drawer: dE2000 0.002 <= 1.0","PASS kanagawa-dragon left drawer: dE2000 0.015 <= 1.0","PASS kanagawa-dragon right drawer: dE2000 0.003 <= 1.0"]
+PASS dry.drawer-geometry  [{"label":"solarized-dark left drawer","start":"2026-10-20T04:34:26.338Z","end":"2026-10-20T04:34:35.341Z","drawers":[[{"side":"left","header":true,"body":true}],[{"side":"left","header":true,"body":true}]]},{"label":"solarized-dark right drawer","start":"2026-10-20T04:34:40.968Z","end":"2026-10-20T04:34:49.970Z","drawers":[[{"side":"right","header":true,"body":true}],[{"side":"right","header":true,"body":true}]]},{"label":"kanagawa-dragon left drawer","start":"2026-10-20T04:39:46.822Z","end":"2026-10-20T04:39:55.824Z","drawers":[[{"side":"left","header":true,"body":true}],[{"side":"left","header":true,"body":true}]]},{"label":"kanagawa-dragon right drawer","start":"2026-10-20T04:40:01.445Z","end":"2026-10-20T04:40:10.448Z","drawers":[[{"side":"right","header":true,"body":true}],[{"side":"right","header":true,"body":true}]]}]
+all 7 kit self-test checks PASS
