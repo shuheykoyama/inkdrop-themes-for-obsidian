@@ -12,9 +12,9 @@
   "targets": [
     { "os": "macOS", "device": "desktop", "gated": true },
     { "os": "iOS", "device": "phone", "gated": true },
-    { "os": "iOS", "device": "tablet", "gated": true, "blocked": { "reason": "iPad not verified in step 10 (the user's decision); BLOCKED, still in the supported range (Q-D10)", "since": "2026-10-13" } },
-    { "os": "Android", "device": "phone", "gated": true, "blocked": { "reason": "no Android device and no adb (step 10)", "since": "2026-10-13" } },
-    { "os": "Android", "device": "tablet", "gated": true, "blocked": { "reason": "no Android device and no adb (step 10)", "since": "2026-10-13" } },
+    { "os": "iOS", "device": "tablet", "gated": true, "blocked": { "reason": "no device verification planned: the user limited the step 11G device runs to macOS and iPhone (2026-10-20, research/14 §6.61); BLOCKED, still in the supported range (Q-D10)", "since": "2026-10-13" } },
+    { "os": "Android", "device": "phone", "gated": true, "blocked": { "reason": "no Android device and no adb (step 10); no device verification planned: the user limited the step 11G device runs to macOS and iPhone (2026-10-20, research/14 §6.61); BLOCKED, still in the supported range (Q-D10)", "since": "2026-10-13" } },
+    { "os": "Android", "device": "tablet", "gated": true, "blocked": { "reason": "no Android device and no adb (step 10); no device verification planned: the user limited the step 11G device runs to macOS and iPhone (2026-10-20, research/14 §6.61); BLOCKED, still in the supported range (Q-D10)", "since": "2026-10-13" } },
     { "os": "Windows", "device": "desktop", "gated": false, "note": "Q-D10: not guaranteed until verified on a real machine; UNVERIFIED, not a release failure" },
     { "os": "Linux", "device": "desktop", "gated": false, "note": "Q-D10: not guaranteed until verified on a real machine; UNVERIFIED, not a release failure" }
   ]
