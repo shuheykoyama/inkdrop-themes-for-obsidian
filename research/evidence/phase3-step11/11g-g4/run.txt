@@ -1,0 +1,4 @@
+source commit: f487870 docs(research): record the G1 approval and plan G4
+Solarized Dark theme.css SHA-256 (built at that commit): b98da149f049623fc953af0ac587a106b153bd158e11afad68c22e32ae3470ac
+user paused: 2026-10-20T12:33:24Z
+back on the desktop (told to resume right after): 2026-10-20T12:33:33Z
