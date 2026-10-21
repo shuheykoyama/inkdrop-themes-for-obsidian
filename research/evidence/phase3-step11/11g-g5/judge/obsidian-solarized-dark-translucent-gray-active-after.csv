@@ -1,0 +1,4 @@
+image,region,"rect_points(x,y,w,h)",mean_r,mean_g,mean_b,sd_r,sd_g,sd_b,dE76_vs_inkdrop_v32,dE2000_vs_inkdrop_v32
+obsidian-solarized-dark-translucent-gray-active-after.png,titlebar,"722.38,4,473.62,22",14.2,37.2,41.8,0.78,0.69,1.22,,
+obsidian-solarized-dark-translucent-gray-active-after.png,left-tabstrip,"140,34,160,32",13.0,35.0,40.0,0.0,0.0,0.0,,
+obsidian-solarized-dark-translucent-gray-active-after.png,root-tabstrip,"544,34,362,32",13.9,36.4,41.3,0.89,1.18,1.68,,

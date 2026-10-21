@@ -1,0 +1,15 @@
+LaunchServices check (current-installer.sh check), paths shortened (~ = home, <id> = container id); the full outputs hold local paths and are not committed.
+
+before the run:
+default: /Applications/Obsidian.app
+candidate: /Applications/Obsidian.app
+candidate: ~/.cache/inkdrop-themes-for-obsidian/obsidian-1.14.4/Obsidian.app
+path:                       /Applications/Obsidian.app (0x1600)
+path:                       ~/Library/Daemon Containers/<id>/Data/Library/Caches/Placeholders-v6.noindex/md.obsidian-1.14.5/Obsidian.app (0x5db8)
+path:                       ~/.cache/inkdrop-themes-for-obsidian/obsidian-1.14.4/Obsidian.app (0x6318)
+
+after restore:
+default: /Applications/Obsidian.app
+candidate: /Applications/Obsidian.app
+path:                       /Applications/Obsidian.app (0x1600)
+path:                       ~/Library/Daemon Containers/<id>/Data/Library/Caches/Placeholders-v6.noindex/md.obsidian-1.14.5/Obsidian.app (0x5db8)

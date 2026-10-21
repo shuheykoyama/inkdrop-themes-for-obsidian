@@ -1,0 +1,48 @@
+obsidian-kanagawa-dragon-opaque-gray-active-after
+   titlebar (as judged)               mean (24.0, 22.0, 22.0) max sd 0.62
+   titlebar without the right 24 pt   mean (24.0, 22.0, 22.0) max sd 0.00
+   right 24 pt (window corner)        mean (24.3, 22.3, 22.3) max sd 3.20
+   left-tabstrip                      mean (24.0, 22.0, 22.0) max sd 0.00 dE2000 vs that titlebar part 0.000
+   root-tabstrip                      mean (24.0, 22.0, 22.0) max sd 0.00 dE2000 vs that titlebar part 0.000
+obsidian-kanagawa-dragon-translucent-gray-active-after
+   titlebar (as judged)               mean (31.2, 29.3, 29.4) max sd 0.92
+   titlebar without the right 24 pt   mean (31.2, 29.3, 29.4) max sd 0.72
+   right 24 pt (window corner)        mean (31.3, 29.3, 29.3) max sd 3.05
+   left-tabstrip                      mean (30.0, 27.0, 27.0) max sd 0.00 dE2000 vs that titlebar part 0.954
+   root-tabstrip                      mean (30.9, 28.5, 28.6) max sd 1.41 dE2000 vs that titlebar part 0.333
+obsidian-solarized-dark-opaque-gray-active-after
+   titlebar (as judged)               mean (1.0, 45.0, 56.0) max sd 0.72
+   titlebar without the right 24 pt   mean (1.0, 45.0, 56.0) max sd 0.00
+   right 24 pt (window corner)        mean (1.4, 45.2, 56.2) max sd 3.79
+   left-tabstrip                      mean (1.0, 45.0, 56.0) max sd 0.00 dE2000 vs that titlebar part 0.000
+   root-tabstrip                      mean (1.0, 45.0, 56.0) max sd 0.00 dE2000 vs that titlebar part 0.000
+obsidian-solarized-dark-translucent-gray-active-after
+   titlebar (as judged)               mean (14.2, 37.2, 41.8) max sd 1.22
+   titlebar without the right 24 pt   mean (14.2, 37.2, 41.8) max sd 1.11
+   right 24 pt (window corner)        mean (14.3, 37.2, 41.2) max sd 3.40
+   left-tabstrip                      mean (13.0, 35.0, 40.0) max sd 0.00 dE2000 vs that titlebar part 0.810
+   root-tabstrip                      mean (13.9, 36.4, 41.3) max sd 1.68 dE2000 vs that titlebar part 0.379
+obsidian-kanagawa-dragon-opaque-gray-active-before
+   titlebar (as judged)               mean (24.0, 22.0, 22.0) max sd 0.62
+   titlebar without the right 24 pt   mean (24.0, 22.0, 22.0) max sd 0.00
+   right 24 pt (window corner)        mean (24.3, 22.3, 22.3) max sd 3.20
+   left-tabstrip                      mean (24.0, 22.0, 22.0) max sd 0.00 dE2000 vs that titlebar part 0.000
+   root-tabstrip                      mean (24.0, 22.0, 22.0) max sd 0.00 dE2000 vs that titlebar part 0.000
+obsidian-kanagawa-dragon-translucent-gray-active-before
+   titlebar (as judged)               mean (47.7, 46.9, 46.9) max sd 2.86
+   titlebar without the right 24 pt   mean (47.8, 46.9, 47.0) max sd 2.85
+   right 24 pt (window corner)        mean (47.2, 46.2, 45.2) max sd 2.82
+   left-tabstrip                      mean (30.0, 27.0, 27.0) max sd 0.00 dE2000 vs that titlebar part 6.335
+   root-tabstrip                      mean (30.9, 28.5, 28.6) max sd 1.41 dE2000 vs that titlebar part 5.819
+obsidian-solarized-dark-opaque-gray-active-before
+   titlebar (as judged)               mean (1.0, 45.0, 56.0) max sd 0.72
+   titlebar without the right 24 pt   mean (1.0, 45.0, 56.0) max sd 0.00
+   right 24 pt (window corner)        mean (1.4, 45.2, 56.2) max sd 3.79
+   left-tabstrip                      mean (1.0, 45.0, 56.0) max sd 0.00 dE2000 vs that titlebar part 0.000
+   root-tabstrip                      mean (1.0, 45.0, 56.0) max sd 0.00 dE2000 vs that titlebar part 0.000
+obsidian-solarized-dark-translucent-gray-active-before
+   titlebar (as judged)               mean (47.7, 46.9, 46.9) max sd 2.86
+   titlebar without the right 24 pt   mean (47.8, 46.9, 47.0) max sd 2.85
+   right 24 pt (window corner)        mean (47.2, 46.2, 45.2) max sd 2.82
+   left-tabstrip                      mean (13.0, 35.0, 40.0) max sd 0.00 dE2000 vs that titlebar part 11.271
+   root-tabstrip                      mean (13.9, 36.4, 41.3) max sd 1.68 dE2000 vs that titlebar part 11.261

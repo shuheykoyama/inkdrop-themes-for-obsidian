@@ -1,0 +1,4 @@
+image,region,"rect_points(x,y,w,h)",mean_r,mean_g,mean_b,sd_r,sd_g,sd_b,dE76_vs_inkdrop_v32,dE2000_vs_inkdrop_v32
+obsidian-kanagawa-dragon-opaque-gray-active-after.png,titlebar,"722.38,4,473.62,22",24.0,22.0,22.0,0.61,0.62,0.62,,
+obsidian-kanagawa-dragon-opaque-gray-active-after.png,left-tabstrip,"140,34,160,32",24.0,22.0,22.0,0.0,0.0,0.0,,
+obsidian-kanagawa-dragon-opaque-gray-active-after.png,root-tabstrip,"544,34,362,32",24.0,22.0,22.0,0.0,0.0,0.0,,

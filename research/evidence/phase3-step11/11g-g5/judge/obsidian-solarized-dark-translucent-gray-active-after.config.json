@@ -1,0 +1,32 @@
+{
+ "_comment": "G5: generated from the capture's own g5-regions.js output",
+ "window_width_points": 1200,
+ "regions": {
+  "titlebar": [
+   722.38,
+   4,
+   473.62,
+   22
+  ],
+  "left-tabstrip": [
+   140,
+   34,
+   160,
+   32
+  ],
+  "root-tabstrip": [
+   544,
+   34,
+   362,
+   32
+  ]
+ },
+ "max_sd": 1.0,
+ "pairs": [
+  {
+   "a": "titlebar",
+   "b": "left-tabstrip",
+   "max_de2000": 1.0
+  }
+ ]
+}

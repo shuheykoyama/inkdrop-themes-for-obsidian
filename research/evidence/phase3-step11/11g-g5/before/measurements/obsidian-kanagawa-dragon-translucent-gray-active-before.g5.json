@@ -1,0 +1,109 @@
+{
+ "build": "before",
+ "theme": "kanagawa-dragon",
+ "mode": "translucent",
+ "exit": 0,
+ "stdout": [
+  "obsidian-kanagawa-dragon-translucent-gray-active-before | electron 43.7.7 | translucent True | focused after True ['is-focused', 'is-translucent']"
+ ],
+ "image": "before/screenshots/obsidian-kanagawa-dragon-translucent-gray-active-before.png",
+ "imageSha256": "91a56be8e856fd1b3600269d3147d77aae2a55ae7cf9515b33fab54f0575c037",
+ "themeName": "G5 before kanagawa-dragon",
+ "cssSha256": "f45d3daeceab5c770ff9f3111c41fbdc987848cb7ffe814a4b6040fb3f19f7e5",
+ "sourceCommit": "fab7442",
+ "app": "1.14.4",
+ "electron": "43.7.7",
+ "frame": "custom",
+ "translucent": true,
+ "classes": [
+  "is-frameless",
+  "is-focused",
+  "is-translucent"
+ ],
+ "window": {
+  "innerWidth": 1200,
+  "innerHeight": 700,
+  "devicePixelRatio": 2,
+  "bounds": {
+   "x": 400,
+   "y": 250,
+   "width": 1200,
+   "height": 700
+  },
+  "focused": true
+ },
+ "focusedAfterShot": true,
+ "capturedAt": "2026-10-21T06:10:45Z",
+ "regions": {
+  "titlebar": {
+   "selector": ".titlebar",
+   "element": [
+    0,
+    0,
+    1200,
+    30
+   ],
+   "rect": [
+    722.38,
+    4,
+    473.62,
+    22
+   ],
+   "bigEnough": true,
+   "background": "rgba(0, 0, 0, 0)",
+   "centre": {
+    "tag": "div",
+    "cls": "titlebar-text",
+    "inside": true,
+    "background": "rgba(0, 0, 0, 0)"
+   }
+  },
+  "left-tabstrip": {
+   "selector": ".workspace-split.mod-left-split .workspace-tab-header-container",
+   "element": [
+    44,
+    30,
+    260,
+    40
+   ],
+   "rect": [
+    140,
+    34,
+    160,
+    32
+   ],
+   "bigEnough": true,
+   "background": "rgba(24, 22, 22, 0.7)",
+   "centre": {
+    "tag": "div",
+    "cls": "workspace-tab-header-spacer",
+    "inside": true,
+    "background": "rgba(0, 0, 0, 0)"
+   }
+  },
+  "root-tabstrip": {
+   "selector": ".workspace-split.mod-root .workspace-tab-header-container",
+   "element": [
+    304,
+    30,
+    636,
+    40
+   ],
+   "rect": [
+    544,
+    34,
+    362,
+    32
+   ],
+   "bigEnough": true,
+   "background": "rgba(24, 22, 22, 0.7)",
+   "centre": {
+    "tag": "div",
+    "cls": "workspace-tab-header-spacer",
+    "inside": true,
+    "background": "rgba(0, 0, 0, 0)"
+   }
+  }
+ },
+ "expectedTitlebar": "rgba(0, 0, 0, 0)"
+}

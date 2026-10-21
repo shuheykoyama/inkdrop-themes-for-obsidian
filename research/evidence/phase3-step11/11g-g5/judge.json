@@ -1,0 +1,372 @@
+{
+ "overall": "INVALID",
+ "maxSd": 1.0,
+ "maxDE2000": 1.0,
+ "results": [
+  {
+   "build": "after",
+   "theme": "solarized-dark",
+   "mode": "translucent",
+   "regions": {
+    "titlebar": {
+     "mean": [
+      14.2,
+      37.2,
+      41.8
+     ],
+     "sd": [
+      0.78,
+      0.69,
+      1.22
+     ]
+    },
+    "left-tabstrip": {
+     "mean": [
+      13.0,
+      35.0,
+      40.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "mean": [
+      13.9,
+      36.4,
+      41.3
+     ],
+     "sd": [
+      0.89,
+      1.18,
+      1.68
+     ]
+    }
+   },
+   "state": "INVALID",
+   "detail": "titlebar not flat (sd 1.22 > 1.0)"
+  },
+  {
+   "build": "after",
+   "theme": "solarized-dark",
+   "mode": "opaque",
+   "regions": {
+    "titlebar": {
+     "mean": [
+      1.0,
+      45.0,
+      56.0
+     ],
+     "sd": [
+      0.72,
+      0.54,
+      0.52
+     ]
+    },
+    "left-tabstrip": {
+     "mean": [
+      1.0,
+      45.0,
+      56.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "mean": [
+      1.0,
+      45.0,
+      56.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "dE2000": 0.0,
+   "state": "REFERENCE",
+   "detail": "dE2000 0.000 (opaque, reported only)"
+  },
+  {
+   "build": "after",
+   "theme": "kanagawa-dragon",
+   "mode": "translucent",
+   "regions": {
+    "titlebar": {
+     "mean": [
+      31.2,
+      29.3,
+      29.4
+     ],
+     "sd": [
+      0.72,
+      0.73,
+      0.92
+     ]
+    },
+    "left-tabstrip": {
+     "mean": [
+      30.0,
+      27.0,
+      27.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "mean": [
+      30.9,
+      28.5,
+      28.6
+     ],
+     "sd": [
+      0.89,
+      1.31,
+      1.41
+     ]
+    }
+   },
+   "dE2000": 1.003,
+   "state": "FAIL",
+   "detail": "dE2000 1.003 > 1.0"
+  },
+  {
+   "build": "after",
+   "theme": "kanagawa-dragon",
+   "mode": "opaque",
+   "regions": {
+    "titlebar": {
+     "mean": [
+      24.0,
+      22.0,
+      22.0
+     ],
+     "sd": [
+      0.61,
+      0.62,
+      0.62
+     ]
+    },
+    "left-tabstrip": {
+     "mean": [
+      24.0,
+      22.0,
+      22.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "mean": [
+      24.0,
+      22.0,
+      22.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "dE2000": 0.0,
+   "state": "REFERENCE",
+   "detail": "dE2000 0.000 (opaque, reported only)"
+  },
+  {
+   "build": "before",
+   "theme": "solarized-dark",
+   "mode": "translucent",
+   "regions": {
+    "titlebar": {
+     "mean": [
+      47.7,
+      46.9,
+      46.9
+     ],
+     "sd": [
+      1.28,
+      1.52,
+      2.86
+     ]
+    },
+    "left-tabstrip": {
+     "mean": [
+      13.0,
+      35.0,
+      40.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "mean": [
+      13.9,
+      36.4,
+      41.3
+     ],
+     "sd": [
+      0.89,
+      1.18,
+      1.68
+     ]
+    }
+   },
+   "state": "INVALID",
+   "detail": "titlebar not flat (sd 2.86 > 1.0)"
+  },
+  {
+   "build": "before",
+   "theme": "solarized-dark",
+   "mode": "opaque",
+   "regions": {
+    "titlebar": {
+     "mean": [
+      1.0,
+      45.0,
+      56.0
+     ],
+     "sd": [
+      0.72,
+      0.54,
+      0.52
+     ]
+    },
+    "left-tabstrip": {
+     "mean": [
+      1.0,
+      45.0,
+      56.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "mean": [
+      1.0,
+      45.0,
+      56.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "dE2000": 0.0,
+   "state": "REFERENCE",
+   "detail": "dE2000 0.000 (opaque, reported only)"
+  },
+  {
+   "build": "before",
+   "theme": "kanagawa-dragon",
+   "mode": "translucent",
+   "regions": {
+    "titlebar": {
+     "mean": [
+      47.7,
+      46.9,
+      46.9
+     ],
+     "sd": [
+      1.28,
+      1.52,
+      2.86
+     ]
+    },
+    "left-tabstrip": {
+     "mean": [
+      30.0,
+      27.0,
+      27.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "mean": [
+      30.9,
+      28.5,
+      28.6
+     ],
+     "sd": [
+      0.89,
+      1.31,
+      1.41
+     ]
+    }
+   },
+   "state": "INVALID",
+   "detail": "titlebar not flat (sd 2.86 > 1.0)"
+  },
+  {
+   "build": "before",
+   "theme": "kanagawa-dragon",
+   "mode": "opaque",
+   "regions": {
+    "titlebar": {
+     "mean": [
+      24.0,
+      22.0,
+      22.0
+     ],
+     "sd": [
+      0.61,
+      0.62,
+      0.62
+     ]
+    },
+    "left-tabstrip": {
+     "mean": [
+      24.0,
+      22.0,
+      22.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "mean": [
+      24.0,
+      22.0,
+      22.0
+     ],
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "dE2000": 0.0,
+   "state": "REFERENCE",
+   "detail": "dE2000 0.000 (opaque, reported only)"
+  }
+ ]
+}

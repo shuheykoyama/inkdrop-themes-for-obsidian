@@ -1,0 +1,108 @@
+{
+ "build": "after",
+ "theme": "solarized-dark",
+ "mode": "opaque",
+ "exit": 0,
+ "stdout": [
+  "obsidian-solarized-dark-opaque-gray-active-after | electron 43.7.7 | translucent False | focused after True ['is-focused']"
+ ],
+ "image": "after/screenshots/obsidian-solarized-dark-opaque-gray-active-after.png",
+ "imageSha256": "210f00da8ad0cfd0256a4ee415be2d6be99c5e77ea8b07807edd91df3dc6cf2f",
+ "themeName": "G5 after solarized-dark",
+ "cssSha256": "b98da149f049623fc953af0ac587a106b153bd158e11afad68c22e32ae3470ac",
+ "sourceCommit": "1584977",
+ "app": "1.14.4",
+ "electron": "43.7.7",
+ "frame": "custom",
+ "translucent": false,
+ "classes": [
+  "is-frameless",
+  "is-focused"
+ ],
+ "window": {
+  "innerWidth": 1200,
+  "innerHeight": 700,
+  "devicePixelRatio": 2,
+  "bounds": {
+   "x": 400,
+   "y": 250,
+   "width": 1200,
+   "height": 700
+  },
+  "focused": true
+ },
+ "focusedAfterShot": true,
+ "capturedAt": "2026-10-21T06:09:59Z",
+ "regions": {
+  "titlebar": {
+   "selector": ".titlebar",
+   "element": [
+    0,
+    0,
+    1200,
+    30
+   ],
+   "rect": [
+    722.38,
+    4,
+    473.62,
+    22
+   ],
+   "bigEnough": true,
+   "background": "rgb(0, 45, 56)",
+   "centre": {
+    "tag": "div",
+    "cls": "titlebar-text",
+    "inside": true,
+    "background": "rgba(0, 0, 0, 0)"
+   }
+  },
+  "left-tabstrip": {
+   "selector": ".workspace-split.mod-left-split .workspace-tab-header-container",
+   "element": [
+    44,
+    30,
+    260,
+    40
+   ],
+   "rect": [
+    140,
+    34,
+    160,
+    32
+   ],
+   "bigEnough": true,
+   "background": "rgb(0, 45, 56)",
+   "centre": {
+    "tag": "div",
+    "cls": "workspace-tab-header-spacer",
+    "inside": true,
+    "background": "rgba(0, 0, 0, 0)"
+   }
+  },
+  "root-tabstrip": {
+   "selector": ".workspace-split.mod-root .workspace-tab-header-container",
+   "element": [
+    304,
+    30,
+    636,
+    40
+   ],
+   "rect": [
+    544,
+    34,
+    362,
+    32
+   ],
+   "bigEnough": true,
+   "background": "rgb(0, 45, 56)",
+   "centre": {
+    "tag": "div",
+    "cls": "workspace-tab-header-spacer",
+    "inside": true,
+    "background": "rgba(0, 0, 0, 0)"
+   }
+  }
+ },
+ "expectedTitlebar": "rgb(0, 45, 56)"
+}
