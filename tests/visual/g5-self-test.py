@@ -6,8 +6,10 @@ Inkdrop is never touched:
   - capture-obsidian.sh reaches other-window.sh only through inkdrop_window;
   - g5-capture.mjs --plan: 8 distinct conditions (2 builds x 2 themes x 2 states), each with its own theme
     folder, output folder and image, every one with CAPTURE_INKDROP=off; the script names no Inkdrop endpoint.
-g5-finish.mjs: SCREEN RELEASED only when the instance's stop succeeded, its process is gone and port 9333 is
-closed; a failed or different LaunchServices restore and incomplete captures never end with exit 0.
+g5-finish.mjs: nothing is started unless the LaunchServices check before exits 0 with output; SCREEN RELEASED
+only when the instance's stop succeeded, its process is gone, port 9333 is closed and no backdrop of the run is
+left; a failed restore, a failed check after (even with the same output), a different output, an invalid check
+before and incomplete captures never end with exit 0.
 g5-judge.py on made-up captures (images at half scale, the regions as g5-regions.js reports them): all as
 expected passes; a title bar that differs with the fix fails; a pre-fix title bar the same as the tab strip, a
 missing capture, a region that is not flat, outside the window or too small, an unexpected computed title
@@ -122,7 +124,7 @@ def main():
         say("plan: 8 distinct image files", len({c["image"] for c in plan}) == 8)
         say("plan: the two builds use their own theme and output folders", all(f"/{c['build']}/" in c["themeDir"] + "/" and c["outDir"].endswith(c["build"]) for c in plan))
         # The end of the capture run (tests/visual/g5-finish.mjs): what may be claimed after each restoring step.
-        ok = {"started": True, "stopStatus": 0, "pidAlive": False, "portOpen": False, "restoreStatus": 0, "lsSame": True, "captures": 8, "total": 8, "stoppedEarly": None}
+        ok = {"started": True, "stopStatus": 0, "pidAlive": False, "portOpen": False, "backdropAlive": False, "checkBeforeOk": True, "restoreStatus": 0, "checkAfterStatus": 0, "lsSame": True, "captures": 8, "total": 8, "stoppedEarly": None}
         finish_cases = [
             ("all restored, 8 captures", {}, True, 0),
             ("stop command failed", {"stopStatus": 1}, False, 3),
@@ -131,6 +133,9 @@ def main():
             ("port 9333 still answering", {"portOpen": True}, False, 3),
             ("LaunchServices restore failed", {"restoreStatus": 1}, True, 4),
             ("LaunchServices check differs", {"lsSame": False}, True, 4),
+            ("LaunchServices check after failed, output the same", {"checkAfterStatus": 1}, True, 4),
+            ("LaunchServices check before not valid", {"checkBeforeOk": False, "captures": 0, "stoppedEarly": "not started"}, True, 4),
+            ("a backdrop window of the run still open", {"backdropAlive": True}, False, 3),
             ("stopped early", {"captures": 3, "stoppedEarly": "frame is not custom"}, True, 1),
             ("7 of 8 captures", {"captures": 7}, True, 1),
             ("nothing started, port closed, no captures", {"started": False, "stopStatus": None, "pidAlive": None, "captures": 0}, True, 1),
@@ -140,8 +145,18 @@ def main():
         for (name, _, released, code), r in zip(finish_cases, got):
             claims = r["screenLine"].startswith("SCREEN RELEASED")
             say(f"finish: {name}: released {r['released']}, exit {r['exitCode']} (declared {released}, {code})", r["released"] == released and claims == released and r["exitCode"] == code, r["screenLine"])
+        # Before anything is started: the LaunchServices check must exit 0 with output.
+        start_cases = [("check exit 0 with output", {"checkStatus": 0, "checkOut": "handler: /Applications/Obsidian.app\n"}, True),
+                       ("check exit 1", {"checkStatus": 1, "checkOut": "handler: x\n"}, False),
+                       ("check with no output", {"checkStatus": 0, "checkOut": "  \n"}, False),
+                       ("check did not run", {"checkStatus": None, "checkOut": None}, False)]
+        script = "import { mayStart } from %s; console.log(JSON.stringify(JSON.parse(process.argv[1]).map((c) => mayStart(c))));" % json.dumps(str(VIS / "g5-finish.mjs"))
+        got = json.loads(subprocess.run(["node", "--input-type=module", "-e", script, json.dumps([c for _, c, _ in start_cases])], capture_output=True, text=True, check=True).stdout)
+        for (name, _, want), r in zip(start_cases, got):
+            say(f"mayStart: {name}: {r['ok']} (declared {want})", r["ok"] == want, r["why"])
         cap_code = "\n".join(l for l in (VIS / "g5-capture.mjs").read_text().splitlines() if not l.lstrip().startswith("//"))
         say("g5-capture.mjs prints the screen line only from finish()", "SCREEN RELEASED" not in cap_code and "early.screenLine" in cap_code)
+        say("g5-capture.mjs checks LaunchServices before it starts the instance", 0 <= cap_code.find("if (!start.ok) throw") < cap_code.find('obsidian-isolated.sh", "start"'))
         # The judgement.
         cases = [
             ("all as expected", "PASS", {}),

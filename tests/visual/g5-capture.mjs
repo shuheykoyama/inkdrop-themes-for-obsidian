@@ -18,7 +18,7 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
-import { finish } from "./g5-finish.mjs";
+import { finish, mayStart } from "./g5-finish.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
 const { values: args } = parseArgs({ options: { themes: { type: "string" }, out: { type: "string" }, tmp: { type: "string" }, plan: { type: "boolean" } } });
@@ -51,9 +51,14 @@ const regionsScript = readFileSync(path.join(repo, "tests/visual/g5-regions.js")
 mkdirSync(args.out, { recursive: true });
 const work = path.join(args.tmp, "g5-instance");
 const summary = { startedAt: new Date().toISOString(), commit: run("git", ["rev-parse", "--short", "HEAD"]).stdout.trim(), dirty: !!run("git", ["status", "--porcelain"]).stdout.trim(), captures: [], stoppedEarly: null };
-writeFileSync(path.join(args.out, "ls-before.txt"), run("bash", ["tests/runtime/current-installer.sh", "check"]).stdout);
+// LaunchServices before anything: a failed or empty check starts nothing (there would be nothing to restore to).
+const checkBefore = run("bash", ["tests/runtime/current-installer.sh", "check"]);
+writeFileSync(path.join(args.out, "ls-before.txt"), checkBefore.stdout ?? "");
+const start = mayStart({ checkStatus: checkBefore.status, checkOut: checkBefore.stdout });
+Object.assign(summary, { checkBefore: { status: checkBefore.status, valid: start.ok } });
 let started = false;
 try {
+  if (!start.ok) throw new Error(`not started: ${start.why}`);
   mkdirSync(work, { recursive: true });
   const st = run("bash", ["tests/runtime/obsidian-isolated.sh", "start", work], E43);
   if (st.status !== 0) throw new Error(`isolated instance did not start: ${st.stderr.slice(-300)}`);
@@ -96,15 +101,23 @@ try {
   let pidAlive = null;
   if (pid) { try { process.kill(pid, 0); pidAlive = true; } catch { pidAlive = false; } } else if (!ours) pidAlive = false;
   const portOpen = await fetch("http://127.0.0.1:9333/json/version", { signal: AbortSignal.timeout(2000) }).then(() => true, () => false);
+  // A backdrop window of this run (capture-obsidian.sh starts <tmp>/bin/backdrop and closes it on exit): closed
+  // here if one is left, then checked again. Nothing else is looked for or touched.
+  const backdropBin = path.join(args.tmp, "bin", "backdrop");
+  const backdropPids = () => run("pgrep", ["-f", `^${backdropBin.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}( |$)`]).stdout.trim().split("\n").filter(Boolean);
+  for (const p of backdropPids()) { try { process.kill(Number(p)); } catch { /* already gone */ } }
+  if (backdropPids().length) await new Promise((r) => setTimeout(r, 1000));
+  const backdropAlive = backdropPids().length > 0;
   // The screen is reported before LaunchServices is restored (it takes up to a minute and uses no screen).
-  const early = finish({ started: ours, stopStatus: stop?.status ?? null, pidAlive, portOpen });
+  const early = finish({ started: ours, stopStatus: stop?.status ?? null, pidAlive, portOpen, backdropAlive });
   if (early.released) summary.screenReleasedAt = new Date().toISOString();
   console.log(early.screenLine, early.released ? summary.screenReleasedAt : "");
   const restore = run("bash", ["tests/runtime/current-installer.sh", "restore"]);
-  const after = run("bash", ["tests/runtime/current-installer.sh", "check"]).stdout;
-  writeFileSync(path.join(args.out, "ls-after.txt"), after);
-  const f = finish({ started: ours, stopStatus: stop?.status ?? null, pidAlive, portOpen, restoreStatus: restore.status, lsSame: after === readFileSync(path.join(args.out, "ls-before.txt"), "utf8"), captures: summary.captures.length, total: conditions.length, stoppedEarly: summary.stoppedEarly });
-  Object.assign(summary, { stop: stop && { status: stop.status, out: stop.stdout.trim().slice(-200) }, pidAlive, portOpen, restoreStatus: restore.status, ...f, finishedAt: new Date().toISOString() });
+  const checkAfter = run("bash", ["tests/runtime/current-installer.sh", "check"]);
+  writeFileSync(path.join(args.out, "ls-after.txt"), checkAfter.stdout ?? "");
+  const lsSame = start.ok && checkAfter.stdout === checkBefore.stdout;
+  const f = finish({ started: ours, stopStatus: stop?.status ?? null, pidAlive, portOpen, backdropAlive, checkBeforeOk: start.ok, restoreStatus: restore.status, checkAfterStatus: checkAfter.status, lsSame, captures: summary.captures.length, total: conditions.length, stoppedEarly: summary.stoppedEarly });
+  Object.assign(summary, { stop: stop && { status: stop.status, out: stop.stdout.trim().slice(-200) }, pidAlive, portOpen, backdropAlive, restoreStatus: restore.status, checkAfter: { status: checkAfter.status, sameAsBefore: lsSame }, ...f, finishedAt: new Date().toISOString() });
   writeFileSync(path.join(args.out, "g5-run.json"), `${JSON.stringify(summary, null, 1)}\n`);
   console.log(f.restoreLine);
   console.log(f.captureLine);
