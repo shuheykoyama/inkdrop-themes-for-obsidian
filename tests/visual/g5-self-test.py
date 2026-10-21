@@ -10,6 +10,10 @@ g5-finish.mjs: nothing is started unless the LaunchServices check before exits 0
 only when the instance's stop succeeded, its process is gone, port 9333 is closed and no backdrop of the run is
 left; a failed restore, a failed check after (even with the same output), a different output, an invalid check
 before and incomplete captures never end with exit 0.
+Method v2 on synthetic rows at the capture scale: flat and a common smooth change pass; a text-like block, a
+1 px line of contrast 6 and a step of 2 levels on a tile border are found; a 1 px line of contrast 3 and a step
+of 1 level are not (the declared limits); the pre-fix title bar differs in every column; narrow or missing
+common columns are refused; and end to end on made-up captures.
 g5-judge.py on made-up captures (images at half scale, the regions as g5-regions.js reports them): all as
 expected passes; a title bar that differs with the fix fails; a pre-fix title bar the same as the tab strip, a
 missing capture, a region that is not flat, outside the window or too small, an unexpected computed title
@@ -61,7 +65,11 @@ EXPECTED: dict = {("after", "solarized-dark", "translucent"): "rgba(0, 33, 41, 0
             ("before", "solarized-dark", "translucent"): "rgba(0, 0, 0, 0)", ("before", "kanagawa-dragon", "translucent"): "rgba(0, 0, 0, 0)"}
 
 
-def captures(root, edit=lambda c, rec: None, title=lambda c: None):
+PAIR = {"columns": [722, 902], "width": 180, "bigEnough": True, "titlebar": [722, 4, 180, 22], "tab": [722, 38, 180, 24],
+        "titlebarCentre": {"inside": True}, "tabCentre": {"inside": True}}
+
+
+def captures(root, edit=lambda c, rec: None, title=lambda c: None, area=None):
     """8 made-up captures; `title(c)` gives the title bar colour of condition c (None: the tab strip's)."""
     for build in ("after", "before"):
         for theme in ("solarized-dark", "kanagawa-dragon"):
@@ -73,12 +81,13 @@ def captures(root, edit=lambda c, rec: None, title=lambda c: None):
                 (d / "measurements").mkdir(exist_ok=True)
                 tcol = title(c) or (TITLE_OFF if build == "before" and mode == "translucent" else TAB)
                 img = d / "screenshots" / f"{name}.png"
-                png(img, lambda x, y: tcol if in_rect(x, y, TB_RECT) else TAB)
+                png(img, lambda x, y: tcol if in_rect(x, y, area or TB_RECT) else TAB)
                 expected = EXPECTED.get(c, "rgb(0, 45, 56)")
                 rec = {"build": build, "theme": theme, "mode": mode, "image": f"{build}/screenshots/{name}.png",
                        "imageSha256": hashlib.sha256(img.read_bytes()).hexdigest(), "frame": "custom",
                        "translucent": mode == "translucent", "focusedAfterShot": True,
                        "window": {"innerWidth": 1200, "innerHeight": 700, "bounds": {"x": 400, "y": 250, "width": 1200, "height": 700}}, "expectedTitlebar": expected,
+                       "pair": json.loads(json.dumps(PAIR)),
                        "regions": {"titlebar": {"rect": list(TB_RECT), "bigEnough": True, "background": expected, "centre": {"inside": True}},
                                    "left-tabstrip": {"rect": list(TAB_RECT), "bigEnough": True, "background": "x", "centre": {"inside": True}}}}
                 edit(c, rec)
@@ -87,12 +96,60 @@ def captures(root, edit=lambda c, rec: None, title=lambda c: None):
                     (d / "measurements" / f"{name}.g5.json").write_text(json.dumps(rec))
 
 
-def judge(tmp, name, **kw):
+def judge(tmp, name, method="v1", **kw):
     root = Path(tmp) / name
     captures(root, **kw)
-    r = subprocess.run([sys.executable, "-I", str(VIS / "g5-judge.py"), str(root), "--out", str(root / "judge.json")], capture_output=True, text=True)
+    r = subprocess.run([sys.executable, "-I", str(VIS / "g5-judge.py"), str(root), "--out", str(root / "judge.json"), "--method", method], capture_output=True, text=True)
     out = json.loads((root / "judge.json").read_text()) if (root / "judge.json").exists() else {}
     return out.get("overall"), r.stdout.strip().splitlines()[-3:]
+
+
+def v2_tests():
+    """Method v2 (research/14 section 6.83) on synthetic pixel rows at the capture scale (2 px per point)."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("g5judge", VIS / "g5-judge.py")
+    assert spec and spec.loader
+    gj = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(gj)
+    S = 2
+    pair = {"titlebar": [10, 4, 200, 22], "tab": [10, 38, 200, 24]}
+
+    def rows_of(pixel, w=230, h=70):
+        return [[v for x in range(w * S) for v in pixel(x / S, y / S)] for y in range(h * S)]
+
+    base = (30, 27, 27)
+
+    def run(name, pixel, want_problems, check=None):
+        r = gj.analyse(rows_of(pixel), 3, S, pair)
+        got = bool(r["problems"])
+        ok = got == want_problems and (check is None or check(r))
+        say(f"v2: {name}: contamination {'found' if got else 'none'} (declared {'found' if want_problems else 'none'}), dE2000 {r['dE2000']}", ok, r["problems"][:2])
+        return r
+
+    in_tb = lambda x, y: 10 <= x < 210 and 4 <= y < 26
+    ramp = lambda x: (x - 10) * 3 / 200  # +3 levels across the band: about 0.12 per 8 pt tile
+    run("flat, same colour", lambda x, y: base, False, lambda r: r["dE2000"] == 0)
+    run("the same smooth horizontal change in both bands (window material)", lambda x, y: tuple(int(round(c + ramp(x))) for c in base), False, lambda r: r["dE2000"] < 0.2)
+    run("text-like block (6 x 6 pt, +40) in the title bar", lambda x, y: (70, 67, 67) if 50 <= x < 56 and 10 <= y < 16 else base, True)
+    run("thin 1 px vertical line, contrast 6", lambda x, y: (36, 33, 33) if in_tb(x, y) and int(x * S) == 101 else base, True)
+    run("thin 1 px vertical line, contrast 3 (below the limit: a known blind spot)", lambda x, y: (33, 30, 30) if in_tb(x, y) and int(x * S) == 101 else base, False)
+    run("step of 2 levels exactly on a tile border", lambda x, y: (32, 29, 29) if in_tb(x, y) and x >= 10 + 8 * 12 else base, True)
+    run("step of 1 level in one channel on a tile border (at the limit, not above it: not a contamination)", lambda x, y: base if not (in_tb(x, y) and x >= 106) else (30, 27, 28), False)
+    run("pre-fix: the title bar shows the backdrop (+17 grey), flat", lambda x, y: (47, 47, 47) if in_tb(x, y) else base, False, lambda r: r["dE2000"] > 1 and min(r["dE2000ByColumn"]) > 1)
+    run("the title bar 1 level off everywhere (below the colour limit)", lambda x, y: (31, 28, 28) if in_tb(x, y) else base, False, lambda r: r["dE2000"] <= 1.0)
+    say("v2: common columns narrower than 32 pt are refused", bool(gj.pair_problems({"pair": {"columns": [10, 30], "width": 20, "bigEnough": False, "titlebar": [10, 4, 20, 22], "tab": [10, 38, 20, 24], "titlebarCentre": {"inside": True}, "tabCentre": {"inside": True}}})))
+    say("v2: no common columns are refused", bool(gj.pair_problems({"pair": {"columns": None, "bigEnough": False}})))
+    # End to end on 8 made-up captures (half scale, like the v1 cases): the title bar colour over the whole bar.
+    with tempfile.TemporaryDirectory() as tmp:
+        bar = [0, 0, 1200, 30]
+        got, tail = judge(tmp, "v2a", method="v2", area=bar)
+        say(f"v2 judge: all as expected: {got} (declared automatic PASS)", bool(got) and got.startswith("PASS (automatic"), tail)
+        got, tail = judge(tmp, "v2b", method="v2", area=bar, title=lambda c: TAB if c[:2] == ("before", "solarized-dark") else None)
+        say(f"v2 judge: the pre-fix title bar the same as the tab strip: {got} (declared INVALID)", got == "INVALID", tail)
+        got, tail = judge(tmp, "v2c", method="v2", area=bar, title=lambda c: (60, 80, 90) if c == ("after", "kanagawa-dragon", "translucent") else None)
+        say(f"v2 judge: with the fix, a title bar off the tab strip: {got} (declared FAIL)", got == "FAIL", tail)
+        got, tail = judge(tmp, "v2d", method="v2", area=bar, edit=lambda c, rec: rec["pair"].update(columns=None) if c == ("after", "solarized-dark", "opaque") else None)
+        say(f"v2 judge: a capture without common columns: {got} (declared INVALID)", got == "INVALID", tail)
 
 
 def main():
@@ -146,7 +203,10 @@ def main():
             claims = r["screenLine"].startswith("SCREEN RELEASED")
             say(f"finish: {name}: released {r['released']}, exit {r['exitCode']} (declared {released}, {code})", r["released"] == released and claims == released and r["exitCode"] == code, r["screenLine"])
         # Before anything is started: the LaunchServices check must exit 0 with output.
-        start_cases = [("check exit 0 with output", {"checkStatus": 0, "checkOut": "handler: /Applications/Obsidian.app\n"}, True),
+        normal = "default: /Applications/Obsidian.app\ncandidate: /Applications/Obsidian.app\npath:  /Applications/Obsidian.app (0x1)\n"
+        start_cases = [("check exit 0, the known normal state", {"checkStatus": 0, "checkOut": normal}, True),
+                       ("the E43 copy still registered", {"checkStatus": 0, "checkOut": normal + "candidate: ~/.cache/inkdrop-themes-for-obsidian/obsidian-1.14.4/Obsidian.app\n"}, False),
+                       ("another default handler", {"checkStatus": 0, "checkOut": normal.replace("default: /Applications/Obsidian.app", "default: /Users/x/Obsidian.app")}, False),
                        ("check exit 1", {"checkStatus": 1, "checkOut": "handler: x\n"}, False),
                        ("check with no output", {"checkStatus": 0, "checkOut": "  \n"}, False),
                        ("check did not run", {"checkStatus": None, "checkOut": None}, False)]
@@ -179,6 +239,7 @@ def main():
         for i, (name, want, kw) in enumerate(cases):
             got, tail = judge(tmp, f"j{i}", **kw)
             say(f"judge: {name}: {got} (declared {want})", got == want, tail)
+    v2_tests()
     bad = results.count(False)
     print(f"\n{f'all {len(results)}' if not bad else f'{bad} of {len(results)}'} g5 self-test cases {'behaved as expected' if not bad else 'FAILED'}")
     sys.exit(1 if bad else 0)

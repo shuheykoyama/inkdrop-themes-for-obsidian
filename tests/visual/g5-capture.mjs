@@ -13,6 +13,8 @@
 //   <dir>/<build>/<theme>/{theme.css,manifest.json} for build after / before (made in phase A; each manifest
 //   names the theme "G5 <build> <theme>" so the two builds never share a theme folder in the vault)
 //   --plan  print the 8 conditions, their environment and files, and do nothing else (self-test)
+//   --precheck  only the LaunchServices check against the known normal state (mayStart), before the user is
+//               asked to stop working: exit 0 when a run may start, 5 when not; nothing else is done
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -21,7 +23,7 @@ import { parseArgs } from "node:util";
 import { finish, mayStart } from "./g5-finish.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
-const { values: args } = parseArgs({ options: { themes: { type: "string" }, out: { type: "string" }, tmp: { type: "string" }, plan: { type: "boolean" } } });
+const { values: args } = parseArgs({ options: { themes: { type: "string" }, out: { type: "string" }, tmp: { type: "string" }, plan: { type: "boolean" }, precheck: { type: "boolean" } } });
 if (!args.themes || !args.out || !args.tmp) { console.error("usage: node tests/visual/g5-capture.mjs --themes <dir> --out <new dir> --tmp <dir> [--plan]"); process.exit(2); }
 const BUILDS = ["after", "before"];
 const THEMES = ["solarized-dark", "kanagawa-dragon"];
@@ -40,6 +42,12 @@ const conditions = BUILDS.flatMap((build) => THEMES.flatMap((theme) => MODES.map
     env: { CAPTURE_INKDROP: "off", CAPTURE_THEME_DIR: themeDir, CAPTURE_TAG: build } };
 })));
 if (args.plan) { console.log(JSON.stringify(conditions, null, 1)); process.exit(0); }
+if (args.precheck) {
+  const c = spawnSync("bash", ["tests/runtime/current-installer.sh", "check"], { cwd: repo, encoding: "utf8" });
+  const m = mayStart({ checkStatus: c.status, checkOut: c.stdout });
+  console.log(m.ok ? "LaunchServices: the known normal state; a run may start" : `LaunchServices: NOT the known normal state, nothing may start: ${m.why}`);
+  process.exit(m.ok ? 0 : 5);
+}
 if (existsSync(args.out)) { console.error(`${args.out} exists; G5 never writes over earlier captures`); process.exit(2); }
 
 const sha = (f) => createHash("sha256").update(readFileSync(f)).digest("hex");
@@ -71,7 +79,7 @@ try {
     const rec = { build: c.build, theme: c.theme, mode: c.mode, exit: cap.status, stdout: cap.stdout.trim().split("\n").slice(-2) };
     if (cap.status !== 0 || !existsSync(c.image)) { rec.error = `capture failed: ${cap.stderr.slice(-300)}`; summary.captures.push(rec); summary.stoppedEarly = `${c.name}: capture failed`; break; }
     const measured = JSON.parse(readFileSync(path.join(c.outDir, "measurements", `${c.name}.json`), "utf8"));
-    const geo = await evaluate(9333, `window.__G5 = { inset: 4, minWidth: 20, minHeight: 10, trafficLights: 90 };\n${regionsScript}`, 30000);
+    const geo = await evaluate(9333, `window.__G5 = { inset: 4, minWidth: 20, minHeight: 10, trafficLights: 90, corner: 9, minCommon: 32 };\n${regionsScript}`, 30000);
     const css = path.join(c.themeDir, "theme.css");
     Object.assign(rec, {
       image: path.relative(args.out, c.image), imageSha256: sha(c.image),
@@ -80,7 +88,7 @@ try {
       app: (await evaluate(9333, "(() => window.require('electron').ipcRenderer.sendSync('version'))()")), electron: measured.setup?.electron ?? null,
       frame: geo.frame, translucent: measured.setup?.isTranslucent ?? null, classes: geo.classes,
       window: geo.window, focusedAfterShot: measured.afterShot?.focused ?? null, capturedAt: measured.capture?.capturedAt,
-      regions: geo.regions, expectedTitlebar: EXPECTED[c.build][c.theme][c.mode],
+      regions: geo.regions, pair: geo.pair, expectedTitlebar: EXPECTED[c.build][c.theme][c.mode],
     });
     writeFileSync(path.join(c.outDir, "measurements", `${c.name}.g5.json`), `${JSON.stringify(rec, null, 1)}\n`);
     summary.captures.push({ ...rec, regions: undefined });
