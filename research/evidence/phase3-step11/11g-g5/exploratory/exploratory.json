@@ -1,0 +1,1636 @@
+{
+ "note": "post-hoc exploratory analysis, not a G5 judgement (research/14 section 6.81)",
+ "images": {
+  "obsidian-solarized-dark-translucent-gray-active-after": {
+   "means": {
+    "titlebar-cut": [
+     14.23,
+     37.19,
+     41.81
+    ],
+    "left-tabstrip": [
+     13.0,
+     35.0,
+     40.0
+    ],
+    "root-tabstrip": [
+     13.86,
+     36.35,
+     41.26
+    ]
+   },
+   "spread": {
+    "titlebar-cut": {
+     "sd": [
+      0.423,
+      0.392,
+      1.098
+     ],
+     "rowMeansSd": [
+      0.005,
+      0.001,
+      0.069
+     ],
+     "colMeansSd": [
+      0.419,
+      0.391,
+      1.08
+     ],
+     "residualSd": [
+      0.058,
+      0.035,
+      0.182
+     ]
+    },
+    "left-tabstrip": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "sd": [
+      0.892,
+      1.177,
+      1.684
+     ],
+     "rowMeansSd": [
+      0.042,
+      0.028,
+      0.065
+     ],
+     "colMeansSd": [
+      0.878,
+      1.169,
+      1.672
+     ],
+     "residualSd": [
+      0.157,
+      0.126,
+      0.194
+     ]
+    }
+   },
+   "insetSd": {
+    "titlebar-cut": {
+     "0": 1.098,
+     "2": 1.106,
+     "4": 1.113,
+     "6": 1.114
+    },
+    "left-tabstrip": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    },
+    "root-tabstrip": {
+     "0": 1.684,
+     "2": 1.681,
+     "4": 1.677,
+     "6": 1.671
+    }
+   },
+   "tiles8pt": {
+    "n": 116,
+    "maxTileSd": 0.5,
+    "tileMeanRange": [
+     1.0,
+     1.0,
+     3.0
+    ]
+   },
+   "dE2000": {
+    "titlebar-cut vs left-tabstrip": 0.816,
+    "titlebar-cut vs root-tabstrip": 0.388,
+    "left vs root tabstrip": 0.45
+   },
+   "dE2000 by quarter of the title bar (vs left)": [
+    0.932,
+    0.75,
+    1.055,
+    1.052
+   ],
+   "dE2000 by vertical inset (vs left)": {
+    "0": 0.816,
+    "3": 0.825,
+    "6": 0.825
+   },
+   "margin sweep (vs left)": {
+    "16": {
+     "maxSd": 1.101,
+     "dE2000": 0.813
+    },
+    "24": {
+     "maxSd": 1.105,
+     "dE2000": 0.81
+    },
+    "32": {
+     "maxSd": 1.11,
+     "dE2000": 0.807
+    },
+    "48": {
+     "maxSd": 1.117,
+     "dE2000": 0.8
+    },
+    "64": {
+     "maxSd": 1.125,
+     "dE2000": 0.794
+    }
+   }
+  },
+  "obsidian-solarized-dark-opaque-gray-active-after": {
+   "means": {
+    "titlebar-cut": [
+     1.0,
+     45.0,
+     56.0
+    ],
+    "left-tabstrip": [
+     1.0,
+     45.0,
+     56.0
+    ],
+    "root-tabstrip": [
+     1.0,
+     45.0,
+     56.0
+    ]
+   },
+   "spread": {
+    "titlebar-cut": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "left-tabstrip": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "insetSd": {
+    "titlebar-cut": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    },
+    "left-tabstrip": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    },
+    "root-tabstrip": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    }
+   },
+   "tiles8pt": {
+    "n": 116,
+    "maxTileSd": 0.0,
+    "tileMeanRange": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "dE2000": {
+    "titlebar-cut vs left-tabstrip": 0.0,
+    "titlebar-cut vs root-tabstrip": 0.0,
+    "left vs root tabstrip": 0.0
+   },
+   "dE2000 by quarter of the title bar (vs left)": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "dE2000 by vertical inset (vs left)": {
+    "0": 0.0,
+    "3": 0.0,
+    "6": 0.0
+   },
+   "margin sweep (vs left)": {
+    "16": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "24": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "32": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "48": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "64": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    }
+   }
+  },
+  "obsidian-kanagawa-dragon-translucent-gray-active-after": {
+   "means": {
+    "titlebar-cut": [
+     31.23,
+     29.25,
+     29.43
+    ],
+    "left-tabstrip": [
+     30.0,
+     27.0,
+     27.0
+    ],
+    "root-tabstrip": [
+     30.86,
+     28.51,
+     28.62
+    ]
+   },
+   "spread": {
+    "titlebar-cut": {
+     "sd": [
+      0.423,
+      0.435,
+      0.712
+     ],
+     "rowMeansSd": [
+      0.005,
+      0.004,
+      0.002
+     ],
+     "colMeansSd": [
+      0.419,
+      0.432,
+      0.706
+     ],
+     "residualSd": [
+      0.058,
+      0.05,
+      0.089
+     ]
+    },
+    "left-tabstrip": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "sd": [
+      0.892,
+      1.312,
+      1.407
+     ],
+     "rowMeansSd": [
+      0.042,
+      0.014,
+      0.034
+     ],
+     "colMeansSd": [
+      0.878,
+      1.307,
+      1.395
+     ],
+     "residualSd": [
+      0.157,
+      0.112,
+      0.185
+     ]
+    }
+   },
+   "insetSd": {
+    "titlebar-cut": {
+     "0": 0.712,
+     "2": 0.714,
+     "4": 0.717,
+     "6": 0.719
+    },
+    "left-tabstrip": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    },
+    "root-tabstrip": {
+     "0": 1.407,
+     "2": 1.402,
+     "4": 1.395,
+     "6": 1.386
+    }
+   },
+   "tiles8pt": {
+    "n": 116,
+    "maxTileSd": 0.499,
+    "tileMeanRange": [
+     1.0,
+     1.0,
+     2.0
+    ]
+   },
+   "dE2000": {
+    "titlebar-cut vs left-tabstrip": 0.952,
+    "titlebar-cut vs root-tabstrip": 0.331,
+    "left vs root tabstrip": 0.621
+   },
+   "dE2000 by quarter of the title bar (vs left)": [
+    1.153,
+    0.929,
+    0.902,
+    0.902
+   ],
+   "dE2000 by vertical inset (vs left)": {
+    "0": 0.952,
+    "3": 0.952,
+    "6": 0.953
+   },
+   "margin sweep (vs left)": {
+    "16": {
+     "maxSd": 0.715,
+     "dE2000": 0.952
+    },
+    "24": {
+     "maxSd": 0.719,
+     "dE2000": 0.954
+    },
+    "32": {
+     "maxSd": 0.723,
+     "dE2000": 0.955
+    },
+    "48": {
+     "maxSd": 0.731,
+     "dE2000": 0.957
+    },
+    "64": {
+     "maxSd": 0.739,
+     "dE2000": 0.96
+    }
+   }
+  },
+  "obsidian-kanagawa-dragon-opaque-gray-active-after": {
+   "means": {
+    "titlebar-cut": [
+     24.0,
+     22.0,
+     22.0
+    ],
+    "left-tabstrip": [
+     24.0,
+     22.0,
+     22.0
+    ],
+    "root-tabstrip": [
+     24.0,
+     22.0,
+     22.0
+    ]
+   },
+   "spread": {
+    "titlebar-cut": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "left-tabstrip": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "insetSd": {
+    "titlebar-cut": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    },
+    "left-tabstrip": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    },
+    "root-tabstrip": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    }
+   },
+   "tiles8pt": {
+    "n": 116,
+    "maxTileSd": 0.0,
+    "tileMeanRange": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "dE2000": {
+    "titlebar-cut vs left-tabstrip": 0.0,
+    "titlebar-cut vs root-tabstrip": 0.0,
+    "left vs root tabstrip": 0.0
+   },
+   "dE2000 by quarter of the title bar (vs left)": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "dE2000 by vertical inset (vs left)": {
+    "0": 0.0,
+    "3": 0.0,
+    "6": 0.0
+   },
+   "margin sweep (vs left)": {
+    "16": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "24": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "32": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "48": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "64": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    }
+   }
+  },
+  "obsidian-solarized-dark-translucent-gray-active-before": {
+   "means": {
+    "titlebar-cut": [
+     47.74,
+     46.9,
+     46.93
+    ],
+    "left-tabstrip": [
+     13.0,
+     35.0,
+     40.0
+    ],
+    "root-tabstrip": [
+     13.86,
+     36.35,
+     41.26
+    ]
+   },
+   "spread": {
+    "titlebar-cut": {
+     "sd": [
+      1.169,
+      1.437,
+      2.827
+     ],
+     "rowMeansSd": [
+      0.037,
+      0.008,
+      0.054
+     ],
+     "colMeansSd": [
+      1.158,
+      1.433,
+      2.816
+     ],
+     "residualSd": [
+      0.157,
+      0.106,
+      0.245
+     ]
+    },
+    "left-tabstrip": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "sd": [
+      0.892,
+      1.177,
+      1.684
+     ],
+     "rowMeansSd": [
+      0.042,
+      0.028,
+      0.065
+     ],
+     "colMeansSd": [
+      0.878,
+      1.169,
+      1.672
+     ],
+     "residualSd": [
+      0.157,
+      0.126,
+      0.194
+     ]
+    }
+   },
+   "insetSd": {
+    "titlebar-cut": {
+     "0": 2.827,
+     "2": 2.857,
+     "4": 2.881,
+     "6": 2.889
+    },
+    "left-tabstrip": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    },
+    "root-tabstrip": {
+     "0": 1.684,
+     "2": 1.681,
+     "4": 1.677,
+     "6": 1.671
+    }
+   },
+   "tiles8pt": {
+    "n": 116,
+    "maxTileSd": 0.61,
+    "tileMeanRange": [
+     3.64,
+     4.02,
+     8.0
+    ]
+   },
+   "dE2000": {
+    "titlebar-cut vs left-tabstrip": 11.269,
+    "titlebar-cut vs root-tabstrip": 11.259,
+    "left vs root tabstrip": 0.45
+   },
+   "dE2000 by quarter of the title bar (vs left)": [
+    11.407,
+    11.126,
+    11.08,
+    11.08
+   ],
+   "dE2000 by vertical inset (vs left)": {
+    "0": 11.269,
+    "3": 11.261,
+    "6": 11.253
+   },
+   "margin sweep (vs left)": {
+    "16": {
+     "maxSd": 2.839,
+     "dE2000": 11.27
+    },
+    "24": {
+     "maxSd": 2.852,
+     "dE2000": 11.271
+    },
+    "32": {
+     "maxSd": 2.865,
+     "dE2000": 11.272
+    },
+    "48": {
+     "maxSd": 2.89,
+     "dE2000": 11.274
+    },
+    "64": {
+     "maxSd": 2.915,
+     "dE2000": 11.275
+    }
+   }
+  },
+  "obsidian-solarized-dark-opaque-gray-active-before": {
+   "means": {
+    "titlebar-cut": [
+     1.0,
+     45.0,
+     56.0
+    ],
+    "left-tabstrip": [
+     1.0,
+     45.0,
+     56.0
+    ],
+    "root-tabstrip": [
+     1.0,
+     45.0,
+     56.0
+    ]
+   },
+   "spread": {
+    "titlebar-cut": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "left-tabstrip": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "insetSd": {
+    "titlebar-cut": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    },
+    "left-tabstrip": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    },
+    "root-tabstrip": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    }
+   },
+   "tiles8pt": {
+    "n": 116,
+    "maxTileSd": 0.0,
+    "tileMeanRange": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "dE2000": {
+    "titlebar-cut vs left-tabstrip": 0.0,
+    "titlebar-cut vs root-tabstrip": 0.0,
+    "left vs root tabstrip": 0.0
+   },
+   "dE2000 by quarter of the title bar (vs left)": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "dE2000 by vertical inset (vs left)": {
+    "0": 0.0,
+    "3": 0.0,
+    "6": 0.0
+   },
+   "margin sweep (vs left)": {
+    "16": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "24": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "32": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "48": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "64": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    }
+   }
+  },
+  "obsidian-kanagawa-dragon-translucent-gray-active-before": {
+   "means": {
+    "titlebar-cut": [
+     47.74,
+     46.9,
+     46.93
+    ],
+    "left-tabstrip": [
+     30.0,
+     27.0,
+     27.0
+    ],
+    "root-tabstrip": [
+     30.86,
+     28.51,
+     28.62
+    ]
+   },
+   "spread": {
+    "titlebar-cut": {
+     "sd": [
+      1.169,
+      1.437,
+      2.827
+     ],
+     "rowMeansSd": [
+      0.037,
+      0.008,
+      0.054
+     ],
+     "colMeansSd": [
+      1.158,
+      1.433,
+      2.816
+     ],
+     "residualSd": [
+      0.157,
+      0.106,
+      0.245
+     ]
+    },
+    "left-tabstrip": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "sd": [
+      0.892,
+      1.312,
+      1.407
+     ],
+     "rowMeansSd": [
+      0.042,
+      0.014,
+      0.034
+     ],
+     "colMeansSd": [
+      0.878,
+      1.307,
+      1.395
+     ],
+     "residualSd": [
+      0.157,
+      0.112,
+      0.185
+     ]
+    }
+   },
+   "insetSd": {
+    "titlebar-cut": {
+     "0": 2.827,
+     "2": 2.857,
+     "4": 2.881,
+     "6": 2.889
+    },
+    "left-tabstrip": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    },
+    "root-tabstrip": {
+     "0": 1.407,
+     "2": 1.402,
+     "4": 1.395,
+     "6": 1.386
+    }
+   },
+   "tiles8pt": {
+    "n": 116,
+    "maxTileSd": 0.61,
+    "tileMeanRange": [
+     3.64,
+     4.02,
+     8.0
+    ]
+   },
+   "dE2000": {
+    "titlebar-cut vs left-tabstrip": 6.326,
+    "titlebar-cut vs root-tabstrip": 5.81,
+    "left vs root tabstrip": 0.621
+   },
+   "dE2000 by quarter of the title bar (vs left)": [
+    7.196,
+    6.183,
+    6.097,
+    6.096
+   ],
+   "dE2000 by vertical inset (vs left)": {
+    "0": 6.326,
+    "3": 6.327,
+    "6": 6.328
+   },
+   "margin sweep (vs left)": {
+    "16": {
+     "maxSd": 2.839,
+     "dE2000": 6.33
+    },
+    "24": {
+     "maxSd": 2.852,
+     "dE2000": 6.335
+    },
+    "32": {
+     "maxSd": 2.865,
+     "dE2000": 6.34
+    },
+    "48": {
+     "maxSd": 2.89,
+     "dE2000": 6.351
+    },
+    "64": {
+     "maxSd": 2.915,
+     "dE2000": 6.363
+    }
+   }
+  },
+  "obsidian-kanagawa-dragon-opaque-gray-active-before": {
+   "means": {
+    "titlebar-cut": [
+     24.0,
+     22.0,
+     22.0
+    ],
+    "left-tabstrip": [
+     24.0,
+     22.0,
+     22.0
+    ],
+    "root-tabstrip": [
+     24.0,
+     22.0,
+     22.0
+    ]
+   },
+   "spread": {
+    "titlebar-cut": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "left-tabstrip": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "root-tabstrip": {
+     "sd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "rowMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "colMeansSd": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "residualSd": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "insetSd": {
+    "titlebar-cut": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    },
+    "left-tabstrip": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    },
+    "root-tabstrip": {
+     "0": 0.0,
+     "2": 0.0,
+     "4": 0.0,
+     "6": 0.0
+    }
+   },
+   "tiles8pt": {
+    "n": 116,
+    "maxTileSd": 0.0,
+    "tileMeanRange": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "dE2000": {
+    "titlebar-cut vs left-tabstrip": 0.0,
+    "titlebar-cut vs root-tabstrip": 0.0,
+    "left vs root tabstrip": 0.0
+   },
+   "dE2000 by quarter of the title bar (vs left)": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "dE2000 by vertical inset (vs left)": {
+    "0": 0.0,
+    "3": 0.0,
+    "6": 0.0
+   },
+   "margin sweep (vs left)": {
+    "16": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "24": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "32": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "48": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    },
+    "64": {
+     "maxSd": 0.0,
+     "dE2000": 0.0
+    }
+   }
+  }
+ },
+ "corner": {
+  "perImage": {
+   "obsidian-solarized-dark-translucent-gray-active-after": {
+    "maxPoints": 7.0,
+    "byRowPoints": [
+     7.0,
+     6.5,
+     6.0,
+     5.5,
+     5.0,
+     4.5,
+     4.0,
+     4.0,
+     3.5,
+     3.0,
+     3.0,
+     2.5,
+     2.5,
+     2.5,
+     2.0,
+     2.0,
+     2.0,
+     2.0,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "obsidian-solarized-dark-opaque-gray-active-after": {
+    "maxPoints": 7.0,
+    "byRowPoints": [
+     7.0,
+     6.5,
+     6.0,
+     5.5,
+     5.0,
+     4.5,
+     4.0,
+     4.0,
+     3.5,
+     3.5,
+     3.0,
+     3.0,
+     2.5,
+     2.5,
+     2.0,
+     2.0,
+     2.0,
+     2.0,
+     2.0,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "obsidian-kanagawa-dragon-translucent-gray-active-after": {
+    "maxPoints": 6.0,
+    "byRowPoints": [
+     4.0,
+     3.5,
+     6.0,
+     5.5,
+     5.0,
+     2.0,
+     4.0,
+     1.5,
+     3.5,
+     1.0,
+     3.0,
+     0.5,
+     2.5,
+     2.5,
+     0.5,
+     0.0,
+     2.0,
+     2.0,
+     1.5,
+     1.5,
+     0.0,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "obsidian-kanagawa-dragon-opaque-gray-active-after": {
+    "maxPoints": 7.0,
+    "byRowPoints": [
+     7.0,
+     6.5,
+     6.0,
+     5.5,
+     2.5,
+     4.5,
+     4.0,
+     4.0,
+     3.5,
+     3.5,
+     3.0,
+     3.0,
+     2.5,
+     2.5,
+     2.0,
+     2.0,
+     2.0,
+     2.0,
+     2.0,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "obsidian-solarized-dark-translucent-gray-active-before": {
+    "maxPoints": 2.0,
+    "byRowPoints": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     2.0,
+     0.5,
+     2.0,
+     2.0,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     0.0,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "obsidian-solarized-dark-opaque-gray-active-before": {
+    "maxPoints": 7.0,
+    "byRowPoints": [
+     7.0,
+     6.5,
+     6.0,
+     5.5,
+     5.0,
+     4.5,
+     4.0,
+     4.0,
+     3.5,
+     3.5,
+     3.0,
+     3.0,
+     2.5,
+     2.5,
+     2.0,
+     2.0,
+     2.0,
+     2.0,
+     2.0,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "obsidian-kanagawa-dragon-translucent-gray-active-before": {
+    "maxPoints": 2.0,
+    "byRowPoints": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     2.0,
+     0.5,
+     2.0,
+     2.0,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     0.0,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "obsidian-kanagawa-dragon-opaque-gray-active-before": {
+    "maxPoints": 7.0,
+    "byRowPoints": [
+     7.0,
+     6.5,
+     6.0,
+     5.5,
+     2.5,
+     4.5,
+     4.0,
+     4.0,
+     3.5,
+     3.5,
+     3.0,
+     3.0,
+     2.5,
+     2.5,
+     2.0,
+     2.0,
+     2.0,
+     2.0,
+     2.0,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "opaqueMaxPoints": 7.0,
+  "rulePoints": 9,
+  "rule": "cut 9 pt from the right end of the title bar region (the widest run of non-title-bar pixels at the right edge in any row of the band on the opaque captures, 7.0 pt, plus 2 pt), the same for all 8 captures"
+ }
+}

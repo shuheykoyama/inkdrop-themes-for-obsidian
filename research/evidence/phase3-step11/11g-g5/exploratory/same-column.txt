@@ -1,0 +1,9 @@
+Exploratory only (research/14 section 6.81): title bar y 4..26 pt against the centre tab strip y 38..62 pt, same columns x 722..906 pt
+obsidian-solarized-dark-translucent-gray-active-after   whole dE 0.093 | per 8 pt column: min 0.000 max 0.694 | max sd within a title bar column 0.50
+obsidian-solarized-dark-opaque-gray-active-after        whole dE 0.000 | per 8 pt column: min 0.000 max 0.000 | max sd within a title bar column 0.00
+obsidian-kanagawa-dragon-translucent-gray-active-after  whole dE 0.189 | per 8 pt column: min 0.000 max 0.933 | max sd within a title bar column 0.49
+obsidian-kanagawa-dragon-opaque-gray-active-after       whole dE 0.000 | per 8 pt column: min 0.000 max 0.000 | max sd within a title bar column 0.00
+obsidian-solarized-dark-translucent-gray-active-before  whole dE 11.190 | per 8 pt column: min 10.723 max 11.570 | max sd within a title bar column 0.60
+obsidian-solarized-dark-opaque-gray-active-before       whole dE 0.000 | per 8 pt column: min 0.000 max 0.000 | max sd within a title bar column 0.00
+obsidian-kanagawa-dragon-translucent-gray-active-before whole dE 5.932 | per 8 pt column: min 5.350 max 6.583 | max sd within a title bar column 0.60
+obsidian-kanagawa-dragon-opaque-gray-active-before      whole dE 0.000 | per 8 pt column: min 0.000 max 0.000 | max sd within a title bar column 0.00

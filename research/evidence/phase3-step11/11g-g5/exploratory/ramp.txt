@@ -1,0 +1,17 @@
+Exploratory only (research/14 section 6.81): title bar x 880..1191 pt, y 4..26 pt (right of the ramp, corner cut 9 pt); profile of the judged band (y 4..26) every 20 pt, mean of R+G+B / 3
+obsidian-solarized-dark-translucent-gray-active-after   sd 0.32 dE vs left 1.012 vs root 0.671
+   profile x 722..1162: [31.4, 32.3, 32.3, 32.3, 32.1, 31.8, 31.1, 31.0, 31.0, 30.7, 30.7, 30.7, 30.7, 30.7, 30.7, 30.7, 30.7, 30.7, 30.7, 30.7, 30.7, 30.7, 30.7]
+obsidian-solarized-dark-opaque-gray-active-after        sd 0.00 dE vs left 0.000 vs root 0.000
+   profile x 722..1162: [34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0]
+obsidian-kanagawa-dragon-translucent-gray-active-after  sd 0.00 dE vs left 0.902 vs root 0.307
+   profile x 722..1162: [30.3, 30.9, 31.0, 31.0, 30.8, 30.7, 30.1, 29.7, 29.7, 29.7, 29.7, 29.7, 29.7, 29.7, 29.7, 29.7, 29.7, 29.7, 29.7, 29.7, 29.7, 29.7, 29.7]
+obsidian-kanagawa-dragon-opaque-gray-active-after       sd 0.00 dE vs left 0.000 vs root 0.000
+   profile x 722..1162: [22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7]
+obsidian-solarized-dark-translucent-gray-active-before  sd 0.32 dE vs left 11.077 vs root 11.063
+   profile x 722..1162: [48.6, 50.4, 51.0, 50.9, 50.1, 49.1, 47.8, 47.1, 46.3, 46.1, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0]
+obsidian-solarized-dark-opaque-gray-active-before       sd 0.00 dE vs left 0.000 vs root 0.000
+   profile x 722..1162: [34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0, 34.0]
+obsidian-kanagawa-dragon-translucent-gray-active-before sd 0.32 dE vs left 6.091 vs root 5.580
+   profile x 722..1162: [48.6, 50.4, 51.0, 50.9, 50.1, 49.1, 47.8, 47.1, 46.3, 46.1, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0]
+obsidian-kanagawa-dragon-opaque-gray-active-before      sd 0.00 dE vs left 0.000 vs root 0.000
+   profile x 722..1162: [22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7, 22.7]
