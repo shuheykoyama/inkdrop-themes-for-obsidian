@@ -104,6 +104,44 @@ def judge(tmp, name, method="v1", **kw):
     return out.get("overall"), r.stdout.strip().splitlines()[-3:]
 
 
+def start_tests():
+    """g5-capture.mjs before and after the start (research/14 section 6.85), with stand-ins for
+    current-installer.sh and obsidian-isolated.sh that only record their calls (G5_TEST_INSTALLER /
+    G5_TEST_ISOLATED): the real LaunchServices and Obsidian are never touched."""
+    code = (VIS / "g5-capture.mjs").read_text()
+    say("g5-capture.mjs reads the stand-ins from G5_TEST_INSTALLER and G5_TEST_ISOLATED", "process.env.G5_TEST_INSTALLER" in code and "process.env.G5_TEST_ISOLATED" in code)
+    normal = "default: /Applications/Obsidian.app\ncandidate: /Applications/Obsidian.app\n"
+    cases = [
+        ("check before fails", 1, normal, None, 5, False, False),
+        ("default handler not /Applications/Obsidian.app", 0, normal.replace("default: /Applications", "default: /Other"), None, 5, False, False),
+        ("E43 copy still registered", 0, normal + "candidate: ~/.cache/inkdrop-themes-for-obsidian/obsidian-1.14.4/Obsidian.app\n", None, 5, False, False),
+        ("normal state, the start attempted and failed", 0, normal, "fail", 1, True, True),
+    ]
+    for name, status, out, start, want_exit, want_start, want_restore in cases:
+        with tempfile.TemporaryDirectory() as tmp:
+            t = Path(tmp)
+            log, check_out = t / "calls.txt", t / "check.txt"
+            check_out.write_text(out)
+            inst, iso = t / "installer.sh", t / "isolated.sh"
+            inst.write_text(f'echo "installer $1" >> "{log}"\ncase "$1" in check) cat "{check_out}"; exit {status};; restore) exit 0;; esac\n')
+            # A start that fails half way: it leaves a pid file (of no running process) and exits 1.
+            iso.write_text(f'echo "isolated $1" >> "{log}"\ncase "$1" in start) mkdir -p "$2"; echo 999999 > "$2/obsidian.pid"; exit 1;; stop) exit 0;; esac\n')
+            env = {**os.environ, "G5_TEST_INSTALLER": str(inst), "G5_TEST_ISOLATED": str(iso)}
+            r = subprocess.run(["node", str(VIS / "g5-capture.mjs"), "--themes", str(t / "themes"), "--out", str(t / "out"), "--tmp", str(t / "tmp")], env=env, capture_output=True, text=True, timeout=120)
+            calls = log.read_text().splitlines() if log.exists() else []
+            started = "isolated start" in calls
+            restored = "installer restore" in calls
+            run_json = json.loads((t / "out" / "g5-run.json").read_text()) if (t / "out" / "g5-run.json").exists() else {}
+            screen_ok = ("NOT STARTED" in r.stdout and "SCREEN RELEASED" not in r.stdout) if not want_start else ("isolated stop" in calls)
+            ok = r.returncode == want_exit and started == want_start and restored == want_restore and screen_ok and (want_start or bool(run_json.get("notStarted")))
+            say(f"capture start: {name}: exit {r.returncode}, started {started}, restore called {restored} (declared {want_exit}, {want_start}, {want_restore})", ok, (calls, r.stdout[-300:], r.stderr[-300:]))
+    # The plan after a run (the normal, completed path keeps stopping and restoring).
+    script = "import { afterRun } from %s; console.log(JSON.stringify([afterRun({ startAttempted: true }), afterRun({ startAttempted: false })]));" % json.dumps(str(VIS / "g5-finish.mjs"))
+    a, b = json.loads(subprocess.run(["node", "--input-type=module", "-e", script], capture_output=True, text=True, check=True).stdout)
+    say("afterRun: a start attempted (failed or completed) stops, checks the screen and restores", a == {"stop": True, "restore": True, "screen": "verify"})
+    say("afterRun: no start attempted touches nothing", b == {"stop": False, "restore": False, "screen": "not started"})
+
+
 def v2_tests():
     """Method v2 (research/14 section 6.83) on synthetic pixel rows at the capture scale (2 px per point)."""
     import importlib.util
@@ -216,7 +254,7 @@ def main():
             say(f"mayStart: {name}: {r['ok']} (declared {want})", r["ok"] == want, r["why"])
         cap_code = "\n".join(l for l in (VIS / "g5-capture.mjs").read_text().splitlines() if not l.lstrip().startswith("//"))
         say("g5-capture.mjs prints the screen line only from finish()", "SCREEN RELEASED" not in cap_code and "early.screenLine" in cap_code)
-        say("g5-capture.mjs checks LaunchServices before it starts the instance", 0 <= cap_code.find("if (!start.ok) throw") < cap_code.find('obsidian-isolated.sh", "start"'))
+        say("g5-capture.mjs checks LaunchServices and exits 5 before it attempts the start", 0 <= cap_code.find("if (!start.ok) {") < cap_code.find("process.exit(5)", cap_code.find("if (!start.ok) {")) < cap_code.find("startAttempted = true") < cap_code.find('[ISOLATED, "start"'))
         # The judgement.
         cases = [
             ("all as expected", "PASS", {}),
@@ -240,6 +278,7 @@ def main():
             got, tail = judge(tmp, f"j{i}", **kw)
             say(f"judge: {name}: {got} (declared {want})", got == want, tail)
     v2_tests()
+    start_tests()
     bad = results.count(False)
     print(f"\n{f'all {len(results)}' if not bad else f'{bad} of {len(results)}'} g5 self-test cases {'behaved as expected' if not bad else 'FAILED'}")
     sys.exit(1 if bad else 0)

@@ -20,11 +20,14 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
-import { finish, mayStart } from "./g5-finish.mjs";
+import { afterRun, finish, mayStart } from "./g5-finish.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
 const { values: args } = parseArgs({ options: { themes: { type: "string" }, out: { type: "string" }, tmp: { type: "string" }, plan: { type: "boolean" }, precheck: { type: "boolean" } } });
 if (!args.themes || !args.out || !args.tmp) { console.error("usage: node tests/visual/g5-capture.mjs --themes <dir> --out <new dir> --tmp <dir> [--plan]"); process.exit(2); }
+// Stand-ins for the self-test only (tests/visual/g5-self-test.py): it never runs the real scripts.
+const INSTALLER = process.env.G5_TEST_INSTALLER || "tests/runtime/current-installer.sh";
+const ISOLATED = process.env.G5_TEST_ISOLATED || "tests/runtime/obsidian-isolated.sh";
 const BUILDS = ["after", "before"];
 const THEMES = ["solarized-dark", "kanagawa-dragon"];
 const MODES = ["translucent", "opaque"];
@@ -43,7 +46,7 @@ const conditions = BUILDS.flatMap((build) => THEMES.flatMap((theme) => MODES.map
 })));
 if (args.plan) { console.log(JSON.stringify(conditions, null, 1)); process.exit(0); }
 if (args.precheck) {
-  const c = spawnSync("bash", ["tests/runtime/current-installer.sh", "check"], { cwd: repo, encoding: "utf8" });
+  const c = spawnSync("bash", [INSTALLER, "check"], { cwd: repo, encoding: "utf8" });
   const m = mayStart({ checkStatus: c.status, checkOut: c.stdout });
   console.log(m.ok ? "LaunchServices: the known normal state; a run may start" : `LaunchServices: NOT the known normal state, nothing may start: ${m.why}`);
   process.exit(m.ok ? 0 : 5);
@@ -60,15 +63,23 @@ mkdirSync(args.out, { recursive: true });
 const work = path.join(args.tmp, "g5-instance");
 const summary = { startedAt: new Date().toISOString(), commit: run("git", ["rev-parse", "--short", "HEAD"]).stdout.trim(), dirty: !!run("git", ["status", "--porcelain"]).stdout.trim(), captures: [], stoppedEarly: null };
 // LaunchServices before anything: a failed or empty check starts nothing (there would be nothing to restore to).
-const checkBefore = run("bash", ["tests/runtime/current-installer.sh", "check"]);
+const checkBefore = run("bash", [INSTALLER, "check"]);
 writeFileSync(path.join(args.out, "ls-before.txt"), checkBefore.stdout ?? "");
 const start = mayStart({ checkStatus: checkBefore.status, checkOut: checkBefore.stdout });
 Object.assign(summary, { checkBefore: { status: checkBefore.status, valid: start.ok } });
+// Not the known normal state: nothing is started, LaunchServices is not restored or changed, exit 5.
+if (!start.ok) {
+  Object.assign(summary, { notStarted: start.why, exitCode: 5, finishedAt: new Date().toISOString() });
+  writeFileSync(path.join(args.out, "g5-run.json"), `${JSON.stringify(summary, null, 1)}\n`);
+  console.log(`NOT STARTED (the screen was never taken; LaunchServices left as it is): ${start.why}`);
+  process.exit(5);
+}
 let started = false;
+let startAttempted = false;
 try {
-  if (!start.ok) throw new Error(`not started: ${start.why}`);
   mkdirSync(work, { recursive: true });
-  const st = run("bash", ["tests/runtime/obsidian-isolated.sh", "start", work], E43);
+  startAttempted = true;
+  const st = run("bash", [ISOLATED, "start", work], E43);
   if (st.status !== 0) throw new Error(`isolated instance did not start: ${st.stderr.slice(-300)}`);
   started = true;
   const vault = st.stdout.trim().split("\n").pop();
@@ -99,12 +110,20 @@ try {
 } catch (e) {
   summary.stoppedEarly = String(e?.message ?? e);
 } finally {
+  const plan = afterRun({ startAttempted });
+  if (!plan.stop) {
+    // The start was never attempted: nothing to stop, the screen never taken, LaunchServices untouched.
+    Object.assign(summary, { notStarted: summary.stoppedEarly ?? "the start was not attempted", exitCode: 1, finishedAt: new Date().toISOString() });
+    writeFileSync(path.join(args.out, "g5-run.json"), `${JSON.stringify(summary, null, 1)}\n`);
+    console.log(`NOT STARTED (the screen was never taken; LaunchServices left as it is): ${summary.notStarted}`);
+    process.exit(1);
+  }
   // Only the instance this run started (its pid file in `work`); the backdrop window of a capture closes with
   // capture-obsidian.sh. Then whether it is really gone: its process, and the CDP port.
-  // A pid file in `work` is this run's instance even when its start did not finish.
+  // The start was attempted: stopped even when it did not finish (a pid file in `work` is this run's instance).
   const pidFile = path.join(work, "obsidian.pid");
-  const ours = started || existsSync(pidFile);
-  const stop = ours ? run("bash", ["tests/runtime/obsidian-isolated.sh", "stop", work]) : null;
+  const ours = true;
+  const stop = ours ? run("bash", [ISOLATED, "stop", work]) : null;
   const pid = existsSync(pidFile) ? Number(readFileSync(pidFile, "utf8").trim()) : null;
   let pidAlive = null;
   if (pid) { try { process.kill(pid, 0); pidAlive = true; } catch { pidAlive = false; } } else if (!ours) pidAlive = false;
@@ -120,8 +139,8 @@ try {
   const early = finish({ started: ours, stopStatus: stop?.status ?? null, pidAlive, portOpen, backdropAlive });
   if (early.released) summary.screenReleasedAt = new Date().toISOString();
   console.log(early.screenLine, early.released ? summary.screenReleasedAt : "");
-  const restore = run("bash", ["tests/runtime/current-installer.sh", "restore"]);
-  const checkAfter = run("bash", ["tests/runtime/current-installer.sh", "check"]);
+  const restore = run("bash", [INSTALLER, "restore"]);
+  const checkAfter = run("bash", [INSTALLER, "check"]);
   writeFileSync(path.join(args.out, "ls-after.txt"), checkAfter.stdout ?? "");
   const lsSame = start.ok && checkAfter.stdout === checkBefore.stdout;
   const f = finish({ started: ours, stopStatus: stop?.status ?? null, pidAlive, portOpen, backdropAlive, checkBeforeOk: start.ok, restoreStatus: restore.status, checkAfterStatus: checkAfter.status, lsSame, captures: summary.captures.length, total: conditions.length, stoppedEarly: summary.stoppedEarly });

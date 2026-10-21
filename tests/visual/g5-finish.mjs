@@ -15,6 +15,14 @@ export function mayStart({ checkStatus, checkOut }) {
   return { ok: true, why: null };
 }
 
+// After the run, what is to be done (research/14 §6.85): only when the start of the isolated instance was
+// attempted is it stopped, the screen checked and LaunchServices restored and checked (a start that failed half
+// way included). Otherwise nothing was started and nothing is touched: the screen was never taken (NOT STARTED)
+// and LaunchServices is left exactly as it was.
+export function afterRun({ startAttempted }) {
+  return startAttempted ? { stop: true, restore: true, screen: "verify" } : { stop: false, restore: false, screen: "not started" };
+}
+
 // At the end:
 //   screen   released only when the instance this run started was stopped (stop exit 0), its process is gone,
 //            the CDP port 9333 no longer answers and no backdrop window of this run is left; when nothing was
