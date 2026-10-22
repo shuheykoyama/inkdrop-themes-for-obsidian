@@ -1,0 +1,13 @@
+2026-10-22T07:48:08.356Z instance ready
+2026-10-22T07:48:17.801Z obsidian-solarized-dark-translucent-gray-active-after: titlebar rgba(0, 33, 41, 0.7) (expected rgba(0, 33, 41, 0.7)), frame custom, window 1200x700, focused false
+2026-10-22T07:48:27.070Z obsidian-solarized-dark-opaque-gray-active-after: titlebar rgb(0, 45, 56) (expected rgb(0, 45, 56)), frame custom, window 1200x700, focused true
+2026-10-22T07:48:36.394Z obsidian-kanagawa-dragon-translucent-gray-active-after: titlebar rgba(24, 22, 22, 0.7) (expected rgba(24, 22, 22, 0.7)), frame custom, window 1200x700, focused true
+2026-10-22T07:48:45.703Z obsidian-kanagawa-dragon-opaque-gray-active-after: titlebar rgb(24, 22, 22) (expected rgb(24, 22, 22)), frame custom, window 1200x700, focused true
+2026-10-22T07:48:55.058Z obsidian-solarized-dark-translucent-gray-active-before: titlebar rgba(0, 0, 0, 0) (expected rgba(0, 0, 0, 0)), frame custom, window 1200x700, focused true
+2026-10-22T07:49:04.309Z obsidian-solarized-dark-opaque-gray-active-before: titlebar rgb(0, 45, 56) (expected rgb(0, 45, 56)), frame custom, window 1200x700, focused true
+2026-10-22T07:49:13.582Z obsidian-kanagawa-dragon-translucent-gray-active-before: titlebar rgba(0, 0, 0, 0) (expected rgba(0, 0, 0, 0)), frame custom, window 1200x700, focused true
+2026-10-22T07:49:22.812Z obsidian-kanagawa-dragon-opaque-gray-active-before: titlebar rgb(24, 22, 22) (expected rgb(24, 22, 22)), frame custom, window 1200x700, focused true
+SCREEN RELEASED 2026-10-22T07:49:23.960Z
+LaunchServices: check before valid, restore exit 0, check after exit 0, output same as before: restored
+8 of 8 captures; all taken
+exit 0

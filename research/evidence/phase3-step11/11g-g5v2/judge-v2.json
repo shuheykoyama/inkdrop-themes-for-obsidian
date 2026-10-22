@@ -1,0 +1,396 @@
+{
+ "method": "v2",
+ "overall": "INVALID",
+ "maxTileSd": 1.0,
+ "stepLimit": 1.0,
+ "tilePoints": 8,
+ "minCommonPoints": 32,
+ "maxDE2000": 1.0,
+ "results": [
+  {
+   "build": "after",
+   "theme": "solarized-dark",
+   "mode": "translucent",
+   "state": "INVALID",
+   "detail": "the window was not focused at the capture"
+  },
+  {
+   "build": "after",
+   "theme": "solarized-dark",
+   "mode": "opaque",
+   "columns": [
+    722.38,
+    906
+   ],
+   "tiles": [
+    3,
+    23,
+    4
+   ],
+   "titlebarMean": [
+    1.0,
+    45.0,
+    56.0
+   ],
+   "tabMean": [
+    1.0,
+    45.0,
+    56.0
+   ],
+   "maxTileSd": 0.0,
+   "dE2000": 0.0,
+   "dE2000ByColumn": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "diagnostic dE2000 vs left tab strip": 0.0,
+   "state": "REFERENCE",
+   "detail": "dE2000 0.000 (opaque, reported only)"
+  },
+  {
+   "build": "after",
+   "theme": "kanagawa-dragon",
+   "mode": "translucent",
+   "columns": [
+    722.38,
+    906
+   ],
+   "tiles": [
+    3,
+    23,
+    4
+   ],
+   "titlebarMean": [
+    35.0,
+    33.0,
+    33.0
+   ],
+   "tabMean": [
+    35.0,
+    33.0,
+    33.0
+   ],
+   "maxTileSd": 0.0,
+   "dE2000": 0.0,
+   "dE2000ByColumn": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "diagnostic dE2000 vs left tab strip": 0.0,
+   "state": "PASS",
+   "detail": "dE2000 0.000 <= 1.0; by column max 0.000"
+  },
+  {
+   "build": "after",
+   "theme": "kanagawa-dragon",
+   "mode": "opaque",
+   "columns": [
+    722.38,
+    906
+   ],
+   "tiles": [
+    3,
+    23,
+    4
+   ],
+   "titlebarMean": [
+    24.0,
+    22.0,
+    22.0
+   ],
+   "tabMean": [
+    24.0,
+    22.0,
+    22.0
+   ],
+   "maxTileSd": 0.0,
+   "dE2000": 0.0,
+   "dE2000ByColumn": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "diagnostic dE2000 vs left tab strip": 0.0,
+   "state": "REFERENCE",
+   "detail": "dE2000 0.000 (opaque, reported only)"
+  },
+  {
+   "build": "before",
+   "theme": "solarized-dark",
+   "mode": "translucent",
+   "columns": [
+    722.38,
+    906
+   ],
+   "tiles": [
+    3,
+    23,
+    4
+   ],
+   "titlebarMean": [
+    61.0,
+    60.0,
+    59.0
+   ],
+   "tabMean": [
+    18.0,
+    41.0,
+    46.0
+   ],
+   "maxTileSd": 0.0,
+   "dE2000": 12.675,
+   "dE2000ByColumn": [
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675,
+    12.675
+   ],
+   "diagnostic dE2000 vs left tab strip": 12.675,
+   "state": "CONTROL HOLDS",
+   "detail": "dE2000 12.675, by column min 12.675 (pre-fix build must differ, > 1.0 overall and in every column)"
+  },
+  {
+   "build": "before",
+   "theme": "solarized-dark",
+   "mode": "opaque",
+   "columns": [
+    722.38,
+    906
+   ],
+   "tiles": [
+    3,
+    23,
+    4
+   ],
+   "titlebarMean": [
+    1.0,
+    45.0,
+    56.0
+   ],
+   "tabMean": [
+    1.0,
+    45.0,
+    56.0
+   ],
+   "maxTileSd": 0.0,
+   "dE2000": 0.0,
+   "dE2000ByColumn": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "diagnostic dE2000 vs left tab strip": 0.0,
+   "state": "REFERENCE",
+   "detail": "dE2000 0.000 (opaque, reported only)"
+  },
+  {
+   "build": "before",
+   "theme": "kanagawa-dragon",
+   "mode": "translucent",
+   "columns": [
+    722.38,
+    906
+   ],
+   "tiles": [
+    3,
+    23,
+    4
+   ],
+   "titlebarMean": [
+    61.0,
+    60.0,
+    59.0
+   ],
+   "tabMean": [
+    35.0,
+    33.0,
+    33.0
+   ],
+   "maxTileSd": 0.0,
+   "dE2000": 8.604,
+   "dE2000ByColumn": [
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604,
+    8.604
+   ],
+   "diagnostic dE2000 vs left tab strip": 8.604,
+   "state": "CONTROL HOLDS",
+   "detail": "dE2000 8.604, by column min 8.604 (pre-fix build must differ, > 1.0 overall and in every column)"
+  },
+  {
+   "build": "before",
+   "theme": "kanagawa-dragon",
+   "mode": "opaque",
+   "columns": [
+    722.38,
+    906
+   ],
+   "tiles": [
+    3,
+    23,
+    4
+   ],
+   "titlebarMean": [
+    24.0,
+    22.0,
+    22.0
+   ],
+   "tabMean": [
+    24.0,
+    22.0,
+    22.0
+   ],
+   "maxTileSd": 0.0,
+   "dE2000": 0.0,
+   "dE2000ByColumn": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "diagnostic dE2000 vs left tab strip": 0.0,
+   "state": "REFERENCE",
+   "detail": "dE2000 0.000 (opaque, reported only)"
+  }
+ ]
+}
