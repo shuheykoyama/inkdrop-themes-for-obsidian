@@ -1,0 +1,139 @@
+{
+ "build": "after",
+ "theme": "kanagawa-dragon",
+ "mode": "opaque",
+ "exit": 0,
+ "stdout": [
+  "obsidian-kanagawa-dragon-opaque-gray-active-after | electron 43.7.7 | translucent False | focused after True ['is-focused']"
+ ],
+ "image": "after/screenshots/obsidian-kanagawa-dragon-opaque-gray-active-after.png",
+ "imageSha256": "7e5f6b5c5feafe2a0ff835b4dd86272e9223c80bdc665058cffe14b4a169d253",
+ "themeName": "G5 after kanagawa-dragon",
+ "cssSha256": "7a3715cae3767a1ed28e83bf667d0d17a482d39e1edf07282e78128e13a3b885",
+ "sourceCommit": "900c12e",
+ "app": "1.14.4",
+ "electron": "43.7.7",
+ "frame": "custom",
+ "translucent": false,
+ "classes": [
+  "is-frameless",
+  "is-focused"
+ ],
+ "window": {
+  "innerWidth": 1200,
+  "innerHeight": 700,
+  "devicePixelRatio": 1,
+  "bounds": {
+   "x": 400,
+   "y": 250,
+   "width": 1200,
+   "height": 700
+  },
+  "focused": true
+ },
+ "focusedAfterShot": true,
+ "capturedAt": "2026-10-22T08:15:21Z",
+ "regions": {
+  "titlebar": {
+   "selector": ".titlebar",
+   "element": [
+    0,
+    0,
+    1200,
+    30
+   ],
+   "rect": [
+    722.38,
+    4,
+    473.63,
+    22
+   ],
+   "bigEnough": true,
+   "background": "rgb(24, 22, 22)",
+   "centre": {
+    "tag": "div",
+    "cls": "titlebar-text",
+    "inside": true,
+    "background": "rgba(0, 0, 0, 0)"
+   }
+  },
+  "left-tabstrip": {
+   "selector": ".workspace-split.mod-left-split .workspace-tab-header-container",
+   "element": [
+    44,
+    30,
+    260,
+    40
+   ],
+   "rect": [
+    140,
+    34,
+    160,
+    32
+   ],
+   "bigEnough": true,
+   "background": "rgb(24, 22, 22)",
+   "centre": {
+    "tag": "div",
+    "cls": "workspace-tab-header-spacer",
+    "inside": true,
+    "background": "rgba(0, 0, 0, 0)"
+   }
+  },
+  "root-tabstrip": {
+   "selector": ".workspace-split.mod-root .workspace-tab-header-container",
+   "element": [
+    304,
+    30,
+    636,
+    40
+   ],
+   "rect": [
+    544,
+    34,
+    362,
+    32
+   ],
+   "bigEnough": true,
+   "background": "rgb(24, 22, 22)",
+   "centre": {
+    "tag": "div",
+    "cls": "workspace-tab-header-spacer",
+    "inside": true,
+    "background": "rgba(0, 0, 0, 0)"
+   }
+  }
+ },
+ "pair": {
+  "columns": [
+   722.38,
+   906
+  ],
+  "width": 183.63,
+  "bigEnough": true,
+  "titlebar": [
+   722.38,
+   4,
+   183.63,
+   22
+  ],
+  "tab": [
+   722.38,
+   34,
+   183.63,
+   32
+  ],
+  "titlebarCentre": {
+   "tag": "div",
+   "inside": true
+  },
+  "tabCentre": {
+   "tag": "div",
+   "inside": true
+  },
+  "corner": 9,
+  "trafficLights": 90,
+  "minCommon": 32
+ },
+ "expectedTitlebar": "rgb(24, 22, 22)"
+}

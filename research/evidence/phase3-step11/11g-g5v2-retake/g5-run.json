@@ -1,0 +1,582 @@
+{
+ "startedAt": "2026-10-22T08:14:27.650Z",
+ "commit": "c2d7ecf",
+ "dirty": false,
+ "captures": [
+  {
+   "build": "after",
+   "theme": "solarized-dark",
+   "mode": "translucent",
+   "exit": 0,
+   "stdout": [
+    "obsidian-solarized-dark-translucent-gray-active-after | electron 43.7.7 | translucent True | focused after True ['is-focused', 'is-translucent']"
+   ],
+   "image": "after/screenshots/obsidian-solarized-dark-translucent-gray-active-after.png",
+   "imageSha256": "cee97757ea2b17585fe40f993ea344900ea65f9fdeb3ee8ec9d3fd6af9e0d162",
+   "themeName": "G5 after solarized-dark",
+   "cssSha256": "b98da149f049623fc953af0ac587a106b153bd158e11afad68c22e32ae3470ac",
+   "sourceCommit": "900c12e",
+   "app": "1.14.4",
+   "electron": "43.7.7",
+   "frame": "custom",
+   "translucent": true,
+   "classes": [
+    "is-frameless",
+    "is-focused",
+    "is-translucent"
+   ],
+   "window": {
+    "innerWidth": 1200,
+    "innerHeight": 700,
+    "devicePixelRatio": 1,
+    "bounds": {
+     "x": 400,
+     "y": 250,
+     "width": 1200,
+     "height": 700
+    },
+    "focused": true
+   },
+   "focusedAfterShot": true,
+   "capturedAt": "2026-10-22T08:14:53Z",
+   "pair": {
+    "columns": [
+     722.38,
+     906
+    ],
+    "width": 183.63,
+    "bigEnough": true,
+    "titlebar": [
+     722.38,
+     4,
+     183.63,
+     22
+    ],
+    "tab": [
+     722.38,
+     34,
+     183.63,
+     32
+    ],
+    "titlebarCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "tabCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "corner": 9,
+    "trafficLights": 90,
+    "minCommon": 32
+   },
+   "expectedTitlebar": "rgba(0, 33, 41, 0.7)"
+  },
+  {
+   "build": "after",
+   "theme": "solarized-dark",
+   "mode": "opaque",
+   "exit": 0,
+   "stdout": [
+    "obsidian-solarized-dark-opaque-gray-active-after | electron 43.7.7 | translucent False | focused after True ['is-focused']"
+   ],
+   "image": "after/screenshots/obsidian-solarized-dark-opaque-gray-active-after.png",
+   "imageSha256": "90d268246be165c1a520e058fda04424054621d8f793a898af2666561decfe28",
+   "themeName": "G5 after solarized-dark",
+   "cssSha256": "b98da149f049623fc953af0ac587a106b153bd158e11afad68c22e32ae3470ac",
+   "sourceCommit": "900c12e",
+   "app": "1.14.4",
+   "electron": "43.7.7",
+   "frame": "custom",
+   "translucent": false,
+   "classes": [
+    "is-frameless",
+    "is-focused"
+   ],
+   "window": {
+    "innerWidth": 1200,
+    "innerHeight": 700,
+    "devicePixelRatio": 1,
+    "bounds": {
+     "x": 400,
+     "y": 250,
+     "width": 1200,
+     "height": 700
+    },
+    "focused": true
+   },
+   "focusedAfterShot": true,
+   "capturedAt": "2026-10-22T08:15:02Z",
+   "pair": {
+    "columns": [
+     722.38,
+     906
+    ],
+    "width": 183.63,
+    "bigEnough": true,
+    "titlebar": [
+     722.38,
+     4,
+     183.63,
+     22
+    ],
+    "tab": [
+     722.38,
+     34,
+     183.63,
+     32
+    ],
+    "titlebarCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "tabCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "corner": 9,
+    "trafficLights": 90,
+    "minCommon": 32
+   },
+   "expectedTitlebar": "rgb(0, 45, 56)"
+  },
+  {
+   "build": "after",
+   "theme": "kanagawa-dragon",
+   "mode": "translucent",
+   "exit": 0,
+   "stdout": [
+    "obsidian-kanagawa-dragon-translucent-gray-active-after | electron 43.7.7 | translucent True | focused after True ['is-focused', 'is-translucent']"
+   ],
+   "image": "after/screenshots/obsidian-kanagawa-dragon-translucent-gray-active-after.png",
+   "imageSha256": "356dbfa651464e78c98a50f13b1156da7f47d26b1ac3ea3e774766d6bbeb7740",
+   "themeName": "G5 after kanagawa-dragon",
+   "cssSha256": "7a3715cae3767a1ed28e83bf667d0d17a482d39e1edf07282e78128e13a3b885",
+   "sourceCommit": "900c12e",
+   "app": "1.14.4",
+   "electron": "43.7.7",
+   "frame": "custom",
+   "translucent": true,
+   "classes": [
+    "is-frameless",
+    "is-focused",
+    "is-translucent"
+   ],
+   "window": {
+    "innerWidth": 1200,
+    "innerHeight": 700,
+    "devicePixelRatio": 1,
+    "bounds": {
+     "x": 400,
+     "y": 250,
+     "width": 1200,
+     "height": 700
+    },
+    "focused": true
+   },
+   "focusedAfterShot": true,
+   "capturedAt": "2026-10-22T08:15:12Z",
+   "pair": {
+    "columns": [
+     722.38,
+     906
+    ],
+    "width": 183.63,
+    "bigEnough": true,
+    "titlebar": [
+     722.38,
+     4,
+     183.63,
+     22
+    ],
+    "tab": [
+     722.38,
+     34,
+     183.63,
+     32
+    ],
+    "titlebarCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "tabCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "corner": 9,
+    "trafficLights": 90,
+    "minCommon": 32
+   },
+   "expectedTitlebar": "rgba(24, 22, 22, 0.7)"
+  },
+  {
+   "build": "after",
+   "theme": "kanagawa-dragon",
+   "mode": "opaque",
+   "exit": 0,
+   "stdout": [
+    "obsidian-kanagawa-dragon-opaque-gray-active-after | electron 43.7.7 | translucent False | focused after True ['is-focused']"
+   ],
+   "image": "after/screenshots/obsidian-kanagawa-dragon-opaque-gray-active-after.png",
+   "imageSha256": "7e5f6b5c5feafe2a0ff835b4dd86272e9223c80bdc665058cffe14b4a169d253",
+   "themeName": "G5 after kanagawa-dragon",
+   "cssSha256": "7a3715cae3767a1ed28e83bf667d0d17a482d39e1edf07282e78128e13a3b885",
+   "sourceCommit": "900c12e",
+   "app": "1.14.4",
+   "electron": "43.7.7",
+   "frame": "custom",
+   "translucent": false,
+   "classes": [
+    "is-frameless",
+    "is-focused"
+   ],
+   "window": {
+    "innerWidth": 1200,
+    "innerHeight": 700,
+    "devicePixelRatio": 1,
+    "bounds": {
+     "x": 400,
+     "y": 250,
+     "width": 1200,
+     "height": 700
+    },
+    "focused": true
+   },
+   "focusedAfterShot": true,
+   "capturedAt": "2026-10-22T08:15:21Z",
+   "pair": {
+    "columns": [
+     722.38,
+     906
+    ],
+    "width": 183.63,
+    "bigEnough": true,
+    "titlebar": [
+     722.38,
+     4,
+     183.63,
+     22
+    ],
+    "tab": [
+     722.38,
+     34,
+     183.63,
+     32
+    ],
+    "titlebarCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "tabCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "corner": 9,
+    "trafficLights": 90,
+    "minCommon": 32
+   },
+   "expectedTitlebar": "rgb(24, 22, 22)"
+  },
+  {
+   "build": "before",
+   "theme": "solarized-dark",
+   "mode": "translucent",
+   "exit": 0,
+   "stdout": [
+    "obsidian-solarized-dark-translucent-gray-active-before | electron 43.7.7 | translucent True | focused after True ['is-focused', 'is-translucent']"
+   ],
+   "image": "before/screenshots/obsidian-solarized-dark-translucent-gray-active-before.png",
+   "imageSha256": "e218c8d290cbe742299f5c82163f98c2facbfa5e65fd99dab85ed966d73b2008",
+   "themeName": "G5 before solarized-dark",
+   "cssSha256": "c41138a754f612e23e8c1752a28a1b3359df852aa83453a2ade6987ad001450b",
+   "sourceCommit": "fab7442",
+   "app": "1.14.4",
+   "electron": "43.7.7",
+   "frame": "custom",
+   "translucent": true,
+   "classes": [
+    "is-frameless",
+    "is-focused",
+    "is-translucent"
+   ],
+   "window": {
+    "innerWidth": 1200,
+    "innerHeight": 700,
+    "devicePixelRatio": 1,
+    "bounds": {
+     "x": 400,
+     "y": 250,
+     "width": 1200,
+     "height": 700
+    },
+    "focused": true
+   },
+   "focusedAfterShot": true,
+   "capturedAt": "2026-10-22T08:15:30Z",
+   "pair": {
+    "columns": [
+     722.38,
+     906
+    ],
+    "width": 183.63,
+    "bigEnough": true,
+    "titlebar": [
+     722.38,
+     4,
+     183.63,
+     22
+    ],
+    "tab": [
+     722.38,
+     34,
+     183.63,
+     32
+    ],
+    "titlebarCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "tabCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "corner": 9,
+    "trafficLights": 90,
+    "minCommon": 32
+   },
+   "expectedTitlebar": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "build": "before",
+   "theme": "solarized-dark",
+   "mode": "opaque",
+   "exit": 0,
+   "stdout": [
+    "obsidian-solarized-dark-opaque-gray-active-before | electron 43.7.7 | translucent False | focused after True ['is-focused']"
+   ],
+   "image": "before/screenshots/obsidian-solarized-dark-opaque-gray-active-before.png",
+   "imageSha256": "90d268246be165c1a520e058fda04424054621d8f793a898af2666561decfe28",
+   "themeName": "G5 before solarized-dark",
+   "cssSha256": "c41138a754f612e23e8c1752a28a1b3359df852aa83453a2ade6987ad001450b",
+   "sourceCommit": "fab7442",
+   "app": "1.14.4",
+   "electron": "43.7.7",
+   "frame": "custom",
+   "translucent": false,
+   "classes": [
+    "is-frameless",
+    "is-focused"
+   ],
+   "window": {
+    "innerWidth": 1200,
+    "innerHeight": 700,
+    "devicePixelRatio": 1,
+    "bounds": {
+     "x": 400,
+     "y": 250,
+     "width": 1200,
+     "height": 700
+    },
+    "focused": true
+   },
+   "focusedAfterShot": true,
+   "capturedAt": "2026-10-22T08:15:39Z",
+   "pair": {
+    "columns": [
+     722.38,
+     906
+    ],
+    "width": 183.63,
+    "bigEnough": true,
+    "titlebar": [
+     722.38,
+     4,
+     183.63,
+     22
+    ],
+    "tab": [
+     722.38,
+     34,
+     183.63,
+     32
+    ],
+    "titlebarCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "tabCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "corner": 9,
+    "trafficLights": 90,
+    "minCommon": 32
+   },
+   "expectedTitlebar": "rgb(0, 45, 56)"
+  },
+  {
+   "build": "before",
+   "theme": "kanagawa-dragon",
+   "mode": "translucent",
+   "exit": 0,
+   "stdout": [
+    "obsidian-kanagawa-dragon-translucent-gray-active-before | electron 43.7.7 | translucent True | focused after True ['is-focused', 'is-translucent']"
+   ],
+   "image": "before/screenshots/obsidian-kanagawa-dragon-translucent-gray-active-before.png",
+   "imageSha256": "b8ddea859942f18fa07869219ca874df87007d6dde233e724aa625c5dc390a1a",
+   "themeName": "G5 before kanagawa-dragon",
+   "cssSha256": "f45d3daeceab5c770ff9f3111c41fbdc987848cb7ffe814a4b6040fb3f19f7e5",
+   "sourceCommit": "fab7442",
+   "app": "1.14.4",
+   "electron": "43.7.7",
+   "frame": "custom",
+   "translucent": true,
+   "classes": [
+    "is-frameless",
+    "is-focused",
+    "is-translucent"
+   ],
+   "window": {
+    "innerWidth": 1200,
+    "innerHeight": 700,
+    "devicePixelRatio": 1,
+    "bounds": {
+     "x": 400,
+     "y": 250,
+     "width": 1200,
+     "height": 700
+    },
+    "focused": true
+   },
+   "focusedAfterShot": true,
+   "capturedAt": "2026-10-22T08:15:48Z",
+   "pair": {
+    "columns": [
+     722.38,
+     906
+    ],
+    "width": 183.63,
+    "bigEnough": true,
+    "titlebar": [
+     722.38,
+     4,
+     183.63,
+     22
+    ],
+    "tab": [
+     722.38,
+     34,
+     183.63,
+     32
+    ],
+    "titlebarCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "tabCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "corner": 9,
+    "trafficLights": 90,
+    "minCommon": 32
+   },
+   "expectedTitlebar": "rgba(0, 0, 0, 0)"
+  },
+  {
+   "build": "before",
+   "theme": "kanagawa-dragon",
+   "mode": "opaque",
+   "exit": 0,
+   "stdout": [
+    "obsidian-kanagawa-dragon-opaque-gray-active-before | electron 43.7.7 | translucent False | focused after True ['is-focused']"
+   ],
+   "image": "before/screenshots/obsidian-kanagawa-dragon-opaque-gray-active-before.png",
+   "imageSha256": "7e5f6b5c5feafe2a0ff835b4dd86272e9223c80bdc665058cffe14b4a169d253",
+   "themeName": "G5 before kanagawa-dragon",
+   "cssSha256": "f45d3daeceab5c770ff9f3111c41fbdc987848cb7ffe814a4b6040fb3f19f7e5",
+   "sourceCommit": "fab7442",
+   "app": "1.14.4",
+   "electron": "43.7.7",
+   "frame": "custom",
+   "translucent": false,
+   "classes": [
+    "is-frameless",
+    "is-focused"
+   ],
+   "window": {
+    "innerWidth": 1200,
+    "innerHeight": 700,
+    "devicePixelRatio": 1,
+    "bounds": {
+     "x": 400,
+     "y": 250,
+     "width": 1200,
+     "height": 700
+    },
+    "focused": true
+   },
+   "focusedAfterShot": true,
+   "capturedAt": "2026-10-22T08:15:58Z",
+   "pair": {
+    "columns": [
+     722.38,
+     906
+    ],
+    "width": 183.63,
+    "bigEnough": true,
+    "titlebar": [
+     722.38,
+     4,
+     183.63,
+     22
+    ],
+    "tab": [
+     722.38,
+     34,
+     183.63,
+     32
+    ],
+    "titlebarCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "tabCentre": {
+     "tag": "div",
+     "inside": true
+    },
+    "corner": 9,
+    "trafficLights": 90,
+    "minCommon": 32
+   },
+   "expectedTitlebar": "rgb(24, 22, 22)"
+  }
+ ],
+ "stoppedEarly": null,
+ "checkBefore": {
+  "status": 0,
+  "valid": true
+ },
+ "screenReleasedAt": "2026-10-22T08:15:59.578Z",
+ "stop": {
+  "status": 0,
+  "out": "stopped isolated Obsidian (pid 8424)"
+ },
+ "pidAlive": false,
+ "portOpen": false,
+ "backdropAlive": false,
+ "restoreStatus": 0,
+ "checkAfter": {
+  "status": 0,
+  "sameAsBefore": true
+ },
+ "released": true,
+ "restored": true,
+ "lsSame": true,
+ "complete": true,
+ "exitCode": 0,
+ "screenLine": "SCREEN RELEASED",
+ "restoreLine": "LaunchServices: check before valid, restore exit 0, check after exit 0, output same as before: restored",
+ "captureLine": "8 of 8 captures; all taken",
+ "finishedAt": "2026-10-22T08:16:10.898Z"
+}

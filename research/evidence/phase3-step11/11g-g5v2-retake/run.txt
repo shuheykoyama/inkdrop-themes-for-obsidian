@@ -1,0 +1,10 @@
+G5 v2 confirmatory run, retake of all 8 conditions, 2026-10-22. Runner: tests/visual/g5-capture.mjs at c2d7ecf (clean tree; no code change since 900c12e, only research records). Judge: tests/visual/g5-judge.py --method v2.
+Retake approved by the user after the first v2 run (11g-g5v2/) was INVALID; the method, the code and the tolerances are unchanged.
+after solarized-dark source 900c12e theme.css SHA-256 b98da149f049623fc953af0ac587a106b153bd158e11afad68c22e32ae3470ac manifest name "G5 after solarized-dark"
+after kanagawa-dragon source 900c12e theme.css SHA-256 7a3715cae3767a1ed28e83bf667d0d17a482d39e1edf07282e78128e13a3b885 manifest name "G5 after kanagawa-dragon"
+before solarized-dark source fab7442 theme.css SHA-256 c41138a754f612e23e8c1752a28a1b3359df852aa83453a2ade6987ad001450b manifest name "G5 before solarized-dark"
+before kanagawa-dragon source fab7442 theme.css SHA-256 f45d3daeceab5c770ff9f3111c41fbdc987848cb7ffe814a4b6040fb3f19f7e5 manifest name "G5 before kanagawa-dragon"
+precheck (--precheck): LaunchServices in the known normal state; run started after the user's go at 2026-10-22T08:14:27Z
+screen released: 2026-10-22T08:15:59.578Z (SCREEN RELEASED from g5-finish.mjs); run exit 0, 8 of 8 captures, all focused
+LaunchServices: check before valid, restore exit 0, check after exit 0, output byte-identical to before (launchservices.txt)
+judge: G5 (v2): PASS (automatic; the visual check of the regions is still required)
