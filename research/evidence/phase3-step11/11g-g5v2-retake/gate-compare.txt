@@ -1,0 +1,12 @@
+node tests/release/gate.mjs (inputs: tests/release/inputs.json as committed), before and after adding the G5 v2 verifiedBy of qd1.titlebar-visible-frame, 2026-10-22
+
+3,4c3,4
+< macOS desktop: NOT met; 138 units {"NO RESULT":4,"DIFF":2,"PASS":132}
+<   4 x no counting unit at >= 1.14.4: NO RESULT @1.14.4  [qd1.titlebar-visible-frame|solarized-dark; qd1.titlebar-visible-frame|kanagawa-dragon; qd4.links|solarized-dark; qd4.links|kanagawa-dragon]
+---
+> macOS desktop: NOT met; 138 units {"NO RESULT":2,"DIFF":2,"PASS":134}
+>   2 x no counting unit at >= 1.14.4: NO RESULT @1.14.4  [qd4.links|solarized-dark; qd4.links|kanagawa-dragon]
+
+changed units: qd1.titlebar-visible-frame|solarized-dark|macOS|desktop NO RESULT -> PASS; qd1.titlebar-visible-frame|kanagawa-dragon|macOS|desktop NO RESULT -> PASS (2 of 550; state, appVersion and counting compared for every unit)
+kept: qd1.mobile-drawer-header iOS phone (G1) PASS; qd22.real-fullscreen macOS desktop SD (G4) and KD PASS; release conditions NOT MET before and after
+the gate unit is (requirement, theme, OS, device class); it does not tell devicePixelRatio or window frame apart, so the scope recorded in verifiedBy (custom frame, devicePixelRatio 1) is narrower than the unit it turns PASS

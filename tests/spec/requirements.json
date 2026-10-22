@@ -109,7 +109,34 @@
       "platforms": [
         "desktop"
       ],
-      "mandatory": true
+      "mandatory": true,
+      "verifiedBy": [
+        {
+          "method": "macOS native screencapture, G5 v2 confirmatory method (step 11G G5, research/14 §6.83): the isolated Obsidian window (custom frame, translucent and opaque) over a fixed gray backdrop; tests/visual/g5-judge.py --method v2 compares the title bar band with the centre tab strip band over their common free columns (window corner 9 pt and traffic lights 90 pt excluded, 4 pt inset, tiles of at most 8 pt: per-tile sd <= 1.0, neighbour step <= 1.0) by CIEDE2000 <= 1.0, with the build before the title bar fix (fab7442) as the negative control; every image inspected by eye with the measured regions drawn (tests/visual/g5-overlay.py)",
+          "evidence": "research/evidence/phase3-step11/11g-g5v2-retake/ (run.txt, judge-v2.json, g5-run.json, after/, before/, review/)",
+          "result": "PASS on 2026-10-22 for both themes after the fix, translucent: dE2000 0.000 overall and in every column (opaque 0.000, reference); negative control holds for both themes (before the fix 12.578 and 8.281, > 1.0 in every column); visual check done. Only devicePixelRatio 1 (images 1200x700 px) was measured: the confirmatory check at 2x scale was not made, and why the macOS translucent compositing differed from the v1 run (devicePixelRatio 2) is not known. The v1 run (11g-g5/) and the first v2 run (11g-g5v2/) were INVALID and stay recorded (research/14 §6.79, §6.87, §6.89)",
+          "status": "PASS",
+          "scope": {
+            "os": "macOS",
+            "device": "desktop",
+            "themes": [
+              "solarized-dark",
+              "kanagawa-dragon"
+            ],
+            "appVersion": "1.14.4",
+            "electron": [
+              "43.7.7"
+            ],
+            "frame": "custom",
+            "devicePixelRatio": 1,
+            "imagePixels": [
+              1200,
+              700
+            ],
+            "date": "2026-10-22"
+          }
+        }
+      ]
     },
     {
       "id": "qd1.mobile-drawers",
