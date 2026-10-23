@@ -1,0 +1,2 @@
+not restored by design: state-cache files before 6, after 6; the database and the sync state are not compared
+RESTORED: config.json, keymap.json, styles.css, init.js and packages/ as before; Inkdrop left quit as before; port 9334 closed

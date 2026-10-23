@@ -1,0 +1,27 @@
+-- prepare
+kanagawa-dragon: already installed, used as it is (not replaced)
+solarized-dark: already installed, used as it is (not replaced)
+prepared: Inkdrop was running before: no; config.json backed up and checked
+-- start
+started (pid 67037)
+-- check
+the started Inkdrop 6.2.0 on 9334, using the user's config.json, nothing else running; signed in
+-- notes
+2 notes; 2 tagged as the tutorial (only those were read); with a plain line and a code block line: 1
+-- note-before
+note identity recorded (private)
+-- settings-opaque
+{"lineNumbers":true,"styleActiveLine":true,"acrylic":false}
+-- restart-opaque
+started (pid 67799)
+-- check-opaque
+the started Inkdrop 6.2.0 on 9334, using the user's config.json, nothing else running; signed in
+-- capture-opaque
+inkdrop-solarized-dark-v35-opaque-active: focused true, dpr 2, doc unchanged true, note unchanged true
+inkdrop-solarized-dark-v35-opaque-search: focused true, dpr 2, doc unchanged true, note unchanged true
+inkdrop-solarized-dark-v35-opaque-code: focused true, dpr 2, doc unchanged true, note unchanged true
+inkdrop-kanagawa-dragon-v35-opaque-active: focused false, dpr 2, doc unchanged true, note unchanged true
+inkdrop-kanagawa-dragon-v35-opaque-search: focused true, dpr 2, doc unchanged true, note unchanged true
+inkdrop-kanagawa-dragon-v35-opaque-code: focused true, dpr 2, doc unchanged true, note unchanged true
+6 captures (opaque)
+-- restore

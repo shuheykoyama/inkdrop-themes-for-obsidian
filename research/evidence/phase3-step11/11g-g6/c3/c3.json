@@ -1,0 +1,17 @@
+{
+ "stage": "G6 method C retake (C3), instructed by the user after the interrupted C2; code 90f2859",
+ "go": "2026-10-23T07:06:50Z",
+ "end": "2026-10-23T07:17:58Z",
+ "inkdropRunningBefore": "no",
+ "packagesPlaced": [],
+ "capture": "COMPLETE: all 8 conditions with their images; judgement PASS 2, RECORD 6",
+ "noteUnchangedStartToEnd": true,
+ "restore": {
+  "result": "RESTORED",
+  "recordedFilesSameAsBackup": true,
+  "inkdropAfter": "not running, as before",
+  "port9334": "closed",
+  "leftProcesses": 0
+ },
+ "c2": "interrupted by the user after 6 opaque captures; 2 Kanagawa Dragon images showed other apps' windows and personal content (not committed); its restore had not finished and was completed afterwards with inkdrop-production.sh restore: RESTORED"
+}
