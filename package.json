@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "npm run test:static && npm run test:static-self && npm run test:release-self && npm run test:integration-self && npm run test:compat-self && npm run test:quality-self && npm run test:mermaid-judge-self && npm run test:drawer-header-self && npm run test:g5-self",
+    "test": "npm run test:static && npm run test:static-self && npm run test:release-self && npm run test:integration-self && npm run test:compat-self && npm run test:quality-self && npm run test:mermaid-judge-self && npm run test:drawer-header-self && npm run test:g5-self && npm run test:g6-self",
     "test:static": "node tests/static/run.mjs",
     "test:static-self": "node tests/static/self-test.mjs",
     "test:release-self": "node tests/release/self-test.mjs",
@@ -22,6 +22,7 @@
     "test:mermaid-judge-self": "node tests/runtime/mermaid-judge-self-test.mjs",
     "test:drawer-header-self": "python3 -I tests/device/drawer-header-self-test.py",
     "test:g5-self": "python3 -I tests/visual/g5-self-test.py",
+    "test:g6-self": "python3 -I tests/visual/g6-self-test.py",
     "test:important-audit": "node tests/quality/important-audit.mjs",
     "test:contrast": "node tests/quality/contrast.mjs",
     "test:clean-room": "bash tests/clean-room.sh",

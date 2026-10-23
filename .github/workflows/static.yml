@@ -36,3 +36,4 @@ jobs:
       - run: npm run test:mermaid-judge-self
       - run: npm run test:drawer-header-self
       - run: npm run test:g5-self
+      - run: npm run test:g6-self
