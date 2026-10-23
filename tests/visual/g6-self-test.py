@@ -444,7 +444,7 @@ exit 0
 sub="$1"; work="$2"
 echo "run $sub $(eval echo \${$#})" >> "$CALLS"
 case "$sub" in
-  notes) printf '%s' '{"notes": [{"_id": "n1", "plainLines": [5], "codeLines": [9], "plainWord": "Create"}]}' > "$work/private/notes.json" ;;
+  notes) if [ -n "$NOTES_JSON" ]; then printf '%s' "$NOTES_JSON"; else printf '%s' '{"notes": [{"_id": "note:SECRETID", "bodySha256": "HASHSECRET", "plainLines": [5], "codeLines": [9], "plainWord": "Create"}]}'; fi > "$work/private/notes.json" ;;
   note) printf '{"rev": "1"}' > "$work/private/$4" ;;
   capture) eval mode=\${$#}; [ "$FAIL_AT" = "capture-$mode" ] && exit 1; [ "$NOTE_CHANGED" = "$mode" ] && exit 3
     # The stand-in "captures": the prepared records of this mode, and their images unless NO_IMAGES is set.
@@ -500,7 +500,49 @@ exit 0
     out.append(("restore fails: reported NOT CONFIRMED, not called usable, exit 1", p.returncode == 1 and "RESTORE: NOT CONFIRMED" in p.stdout and "not known to be usable" in p.stdout, f"exit {p.returncode}"))
     p, calls = go("prepare", FAIL_AT="prepare")
     out.append(("prepare fails before a backup: no restore", p.returncode == 1 and "prod restore" not in calls and "RESTORE: not run" in p.stdout, f"exit {p.returncode}"))
+    out.append(("the note ID and body hash of the inventory never reach the output", all("SECRETID" not in x and "HASHSECRET" not in x for x in (p.stdout, go("leak")[0].stdout)), "stdout checked"))
+    for name, notes in (("no tutorial note", '{"notes": []}'), ("a tutorial note without a code block line", '{"notes": [{"_id": "n1", "plainLines": [5], "codeLines": [], "plainWord": "Create"}]}')):
+        p, calls = go(name.replace(" ", "-"), NOTES_JSON=notes)
+        out.append((f"{name}: stopped before any note or capture step, no note created, restore runs", p.returncode == 1 and "no tutorial note with a plain line and a code block line" in p.stdout
+                    and not any(c.startswith(("run note ", "run capture", "run settings")) for c in calls) and "prod restore" in calls, f"exit {p.returncode}"))
     return out
+
+
+def notes_cases(t):
+    """g6-notes.js against stand-in Inkdrop APIs shaped as 6.2.0 returns them (§6.113): rows of { doc } (index
+    store) and rows of notes (SQL store) give the tutorial note; any other shape is an error, not an empty result."""
+    script = r"""
+import { readFileSync } from 'node:fs';
+import vm from 'node:vm';
+const src = readFileSync('tests/visual/g6-notes.js', 'utf8');
+const note = { _id: 'note:1', _rev: '1-a', updatedAt: 1, title: 'Basic', tags: ['tag:t'], body: ['Some plain text line here with words', '```js', 'const x = 1;', '```', ''].join(String.fromCharCode(10)) };
+const tagsOk = [{ _id: 'tag:t', name: 'Tutorial' }, { _id: 'tag:o', name: 'Other' }];
+const make = ({ tags = tagsOk, find = { rows: [{ doc: note }] }, count = 7 } = {}) => ({ localDB: {
+  tags: { all: async () => tags }, notes: { findWithTag: async () => find, count: async () => count } } });
+const run = async (api) => { try { const r = await vm.runInNewContext(src, { inkdrop: api, crypto: globalThis.crypto, TextEncoder }); return { ok: r }; } catch (e) { return { err: e.message }; } };
+const out = {
+  index: await run(make()),
+  sql: await run(make({ find: { query: {}, rows: [note], cursor: null } })),
+  none: await run(make({ tags: [{ _id: 'tag:o', name: 'Other' }] })),
+  docsShape: await run(make({ find: { docs: [note] } })),
+  tagsShape: await run(make({ tags: { docs: tagsOk } })),
+  noBody: await run(make({ find: { rows: [{ doc: { _id: 'note:2' } }] } })),
+  countOdd: await run(make({ count: { n: 1 } })),
+};
+console.log(JSON.stringify(out));
+"""
+    r = json.loads(subprocess.run(["node", "--input-type=module", "-e", script], cwd=ROOT, capture_output=True, text=True, check=True).stdout)
+    good = lambda x: x.get("ok") and len(x["ok"]["notes"]) == 1 and x["ok"]["notes"][0]["plainLines"] == [1] and x["ok"]["notes"][0]["codeLines"] == [3] and x["ok"]["notes"][0]["plainWord"] == "plain"
+    return [
+        ("findWithTag rows of { doc } (6.2.0 index store): the tutorial note, its lines and word", good(r["index"]) and r["index"]["ok"]["count"] == 7, r["index"]),
+        ("findWithTag rows of notes (6.2.0 SQL store): the same", good(r["sql"]), r["sql"]),
+        ("no tutorial tag: zero notes, not an error", r["none"].get("ok") and r["none"]["ok"]["notes"] == [] and r["none"]["ok"]["tutorialTags"] == 0, r["none"]),
+        ("findWithTag without rows: an error, not an empty result", "unexpected result shape" in (r["docsShape"].get("err") or ""), r["docsShape"]),
+        ("tags.all not an array: an error", "unexpected result shape" in (r["tagsShape"].get("err") or ""), r["tagsShape"]),
+        ("a row without a note body: an error", "without a note" in (r["noBody"].get("err") or ""), r["noBody"]),
+        ("count not a number: reported as null, the inventory still read", good(r["countOdd"]) and r["countOdd"]["ok"]["count"] is None, r["countOdd"]),
+        ("the body itself is not returned", all("Some plain text" not in json.dumps(x) for x in r.values()), "checked"),
+    ]
 
 
 def launcher_cases(t):
@@ -603,7 +645,7 @@ def main():
         t = Path(t)
         (t / "l").mkdir()
         launcher = launcher_cases(t / "l")
-        rest = [("loop", c) for c in loop_cases(t)] + [("run", c) for c in runner_cases(t)] + [("shot", c) for c in shot_cases(t)] + [("completeness", c) for c in complete_cases(t)] + [("method C", c) for c in production_cases(t)]
+        rest = [("inventory", c) for c in notes_cases(t)] + [("loop", c) for c in loop_cases(t)] + [("run", c) for c in runner_cases(t)] + [("shot", c) for c in shot_cases(t)] + [("completeness", c) for c in complete_cases(t)] + [("method C", c) for c in production_cases(t)]
     for kind, (name, ok, detail) in rest:
         fails += not ok
         print(f"{'PASS' if ok else 'FAIL'} g6 self-test: {kind}: {name} ({detail})")
