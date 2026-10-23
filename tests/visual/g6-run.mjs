@@ -4,12 +4,19 @@
 //   isolation <work> <name.json>   stage A1: is the instance on 9334 the isolated one (g6-rules.mjs)?
 //   notes <work> <name.json>       stage A1: read-only inventory of the notes (g6-notes.js); only counts and
 //                                  yes/no answers are printed
-// Both write only to <work>/private/<name.json> (privateOut): <work> is the A1 scratch directory outside the
+//   note <work> <noteId> <name.json>  method C: the identity of the one note used (ID, revision, updatedAt, body
+//                                  hash) into <work>/private, to compare before and after; prints nothing of it
+// In method C (<work>/mode.txt is "production", written by tests/runtime/inkdrop-production.sh) the check is
+// productionProblems instead: the started PID on 9334, the user's config.json, the version, nothing else running.
+// isolation, notes and note write only to <work>/private/<name.json> (privateOut): <work> is the A1 scratch directory outside the
 // repository, the Obsidian vault (iCloud) and the user's Inkdrop profile, private/ a real directory (not a
 // link) and the file new; any other place is refused (exit 7) before anything else runs.
 //   settings <work> <acrylic:true|false>  stage A2: line numbers, active line, acrylic (after a restart)
 //   capture <work> <out> <tmp> <noteId> <plainLine> <codeLine> <word> <opaque|acrylic>
-//                                  stage A2: both themes x the states of that mode, native captures + probes
+//                                  both themes x the states of that mode, native captures + probes; the public
+//                                  records in <out> keep only whether the note stayed the same, its identity goes
+//                                  to <work>/private; a failed capture stops the run (exit 1), the backdrop is
+//                                  always closed
 // Every subcommand first checks the isolation again and does nothing when it fails (exit 4), or when the window
 // shows the sign-in screen instead of the app (exit 6: A1 stops there; no sign-in is attempted, §6.97).
 // Never addresses an app by name (no AppleScript): with two Inkdrop instances that would reach the user's.
@@ -17,7 +24,8 @@ import { spawn, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { existsSync, lstatSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { isolationProblems } from "./g6-rules.mjs";
+import { isolationProblems, productionProblems } from "./g6-rules.mjs";
+import { shoot, splitNote } from "./g6-shot.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
 const PORT = Number(process.env.G6_PORT || 9334); // G6_PORT: self-test only
@@ -66,14 +74,21 @@ function privateOut(work, name) {
   if (existsSync(out) || (() => { try { lstatSync(out); return true; } catch { return false; } })()) { console.log("REFUSED (nothing done): the output file already exists"); return null; }
   return out;
 }
-// The isolation check every subcommand runs first. Paths are compared as real paths where they exist.
-async function checkIsolation(work) {
+// The check every subcommand runs first: the isolation (A') or, in method C, that the instance on 9334 is the
+// user's Inkdrop this run started. Paths are compared as real paths where they exist.
+async function checkInstance(work) {
   const real = (p) => { if (typeof p !== "string" || !path.isAbsolute(p)) return p; try { return realpathSync.native(p); } catch { return path.resolve(p); } };
   const read = (f) => { try { return readFileSync(path.join(work, f), "utf8").trim(); } catch { return null; } };
   const started = Number(read("inkdrop.pid")) || null;
   const raw = await evaluate(here("g6-isolation.js")).catch(() => null);
   const report = raw && { ...raw, env: real(raw.env), paths: Object.fromEntries(Object.entries(raw.paths ?? {}).map(([k, v]) => [k, Array.isArray(v) ? v.map(real) : real(v)])) };
   const listener = Number(run("lsof", ["-nP", `-iTCP:${PORT}`, "-sTCP:LISTEN", "-t"]).stdout.trim().split("\n")[0]) || null;
+  const othersNow = others().filter((p) => Number(p) !== started);
+  const prod = real(process.env.G6_PROD_DIR || path.join(process.env.HOME, "Library/Application Support/inkdrop"));
+  if (read("mode.txt") === "production") {
+    const problems = productionProblems({ report, listener, started, configExpected: real(path.join(prod, "config.json")), othersNow });
+    return { mode: "production", report, listener, started, problems };
+  }
   // Files open in the started process and its descendants (the database may be held by a helper).
   const tree = [];
   for (let q = started ? [started] : []; q.length;) { const p = q.shift(); tree.push(p); q.push(...run("pgrep", ["-P", String(p)]).stdout.trim().split("\n").filter(Boolean).map(Number)); }
@@ -81,35 +96,39 @@ async function checkIsolation(work) {
   const openFiles = lsof && lsof.status === 0 ? [...new Set(lsof.stdout.split("\n").filter((l) => l.startsWith("n/")).map((l) => real(l.slice(1))))] : null;
   const before = read("others-before.txt");
   const othersBefore = before === null ? null : before.split("\n").filter(Boolean).sort();
-  const othersNow = others().filter((p) => Number(p) !== started);
   const data = real(read("data-path.txt"));
-  const prod = real(process.env.G6_PROD_DIR || path.join(process.env.HOME, "Library/Application Support/inkdrop"));
   const problems = isolationProblems({ report, openFiles, data, prod, listener, started, othersBefore, othersNow });
-  return { report, listener, started, problems, openFilesInData: openFiles?.filter((f) => f.startsWith(`${data}/`)).length ?? null };
+  return { mode: "isolated", report, listener, started, problems, openFilesInData: openFiles?.filter((f) => f.startsWith(`${data}/`)).length ?? null };
 }
 const [sub, work, ...a] = process.argv.slice(2);
-if (!["isolation", "notes", "settings", "capture"].includes(sub) || !work) { console.error("usage: node tests/visual/g6-run.mjs isolation|notes|settings|capture <work> ..."); process.exit(2); }
-const out = ["isolation", "notes"].includes(sub) ? privateOut(work, a[0]) : undefined;
+if (!["isolation", "notes", "note", "settings", "capture"].includes(sub) || !work) { console.error("usage: node tests/visual/g6-run.mjs isolation|notes|note|settings|capture <work> ..."); process.exit(2); }
+const out = ["isolation", "notes"].includes(sub) ? privateOut(work, a[0]) : sub === "note" ? privateOut(work, a[1]) : undefined;
 if (out === null) process.exit(7);
-const iso = await checkIsolation(work);
+const iso = await checkInstance(work);
 if (sub === "isolation") writeFileSync(out, `${JSON.stringify({ checkedAt: new Date().toISOString(), ...iso, report: iso.report && { ...iso.report, paths: undefined, env: undefined } }, null, 1)}\n`, { flag: "wx", mode: 0o600 });
-if (iso.problems.length) { console.log(`NOT ISOLATED (nothing done): ${iso.problems.join("; ")}`); process.exit(4); }
-if (!iso.report.mainUi) { console.log("SIGN-IN SCREEN: the instance is not signed in; A1 stops here (no sign-in is attempted)"); process.exit(6); }
+if (iso.problems.length) { console.log(`NOT ${iso.mode === "production" ? "THE STARTED INKDROP" : "ISOLATED"} (nothing done): ${iso.problems.join("; ")}`); process.exit(4); }
+if (!iso.report.mainUi) { console.log("SIGN-IN SCREEN: the instance is not signed in; the stage stops here (no sign-in is attempted)"); process.exit(6); }
 if (sub === "isolation") {
-  console.log("isolated: userData, config, packages and db in the isolated directory; 9334 is the started instance; the user's Inkdrop unchanged; signed in");
+  console.log(iso.mode === "production" ? `the started Inkdrop ${iso.report.inkdropVersion} on 9334, using the user's config.json, nothing else running; signed in`
+    : "isolated: userData, config, packages and db in the isolated directory; 9334 is the started instance; the user's Inkdrop unchanged; signed in");
 } else if (sub === "notes") {
   const res = await evaluate(here("g6-notes.js"));
   writeFileSync(out, `${JSON.stringify(res, null, 1)}\n`, { flag: "wx", mode: 0o600 });
-  const usable = res.notes.filter((n) => n.plainLines.length && n.codeLines.length);
-  console.log(`${res.count} notes; ${res.notes.filter((n) => n.tutorial).length} tagged as the tutorial; with a plain line and a code block line: ${usable.length} (${usable.filter((n) => n.tutorial).length} of them the tutorial)`);
+  const tut = res.notes.filter((n) => n.tutorial);
+  console.log(`${res.count} notes; ${tut.length} tagged as the tutorial (only those were read); with a plain line and a code block line: ${tut.filter((n) => n.plainLines.length && n.codeLines.length).length}`);
+} else if (sub === "note") {
+  const res = await evaluate(`(async () => { const d = await inkdrop.localDB.notes.get(${JSON.stringify(a[0])}).catch(() => null); if (!d) return null; const h = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(d.body ?? "")))].map((b) => b.toString(16).padStart(2, "0")).join(""); return { _id: d._id, _rev: d._rev, updatedAt: d.updatedAt, bodySha256: h }; })()`);
+  if (!res) { console.log("the note was not found"); process.exit(1); }
+  writeFileSync(out, `${JSON.stringify(res, null, 1)}\n`, { flag: "wx", mode: 0o600 });
+  console.log("note identity recorded (private)");
 } else if (sub === "settings") {
   const acrylic = a[0] === "true";
   console.log(JSON.stringify(await evaluate(`(() => { inkdrop.config.set("editor.lineNumbers", true); inkdrop.config.set("editor.styleActiveLine", true); inkdrop.config.set("core.mainWindow.acrylicEnabled", ${acrylic}); return { lineNumbers: inkdrop.config.get("editor.lineNumbers"), styleActiveLine: inkdrop.config.get("editor.styleActiveLine"), acrylic: inkdrop.config.get("core.mainWindow.acrylicEnabled") }; })()`)));
 } else if (sub === "capture") {
-  const [out, tmp, noteId, plainLine, codeLine, word, mode] = a;
+  const [dir, tmp, noteId, plainLine, codeLine, word, mode] = a;
   const states = mode === "acrylic" ? [["active", Number(plainLine)]] : [["active", Number(plainLine)], ["search", Number(plainLine)], ["code", Number(codeLine)]];
-  mkdirSync(path.join(out, "screenshots"), { recursive: true });
-  mkdirSync(path.join(out, "measurements"), { recursive: true });
+  mkdirSync(path.join(dir, "screenshots"), { recursive: true });
+  mkdirSync(path.join(dir, "measurements"), { recursive: true });
   mkdirSync(path.join(tmp, "bin"), { recursive: true });
   const backdrop = path.join(tmp, "bin", "backdrop");
   if (!existsSync(backdrop)) run("swiftc", ["-O", path.join(p2b, "backdrop.swift"), "-o", backdrop]);
@@ -120,22 +139,28 @@ if (sub === "isolation") {
     for (const [state, line] of states) {
       const name = `inkdrop-${theme}-v35-${mode}-${state}`;
       const st = await evaluate(`window.__G6 = ${JSON.stringify({ noteId, state, line, word })};\n${here("g6-state.js")}`);
-      // The gray backdrop window behind the Inkdrop window (V-32 geometry), closed right after the shot.
-      const bproc = spawn(backdrop, ["gray", "300", "150", "1400", "900"], { stdio: "ignore" });
-      await sleep(1000);
-      // Front and focus through the instance's own Electron APIs (never by app name).
-      const focus = await evaluate(`(async () => { const r = require("@electron/remote"); r.app.focus({ steal: true }); const w = r.getCurrentWindow(); w.moveTop(); w.focus(); await new Promise((x) => setTimeout(x, 800)); return { focused: w.isFocused() }; })()`);
-      const before = await evaluate(here("g6-probe.js"));
-      const shot = path.join(out, "screenshots", `${name}.png`);
-      run("/usr/sbin/screencapture", ["-x", "-R400,250,1200,700", shot]);
+      const shot = path.join(dir, "screenshots", `${name}.png`);
+      let focus, before;
+      try {
+        // The gray backdrop window behind the Inkdrop window (V-32 geometry) only for this shot; the window is
+        // brought to the front through Inkdrop's own window API (6.x has no @electron/remote; never by app name).
+        before = await shoot({ backdrop: [backdrop, "gray", "300", "150", "1400", "900"], capture: ["/usr/sbin/screencapture", "-x", "-R400,250,1200,700", shot], file: shot,
+          between: async () => {
+            focus = await evaluate(`(async () => { await inkdrop.window.show(); await inkdrop.window.focus(); await new Promise((x) => setTimeout(x, 800)); return { focused: document.hasFocus() }; })()`);
+            return evaluate(here("g6-probe.js"));
+          } });
+      } catch (e) { console.log(`STOPPED: ${name}: ${e.message}`); process.exit(1); }
       const at = new Date().toISOString();
       const after = await evaluate(here("g6-probe.js"));
-      bproc.kill();
+      const split = splitNote(before, after);
+      const priv = privateOut(work, `note-${name}.json`);
+      if (!priv) process.exit(7);
+      writeFileSync(priv, `${JSON.stringify(split.private, null, 1)}\n`, { flag: "wx", mode: 0o600 });
       const img = readFileSync(shot);
-      const rec = { name, theme, mode, state, line, capturedAt: at, image: path.relative(out, shot), imageSha256: createHash("sha256").update(img).digest("hex"),
-        pixels: [img.readUInt32BE(16), img.readUInt32BE(20)], windowRectPoints: [400, 250, 1200, 700], backdrop: "gray", stateResult: st, focus, probeBefore: before, probeAfter: after };
-      writeFileSync(path.join(out, "measurements", `${name}.json`), `${JSON.stringify(rec, null, 1)}\n`, { flag: "wx", mode: 0o600 });
-      console.log(`${name}: focused ${after.window.focused}, dpr ${after.window.devicePixelRatio}, doc unchanged ${st.docUnchanged}`);
+      const rec = { name, theme, mode, state, line, capturedAt: at, image: path.relative(dir, shot), imageSha256: createHash("sha256").update(img).digest("hex"),
+        pixels: [img.readUInt32BE(16), img.readUInt32BE(20)], windowRectPoints: [400, 250, 1200, 700], backdrop: "gray", stateResult: st, focus, ...split.public };
+      writeFileSync(path.join(dir, "measurements", `${name}.json`), `${JSON.stringify(rec, null, 1)}\n`, { flag: "wx" });
+      console.log(`${name}: focused ${after.window.focused}, dpr ${after.window.devicePixelRatio}, doc unchanged ${st.docUnchanged}, note unchanged ${split.public.noteUnchanged}`);
     }
   }
 }

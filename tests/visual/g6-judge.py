@@ -8,8 +8,13 @@ Inkdrop's own measured values are the reference (V-22, research/11 §14.5; V-30 
   RECORD   search match, code block and acrylic states: new reference values, no earlier value to compare
 Nothing here changes a theme or an earlier record.
 
+The run as a whole needs all 8 conditions (2 themes x opaque active / search / code and acrylic active), each
+exactly once, each record naming its own file and an image that exists with the recorded SHA-256; a missing,
+repeated or broken condition makes the run INCOMPLETE, whatever the single captures say.
+
 usage: python3 -I tests/visual/g6-judge.py <capture out dir> [--out judge.json]
 """
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -43,7 +48,7 @@ def invalid(rec):
         out.append("devicePixelRatio changed during the shot")
     if rec["pixels"] != [round(WINDOW[0] * a["window"]["devicePixelRatio"]), round(WINDOW[1] * a["window"]["devicePixelRatio"])]:
         out.append(f"image {rec['pixels']} does not match the window at devicePixelRatio {a['window']['devicePixelRatio']}")
-    if b["note"] != a["note"] or not st["docUnchanged"]:
+    if rec.get("noteUnchanged") is not True or not st["docUnchanged"]:
         out.append("the note changed")
     if not st["selectionEmpty"] or st["cursorLine"] != rec["line"]:
         out.append("the cursor is not alone on the requested line")
@@ -88,6 +93,34 @@ def judge(rec):
             "layers": rec["probeAfter"]["layers"]}
 
 
+EXPECTED = [(t, m, s) for t in ("solarized-dark", "kanagawa-dragon") for m, s in (("opaque", "active"), ("opaque", "search"), ("opaque", "code"), ("acrylic", "active"))]
+
+
+def completeness(root):
+    """Problems with the set of captures in root (empty: all 8 conditions, once each, records and images intact)."""
+    out, seen = [], {}
+    for f in sorted(root.glob("measurements/*.json")):
+        try:
+            rec = json.loads(f.read_text())
+            key = (rec["theme"], rec["mode"], rec["state"])
+        except (ValueError, KeyError) as e:
+            out.append(f"{f.name}: unreadable record ({type(e).__name__})")
+            continue
+        if f.stem != rec.get("name") or rec.get("name") != f"inkdrop-{key[0]}-v35-{key[1]}-{key[2]}":
+            out.append(f"{f.name}: the record does not name its own condition")
+        if key in seen:
+            out.append(f"{f.name}: condition {key} repeated (also {seen[key]})")
+        seen.setdefault(key, f.name)
+        img = root / rec.get("image", "")
+        if not img.is_file():
+            out.append(f"{f.name}: image missing")
+        elif hashlib.sha256(img.read_bytes()).hexdigest() != rec.get("imageSha256"):
+            out.append(f"{f.name}: image does not match the recorded SHA-256")
+    out += [f"condition {k} missing" for k in EXPECTED if k not in seen]
+    out += [f"condition {k} not expected" for k in seen if k not in EXPECTED]
+    return out
+
+
 def main():
     root = Path(sys.argv[1])
     out = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv else None
@@ -98,9 +131,11 @@ def main():
              "devicePixelRatio": rec["probeAfter"]["window"]["devicePixelRatio"], **judge(rec)}
         results.append(r)
         print(f"{r['state']:8} {rec['name']}  {'; '.join(r.get('why', [])) or ', '.join(r.get('differs', [])) or ''}")
+    missing = completeness(root)
+    print(f"\nrun: {'COMPLETE' if not missing else 'INCOMPLETE: ' + '; '.join(missing)}")
     if out:
-        Path(out).write_text(json.dumps({"reference": V22, "results": results}, indent=1) + "\n")
-    return 1 if any(r["state"] == "INVALID" for r in results) else 0
+        Path(out).write_text(json.dumps({"reference": V22, "complete": not missing, "completeness": missing, "results": results}, indent=1) + "\n")
+    return 1 if missing or any(r["state"] == "INVALID" for r in results) else 0
 
 
 if __name__ == "__main__":

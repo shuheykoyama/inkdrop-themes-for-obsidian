@@ -41,3 +41,19 @@ export function isolationProblems({ report, openFiles, data, prod, listener, sta
   if (!Array.isArray(othersBefore) || !Array.isArray(othersNow) || JSON.stringify(othersBefore) !== JSON.stringify(othersNow)) out.push("the user's Inkdrop processes changed or are unknown");
   return out;
 }
+
+// Method C (research/14 §6.105): why the instance on 9334 cannot be taken as the user's Inkdrop that
+// tests/runtime/inkdrop-production.sh started (empty: it is). report is g6-isolation.js's result (its PID fields
+// are null in 6.x, which has no @electron/remote, so the PID is taken from the listener); configExpected the real
+// path of the user's config.json; othersNow the Inkdrop main PIDs other than the started one.
+export function productionProblems({ report, listener, started, configExpected, othersNow }) {
+  const out = [];
+  if (!Number.isInteger(started) || started <= 0) out.push("the started PID is unknown");
+  if (!Number.isInteger(listener) || listener !== started) out.push(`port 9334 is held by pid ${listener}, not by the started instance (${started})`);
+  if (!Array.isArray(othersNow) || othersNow.length) out.push("another Inkdrop is running besides the started one, or that is unknown");
+  if (!report || typeof report !== "object") return [...out, "no report from the instance on 9334"];
+  if (!isPath(configExpected)) out.push("the user's config.json path is not a usable path");
+  else if (report.paths?.configFile !== configExpected) out.push("the instance does not use the user's config.json");
+  if (typeof report.inkdropVersion !== "string" || !report.inkdropVersion) out.push("the Inkdrop version is not reported");
+  return out;
+}

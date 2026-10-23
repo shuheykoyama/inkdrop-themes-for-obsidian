@@ -11,6 +11,7 @@ import os
 import subprocess
 import sys
 import tempfile
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -34,7 +35,6 @@ def probe(theme, acrylic=False):
             "lineNumber": {"found": True, "color": "rgb(88, 110, 116)" if sd else "rgb(98, 94, 91)"},
         },
         "layers": [],
-        "note": {"_id": "note:x", "_rev": "1-a", "updatedAt": 1, "bodySha256": "ab"},
     }
 
 
@@ -43,7 +43,7 @@ def rec(theme="solarized-dark", mode="opaque", state="active"):
     return {"name": f"{theme}-{mode}-{state}", "theme": theme, "mode": mode, "state": state, "line": 5, "pixels": [1200, 700],
             "stateResult": {"docUnchanged": True, "selectionEmpty": True, "cursorLine": 5, "searchError": None,
                             "activeLineHasMatch": state == "search", "activeLineClasses": ["cm-activeLine"] + (["cm-codeblock"] if state == "code" else [])},
-            "probeBefore": p, "probeAfter": copy.deepcopy(p)}
+            "probeBefore": p, "probeAfter": copy.deepcopy(p), "noteUnchanged": True}
 
 
 def mut(r, f):
@@ -89,7 +89,8 @@ JUDGE = [
     ("no active line element", mut(rec(), both(["styles", "activeLine"], {"found": False})), "INVALID"),
     ("image size does not match the scale", mut(rec(), lambda r: r.update(pixels=[2400, 1400])), "INVALID"),
     ("2x scale with a 2x image", mut(rec(), lambda r: (both(["window", "devicePixelRatio"], 2)(r), r.update(pixels=[2400, 1400]))), "PASS"),
-    ("note revision changed", mut(rec(), lambda r: r["probeAfter"]["note"].update(_rev="2-b")), "INVALID"),
+    ("note changed during the shot", mut(rec(), lambda r: r.update(noteUnchanged=False)), "INVALID"),
+    ("note identity not compared", mut(rec(), lambda r: r.pop("noteUnchanged")), "INVALID"),
     ("document changed in the editor", mut(rec(), lambda r: r["stateResult"].update(docUnchanged=False)), "INVALID"),
     ("text selected", mut(rec(), lambda r: r["stateResult"].update(selectionEmpty=False)), "INVALID"),
     ("cursor on another line", mut(rec(), lambda r: r["stateResult"].update(cursorLine=9)), "INVALID"),
@@ -142,6 +143,192 @@ ISOLATION = [
     ("user's Inkdrop restarted", iso(othersNow=["101"]), 1),
     ("user's Inkdrop PIDs not recorded", iso(othersBefore=None), 1),
 ]
+
+
+PROD_OK = {"report": {"pid": None, "env": None, "mainUi": True, "inkdropVersion": "6.2.0", "paths": {"configFile": "/home/inkdrop/config.json"}},
+           "listener": 300, "started": 300, "configExpected": "/home/inkdrop/config.json", "othersNow": []}
+
+
+def prod(**change):
+    d = copy.deepcopy(PROD_OK)
+    for k, v in change.items():
+        if k == "configFile":
+            d["report"]["paths"]["configFile"] = v
+        elif k == "version":
+            d["report"]["inkdropVersion"] = v
+        else:
+            d[k] = v
+    return d
+
+
+PRODUCTION = [
+    ("the started Inkdrop with the user's config", prod(), 0),
+    ("9334 held by another pid", prod(listener=301), 1),
+    ("started PID unknown", prod(started=None), 2),
+    ("another Inkdrop running too", prod(othersNow=["302"]), 1),
+    ("running Inkdrops unknown", prod(othersNow=None), 1),
+    ("no report", prod(report=None), 1),
+    ("another config.json", prod(configFile="/tmp/config.json"), 1),
+    ("no config path reported", prod(configFile=None), 1),
+    ("version not reported", prod(version=""), 1),
+]
+
+
+def shot_cases(t):
+    """g6-shot.mjs: the backdrop is closed whatever happens, a failed capture is never a result, and the public
+    record keeps no note identity."""
+    png = t / "ok.png"
+    png.write_bytes(bytes.fromhex("89504e470d0a1a0a") + b"\0" * 200)
+    script = r"""
+import { shoot, splitNote } from './tests/visual/g6-shot.mjs';
+import { spawnSync } from 'node:child_process';
+const [t, png] = process.argv.slice(1);
+const marker = '41.25';
+const alive = () => spawnSync('pgrep', ['-f', `sleep ${marker}`]).status === 0;
+const res = {};
+for (const [k, capture] of [['fails', ['false']], ['noPng', ['sh', '-c', `echo text > ${t}/b.png`]], ['ok', ['cp', png, `${t}/c.png`]]]) {
+  const file = { fails: `${t}/a.png`, noPng: `${t}/b.png`, ok: `${t}/c.png` }[k];
+  let err = null;
+  try { await shoot({ backdrop: ['sleep', marker], capture, file, settleMs: 200 }); } catch (e) { err = e.message; }
+  res[k] = { err, backdropLeft: alive() };
+}
+const n = { _id: 'note:x', _rev: '1-a', updatedAt: 1, bodySha256: 'ab' };
+const same = splitNote({ a: 1, note: n }, { a: 2, note: { ...n } });
+const changed = splitNote({ note: n }, { note: { ...n, _rev: '2-b' } });
+const missing = splitNote({}, {});
+res.split = { publicText: JSON.stringify(same.public), same: same.public.noteUnchanged, changed: changed.public.noteUnchanged, missing: missing.public.noteUnchanged, privateKept: same.private.before?._id === 'note:x' };
+console.log(JSON.stringify(res));
+"""
+    r = json.loads(subprocess.run(["node", "--input-type=module", "-e", script, str(t), str(png)], cwd=ROOT, capture_output=True, text=True, check=True).stdout)
+    sp = r["split"]
+    return [
+        ("capture command fails: an error, backdrop closed", r["fails"]["err"] is not None and not r["fails"]["backdropLeft"], r["fails"]),
+        ("capture writes no PNG: an error, backdrop closed", r["noPng"]["err"] is not None and not r["noPng"]["backdropLeft"], r["noPng"]),
+        ("capture succeeds: no error, backdrop closed", r["ok"]["err"] is None and not r["ok"]["backdropLeft"], r["ok"]),
+        ("public record without note ID, revision or body hash", all(x not in sp["publicText"] for x in ("note:x", "1-a", "bodySha256", '"ab"')) and sp["privateKept"], sp["publicText"][:80]),
+        ("note unchanged / changed / not read", sp["same"] is True and sp["changed"] is False and sp["missing"] is False, sp),
+    ]
+
+
+def complete_cases(t):
+    """g6-judge.py's completeness over the set of captures."""
+    import hashlib
+
+    def build(d, skip=(), extra=(), bad_sha=(), no_image=()):
+        (d / "measurements").mkdir(parents=True)
+        (d / "screenshots").mkdir()
+        for (th, m, st), copy_ in [(k, False) for k in J.EXPECTED if k not in skip] + [(k, True) for k in extra]:
+            name = f"inkdrop-{th}-v35-{m}-{st}"
+            img = d / "screenshots" / f"{name}.png"
+            img.write_bytes(name.encode())
+            sha = hashlib.sha256(img.read_bytes()).hexdigest()
+            if (th, m, st) in no_image:
+                img.unlink()
+            # An extra record of an existing condition is a second file for it.
+            fname = f"{name}-copy" if copy_ and (th, m, st) in J.EXPECTED else name
+            (d / "measurements" / f"{fname}.json").write_text(json.dumps({"name": name, "theme": th, "mode": m, "state": st,
+                "image": f"screenshots/{name}.png", "imageSha256": "0" * 64 if (th, m, st) in bad_sha else sha}))
+        return d
+
+    k = ("kanagawa-dragon", "opaque", "code")
+    cases = [
+        ("all 8 conditions once", build(t / "c1"), 0),
+        ("one condition missing", build(t / "c2", skip=(k,)), 1),
+        ("one condition repeated (a second file for it)", build(t / "c3", extra=(k,)), 2),
+        ("an image missing", build(t / "c4", no_image=(k,)), 1),
+        ("an image not matching its SHA-256", build(t / "c5", bad_sha=(k,)), 1),
+        ("a condition not in the plan", build(t / "c6", extra=(("solarized-dark", "acrylic", "search"),)), 1),
+    ]
+    return [(name, len(J.completeness(d)) == want, f"{len(J.completeness(d))} problems (declared {want})") for name, d, want in cases]
+
+
+def production_cases(t):
+    """tests/runtime/inkdrop-production.sh with a stand-in Inkdrop (a sleeping python process with a marker) and
+    a stand-in profile; never the real Inkdrop, its profile, the keychain or LaunchServices."""
+    out = []
+    marker = "G6FAKEINKDROP"
+    spawn_fake = f"python3 -c 'import time; time.sleep(300)' {marker} > /dev/null 2>&1 &"
+    pkgs = t / "pkgs"
+    (pkgs / "solarized-dark").mkdir(parents=True)
+    (pkgs / "solarized-dark/package.json").write_text("{}")
+
+    def profile(name):
+        p = t / name
+        (p / "packages/math").mkdir(parents=True)
+        (p / "packages/math/index.js").write_text("x")
+        (p / "config.json").write_text('{"core": {"theme": "solarized-dark"}}')
+        (p / "keymap.json").write_text("{}")
+        (p / "state-cache").mkdir()
+        return p
+
+    def sh(cmd, work, p, **env):
+        e = {**os.environ, "G6_PROD_DIR": str(p), "G6_PORT": "19335", "G6_QUIT_WAIT": "3", "G6_PACKAGES": str(pkgs),
+             "G6_TEST_PGREP": f"pgrep -f {marker}", "G6_TEST_QUIT": f"pkill -f {marker}", "G6_TEST_OPEN": spawn_fake, **env}
+        return subprocess.run(["bash", "tests/runtime/inkdrop-production.sh", cmd, str(work)], cwd=ROOT, env=e, capture_output=True, text=True)
+
+    def running():
+        return subprocess.run(["pgrep", "-f", marker], capture_output=True).returncode == 0
+
+    # Was running: quit for the run, everything put back, started normally again.
+    p = profile("p1")
+    subprocess.run(["sh", "-c", spawn_fake])
+    time.sleep(0.5)
+    w = t / "w1"
+    w.mkdir()
+    r1 = sh("prepare", w, p)
+    placed = (p / "packages/solarized-dark").exists()
+    (p / "config.json").write_text('{"core": {"theme": "kanagawa-dragon"}, "editor": {"lineNumbers": true}}')
+    r2 = sh("restore", w, p)
+    ok = r1.returncode == 0 and placed and r2.returncode == 0 and "RESTORED" in r2.stdout \
+        and json.loads((p / "config.json").read_text()) == {"core": {"theme": "solarized-dark"}} and not (p / "packages/solarized-dark").exists() and running()
+    out.append(("was running: quit, config and packages restored, started again", ok, f"prepare {r1.returncode}, restore {r2.returncode}, running {running()}"))
+    subprocess.run(["pkill", "-f", marker])
+    # Was not running: restored and left quit.
+    p = profile("p2")
+    w = t / "w2"
+    w.mkdir()
+    r1 = sh("prepare", w, p)
+    (p / "config.json").write_text("{}")
+    r2 = sh("restore", w, p)
+    ok = r1.returncode == 0 and r2.returncode == 0 and "left quit" in r2.stdout and not running() and json.loads((p / "config.json").read_text()) == {"core": {"theme": "solarized-dark"}}
+    out.append(("was not running: restored and left quit", ok, f"prepare {r1.returncode}, restore {r2.returncode}, running {running()}"))
+    # Inkdrop does not quit at the restore: config.json is not written back and the restore is not a success.
+    p = profile("p3")
+    w = t / "w3"
+    w.mkdir()
+    sh("prepare", w, p)
+    (p / "config.json").write_text("{}")
+    subprocess.run(["sh", "-c", spawn_fake])
+    time.sleep(0.5)
+    r = sh("restore", w, p, G6_TEST_QUIT="true")
+    out.append(("Inkdrop does not quit: RESTORE NOT CONFIRMED, nothing written", r.returncode == 5 and "RESTORE NOT CONFIRMED" in r.stdout and (p / "config.json").read_text() == "{}", f"exit {r.returncode}"))
+    subprocess.run(["pkill", "-f", marker])
+    # A recorded file that changed and cannot be restored from the backup (keymap.json): not a success.
+    p = profile("p4")
+    w = t / "w4"
+    w.mkdir()
+    sh("prepare", w, p)
+    (p / "keymap.json").write_text('{"changed": true}')
+    r = sh("restore", w, p)
+    out.append(("a recorded file differs after the restore: RESTORE NOT CONFIRMED", r.returncode == 5 and "keymap.json" in r.stdout, f"exit {r.returncode}"))
+    # Inkdrop running and not quitting at the prepare: nothing is changed.
+    p = profile("p5")
+    w = t / "w5"
+    w.mkdir()
+    subprocess.run(["sh", "-c", spawn_fake])
+    time.sleep(0.5)
+    r = sh("prepare", w, p, G6_TEST_QUIT="true")
+    out.append(("Inkdrop does not quit at the prepare: not prepared, nothing placed", r.returncode == 1 and not (p / "packages/solarized-dark").exists(), f"exit {r.returncode}"))
+    subprocess.run(["pkill", "-f", marker])
+    # The production check fails (nothing on the port): capture takes no picture.
+    w = t / "w6"
+    w.mkdir()
+    (w / "mode.txt").write_text("production\n")
+    shots = t / "shots"
+    c = subprocess.run(["node", "tests/visual/g6-run.mjs", "capture", str(w), str(shots), str(t / "tmp"), "note:x", "5", "9", "word", "opaque"], cwd=ROOT,
+                       env={**os.environ, "G6_PORT": "19335", "G6_PROD_DIR": str(p)}, capture_output=True, text=True)
+    out.append(("production check fails: no capture", c.returncode == 4 and not shots.exists(), f"exit {c.returncode}"))
+    return out
 
 
 def launcher_cases(t):
@@ -235,12 +422,23 @@ def main():
         ok = got == want
         fails += not ok
         print(f"{'PASS' if ok else 'FAIL'} g6 self-test: isolation: {name}: {got} problems (declared {want})")
+    counts = json.loads(subprocess.run(["node", "--input-type=module", "-e", script.replace("isolationProblems", "productionProblems"), json.dumps([c for _, c, _ in PRODUCTION])], cwd=ROOT, capture_output=True, text=True, check=True).stdout)
+    for (name, _, want), got in zip(PRODUCTION, counts):
+        ok = got == want
+        fails += not ok
+        print(f"{'PASS' if ok else 'FAIL'} g6 self-test: production check: {name}: {got} problems (declared {want})")
     with tempfile.TemporaryDirectory() as t:
-        launcher = launcher_cases(Path(t))
+        t = Path(t)
+        (t / "l").mkdir()
+        launcher = launcher_cases(t / "l")
+        rest = [("shot", c) for c in shot_cases(t)] + [("completeness", c) for c in complete_cases(t)] + [("method C", c) for c in production_cases(t)]
+    for kind, (name, ok, detail) in rest:
+        fails += not ok
+        print(f"{'PASS' if ok else 'FAIL'} g6 self-test: {kind}: {name} ({detail})")
     for name, ok, detail in launcher:
         fails += not ok
         print(f"{'PASS' if ok else 'FAIL'} g6 self-test: launcher: {name} ({detail})")
-    total = len(JUDGE) + len(ISOLATION) + len(launcher)
+    total = len(JUDGE) + len(ISOLATION) + len(PRODUCTION) + len(launcher) + len(rest)
     print(f"\n{'all' if not fails else str(total - fails) + ' of'} {total} g6 self-test cases behaved as expected")
     return 1 if fails else 0
 
