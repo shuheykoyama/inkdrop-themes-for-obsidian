@@ -13,15 +13,17 @@
 # usage: bash tests/runtime/inkdrop-isolated.sh start <work_dir>
 #          exit 0 started: the PID is alive, its page is on 127.0.0.1:9334 and the listener on 9334 is that PID
 #          exit 3 not started: another Inkdrop holds the single-instance lock (the started process quit by itself)
-#          exit 1 not started, and the started process (if any) was stopped again
-#          exit 5 not started, and the started process could NOT be confirmed stopped
+#          exit 1 not started, and the cleanup is confirmed: the started PID and every process it started gone,
+#                 nothing listens on 9334, the user's Inkdrop PIDs unchanged
+#          exit 5 not started, and that cleanup could NOT be confirmed (CLEANUP FAILED)
 #        bash tests/runtime/inkdrop-isolated.sh stop <work_dir>
-#          exit 0 only when the process is gone, 9334 is closed and the user's Inkdrop PIDs are unchanged
+#          exit 0 only when the same cleanup is confirmed
 # The app name in front before and after the start is recorded (front.txt): a start blocked by the lock may
 # bring the user's Inkdrop to the front, which is recorded and never "restored" by guessing.
 # G6_PACKAGES=<dir> copies theme packages into the isolated packages/ before the start (never the user's).
 # Self-test only: INKDROP_APP replaces /Applications/Inkdrop.app, G6_PROD_DIR the user's data directory,
-# G6_PORT the port, G6_START_TIMEOUT and G6_STOP_WAIT the seconds to wait, G6_TEST_KILL the kill command.
+# G6_PORT the port, G6_START_TIMEOUT and G6_STOP_WAIT the seconds to wait, G6_TEST_KILL the kill command,
+# G6_TEST_SPARE_HELPERS=1 leaves the started helpers alone, G6_TEST_OTHERS a file listing the "user's" PIDs.
 set -euo pipefail
 cmd="$1"; work="$2"
 app="${INKDROP_APP:-/Applications/Inkdrop.app}"
@@ -29,7 +31,10 @@ prod="${G6_PROD_DIR:-$HOME/Library/Application Support/inkdrop}"
 port="${G6_PORT:-9334}"
 killcmd="${G6_TEST_KILL:-kill}"
 # PIDs of the Inkdrop main processes other than the one started here (helpers have other names).
-others() { pgrep -x Inkdrop | grep -vx "$(cat "$work/inkdrop.pid" 2>/dev/null || echo none)" | sort || true; }
+others() {
+  if [ -n "${G6_TEST_OTHERS:-}" ]; then sort "$G6_TEST_OTHERS"; return; fi
+  pgrep -x Inkdrop | grep -vx "$(cat "$work/inkdrop.pid" 2>/dev/null || echo none)" | sort || true
+}
 listener() { lsof -nP -iTCP:"$port" -sTCP:LISTEN -t 2>/dev/null | head -1 || true; }
 front() { command -v lsappinfo > /dev/null && lsappinfo info -only name "$(lsappinfo front)" 2>/dev/null | sed 's/.*"\(.*\)"/\1/' || echo unknown; }
 # Stop the started PID only: TERM, TERM, KILL; true when it is gone.
@@ -42,11 +47,38 @@ stop_pid() {
   done
   ! kill -0 "$pid" 2>/dev/null
 }
-# A start that did not succeed: stop what was started; exit 1 if that worked, 5 if not.
+# The processes the started PID has started (Electron helpers), recursively, added to tree.txt while they are its
+# descendants: once the main process is gone they would no longer be found through it.
+record_tree() {
+  local q="$pid" p c
+  while [ -n "$q" ]; do
+    p="${q%% *}"; [ "$q" = "$p" ] && q="" || q="${q#* }"
+    for c in $(pgrep -P "$p" 2>/dev/null || true); do echo "$c" >> "$work/tree.txt"; q="${q:+$q }$c"; done
+  done
+  touch "$work/tree.txt"; sort -u -o "$work/tree.txt" "$work/tree.txt"
+}
+# Stop what this script started (the main PID, then any recorded helper still alive), nothing else.
+stop_all() {
+  record_tree
+  stop_pid "$pid" || true
+  if [ -z "${G6_TEST_SPARE_HELPERS:-}" ]; then for h in $(cat "$work/tree.txt"); do stop_pid "$h" || true; done; fi
+}
+# What is not back as before (empty: the cleanup is confirmed).
+leftovers() {
+  kill -0 "$pid" 2>/dev/null && echo "the started process (pid $pid) is still running"
+  for h in $(cat "$work/tree.txt"); do kill -0 "$h" 2>/dev/null && echo "a process it started (pid $h) is still running"; done
+  { curl -s --max-time 1 "http://127.0.0.1:$port/json/version" > /dev/null || [ -n "$(listener)" ]; } && echo "port $port is still open"
+  others > "$work/others-after.txt"
+  cmp -s "$work/others-before.txt" "$work/others-after.txt" || echo "the user's Inkdrop processes changed"
+  return 0
+}
+# A start that did not succeed: stop what was started; exit 1 when the cleanup is confirmed, 5 when not.
 abort() {
   echo "NOT STARTED: $1"
-  if stop_pid "$pid"; then echo "the started process (pid $pid) is stopped"; exit 1; fi
-  echo "CLEANUP FAILED: the started process (pid $pid) is still running"; exit 5
+  stop_all
+  local left; left="$(leftovers)"
+  if [ -z "$left" ]; then echo "cleaned up: the started processes are gone, port $port closed, the user's Inkdrop unchanged"; exit 1; fi
+  echo "CLEANUP FAILED: $(echo "$left" | paste -sd';' -)"; exit 5
 }
 
 if [ "$cmd" = start ]; then
@@ -69,6 +101,7 @@ if [ "$cmd" = start ]; then
   up=false
   for _ in $(seq 1 "${G6_START_TIMEOUT:-40}"); do
     kill -0 "$pid" 2>/dev/null || break
+    record_tree
     if curl -s --max-time 1 "http://127.0.0.1:$port/json/list" | grep -q "file://$app"; then up=true; break; fi
     sleep 1
   done
@@ -85,11 +118,10 @@ if [ "$cmd" = start ]; then
   echo "$data"
 elif [ "$cmd" = stop ]; then
   pid="$(cat "$work/inkdrop.pid")"
-  stop_pid "$pid" || { echo "isolated Inkdrop still running (pid $pid)"; exit 1; }
-  if curl -s --max-time 1 "http://127.0.0.1:$port/json/version" > /dev/null || [ -n "$(listener)" ]; then echo "port $port still open"; exit 1; fi
-  others > "$work/others-after.txt"
-  if ! cmp -s "$work/others-before.txt" "$work/others-after.txt"; then echo "the user's Inkdrop processes changed during the run"; exit 1; fi
-  echo "stopped isolated Inkdrop (pid $pid); port $port closed; the user's Inkdrop processes unchanged"
+  stop_all
+  left="$(leftovers)"
+  if [ -n "$left" ]; then echo "STOP NOT CONFIRMED: $(echo "$left" | paste -sd';' -)"; exit 1; fi
+  echo "stopped isolated Inkdrop (pid $pid) and the processes it started; port $port closed; the user's Inkdrop processes unchanged"
 else
   echo "usage: $0 start|stop <work_dir>" >&2; exit 2
 fi

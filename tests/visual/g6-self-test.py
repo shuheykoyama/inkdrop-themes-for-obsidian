@@ -182,12 +182,43 @@ def launcher_cases(t):
     pid, up = alive(t / "w3")
     out.append(("cleanup that fails is reported", p.returncode == 5 and "CLEANUP FAILED" in p.stdout and up, f"exit {p.returncode}, still running {up}"))
     subprocess.run(["kill", "-KILL", str(pid)], capture_output=True)
-    # A later step without a confirmed isolation does nothing: notes on a port where no instance runs.
-    w4 = t / "w4"
-    w4.mkdir()
-    notes = t / "notes.json"
-    p = subprocess.run(["node", "tests/visual/g6-run.mjs", "notes", str(w4), str(notes)], cwd=ROOT, env=base, capture_output=True, text=True)
-    out.append(("notes without a confirmed isolation: nothing done", p.returncode == 4 and not notes.exists(), f"exit {p.returncode}, wrote {notes.exists()}"))
+    # The cleanup after a failed start must confirm more than the main PID: a helper it started that is still
+    # running and still listening on the port, a helper still running, a change in the user's Inkdrop PIDs.
+    listening = app("Listening", f"python3 -m http.server {port} --bind 127.0.0.1 > /dev/null 2>&1 &\nexec sleep 300\n")
+    p = start(t / "w5", INKDROP_APP=str(listening), G6_TEST_SPARE_HELPERS="1")
+    left = [int(x) for x in (t / "w5/tree.txt").read_text().split()]
+    out.append(("port still open after a failed start", p.returncode == 5 and f"port {port} is still open" in p.stdout, f"exit {p.returncode}"))
+    for x in left:
+        subprocess.run(["kill", "-KILL", str(x)], capture_output=True)
+    helper = app("Helper", "sleep 300 &\nexec sleep 300\n")
+    p = start(t / "w6", INKDROP_APP=str(helper), G6_TEST_SPARE_HELPERS="1")
+    left = [int(x) for x in (t / "w6/tree.txt").read_text().split()]
+    out.append(("a started helper still running after a failed start", p.returncode == 5 and "a process it started" in p.stdout, f"exit {p.returncode}"))
+    for x in left:
+        subprocess.run(["kill", "-KILL", str(x)], capture_output=True)
+    others = t / "others.txt"
+    others.write_text("100\n")
+    changer = app("Changer", f"echo 999 > '{others}'\nexec sleep 300\n")
+    p = start(t / "w7", INKDROP_APP=str(changer), G6_TEST_OTHERS=str(others))
+    out.append(("the user's Inkdrop PIDs changed during a failed start", p.returncode == 5 and "user's Inkdrop processes changed" in p.stdout, f"exit {p.returncode}"))
+    # Raw A1 data goes only to <work>/private/<name>.json, <work> outside the repository; the output check runs
+    # before anything else, so an allowed place gets as far as the isolation check (exit 4, nothing written).
+    def notes(work, name):
+        return subprocess.run(["node", "tests/visual/g6-run.mjs", "notes", str(work), name], cwd=ROOT, env=base, capture_output=True, text=True)
+    w8 = t / "w8"
+    w8.mkdir()
+    p = notes(w8, "notes.json")
+    out.append(("notes in an allowed place without a confirmed isolation: nothing done", p.returncode == 4 and not (w8 / "private/notes.json").exists(), f"exit {p.returncode}"))
+    p = notes(ROOT / "tests", "notes.json")
+    out.append(("notes output inside the repository: refused", p.returncode == 7 and not (ROOT / "tests/private").exists(), f"exit {p.returncode}"))
+    p = notes(w8, "../escape.json")
+    out.append(("notes output outside <work>/private: refused", p.returncode == 7 and not (t / "escape.json").exists(), f"exit {p.returncode}"))
+    w9 = t / "w9"
+    w9.mkdir()
+    (t / "elsewhere").mkdir()
+    (w9 / "private").symlink_to(t / "elsewhere")
+    p = notes(w9, "notes.json")
+    out.append(("notes output through a symbolic link: refused", p.returncode == 7 and not any((t / "elsewhere").iterdir()), f"exit {p.returncode}"))
     return out
 
 

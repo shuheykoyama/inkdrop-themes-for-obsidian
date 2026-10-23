@@ -1,10 +1,12 @@
 // Step 11G G6 (research/14 §6.95): drive the isolated Inkdrop on 127.0.0.1:9334 (started by
 // tests/runtime/inkdrop-isolated.sh) for V-35. One subcommand per step, so every step that needs the user's
 // approval can be run on its own:
-//   isolation <work> <out.json>    stage A1: is the instance on 9334 the isolated one (g6-rules.mjs)?
-//   notes <work> <private.json>    stage A1: read-only inventory of the notes (g6-notes.js); the raw result
-//                                  (note IDs, revisions, hashes) goes only to <private.json> outside the repository;
-//                                  only counts and yes/no answers are printed
+//   isolation <work> <name.json>   stage A1: is the instance on 9334 the isolated one (g6-rules.mjs)?
+//   notes <work> <name.json>       stage A1: read-only inventory of the notes (g6-notes.js); only counts and
+//                                  yes/no answers are printed
+// Both write only to <work>/private/<name.json> (privateOut): <work> is the A1 scratch directory outside the
+// repository, the Obsidian vault (iCloud) and the user's Inkdrop profile, private/ a real directory (not a
+// link) and the file new; any other place is refused (exit 7) before anything else runs.
 //   settings <work> <acrylic:true|false>  stage A2: line numbers, active line, acrylic (after a restart)
 //   capture <work> <out> <tmp> <noteId> <plainLine> <codeLine> <word> <opaque|acrylic>
 //                                  stage A2: both themes x the states of that mode, native captures + probes
@@ -13,7 +15,7 @@
 // Never addresses an app by name (no AppleScript): with two Inkdrop instances that would reach the user's.
 import { spawn, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
+import { existsSync, lstatSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { isolationProblems } from "./g6-rules.mjs";
 
@@ -42,6 +44,28 @@ const run = (cmd, a) => spawnSync(cmd, a, { cwd: repo, encoding: "utf8" });
 const others = () => run("pgrep", ["-x", "Inkdrop"]).stdout.trim().split("\n").filter(Boolean).sort();
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// The one place raw A1 data (note IDs, revisions, body hashes) may go: <work>/private/<name>, refused unless
+// <work> really is outside the repository, the iCloud folders and the user's Inkdrop profile, private/ is a real
+// directory and <name> a plain new file name. Returns the path, or null with the reason printed.
+function privateOut(work, name) {
+  const real = (p) => { try { return realpathSync.native(p); } catch { return null; } };
+  const under = (p, d) => d && (p === d || p.startsWith(`${d}/`));
+  const w = real(work);
+  const home = process.env.HOME;
+  const blocked = [real(repo), real(path.join(home, "Library/Mobile Documents")), real(process.env.G6_PROD_DIR || path.join(home, "Library/Application Support/inkdrop"))];
+  const why = !w ? "the work directory does not exist"
+    : blocked.some((d) => under(w, d)) ? "the work directory is inside the repository, iCloud or the user's Inkdrop profile"
+    : typeof name !== "string" || !/^[\w.-]+\.json$/.test(name) ? "the output must be a plain file name ending in .json"
+    : null;
+  if (why) { console.log(`REFUSED (nothing done): ${why}`); return null; }
+  const dir = path.join(w, "private");
+  if (!existsSync(dir)) mkdirSync(dir, { mode: 0o700 });
+  const st = lstatSync(dir);
+  if (!st.isDirectory() || st.isSymbolicLink() || real(dir) !== dir) { console.log("REFUSED (nothing done): <work>/private is not a real directory"); return null; }
+  const out = path.join(dir, name);
+  if (existsSync(out) || (() => { try { lstatSync(out); return true; } catch { return false; } })()) { console.log("REFUSED (nothing done): the output file already exists"); return null; }
+  return out;
+}
 // The isolation check every subcommand runs first. Paths are compared as real paths where they exist.
 async function checkIsolation(work) {
   const real = (p) => { if (typeof p !== "string" || !path.isAbsolute(p)) return p; try { return realpathSync.native(p); } catch { return path.resolve(p); } };
@@ -65,15 +89,17 @@ async function checkIsolation(work) {
 }
 const [sub, work, ...a] = process.argv.slice(2);
 if (!["isolation", "notes", "settings", "capture"].includes(sub) || !work) { console.error("usage: node tests/visual/g6-run.mjs isolation|notes|settings|capture <work> ..."); process.exit(2); }
+const out = ["isolation", "notes"].includes(sub) ? privateOut(work, a[0]) : undefined;
+if (out === null) process.exit(7);
 const iso = await checkIsolation(work);
-if (sub === "isolation") writeFileSync(a[0], `${JSON.stringify({ checkedAt: new Date().toISOString(), ...iso, report: iso.report && { ...iso.report, paths: undefined, env: undefined } }, null, 1)}\n`);
+if (sub === "isolation") writeFileSync(out, `${JSON.stringify({ checkedAt: new Date().toISOString(), ...iso, report: iso.report && { ...iso.report, paths: undefined, env: undefined } }, null, 1)}\n`, { flag: "wx", mode: 0o600 });
 if (iso.problems.length) { console.log(`NOT ISOLATED (nothing done): ${iso.problems.join("; ")}`); process.exit(4); }
 if (!iso.report.mainUi) { console.log("SIGN-IN SCREEN: the instance is not signed in; A1 stops here (no sign-in is attempted)"); process.exit(6); }
 if (sub === "isolation") {
   console.log("isolated: userData, config, packages and db in the isolated directory; 9334 is the started instance; the user's Inkdrop unchanged; signed in");
 } else if (sub === "notes") {
   const res = await evaluate(here("g6-notes.js"));
-  writeFileSync(a[0], `${JSON.stringify(res, null, 1)}\n`);
+  writeFileSync(out, `${JSON.stringify(res, null, 1)}\n`, { flag: "wx", mode: 0o600 });
   const usable = res.notes.filter((n) => n.plainLines.length && n.codeLines.length);
   console.log(`${res.count} notes; ${res.notes.filter((n) => n.tutorial).length} tagged as the tutorial; with a plain line and a code block line: ${usable.length} (${usable.filter((n) => n.tutorial).length} of them the tutorial)`);
 } else if (sub === "settings") {
@@ -108,7 +134,7 @@ if (sub === "isolation") {
       const img = readFileSync(shot);
       const rec = { name, theme, mode, state, line, capturedAt: at, image: path.relative(out, shot), imageSha256: createHash("sha256").update(img).digest("hex"),
         pixels: [img.readUInt32BE(16), img.readUInt32BE(20)], windowRectPoints: [400, 250, 1200, 700], backdrop: "gray", stateResult: st, focus, probeBefore: before, probeAfter: after };
-      writeFileSync(path.join(out, "measurements", `${name}.json`), `${JSON.stringify(rec, null, 1)}\n`);
+      writeFileSync(path.join(out, "measurements", `${name}.json`), `${JSON.stringify(rec, null, 1)}\n`, { flag: "wx", mode: 0o600 });
       console.log(`${name}: focused ${after.window.focused}, dpr ${after.window.devicePixelRatio}, doc unchanged ${st.docUnchanged}`);
     }
   }

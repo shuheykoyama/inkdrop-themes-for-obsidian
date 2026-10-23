@@ -22,7 +22,7 @@ export function isolationProblems({ report, openFiles, data, prod, listener, sta
   const p = report.paths ?? {};
   // Every reported value must be an absolute path (or absent); a value that is there but not a path fails.
   const entries = Object.entries(p).flatMap(([k, v]) => (Array.isArray(v) ? v.map((x) => [k, x]) : [[k, v]])).filter(([, v]) => v !== null && v !== undefined);
-  for (const [k, v] of entries) if (!isPath(v)) out.push(`${k} is not an absolute path (${JSON.stringify(v)})`);
+  for (const [k, v] of entries) if (!isPath(v)) out.push(`${k} is not an absolute path`);
   const good = entries.filter(([, v]) => isPath(v));
   for (const [k, v] of good) {
     if (isPath(prod) && inside(v, prod)) out.push(`${k} is in the user's profile`);
