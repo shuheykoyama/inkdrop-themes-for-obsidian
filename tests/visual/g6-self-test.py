@@ -263,7 +263,7 @@ def production_cases(t):
 
     def sh(cmd, work, p, **env):
         e = {**os.environ, "G6_PROD_DIR": str(p), "G6_PORT": "19335", "G6_QUIT_WAIT": "3", "G6_PACKAGES": str(pkgs),
-             "G6_TEST_PGREP": f"pgrep -f {marker}", "G6_TEST_QUIT": f"pkill -f {marker}", "G6_TEST_OPEN": spawn_fake, **env}
+             "G6_TEST_PGREP": f"pgrep -f {marker}", "G6_TEST_HELPERS": "pgrep -f G6FAKEHELPER", "G6_TEST_QUIT": f"pkill -f {marker}", "G6_TEST_OPEN": spawn_fake, **env}
         return subprocess.run(["bash", "tests/runtime/inkdrop-production.sh", cmd, str(work)], cwd=ROOT, env=e, capture_output=True, text=True)
 
     def running():
@@ -328,6 +328,116 @@ def production_cases(t):
     c = subprocess.run(["node", "tests/visual/g6-run.mjs", "capture", str(w), str(shots), str(t / "tmp"), "note:x", "5", "9", "word", "opaque"], cwd=ROOT,
                        env={**os.environ, "G6_PORT": "19335", "G6_PROD_DIR": str(p)}, capture_output=True, text=True)
     out.append(("production check fails: no capture", c.returncode == 4 and not shots.exists(), f"exit {c.returncode}"))
+    # Inkdrop gone but port 9334 still open: the restore touches no file.
+    p = profile("p7")
+    w = t / "w7"
+    w.mkdir()
+    sh("prepare", w, p)
+    (p / "config.json").write_text("{}")
+    srv = subprocess.Popen(["python3", "-m", "http.server", "19335", "--bind", "127.0.0.1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    time.sleep(1)
+    try:
+        r = sh("restore", w, p)
+    finally:
+        srv.kill()
+        srv.wait()
+    out.append(("main process gone but 9334 open: nothing written back", r.returncode == 5 and "no file was touched" in r.stdout and (p / "config.json").read_text() == "{}", f"exit {r.returncode}"))
+    # No Inkdrop running: no quit is sent at the prepare or the restore.
+    p = profile("p8")
+    w = t / "w8"
+    w.mkdir()
+    flag = t / "quit-sent"
+    r1 = sh("prepare", w, p, G6_TEST_QUIT=f"touch '{flag}'")
+    r2 = sh("restore", w, p, G6_TEST_QUIT=f"touch '{flag}'")
+    out.append(("nothing running: no quit sent", r1.returncode == 0 and r2.returncode == 0 and not flag.exists(), f"prepare {r1.returncode}, restore {r2.returncode}, quit sent {flag.exists()}"))
+    # A theme package that cannot be copied: no partial package is left in packages/, the prepare fails.
+    p = profile("p9")
+    w = t / "w9"
+    w.mkdir()
+    bad = t / "badpkgs/kanagawa-dragon"
+    bad.mkdir(parents=True)
+    (bad / "package.json").write_text("{}")
+    (bad / "secret.css").write_text("x")
+    (bad / "secret.css").chmod(0)
+    r = sh("prepare", w, p, G6_PACKAGES=str(t / "badpkgs"))
+    (bad / "secret.css").chmod(0o644)
+    left = sorted(x.name for x in (p / "packages").iterdir())
+    out.append(("a package copy fails: no partial package left, not prepared", r.returncode == 1 and "no partial package left" in r.stdout and left == ["math"], f"exit {r.returncode}, packages {left}"))
+    return out
+
+
+def loop_cases(t):
+    """g6-shot.mjs captureLoop: the next shot is not taken once the document or the note changed."""
+    script = r"""
+import { captureLoop } from './tests/visual/g6-shot.mjs';
+const conds = [1, 2, 3].map((i) => ({ name: `c${i}` }));
+const run = async (docAt, noteAt) => {
+  const shots = [];
+  const r = await captureLoop({ conditions: conds,
+    setState: async (c) => ({ docUnchanged: c.name !== docAt }),
+    takeShot: async (c, st) => { shots.push(c.name); return { noteUnchanged: c.name !== noteAt, stateResult: st }; } });
+  return { shots, stopped: r.stopped, done: r.done };
+};
+console.log(JSON.stringify({ doc: await run('c2', null), note: await run(null, 'c2'), none: await run(null, null) }));
+"""
+    r = json.loads(subprocess.run(["node", "--input-type=module", "-e", script], cwd=ROOT, capture_output=True, text=True, check=True).stdout)
+    return [
+        ("document changed by the state step: that shot and the rest not taken", r["doc"]["shots"] == ["c1"] and r["doc"]["stopped"], r["doc"]),
+        ("note changed during a shot: no further shot", r["note"]["shots"] == ["c1", "c2"] and r["note"]["stopped"], r["note"]),
+        ("nothing changed: all shots", r["none"]["shots"] == ["c1", "c2", "c3"] and r["none"]["stopped"] is None, r["none"]),
+    ]
+
+
+def runner_cases(t):
+    """tests/visual/g6-c-run.sh with stand-ins for the production script and g6-run.mjs: every way out after the
+    backup goes through the restore, and the restore result is reported apart from the capture result."""
+    prod = t / "prod.sh"
+    prod.write_text("""#!/bin/sh
+echo "prod $1" >> "$CALLS"
+case "$1" in
+  prepare) [ "$FAIL_AT" = prepare ] && exit 1; mkdir -p "$2/private/backup"; echo '{}' > "$2/private/backup/config.json" ;;
+  restore) [ "${RESTORE_EXIT:-0}" = 0 ] && echo "RESTORED: as before"; exit "${RESTORE_EXIT:-0}" ;;
+  start) [ "$FAIL_AT" = start ] && exit 1 ;;
+  restart) [ "$FAIL_AT" = restart ] && exit 5 ;;
+esac
+exit 0
+""")
+    run = t / "run.sh"
+    run.write_text(r"""#!/bin/sh
+sub="$1"; work="$2"
+echo "run $sub $(eval echo \${$#})" >> "$CALLS"
+case "$sub" in
+  notes) printf '%s' '{"notes": [{"_id": "n1", "plainLines": [5], "codeLines": [9], "plainWord": "Create"}]}' > "$work/private/notes.json" ;;
+  note) printf '{"rev": "1"}' > "$work/private/$4" ;;
+  capture) eval mode=\${$#}; [ "$FAIL_AT" = "capture-$mode" ] && exit 1; [ "$NOTE_CHANGED" = "$mode" ] && exit 3 ;;
+esac
+exit 0
+""")
+    out = []
+
+    def go(name, **env):
+        w = t / f"r-{name}"
+        w.mkdir()
+        calls = t / f"calls-{name}"
+        calls.write_text("")
+        e = {**os.environ, "G6_TEST_PROD": f"sh {prod}", "G6_TEST_RUN": f"sh {run}", "CALLS": str(calls), **env}
+        p = subprocess.run(["bash", "tests/visual/g6-c-run.sh", str(w), str(t / f"o-{name}"), str(t / "tmp")], cwd=ROOT, env=e, capture_output=True, text=True)
+        return p, calls.read_text().split("\n")
+
+    p, calls = go("ok")
+    out.append(("all steps succeed: restored once, exit 0", p.returncode == 0 and calls.count("prod restore") == 1 and "CAPTURE: all 8 captures taken" in p.stdout and "RESTORE: RESTORED" in p.stdout, f"exit {p.returncode}"))
+    p, calls = go("start", FAIL_AT="start")
+    out.append(("start fails: restore runs, capture not reported as done", p.returncode == 1 and "prod restore" in calls and "stopped at start" in p.stdout and "RESTORE: RESTORED" in p.stdout, f"exit {p.returncode}"))
+    p, calls = go("restart", FAIL_AT="restart")
+    out.append(("restart fails: restore runs, no capture", p.returncode == 1 and "prod restore" in calls and not any(c.startswith("run capture") for c in calls), f"exit {p.returncode}"))
+    p, calls = go("capture", FAIL_AT="capture-opaque")
+    out.append(("capture fails: restore runs, the acrylic part not run", p.returncode == 1 and "prod restore" in calls and "run capture acrylic" not in calls, f"exit {p.returncode}"))
+    p, calls = go("note", NOTE_CHANGED="opaque")
+    out.append(("note changed: stopped, restore runs, no further step", p.returncode == 1 and "stopped at capture-opaque (exit 3)" in p.stdout and calls[-2:] == ["prod restore", ""] and "run settings true" not in calls, f"exit {p.returncode}"))
+    p, calls = go("restorefail", RESTORE_EXIT="5")
+    out.append(("restore fails: reported NOT CONFIRMED, not called usable, exit 1", p.returncode == 1 and "RESTORE: NOT CONFIRMED" in p.stdout and "not known to be usable" in p.stdout, f"exit {p.returncode}"))
+    p, calls = go("prepare", FAIL_AT="prepare")
+    out.append(("prepare fails before a backup: no restore, nothing changed", p.returncode == 1 and "prod restore" not in calls and "nothing was changed" in p.stdout, f"exit {p.returncode}"))
     return out
 
 
@@ -431,7 +541,7 @@ def main():
         t = Path(t)
         (t / "l").mkdir()
         launcher = launcher_cases(t / "l")
-        rest = [("shot", c) for c in shot_cases(t)] + [("completeness", c) for c in complete_cases(t)] + [("method C", c) for c in production_cases(t)]
+        rest = [("loop", c) for c in loop_cases(t)] + [("run", c) for c in runner_cases(t)] + [("shot", c) for c in shot_cases(t)] + [("completeness", c) for c in complete_cases(t)] + [("method C", c) for c in production_cases(t)]
     for kind, (name, ok, detail) in rest:
         fails += not ok
         print(f"{'PASS' if ok else 'FAIL'} g6 self-test: {kind}: {name} ({detail})")

@@ -16,7 +16,7 @@
 //                                  both themes x the states of that mode, native captures + probes; the public
 //                                  records in <out> keep only whether the note stayed the same, its identity goes
 //                                  to <work>/private; a failed capture stops the run (exit 1), the backdrop is
-//                                  always closed
+//                                  always closed; a note or document that changed stops it at once (exit 3)
 // Every subcommand first checks the isolation again and does nothing when it fails (exit 4), or when the window
 // shows the sign-in screen instead of the app (exit 6: A1 stops there; no sign-in is attempted, §6.97).
 // Never addresses an app by name (no AppleScript): with two Inkdrop instances that would reach the user's.
@@ -25,7 +25,7 @@ import { createHash } from "node:crypto";
 import { existsSync, lstatSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { isolationProblems, productionProblems } from "./g6-rules.mjs";
-import { shoot, splitNote } from "./g6-shot.mjs";
+import { captureLoop, shoot, splitNote } from "./g6-shot.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
 const PORT = Number(process.env.G6_PORT || 9334); // G6_PORT: self-test only
@@ -132,35 +132,45 @@ if (sub === "isolation") {
   mkdirSync(path.join(tmp, "bin"), { recursive: true });
   const backdrop = path.join(tmp, "bin", "backdrop");
   if (!existsSync(backdrop)) run("swiftc", ["-O", path.join(p2b, "backdrop.swift"), "-o", backdrop]);
-  for (const theme of ["solarized-dark", "kanagawa-dragon"]) {
-    const sel = await evaluate(`window.__P2B_THEME = ${JSON.stringify(theme)};\n${readFileSync(path.join(p2b, "inkdrop-select-theme.js"), "utf8")}`);
-    if (!sel.active?.includes(theme)) { console.log(`STOPPED: theme ${theme} is not active (${sel.active})`); process.exit(1); }
-    await evaluate(readFileSync(path.join(p2b, "inkdrop-window-geometry.js"), "utf8"));
-    for (const [state, line] of states) {
-      const name = `inkdrop-${theme}-v35-${mode}-${state}`;
-      const st = await evaluate(`window.__G6 = ${JSON.stringify({ noteId, state, line, word })};\n${here("g6-state.js")}`);
-      const shot = path.join(dir, "screenshots", `${name}.png`);
-      let focus, before;
-      try {
-        // The gray backdrop window behind the Inkdrop window (V-32 geometry) only for this shot; the window is
-        // brought to the front through Inkdrop's own window API (6.x has no @electron/remote; never by app name).
-        before = await shoot({ backdrop: [backdrop, "gray", "300", "150", "1400", "900"], capture: ["/usr/sbin/screencapture", "-x", "-R400,250,1200,700", shot], file: shot,
-          between: async () => {
-            focus = await evaluate(`(async () => { await inkdrop.window.show(); await inkdrop.window.focus(); await new Promise((x) => setTimeout(x, 800)); return { focused: document.hasFocus() }; })()`);
-            return evaluate(here("g6-probe.js"));
-          } });
-      } catch (e) { console.log(`STOPPED: ${name}: ${e.message}`); process.exit(1); }
+  const conditions = ["solarized-dark", "kanagawa-dragon"].flatMap((theme) => states.map(([state, line]) => ({ theme, state, line, name: `inkdrop-${theme}-v35-${mode}-${state}` })));
+  let theme = null;
+  const result = await captureLoop({
+    conditions,
+    setState: async (c) => {
+      if (c.theme !== theme) {
+        const sel = await evaluate(`window.__P2B_THEME = ${JSON.stringify(c.theme)};\n${readFileSync(path.join(p2b, "inkdrop-select-theme.js"), "utf8")}`);
+        if (!sel.active?.includes(c.theme)) throw new Error(`theme ${c.theme} is not active (${sel.active})`);
+        await evaluate(readFileSync(path.join(p2b, "inkdrop-window-geometry.js"), "utf8"));
+        theme = c.theme;
+      }
+      return evaluate(`window.__G6 = ${JSON.stringify({ noteId, state: c.state, line: c.line, word })};\n${here("g6-state.js")}`);
+    },
+    takeShot: async (c, st) => {
+      const shot = path.join(dir, "screenshots", `${c.name}.png`);
+      let focus;
+      // The gray backdrop window behind the Inkdrop window (V-32 geometry) only for this shot; the window is
+      // brought to the front through Inkdrop's own window API (6.x has no @electron/remote; never by app name).
+      const before = await shoot({ backdrop: [backdrop, "gray", "300", "150", "1400", "900"], capture: ["/usr/sbin/screencapture", "-x", "-R400,250,1200,700", shot], file: shot,
+        between: async () => {
+          focus = await evaluate(`(async () => { await inkdrop.window.show(); await inkdrop.window.focus(); await new Promise((x) => setTimeout(x, 800)); return { focused: document.hasFocus() }; })()`);
+          return evaluate(here("g6-probe.js"));
+        } });
       const at = new Date().toISOString();
       const after = await evaluate(here("g6-probe.js"));
       const split = splitNote(before, after);
-      const priv = privateOut(work, `note-${name}.json`);
-      if (!priv) process.exit(7);
+      const priv = privateOut(work, `note-${c.name}.json`);
+      if (!priv) throw new Error("no private place for the note identity");
       writeFileSync(priv, `${JSON.stringify(split.private, null, 1)}\n`, { flag: "wx", mode: 0o600 });
       const img = readFileSync(shot);
-      const rec = { name, theme, mode, state, line, capturedAt: at, image: path.relative(dir, shot), imageSha256: createHash("sha256").update(img).digest("hex"),
+      const rec = { name: c.name, theme: c.theme, mode, state: c.state, line: c.line, capturedAt: at, image: path.relative(dir, shot), imageSha256: createHash("sha256").update(img).digest("hex"),
         pixels: [img.readUInt32BE(16), img.readUInt32BE(20)], windowRectPoints: [400, 250, 1200, 700], backdrop: "gray", stateResult: st, focus, ...split.public };
-      writeFileSync(path.join(dir, "measurements", `${name}.json`), `${JSON.stringify(rec, null, 1)}\n`, { flag: "wx" });
-      console.log(`${name}: focused ${after.window.focused}, dpr ${after.window.devicePixelRatio}, doc unchanged ${st.docUnchanged}, note unchanged ${split.public.noteUnchanged}`);
-    }
-  }
+      writeFileSync(path.join(dir, "measurements", `${c.name}.json`), `${JSON.stringify(rec, null, 1)}\n`, { flag: "wx" });
+      console.log(`${c.name}: focused ${after.window.focused}, dpr ${after.window.devicePixelRatio}, doc unchanged ${st.docUnchanged}, note unchanged ${split.public.noteUnchanged}`);
+      return rec;
+    },
+  }).catch((e) => ({ error: e.message }));
+  if (result.error) { console.log(`STOPPED: ${result.error}`); process.exit(1); }
+  // A changed note: recorded and stopped; nothing is written back and no further step runs (exit 3).
+  if (result.stopped) { writeFileSync(path.join(dir, `NOTE-CHANGED-${mode}.txt`), `${result.stopped}\n`); console.log(`NOTE CHANGED, STOPPED: ${result.stopped}`); process.exit(3); }
+  console.log(`${result.done} captures (${mode})`);
 }

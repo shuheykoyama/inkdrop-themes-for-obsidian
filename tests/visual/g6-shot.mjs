@@ -2,6 +2,7 @@
 // small functions the self-test (tests/visual/g6-self-test.py) can drive without Inkdrop:
 //   shoot      one native capture with the backdrop window behind; the backdrop is always closed, and a capture
 //              whose command failed or left no PNG is an error, never a result
+//   captureLoop  the loop over the conditions, stopping at the first sign that the note changed
 //   splitNote  the shown note's identity (ID, revision, body hash) out of a probe: the public record keeps only
 //              whether it stayed the same, the identity goes to the private file
 import { spawn, spawnSync } from "node:child_process";
@@ -35,4 +36,20 @@ export function splitNote(before, after) {
   const strip = (p) => { const { note, ...rest } = p; return rest; };
   const same = !!before.note && !!after.note && JSON.stringify(before.note) === JSON.stringify(after.note);
   return { public: { probeBefore: strip(before), probeAfter: strip(after), noteUnchanged: same }, private: { before: before.note ?? null, after: after.note ?? null } };
+}
+
+// The capture loop (§6.107): for each condition, set the state (setState returns g6-state.js's result), then take
+// the shot (takeShot returns the record). A document that the state step changed stops the loop before that shot;
+// a note that changed during a shot stops it after that shot. Nothing is written back: the caller records the stop
+// and goes to the quit and restore. Returns { done: shots taken, stopped: why, or null }.
+export async function captureLoop({ conditions, setState, takeShot }) {
+  let done = 0;
+  for (const c of conditions) {
+    const st = await setState(c);
+    if (st?.docUnchanged !== true) return { done, stopped: `${c.name}: the document changed while the state was set (before the shot)` };
+    const rec = await takeShot(c, st);
+    done++;
+    if (rec?.noteUnchanged !== true || rec?.stateResult?.docUnchanged !== true) return { done, stopped: `${c.name}: the note changed during the shot` };
+  }
+  return { done, stopped: null };
 }

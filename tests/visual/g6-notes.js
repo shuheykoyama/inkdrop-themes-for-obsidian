@@ -29,7 +29,9 @@
       if (/^[A-Za-z][^#>|!\[]*\s\w+/.test(l) && l.length > 20) plain.push(i + 1);
     });
     out.push({ _id: n._id, _rev: n._rev, updatedAt: n.updatedAt, title: n.title, tutorial: true,
-      bodySha256: await sha(n.body ?? ""), lines: lines.length, plainLines: plain.slice(0, 5), codeLines: code.slice(0, 5) });
+      bodySha256: await sha(n.body ?? ""), lines: lines.length, plainLines: plain.slice(0, 5), codeLines: code.slice(0, 5),
+      // A word of the first plain line to search for (state 2): it is then found on the active line.
+      plainWord: plain.length ? (lines[plain[0] - 1].match(/[A-Za-z]{5,}/) ?? [null])[0] : null });
   }
   const info = await db.info?.().catch(() => null);
   return { count: typeof count === "number" ? count : null, updateSeq: info?.update_seq ?? null, docCount: info?.doc_count ?? null, notes: out };
