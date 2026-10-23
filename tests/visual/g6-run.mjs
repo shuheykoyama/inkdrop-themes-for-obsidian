@@ -39,14 +39,16 @@ async function evaluate(expression, timeoutMs = 60000) {
   if (!page) throw new Error(`no Inkdrop page target on port ${PORT}`);
   const ws = new WebSocket(page.webSocketDebuggerUrl);
   await new Promise((resolve, reject) => { ws.onopen = resolve; ws.onerror = reject; });
+  // The time-out timer is cleared at the end, or it would keep the process alive for its full length.
+  let timer;
   try {
     const res = await Promise.race([
       new Promise((resolve) => { ws.onmessage = (ev) => { const m = JSON.parse(ev.data); if (m.id === 1) resolve(m.result); }; ws.send(JSON.stringify({ id: 1, method: "Runtime.evaluate", params: { expression, returnByValue: true, awaitPromise: true } })); }),
-      new Promise((_, reject) => setTimeout(() => reject(new Error("page did not answer")), timeoutMs)),
+      new Promise((_, reject) => { timer = setTimeout(() => reject(new Error("page did not answer")), timeoutMs); }),
     ]);
     if (res?.exceptionDetails) throw new Error(`page exception: ${JSON.stringify(res.exceptionDetails).slice(0, 400)}`);
     return res?.result?.value;
-  } finally { ws.close(); }
+  } finally { clearTimeout(timer); ws.close(); }
 }
 const run = (cmd, a) => spawnSync(cmd, a, { cwd: repo, encoding: "utf8" });
 const others = () => run("pgrep", ["-x", "Inkdrop"]).stdout.trim().split("\n").filter(Boolean).sort();

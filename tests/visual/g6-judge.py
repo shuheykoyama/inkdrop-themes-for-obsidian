@@ -1,7 +1,8 @@
 """Step 11G G6 (research/14 §6.93.4, §6.95): V-35 judgement of the captures of tests/visual/g6-run.mjs.
 
 Inkdrop's own measured values are the reference (V-22, research/11 §14.5; V-30 state 4), so each capture is:
-  INVALID  the state was not reached or the capture is not usable (theme, settings, focus, window, note changed)
+  INVALID  the state was not reached or the capture is not usable (theme, settings, focus, window, note changed,
+           a search or selection highlight left over from another state)
   PASS     the active line, gutter text and KD gutter line equal V-22 and the band runs from gutter to text
   DIFF     a value differs from V-22 while every compared condition equals V-22's (version, theme, settings)
   HOLD     a value differs and a condition differs too, so theme and environment cannot be told apart
@@ -56,6 +57,12 @@ def invalid(rec):
         out.append(f"no search match on the active line ({st['searchError'] or 'none found'})")
     if rec["state"] == "code" and not any("code" in c.lower() for c in st["activeLineClasses"]):
         out.append("the active line is not marked as a code block line")
+    # Nothing carried over from another state (§6.117): no search highlight or panel outside the search state, no
+    # selection-match highlight anywhere. A record without these fields cannot show it, so it is not usable either.
+    if rec["state"] != "search" and (st.get("searchMatches") != 0 or st.get("searchPanelOpen") is not False):
+        out.append("a search highlight or panel is left from another state")
+    if st.get("selectionMatches") != 0:
+        out.append("selection-match highlights are shown")
     return out
 
 
