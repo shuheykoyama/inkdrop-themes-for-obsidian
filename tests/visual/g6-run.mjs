@@ -1,21 +1,24 @@
 // Step 11G G6 (research/14 §6.95): drive the isolated Inkdrop on 127.0.0.1:9334 (started by
 // tests/runtime/inkdrop-isolated.sh) for V-35. One subcommand per step, so every step that needs the user's
 // approval can be run on its own:
-//   isolation <work> <out.json>    stage A1: is the instance on 9334 the isolated one (g6-rules.mjs)? exit 0 / 4
-//   notes <out.json>               stage A1: read-only inventory of the notes (g6-notes.js)
-//   settings <acrylic:true|false>  stage A2: theme-independent settings of the isolated instance (line numbers,
-//                                  active line, acrylic; acrylic takes effect after a restart)
-//   capture <out> <tmp> <noteId> <plainLine> <codeLine> <word> <opaque|acrylic>
+//   isolation <work> <out.json>    stage A1: is the instance on 9334 the isolated one (g6-rules.mjs)?
+//   notes <work> <private.json>    stage A1: read-only inventory of the notes (g6-notes.js); the raw result
+//                                  (note IDs, revisions, hashes) goes only to <private.json> outside the repository;
+//                                  only counts and yes/no answers are printed
+//   settings <work> <acrylic:true|false>  stage A2: line numbers, active line, acrylic (after a restart)
+//   capture <work> <out> <tmp> <noteId> <plainLine> <codeLine> <word> <opaque|acrylic>
 //                                  stage A2: both themes x the states of that mode, native captures + probes
+// Every subcommand first checks the isolation again and does nothing when it fails (exit 4), or when the window
+// shows the sign-in screen instead of the app (exit 6: A1 stops there; no sign-in is attempted, §6.97).
 // Never addresses an app by name (no AppleScript): with two Inkdrop instances that would reach the user's.
 import { spawn, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { isolationProblems } from "./g6-rules.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
-const PORT = 9334;
+const PORT = Number(process.env.G6_PORT || 9334); // G6_PORT: self-test only
 const p2b = path.join(repo, "research/evidence/phase2-p0/tools");
 const here = (f) => readFileSync(path.join(repo, "tests/visual", f), "utf8");
 
@@ -39,25 +42,40 @@ const run = (cmd, a) => spawnSync(cmd, a, { cwd: repo, encoding: "utf8" });
 const others = () => run("pgrep", ["-x", "Inkdrop"]).stdout.trim().split("\n").filter(Boolean).sort();
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const [sub, ...a] = process.argv.slice(2);
-if (sub === "isolation") {
-  const [work, out] = a;
-  const started = Number(readFileSync(path.join(work, "inkdrop.pid"), "utf8"));
-  const report = await evaluate(here("g6-isolation.js")).catch(() => null);
+// The isolation check every subcommand runs first. Paths are compared as real paths where they exist.
+async function checkIsolation(work) {
+  const real = (p) => { if (typeof p !== "string" || !path.isAbsolute(p)) return p; try { return realpathSync.native(p); } catch { return path.resolve(p); } };
+  const read = (f) => { try { return readFileSync(path.join(work, f), "utf8").trim(); } catch { return null; } };
+  const started = Number(read("inkdrop.pid")) || null;
+  const raw = await evaluate(here("g6-isolation.js")).catch(() => null);
+  const report = raw && { ...raw, env: real(raw.env), paths: Object.fromEntries(Object.entries(raw.paths ?? {}).map(([k, v]) => [k, Array.isArray(v) ? v.map(real) : real(v)])) };
   const listener = Number(run("lsof", ["-nP", `-iTCP:${PORT}`, "-sTCP:LISTEN", "-t"]).stdout.trim().split("\n")[0]) || null;
-  const before = readFileSync(path.join(work, "others-before.txt"), "utf8").trim().split("\n").filter(Boolean).sort();
-  const now = others().filter((p) => Number(p) !== started);
-  const data = readFileSync(path.join(work, "data-path.txt"), "utf8").trim();
-  const prod = process.env.G6_PROD_DIR || path.join(process.env.HOME, "Library/Application Support/inkdrop");
-  const problems = isolationProblems({ report, data, prod, listener, started, othersBefore: before, othersNow: now });
-  writeFileSync(out, `${JSON.stringify({ checkedAt: new Date().toISOString(), report, listener, started, problems }, null, 1)}\n`);
-  console.log(problems.length ? `NOT ISOLATED: ${problems.join("; ")}` : "isolated: data, config, packages and db in the isolated directory; 9334 is the started instance; the user's Inkdrop unchanged");
-  process.exit(problems.length ? 4 : 0);
+  // Files open in the started process and its descendants (the database may be held by a helper).
+  const tree = [];
+  for (let q = started ? [started] : []; q.length;) { const p = q.shift(); tree.push(p); q.push(...run("pgrep", ["-P", String(p)]).stdout.trim().split("\n").filter(Boolean).map(Number)); }
+  const lsof = tree.length ? run("lsof", ["-nP", "-Fn", "-p", tree.join(",")]) : null;
+  const openFiles = lsof && lsof.status === 0 ? [...new Set(lsof.stdout.split("\n").filter((l) => l.startsWith("n/")).map((l) => real(l.slice(1))))] : null;
+  const before = read("others-before.txt");
+  const othersBefore = before === null ? null : before.split("\n").filter(Boolean).sort();
+  const othersNow = others().filter((p) => Number(p) !== started);
+  const data = real(read("data-path.txt"));
+  const prod = real(process.env.G6_PROD_DIR || path.join(process.env.HOME, "Library/Application Support/inkdrop"));
+  const problems = isolationProblems({ report, openFiles, data, prod, listener, started, othersBefore, othersNow });
+  return { report, listener, started, problems, openFilesInData: openFiles?.filter((f) => f.startsWith(`${data}/`)).length ?? null };
+}
+const [sub, work, ...a] = process.argv.slice(2);
+if (!["isolation", "notes", "settings", "capture"].includes(sub) || !work) { console.error("usage: node tests/visual/g6-run.mjs isolation|notes|settings|capture <work> ..."); process.exit(2); }
+const iso = await checkIsolation(work);
+if (sub === "isolation") writeFileSync(a[0], `${JSON.stringify({ checkedAt: new Date().toISOString(), ...iso, report: iso.report && { ...iso.report, paths: undefined, env: undefined } }, null, 1)}\n`);
+if (iso.problems.length) { console.log(`NOT ISOLATED (nothing done): ${iso.problems.join("; ")}`); process.exit(4); }
+if (!iso.report.mainUi) { console.log("SIGN-IN SCREEN: the instance is not signed in; A1 stops here (no sign-in is attempted)"); process.exit(6); }
+if (sub === "isolation") {
+  console.log("isolated: userData, config, packages and db in the isolated directory; 9334 is the started instance; the user's Inkdrop unchanged; signed in");
 } else if (sub === "notes") {
   const res = await evaluate(here("g6-notes.js"));
   writeFileSync(a[0], `${JSON.stringify(res, null, 1)}\n`);
-  for (const n of res.notes) console.log(n.title, "| plain", n.plainLines.length ? n.plainLines[0] : "-", "| code", n.codeLines.length ? n.codeLines[0] : "-");
-  console.log(`${res.count} notes; update_seq ${res.updateSeq}`);
+  const usable = res.notes.filter((n) => n.plainLines.length && n.codeLines.length);
+  console.log(`${res.count} notes; ${res.notes.filter((n) => n.tutorial).length} tagged as the tutorial; with a plain line and a code block line: ${usable.length} (${usable.filter((n) => n.tutorial).length} of them the tutorial)`);
 } else if (sub === "settings") {
   const acrylic = a[0] === "true";
   console.log(JSON.stringify(await evaluate(`(() => { inkdrop.config.set("editor.lineNumbers", true); inkdrop.config.set("editor.styleActiveLine", true); inkdrop.config.set("core.mainWindow.acrylicEnabled", ${acrylic}); return { lineNumbers: inkdrop.config.get("editor.lineNumbers"), styleActiveLine: inkdrop.config.get("editor.styleActiveLine"), acrylic: inkdrop.config.get("core.mainWindow.acrylicEnabled") }; })()`)));
@@ -94,6 +112,4 @@ if (sub === "isolation") {
       console.log(`${name}: focused ${after.window.focused}, dpr ${after.window.devicePixelRatio}, doc unchanged ${st.docUnchanged}`);
     }
   }
-} else {
-  console.error("usage: node tests/visual/g6-run.mjs isolation|notes|settings|capture ..."); process.exit(2);
 }

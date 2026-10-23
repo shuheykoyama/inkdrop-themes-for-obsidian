@@ -98,8 +98,9 @@ JUDGE = [
     ("code line not marked", mut(rec(state="code"), lambda r: r["stateResult"].update(activeLineClasses=["cm-activeLine"])), "INVALID"),
 ]
 
-ISO_OK = {"report": {"pid": 200, "env": "/w/d", "paths": {"userData": "/w/d", "configFile": "/w/d/config.json", "configDir": None,
+ISO_OK = {"report": {"pid": 200, "env": "/w/d", "mainUi": True, "paths": {"userData": "/w/d", "configFile": "/w/d/config.json", "configDir": None,
           "packageDirs": ["/w/d/packages", "/Applications/Inkdrop.app/Contents/Resources/app.asar/packages"], "db": "/w/d/db"}},
+          "openFiles": ["/w/d/db/000003.log", "/Applications/Inkdrop.app/Contents/MacOS/Inkdrop"],
           "data": "/w/d", "prod": "/home/inkdrop", "listener": 200, "started": 200, "othersBefore": ["100"], "othersNow": ["100"]}
 
 
@@ -117,18 +118,77 @@ def iso(**change):
 
 ISOLATION = [
     ("isolated", iso(), 0),
+    ("db confirmed only by an open file", iso(path_db=None), 0),
     ("no report", iso(report=None), 1),
     ("9334 held by another pid", iso(listener=100), 1),
+    ("nothing listens on 9334", iso(listener=None), 1),
     ("page of another pid", iso(pid=100), 1),
+    ("page PID missing", iso(pid=None), 1),
+    ("started PID missing", iso(started=None), 3),
     ("env not the isolated dir", iso(env=None), 1),
-    ("userData in the user's profile", iso(path_userData="/home/inkdrop"), 1),
-    ("config file in the user's profile", iso(path_configFile="/home/inkdrop/config.json"), 1),
-    ("db elsewhere", iso(path_db="/tmp/db"), 1),
-    ("a prefix of the isolated dir is not inside it", iso(path_db="/w/d2/db"), 1),
+    ("userData in the user's profile", iso(path_userData="/home/inkdrop"), 2),
+    ("userData an empty string", iso(path_userData=""), 2),
+    ("config file in the user's profile", iso(path_configFile="/home/inkdrop/config.json"), 2),
     ("no userData reported", iso(path_userData=None), 1),
     ("no config path reported", iso(path_configFile=None), 1),
+    ("no packages path reported", iso(path_packageDirs=None), 1),
+    ("only the bundle's packages reported", iso(path_packageDirs=["/Applications/Inkdrop.app/Contents/Resources/app.asar/packages"]), 1),
+    ("db path missing and no db file open", iso(path_db=None, openFiles=["/Applications/Inkdrop.app/Contents/MacOS/Inkdrop"]), 1),
+    ("db path not a path", iso(path_db="inkdrop-local-db", openFiles=[]), 2),
+    ("db elsewhere", iso(path_db="/tmp/db"), 1),
+    ("a prefix of the isolated dir is not inside it", iso(path_db="/w/d2/db"), 1),
+    ("open files unknown", iso(openFiles=None), 1),
+    ("a file of the user's profile open", iso(openFiles=["/w/d/db/000003.log", "/home/inkdrop/db/000001.log"]), 1),
     ("user's Inkdrop restarted", iso(othersNow=["101"]), 1),
+    ("user's Inkdrop PIDs not recorded", iso(othersBefore=None), 1),
 ]
+
+
+def launcher_cases(t):
+    """The launcher with stand-in apps on an unused port; never the real Inkdrop. Returns (name, ok, detail)."""
+    out = []
+    prod = t / "prod"
+    prod.mkdir()
+    port = "19334"
+
+    def app(name, body):
+        d = t / f"{name}.app/Contents/MacOS"
+        d.mkdir(parents=True)
+        (d / "Inkdrop").write_text("#!/bin/sh\n" + body)
+        (d / "Inkdrop").chmod(0o755)
+        return t / f"{name}.app"
+
+    lock = app("Lock", "echo 'Quit because of duplicated instance'\nexit 0\n")
+    silent = app("Silent", "exec sleep 300\n")
+    base = {**os.environ, "G6_PROD_DIR": str(prod), "G6_PORT": port, "G6_START_TIMEOUT": "2", "G6_STOP_WAIT": "2"}
+
+    def start(work, **env):
+        return subprocess.run(["bash", "tests/runtime/inkdrop-isolated.sh", "start", str(work)], cwd=ROOT, env={**base, **env}, capture_output=True, text=True)
+
+    def alive(work):
+        pid = int((work / "inkdrop.pid").read_text())
+        return pid, subprocess.run(["kill", "-0", str(pid)], capture_output=True).returncode == 0
+
+    p = start(t / "w1", INKDROP_APP=str(lock))
+    out.append(("another instance holds the lock: not started, nothing signalled", p.returncode == 3 and "single-instance lock" in p.stdout, f"exit {p.returncode}"))
+    p = start(prod / "work", INKDROP_APP=str(lock))
+    out.append(("work dir inside the user's profile: refused", p.returncode == 1 and "refusing" in p.stderr, f"exit {p.returncode}"))
+    # Alive but no debugger page on the port: not a start; the started process is stopped again.
+    p = start(t / "w2", INKDROP_APP=str(silent))
+    pid, up = alive(t / "w2")
+    out.append(("process alive without a debugger page: not started, cleaned up", p.returncode == 1 and "no Inkdrop page" in p.stdout and not up, f"exit {p.returncode}, still running {up}"))
+    # The same, with a kill that does nothing: the cleanup fails and that is reported (exit 5), never success.
+    p = start(t / "w3", INKDROP_APP=str(silent), G6_TEST_KILL="true")
+    pid, up = alive(t / "w3")
+    out.append(("cleanup that fails is reported", p.returncode == 5 and "CLEANUP FAILED" in p.stdout and up, f"exit {p.returncode}, still running {up}"))
+    subprocess.run(["kill", "-KILL", str(pid)], capture_output=True)
+    # A later step without a confirmed isolation does nothing: notes on a port where no instance runs.
+    w4 = t / "w4"
+    w4.mkdir()
+    notes = t / "notes.json"
+    p = subprocess.run(["node", "tests/visual/g6-run.mjs", "notes", str(w4), str(notes)], cwd=ROOT, env=base, capture_output=True, text=True)
+    out.append(("notes without a confirmed isolation: nothing done", p.returncode == 4 and not notes.exists(), f"exit {p.returncode}, wrote {notes.exists()}"))
+    return out
 
 
 def main():
@@ -144,24 +204,12 @@ def main():
         ok = got == want
         fails += not ok
         print(f"{'PASS' if ok else 'FAIL'} g6 self-test: isolation: {name}: {got} problems (declared {want})")
-    # The launcher with a stand-in app: an Inkdrop that quits because another instance holds the lock, and a
-    # work directory inside the (stand-in) user profile. Neither reaches the real Inkdrop.
     with tempfile.TemporaryDirectory() as t:
-        t = Path(t)
-        app = t / "Fake.app/Contents/MacOS"
-        app.mkdir(parents=True)
-        (app / "Inkdrop").write_text("#!/bin/sh\necho 'Quit because of duplicated instance'\nexit 0\n")
-        (app / "Inkdrop").chmod(0o755)
-        prod = t / "prod"
-        prod.mkdir()
-        env = {**os.environ, "INKDROP_APP": str(t / "Fake.app"), "G6_PROD_DIR": str(prod)}
-        cases = [("another instance holds the lock", t / "work", 3), ("work dir inside the user's profile", prod / "work", 1)]
-        for name, work, want in cases:
-            p = subprocess.run(["bash", "tests/runtime/inkdrop-isolated.sh", "start", str(work)], cwd=ROOT, env=env, capture_output=True, text=True)
-            ok = p.returncode == want
-            fails += not ok
-            print(f"{'PASS' if ok else 'FAIL'} g6 self-test: launcher: {name}: exit {p.returncode} (declared {want})")
-    total = len(JUDGE) + len(ISOLATION) + 2
+        launcher = launcher_cases(Path(t))
+    for name, ok, detail in launcher:
+        fails += not ok
+        print(f"{'PASS' if ok else 'FAIL'} g6 self-test: launcher: {name} ({detail})")
+    total = len(JUDGE) + len(ISOLATION) + len(launcher)
     print(f"\n{'all' if not fails else str(total - fails) + ' of'} {total} g6 self-test cases behaved as expected")
     return 1 if fails else 0
 
