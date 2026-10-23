@@ -1,0 +1,28 @@
+{
+ "stage": "G6 method C, one run approved by the user on 2026-10-23 (research/14 §6.105.5); code 2b1976d (tests/visual/g6-c-run.sh)",
+ "go": "2026-10-23T06:17:32Z",
+ "end": "2026-10-23T06:18:55Z",
+ "inkdropRunningBefore": "no",
+ "packagesPlaced": [],
+ "steps": {
+  "prepare": "ok (backup confirmed)",
+  "start": "ok",
+  "check": {
+   "problems": [],
+   "inkdropVersion": "6.2.0",
+   "signedIn": true
+  },
+  "notes": "failed: page exception, TypeError 'object is not iterable' in g6-notes.js (the tag query result)",
+  "noteOpened": false,
+  "captures": 0
+ },
+ "capture": "stopped at notes (exit 1)",
+ "restore": {
+  "result": "RESTORED",
+  "recordedFilesSameAsBackup": true,
+  "stateCacheFileList": "same names before and after (6 files; contents not compared, not restored by design)",
+  "inkdropAfter": "not running, as before",
+  "port9334": "closed",
+  "leftProcesses": 0
+ }
+}

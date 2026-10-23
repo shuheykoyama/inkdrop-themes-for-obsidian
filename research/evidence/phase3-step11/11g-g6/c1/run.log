@@ -1,0 +1,23 @@
+-- prepare
+kanagawa-dragon: already installed, used as it is (not replaced)
+solarized-dark: already installed, used as it is (not replaced)
+prepared: Inkdrop was running before: no; config.json backed up and checked
+-- start
+started (pid 33692)
+-- check
+the started Inkdrop 6.2.0 on 9334, using the user's config.json, nothing else running; signed in
+-- notes
+file://~/ghq/github.com/shuheykoyama/inkdrop-themes-for-obsidian/tests/visual/g6-run.mjs:47
+    if (res?.exceptionDetails) throw new Error(`page exception: ${JSON.stringify(res.exceptionDetails).slice(0, 400)}`);
+                                     ^
+
+Error: page exception: {"exceptionId":1,"text":"Uncaught (in promise) TypeError: object is not iterable (cannot read property Symbol(Symbol.iterator))","lineNumber":0,"columnNumber":0,"exception":{"type":"object","subtype":"error","className":"TypeError","description":"TypeError: object is not iterable (cannot read property Symbol(Symbol.iterator))\n    at <anonymous>:13:34","objectId":"-3073608853843133125.1.1"}}
+    at evaluate (file://~/ghq/github.com/shuheykoyama/inkdrop-themes-for-obsidian/tests/visual/g6-run.mjs:47:38)
+    at async file://~/ghq/github.com/shuheykoyama/inkdrop-themes-for-obsidian/tests/visual/g6-run.mjs:115:15
+
+Node.js v22.22.0
+-- restore
+not restored by design: state-cache files before 6, after 6; the database and the sync state are not compared
+RESTORED: config.json, keymap.json, styles.css, init.js and packages/ as before; Inkdrop left quit as before; port 9334 closed
+CAPTURE: stopped at notes (exit 1)
+RESTORE: RESTORED: config.json, keymap.json, styles.css, init.js and packages/ as before; Inkdrop left quit as before; port 9334 closed
