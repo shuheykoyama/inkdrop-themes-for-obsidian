@@ -1,0 +1,38 @@
+{
+ "stage": "G6 A1 (research/14 \u00a76.97.7), approved once by the user on 2026-10-23",
+ "go": "2026-10-23T04:07:00Z",
+ "stopped": "2026-10-23T04:07:25Z",
+ "inkdropApp": "6.2.0 (/Applications/Inkdrop.app, x86_64); the user's Inkdrop was not running before, during or after (0 other Inkdrop main processes)",
+ "start": {
+  "exit": 0,
+  "front": [
+   "before Ghostty",
+   "after Inkdrop"
+  ]
+ },
+ "isolation": {
+  "exit": 4,
+  "problems": [
+   "the page belongs to pid null, not 73819",
+   "INKDROP_USER_DATA_PATH of the instance is not the isolated directory",
+   "the userData path is not confirmed in the isolated directory",
+   "the database location is not confirmed in the isolated directory"
+  ],
+  "listenerIsStarted": true,
+  "openFilesInIsolatedDir": 46,
+  "openFileOfUserProfile": false,
+  "pageReport": {
+   "inkdropVersion": "6.2.0",
+   "pid": null,
+   "mainUi": false
+  }
+ },
+ "notes": "not run (the stage stopped at the isolation check)",
+ "stop": {
+  "exit": 0,
+  "line": "stopped isolated Inkdrop (pid 73819) and the processes it started; port 9334 closed; the user's Inkdrop processes unchanged",
+  "recordedHelpers": 5,
+  "helpersLeft": 0,
+  "port9334": "closed"
+ }
+}

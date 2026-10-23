@@ -1,0 +1,83 @@
+
+DevTools listening on ws://127.0.0.1:9334/devtools/browser/<id>
+  app:info Creating app window +0ms
+  app:info Initializing inkdrop app.. +290ms
+  app:info Starting the main process.. +0ms
+  app:info axios default config: { proxy: false, httpAgent: undefined, httpsAgent: undefined } +2ms
+  app:info Starting a session +6ms
+  app:warn Failed to load account from file: Error: ENOENT: no such file or directory, open '<scratch>/G6A1/user-data/account'
+    at Object.readFileSync (node:fs:483:20)
+    at Object.readFileSync (node:electron/js2c/node_init:1:12479)
+    at EA (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:222:912)
+    at Object.load (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:222:1323)
+    at Zd.init (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:74:37854)
+    at xW.init (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:343:10017)
+    at mG.start (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:346:10883)
+    at VK (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:348:69183)
+    at async /Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:348:70300 +0ms
+  app:warn Failed to load account from file: Error: ENOENT: no such file or directory, open '<scratch>/G6A1/user-data/encryption-key'
+    at Object.readFileSync (node:fs:483:20)
+    at Object.readFileSync (node:electron/js2c/node_init:1:12479)
+    at WW (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:343:18806)
+    at Object.load (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:343:19175)
+    at Zd.isLoggedIn (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:74:42003)
+    at async Zd.getAccountStatusLocal (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:74:42618)
+    at async xW.init (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:343:10030)
+    at async mG.start (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:346:10864)
+    at async Promise.all (index 1)
+    at async VK (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:348:69191) +79ms
+  app:info Finished starting the main process +82ms
+  app:info Command line argument: /Applications/Inkdrop.app/Contents/MacOS/Inkdrop +453ms
+  app:info Arguments: /Applications/Inkdrop.app/Contents/MacOS/Inkdrop +0ms
+  app:info Command line argument: --remote-debugging-port=9334 +1ms
+  app:info Arguments: --remote-debugging-port=9334 +0ms
+  app:info Command line argument: --remote-debugging-address=127.0.0.1 +0ms
+  app:info Arguments: --remote-debugging-address=127.0.0.1 +0ms
+  app:warn Failed to load account from file: Error: ENOENT: no such file or directory, open '<scratch>/G6A1/user-data/account'
+    at Object.readFileSync (node:fs:483:20)
+    at Object.readFileSync (node:electron/js2c/node_init:1:12479)
+    at EA (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:222:912)
+    at Object.load (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:222:1323)
+    at xW.getSessionState (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:343:10643)
+    at /Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:343:2821
+    at Session.<anonymous> (node:electron/js2c/browser_init:1:119988)
+    at Session.emit (node:events:514:28) +649ms
+  app:info Auto-installing packages: [ 'math', 'mermaid', 'markdown-emoji' ] +555ms
+  ipm:info Installing math@1.8.0... +0ms
+  ipm:info   Installing dependency katex@0.19.0... +2s
+  ipm:info   Installing dependency commander@15.0.0... +450ms
+  ipm:info Successfully installed math@1.8.0 +51ms
+  app:info Auto-installed package: math +3s
+  ipm:info Installing mermaid@3.1.0... +679ms
+[73837:1023/130706.980756:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun.l.google.com., errorcode: -105
+[73837:1023/130706.981158:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun.l.google.com., errorcode: -105
+[73837:1023/130706.981183:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun.l.google.com., errorcode: -105
+[73837:1023/130706.981218:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun.cloudflare.com., errorcode: -105
+[73837:1023/130706.981241:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun.cloudflare.com., errorcode: -105
+[73837:1023/130706.981261:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun.cloudflare.com., errorcode: -105
+[73837:1023/130706.981287:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun1.l.google.com., errorcode: -105
+[73837:1023/130706.981307:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun1.l.google.com., errorcode: -105
+[73837:1023/130706.981333:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun1.l.google.com., errorcode: -105
+  app:warn Failed to load account from file: Error: ENOENT: no such file or directory, open '<scratch>/G6A1/user-data/encryption-key'
+    at Object.readFileSync (node:fs:483:20)
+    at Object.readFileSync (node:electron/js2c/node_init:1:12479)
+    at WW (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:343:18806)
+    at Object.load (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:343:19175)
+    at Zd.isLoggedIn (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:74:42003)
+    at async Zd.getAccountStatusRemote (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:74:42919)
+    at async xW.checkAccountActiveness (/Applications/Inkdrop.app/Contents/Resources/app.asar/main/index.js:343:11298) +9s
+  ipm:info Successfully installed mermaid@3.1.0 +7s
+  app:info Auto-installed package: mermaid +7s
+  ipm:info Installing markdown-emoji@1.1.1... +223ms
+  ipm:info Successfully installed markdown-emoji@1.1.1 +2s
+  app:info Auto-installed package: markdown-emoji +2s
+[73837:1023/130720.121140:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun1.l.google.com., errorcode: -105
+[73837:1023/130720.121212:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun1.l.google.com., errorcode: -105
+[73837:1023/130720.121239:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun1.l.google.com., errorcode: -105
+[73837:1023/130720.121436:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun.l.google.com., errorcode: -105
+[73837:1023/130720.121479:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun.l.google.com., errorcode: -105
+[73837:1023/130720.121502:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun.l.google.com., errorcode: -105
+[73837:1023/130720.121533:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun.cloudflare.com., errorcode: -105
+[73837:1023/130720.121598:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun.cloudflare.com., errorcode: -105
+[73837:1023/130720.121615:ERROR:services/network/p2p/socket_manager.cc:145] Failed to resolve address for stun.cloudflare.com., errorcode: -105
+  app:info Unloading app +9s
