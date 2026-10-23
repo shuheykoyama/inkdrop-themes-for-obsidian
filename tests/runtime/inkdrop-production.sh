@@ -4,14 +4,17 @@
 # reads the keychain, never writes a note, never force-quits (a force quit can damage the database).
 #
 #   prepare <work>  record whether Inkdrop runs; quit it normally if it does; back up config.json (after the
-#                   quit) and record keymap.json, styles.css, init.js, packages/ and state-cache/; place the theme
-#                   packages from G6_PACKAGES that are missing (recorded as added). Exit 1 and nothing changed when
-#                   Inkdrop does not quit or the backup cannot be confirmed.
+#                   quit) into a temporary file, confirm its SHA-256 against the original and only then make it the
+#                   backup (config.json + config.sha256); record keymap.json, styles.css, init.js, packages/ and
+#                   state-cache/; place the theme packages from G6_PACKAGES that are missing (recorded as added).
+#                   Exit 1 when Inkdrop does not quit (nothing changed) or the backup cannot be confirmed (then the
+#                   report says Inkdrop was quit, config.json is untouched, and a quit Inkdrop is started again).
 #   start <work>    start Inkdrop with its debugger on 127.0.0.1:9334 (exit 0 only when the PID is alive, its page
 #                   is on 9334 and the listener is that PID; otherwise it is quit again: exit 1, or 5 if not)
 #   restart <work>  quit the started Inkdrop normally, confirm it is gone (stopped below) and 9334 closed, then start
 #                   (exit 5 and no new start when that cannot be confirmed)
-#   restore <work>  quit the started Inkdrop normally and confirm it is stopped (no Inkdrop main process, no
+#   restore <work>  only with a confirmed backup of this work dir whose SHA-256 still matches the recorded one
+#                   (otherwise exit 5 and no file touched); quit the started Inkdrop normally and confirm it is stopped (no Inkdrop main process, no
 #                   process of the app bundle such as its helpers, nothing on 9334); only then write config.json
 #                   back (exit 5 RESTORE NOT CONFIRMED and no file touched otherwise); take out the added
 #                   packages (moved into <work>/private, not deleted), check every recorded file against the
@@ -20,7 +23,7 @@
 #                   is not back is listed). state-cache/, the database and the sync state are NOT restored: their
 #                   change is only reported.
 # <work> must be outside the repository, iCloud and the Inkdrop profile; raw files go to <work>/private (0700).
-# Self-test only: INKDROP_APP, G6_PROD_DIR, G6_PORT, G6_START_TIMEOUT, G6_QUIT_WAIT, G6_TEST_PGREP (command
+# Self-test only: G6_TEST_CORRUPT_BACKUP=1 alters the temporary backup copy before its check; INKDROP_APP, G6_PROD_DIR, G6_PORT, G6_START_TIMEOUT, G6_QUIT_WAIT, G6_TEST_PGREP (command
 # listing the Inkdrop main PIDs), G6_TEST_HELPERS (command listing the app bundle's processes), G6_TEST_QUIT
 # (command that quits Inkdrop normally), G6_TEST_OPEN (normal start).
 set -euo pipefail
@@ -59,6 +62,24 @@ not_stopped() {
   port_open && echo "port $port is open"
   return 0
 }
+# The backup of this work dir is confirmed: config.sha256 written after the check, and the backup still matching it.
+confirmed() {
+  [ -f "$priv/backup/config.sha256" ] && [ -f "$priv/backup/config.json" ] && [ "$(sha "$priv/backup/config.json")" = "$(cat "$priv/backup/config.sha256")" ]
+}
+# A prepare that quit Inkdrop and then failed before the backup was confirmed: config.json was not touched; a
+# quit Inkdrop is started again normally, and the report says what was done.
+fail_unconfirmed() {
+  echo "NOT PREPARED: $1; no backup confirmed; config.json untouched"
+  if [ "$(cat "$work/was-running.txt")" = yes ]; then
+    if [ -n "${G6_TEST_OPEN:-}" ]; then sh -c "$G6_TEST_OPEN"; else open -a "$app"; fi
+    for _ in $(seq 1 30); do [ -n "$(running)" ] && break; sleep 1; done
+    if [ -n "$(running)" ]; then echo "Inkdrop was running before, was quit for the run, and is started again normally"
+    else echo "Inkdrop was running before and was quit for the run; starting it again could not be confirmed: it is NOT running now"; fi
+  else
+    echo "Inkdrop was not running before and is not running now"
+  fi
+  exit 1
+}
 # State of the profile after a prepare that did not finish, for the report.
 prepare_state() {
   echo "Inkdrop was running before: $(cat "$work/was-running.txt"); running now: $([ -n "$(running)" ] && echo yes || echo no); placed packages: $(paste -sd' ' - < "$work/added-packages.txt" 2>/dev/null)$([ -s "$work/added-packages.txt" ] || echo none)"
@@ -74,9 +95,14 @@ if [ "$cmd" = prepare ]; then
   echo production > "$work/mode.txt"
   if [ -n "$(running)" ]; then echo yes > "$work/was-running.txt"; else echo no > "$work/was-running.txt"; fi
   if ! quit_wait; then echo "NOT PREPARED: Inkdrop did not quit; nothing was changed; it is still running"; exit 1; fi
-  [ -f "$prod/config.json" ] || { echo "NOT PREPARED: no config.json to back up; nothing was changed"; exit 1; }
-  cp -p "$prod/config.json" "$priv/backup/config.json"
-  [ "$(sha "$prod/config.json")" = "$(sha "$priv/backup/config.json")" ] || { echo "NOT PREPARED: the config.json backup does not match; nothing was changed"; exit 1; }
+  [ -f "$prod/config.json" ] || fail_unconfirmed "no config.json to back up"
+  tmpb="$priv/backup/config.json.partial"
+  cp -p "$prod/config.json" "$tmpb" 2>/dev/null || fail_unconfirmed "the backup copy failed"
+  [ -n "${G6_TEST_CORRUPT_BACKUP:-}" ] && echo corrupt >> "$tmpb"
+  if [ "$(sha "$prod/config.json")" != "$(sha "$tmpb")" ]; then rm "$tmpb"; fail_unconfirmed "the backup copy does not match config.json"; fi
+  mv "$tmpb" "$priv/backup/config.json"
+  sha "$priv/backup/config.json" > "$priv/backup/config.sha256"
+  confirmed || fail_unconfirmed "the backup could not be confirmed"
   sums > "$priv/backup/sums-before.txt"
   { [ -d "$prod/state-cache" ] && (cd "$prod/state-cache" && find . -type f | LC_ALL=C sort) || true; } > "$priv/backup/state-cache-before.txt"
   : > "$work/added-packages.txt"
@@ -98,7 +124,7 @@ if [ "$cmd" = prepare ]; then
   fi
   echo "prepared: Inkdrop was running before: $(cat "$work/was-running.txt"); config.json backed up and checked"
 elif [ "$cmd" = start ]; then
-  [ -f "$priv/backup/config.json" ] || { echo "not prepared" >&2; exit 2; }
+  confirmed || { echo "not prepared: no confirmed backup" >&2; exit 2; }
   if port_open || [ -n "$(running)" ]; then echo "NOT STARTED: port $port in use or an Inkdrop already running"; exit 1; fi
   env -u INKDROP_USER_DATA_PATH "$app/Contents/MacOS/Inkdrop" --remote-debugging-port="$port" --remote-debugging-address=127.0.0.1 > "$work/inkdrop.log" 2>&1 &
   pid=$!; echo "$pid" > "$work/inkdrop.pid"
@@ -120,11 +146,13 @@ elif [ "$cmd" = restart ]; then
   if [ -n "$left" ]; then echo "NOT RESTARTED: not stopped ($(echo "$left" | paste -sd';' -)); not started again"; exit 5; fi
   exec bash "$0" start "$work"
 elif [ "$cmd" = restore ]; then
-  [ -f "$priv/backup/config.json" ] || { echo "not prepared: nothing to restore" >&2; exit 2; }
+  confirmed || { echo "RESTORE NOT CONFIRMED: no confirmed backup of this work dir, or it no longer matches its SHA-256; no file was touched"; exit 5; }
   left=()
   quit_wait || true
   stopped="$(not_stopped)"
   if [ -n "$stopped" ]; then echo "RESTORE NOT CONFIRMED: Inkdrop is not stopped ($(echo "$stopped" | paste -sd';' -)); no file was touched"; exit 5; fi
+  # Checked again right before the write: a backup that changed since its confirmation is never written.
+  confirmed || { echo "RESTORE NOT CONFIRMED: the backup no longer matches its SHA-256; no file was touched"; exit 5; }
   cp -p "$priv/backup/config.json" "$prod/config.json"
   mkdir -p "$priv/removed"
   while read -r n; do [ -n "$n" ] && [ -e "$prod/packages/$n" ] && mv "$prod/packages/$n" "$priv/removed/$n"; done < "$work/added-packages.txt"

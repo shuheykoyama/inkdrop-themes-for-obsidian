@@ -363,6 +363,43 @@ def production_cases(t):
     (bad / "secret.css").chmod(0o644)
     left = sorted(x.name for x in (p / "packages").iterdir())
     out.append(("a package copy fails: no partial package left, not prepared", r.returncode == 1 and "no partial package left" in r.stdout and left == ["math"], f"exit {r.returncode}, packages {left}"))
+    # The backup copy fails (config.json unreadable): no backup confirmed, and a restore writes nothing.
+    p = profile("p10")
+    w = t / "w10"
+    w.mkdir()
+    (p / "config.json").chmod(0)
+    r1 = sh("prepare", w, p)
+    (p / "config.json").chmod(0o644)
+    (p / "config.json").write_text("{}")
+    r2 = sh("restore", w, p)
+    out.append(("backup copy fails: not prepared, restore writes nothing", r1.returncode == 1 and "the backup copy failed" in r1.stdout and r2.returncode == 5 and (p / "config.json").read_text() == "{}", f"prepare {r1.returncode}, restore {r2.returncode}"))
+    # The backup copy does not match the original: no backup confirmed, and a restore writes nothing.
+    p = profile("p11")
+    w = t / "w11"
+    w.mkdir()
+    r1 = sh("prepare", w, p, G6_TEST_CORRUPT_BACKUP="1")
+    (p / "config.json").write_text("{}")
+    r2 = sh("restore", w, p)
+    out.append(("backup SHA-256 mismatch: not prepared, restore writes nothing", r1.returncode == 1 and "does not match" in r1.stdout and not (w / "private/backup/config.json").exists() and r2.returncode == 5 and (p / "config.json").read_text() == "{}", f"prepare {r1.returncode}, restore {r2.returncode}"))
+    # The confirmed backup changed before the restore: nothing is written.
+    p = profile("p12")
+    w = t / "w12"
+    w.mkdir()
+    sh("prepare", w, p)
+    (w / "private/backup/config.json").write_text('{"tampered": true}')
+    (p / "config.json").write_text("{}")
+    r = sh("restore", w, p)
+    out.append(("backup changed after its confirmation: restore writes nothing", r.returncode == 5 and "no file was touched" in r.stdout and (p / "config.json").read_text() == "{}", f"exit {r.returncode}"))
+    # Inkdrop quit for the run, then the backup fails: reported as quit, config.json untouched, started again.
+    p = profile("p13")
+    w = t / "w13"
+    w.mkdir()
+    subprocess.run(["sh", "-c", spawn_fake])
+    time.sleep(0.5)
+    r = sh("prepare", w, p, G6_TEST_CORRUPT_BACKUP="1")
+    ok = r.returncode == 1 and "was quit for the run, and is started again normally" in r.stdout and "config.json untouched" in r.stdout and running()
+    out.append(("quit and then the backup fails: reported, config.json untouched, started again", ok, f"exit {r.returncode}, running {running()}"))
+    subprocess.run(["pkill", "-f", marker])
     return out
 
 
@@ -395,7 +432,7 @@ def runner_cases(t):
     prod.write_text("""#!/bin/sh
 echo "prod $1" >> "$CALLS"
 case "$1" in
-  prepare) [ "$FAIL_AT" = prepare ] && exit 1; mkdir -p "$2/private/backup"; echo '{}' > "$2/private/backup/config.json" ;;
+  prepare) [ "$FAIL_AT" = prepare ] && exit 1; mkdir -p "$2/private/backup"; echo '{}' > "$2/private/backup/config.json"; echo sum > "$2/private/backup/config.sha256" ;;
   restore) [ "${RESTORE_EXIT:-0}" = 0 ] && echo "RESTORED: as before"; exit "${RESTORE_EXIT:-0}" ;;
   start) [ "$FAIL_AT" = start ] && exit 1 ;;
   restart) [ "$FAIL_AT" = restart ] && exit 5 ;;
@@ -409,23 +446,48 @@ echo "run $sub $(eval echo \${$#})" >> "$CALLS"
 case "$sub" in
   notes) printf '%s' '{"notes": [{"_id": "n1", "plainLines": [5], "codeLines": [9], "plainWord": "Create"}]}' > "$work/private/notes.json" ;;
   note) printf '{"rev": "1"}' > "$work/private/$4" ;;
-  capture) eval mode=\${$#}; [ "$FAIL_AT" = "capture-$mode" ] && exit 1; [ "$NOTE_CHANGED" = "$mode" ] && exit 3 ;;
+  capture) eval mode=\${$#}; [ "$FAIL_AT" = "capture-$mode" ] && exit 1; [ "$NOTE_CHANGED" = "$mode" ] && exit 3
+    # The stand-in "captures": the prepared records of this mode, and their images unless NO_IMAGES is set.
+    mkdir -p "$3/measurements" "$3/screenshots"; cp "$TEMPLATE/$mode/measurements/"* "$3/measurements/"
+    [ -n "$NO_IMAGES" ] || cp "$TEMPLATE/$mode/screenshots/"* "$3/screenshots/" ;;
 esac
 exit 0
 """)
+    # Records and images that g6-judge.py accepts, per mode, for the stand-in captures.
+    import hashlib
+    tpl = t / "template"
+    for th, m, st in J.EXPECTED:
+        name = f"inkdrop-{th}-v35-{m}-{st}"
+        (tpl / m / "measurements").mkdir(parents=True, exist_ok=True)
+        (tpl / m / "screenshots").mkdir(parents=True, exist_ok=True)
+        img = tpl / m / "screenshots" / f"{name}.png"
+        img.write_bytes(name.encode())
+        r = rec(th, m, st)
+        r.update(name=name, image=f"screenshots/{name}.png", imageSha256=hashlib.sha256(img.read_bytes()).hexdigest())
+        (tpl / m / "measurements" / f"{name}.json").write_text(json.dumps(r))
     out = []
 
     def go(name, **env):
         w = t / f"r-{name}"
-        w.mkdir()
         calls = t / f"calls-{name}"
         calls.write_text("")
-        e = {**os.environ, "G6_TEST_PROD": f"sh {prod}", "G6_TEST_RUN": f"sh {run}", "CALLS": str(calls), **env}
+        e = {**os.environ, "G6_TEST_PROD": f"sh {prod}", "G6_TEST_RUN": f"sh {run}", "CALLS": str(calls), "TEMPLATE": str(tpl), **env}
         p = subprocess.run(["bash", "tests/visual/g6-c-run.sh", str(w), str(t / f"o-{name}"), str(t / "tmp")], cwd=ROOT, env=e, capture_output=True, text=True)
         return p, calls.read_text().split("\n")
 
     p, calls = go("ok")
-    out.append(("all steps succeed: restored once, exit 0", p.returncode == 0 and calls.count("prod restore") == 1 and "CAPTURE: all 8 captures taken" in p.stdout and "RESTORE: RESTORED" in p.stdout, f"exit {p.returncode}"))
+    out.append(("8 conditions with images judged, RESTORED: success once, exit 0", p.returncode == 0 and calls.count("prod restore") == 1 and "CAPTURE: COMPLETE" in p.stdout and "RESTORE: RESTORED" in p.stdout and (t / "o-ok/judge.json").exists(), f"exit {p.returncode}"))
+    p, calls = go("noimages", NO_IMAGES="1")
+    out.append(("captures exit 0 but images missing: CAPTURE fails, restore runs", p.returncode == 1 and "CAPTURE: judge: INCOMPLETE or INVALID" in p.stdout and "prod restore" in calls, f"exit {p.returncode}"))
+    old = t / "r-old"
+    (old / "private/backup").mkdir(parents=True)
+    (old / "private/backup/config.json").write_text("{}")
+    (old / "private/backup/config.sha256").write_text("sum")
+    calls_old = t / "calls-old"
+    calls_old.write_text("")
+    q = subprocess.run(["bash", "tests/visual/g6-c-run.sh", str(old), str(t / "o-old"), str(t / "tmp")], cwd=ROOT,
+                       env={**os.environ, "G6_TEST_PROD": f"sh {prod}", "G6_TEST_RUN": f"sh {run}", "CALLS": str(calls_old), "TEMPLATE": str(tpl)}, capture_output=True, text=True)
+    out.append(("an existing work dir (an old backup in it): refused, neither prepare nor restore", q.returncode == 1 and "REFUSED" in q.stdout and calls_old.read_text() == "", f"exit {q.returncode}"))
     p, calls = go("start", FAIL_AT="start")
     out.append(("start fails: restore runs, capture not reported as done", p.returncode == 1 and "prod restore" in calls and "stopped at start" in p.stdout and "RESTORE: RESTORED" in p.stdout, f"exit {p.returncode}"))
     p, calls = go("restart", FAIL_AT="restart")
@@ -437,7 +499,7 @@ exit 0
     p, calls = go("restorefail", RESTORE_EXIT="5")
     out.append(("restore fails: reported NOT CONFIRMED, not called usable, exit 1", p.returncode == 1 and "RESTORE: NOT CONFIRMED" in p.stdout and "not known to be usable" in p.stdout, f"exit {p.returncode}"))
     p, calls = go("prepare", FAIL_AT="prepare")
-    out.append(("prepare fails before a backup: no restore, nothing changed", p.returncode == 1 and "prod restore" not in calls and "nothing was changed" in p.stdout, f"exit {p.returncode}"))
+    out.append(("prepare fails before a backup: no restore", p.returncode == 1 and "prod restore" not in calls and "RESTORE: not run" in p.stdout, f"exit {p.returncode}"))
     return out
 
 

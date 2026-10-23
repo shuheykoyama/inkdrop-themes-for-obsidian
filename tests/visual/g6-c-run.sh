@@ -6,13 +6,21 @@
 # method C and their go right before; it uses the screen for about 12 to 18 minutes.
 #
 # usage: bash tests/visual/g6-c-run.sh <work> <out> <tmp>
-#   <work>  new directory outside the repository, iCloud and the Inkdrop profile (raw data in <work>/private)
-#   <out>   new directory for the public captures and records; <tmp> holds the backdrop binary
-# exit 0 only when all 8 captures were taken and the restore says RESTORED; 1 otherwise.
+#   <work>  a directory that does not exist yet, outside the repository, iCloud and the Inkdrop profile (raw data
+#           in <work>/private); an existing one is refused before anything runs, so the only backup the restore
+#           can ever use is the one this run made and confirmed
+#   <out>   a directory that does not exist yet, for the public captures, records and judge.json
+#   <tmp>   holds the backdrop binary
+# After the captures, tests/visual/g6-judge.py checks all 8 conditions (records, images, SHA-256) and judges them:
+# CAPTURE succeeds only when it says COMPLETE and no capture is INVALID; PASS / DIFF / HOLD / RECORD are kept as the
+# judgement, apart from that. exit 0 only when CAPTURE succeeded and the restore says RESTORED; 1 otherwise.
 # G6_TEST_PROD / G6_TEST_RUN replace tests/runtime/inkdrop-production.sh / tests/visual/g6-run.mjs (self-test).
 set -uo pipefail
 work="$1"; out="$2"; tmp="$3"
 cd "$(dirname "$0")/../.."
+# A new run only: no earlier work dir (with its backups or state) and no earlier captures are ever used.
+if [ -e "$work" ] || [ -e "$out" ]; then echo "REFUSED: $([ -e "$work" ] && echo "<work>" || echo "<out>") already exists; nothing was run"; exit 1; fi
+mkdir -p "$work"
 PROD="${G6_TEST_PROD:-bash tests/runtime/inkdrop-production.sh}"
 RUN="${G6_TEST_RUN:-node tests/visual/g6-run.mjs}"
 capture="not started"
@@ -20,16 +28,16 @@ restored=no
 
 finish() {
   local rc=$?
-  if [ -f "$work/private/backup/config.json" ] && [ "$restored" = no ]; then
+  if [ -f "$work/private/backup/config.sha256" ] && [ "$restored" = no ]; then
     restored=yes
     echo "-- restore"
     rout="$($PROD restore "$work" 2>&1)"; rrc=$?
     echo "$rout"
   else
-    rout="not needed (no backup was made: nothing was changed by this run)"; rrc=0
+    rout="not run (no confirmed backup of this run; what prepare did is reported above)"; rrc=0
   fi
   echo "CAPTURE: $capture"
-  if [ ! -f "$work/private/backup/config.json" ]; then
+  if [ ! -f "$work/private/backup/config.sha256" ]; then
     echo "RESTORE: $rout"
   elif [ $rrc -eq 0 ] && echo "$rout" | grep -q "^RESTORED"; then
     echo "RESTORE: $(echo "$rout" | grep "^RESTORED")"
@@ -37,7 +45,7 @@ finish() {
     echo "RESTORE: NOT CONFIRMED (exit $rrc). The user's Inkdrop is not known to be usable; what is left is listed above."
     rc=1
   fi
-  [ "$capture" = "all 8 captures taken" ] && [ $rc -eq 0 ] && exit 0
+  case "$capture" in "COMPLETE"*) [ $rc -eq 0 ] && exit 0 ;; esac
   exit 1
 }
 trap finish EXIT
@@ -73,4 +81,9 @@ step capture-acrylic $RUN capture "$work" "$out" "$tmp" "$note" "$plain" "$code"
 step note-after $RUN note "$work" "$note" note-after.json
 same="$(python3 -I -c 'import json,sys; print(json.load(open(sys.argv[1])) == json.load(open(sys.argv[2])))' "$work/private/note-before.json" "$work/private/note-after.json")"
 if [ "$same" != True ]; then capture="stopped: the note differs between the start and the end of the run (nothing written back)"; exit 1; fi
-capture="all 8 captures taken"
+# The 8 conditions, their records and images, and the judgement (g6-judge.py exits 1 on INCOMPLETE or INVALID).
+echo "-- judge"
+python3 -I tests/visual/g6-judge.py "$out" --out "$out/judge.json"; j=$?
+counts="$(python3 -I -c 'import json,sys,collections; d=json.load(open(sys.argv[1])); print(dict(collections.Counter(r["state"] for r in d["results"])))' "$out/judge.json" 2>/dev/null || echo "no judge.json")"
+if [ $j -ne 0 ]; then capture="judge: INCOMPLETE or INVALID (exit $j; $counts)"; exit 1; fi
+capture="COMPLETE: all 8 conditions with their images; judgement $counts"
