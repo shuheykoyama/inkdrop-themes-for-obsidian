@@ -45,8 +45,12 @@
     const input = findInput();
     if (!input) search = "Inkdrop's find bar or its input did not appear";
     else {
-      Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set.call(input, word);
-      input.dispatchEvent(new Event("input", { bubbles: true }));
+      // Emptied first: the find bar keeps its text after editor:clear-find, and React ignores an input event whose
+      // value equals the text it holds, so typing the same word again would set no query.
+      const type = (v) => { Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set.call(input, v); input.dispatchEvent(new Event("input", { bubbles: true })); };
+      type("");
+      await sleep(200);
+      type(word);
     }
   } else view.focus();
   await sleep(700);
