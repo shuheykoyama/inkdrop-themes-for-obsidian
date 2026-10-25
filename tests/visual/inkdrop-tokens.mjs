@@ -6,51 +6,48 @@
 //
 // usage: node --permission --allow-fs-read=<assets dir> --allow-fs-read=<note> --allow-fs-read=<syntax.css> \
 //          tests/visual/inkdrop-tokens.mjs <assets dir> <note.md> <inkdropapp_css/syntax.css>
-// <assets dir> is renderer/assets of the extracted app.asar. The chunk names are those of 6.1.5.
+// <assets dir> is renderer/assets of the extracted app.asar (6.1.5 and 6.2.0 checked). Chunk names change with
+// every build, so the chunks are found by what they contain (`locate` below); a feature that matches no chunk,
+// or more than one, stops the run instead of picking one.
 //
-// The tokenHighlighter table is the one in notebook-picker-*.js (`Xd=re([...])`): it is read from the
-// bundle and rebuilt with the bundle's own tagHighlighter, so the classes are exactly what Inkdrop puts on
-// the editor and the preview code blocks (the preview's Highlighter uses the same table, 14 §6.17).
-import { readFileSync } from "node:fs";
+// The tokenHighlighter table is Inkdrop's own (`<name>=<tagHighlighter>([{tag:<tags>.comment,class:`tok-comment`}…`):
+// it is read from the bundle and rebuilt with the bundle's own tagHighlighter, so the classes are exactly what
+// Inkdrop puts on the editor and the preview code blocks (the preview's Highlighter uses the same table, 14 §6.17).
+import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
+import { locate } from "./inkdrop-chunks.mjs";
 
 const [assets, notePath, baseCssPath] = process.argv.slice(2);
+const files = Object.fromEntries(readdirSync(assets).filter((f) => f.endsWith(".js")).map((f) => [f, readFileSync(join(assets, f), "utf8")]));
+const found = locate(files);
 const chunk = (name) => import(pathToFileURL(join(assets, name)).href);
 
-// @lezer/highlight and @codemirror/language as bundled: R = tags, F = highlightTree, L = tagHighlighter,
-// f = StreamLanguage (from the chunk's export list).
-const lezer = await chunk("dist-HRoI40E2.js");
-const { R: tags, F: highlightTree, L: tagHighlighter, f: StreamLanguage } = lezer;
+// @lezer/highlight and @codemirror/language as bundled, by the names the chunk exports them under.
+const lezer = await chunk(found.lezer.file);
+const [tags, highlightTree, tagHighlighter, StreamLanguage] = ["tags", "highlightTree", "tagHighlighter", "StreamLanguage"].map((k) => lezer[found.lezer[k]]);
 
-// Rebuild the table: each entry is `{tag:b.x,class:`...`}` or `{tag:b.mod(b.x),class:`...`}`.
-const picker = readFileSync(join(assets, "notebook-picker-Bo2H_0--.js"), "utf8");
-const start = picker.indexOf("Xd=re([");
-const body = picker.slice(start, picker.indexOf("])", start));
-const table = [...body.matchAll(/\{tag:(.*?),class:`(.*?)`\}/g)].map(([, expr, cls]) => {
+// Rebuild the table: each entry is `{tag:b.x,class:`...`}` or `{tag:b.mod(b.x),class:`...`}` (b: the table's tags alias).
+const table = found.table.entries.map(([expr, cls]) => {
+  const a = found.table.alias;
   // b.x → tags.x; b.mod(b.x) → tags.mod(tags.x)
-  const m = expr.match(/^b\.(\w+)\(b\.(\w+)\)$/);
-  const tag = m ? tags[m[1]](tags[m[2]]) : tags[expr.replace(/^b\./, "")];
+  const m = expr.match(new RegExp(`^${a}\\.(\\w+)\\(${a}\\.(\\w+)\\)$`));
+  const tag = m ? tags[m[1]](tags[m[2]]) : expr.startsWith(`${a}.`) ? tags[expr.slice(a.length + 1)] : undefined;
   if (!tag) throw new Error(`unknown tag ${expr}`);
   return { tag, class: cls };
 });
 const highlighter = tagHighlighter(table);
 
-// The languages of Inkdrop's code-block list (language-data) for the V-12 set, loaded as the app does.
-const loaders = {
-  js: async () => (await chunk("dist-mSdurF7y.js")).t.javascript(),
-  ts: async () => (await chunk("dist-mSdurF7y.js")).t.javascript({ typescript: true }),
-  python: async () => (await chunk("dist-CuQpLQ6g.js")).python(),
-  css: async () => (await chunk("dist-geTA03zK.js")).i.css(),
-  html: async () => (await chunk("dist-fqy6Ua6R.js")).t.html(),
-  json: async () => (await chunk("dist-BkUsYw4p.js")).json(),
-  sh: async () => StreamLanguage.define((await chunk("shell-Du5Qg9im.js")).shell),
-  go: async () => (await chunk("dist-D7WIBBJt.js")).go(),
-  rust: async () => (await chunk("dist-DcCsaAop.js")).rust(),
-  yaml: async () => (await chunk("dist-Bay2AUzm.js")).yaml(),
-  sql: async () => { const m = await chunk("dist-Dx44Ajy5.js"); return m.sql({ dialect: m.StandardSQL }); },
-  markdown: async () => (await chunk("dist-BKzBtnmQ.js")).n.markdown(),
+// The languages of Inkdrop's code-block list (language-data) for the V-12 set, loaded as the app does: the
+// chunk, an optional namespace export (`.then(e=>e.t)`), then the language function or the legacy mode.
+const load = ({ file, ns, fn, args, legacy, dialect }) => async () => {
+  let m = await chunk(file);
+  if (ns) m = m[ns];
+  if (legacy) return StreamLanguage.define(m[legacy]);
+  if (dialect) return m.sql({ dialect: m[dialect] });
+  return m[fn](args);
 };
+const loaders = Object.fromEntries(Object.entries(found.languages).map(([k, v]) => [k, load(v)]));
 // Fence names that Inkdrop's language list resolves to the same languages (aliases and extensions).
 Object.assign(loaders, { javascript: loaders.js, typescript: loaders.ts, py: loaders.python, bash: loaders.sh, shell: loaders.sh, zsh: loaders.sh, yml: loaders.yaml, rs: loaders.rust, md: loaders.markdown });
 
