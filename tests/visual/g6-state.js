@@ -3,7 +3,7 @@
 // is opened, the cursor or the search query is set through CodeMirror; no transaction changes the document.
 // Every state starts from a cleared search (Inkdrop's find bar closed with editor:clear-find, the query emptied),
 // so a search of an earlier state never carries over (§6.117). The search state is made the way a user makes it in
-// Inkdrop 6.2.0 (§6.118): editor:find opens Inkdrop's own find bar (.mde-search-bar) and the word is typed into
+// Inkdrop 6.2.0 (§6.117): editor:find opens Inkdrop's own find bar (.mde-search-bar) and the word is typed into
 // its input, which sets the query and highlights the matches without moving the cursor (typing calls no
 // find-next). The result reports what is highlighted and whether the find bar shows, for g6-judge.py.
 (async () => {

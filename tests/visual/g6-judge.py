@@ -61,7 +61,7 @@ def invalid(rec):
     # selection-match highlight anywhere. A record without these fields cannot show it, so it is not usable either.
     if rec["state"] != "search" and (st.get("searchMatches") != 0 or st.get("searchPanelOpen") is not False or st.get("findBarOpen") is not False):
         out.append("a search highlight, panel or find bar is left from another state")
-    # The search state as Inkdrop shows it to a user (§6.118): its find bar open with the word typed in.
+    # The search state as Inkdrop shows it to a user (§6.117): its find bar open with the word typed in.
     if rec["state"] == "search" and (st.get("findBarOpen") is not True or not st.get("findBarText")):
         out.append("Inkdrop's find bar is not shown with the searched word")
     if st.get("selectionMatches") != 0:

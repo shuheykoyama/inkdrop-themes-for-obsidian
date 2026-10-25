@@ -1,0 +1,54 @@
+-- prepare
+kanagawa-dragon: already installed, used as it is (not replaced)
+solarized-dark: already installed, used as it is (not replaced)
+prepared: Inkdrop was running before: no; config.json backed up and checked
+-- start
+started (pid 58953)
+-- check
+the started Inkdrop 6.2.0 on 9334, using the user's config.json, nothing else running; signed in
+-- notes
+2 notes; 2 tagged as the tutorial (only those were read); with a plain line and a code block line: 1
+-- note-before
+note identity recorded (private)
+-- settings-opaque
+{"lineNumbers":true,"styleActiveLine":true,"acrylic":false}
+-- restart-opaque
+started (pid 59257)
+-- check-opaque
+the started Inkdrop 6.2.0 on 9334, using the user's config.json, nothing else running; signed in
+-- capture-opaque
+inkdrop-solarized-dark-v35-opaque-active: focused true, dpr 2, doc unchanged true, note unchanged true
+inkdrop-solarized-dark-v35-opaque-search: focused true, dpr 2, doc unchanged true, note unchanged true
+inkdrop-solarized-dark-v35-opaque-code: focused true, dpr 2, doc unchanged true, note unchanged true
+inkdrop-kanagawa-dragon-v35-opaque-active: focused true, dpr 2, doc unchanged true, note unchanged true
+inkdrop-kanagawa-dragon-v35-opaque-search: focused true, dpr 2, doc unchanged true, note unchanged true
+inkdrop-kanagawa-dragon-v35-opaque-code: focused true, dpr 2, doc unchanged true, note unchanged true
+6 captures (opaque)
+-- settings-acrylic
+{"lineNumbers":true,"styleActiveLine":true,"acrylic":true}
+-- restart-acrylic
+started (pid 59907)
+-- check-acrylic
+the started Inkdrop 6.2.0 on 9334, using the user's config.json, nothing else running; signed in
+-- capture-acrylic
+inkdrop-solarized-dark-v35-acrylic-active: focused true, dpr 2, doc unchanged true, note unchanged true
+inkdrop-kanagawa-dragon-v35-acrylic-active: focused true, dpr 2, doc unchanged true, note unchanged true
+2 captures (acrylic)
+-- note-after
+note identity recorded (private)
+-- judge
+RECORD   inkdrop-kanagawa-dragon-v35-acrylic-active  
+PASS     inkdrop-kanagawa-dragon-v35-opaque-active  
+RECORD   inkdrop-kanagawa-dragon-v35-opaque-code  
+INVALID  inkdrop-kanagawa-dragon-v35-opaque-search  no search match on the active line (none found)
+RECORD   inkdrop-solarized-dark-v35-acrylic-active  
+PASS     inkdrop-solarized-dark-v35-opaque-active  
+RECORD   inkdrop-solarized-dark-v35-opaque-code  
+RECORD   inkdrop-solarized-dark-v35-opaque-search  
+
+run: COMPLETE
+-- restore
+not restored by design: state-cache files before 6, after 6; the database and the sync state are not compared
+RESTORED: config.json, keymap.json, styles.css, init.js and packages/ as before; Inkdrop left quit as before; port 9334 closed
+CAPTURE: judge: INCOMPLETE or INVALID (exit 1; {'RECORD': 5, 'PASS': 2, 'INVALID': 1})
+RESTORE: RESTORED: config.json, keymap.json, styles.css, init.js and packages/ as before; Inkdrop left quit as before; port 9334 closed

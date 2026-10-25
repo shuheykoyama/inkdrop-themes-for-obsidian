@@ -1,0 +1,539 @@
+{
+ "reference": {
+  "conditions": {
+   "inkdropVersion": "6.1.5",
+   "themeVersion": {
+    "solarized-dark": "2.2.1",
+    "kanagawa-dragon": "1.2.1"
+   }
+  },
+  "solarized-dark": {
+   "activeLine": "rgba(0, 45, 56, 0.5)",
+   "lineNumber": "rgb(88, 110, 116)",
+   "gutterBorder": null
+  },
+  "kanagawa-dragon": {
+   "activeLine": "rgba(39, 38, 38, 0.3)",
+   "lineNumber": "rgb(98, 94, 91)",
+   "gutterBorder": "1px solid rgb(39, 38, 38)"
+  }
+ },
+ "complete": true,
+ "completeness": [],
+ "results": [
+  {
+   "name": "inkdrop-kanagawa-dragon-v35-acrylic-active",
+   "theme": "kanagawa-dragon",
+   "mode": "acrylic",
+   "state_": "active",
+   "devicePixelRatio": 2,
+   "state": "RECORD",
+   "values": {
+    "activeLine": {
+     "backgroundColor": "rgba(39, 38, 38, 0.3)",
+     "color": "rgb(197, 201, 197)"
+    },
+    "activeLineGutter": {
+     "backgroundColor": "rgba(39, 38, 38, 0.3)",
+     "color": "rgb(98, 94, 91)"
+    },
+    "gutters": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(98, 94, 91)"
+    },
+    "lineNumber": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(98, 94, 91)"
+    },
+    "editor": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(197, 201, 197)"
+    }
+   },
+   "layers": [
+    {
+     "classes": [
+      "cm-gutters",
+      "cm-gutters-before"
+     ],
+     "zIndex": "200"
+    },
+    {
+     "classes": [
+      "cm-content",
+      "cm-lineWrapping"
+     ],
+     "zIndex": "auto"
+    },
+    {
+     "classes": [
+      "cm-layer",
+      "cm-layer-above",
+      "cm-cursorLayer"
+     ],
+     "zIndex": "150"
+    },
+    {
+     "classes": [
+      "cm-layer",
+      "cm-selectionLayer"
+     ],
+     "zIndex": "-2"
+    },
+    {
+     "classes": [
+      "md-codeblock-copy-button",
+      "ui",
+      "icon",
+      "button"
+     ],
+     "zIndex": "1"
+    },
+    {
+     "classes": [
+      "cm-cursorLayer",
+      "cm-vimCursorLayer"
+     ],
+     "zIndex": "auto"
+    }
+   ]
+  },
+  {
+   "name": "inkdrop-kanagawa-dragon-v35-opaque-active",
+   "theme": "kanagawa-dragon",
+   "mode": "opaque",
+   "state_": "active",
+   "devicePixelRatio": 2,
+   "state": "PASS",
+   "values": {
+    "activeLine": "rgba(39, 38, 38, 0.3)",
+    "lineNumber": "rgb(98, 94, 91)",
+    "gutterBorder": "1px solid rgb(39, 38, 38)"
+   },
+   "reference": {
+    "activeLine": "rgba(39, 38, 38, 0.3)",
+    "lineNumber": "rgb(98, 94, 91)",
+    "gutterBorder": "1px solid rgb(39, 38, 38)"
+   },
+   "differs": [],
+   "conditionDiffs": [
+    "inkdropVersion"
+   ]
+  },
+  {
+   "name": "inkdrop-kanagawa-dragon-v35-opaque-code",
+   "theme": "kanagawa-dragon",
+   "mode": "opaque",
+   "state_": "code",
+   "devicePixelRatio": 2,
+   "state": "RECORD",
+   "values": {
+    "activeLine": {
+     "backgroundColor": "rgba(39, 38, 38, 0.3)",
+     "color": "rgb(197, 201, 197)"
+    },
+    "activeLineGutter": {
+     "backgroundColor": "rgba(39, 38, 38, 0.3)",
+     "color": "rgb(98, 94, 91)"
+    },
+    "gutters": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(98, 94, 91)"
+    },
+    "lineNumber": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(98, 94, 91)"
+    },
+    "editor": {
+     "backgroundColor": "rgb(30, 29, 26)",
+     "color": "rgb(197, 201, 197)"
+    }
+   },
+   "layers": [
+    {
+     "classes": [
+      "cm-gutters",
+      "cm-gutters-before"
+     ],
+     "zIndex": "200"
+    },
+    {
+     "classes": [
+      "cm-content",
+      "cm-lineWrapping"
+     ],
+     "zIndex": "auto"
+    },
+    {
+     "classes": [
+      "cm-layer",
+      "cm-layer-above",
+      "cm-cursorLayer"
+     ],
+     "zIndex": "150"
+    },
+    {
+     "classes": [
+      "cm-layer",
+      "cm-selectionLayer"
+     ],
+     "zIndex": "-2"
+    },
+    {
+     "classes": [
+      "md-codeblock-copy-button",
+      "ui",
+      "icon",
+      "button"
+     ],
+     "zIndex": "1"
+    },
+    {
+     "classes": [
+      "cm-cursorLayer",
+      "cm-vimCursorLayer"
+     ],
+     "zIndex": "auto"
+    }
+   ]
+  },
+  {
+   "name": "inkdrop-kanagawa-dragon-v35-opaque-search",
+   "theme": "kanagawa-dragon",
+   "mode": "opaque",
+   "state_": "search",
+   "devicePixelRatio": 2,
+   "state": "RECORD",
+   "values": {
+    "activeLine": {
+     "backgroundColor": "rgba(39, 38, 38, 0.3)",
+     "color": "rgb(197, 201, 197)"
+    },
+    "activeLineGutter": {
+     "backgroundColor": "rgba(39, 38, 38, 0.3)",
+     "color": "rgb(98, 94, 91)"
+    },
+    "gutters": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(98, 94, 91)"
+    },
+    "lineNumber": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(98, 94, 91)"
+    },
+    "searchMatch": {
+     "backgroundColor": "rgb(45, 79, 103)",
+     "color": "rgb(197, 201, 197)"
+    },
+    "editor": {
+     "backgroundColor": "rgb(30, 29, 26)",
+     "color": "rgb(197, 201, 197)"
+    }
+   },
+   "layers": [
+    {
+     "classes": [
+      "cm-gutters",
+      "cm-gutters-before"
+     ],
+     "zIndex": "200"
+    },
+    {
+     "classes": [
+      "cm-content",
+      "cm-lineWrapping"
+     ],
+     "zIndex": "auto"
+    },
+    {
+     "classes": [
+      "cm-layer",
+      "cm-layer-above",
+      "cm-cursorLayer"
+     ],
+     "zIndex": "150"
+    },
+    {
+     "classes": [
+      "cm-layer",
+      "cm-selectionLayer"
+     ],
+     "zIndex": "-2"
+    },
+    {
+     "classes": [
+      "md-codeblock-copy-button",
+      "ui",
+      "icon",
+      "button"
+     ],
+     "zIndex": "1"
+    },
+    {
+     "classes": [
+      "cm-cursorLayer",
+      "cm-vimCursorLayer"
+     ],
+     "zIndex": "auto"
+    }
+   ]
+  },
+  {
+   "name": "inkdrop-solarized-dark-v35-acrylic-active",
+   "theme": "solarized-dark",
+   "mode": "acrylic",
+   "state_": "active",
+   "devicePixelRatio": 2,
+   "state": "RECORD",
+   "values": {
+    "activeLine": {
+     "backgroundColor": "rgba(0, 45, 56, 0.5)",
+     "color": "rgb(131, 148, 149)"
+    },
+    "activeLineGutter": {
+     "backgroundColor": "rgba(0, 45, 56, 0.5)",
+     "color": "rgb(88, 110, 116)"
+    },
+    "gutters": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(88, 110, 116)"
+    },
+    "lineNumber": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(88, 110, 116)"
+    },
+    "editor": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(131, 148, 149)"
+    }
+   },
+   "layers": [
+    {
+     "classes": [
+      "cm-gutters",
+      "cm-gutters-before"
+     ],
+     "zIndex": "200"
+    },
+    {
+     "classes": [
+      "cm-content",
+      "cm-lineWrapping"
+     ],
+     "zIndex": "auto"
+    },
+    {
+     "classes": [
+      "cm-layer",
+      "cm-layer-above",
+      "cm-cursorLayer"
+     ],
+     "zIndex": "150"
+    },
+    {
+     "classes": [
+      "cm-layer",
+      "cm-selectionLayer"
+     ],
+     "zIndex": "-2"
+    },
+    {
+     "classes": [
+      "md-codeblock-copy-button",
+      "ui",
+      "icon",
+      "button"
+     ],
+     "zIndex": "1"
+    },
+    {
+     "classes": [
+      "cm-cursorLayer",
+      "cm-vimCursorLayer"
+     ],
+     "zIndex": "auto"
+    }
+   ]
+  },
+  {
+   "name": "inkdrop-solarized-dark-v35-opaque-active",
+   "theme": "solarized-dark",
+   "mode": "opaque",
+   "state_": "active",
+   "devicePixelRatio": 2,
+   "state": "PASS",
+   "values": {
+    "activeLine": "rgba(0, 45, 56, 0.5)",
+    "lineNumber": "rgb(88, 110, 116)",
+    "gutterBorder": "0px none rgb(88, 110, 116)"
+   },
+   "reference": {
+    "activeLine": "rgba(0, 45, 56, 0.5)",
+    "lineNumber": "rgb(88, 110, 116)",
+    "gutterBorder": null
+   },
+   "differs": [],
+   "conditionDiffs": [
+    "inkdropVersion"
+   ]
+  },
+  {
+   "name": "inkdrop-solarized-dark-v35-opaque-code",
+   "theme": "solarized-dark",
+   "mode": "opaque",
+   "state_": "code",
+   "devicePixelRatio": 2,
+   "state": "RECORD",
+   "values": {
+    "activeLine": {
+     "backgroundColor": "rgba(0, 45, 56, 0.5)",
+     "color": "rgb(131, 148, 149)"
+    },
+    "activeLineGutter": {
+     "backgroundColor": "rgba(0, 45, 56, 0.5)",
+     "color": "rgb(88, 110, 116)"
+    },
+    "gutters": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(88, 110, 116)"
+    },
+    "lineNumber": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(88, 110, 116)"
+    },
+    "editor": {
+     "backgroundColor": "rgb(0, 33, 41)",
+     "color": "rgb(131, 148, 149)"
+    }
+   },
+   "layers": [
+    {
+     "classes": [
+      "cm-gutters",
+      "cm-gutters-before"
+     ],
+     "zIndex": "200"
+    },
+    {
+     "classes": [
+      "cm-content",
+      "cm-lineWrapping"
+     ],
+     "zIndex": "auto"
+    },
+    {
+     "classes": [
+      "cm-layer",
+      "cm-layer-above",
+      "cm-cursorLayer"
+     ],
+     "zIndex": "150"
+    },
+    {
+     "classes": [
+      "cm-layer",
+      "cm-selectionLayer"
+     ],
+     "zIndex": "-2"
+    },
+    {
+     "classes": [
+      "md-codeblock-copy-button",
+      "ui",
+      "icon",
+      "button"
+     ],
+     "zIndex": "1"
+    },
+    {
+     "classes": [
+      "cm-cursorLayer",
+      "cm-vimCursorLayer"
+     ],
+     "zIndex": "auto"
+    }
+   ]
+  },
+  {
+   "name": "inkdrop-solarized-dark-v35-opaque-search",
+   "theme": "solarized-dark",
+   "mode": "opaque",
+   "state_": "search",
+   "devicePixelRatio": 2,
+   "state": "RECORD",
+   "values": {
+    "activeLine": {
+     "backgroundColor": "rgba(0, 45, 56, 0.5)",
+     "color": "rgb(131, 148, 149)"
+    },
+    "activeLineGutter": {
+     "backgroundColor": "rgba(0, 45, 56, 0.5)",
+     "color": "rgb(88, 110, 116)"
+    },
+    "gutters": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(88, 110, 116)"
+    },
+    "lineNumber": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(88, 110, 116)"
+    },
+    "searchMatch": {
+     "backgroundColor": "rgba(179, 134, 0, 0.35)",
+     "color": "rgb(131, 148, 149)"
+    },
+    "editor": {
+     "backgroundColor": "rgb(0, 33, 41)",
+     "color": "rgb(131, 148, 149)"
+    }
+   },
+   "layers": [
+    {
+     "classes": [
+      "cm-gutters",
+      "cm-gutters-before"
+     ],
+     "zIndex": "200"
+    },
+    {
+     "classes": [
+      "cm-content",
+      "cm-lineWrapping"
+     ],
+     "zIndex": "auto"
+    },
+    {
+     "classes": [
+      "cm-layer",
+      "cm-layer-above",
+      "cm-cursorLayer"
+     ],
+     "zIndex": "150"
+    },
+    {
+     "classes": [
+      "cm-layer",
+      "cm-selectionLayer"
+     ],
+     "zIndex": "-2"
+    },
+    {
+     "classes": [
+      "md-codeblock-copy-button",
+      "ui",
+      "icon",
+      "button"
+     ],
+     "zIndex": "auto"
+    },
+    {
+     "classes": [
+      "cm-cursorLayer",
+      "cm-vimCursorLayer"
+     ],
+     "zIndex": "auto"
+    }
+   ]
+  }
+ ]
+}

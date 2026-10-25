@@ -1,0 +1,419 @@
+{
+ "name": "inkdrop-kanagawa-dragon-v35-opaque-active",
+ "theme": "kanagawa-dragon",
+ "mode": "opaque",
+ "state": "active",
+ "line": 3,
+ "capturedAt": "2026-10-25T06:14:39.548Z",
+ "image": "screenshots/inkdrop-kanagawa-dragon-v35-opaque-active.png",
+ "imageSha256": "ebd5a99a46d2f8af9c9f91193886b3628bc6bcf31e3a33596e98c6bae8180655",
+ "pixels": [
+  2400,
+  1400
+ ],
+ "windowRectPoints": [
+  400,
+  250,
+  1200,
+  700
+ ],
+ "backdrop": "gray",
+ "stateResult": {
+  "state": "active",
+  "line": 3,
+  "docUnchanged": true,
+  "selectionEmpty": true,
+  "cursorLine": 3,
+  "searchMatches": 0,
+  "searchError": null,
+  "searchPanelOpen": false,
+  "findBarOpen": false,
+  "findBarText": null,
+  "selectionMatches": 0,
+  "activeLineHasMatch": false,
+  "activeLineClasses": [
+   "cm-line",
+   "cm-activeLine"
+  ]
+ },
+ "focus": {
+  "focused": true
+ },
+ "probeBefore": {
+  "measuredAt": "2026-10-25T06:14:39.245Z",
+  "inkdropVersion": "6.2.0",
+  "theme": "kanagawa-dragon",
+  "themeVersion": "1.2.1",
+  "settings": {
+   "lineNumbers": true,
+   "styleActiveLine": true,
+   "acrylic": false
+  },
+  "bodyClasses": [
+   "dark-mode",
+   "platform-darwin",
+   "theme-kanagawa-dragon"
+  ],
+  "window": {
+   "viewport": [
+    1200,
+    700
+   ],
+   "devicePixelRatio": 2,
+   "screen": [
+    400,
+    250,
+    1200,
+    700
+   ],
+   "focused": true
+  },
+  "styles": {
+   "activeLine": {
+    "selector": ".cm-activeLine",
+    "found": true,
+    "rect": [
+     530,
+     112,
+     670,
+     39
+    ],
+    "classes": [
+     "cm-line",
+     "cm-activeLine"
+    ],
+    "backgroundColor": "rgba(39, 38, 38, 0.3)",
+    "color": "rgb(197, 201, 197)",
+    "zIndex": "auto",
+    "borderRight": "0px none rgb(197, 201, 197)"
+   },
+   "activeLineGutter": {
+    "selector": ".cm-activeLineGutter",
+    "found": true,
+    "rect": [
+     500,
+     112,
+     29,
+     39
+    ],
+    "classes": [
+     "cm-gutterElement",
+     "cm-activeLineGutter"
+    ],
+    "backgroundColor": "rgba(39, 38, 38, 0.3)",
+    "color": "rgb(98, 94, 91)",
+    "zIndex": "auto",
+    "borderRight": "0px none rgb(98, 94, 91)"
+   },
+   "gutters": {
+    "selector": ".cm-gutters",
+    "found": true,
+    "rect": [
+     500,
+     -389,
+     30,
+     7564
+    ],
+    "classes": [
+     "cm-gutters",
+     "cm-gutters-before"
+    ],
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "color": "rgb(98, 94, 91)",
+    "zIndex": "200",
+    "borderRight": "1px solid rgb(39, 38, 38)"
+   },
+   "lineNumber": {
+    "selector": ".cm-lineNumbers .cm-gutterElement:not(.cm-activeLineGutter)",
+    "found": true,
+    "rect": [
+     500,
+     -389,
+     29,
+     0
+    ],
+    "classes": [
+     "cm-gutterElement"
+    ],
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "color": "rgb(98, 94, 91)",
+    "zIndex": "auto",
+    "borderRight": "0px none rgb(98, 94, 91)"
+   },
+   "selection": {
+    "selector": ".cm-selectionBackground",
+    "found": false
+   },
+   "searchMatch": {
+    "selector": ".cm-searchMatch",
+    "found": false
+   },
+   "searchMatchSelected": {
+    "selector": ".cm-searchMatch-selected",
+    "found": false
+   },
+   "editor": {
+    "selector": ".cm-editor",
+    "found": true,
+    "rect": [
+     500,
+     109,
+     700,
+     591
+    ],
+    "classes": [
+     "cm-editor",
+     "cm-focused",
+     "ͼ1",
+     "ͼ2",
+     "ͼ4",
+     "ͼy",
+     "ͼv",
+     "ͼw",
+     "ͼ10",
+     "CodeMirror"
+    ],
+    "backgroundColor": "rgb(30, 29, 26)",
+    "color": "rgb(197, 201, 197)",
+    "zIndex": "auto",
+    "borderRight": "0px none rgb(197, 201, 197)"
+   }
+  },
+  "layers": [
+   {
+    "classes": [
+     "cm-gutters",
+     "cm-gutters-before"
+    ],
+    "zIndex": "200"
+   },
+   {
+    "classes": [
+     "cm-content",
+     "cm-lineWrapping"
+    ],
+    "zIndex": "auto"
+   },
+   {
+    "classes": [
+     "cm-layer",
+     "cm-layer-above",
+     "cm-cursorLayer"
+    ],
+    "zIndex": "150"
+   },
+   {
+    "classes": [
+     "cm-layer",
+     "cm-selectionLayer"
+    ],
+    "zIndex": "-2"
+   },
+   {
+    "classes": [
+     "md-codeblock-copy-button",
+     "ui",
+     "icon",
+     "button"
+    ],
+    "zIndex": "1"
+   },
+   {
+    "classes": [
+     "cm-cursorLayer",
+     "cm-vimCursorLayer"
+    ],
+    "zIndex": "auto"
+   }
+  ]
+ },
+ "probeAfter": {
+  "measuredAt": "2026-10-25T06:14:39.552Z",
+  "inkdropVersion": "6.2.0",
+  "theme": "kanagawa-dragon",
+  "themeVersion": "1.2.1",
+  "settings": {
+   "lineNumbers": true,
+   "styleActiveLine": true,
+   "acrylic": false
+  },
+  "bodyClasses": [
+   "dark-mode",
+   "platform-darwin",
+   "theme-kanagawa-dragon"
+  ],
+  "window": {
+   "viewport": [
+    1200,
+    700
+   ],
+   "devicePixelRatio": 2,
+   "screen": [
+    400,
+    250,
+    1200,
+    700
+   ],
+   "focused": true
+  },
+  "styles": {
+   "activeLine": {
+    "selector": ".cm-activeLine",
+    "found": true,
+    "rect": [
+     530,
+     112,
+     670,
+     39
+    ],
+    "classes": [
+     "cm-line",
+     "cm-activeLine"
+    ],
+    "backgroundColor": "rgba(39, 38, 38, 0.3)",
+    "color": "rgb(197, 201, 197)",
+    "zIndex": "auto",
+    "borderRight": "0px none rgb(197, 201, 197)"
+   },
+   "activeLineGutter": {
+    "selector": ".cm-activeLineGutter",
+    "found": true,
+    "rect": [
+     500,
+     112,
+     29,
+     39
+    ],
+    "classes": [
+     "cm-gutterElement",
+     "cm-activeLineGutter"
+    ],
+    "backgroundColor": "rgba(39, 38, 38, 0.3)",
+    "color": "rgb(98, 94, 91)",
+    "zIndex": "auto",
+    "borderRight": "0px none rgb(98, 94, 91)"
+   },
+   "gutters": {
+    "selector": ".cm-gutters",
+    "found": true,
+    "rect": [
+     500,
+     -389,
+     30,
+     7564
+    ],
+    "classes": [
+     "cm-gutters",
+     "cm-gutters-before"
+    ],
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "color": "rgb(98, 94, 91)",
+    "zIndex": "200",
+    "borderRight": "1px solid rgb(39, 38, 38)"
+   },
+   "lineNumber": {
+    "selector": ".cm-lineNumbers .cm-gutterElement:not(.cm-activeLineGutter)",
+    "found": true,
+    "rect": [
+     500,
+     -389,
+     29,
+     0
+    ],
+    "classes": [
+     "cm-gutterElement"
+    ],
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "color": "rgb(98, 94, 91)",
+    "zIndex": "auto",
+    "borderRight": "0px none rgb(98, 94, 91)"
+   },
+   "selection": {
+    "selector": ".cm-selectionBackground",
+    "found": false
+   },
+   "searchMatch": {
+    "selector": ".cm-searchMatch",
+    "found": false
+   },
+   "searchMatchSelected": {
+    "selector": ".cm-searchMatch-selected",
+    "found": false
+   },
+   "editor": {
+    "selector": ".cm-editor",
+    "found": true,
+    "rect": [
+     500,
+     109,
+     700,
+     591
+    ],
+    "classes": [
+     "cm-editor",
+     "cm-focused",
+     "ͼ1",
+     "ͼ2",
+     "ͼ4",
+     "ͼy",
+     "ͼv",
+     "ͼw",
+     "ͼ10",
+     "CodeMirror"
+    ],
+    "backgroundColor": "rgb(30, 29, 26)",
+    "color": "rgb(197, 201, 197)",
+    "zIndex": "auto",
+    "borderRight": "0px none rgb(197, 201, 197)"
+   }
+  },
+  "layers": [
+   {
+    "classes": [
+     "cm-gutters",
+     "cm-gutters-before"
+    ],
+    "zIndex": "200"
+   },
+   {
+    "classes": [
+     "cm-content",
+     "cm-lineWrapping"
+    ],
+    "zIndex": "auto"
+   },
+   {
+    "classes": [
+     "cm-layer",
+     "cm-layer-above",
+     "cm-cursorLayer"
+    ],
+    "zIndex": "150"
+   },
+   {
+    "classes": [
+     "cm-layer",
+     "cm-selectionLayer"
+    ],
+    "zIndex": "-2"
+   },
+   {
+    "classes": [
+     "md-codeblock-copy-button",
+     "ui",
+     "icon",
+     "button"
+    ],
+    "zIndex": "1"
+   },
+   {
+    "classes": [
+     "cm-cursorLayer",
+     "cm-vimCursorLayer"
+    ],
+    "zIndex": "auto"
+   }
+  ]
+ },
+ "noteUnchanged": true
+}

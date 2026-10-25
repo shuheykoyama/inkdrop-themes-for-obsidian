@@ -1,5 +1,7 @@
 # G6 V-35: Inkdrop 6.2.0 の実測（方式 C、2026-10-23）
 
+> 2026-10-25 に [`../final/`](../final/README.md)（C6）で置き換えた。この画像には、検索の状態の持ち越しがあり、検索バーもない。参考画像には `final/` を使う（§6.117）。
+
 [14](../../../../14-implementation-plan.md) §6.115 の証拠。`tests/visual/g6-c-run.sh`（コード `90f2859`）で、ユーザーの Inkdrop を 1 回動かして撮った。
 
 - `screenshots/`: ネイティブの撮影 8 枚（2400×1400、devicePixelRatio 2）

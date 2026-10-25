@@ -1,0 +1,32 @@
+{
+ "basis": "the user's authorisation of 2026-10-23: Inkdrop operations allowed, accuracy of the reference images first (research/14 §6.117)",
+ "C4": {
+  "code": "3d95327",
+  "go": "2026-10-25T05:42:23Z",
+  "end": "2026-10-25T05:43:35Z",
+  "noteUnchanged": true,
+  "restoredFilesSameAsBackup": true,
+  "capture": "COMPLETE, PASS 2 RECORD 6; carry-over gone, but the search state used CodeMirror's search directly (no Inkdrop find bar): superseded",
+  "restore": "RESTORED"
+ },
+ "C5": {
+  "code": "28d72c2",
+  "go": "2026-10-25T05:58:35Z",
+  "end": "2026-10-25T05:59:51Z",
+  "noteUnchanged": true,
+  "restoredFilesSameAsBackup": true,
+  "capture": "INVALID 1 (KD search: the find bar kept its text, no query set): superseded",
+  "restore": "RESTORED"
+ },
+ "C6": {
+  "code": "bb49c04",
+  "go": "2026-10-25T06:13:54Z",
+  "end": "2026-10-25T06:15:18Z",
+  "noteUnchanged": true,
+  "restoredFilesSameAsBackup": true,
+  "capture": "COMPLETE, PASS 2 RECORD 6, no INVALID; visual check passed: final reference set",
+  "restore": "RESTORED",
+  "inkdropBefore": "not running",
+  "inkdropAfter": "not running"
+ }
+}
