@@ -1,11 +1,16 @@
 // Step 11G G6 (research/14 §6.95): put the isolated Inkdrop's editor into one V-35 state. Caller sets
 // window.__G6 = { noteId, state: "active" | "search" | "code", line, word }. Only view state changes: the note
 // is opened, the cursor or the search query is set through CodeMirror; no transaction changes the document.
-// Every state starts from a cleared search (empty query, panel closed), so a search of an earlier state never
-// carries over (§6.117); the result reports what is highlighted, for g6-judge.py to check.
+// Every state starts from a cleared search (Inkdrop's find bar closed with editor:clear-find, the query emptied),
+// so a search of an earlier state never carries over (§6.117). The search state is made the way a user makes it in
+// Inkdrop 6.2.0 (§6.118): editor:find opens Inkdrop's own find bar (.mde-search-bar) and the word is typed into
+// its input, which sets the query and highlights the matches without moving the cursor (typing calls no
+// find-next). The result reports what is highlighted and whether the find bar shows, for g6-judge.py.
 (async () => {
   const { noteId, state, line, word } = window.__G6;
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  // The find input of Inkdrop's find bar (the first input of the bar; the replace input shows only when replacing).
+  const findInput = () => document.querySelector(".mde-search-bar .field-find-input input, .mde-search-bar .field-find input") ?? document.querySelector(".mde-search-bar input");
   if (inkdrop.store.getState().editingNote?._id !== noteId) {
     inkdrop.commands.dispatch(document.body, "core:open-note", { noteId });
     await sleep(1200);
@@ -23,26 +28,35 @@
   view.dispatch({ selection: { anchor: at }, scrollIntoView: true });
   let search = null;
   const s = cm.search;
+  const target = document.querySelector(".cm-content") ?? document.body;
   if (!s?.setSearchQuery || !s?.SearchQuery) search = "CodeMirror search API not exported";
   else {
-    // Clear whatever an earlier state searched for.
+    // Clear whatever an earlier state searched for: Inkdrop's find bar, then the query itself.
+    if (document.querySelector(".mde-search-bar")) { inkdrop.commands.dispatch(target, "editor:clear-find", { focus: true }); await sleep(400); }
     view.dispatch({ effects: s.setSearchQuery.of(new s.SearchQuery({ search: "" })) });
     s.closeSearchPanel?.(view);
   }
-  if (state === "search" && !search) {
-    s.openSearchPanel?.(view);
-    view.dispatch({ effects: s.setSearchQuery.of(new s.SearchQuery({ search: word })) });
-    // Back on the line: the panel takes the focus.
-    view.dispatch({ selection: { anchor: at } });
-    view.focus();
-  }
   view.focus();
+  if (state === "search" && !search) {
+    // Inkdrop's find bar, as Cmd+F opens it, and the word typed into its input (a React input: the value is set
+    // through the native setter and an input event, as typing does).
+    inkdrop.commands.dispatch(target, "editor:find");
+    await sleep(500);
+    const input = findInput();
+    if (!input) search = "Inkdrop's find bar or its input did not appear";
+    else {
+      Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set.call(input, word);
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+  } else view.focus();
   await sleep(700);
   const sel = view.state.selection.main;
   return {
     state, line, docUnchanged: view.state.doc.toString() === before, selectionEmpty: sel.empty, cursorLine: view.state.doc.lineAt(sel.head).number,
     searchMatches: document.querySelectorAll(".cm-searchMatch").length, searchError: search,
     searchPanelOpen: !!document.querySelector(".cm-panel.cm-search"),
+    findBarOpen: !!document.querySelector(".mde-search-bar"),
+    findBarText: findInput()?.value ?? null,
     selectionMatches: document.querySelectorAll(".cm-selectionMatch").length,
     activeLineHasMatch: !!document.querySelector(".cm-activeLine .cm-searchMatch"),
     activeLineClasses: [...(document.querySelector(".cm-activeLine")?.classList ?? [])],

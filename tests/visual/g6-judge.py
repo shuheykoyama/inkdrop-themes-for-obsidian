@@ -59,8 +59,11 @@ def invalid(rec):
         out.append("the active line is not marked as a code block line")
     # Nothing carried over from another state (§6.117): no search highlight or panel outside the search state, no
     # selection-match highlight anywhere. A record without these fields cannot show it, so it is not usable either.
-    if rec["state"] != "search" and (st.get("searchMatches") != 0 or st.get("searchPanelOpen") is not False):
-        out.append("a search highlight or panel is left from another state")
+    if rec["state"] != "search" and (st.get("searchMatches") != 0 or st.get("searchPanelOpen") is not False or st.get("findBarOpen") is not False):
+        out.append("a search highlight, panel or find bar is left from another state")
+    # The search state as Inkdrop shows it to a user (§6.118): its find bar open with the word typed in.
+    if rec["state"] == "search" and (st.get("findBarOpen") is not True or not st.get("findBarText")):
+        out.append("Inkdrop's find bar is not shown with the searched word")
     if st.get("selectionMatches") != 0:
         out.append("selection-match highlights are shown")
     return out

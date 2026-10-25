@@ -43,7 +43,8 @@ def rec(theme="solarized-dark", mode="opaque", state="active"):
     return {"name": f"{theme}-{mode}-{state}", "theme": theme, "mode": mode, "state": state, "line": 5, "pixels": [1200, 700],
             "stateResult": {"docUnchanged": True, "selectionEmpty": True, "cursorLine": 5, "searchError": None,
                             "activeLineHasMatch": state == "search", "activeLineClasses": ["cm-activeLine"] + (["cm-codeblock"] if state == "code" else []),
-                            "searchMatches": 3 if state == "search" else 0, "searchPanelOpen": state == "search", "selectionMatches": 0},
+                            "searchMatches": 3 if state == "search" else 0, "searchPanelOpen": False, "selectionMatches": 0,
+                            "findBarOpen": state == "search", "findBarText": "Create" if state == "search" else None},
             "probeBefore": p, "probeAfter": copy.deepcopy(p), "noteUnchanged": True}
 
 
@@ -99,9 +100,12 @@ JUDGE = [
     ("no match on the active line", mut(rec(state="search"), lambda r: r["stateResult"].update(activeLineHasMatch=False)), "INVALID"),
     ("code line not marked", mut(rec(state="code"), lambda r: r["stateResult"].update(activeLineClasses=["cm-activeLine"])), "INVALID"),
     ("search highlight left over in the active line state", mut(rec(), lambda r: r["stateResult"].update(searchMatches=2)), "INVALID"),
-    ("search panel left open in the code block state", mut(rec(state="code"), lambda r: r["stateResult"].update(searchPanelOpen=True)), "INVALID"),
+    ("CodeMirror search panel left open in the code block state", mut(rec(state="code"), lambda r: r["stateResult"].update(searchPanelOpen=True)), "INVALID"),
     ("selection-match highlights in the search state", mut(rec(state="search"), lambda r: r["stateResult"].update(selectionMatches=1)), "INVALID"),
     ("a record without the highlight fields", mut(rec(), lambda r: [r["stateResult"].pop(k) for k in ("searchMatches", "searchPanelOpen", "selectionMatches")]), "INVALID"),
+    ("Inkdrop's find bar left open in the code block state", mut(rec(state="code"), lambda r: r["stateResult"].update(findBarOpen=True)), "INVALID"),
+    ("search state without Inkdrop's find bar", mut(rec(state="search"), lambda r: r["stateResult"].update(findBarOpen=False)), "INVALID"),
+    ("search state with an empty find bar", mut(rec(state="search"), lambda r: r["stateResult"].update(findBarText="")), "INVALID"),
 ]
 
 ISO_OK = {"report": {"pid": 200, "env": "/w/d", "mainUi": True, "paths": {"userData": "/w/d", "configFile": "/w/d/config.json", "configDir": None,
