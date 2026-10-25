@@ -4,6 +4,9 @@
 // macOS display setting. Long run (about 2 hours): keep the Mac awake (research/14 §6.25).
 //
 // usage: node tests/integration/run-all.mjs <out_dir> [--only <step,...>] [--baseline-39 <json>] [--baseline-43 <json>]
+//        [--obsidian <version> --e43 <electron>]   another public release (11C, research/14 §6.123): the e39 runs load
+//        its app asar and the e43 runs use its installer copy, both prepared by OBSIDIAN_VERSION=<version>
+//        tests/runtime/current-installer.sh prepare; --e43 names the Electron of that installer in the file names
 //   <out_dir> must not exist yet (its parent must) and must not be inside an Obsidian vault; it is never emptied.
 //   Only `--only compare,gate` may re-use an existing output of this script (it carries .run-all-output.json).
 //   Steps, in order:
@@ -34,18 +37,24 @@ import { deviceRunProblem } from "../release/gate.mjs";
 import { classifyDryRun, compareResults, createRunner, prepareOut, runProblems, stopIsolated } from "./lib.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
-const { values: args, positionals } = parseArgs({ allowPositionals: true, options: { only: { type: "string" }, "baseline-39": { type: "string" }, "baseline-43": { type: "string" } } });
+const { values: args, positionals } = parseArgs({ allowPositionals: true, options: { only: { type: "string" }, "baseline-39": { type: "string" }, "baseline-43": { type: "string" }, obsidian: { type: "string" }, e43: { type: "string" } } });
 if (positionals.length !== 1) { console.error("usage: node tests/integration/run-all.mjs <out_dir> [--only static,kit-build,e39,e43,kit,compare,gate]"); process.exit(2); }
 const out = path.resolve(positionals[0]);
 const STEPS = ["static", "kit-build", "e39", "e43", "kit", "compare", "gate"];
 const only = args.only ? args.only.split(",") : STEPS;
 for (const s of only) if (!STEPS.includes(s)) { console.error(`unknown step ${s}`); process.exit(2); }
 // The previous final results (step 10 re-review, research/14 §6.25) for the comparison.
+const VERSION = args.obsidian ?? "1.14.4";
+const E43 = args.e43 ?? "43.7.7";
 const BASELINE = {
   "39.5.1": args["baseline-39"] ?? "research/evidence/phase3-step10/rereview/final/runtime-electron-39.5.1.json",
-  "43.7.7": args["baseline-43"] ?? "research/evidence/phase3-step10/rereview/final/runtime-electron-43.7.7.json",
+  [E43]: args["baseline-43"] ?? "research/evidence/phase3-step10/rereview/final/runtime-electron-43.7.7.json",
 };
-const CURRENT_APP = path.join(process.env.HOME, ".cache/inkdrop-themes-for-obsidian/obsidian-1.14.4/Obsidian.app");
+const CACHE = path.join(process.env.HOME, `.cache/inkdrop-themes-for-obsidian/obsidian-${VERSION}`);
+const CURRENT_APP = path.join(CACHE, "Obsidian.app");
+// The e39 runs: /Applications/Obsidian.app with the user's 1.14.4 asar by default, or the release's own asar.
+const E39_ENV = args.obsidian ? { OBSIDIAN_ASAR: path.join(CACHE, `obsidian-${VERSION}.asar`) } : {};
+process.env.OBSIDIAN_VERSION = VERSION; // current-installer.sh check / restore act on this version's copy
 const MIN = 60 * 1000;
 try { prepareOut(out, { reuse: only.every((s) => ["compare", "gate"].includes(s)) }); }
 catch (e) { console.error(`run-all: refusing: ${e.message}`); process.exit(2); }
@@ -110,12 +119,12 @@ if (only.includes("static")) {
   await step("clean-room", "bash", ["tests/clean-room.sh"]);
 }
 if (only.includes("kit-build")) await step("kit-build", process.execPath, ["tests/device/kit-self-test.mjs", "build", path.join(out, "kit-build-work")]);
-if (only.includes("e39")) await electron("39.5.1", {});
+if (only.includes("e39")) await electron("39.5.1", E39_ENV);
 if (only.includes("e43")) {
   if (!existsSync(CURRENT_APP)) summary.problems.push(`e43: ${CURRENT_APP} missing (bash tests/runtime/current-installer.sh prepare)`);
   else {
     const before = await step("e43-installer-check-before", "bash", ["tests/runtime/current-installer.sh", "check"], { timeoutMs: 5 * MIN });
-    try { await electron("43.7.7", { OBSIDIAN_APP: CURRENT_APP, OBSIDIAN_ASAR: "none" }); }
+    try { await electron(E43, { OBSIDIAN_APP: CURRENT_APP, OBSIDIAN_ASAR: "none" }); }
     finally {
       await step("e43-installer-restore", "bash", ["tests/runtime/current-installer.sh", "restore"], { timeoutMs: 5 * MIN });
       const after = await step("e43-installer-check-after", "bash", ["tests/runtime/current-installer.sh", "check"], { timeoutMs: 5 * MIN });
@@ -149,7 +158,7 @@ if (only.includes("compare")) {
   const specChanged = git(["diff", "--stat", "f7dd00a", "HEAD", "--", "tests/spec/runtime", "tests/spec/syntax.json", "tests/spec/mermaid.json", "tests/runtime", "tests/fixtures", "src"]).split("\n").filter((l) => l.includes("|") && !/src\/manifests\//.test(l));
   summary.specSinceBaseline = specChanged.length ? specChanged : "unchanged (runtime checks, syntax, Mermaid, runner, fixtures, CSS sources; only src/manifests changed: minAppVersion, not measured)";
   if (specChanged.length) summary.problems.push(`the measured spec or sources changed since the baseline (f7dd00a); compare the unchanged checks only: ${specChanged.join("; ")}`);
-  for (const label of ["39.5.1", "43.7.7"]) {
+  for (const label of ["39.5.1", E43]) {
     const files = Object.fromEntries(["run1", "run2", "self-test", "frame"].map((run) => [run, need(runFile(label, run), `E${label} ${run}`)]));
     for (const [run, data] of Object.entries(files)) if (data) for (const p of runProblems(data, { selfTest: run === "self-test" })) summary.problems.push(`E${label} ${run}: ${p}`);
     if (files["self-test"]) summary.comparisons.push({ name: `E${label} self-test`, count: files["self-test"].results.length, problems: runProblems(files["self-test"], { selfTest: true }) });
@@ -168,7 +177,7 @@ if (only.includes("compare")) {
 // ---------- the release judgement on this run's results ----------
 if (only.includes("gate")) {
   const inputs = readJson("tests/release/inputs.json");
-  const mine = ["39.5.1", "43.7.7"].flatMap((l) => [["run 1", runFile(l, "run1")], ["custom-frame run", runFile(l, "frame")]].map(([what, f]) => ({ l, what, f })));
+  const mine = ["39.5.1", E43].flatMap((l) => [["run 1", runFile(l, "run1")], ["custom-frame run", runFile(l, "frame")]].map(([what, f]) => ({ l, what, f })));
   if (mine.every((m) => existsSync(m.f))) {
     const runs = [
       ...mine.map((m) => ({ kind: "desktop-runtime", os: "macOS", label: `this run, Electron ${m.l} ${m.what}`, file: path.relative(repo, m.f) })),
