@@ -1,0 +1,21 @@
+release conditions (research/14 §2.3): NOT MET; minimum Obsidian 1.14.4
+
+macOS desktop: NOT met; 138 units {"NO RESULT":2,"DIFF":2,"PASS":134}
+  2 x no counting unit at >= 1.14.4: NO RESULT @1.14.4  [qd4.links|solarized-dark; qd4.links|kanagawa-dragon]
+  2 x no counting unit at >= 1.14.4: DIFF @1.14.4  [qd13.fidelity|solarized-dark; qd13.fidelity|kanagawa-dragon]
+
+iOS phone: NOT met; 34 units {"DIFF":2,"PASS":32}
+  2 x no counting unit at >= 1.14.4: DIFF @1.14.5  [qd13.fidelity|solarized-dark; qd13.fidelity|kanagawa-dragon]
+
+iOS tablet: NOT met; 34 units {"BLOCKED":34}; BLOCKED: no device verification planned: the user limited the step 11G device runs to macOS and iPhone (2026-10-20, research/14 §6.61); BLOCKED, still in the supported range (Q-D10)
+  34 x no counting unit at >= 1.14.4: BLOCKED
+
+Android phone: NOT met; 34 units {"BLOCKED":34}; BLOCKED: no Android device and no adb (step 10); no device verification planned: the user limited the step 11G device runs to macOS and iPhone (2026-10-20, research/14 §6.61); BLOCKED, still in the supported range (Q-D10)
+  34 x no counting unit at >= 1.14.4: BLOCKED
+
+Android tablet: NOT met; 34 units {"BLOCKED":34}; BLOCKED: no Android device and no adb (step 10); no device verification planned: the user limited the step 11G device runs to macOS and iPhone (2026-10-20, research/14 §6.61); BLOCKED, still in the supported range (Q-D10)
+  34 x no counting unit at >= 1.14.4: BLOCKED
+
+Windows desktop (not gated: Q-D10): -; 138 units {"UNVERIFIED":138}; Q-D10: not guaranteed until verified on a real machine; UNVERIFIED, not a release failure
+
+Linux desktop (not gated: Q-D10): -; 138 units {"UNVERIFIED":138}; Q-D10: not guaranteed until verified on a real machine; UNVERIFIED, not a release failure

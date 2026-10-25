@@ -6612,3 +6612,95 @@ G6 はリリースの判定に反映しない。リリースの判定は NOT MET
 ### 6.120 次の作業
 
 §6.119 の計画のレビュー。そのあとに、11H（自律の作業）から始める。
+
+### 6.121 工程 11H: 入力の差し替えとリリースの判定の集計（2026-10-25、独立レビュー待ち）
+
+`88c0c98` のレビューは §6.119 を APPROVE（G6 は COMPLETE、次は 11H）。
+
+今回は、§6.119.3 の作業 1〜3 だけを行った。
+
+- 次のものは、変えていない: 実測値、期待値、許容差、Q-D、サポートの範囲（`gated`）、判定（MET にしていない）。
+- 実機・Inkdrop・Obsidian は、操作していない。
+
+証拠は [`evidence/phase3-step11/11h/`](evidence/phase3-step11/11h/gate-compare.txt)。
+
+#### 6.121.1 入力の差し替え（`tests/release/inputs.json`）
+
+**結果のファイル**: 工程 10 のものから、次のものに替えた。
+
+| 入力 | ファイル | 版・出典 |
+|---|---|---|
+| macOS、Electron 39.5.1 | `11f-rereview/regress/runtime-electron-39.5.1-run1.json`（3871 件） | Obsidian 1.14.4。11F の再レビューの run-all（`d027f61`、clean） |
+| macOS、Electron 39.5.1、custom frame | `…-39.5.1-frame.json`（31 件） | 同じ |
+| macOS、Electron 43.7.7 | `…-43.7.7-run1.json`（3871 件） | 同じ |
+| macOS、Electron 43.7.7、custom frame | `…-43.7.7-frame.json`（31 件） | 同じ |
+| iPhone | `11g-g1/device/report.json`（916 件） | iPhone 12 Pro、iOS 27.0、Obsidian 1.14.5（387）。G1 のキット `abfb7c19`（`daac8e2` から作った） |
+
+- **最新のコードの結果であることの根拠**: `src/` と `scripts/` は、`d027f61` から今（`88c0c98`）まで変わっていない（`git diff --stat`）。`daac8e2` との差は、実機のキットの道具だけ。
+  - `d027f61` の後に変わったのは `tests/spec/requirements.json` だけ。変わったのは、記録の検証（`verifiedBy`）の追加 3 件（G1・G4・G5）で、ゲートはこれを `requirements.json` から読む。
+- G4（`qd22.real-fullscreen` の SD）と G5（`qd1.titlebar-visible-frame`）の記録の検証は、そのまま残っている（`requirements.json`）。
+
+**公開の最新版**（`latestPublic`、2026-10-25 に [公式の changelog](https://obsidian.md/changelog/) で確かめた）:
+
+| 対象 | 前 | 今 |
+|---|---|---|
+| macOS | 1.14.4（2026-10-15 に確認） | **1.14.5**（Desktop、2026-10-22 公開。Electron 43.7.5 → 43.8.3 のセキュリティの更新。1.15.0 は Catalyst だけ） |
+| iOS | 設定なし | **未確認**。changelog の Mobile の公開の最新は 1.14.4（2026-10-05）だが、G1 の iPhone は 2026-10-20 に Obsidian 1.14.5（387）で動いていた。どちらが iOS の公開の最新版か決められない。そのため、最新版の確認の条件は付けない（`version: null` と注記） |
+| Android | 設定なし | 設定なし（BLOCKED） |
+
+- 最小対応版は 1.14.4 のまま（`src/manifests` と一致することを、ゲートが確かめる）。
+
+#### 6.121.2 差し替えの前後の判定（`gate-before.txt`、`gate-after.txt`、`gate-compare.txt`）
+
+| 対象 | 前（工程 10 の入力、最新版 1.14.4） | 後（11F・G1 の入力、最新版 1.14.5） |
+|---|---|---|
+| macOS desktop | NOT met。PASS 134、DIFF 2（`qd13.fidelity`）、NO RESULT 2（`qd4.links`） | NOT met。**PASS 136**、DIFF 2（`qd13.fidelity`）。**PASS の 136 単位は、どれも公開の最新版 1.14.5 で確かめていない** |
+| iOS phone | NOT met。PASS 32、DIFF 2（`qd13.fidelity`、@1.14.5） | NOT met。同じ（証拠は G1 に替わった。状態は同じ） |
+| iOS tablet・Android phone・Android tablet | BLOCKED 34 ずつ | 同じ |
+| Windows・Linux（ゲートの対象外） | UNVERIFIED | 同じ |
+
+- 変わった単位は、`qd4.links` の macOS の 2 単位で、NO RESULT から PASS になった。
+  - 理由: その検査は工程 10 の後に足されたので、工程 10 の結果になかった。11F の結果にはある。
+  - 推測で PASS にしたのではなく、11F の実測の結果による。
+- iOS phone の 34 単位は、証拠が G1 の結果に替わった。状態は同じ。
+- 2 つの変更の効果を分けて確かめた（`gate-runs-only.txt`）。新しい入力で、最新版を 1.14.4 のままにすると、macOS の未達は `qd13.fidelity` の DIFF 2 だけになる。新しく出た 136 件の未達は、最新版を 1.14.5 に改めたことだけによる。
+
+#### 6.121.3 未達の内訳（2026-10-25 の時点）
+
+| 対象 | 必須の UNVERIFIED | NO RESULT | DIFF | BLOCKED | 公開の最新版で未確認 |
+|---|---|---|---|---|---|
+| macOS desktop | 0 | 0 | 2（`qd13.fidelity` × 両テーマ） | — | 136（PASS の全単位。1.14.5） |
+| iOS phone | 0 | 0 | 2（同じ） | — | —（未確認のため条件なし） |
+| iOS tablet | — | — | — | 34 | — |
+| Android phone | — | — | — | 34 | — |
+| Android tablet | — | — | — | 34 | — |
+
+- 必須の UNVERIFIED は 0。`qd1.titlebar-visible-frame`（G5）と `qd1.mobile-drawer-header`（G1）は解消した。
+- EMULATED だけの PASS で数えた単位はない。
+- 最小対応版: macOS・iOS の数える単位は、どれも 1.14.4 以上（macOS 1.14.4、iOS 1.14.5）。
+
+#### 6.121.4 未達ごとの解決の手段と、ユーザーの判断
+
+| 未達 | 原因 | 解決の手段 | ユーザーの判断 |
+|---|---|---|---|
+| **macOS: 公開の最新版 1.14.5 で未確認**（136 単位） | 2026-10-22 に Desktop 1.14.5 が公開された | 11C と同じ方法。公式の配布物の 1.14.5（Electron 43.8.3）を隔離インスタンスで起動し、全検査を実行して入力に足す。自律の作業で、普段の Obsidian には触れない | 不要（手順は 11C で承認済み）。実行するかは、レビューで確かめる |
+| **`qd13.fidelity` の DIFF**（macOS・iOS × 両テーマ） | 構文の色の忠実度。Obsidian の字句解析と Inkdrop の解析の違いで、トークンの区切りと種類が言語ごとに違う。DIFF の検査（言語 × ビュー）は SD 49、KD 52（両 OS で同じ数）。工程 8 から既知で、実行時の DIFF の総数は 606 件のまま（11F の両 Electron）。期待値は Inkdrop 6.1.5 の同梱のコードでの解析（V-31） | (a) テーマの修正で減らせる範囲を調べる（工程 8 の DIFF の理由の記録を言語ごとに見直す）。(b) **G7**（V-39 の残り）で、期待値の側（Inkdrop の実際の描画）を 12 言語で確かめる。いまは JS の 40 トークンしか実機で確かめておらず、Inkdrop は 6.2.0 に上がっている | DIFF をリリースに数えるか（受け入れるか）。決める前に、G7 で期待値を確かめるのがよい（下記） |
+| **BLOCKED**（iOS tablet・Android phone・Android tablet） | 実機の検証をしない（ユーザーの決定、§6.61） | §6.61.1 のとおり: (i) Q-D10 を維持（BLOCKED の間は NOT MET）、(ii) 正式サポートを macOS と iPhone に限る（iPad・Android は Windows・Linux と同じ扱い）、(iii) 外部の実機サービス | (i)〜(iii) のどれにするか。`gated` は変えていない |
+
+#### 6.121.5 G7・G8 の価値と優先順位
+
+- **G7（V-39 の残り、12 言語）: 優先度は高い**。
+  - `qd13.fidelity` の DIFF の期待値は、Inkdrop 6.1.5 の同梱のコードの静的な解析（V-31）による。実機の描画で確かめたのは、JS の 40 トークンだけ。
+  - 今の Inkdrop は 6.2.0。
+  - DIFF を受け入れるかを決める前に、期待値が Inkdrop の実際の見え方と合っているかを確かめる価値がある。ユーザーの「参考画像との一致の度合いを優先する」とも合う。
+  - 方法は §6.19 の案 B（一時的な DOM の注入）と、G6 の方式 C の道具。
+- **G8（V-33、オーバーレイと hover）: 優先度は中**。
+  - 色は検証済みだが、形（影・角・余白）の比較の基準がない。
+  - リリースの単位はない。ただ、参考画像としての精度の点で、残す理由はない。G7 の後に行う。
+- どちらも、本番の Inkdrop の操作が要る。G6 での包括の許可が及ぶかは、行う前にユーザーに確かめる。
+
+リリースの判定は NOT MET のまま。G7・G8、1.14.5 の実行、範囲の変更、DIFF の受け入れの判断はしていない。
+
+### 6.122 次の作業
+
+§6.121 の独立レビュー。そのあと、ユーザーの判断事項（`qd13.fidelity`、Q-D10 の範囲）と、1.14.5 の実行・G7・G8 の順序を決める。

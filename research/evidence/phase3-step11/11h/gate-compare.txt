@@ -1,0 +1,6 @@
+gate unit changes, inputs-before -> inputs-after (state and counted version), 2026-10-25:
+  qd4.links|kanagawa-dragon|macOS|desktop: NO RESULT @1.14.4 -> PASS @1.14.4
+  qd4.links|solarized-dark|macOS|desktop: NO RESULT @1.14.4 -> PASS @1.14.4
+  iOS phone units (32): evidence ['research/evidence/phase3-step10/device-run2/report.json'] -> ['research/evidence/phase3-step11/11g-g1/device/report.json'], states unchanged
+  iOS phone units (2): evidence ['research/evidence/phase3-step10/device-run2/report.json', 'research/evidence/phase3-step11/11g-g1/ (tour/drawer-header.json, tour/shots.json, tour/tour-2026-10-20T08-19-09-315Z.json, tour/03-, 04-, 22-, 23-*.png; provenance.md)'] -> ['research/evidence/phase3-step11/11g-g1/ (tour/drawer-header.json, tour/shots.json, tour/tour-2026-10-20T08-19-09-315Z.json, tour/03-, 04-, 22-, 23-*.png; provenance.md)', 'research/evidence/phase3-step11/11g-g1/device/report.json'], states unchanged
+  macOS desktop: the 136 PASS units are not counted as release-ready because none was verified on the latest public 1.14.5 (gate-after.txt); with the old latestPublic 1.14.4 only qd13.fidelity is unmet (gate-runs-only.txt)
