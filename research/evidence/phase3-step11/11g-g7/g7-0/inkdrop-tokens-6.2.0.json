@@ -1,0 +1,4811 @@
+[
+ {
+  "lang": "js",
+  "code": "// line comment\n/* block comment */\nimport { readFile } from \"fs\";\nconst answer = 42, ratio = 1.5, ok = true, none = null;\nlet re = /ab+c/g;\nclass Shape extends Base {\n  constructor(size) { super(); this.size = size; }\n  area() { return this.size * 2; }\n}\nfunction greet(name) {\n  if (name !== undefined) return `hi ${name}`;\n  console.log(name.length, Math.max(1, 2));\n}\ngreet(\"world\");",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 15,
+    "text": "// line comment",
+    "cls": "tok-line-comment",
+    "var": "--syntax-line-comment-color"
+   },
+   {
+    "from": 16,
+    "to": 35,
+    "text": "/* block comment */",
+    "cls": "tok-block-comment",
+    "var": "--syntax-block-comment-color"
+   },
+   {
+    "from": 36,
+    "to": 42,
+    "text": "import",
+    "cls": "tok-module-keyword",
+    "var": "--syntax-module-keyword-color"
+   },
+   {
+    "from": 43,
+    "to": 44,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 45,
+    "to": 53,
+    "text": "readFile",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 54,
+    "to": 55,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 56,
+    "to": 60,
+    "text": "from",
+    "cls": "tok-module-keyword",
+    "var": "--syntax-module-keyword-color"
+   },
+   {
+    "from": 61,
+    "to": 65,
+    "text": "\"fs\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 65,
+    "to": 66,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 67,
+    "to": 72,
+    "text": "const",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 73,
+    "to": 79,
+    "text": "answer",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 80,
+    "to": 81,
+    "text": "=",
+    "cls": "tok-definition-operator",
+    "var": "--syntax-definition-operator-color"
+   },
+   {
+    "from": 82,
+    "to": 84,
+    "text": "42",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 84,
+    "to": 85,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 86,
+    "to": 91,
+    "text": "ratio",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 92,
+    "to": 93,
+    "text": "=",
+    "cls": "tok-definition-operator",
+    "var": "--syntax-definition-operator-color"
+   },
+   {
+    "from": 94,
+    "to": 97,
+    "text": "1.5",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 97,
+    "to": 98,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 99,
+    "to": 101,
+    "text": "ok",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 102,
+    "to": 103,
+    "text": "=",
+    "cls": "tok-definition-operator",
+    "var": "--syntax-definition-operator-color"
+   },
+   {
+    "from": 104,
+    "to": 108,
+    "text": "true",
+    "cls": "tok-bool",
+    "var": "--syntax-bool-color"
+   },
+   {
+    "from": 108,
+    "to": 109,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 110,
+    "to": 114,
+    "text": "none",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 115,
+    "to": 116,
+    "text": "=",
+    "cls": "tok-definition-operator",
+    "var": "--syntax-definition-operator-color"
+   },
+   {
+    "from": 117,
+    "to": 121,
+    "text": "null",
+    "cls": "tok-null",
+    "var": "--syntax-null-color"
+   },
+   {
+    "from": 121,
+    "to": 122,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 123,
+    "to": 126,
+    "text": "let",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 127,
+    "to": 129,
+    "text": "re",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 130,
+    "to": 131,
+    "text": "=",
+    "cls": "tok-definition-operator",
+    "var": "--syntax-definition-operator-color"
+   },
+   {
+    "from": 132,
+    "to": 139,
+    "text": "/ab+c/g",
+    "cls": "tok-regexp",
+    "var": "--syntax-regexp-color"
+   },
+   {
+    "from": 139,
+    "to": 140,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 141,
+    "to": 146,
+    "text": "class",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 147,
+    "to": 152,
+    "text": "Shape",
+    "cls": "tok-class-name",
+    "var": "--syntax-class-name-color"
+   },
+   {
+    "from": 153,
+    "to": 160,
+    "text": "extends",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 161,
+    "to": 165,
+    "text": "Base",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 166,
+    "to": 167,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 170,
+    "to": 181,
+    "text": "constructor",
+    "cls": "tok-property-name tok-definition",
+    "var": "--syntax-property-name-definition-color"
+   },
+   {
+    "from": 181,
+    "to": 182,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 182,
+    "to": 186,
+    "text": "size",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 186,
+    "to": 187,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 188,
+    "to": 189,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 190,
+    "to": 195,
+    "text": "super",
+    "cls": "tok-atom",
+    "var": "--syntax-atom-color"
+   },
+   {
+    "from": 195,
+    "to": 196,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 196,
+    "to": 197,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 197,
+    "to": 198,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 199,
+    "to": 203,
+    "text": "this",
+    "cls": "tok-self",
+    "var": "--syntax-self-color"
+   },
+   {
+    "from": 203,
+    "to": 204,
+    "text": ".",
+    "cls": "tok-deref-operator",
+    "var": "--syntax-deref-operator-color"
+   },
+   {
+    "from": 204,
+    "to": 208,
+    "text": "size",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 209,
+    "to": 210,
+    "text": "=",
+    "cls": "tok-definition-operator",
+    "var": "--syntax-definition-operator-color"
+   },
+   {
+    "from": 211,
+    "to": 215,
+    "text": "size",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 215,
+    "to": 216,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 217,
+    "to": 218,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 221,
+    "to": 225,
+    "text": "area",
+    "cls": "tok-property-name tok-definition",
+    "var": "--syntax-property-name-definition-color"
+   },
+   {
+    "from": 225,
+    "to": 226,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 226,
+    "to": 227,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 228,
+    "to": 229,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 230,
+    "to": 236,
+    "text": "return",
+    "cls": "tok-control-keyword",
+    "var": "--syntax-control-keyword-color"
+   },
+   {
+    "from": 237,
+    "to": 241,
+    "text": "this",
+    "cls": "tok-self",
+    "var": "--syntax-self-color"
+   },
+   {
+    "from": 241,
+    "to": 242,
+    "text": ".",
+    "cls": "tok-deref-operator",
+    "var": "--syntax-deref-operator-color"
+   },
+   {
+    "from": 242,
+    "to": 246,
+    "text": "size",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 247,
+    "to": 248,
+    "text": "*",
+    "cls": "tok-arithmetic-operator",
+    "var": "--syntax-arithmetic-operator-color"
+   },
+   {
+    "from": 249,
+    "to": 250,
+    "text": "2",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 250,
+    "to": 251,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 252,
+    "to": 253,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 254,
+    "to": 255,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 256,
+    "to": 264,
+    "text": "function",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 265,
+    "to": 270,
+    "text": "greet",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 270,
+    "to": 271,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 271,
+    "to": 275,
+    "text": "name",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 275,
+    "to": 276,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 277,
+    "to": 278,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 281,
+    "to": 283,
+    "text": "if",
+    "cls": "tok-control-keyword",
+    "var": "--syntax-control-keyword-color"
+   },
+   {
+    "from": 284,
+    "to": 285,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 285,
+    "to": 289,
+    "text": "name",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 290,
+    "to": 293,
+    "text": "!==",
+    "cls": "tok-compare-operator",
+    "var": "--syntax-compare-operator-color"
+   },
+   {
+    "from": 294,
+    "to": 303,
+    "text": "undefined",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 303,
+    "to": 304,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 305,
+    "to": 311,
+    "text": "return",
+    "cls": "tok-control-keyword",
+    "var": "--syntax-control-keyword-color"
+   },
+   {
+    "from": 312,
+    "to": 316,
+    "text": "`hi ",
+    "cls": "tok-string tok-special",
+    "var": "--syntax-string-special-color"
+   },
+   {
+    "from": 316,
+    "to": 318,
+    "text": "${",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 318,
+    "to": 322,
+    "text": "name",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 322,
+    "to": 323,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 323,
+    "to": 324,
+    "text": "`",
+    "cls": "tok-string tok-special",
+    "var": "--syntax-string-special-color"
+   },
+   {
+    "from": 324,
+    "to": 325,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 328,
+    "to": 335,
+    "text": "console",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 335,
+    "to": 336,
+    "text": ".",
+    "cls": "tok-deref-operator",
+    "var": "--syntax-deref-operator-color"
+   },
+   {
+    "from": 336,
+    "to": 339,
+    "text": "log",
+    "cls": "tok-property-name tok-function",
+    "var": "--syntax-property-name-function-color"
+   },
+   {
+    "from": 339,
+    "to": 340,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 340,
+    "to": 344,
+    "text": "name",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 344,
+    "to": 345,
+    "text": ".",
+    "cls": "tok-deref-operator",
+    "var": "--syntax-deref-operator-color"
+   },
+   {
+    "from": 345,
+    "to": 351,
+    "text": "length",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 351,
+    "to": 352,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 353,
+    "to": 357,
+    "text": "Math",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 357,
+    "to": 358,
+    "text": ".",
+    "cls": "tok-deref-operator",
+    "var": "--syntax-deref-operator-color"
+   },
+   {
+    "from": 358,
+    "to": 361,
+    "text": "max",
+    "cls": "tok-property-name tok-function",
+    "var": "--syntax-property-name-function-color"
+   },
+   {
+    "from": 361,
+    "to": 362,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 362,
+    "to": 363,
+    "text": "1",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 363,
+    "to": 364,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 365,
+    "to": 366,
+    "text": "2",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 366,
+    "to": 367,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 367,
+    "to": 368,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 368,
+    "to": 369,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 370,
+    "to": 371,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 372,
+    "to": 377,
+    "text": "greet",
+    "cls": "tok-variable-name tok-function",
+    "var": "--syntax-variable-name-function-color"
+   },
+   {
+    "from": 377,
+    "to": 378,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 378,
+    "to": 385,
+    "text": "\"world\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 385,
+    "to": 386,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 386,
+    "to": 387,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   }
+  ]
+ },
+ {
+  "lang": "ts",
+  "code": "interface Point { x: number; label?: string }\ntype Id = string | number;\nenum Color { Red, Green }\nexport function move(p: Point, dx: number): Point {\n  const next: Point = { ...p, x: p.x + dx };\n  return next as Point;\n}",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 9,
+    "text": "interface",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 10,
+    "to": 15,
+    "text": "Point",
+    "cls": "tok-name tok-definition",
+    "var": "--syntax-name-definition-color"
+   },
+   {
+    "from": 16,
+    "to": 17,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 18,
+    "to": 19,
+    "text": "x",
+    "cls": "tok-property-name tok-definition",
+    "var": "--syntax-property-name-definition-color"
+   },
+   {
+    "from": 19,
+    "to": 20,
+    "text": ":",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 21,
+    "to": 27,
+    "text": "number",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 27,
+    "to": 28,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 29,
+    "to": 34,
+    "text": "label",
+    "cls": "tok-property-name tok-definition",
+    "var": "--syntax-property-name-definition-color"
+   },
+   {
+    "from": 35,
+    "to": 36,
+    "text": ":",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 37,
+    "to": 43,
+    "text": "string",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 44,
+    "to": 45,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 46,
+    "to": 50,
+    "text": "type",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 51,
+    "to": 53,
+    "text": "Id",
+    "cls": "tok-name tok-definition",
+    "var": "--syntax-name-definition-color"
+   },
+   {
+    "from": 54,
+    "to": 55,
+    "text": "=",
+    "cls": "tok-definition-operator",
+    "var": "--syntax-definition-operator-color"
+   },
+   {
+    "from": 56,
+    "to": 62,
+    "text": "string",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 63,
+    "to": 64,
+    "text": "|",
+    "cls": "tok-logic-operator",
+    "var": "--syntax-logic-operator-color"
+   },
+   {
+    "from": 65,
+    "to": 71,
+    "text": "number",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 71,
+    "to": 72,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 73,
+    "to": 77,
+    "text": "enum",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 78,
+    "to": 83,
+    "text": "Color",
+    "cls": "tok-name tok-definition",
+    "var": "--syntax-name-definition-color"
+   },
+   {
+    "from": 84,
+    "to": 85,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 86,
+    "to": 89,
+    "text": "Red",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 89,
+    "to": 90,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 91,
+    "to": 96,
+    "text": "Green",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 97,
+    "to": 98,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 99,
+    "to": 105,
+    "text": "export",
+    "cls": "tok-module-keyword",
+    "var": "--syntax-module-keyword-color"
+   },
+   {
+    "from": 106,
+    "to": 114,
+    "text": "function",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 115,
+    "to": 119,
+    "text": "move",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 119,
+    "to": 120,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 120,
+    "to": 121,
+    "text": "p",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 121,
+    "to": 122,
+    "text": ":",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 123,
+    "to": 128,
+    "text": "Point",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 128,
+    "to": 129,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 130,
+    "to": 132,
+    "text": "dx",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 132,
+    "to": 133,
+    "text": ":",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 134,
+    "to": 140,
+    "text": "number",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 140,
+    "to": 141,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 141,
+    "to": 142,
+    "text": ":",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 143,
+    "to": 148,
+    "text": "Point",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 149,
+    "to": 150,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 153,
+    "to": 158,
+    "text": "const",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 159,
+    "to": 163,
+    "text": "next",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 163,
+    "to": 164,
+    "text": ":",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 165,
+    "to": 170,
+    "text": "Point",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 171,
+    "to": 172,
+    "text": "=",
+    "cls": "tok-definition-operator",
+    "var": "--syntax-definition-operator-color"
+   },
+   {
+    "from": 173,
+    "to": 174,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 175,
+    "to": 178,
+    "text": "...",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 178,
+    "to": 179,
+    "text": "p",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 179,
+    "to": 180,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 181,
+    "to": 182,
+    "text": "x",
+    "cls": "tok-property-name tok-definition",
+    "var": "--syntax-property-name-definition-color"
+   },
+   {
+    "from": 182,
+    "to": 183,
+    "text": ":",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 184,
+    "to": 185,
+    "text": "p",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 185,
+    "to": 186,
+    "text": ".",
+    "cls": "tok-deref-operator",
+    "var": "--syntax-deref-operator-color"
+   },
+   {
+    "from": 186,
+    "to": 187,
+    "text": "x",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 188,
+    "to": 189,
+    "text": "+",
+    "cls": "tok-arithmetic-operator",
+    "var": "--syntax-arithmetic-operator-color"
+   },
+   {
+    "from": 190,
+    "to": 192,
+    "text": "dx",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 193,
+    "to": 194,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 194,
+    "to": 195,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 198,
+    "to": 204,
+    "text": "return",
+    "cls": "tok-control-keyword",
+    "var": "--syntax-control-keyword-color"
+   },
+   {
+    "from": 205,
+    "to": 209,
+    "text": "next",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 210,
+    "to": 212,
+    "text": "as",
+    "cls": "tok-operator-keyword",
+    "var": "--syntax-operator-keyword-color"
+   },
+   {
+    "from": 213,
+    "to": 218,
+    "text": "Point",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 218,
+    "to": 219,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 220,
+    "to": 221,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   }
+  ]
+ },
+ {
+  "lang": "python",
+  "code": "# comment\nimport os\nfrom typing import List\n\n@decorator\nclass Greeter(Base):\n    \"\"\"Docstring.\"\"\"\n    def greet(self, name: str, count=3) -> None:\n        if name is not None and count > 0:\n            print(f\"hi {name}\", len(name), True, 0x1F, 2.5)\n        return None",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 9,
+    "text": "# comment",
+    "cls": "tok-line-comment",
+    "var": "--syntax-line-comment-color"
+   },
+   {
+    "from": 10,
+    "to": 16,
+    "text": "import",
+    "cls": "tok-module-keyword",
+    "var": "--syntax-module-keyword-color"
+   },
+   {
+    "from": 17,
+    "to": 19,
+    "text": "os",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 20,
+    "to": 24,
+    "text": "from",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 25,
+    "to": 31,
+    "text": "typing",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 32,
+    "to": 38,
+    "text": "import",
+    "cls": "tok-module-keyword",
+    "var": "--syntax-module-keyword-color"
+   },
+   {
+    "from": 39,
+    "to": 43,
+    "text": "List",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 45,
+    "to": 46,
+    "text": "@",
+    "cls": "tok-meta",
+    "var": "--syntax-meta-color"
+   },
+   {
+    "from": 46,
+    "to": 55,
+    "text": "decorator",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 56,
+    "to": 61,
+    "text": "class",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 62,
+    "to": 69,
+    "text": "Greeter",
+    "cls": "tok-class-name",
+    "var": "--syntax-class-name-color"
+   },
+   {
+    "from": 69,
+    "to": 70,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 70,
+    "to": 74,
+    "text": "Base",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 74,
+    "to": 75,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 81,
+    "to": 97,
+    "text": "\"\"\"Docstring.\"\"\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 102,
+    "to": 105,
+    "text": "def",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 106,
+    "to": 111,
+    "text": "greet",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 111,
+    "to": 112,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 112,
+    "to": 116,
+    "text": "self",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 116,
+    "to": 117,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 118,
+    "to": 122,
+    "text": "name",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 124,
+    "to": 127,
+    "text": "str",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 127,
+    "to": 128,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 129,
+    "to": 134,
+    "text": "count",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 134,
+    "to": 135,
+    "text": "=",
+    "cls": "tok-definition-operator",
+    "var": "--syntax-definition-operator-color"
+   },
+   {
+    "from": 135,
+    "to": 136,
+    "text": "3",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 136,
+    "to": 137,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 141,
+    "to": 145,
+    "text": "None",
+    "cls": "tok-null",
+    "var": "--syntax-null-color"
+   },
+   {
+    "from": 155,
+    "to": 157,
+    "text": "if",
+    "cls": "tok-control-keyword",
+    "var": "--syntax-control-keyword-color"
+   },
+   {
+    "from": 158,
+    "to": 162,
+    "text": "name",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 163,
+    "to": 165,
+    "text": "is",
+    "cls": "tok-operator-keyword",
+    "var": "--syntax-operator-keyword-color"
+   },
+   {
+    "from": 166,
+    "to": 169,
+    "text": "not",
+    "cls": "tok-operator-keyword",
+    "var": "--syntax-operator-keyword-color"
+   },
+   {
+    "from": 170,
+    "to": 174,
+    "text": "None",
+    "cls": "tok-null",
+    "var": "--syntax-null-color"
+   },
+   {
+    "from": 175,
+    "to": 178,
+    "text": "and",
+    "cls": "tok-operator-keyword",
+    "var": "--syntax-operator-keyword-color"
+   },
+   {
+    "from": 179,
+    "to": 184,
+    "text": "count",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 185,
+    "to": 186,
+    "text": ">",
+    "cls": "tok-compare-operator",
+    "var": "--syntax-compare-operator-color"
+   },
+   {
+    "from": 187,
+    "to": 188,
+    "text": "0",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 202,
+    "to": 207,
+    "text": "print",
+    "cls": "tok-variable-name tok-function",
+    "var": "--syntax-variable-name-function-color"
+   },
+   {
+    "from": 207,
+    "to": 208,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 208,
+    "to": 213,
+    "text": "f\"hi ",
+    "cls": "tok-string tok-special",
+    "var": "--syntax-string-special-color"
+   },
+   {
+    "from": 213,
+    "to": 214,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 214,
+    "to": 218,
+    "text": "name",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 218,
+    "to": 219,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 219,
+    "to": 220,
+    "text": "\"",
+    "cls": "tok-string tok-special",
+    "var": "--syntax-string-special-color"
+   },
+   {
+    "from": 220,
+    "to": 221,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 222,
+    "to": 225,
+    "text": "len",
+    "cls": "tok-variable-name tok-function",
+    "var": "--syntax-variable-name-function-color"
+   },
+   {
+    "from": 225,
+    "to": 226,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 226,
+    "to": 230,
+    "text": "name",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 230,
+    "to": 231,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 231,
+    "to": 232,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 233,
+    "to": 237,
+    "text": "True",
+    "cls": "tok-bool",
+    "var": "--syntax-bool-color"
+   },
+   {
+    "from": 237,
+    "to": 238,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 239,
+    "to": 243,
+    "text": "0x1F",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 243,
+    "to": 244,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 245,
+    "to": 248,
+    "text": "2.5",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 248,
+    "to": 249,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 258,
+    "to": 264,
+    "text": "return",
+    "cls": "tok-control-keyword",
+    "var": "--syntax-control-keyword-color"
+   },
+   {
+    "from": 265,
+    "to": 269,
+    "text": "None",
+    "cls": "tok-null",
+    "var": "--syntax-null-color"
+   }
+  ]
+ },
+ {
+  "lang": "css",
+  "code": "/* comment */\n@media (max-width: 600px) {\n  .card > a:hover, #main::before {\n    color: #ff0000;\n    margin: 0 auto 12px;\n    font-family: \"Inter\", sans-serif !important;\n    width: calc(100% - 2em);\n  }\n}",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 13,
+    "text": "/* comment */",
+    "cls": "tok-block-comment",
+    "var": "--syntax-block-comment-color"
+   },
+   {
+    "from": 14,
+    "to": 20,
+    "text": "@media",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 21,
+    "to": 22,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 22,
+    "to": 31,
+    "text": "max-width",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 31,
+    "to": 32,
+    "text": ":",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 33,
+    "to": 36,
+    "text": "600",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 36,
+    "to": 38,
+    "text": "px",
+    "cls": "tok-unit",
+    "var": "--syntax-unit-color"
+   },
+   {
+    "from": 38,
+    "to": 39,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 40,
+    "to": 41,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 45,
+    "to": 49,
+    "text": "card",
+    "cls": "tok-class-name",
+    "var": "--syntax-class-name-color"
+   },
+   {
+    "from": 50,
+    "to": 51,
+    "text": ">",
+    "cls": "tok-logic-operator",
+    "var": "--syntax-logic-operator-color"
+   },
+   {
+    "from": 52,
+    "to": 53,
+    "text": "a",
+    "cls": "tok-tag-name",
+    "var": "--syntax-tag-name-color"
+   },
+   {
+    "from": 53,
+    "to": 54,
+    "text": ":",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 54,
+    "to": 59,
+    "text": "hover",
+    "cls": "tok-class-name",
+    "var": "--syntax-class-name-color"
+   },
+   {
+    "from": 59,
+    "to": 60,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 61,
+    "to": 66,
+    "text": "#main",
+    "cls": "tok-label-name",
+    "var": "--syntax-label-name-color"
+   },
+   {
+    "from": 68,
+    "to": 74,
+    "text": "before",
+    "cls": "tok-class-name",
+    "var": "--syntax-class-name-color"
+   },
+   {
+    "from": 75,
+    "to": 76,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 81,
+    "to": 86,
+    "text": "color",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 86,
+    "to": 87,
+    "text": ":",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 88,
+    "to": 95,
+    "text": "#ff0000",
+    "cls": "tok-color",
+    "var": "--syntax-color-color"
+   },
+   {
+    "from": 95,
+    "to": 96,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 101,
+    "to": 107,
+    "text": "margin",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 107,
+    "to": 108,
+    "text": ":",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 109,
+    "to": 110,
+    "text": "0",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 111,
+    "to": 115,
+    "text": "auto",
+    "cls": "tok-atom",
+    "var": "--syntax-atom-color"
+   },
+   {
+    "from": 116,
+    "to": 118,
+    "text": "12",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 118,
+    "to": 120,
+    "text": "px",
+    "cls": "tok-unit",
+    "var": "--syntax-unit-color"
+   },
+   {
+    "from": 120,
+    "to": 121,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 126,
+    "to": 137,
+    "text": "font-family",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 137,
+    "to": 138,
+    "text": ":",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 139,
+    "to": 146,
+    "text": "\"Inter\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 146,
+    "to": 147,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 148,
+    "to": 158,
+    "text": "sans-serif",
+    "cls": "tok-atom",
+    "var": "--syntax-atom-color"
+   },
+   {
+    "from": 159,
+    "to": 169,
+    "text": "!important",
+    "cls": "tok-modifier",
+    "var": "--syntax-modifier-color"
+   },
+   {
+    "from": 169,
+    "to": 170,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 175,
+    "to": 180,
+    "text": "width",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 180,
+    "to": 181,
+    "text": ":",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 182,
+    "to": 186,
+    "text": "calc",
+    "cls": "tok-operator-keyword",
+    "var": "--syntax-operator-keyword-color"
+   },
+   {
+    "from": 186,
+    "to": 187,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 187,
+    "to": 190,
+    "text": "100",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 190,
+    "to": 191,
+    "text": "%",
+    "cls": "tok-unit",
+    "var": "--syntax-unit-color"
+   },
+   {
+    "from": 192,
+    "to": 193,
+    "text": "-",
+    "cls": "tok-arithmetic-operator",
+    "var": "--syntax-arithmetic-operator-color"
+   },
+   {
+    "from": 194,
+    "to": 195,
+    "text": "2",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 195,
+    "to": 197,
+    "text": "em",
+    "cls": "tok-unit",
+    "var": "--syntax-unit-color"
+   },
+   {
+    "from": 197,
+    "to": 198,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 198,
+    "to": 199,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 202,
+    "to": 203,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 204,
+    "to": 205,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   }
+  ]
+ },
+ {
+  "lang": "html",
+  "code": "<!-- comment -->\n<!DOCTYPE html>\n<div class=\"box\" id=\"main\" hidden>\n  <a href=\"https://example.com\">link &amp; text</a>\n</div>",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 16,
+    "text": "<!-- comment -->",
+    "cls": "tok-block-comment",
+    "var": "--syntax-block-comment-color"
+   },
+   {
+    "from": 16,
+    "to": 17,
+    "text": "\n",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 17,
+    "to": 32,
+    "text": "<!DOCTYPE html>",
+    "cls": "tok-document-meta",
+    "var": "--syntax-document-meta-color"
+   },
+   {
+    "from": 32,
+    "to": 33,
+    "text": "\n",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 33,
+    "to": 34,
+    "text": "<",
+    "cls": "tok-angle-bracket",
+    "var": "--syntax-angle-bracket-color"
+   },
+   {
+    "from": 34,
+    "to": 37,
+    "text": "div",
+    "cls": "tok-tag-name",
+    "var": "--syntax-tag-name-color"
+   },
+   {
+    "from": 38,
+    "to": 43,
+    "text": "class",
+    "cls": "tok-attribute-name",
+    "var": "--syntax-attribute-name-color"
+   },
+   {
+    "from": 43,
+    "to": 44,
+    "text": "=",
+    "cls": "tok-definition-operator",
+    "var": "--syntax-definition-operator-color"
+   },
+   {
+    "from": 44,
+    "to": 49,
+    "text": "\"box\"",
+    "cls": "tok-attribute-value",
+    "var": "--syntax-attribute-value-color"
+   },
+   {
+    "from": 50,
+    "to": 52,
+    "text": "id",
+    "cls": "tok-attribute-name",
+    "var": "--syntax-attribute-name-color"
+   },
+   {
+    "from": 52,
+    "to": 53,
+    "text": "=",
+    "cls": "tok-definition-operator",
+    "var": "--syntax-definition-operator-color"
+   },
+   {
+    "from": 53,
+    "to": 59,
+    "text": "\"main\"",
+    "cls": "tok-attribute-value",
+    "var": "--syntax-attribute-value-color"
+   },
+   {
+    "from": 60,
+    "to": 66,
+    "text": "hidden",
+    "cls": "tok-attribute-name",
+    "var": "--syntax-attribute-name-color"
+   },
+   {
+    "from": 66,
+    "to": 67,
+    "text": ">",
+    "cls": "tok-angle-bracket",
+    "var": "--syntax-angle-bracket-color"
+   },
+   {
+    "from": 67,
+    "to": 70,
+    "text": "\n  ",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 70,
+    "to": 71,
+    "text": "<",
+    "cls": "tok-angle-bracket",
+    "var": "--syntax-angle-bracket-color"
+   },
+   {
+    "from": 71,
+    "to": 72,
+    "text": "a",
+    "cls": "tok-tag-name",
+    "var": "--syntax-tag-name-color"
+   },
+   {
+    "from": 73,
+    "to": 77,
+    "text": "href",
+    "cls": "tok-attribute-name",
+    "var": "--syntax-attribute-name-color"
+   },
+   {
+    "from": 77,
+    "to": 78,
+    "text": "=",
+    "cls": "tok-definition-operator",
+    "var": "--syntax-definition-operator-color"
+   },
+   {
+    "from": 78,
+    "to": 99,
+    "text": "\"https://example.com\"",
+    "cls": "tok-attribute-value",
+    "var": "--syntax-attribute-value-color"
+   },
+   {
+    "from": 99,
+    "to": 100,
+    "text": ">",
+    "cls": "tok-angle-bracket",
+    "var": "--syntax-angle-bracket-color"
+   },
+   {
+    "from": 100,
+    "to": 105,
+    "text": "link ",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 105,
+    "to": 110,
+    "text": "&amp;",
+    "cls": "tok-character",
+    "var": "--syntax-character-color"
+   },
+   {
+    "from": 110,
+    "to": 115,
+    "text": " text",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 115,
+    "to": 117,
+    "text": "</",
+    "cls": "tok-angle-bracket",
+    "var": "--syntax-angle-bracket-color"
+   },
+   {
+    "from": 117,
+    "to": 118,
+    "text": "a",
+    "cls": "tok-tag-name",
+    "var": "--syntax-tag-name-color"
+   },
+   {
+    "from": 118,
+    "to": 119,
+    "text": ">",
+    "cls": "tok-angle-bracket",
+    "var": "--syntax-angle-bracket-color"
+   },
+   {
+    "from": 119,
+    "to": 120,
+    "text": "\n",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 120,
+    "to": 122,
+    "text": "</",
+    "cls": "tok-angle-bracket",
+    "var": "--syntax-angle-bracket-color"
+   },
+   {
+    "from": 122,
+    "to": 125,
+    "text": "div",
+    "cls": "tok-tag-name",
+    "var": "--syntax-tag-name-color"
+   },
+   {
+    "from": 125,
+    "to": 126,
+    "text": ">",
+    "cls": "tok-angle-bracket",
+    "var": "--syntax-angle-bracket-color"
+   }
+  ]
+ },
+ {
+  "lang": "json",
+  "code": "{\n  \"name\": \"demo\",\n  \"count\": 3,\n  \"ratio\": -0.5,\n  \"enabled\": false,\n  \"tags\": [\"a\", \"b\"],\n  \"empty\": null\n}",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 1,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 4,
+    "to": 10,
+    "text": "\"name\"",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 10,
+    "to": 11,
+    "text": ":",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 12,
+    "to": 18,
+    "text": "\"demo\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 18,
+    "to": 19,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 22,
+    "to": 29,
+    "text": "\"count\"",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 29,
+    "to": 30,
+    "text": ":",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 31,
+    "to": 32,
+    "text": "3",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 32,
+    "to": 33,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 36,
+    "to": 43,
+    "text": "\"ratio\"",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 43,
+    "to": 44,
+    "text": ":",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 45,
+    "to": 49,
+    "text": "-0.5",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 49,
+    "to": 50,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 53,
+    "to": 62,
+    "text": "\"enabled\"",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 62,
+    "to": 63,
+    "text": ":",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 64,
+    "to": 69,
+    "text": "false",
+    "cls": "tok-bool",
+    "var": "--syntax-bool-color"
+   },
+   {
+    "from": 69,
+    "to": 70,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 73,
+    "to": 79,
+    "text": "\"tags\"",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 79,
+    "to": 80,
+    "text": ":",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 81,
+    "to": 82,
+    "text": "[",
+    "cls": "tok-square-bracket",
+    "var": "--syntax-square-bracket-color"
+   },
+   {
+    "from": 82,
+    "to": 85,
+    "text": "\"a\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 85,
+    "to": 86,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 87,
+    "to": 90,
+    "text": "\"b\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 90,
+    "to": 91,
+    "text": "]",
+    "cls": "tok-square-bracket",
+    "var": "--syntax-square-bracket-color"
+   },
+   {
+    "from": 91,
+    "to": 92,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 95,
+    "to": 102,
+    "text": "\"empty\"",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 102,
+    "to": 103,
+    "text": ":",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 104,
+    "to": 108,
+    "text": "null",
+    "cls": "tok-null",
+    "var": "--syntax-null-color"
+   },
+   {
+    "from": 109,
+    "to": 110,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   }
+  ]
+ },
+ {
+  "lang": "sh",
+  "code": "#!/bin/sh\n# comment\nNAME=\"world\"\nexport PATH=\"$HOME/bin:$PATH\"\nif [ -n \"$NAME\" ]; then\n  echo \"hi ${NAME}\" | grep -c hi > /dev/null 2>&1\nfi\nfor f in *.txt; do cat \"$f\"; done",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 9,
+    "text": "#!/bin/sh",
+    "cls": "tok-meta",
+    "var": "--syntax-meta-color"
+   },
+   {
+    "from": 10,
+    "to": 19,
+    "text": "# comment",
+    "cls": "tok-comment",
+    "var": "--syntax-comment-color"
+   },
+   {
+    "from": 20,
+    "to": 24,
+    "text": "NAME",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 24,
+    "to": 25,
+    "text": "=",
+    "cls": "tok-operator",
+    "var": "--syntax-operator-color"
+   },
+   {
+    "from": 25,
+    "to": 32,
+    "text": "\"world\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 33,
+    "to": 39,
+    "text": "export",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 40,
+    "to": 44,
+    "text": "PATH",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 44,
+    "to": 45,
+    "text": "=",
+    "cls": "tok-operator",
+    "var": "--syntax-operator-color"
+   },
+   {
+    "from": 45,
+    "to": 46,
+    "text": "\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 46,
+    "to": 51,
+    "text": "$HOME",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 51,
+    "to": 56,
+    "text": "/bin:",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 56,
+    "to": 61,
+    "text": "$PATH",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 61,
+    "to": 62,
+    "text": "\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 63,
+    "to": 65,
+    "text": "if",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 68,
+    "to": 70,
+    "text": "-n",
+    "cls": "tok-attribute-name",
+    "var": "--syntax-attribute-name-color"
+   },
+   {
+    "from": 71,
+    "to": 72,
+    "text": "\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 72,
+    "to": 77,
+    "text": "$NAME",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 77,
+    "to": 78,
+    "text": "\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 82,
+    "to": 86,
+    "text": "then",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 89,
+    "to": 93,
+    "text": "echo",
+    "cls": "tok-variable-name tok-standard",
+    "var": "--syntax-variable-name-standard-color"
+   },
+   {
+    "from": 94,
+    "to": 98,
+    "text": "\"hi ",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 98,
+    "to": 105,
+    "text": "${NAME}",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 105,
+    "to": 106,
+    "text": "\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 109,
+    "to": 113,
+    "text": "grep",
+    "cls": "tok-variable-name tok-standard",
+    "var": "--syntax-variable-name-standard-color"
+   },
+   {
+    "from": 114,
+    "to": 116,
+    "text": "-c",
+    "cls": "tok-attribute-name",
+    "var": "--syntax-attribute-name-color"
+   },
+   {
+    "from": 132,
+    "to": 133,
+    "text": "2",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 137,
+    "to": 139,
+    "text": "fi",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 140,
+    "to": 143,
+    "text": "for",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 146,
+    "to": 148,
+    "text": "in",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 156,
+    "to": 158,
+    "text": "do",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 159,
+    "to": 162,
+    "text": "cat",
+    "cls": "tok-variable-name tok-standard",
+    "var": "--syntax-variable-name-standard-color"
+   },
+   {
+    "from": 163,
+    "to": 164,
+    "text": "\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 164,
+    "to": 166,
+    "text": "$f",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 166,
+    "to": 167,
+    "text": "\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 169,
+    "to": 173,
+    "text": "done",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   }
+  ]
+ },
+ {
+  "lang": "go",
+  "code": "// comment\npackage main\n\nimport \"fmt\"\n\ntype Point struct {\n\tX, Y int\n}\n\nfunc (p *Point) Move(dx int) error {\n\tp.X += dx\n\tfmt.Println(\"moved\", p.X, 3.14, true, nil)\n\treturn nil\n}",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 10,
+    "text": "// comment",
+    "cls": "tok-line-comment",
+    "var": "--syntax-line-comment-color"
+   },
+   {
+    "from": 11,
+    "to": 18,
+    "text": "package",
+    "cls": "tok-module-keyword",
+    "var": "--syntax-module-keyword-color"
+   },
+   {
+    "from": 19,
+    "to": 23,
+    "text": "main",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 25,
+    "to": 31,
+    "text": "import",
+    "cls": "tok-module-keyword",
+    "var": "--syntax-module-keyword-color"
+   },
+   {
+    "from": 32,
+    "to": 37,
+    "text": "\"fmt\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 39,
+    "to": 43,
+    "text": "type",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 44,
+    "to": 49,
+    "text": "Point",
+    "cls": "tok-name tok-definition",
+    "var": "--syntax-name-definition-color"
+   },
+   {
+    "from": 50,
+    "to": 56,
+    "text": "struct",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 57,
+    "to": 58,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 60,
+    "to": 61,
+    "text": "X",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 61,
+    "to": 62,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 63,
+    "to": 64,
+    "text": "Y",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 65,
+    "to": 68,
+    "text": "int",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 69,
+    "to": 70,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 72,
+    "to": 76,
+    "text": "func",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 77,
+    "to": 78,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 78,
+    "to": 79,
+    "text": "p",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 80,
+    "to": 81,
+    "text": "*",
+    "cls": "tok-modifier",
+    "var": "--syntax-modifier-color"
+   },
+   {
+    "from": 81,
+    "to": 86,
+    "text": "Point",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 86,
+    "to": 87,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 88,
+    "to": 92,
+    "text": "Move",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 92,
+    "to": 93,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 93,
+    "to": 95,
+    "text": "dx",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 96,
+    "to": 99,
+    "text": "int",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 99,
+    "to": 100,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 101,
+    "to": 106,
+    "text": "error",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 107,
+    "to": 108,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 110,
+    "to": 111,
+    "text": "p",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 111,
+    "to": 112,
+    "text": ".",
+    "cls": "tok-deref-operator",
+    "var": "--syntax-deref-operator-color"
+   },
+   {
+    "from": 112,
+    "to": 113,
+    "text": "X",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 114,
+    "to": 116,
+    "text": "+=",
+    "cls": "tok-update-operator",
+    "var": "--syntax-update-operator-color"
+   },
+   {
+    "from": 117,
+    "to": 119,
+    "text": "dx",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 121,
+    "to": 124,
+    "text": "fmt",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 124,
+    "to": 125,
+    "text": ".",
+    "cls": "tok-deref-operator",
+    "var": "--syntax-deref-operator-color"
+   },
+   {
+    "from": 125,
+    "to": 132,
+    "text": "Println",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 132,
+    "to": 133,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 133,
+    "to": 140,
+    "text": "\"moved\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 140,
+    "to": 141,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 142,
+    "to": 143,
+    "text": "p",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 143,
+    "to": 144,
+    "text": ".",
+    "cls": "tok-deref-operator",
+    "var": "--syntax-deref-operator-color"
+   },
+   {
+    "from": 144,
+    "to": 145,
+    "text": "X",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 145,
+    "to": 146,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 147,
+    "to": 151,
+    "text": "3.14",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 151,
+    "to": 152,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 153,
+    "to": 157,
+    "text": "true",
+    "cls": "tok-bool",
+    "var": "--syntax-bool-color"
+   },
+   {
+    "from": 157,
+    "to": 158,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 159,
+    "to": 162,
+    "text": "nil",
+    "cls": "tok-null",
+    "var": "--syntax-null-color"
+   },
+   {
+    "from": 162,
+    "to": 163,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 165,
+    "to": 171,
+    "text": "return",
+    "cls": "tok-control-keyword",
+    "var": "--syntax-control-keyword-color"
+   },
+   {
+    "from": 172,
+    "to": 175,
+    "text": "nil",
+    "cls": "tok-null",
+    "var": "--syntax-null-color"
+   },
+   {
+    "from": 176,
+    "to": 177,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   }
+  ]
+ },
+ {
+  "lang": "rust",
+  "code": "// comment\nuse std::collections::HashMap;\n\n#[derive(Debug)]\nstruct Point { x: i32, y: i32 }\n\nfn main() -> Result<(), String> {\n    let mut map: HashMap<&str, i32> = HashMap::new();\n    map.insert(\"one\", 1);\n    println!(\"{:?} {}\", map, 2.5);\n    Ok(())\n}",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 10,
+    "text": "// comment",
+    "cls": "tok-line-comment",
+    "var": "--syntax-line-comment-color"
+   },
+   {
+    "from": 11,
+    "to": 14,
+    "text": "use",
+    "cls": "tok-module-keyword",
+    "var": "--syntax-module-keyword-color"
+   },
+   {
+    "from": 15,
+    "to": 18,
+    "text": "std",
+    "cls": "tok-namespace",
+    "var": "--syntax-namespace-color"
+   },
+   {
+    "from": 18,
+    "to": 20,
+    "text": "::",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 20,
+    "to": 31,
+    "text": "collections",
+    "cls": "tok-namespace",
+    "var": "--syntax-namespace-color"
+   },
+   {
+    "from": 31,
+    "to": 33,
+    "text": "::",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 33,
+    "to": 40,
+    "text": "HashMap",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 40,
+    "to": 41,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 43,
+    "to": 44,
+    "text": "#",
+    "cls": "tok-meta",
+    "var": "--syntax-meta-color"
+   },
+   {
+    "from": 44,
+    "to": 45,
+    "text": "[",
+    "cls": "tok-meta tok-square-bracket",
+    "var": "--syntax-meta-color"
+   },
+   {
+    "from": 45,
+    "to": 51,
+    "text": "derive",
+    "cls": "tok-meta tok-variable-name",
+    "var": "--syntax-meta-color"
+   },
+   {
+    "from": 51,
+    "to": 52,
+    "text": "(",
+    "cls": "tok-meta tok-paren",
+    "var": "--syntax-meta-color"
+   },
+   {
+    "from": 52,
+    "to": 57,
+    "text": "Debug",
+    "cls": "tok-meta tok-variable-name",
+    "var": "--syntax-meta-color"
+   },
+   {
+    "from": 57,
+    "to": 58,
+    "text": ")",
+    "cls": "tok-meta tok-paren",
+    "var": "--syntax-meta-color"
+   },
+   {
+    "from": 58,
+    "to": 59,
+    "text": "]",
+    "cls": "tok-meta tok-square-bracket",
+    "var": "--syntax-meta-color"
+   },
+   {
+    "from": 60,
+    "to": 66,
+    "text": "struct",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 67,
+    "to": 72,
+    "text": "Point",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 73,
+    "to": 74,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 75,
+    "to": 76,
+    "text": "x",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 78,
+    "to": 81,
+    "text": "i32",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 81,
+    "to": 82,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 83,
+    "to": 84,
+    "text": "y",
+    "cls": "tok-property-name",
+    "var": "--syntax-property-name-color"
+   },
+   {
+    "from": 86,
+    "to": 89,
+    "text": "i32",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 90,
+    "to": 91,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 93,
+    "to": 95,
+    "text": "fn",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 96,
+    "to": 100,
+    "text": "main",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 100,
+    "to": 101,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 101,
+    "to": 102,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 103,
+    "to": 105,
+    "text": "->",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 106,
+    "to": 112,
+    "text": "Result",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 113,
+    "to": 114,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 114,
+    "to": 115,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 115,
+    "to": 116,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 117,
+    "to": 123,
+    "text": "String",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 125,
+    "to": 126,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 131,
+    "to": 134,
+    "text": "let",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 135,
+    "to": 138,
+    "text": "mut",
+    "cls": "tok-modifier",
+    "var": "--syntax-modifier-color"
+   },
+   {
+    "from": 139,
+    "to": 142,
+    "text": "map",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 144,
+    "to": 151,
+    "text": "HashMap",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 152,
+    "to": 153,
+    "text": "&",
+    "cls": "tok-operator",
+    "var": "--syntax-operator-color"
+   },
+   {
+    "from": 153,
+    "to": 156,
+    "text": "str",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 156,
+    "to": 157,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 158,
+    "to": 161,
+    "text": "i32",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 163,
+    "to": 164,
+    "text": "=",
+    "cls": "tok-definition-operator",
+    "var": "--syntax-definition-operator-color"
+   },
+   {
+    "from": 165,
+    "to": 172,
+    "text": "HashMap",
+    "cls": "tok-namespace",
+    "var": "--syntax-namespace-color"
+   },
+   {
+    "from": 172,
+    "to": 174,
+    "text": "::",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 174,
+    "to": 177,
+    "text": "new",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 177,
+    "to": 178,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 178,
+    "to": 179,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 179,
+    "to": 180,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 185,
+    "to": 188,
+    "text": "map",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 189,
+    "to": 195,
+    "text": "insert",
+    "cls": "tok-property-name tok-function",
+    "var": "--syntax-property-name-function-color"
+   },
+   {
+    "from": 195,
+    "to": 196,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 196,
+    "to": 201,
+    "text": "\"one\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 201,
+    "to": 202,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 203,
+    "to": 204,
+    "text": "1",
+    "cls": "tok-integer",
+    "var": "--syntax-integer-color"
+   },
+   {
+    "from": 204,
+    "to": 205,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 205,
+    "to": 206,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 211,
+    "to": 218,
+    "text": "println",
+    "cls": "tok-macro-name",
+    "var": "--syntax-macro-name-color"
+   },
+   {
+    "from": 218,
+    "to": 219,
+    "text": "!",
+    "cls": "tok-macro-name",
+    "var": "--syntax-macro-name-color"
+   },
+   {
+    "from": 219,
+    "to": 220,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 220,
+    "to": 229,
+    "text": "\"{:?} {}\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 229,
+    "to": 230,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 231,
+    "to": 234,
+    "text": "map",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 234,
+    "to": 235,
+    "text": ",",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 236,
+    "to": 239,
+    "text": "2.5",
+    "cls": "tok-float",
+    "var": "--syntax-float-color"
+   },
+   {
+    "from": 239,
+    "to": 240,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 240,
+    "to": 241,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 246,
+    "to": 248,
+    "text": "Ok",
+    "cls": "tok-variable-name tok-function",
+    "var": "--syntax-variable-name-function-color"
+   },
+   {
+    "from": 248,
+    "to": 249,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 249,
+    "to": 250,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 250,
+    "to": 251,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 251,
+    "to": 252,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 253,
+    "to": 254,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   }
+  ]
+ },
+ {
+  "lang": "yaml",
+  "code": "# comment\nname: demo\nversion: 1.2\nenabled: true\nitems:\n  - \"quoted\"\n  - plain\nanchor: &base\n  key: value\nref: *base",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 9,
+    "text": "# comment",
+    "cls": "tok-line-comment",
+    "var": "--syntax-line-comment-color"
+   },
+   {
+    "from": 10,
+    "to": 14,
+    "text": "name",
+    "cls": "tok-property-name tok-definition",
+    "var": "--syntax-property-name-definition-color"
+   },
+   {
+    "from": 14,
+    "to": 15,
+    "text": ":",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 16,
+    "to": 20,
+    "text": "demo",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 21,
+    "to": 28,
+    "text": "version",
+    "cls": "tok-property-name tok-definition",
+    "var": "--syntax-property-name-definition-color"
+   },
+   {
+    "from": 28,
+    "to": 29,
+    "text": ":",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 30,
+    "to": 33,
+    "text": "1.2",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 34,
+    "to": 41,
+    "text": "enabled",
+    "cls": "tok-property-name tok-definition",
+    "var": "--syntax-property-name-definition-color"
+   },
+   {
+    "from": 41,
+    "to": 42,
+    "text": ":",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 43,
+    "to": 47,
+    "text": "true",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 48,
+    "to": 53,
+    "text": "items",
+    "cls": "tok-property-name tok-definition",
+    "var": "--syntax-property-name-definition-color"
+   },
+   {
+    "from": 53,
+    "to": 54,
+    "text": ":",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 57,
+    "to": 58,
+    "text": "-",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 59,
+    "to": 67,
+    "text": "\"quoted\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 70,
+    "to": 71,
+    "text": "-",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 72,
+    "to": 77,
+    "text": "plain",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 78,
+    "to": 84,
+    "text": "anchor",
+    "cls": "tok-property-name tok-definition",
+    "var": "--syntax-property-name-definition-color"
+   },
+   {
+    "from": 84,
+    "to": 85,
+    "text": ":",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 86,
+    "to": 91,
+    "text": "&base",
+    "cls": "tok-label-name",
+    "var": "--syntax-label-name-color"
+   },
+   {
+    "from": 94,
+    "to": 97,
+    "text": "key",
+    "cls": "tok-property-name tok-definition",
+    "var": "--syntax-property-name-definition-color"
+   },
+   {
+    "from": 97,
+    "to": 98,
+    "text": ":",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 99,
+    "to": 104,
+    "text": "value",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 105,
+    "to": 108,
+    "text": "ref",
+    "cls": "tok-property-name tok-definition",
+    "var": "--syntax-property-name-definition-color"
+   },
+   {
+    "from": 108,
+    "to": 109,
+    "text": ":",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 110,
+    "to": 115,
+    "text": "*base",
+    "cls": "tok-label-name",
+    "var": "--syntax-label-name-color"
+   }
+  ]
+ },
+ {
+  "lang": "sql",
+  "code": "-- comment\nSELECT id, name AS label, COUNT(*)\nFROM users u\nWHERE u.age > 21 AND u.name LIKE 'A%'\nGROUP BY id\nORDER BY name DESC;",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 10,
+    "text": "-- comment",
+    "cls": "tok-line-comment",
+    "var": "--syntax-line-comment-color"
+   },
+   {
+    "from": 11,
+    "to": 17,
+    "text": "SELECT",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 18,
+    "to": 20,
+    "text": "id",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 20,
+    "to": 21,
+    "text": ",",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 22,
+    "to": 26,
+    "text": "name",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 27,
+    "to": 29,
+    "text": "AS",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 30,
+    "to": 35,
+    "text": "label",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 35,
+    "to": 36,
+    "text": ",",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 37,
+    "to": 42,
+    "text": "COUNT",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 42,
+    "to": 43,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 43,
+    "to": 44,
+    "text": "*",
+    "cls": "tok-operator",
+    "var": "--syntax-operator-color"
+   },
+   {
+    "from": 44,
+    "to": 45,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 46,
+    "to": 50,
+    "text": "FROM",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 51,
+    "to": 56,
+    "text": "users",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 57,
+    "to": 58,
+    "text": "u",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 59,
+    "to": 64,
+    "text": "WHERE",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 65,
+    "to": 66,
+    "text": "u",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 67,
+    "to": 70,
+    "text": "age",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 71,
+    "to": 72,
+    "text": ">",
+    "cls": "tok-operator",
+    "var": "--syntax-operator-color"
+   },
+   {
+    "from": 73,
+    "to": 75,
+    "text": "21",
+    "cls": "tok-number",
+    "var": "--syntax-number-color"
+   },
+   {
+    "from": 76,
+    "to": 79,
+    "text": "AND",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 80,
+    "to": 81,
+    "text": "u",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 82,
+    "to": 86,
+    "text": "name",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 87,
+    "to": 91,
+    "text": "LIKE",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 92,
+    "to": 96,
+    "text": "'A%'",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 97,
+    "to": 102,
+    "text": "GROUP",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 103,
+    "to": 105,
+    "text": "BY",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 106,
+    "to": 108,
+    "text": "id",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 109,
+    "to": 114,
+    "text": "ORDER",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 115,
+    "to": 117,
+    "text": "BY",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 118,
+    "to": 122,
+    "text": "name",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 123,
+    "to": 127,
+    "text": "DESC",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   }
+  ]
+ },
+ {
+  "lang": "markdown",
+  "code": "# Heading\nSome *emphasis*, **strong** and `code`.\n- item\n[link](https://example.com)",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 1,
+    "text": "#",
+    "cls": "tok-heading-1 tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 1,
+    "to": 9,
+    "text": " Heading",
+    "cls": "tok-heading-1",
+    "var": "--syntax-heading-1-color"
+   },
+   {
+    "from": 10,
+    "to": 15,
+    "text": "Some ",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 15,
+    "to": 16,
+    "text": "*",
+    "cls": "tok-emphasis tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 16,
+    "to": 24,
+    "text": "emphasis",
+    "cls": "tok-emphasis",
+    "var": "--syntax-emphasis-color"
+   },
+   {
+    "from": 24,
+    "to": 25,
+    "text": "*",
+    "cls": "tok-emphasis tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 25,
+    "to": 27,
+    "text": ", ",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 27,
+    "to": 29,
+    "text": "**",
+    "cls": "tok-strong tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 29,
+    "to": 35,
+    "text": "strong",
+    "cls": "tok-strong",
+    "var": "--syntax-strong-color"
+   },
+   {
+    "from": 35,
+    "to": 37,
+    "text": "**",
+    "cls": "tok-strong tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 37,
+    "to": 42,
+    "text": " and ",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 42,
+    "to": 43,
+    "text": "`",
+    "cls": "tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 43,
+    "to": 47,
+    "text": "code",
+    "cls": "tok-monospace",
+    "var": "--syntax-monospace-color"
+   },
+   {
+    "from": 47,
+    "to": 48,
+    "text": "`",
+    "cls": "tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 48,
+    "to": 49,
+    "text": ".",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 50,
+    "to": 51,
+    "text": "-",
+    "cls": "tok-list tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 51,
+    "to": 52,
+    "text": " ",
+    "cls": "tok-list",
+    "var": "--syntax-list-color"
+   },
+   {
+    "from": 52,
+    "to": 57,
+    "text": "item\n",
+    "cls": "tok-list tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 57,
+    "to": 58,
+    "text": "[",
+    "cls": "tok-list tok-link tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 58,
+    "to": 62,
+    "text": "link",
+    "cls": "tok-list tok-link",
+    "var": "--syntax-link-color"
+   },
+   {
+    "from": 62,
+    "to": 63,
+    "text": "]",
+    "cls": "tok-list tok-link tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 63,
+    "to": 64,
+    "text": "(",
+    "cls": "tok-list tok-link tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 64,
+    "to": 83,
+    "text": "https://example.com",
+    "cls": "tok-list tok-link tok-url",
+    "var": "--syntax-url-color"
+   },
+   {
+    "from": 83,
+    "to": 84,
+    "text": ")",
+    "cls": "tok-list tok-link tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   }
+  ]
+ },
+ {
+  "lang": "javascript",
+  "code": "const s = `x ${y}`; console.log(s);",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 5,
+    "text": "const",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 6,
+    "to": 7,
+    "text": "s",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 8,
+    "to": 9,
+    "text": "=",
+    "cls": "tok-definition-operator",
+    "var": "--syntax-definition-operator-color"
+   },
+   {
+    "from": 10,
+    "to": 13,
+    "text": "`x ",
+    "cls": "tok-string tok-special",
+    "var": "--syntax-string-special-color"
+   },
+   {
+    "from": 13,
+    "to": 15,
+    "text": "${",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 15,
+    "to": 16,
+    "text": "y",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 16,
+    "to": 17,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 17,
+    "to": 18,
+    "text": "`",
+    "cls": "tok-string tok-special",
+    "var": "--syntax-string-special-color"
+   },
+   {
+    "from": 18,
+    "to": 19,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 20,
+    "to": 27,
+    "text": "console",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 27,
+    "to": 28,
+    "text": ".",
+    "cls": "tok-deref-operator",
+    "var": "--syntax-deref-operator-color"
+   },
+   {
+    "from": 28,
+    "to": 31,
+    "text": "log",
+    "cls": "tok-property-name tok-function",
+    "var": "--syntax-property-name-function-color"
+   },
+   {
+    "from": 31,
+    "to": 32,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 32,
+    "to": 33,
+    "text": "s",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 33,
+    "to": 34,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 34,
+    "to": 35,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   }
+  ]
+ },
+ {
+  "lang": "typescript",
+  "code": "function id(v: number): number { return v; }",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 8,
+    "text": "function",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 9,
+    "to": 11,
+    "text": "id",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 11,
+    "to": 12,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 12,
+    "to": 13,
+    "text": "v",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 13,
+    "to": 14,
+    "text": ":",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 15,
+    "to": 21,
+    "text": "number",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 21,
+    "to": 22,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 22,
+    "to": 23,
+    "text": ":",
+    "cls": "tok-punctuation",
+    "var": "--syntax-punctuation-color"
+   },
+   {
+    "from": 24,
+    "to": 30,
+    "text": "number",
+    "cls": "tok-name",
+    "var": "--syntax-name-color"
+   },
+   {
+    "from": 31,
+    "to": 32,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 33,
+    "to": 39,
+    "text": "return",
+    "cls": "tok-control-keyword",
+    "var": "--syntax-control-keyword-color"
+   },
+   {
+    "from": 40,
+    "to": 41,
+    "text": "v",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 41,
+    "to": 42,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 43,
+    "to": 44,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   }
+  ]
+ },
+ {
+  "lang": "py",
+  "code": "def area(r): return len(r)",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 3,
+    "text": "def",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 4,
+    "to": 8,
+    "text": "area",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 8,
+    "to": 9,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 9,
+    "to": 10,
+    "text": "r",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 10,
+    "to": 11,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 13,
+    "to": 19,
+    "text": "return",
+    "cls": "tok-control-keyword",
+    "var": "--syntax-control-keyword-color"
+   },
+   {
+    "from": 20,
+    "to": 23,
+    "text": "len",
+    "cls": "tok-variable-name tok-function",
+    "var": "--syntax-variable-name-function-color"
+   },
+   {
+    "from": 23,
+    "to": 24,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 24,
+    "to": 25,
+    "text": "r",
+    "cls": "tok-variable-name",
+    "var": "--syntax-variable-name-color"
+   },
+   {
+    "from": 25,
+    "to": 26,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   }
+  ]
+ },
+ {
+  "lang": "bash",
+  "code": "ls -la \"$HOME\" | grep -c x",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 2,
+    "text": "ls",
+    "cls": "tok-variable-name tok-standard",
+    "var": "--syntax-variable-name-standard-color"
+   },
+   {
+    "from": 3,
+    "to": 6,
+    "text": "-la",
+    "cls": "tok-attribute-name",
+    "var": "--syntax-attribute-name-color"
+   },
+   {
+    "from": 7,
+    "to": 8,
+    "text": "\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 8,
+    "to": 13,
+    "text": "$HOME",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 13,
+    "to": 14,
+    "text": "\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 17,
+    "to": 21,
+    "text": "grep",
+    "cls": "tok-variable-name tok-standard",
+    "var": "--syntax-variable-name-standard-color"
+   },
+   {
+    "from": 22,
+    "to": 24,
+    "text": "-c",
+    "cls": "tok-attribute-name",
+    "var": "--syntax-attribute-name-color"
+   }
+  ]
+ },
+ {
+  "lang": "shell",
+  "code": "cat \"$FILE\"; echo done",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 3,
+    "text": "cat",
+    "cls": "tok-variable-name tok-standard",
+    "var": "--syntax-variable-name-standard-color"
+   },
+   {
+    "from": 4,
+    "to": 5,
+    "text": "\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 5,
+    "to": 10,
+    "text": "$FILE",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 10,
+    "to": 11,
+    "text": "\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 13,
+    "to": 17,
+    "text": "echo",
+    "cls": "tok-variable-name tok-standard",
+    "var": "--syntax-variable-name-standard-color"
+   },
+   {
+    "from": 18,
+    "to": 22,
+    "text": "done",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   }
+  ]
+ },
+ {
+  "lang": "zsh",
+  "code": "for f in *.md; do wc -l \"$f\"; done",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 3,
+    "text": "for",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 6,
+    "to": 8,
+    "text": "in",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 15,
+    "to": 17,
+    "text": "do",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   },
+   {
+    "from": 18,
+    "to": 20,
+    "text": "wc",
+    "cls": "tok-variable-name tok-standard",
+    "var": "--syntax-variable-name-standard-color"
+   },
+   {
+    "from": 21,
+    "to": 23,
+    "text": "-l",
+    "cls": "tok-attribute-name",
+    "var": "--syntax-attribute-name-color"
+   },
+   {
+    "from": 24,
+    "to": 25,
+    "text": "\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 25,
+    "to": 27,
+    "text": "$f",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 27,
+    "to": 28,
+    "text": "\"",
+    "cls": "tok-string",
+    "var": "--syntax-string-color"
+   },
+   {
+    "from": 30,
+    "to": 34,
+    "text": "done",
+    "cls": "tok-keyword",
+    "var": "--syntax-keyword-color"
+   }
+  ]
+ },
+ {
+  "lang": "yml",
+  "code": "count: 3\non: true",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 5,
+    "text": "count",
+    "cls": "tok-property-name tok-definition",
+    "var": "--syntax-property-name-definition-color"
+   },
+   {
+    "from": 5,
+    "to": 6,
+    "text": ":",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 7,
+    "to": 8,
+    "text": "3",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 9,
+    "to": 11,
+    "text": "on",
+    "cls": "tok-property-name tok-definition",
+    "var": "--syntax-property-name-definition-color"
+   },
+   {
+    "from": 11,
+    "to": 12,
+    "text": ":",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 13,
+    "to": 17,
+    "text": "true",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   }
+  ]
+ },
+ {
+  "lang": "rs",
+  "code": "fn main() { let x = 2.0; }",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 2,
+    "text": "fn",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 3,
+    "to": 7,
+    "text": "main",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 7,
+    "to": 8,
+    "text": "(",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 8,
+    "to": 9,
+    "text": ")",
+    "cls": "tok-paren",
+    "var": "--syntax-paren-color"
+   },
+   {
+    "from": 10,
+    "to": 11,
+    "text": "{",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   },
+   {
+    "from": 12,
+    "to": 15,
+    "text": "let",
+    "cls": "tok-definition-keyword",
+    "var": "--syntax-definition-keyword-color"
+   },
+   {
+    "from": 16,
+    "to": 17,
+    "text": "x",
+    "cls": "tok-variable-name tok-definition",
+    "var": "--syntax-variable-name-definition-color"
+   },
+   {
+    "from": 18,
+    "to": 19,
+    "text": "=",
+    "cls": "tok-definition-operator",
+    "var": "--syntax-definition-operator-color"
+   },
+   {
+    "from": 20,
+    "to": 23,
+    "text": "2.0",
+    "cls": "tok-float",
+    "var": "--syntax-float-color"
+   },
+   {
+    "from": 23,
+    "to": 24,
+    "text": ";",
+    "cls": "tok-separator",
+    "var": "--syntax-separator-color"
+   },
+   {
+    "from": 25,
+    "to": 26,
+    "text": "}",
+    "cls": "tok-brace",
+    "var": "--syntax-brace-color"
+   }
+  ]
+ },
+ {
+  "lang": "md",
+  "code": "**bold** and [a](https://example.com)",
+  "ranges": [
+   {
+    "from": 0,
+    "to": 2,
+    "text": "**",
+    "cls": "tok-strong tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 2,
+    "to": 6,
+    "text": "bold",
+    "cls": "tok-strong",
+    "var": "--syntax-strong-color"
+   },
+   {
+    "from": 6,
+    "to": 8,
+    "text": "**",
+    "cls": "tok-strong tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 8,
+    "to": 13,
+    "text": " and ",
+    "cls": "tok-content",
+    "var": "--syntax-content-color"
+   },
+   {
+    "from": 13,
+    "to": 14,
+    "text": "[",
+    "cls": "tok-link tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 14,
+    "to": 15,
+    "text": "a",
+    "cls": "tok-link",
+    "var": "--syntax-link-color"
+   },
+   {
+    "from": 15,
+    "to": 16,
+    "text": "]",
+    "cls": "tok-link tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 16,
+    "to": 17,
+    "text": "(",
+    "cls": "tok-link tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   },
+   {
+    "from": 17,
+    "to": 36,
+    "text": "https://example.com",
+    "cls": "tok-link tok-url",
+    "var": "--syntax-url-color"
+   },
+   {
+    "from": 36,
+    "to": 37,
+    "text": ")",
+    "cls": "tok-link tok-processing-instruction",
+    "var": "--syntax-processing-instruction-color"
+   }
+  ]
+ }
+]

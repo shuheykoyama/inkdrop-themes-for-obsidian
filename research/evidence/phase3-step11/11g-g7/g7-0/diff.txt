@@ -1,0 +1,9 @@
+V-31 on Inkdrop 6.2.0 vs the 6.1.5 fixture (tests/fixtures/inkdrop-tokens.json), same note (tests/fixtures/vault/Code blocks.md), 21 blocks
+ranges: 6.1.5 670, 6.2.0 669; blocks with a difference: 1
+token boundaries: 3 ranges on one side only; class (same range): 0; colour variable (same range): 0
+base syntax.css (@inkdropapp/css bundled in each app.asar): the .tok-* colour rules are identical (other parts of the file differ)
+block 3 (css): token boundaries differ
+  6.1.5 only: 61-62 "#" tok-deref-operator --syntax-deref-operator-color
+  6.1.5 only: 62-66 "main" tok-label-name --syntax-label-name-color
+  6.2.0 only: 61-66 "#main" tok-label-name --syntax-label-name-color
+colour of the CSS "#" (theme packages, unchanged): 6.1.5 --syntax-deref-operator-color = var(--syntax-operator-color); 6.2.0 --syntax-label-name-color (SD var(--color-pink-500), KD hsl(var(--kanagawa-dragonRed)))

@@ -1,0 +1,161 @@
+{
+ "6.1.5": {
+  "appAsarSha256": "0965bce2bb61b5a15c5c428b91975ea6f8004bb04d02ac447334f742cb024765",
+  "syntaxCssSha256": "40fce0a7220683ee764f78f584c253b079ad5fe329fc6c6704bdad030fbafa77",
+  "tokensSha256": "e690fd1ca0edaa7586d1b2e66dce3589c307387268060395478139889bc50da1",
+  "lezer": {
+   "file": "dist-HRoI40E2.js",
+   "tags": "R",
+   "highlightTree": "F",
+   "tagHighlighter": "L",
+   "StreamLanguage": "f"
+  },
+  "table": {
+   "file": "notebook-picker-Bo2H_0--.js",
+   "alias": "b",
+   "entries": 96
+  },
+  "languageData": "notebook-picker-Bo2H_0--.js",
+  "languages": {
+   "js": {
+    "file": "dist-mSdurF7y.js",
+    "ns": "t",
+    "fn": "javascript"
+   },
+   "ts": {
+    "file": "dist-mSdurF7y.js",
+    "ns": "t",
+    "fn": "javascript",
+    "args": {
+     "typescript": true
+    }
+   },
+   "python": {
+    "file": "dist-CuQpLQ6g.js",
+    "fn": "python"
+   },
+   "css": {
+    "file": "dist-geTA03zK.js",
+    "ns": "i",
+    "fn": "css"
+   },
+   "html": {
+    "file": "dist-fqy6Ua6R.js",
+    "ns": "t",
+    "fn": "html"
+   },
+   "json": {
+    "file": "dist-BkUsYw4p.js",
+    "fn": "json"
+   },
+   "sh": {
+    "file": "shell-Du5Qg9im.js",
+    "legacy": "shell"
+   },
+   "go": {
+    "file": "dist-D7WIBBJt.js",
+    "fn": "go"
+   },
+   "rust": {
+    "file": "dist-DcCsaAop.js",
+    "fn": "rust"
+   },
+   "yaml": {
+    "file": "dist-Bay2AUzm.js",
+    "fn": "yaml"
+   },
+   "sql": {
+    "file": "dist-Dx44Ajy5.js",
+    "dialect": "StandardSQL"
+   },
+   "markdown": {
+    "file": "dist-BKzBtnmQ.js",
+    "ns": "n",
+    "fn": "markdown"
+   }
+  },
+  "notes": [
+   "Markdown: an entry that loads no chunk (not used)"
+  ]
+ },
+ "6.2.0": {
+  "appAsarSha256": "015a7af59c075c9f24adad118c0a5a138575fc248d8e08e8ccc016794b9b0344",
+  "syntaxCssSha256": "6632eae3dc5983cb6bceef8264684fb5d21937ab9c4b120baeed82d2e7666b4d",
+  "tokensSha256": "30c7f6729a26455a54fb34d68aa53d482c0a991385bfc2385d5fa369e1d59177",
+  "lezer": {
+   "file": "dist-Bxll1zZh.js",
+   "tags": "V",
+   "highlightTree": "R",
+   "tagHighlighter": "B",
+   "StreamLanguage": "f"
+  },
+  "table": {
+   "file": "app--8nT0s9w.js",
+   "alias": "k",
+   "entries": 96
+  },
+  "languageData": "app--8nT0s9w.js",
+  "languages": {
+   "js": {
+    "file": "dist-CxbYOqXO.js",
+    "ns": "t",
+    "fn": "javascript"
+   },
+   "ts": {
+    "file": "dist-CxbYOqXO.js",
+    "ns": "t",
+    "fn": "javascript",
+    "args": {
+     "typescript": true
+    }
+   },
+   "python": {
+    "file": "dist-BaoH-CEi.js",
+    "fn": "python"
+   },
+   "css": {
+    "file": "dist-D8sW0JDN.js",
+    "ns": "i",
+    "fn": "css"
+   },
+   "html": {
+    "file": "dist-BU3Mmof8.js",
+    "ns": "t",
+    "fn": "html"
+   },
+   "json": {
+    "file": "dist-BPSK50pe.js",
+    "fn": "json"
+   },
+   "sh": {
+    "file": "shell-DwuoZtxw.js",
+    "legacy": "shell"
+   },
+   "go": {
+    "file": "dist-Dzoco7i-.js",
+    "fn": "go"
+   },
+   "rust": {
+    "file": "dist-D0UpMrI7.js",
+    "fn": "rust"
+   },
+   "yaml": {
+    "file": "dist-Yk0oZh-l.js",
+    "fn": "yaml"
+   },
+   "sql": {
+    "file": "dist-C6yYc4K4.js",
+    "dialect": "StandardSQL"
+   },
+   "markdown": {
+    "file": "dist-D38vhN0c.js",
+    "ns": "n",
+    "fn": "markdown"
+   }
+  },
+  "notes": [
+   "Markdown: an entry that loads no chunk (not used)"
+  ]
+ },
+ "fixtureSha256": "e690fd1ca0edaa7586d1b2e66dce3589c307387268060395478139889bc50da1"
+}
