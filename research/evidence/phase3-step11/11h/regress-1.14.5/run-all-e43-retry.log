@@ -1,0 +1,31 @@
+2026-10-25T11:07:34.901Z start e43-installer-check-before
+2026-10-25T11:07:54.704Z ok   e43-installer-check-before (exit 0, 20 s) path:                       ~/Library/Daemon Containers/670D4C91-37C8-43B0-9592-17CC10DF3929/Data/Library/Caches/Placeholders-v6.noindex/md.obsidian
+2026-10-25T11:07:54.704Z start e43-run1-start
+2026-10-25T11:08:01.332Z ok   e43-run1-start (exit 0, 7 s) <retry-out>/e43
+2026-10-25T11:08:01.333Z start e43-run1
+2026-10-25T11:28:10.595Z ok   e43-run1 (exit 0, 1209 s) all 3871 runtime checks passed or are reported as DIFF / UNSUPPORTED (805 PASS (EMULATED), 606 DIFF, 30 UNSUPPORTED; Obsidian 1.14.5, Electron 43.8.3)
+2026-10-25T11:28:10.597Z start e43-run1-stop
+2026-10-25T11:28:11.658Z ok   e43-run1-stop (exit 0, 1 s) stopped isolated Obsidian (pid 59908)
+2026-10-25T11:28:11.659Z start e43-self-test-start
+2026-10-25T11:28:17.157Z ok   e43-self-test-start (exit 0, 5 s) <retry-out>/e43
+2026-10-25T11:28:17.157Z start e43-self-test
+2026-10-25T11:41:01.563Z ok   e43-self-test (exit 0, 764 s) all 704 self-test results produced the declared outcome
+2026-10-25T11:41:01.563Z start e43-self-test-stop
+2026-10-25T11:41:02.622Z ok   e43-self-test-stop (exit 0, 1 s) stopped isolated Obsidian (pid 66964)
+2026-10-25T11:41:02.623Z start e43-run2-start
+2026-10-25T11:41:08.914Z ok   e43-run2-start (exit 0, 6 s) <retry-out>/e43
+2026-10-25T11:41:08.914Z start e43-run2
+2026-10-25T12:01:09.174Z ok   e43-run2 (exit 0, 1200 s) all 3871 runtime checks passed or are reported as DIFF / UNSUPPORTED (805 PASS (EMULATED), 606 DIFF, 30 UNSUPPORTED; Obsidian 1.14.5, Electron 43.8.3)
+2026-10-25T12:01:09.175Z start e43-run2-stop
+2026-10-25T12:01:10.332Z ok   e43-run2-stop (exit 0, 1 s) stopped isolated Obsidian (pid 70088)
+2026-10-25T12:01:10.332Z start e43-frame-start
+2026-10-25T12:01:15.524Z ok   e43-frame-start (exit 0, 5 s) <retry-out>/e43
+2026-10-25T12:01:15.525Z start e43-frame
+2026-10-25T12:01:25.725Z ok   e43-frame (exit 0, 10 s) all 31 runtime checks passed or are reported as DIFF / UNSUPPORTED (0 PASS (EMULATED), 0 DIFF, 0 UNSUPPORTED; Obsidian 1.14.5, Electron 43.8.3)
+2026-10-25T12:01:25.725Z start e43-frame-stop
+2026-10-25T12:01:26.769Z ok   e43-frame-stop (exit 0, 1 s) stopped isolated Obsidian (pid 77198)
+2026-10-25T12:01:26.769Z start e43-installer-restore
+2026-10-25T12:01:28.000Z ok   e43-installer-restore (exit 0, 1 s) candidate: /Applications/Obsidian.app
+2026-10-25T12:01:28.000Z start e43-installer-check-after
+2026-10-25T12:01:42.515Z ok   e43-installer-check-after (exit 0, 15 s) path:                       ~/Library/Daemon Containers/670D4C91-37C8-43B0-9592-17CC10DF3929/Data/Library/Caches/Placeholders-v6.noindex/md.obsidian
+2026-10-25T12:01:42.516Z integrated regression: no problem

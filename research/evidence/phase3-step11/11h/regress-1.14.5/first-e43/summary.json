@@ -1,0 +1,475 @@
+{
+ "startedAt": "2026-10-25T08:30:59.324Z",
+ "only": [
+  "e39",
+  "e43",
+  "compare",
+  "gate"
+ ],
+ "commit": "b618637",
+ "dirty": false,
+ "complete": true,
+ "interrupted": null,
+ "steps": [
+  {
+   "name": "e39-run1-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<out>/e39-run1-work/vault"
+  },
+  {
+   "name": "e39-run1",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1211,
+   "last": "all 3871 runtime checks passed or are reported as DIFF / UNSUPPORTED (805 PASS (EMULATED), 606 DIFF, 30 UNSUPPORTED; Obsidian 1.14.5, Electron 39.5.1)"
+  },
+  {
+   "name": "e39-run1-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 16,
+   "last": "stopped isolated Obsidian (pid 28870)"
+  },
+  {
+   "name": "e39-self-test-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<out>/e39-self-test-work/vault"
+  },
+  {
+   "name": "e39-self-test",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 768,
+   "last": "all 704 self-test results produced the declared outcome"
+  },
+  {
+   "name": "e39-self-test-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "stopped isolated Obsidian (pid 34836)"
+  },
+  {
+   "name": "e39-run2-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<out>/e39-run2-work/vault"
+  },
+  {
+   "name": "e39-run2",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1211,
+   "last": "all 3871 runtime checks passed or are reported as DIFF / UNSUPPORTED (805 PASS (EMULATED), 606 DIFF, 30 UNSUPPORTED; Obsidian 1.14.5, Electron 39.5.1)"
+  },
+  {
+   "name": "e39-run2-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 16,
+   "last": "stopped isolated Obsidian (pid 38780)"
+  },
+  {
+   "name": "e39-frame-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<out>/e39-frame-work/vault"
+  },
+  {
+   "name": "e39-frame",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 10,
+   "last": "all 31 runtime checks passed or are reported as DIFF / UNSUPPORTED (0 PASS (EMULATED), 0 DIFF, 0 UNSUPPORTED; Obsidian 1.14.5, Electron 39.5.1)"
+  },
+  {
+   "name": "e39-frame-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 16,
+   "last": "stopped isolated Obsidian (pid 45304)"
+  },
+  {
+   "name": "e43-installer-check-before",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 57,
+   "last": "path:                       ~/Library/Daemon Containers/670D4C91-37C8-43B0-9592-17CC10DF3929/Data/Library/Caches/Placeholders-v6.noindex/md.obsidian-1.14.5/Obsidian.app (0x66e0)"
+  },
+  {
+   "name": "e43-run1-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 39,
+   "last": "<out>/e43-run1-work/vault"
+  },
+  {
+   "name": "e43-run1",
+   "ok": false,
+   "status": 1,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "Node.js v22.22.0"
+  },
+  {
+   "name": "e43-run1-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 0,
+   "last": "stopped isolated Obsidian (pid 46078)"
+  },
+  {
+   "name": "e43-self-test-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 28,
+   "last": "<out>/e43-self-test-work/vault"
+  },
+  {
+   "name": "e43-self-test",
+   "ok": false,
+   "status": 1,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 779,
+   "last": "1 self-test case(s) did NOT produce the declared outcome"
+  },
+  {
+   "name": "e43-self-test-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "stopped isolated Obsidian (pid 46626)"
+  },
+  {
+   "name": "e43-run2-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<out>/e43-run2-work/vault"
+  },
+  {
+   "name": "e43-run2",
+   "ok": false,
+   "status": 1,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1244,
+   "last": "1 runtime check(s) FAILED"
+  },
+  {
+   "name": "e43-run2-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "stopped isolated Obsidian (pid 50905)"
+  },
+  {
+   "name": "e43-frame-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<out>/e43-frame-work/vault"
+  },
+  {
+   "name": "e43-frame",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 10,
+   "last": "all 31 runtime checks passed or are reported as DIFF / UNSUPPORTED (0 PASS (EMULATED), 0 DIFF, 0 UNSUPPORTED; Obsidian 1.14.5, Electron 43.8.3)"
+  },
+  {
+   "name": "e43-frame-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "stopped isolated Obsidian (pid 57601)"
+  },
+  {
+   "name": "e43-installer-restore",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "candidate: /Applications/Obsidian.app"
+  },
+  {
+   "name": "e43-installer-check-after",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 14,
+   "last": "path:                       ~/Library/Daemon Containers/670D4C91-37C8-43B0-9592-17CC10DF3929/Data/Library/Caches/Placeholders-v6.noindex/md.obsidian-1.14.5/Obsidian.app (0x66e0)"
+  }
+ ],
+ "comparisons": [
+  {
+   "name": "E39.5.1 self-test",
+   "count": 704,
+   "problems": []
+  },
+  {
+   "name": "E39.5.1 run 1 vs baseline",
+   "a": "research/evidence/phase3-step11/11f-rereview/regress/runtime-electron-39.5.1-run1.json",
+   "b": "run 1",
+   "count": [
+    3871,
+    3871
+   ],
+   "breakdown": [
+    {
+     "DIFF": 606,
+     "PASS (EMULATED)": 805,
+     "PASS": 2430,
+     "UNSUPPORTED": 30
+    },
+    {
+     "DIFF": 606,
+     "PASS (EMULATED)": 805,
+     "PASS": 2430,
+     "UNSUPPORTED": 30
+    }
+   ],
+   "onlyA": 0,
+   "onlyB": 0,
+   "repeatDiff": 0,
+   "stateDiff": 0,
+   "detailDiff": 41,
+   "unexpected": 0,
+   "samples": {
+    "onlyA": [],
+    "onlyB": [],
+    "repeatDiff": [],
+    "stateDiff": [],
+    "detailDiff": [
+     "runner.environment|solarized-dark|desktop|opaque|user-accent",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.pointer-prepared|solarized-dark|desktop|translucent|popover-open",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|user-accent",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque (after translucent)|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque (after translucent)|tooltip-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|user-accent",
+     "runner.environment|kanagawa-dragon|desktop|opaque|menu-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|popover-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque|popover-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|tooltip-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque|tooltip-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|md-source",
+     "runner.environment|kanagawa-dragon|desktop|translucent|quick-switcher-open",
+     "runner.environment|kanagawa-dragon|desktop|translucent|fullscreen-class",
+     "runner.environment|kanagawa-dragon|desktop|translucent|menu-open",
+     "runner.environment|kanagawa-dragon|desktop|translucent|popover-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|translucent|popover-open",
+     "runner.environment|kanagawa-dragon|desktop|translucent|md-source"
+    ],
+    "unexpected": []
+   },
+   "same": true
+  },
+  {
+   "name": "E39.5.1 run 1 vs run 2",
+   "a": "run 1",
+   "b": "run 2",
+   "count": [
+    3871,
+    3871
+   ],
+   "breakdown": [
+    {
+     "DIFF": 606,
+     "PASS (EMULATED)": 805,
+     "PASS": 2430,
+     "UNSUPPORTED": 30
+    },
+    {
+     "DIFF": 606,
+     "PASS (EMULATED)": 805,
+     "PASS": 2430,
+     "UNSUPPORTED": 30
+    }
+   ],
+   "onlyA": 0,
+   "onlyB": 0,
+   "repeatDiff": 0,
+   "stateDiff": 0,
+   "detailDiff": 46,
+   "unexpected": 0,
+   "samples": {
+    "onlyA": [],
+    "onlyB": [],
+    "repeatDiff": [],
+    "stateDiff": [],
+    "detailDiff": [
+     "runner.environment|solarized-dark|desktop|opaque|default",
+     "runner.environment|solarized-dark|desktop|opaque|user-font",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|popover-open",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|user-font",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|quick-switcher-open",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|file-explorer-focused",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|menu-open",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque (after translucent)|popover-open",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|tooltip-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque (after translucent)|tooltip-open",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|md-source",
+     "runner.environment|kanagawa-dragon|desktop|opaque|user-font",
+     "runner.environment|kanagawa-dragon|desktop|opaque|quick-switcher-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|menu-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|popover-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque|popover-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|tooltip-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque|tooltip-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|md-source"
+    ],
+    "unexpected": []
+   },
+   "same": true
+  },
+  {
+   "name": "E43.8.3 self-test",
+   "count": 704,
+   "problems": [
+    "1 self-test results without their declared outcome (e.g. syn.self-test|solarized-dark|desktop|opaque|positive control (theme and oracle as committed): FAIL, declared PASS)"
+   ]
+  }
+ ],
+ "problems": [
+  "e43-run1: exit 1: Node.js v22.22.0",
+  "e43-self-test: exit 1: 1 self-test case(s) did NOT produce the declared outcome",
+  "e43-run2: exit 1: 1 runtime check(s) FAILED",
+  "the measured spec or sources changed since the baseline (f7dd00a); compare the unchanged checks only: src/common/components/markdown.css        |  13 +++;  src/common/platform/translucent.css       |   8 ++;  src/palette/kanagawa-dragon.css           |   2 +-;  src/palette/solarized-dark.css            |   2 +-;  tests/fixtures/vault/Mermaid.md           |  10 ++;  tests/runtime/code-tokens.js              |  17 ++-;  tests/runtime/current-installer.sh        |  17 ++-;  tests/runtime/inkdrop-isolated.sh         | 127 +++++++++++++++++++++;  tests/runtime/inkdrop-production.sh       | 177 ++++++++++++++++++++++++++++++;  tests/runtime/lib/mermaid.mjs             |  49 +++++++--;  tests/runtime/mermaid-dump.js             |  12 +-;  tests/runtime/mermaid-judge-self-test.mjs |  76 +++++++++++++;  tests/runtime/obsidian-isolated.sh        |  12 +-;  tests/runtime/run.mjs                     |  32 +++++-;  tests/runtime/self-test-spec.json         |  28 +++++;  tests/spec/runtime/desktop.json           |  66 +++++++++++",
+  "E43.8.3 run1: missing runtime-electron-43.8.3-run1.json",
+  "E43.8.3 run2: 1 FAIL (e.g. runner.modals-closed|kanagawa-dragon|phone|opaque|quick-switcher-open)",
+  "E43.8.3 self-test: 1 self-test results without their declared outcome (e.g. syn.self-test|solarized-dark|desktop|opaque|positive control (theme and oracle as committed): FAIL, declared PASS)",
+  "kit dry run: missing kit-dry-run-work/report-emulated.json",
+  "gate: needs run 1 of both Electrons",
+  "gate: kit dry run: missing kit-dry-run-work/report-emulated.json"
+ ],
+ "specSinceBaseline": [
+  "src/common/components/markdown.css        |  13 +++",
+  " src/common/platform/translucent.css       |   8 ++",
+  " src/palette/kanagawa-dragon.css           |   2 +-",
+  " src/palette/solarized-dark.css            |   2 +-",
+  " tests/fixtures/vault/Mermaid.md           |  10 ++",
+  " tests/runtime/code-tokens.js              |  17 ++-",
+  " tests/runtime/current-installer.sh        |  17 ++-",
+  " tests/runtime/inkdrop-isolated.sh         | 127 +++++++++++++++++++++",
+  " tests/runtime/inkdrop-production.sh       | 177 ++++++++++++++++++++++++++++++",
+  " tests/runtime/lib/mermaid.mjs             |  49 +++++++--",
+  " tests/runtime/mermaid-dump.js             |  12 +-",
+  " tests/runtime/mermaid-judge-self-test.mjs |  76 +++++++++++++",
+  " tests/runtime/obsidian-isolated.sh        |  12 +-",
+  " tests/runtime/run.mjs                     |  32 +++++-",
+  " tests/runtime/self-test-spec.json         |  28 +++++",
+  " tests/spec/runtime/desktop.json           |  66 +++++++++++"
+ ],
+ "finishedAt": "2026-10-25T10:01:56.164Z"
+}

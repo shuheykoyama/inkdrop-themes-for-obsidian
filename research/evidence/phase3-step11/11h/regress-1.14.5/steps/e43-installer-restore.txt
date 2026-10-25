@@ -1,0 +1,2 @@
+default: /Applications/Obsidian.app
+candidate: /Applications/Obsidian.app

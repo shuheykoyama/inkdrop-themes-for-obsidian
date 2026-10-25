@@ -1,0 +1,180 @@
+{
+ "startedAt": "2026-10-25T11:07:34.852Z",
+ "only": [
+  "e43"
+ ],
+ "commit": "b618637",
+ "dirty": false,
+ "complete": true,
+ "interrupted": null,
+ "steps": [
+  {
+   "name": "e43-installer-check-before",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 20,
+   "last": "path:                       ~/Library/Daemon Containers/670D4C91-37C8-43B0-9592-17CC10DF3929/Data/Library/Caches/Placeholders-v6.noindex/md.obsidian-1.14.5/Obsidian.app (0x66e0)"
+  },
+  {
+   "name": "e43-run1-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 7,
+   "last": "<retry-out>/e43-run1-work/vault"
+  },
+  {
+   "name": "e43-run1",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1209,
+   "last": "all 3871 runtime checks passed or are reported as DIFF / UNSUPPORTED (805 PASS (EMULATED), 606 DIFF, 30 UNSUPPORTED; Obsidian 1.14.5, Electron 43.8.3)"
+  },
+  {
+   "name": "e43-run1-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "stopped isolated Obsidian (pid 59908)"
+  },
+  {
+   "name": "e43-self-test-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<retry-out>/e43-self-test-work/vault"
+  },
+  {
+   "name": "e43-self-test",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 764,
+   "last": "all 704 self-test results produced the declared outcome"
+  },
+  {
+   "name": "e43-self-test-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "stopped isolated Obsidian (pid 66964)"
+  },
+  {
+   "name": "e43-run2-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 6,
+   "last": "<retry-out>/e43-run2-work/vault"
+  },
+  {
+   "name": "e43-run2",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1200,
+   "last": "all 3871 runtime checks passed or are reported as DIFF / UNSUPPORTED (805 PASS (EMULATED), 606 DIFF, 30 UNSUPPORTED; Obsidian 1.14.5, Electron 43.8.3)"
+  },
+  {
+   "name": "e43-run2-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "stopped isolated Obsidian (pid 70088)"
+  },
+  {
+   "name": "e43-frame-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<retry-out>/e43-frame-work/vault"
+  },
+  {
+   "name": "e43-frame",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 10,
+   "last": "all 31 runtime checks passed or are reported as DIFF / UNSUPPORTED (0 PASS (EMULATED), 0 DIFF, 0 UNSUPPORTED; Obsidian 1.14.5, Electron 43.8.3)"
+  },
+  {
+   "name": "e43-frame-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "stopped isolated Obsidian (pid 77198)"
+  },
+  {
+   "name": "e43-installer-restore",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "candidate: /Applications/Obsidian.app"
+  },
+  {
+   "name": "e43-installer-check-after",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 15,
+   "last": "path:                       ~/Library/Daemon Containers/670D4C91-37C8-43B0-9592-17CC10DF3929/Data/Library/Caches/Placeholders-v6.noindex/md.obsidian-1.14.5/Obsidian.app (0x66e0)"
+  }
+ ],
+ "comparisons": [],
+ "problems": [],
+ "finishedAt": "2026-10-25T12:01:42.516Z"
+}

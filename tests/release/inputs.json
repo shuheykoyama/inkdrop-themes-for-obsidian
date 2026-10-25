@@ -39,6 +39,30 @@
       "file": "research/evidence/phase3-step11/11f-rereview/regress/runtime-electron-43.7.7-frame.json"
     },
     {
+      "kind": "desktop-runtime",
+      "os": "macOS",
+      "label": "desktop, Obsidian 1.14.5 app.asar on Electron 39.5.1 (step 11H run-all b618637, run 1)",
+      "file": "research/evidence/phase3-step11/11h/regress-1.14.5/runtime-electron-39.5.1-run1.json"
+    },
+    {
+      "kind": "desktop-runtime",
+      "os": "macOS",
+      "label": "desktop, Obsidian 1.14.5 app.asar on Electron 39.5.1, custom frame (step 11H run-all b618637)",
+      "file": "research/evidence/phase3-step11/11h/regress-1.14.5/runtime-electron-39.5.1-frame.json"
+    },
+    {
+      "kind": "desktop-runtime",
+      "os": "macOS",
+      "label": "desktop, Obsidian 1.14.5 installer, Electron 43.8.3 (step 11H run-all b618637, e43 re-run, run 1)",
+      "file": "research/evidence/phase3-step11/11h/regress-1.14.5/runtime-electron-43.8.3-run1.json"
+    },
+    {
+      "kind": "desktop-runtime",
+      "os": "macOS",
+      "label": "desktop, Obsidian 1.14.5 installer, Electron 43.8.3, custom frame (step 11H run-all b618637, e43 re-run)",
+      "file": "research/evidence/phase3-step11/11h/regress-1.14.5/runtime-electron-43.8.3-frame.json"
+    },
+    {
       "kind": "device-report",
       "label": "iPhone 12 Pro, iOS 27.0, Obsidian 1.14.5 (387) (step 11G G1, kit abfb7c19 from daac8e2)",
       "file": "research/evidence/phase3-step11/11g-g1/device/report.json"

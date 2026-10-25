@@ -1,0 +1,11 @@
+gate units, before -> after adding the four Obsidian 1.14.5 desktop runs, 2026-10-25: 550 -> 688 units, met false -> false
+  132 x macOS desktop @1.14.5: (none) -> PASS
+  4 x macOS desktop @1.14.5: (none) -> NO RESULT
+  2 x macOS desktop @1.14.5: (none) -> DIFF
+not PASS at 1.14.5:
+  qd22.real-fullscreen|solarized-dark|macOS|desktop|1.14.5: (none) -> NO RESULT
+  qd22.real-fullscreen|kanagawa-dragon|macOS|desktop|1.14.5: (none) -> NO RESULT
+  qd22.visual-active-vs-inkdrop|solarized-dark|macOS|desktop|1.14.5: (none) -> NO RESULT
+  qd22.visual-active-vs-inkdrop|kanagawa-dragon|macOS|desktop|1.14.5: (none) -> NO RESULT
+  qd13.fidelity|solarized-dark|macOS|desktop|1.14.5: (none) -> DIFF
+  qd13.fidelity|kanagawa-dragon|macOS|desktop|1.14.5: (none) -> DIFF

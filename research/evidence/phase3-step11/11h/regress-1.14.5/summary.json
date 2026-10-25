@@ -1,0 +1,309 @@
+{
+ "startedAt": "2026-10-25T12:01:59.873Z",
+ "only": [
+  "compare",
+  "gate"
+ ],
+ "commit": "b618637",
+ "dirty": false,
+ "complete": true,
+ "interrupted": null,
+ "steps": [
+  {
+   "name": "gate",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "Linux desktop (not gated: Q-D10): -; 138 units {\"UNVERIFIED\":138}; Q-D10: not guaranteed until verified on a real machine; UNVERIFIED, not a release failure"
+  }
+ ],
+ "comparisons": [
+  {
+   "name": "E39.5.1 self-test",
+   "count": 704,
+   "problems": []
+  },
+  {
+   "name": "E39.5.1 run 1 vs baseline",
+   "a": "research/evidence/phase3-step11/11f-rereview/regress/runtime-electron-39.5.1-run1.json",
+   "b": "run 1",
+   "count": [
+    3871,
+    3871
+   ],
+   "breakdown": [
+    {
+     "DIFF": 606,
+     "PASS (EMULATED)": 805,
+     "PASS": 2430,
+     "UNSUPPORTED": 30
+    },
+    {
+     "DIFF": 606,
+     "PASS (EMULATED)": 805,
+     "PASS": 2430,
+     "UNSUPPORTED": 30
+    }
+   ],
+   "onlyA": 0,
+   "onlyB": 0,
+   "repeatDiff": 0,
+   "stateDiff": 0,
+   "detailDiff": 41,
+   "unexpected": 0,
+   "samples": {
+    "onlyA": [],
+    "onlyB": [],
+    "repeatDiff": [],
+    "stateDiff": [],
+    "detailDiff": [
+     "runner.environment|solarized-dark|desktop|opaque|user-accent",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.pointer-prepared|solarized-dark|desktop|translucent|popover-open",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|user-accent",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque (after translucent)|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque (after translucent)|tooltip-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|user-accent",
+     "runner.environment|kanagawa-dragon|desktop|opaque|menu-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|popover-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque|popover-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|tooltip-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque|tooltip-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|md-source",
+     "runner.environment|kanagawa-dragon|desktop|translucent|quick-switcher-open",
+     "runner.environment|kanagawa-dragon|desktop|translucent|fullscreen-class",
+     "runner.environment|kanagawa-dragon|desktop|translucent|menu-open",
+     "runner.environment|kanagawa-dragon|desktop|translucent|popover-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|translucent|popover-open",
+     "runner.environment|kanagawa-dragon|desktop|translucent|md-source"
+    ],
+    "unexpected": []
+   },
+   "same": true
+  },
+  {
+   "name": "E39.5.1 run 1 vs run 2",
+   "a": "run 1",
+   "b": "run 2",
+   "count": [
+    3871,
+    3871
+   ],
+   "breakdown": [
+    {
+     "DIFF": 606,
+     "PASS (EMULATED)": 805,
+     "PASS": 2430,
+     "UNSUPPORTED": 30
+    },
+    {
+     "DIFF": 606,
+     "PASS (EMULATED)": 805,
+     "PASS": 2430,
+     "UNSUPPORTED": 30
+    }
+   ],
+   "onlyA": 0,
+   "onlyB": 0,
+   "repeatDiff": 0,
+   "stateDiff": 0,
+   "detailDiff": 46,
+   "unexpected": 0,
+   "samples": {
+    "onlyA": [],
+    "onlyB": [],
+    "repeatDiff": [],
+    "stateDiff": [],
+    "detailDiff": [
+     "runner.environment|solarized-dark|desktop|opaque|default",
+     "runner.environment|solarized-dark|desktop|opaque|user-font",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|popover-open",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|user-font",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|quick-switcher-open",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|file-explorer-focused",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|menu-open",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque (after translucent)|popover-open",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|tooltip-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque (after translucent)|tooltip-open",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|md-source",
+     "runner.environment|kanagawa-dragon|desktop|opaque|user-font",
+     "runner.environment|kanagawa-dragon|desktop|opaque|quick-switcher-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|menu-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|popover-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque|popover-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|tooltip-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque|tooltip-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|md-source"
+    ],
+    "unexpected": []
+   },
+   "same": true
+  },
+  {
+   "name": "E43.8.3 self-test",
+   "count": 704,
+   "problems": []
+  },
+  {
+   "name": "E43.8.3 run 1 vs baseline",
+   "a": "research/evidence/phase3-step11/11f-rereview/regress/runtime-electron-43.7.7-run1.json",
+   "b": "run 1",
+   "count": [
+    3871,
+    3871
+   ],
+   "breakdown": [
+    {
+     "DIFF": 606,
+     "PASS (EMULATED)": 805,
+     "PASS": 2430,
+     "UNSUPPORTED": 30
+    },
+    {
+     "DIFF": 606,
+     "PASS (EMULATED)": 805,
+     "PASS": 2430,
+     "UNSUPPORTED": 30
+    }
+   ],
+   "onlyA": 0,
+   "onlyB": 0,
+   "repeatDiff": 0,
+   "stateDiff": 0,
+   "detailDiff": 14,
+   "unexpected": 0,
+   "samples": {
+    "onlyA": [],
+    "onlyB": [],
+    "repeatDiff": [],
+    "stateDiff": [],
+    "detailDiff": [
+     "runner.environment|solarized-dark|desktop|opaque|default",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.pointer-prepared|solarized-dark|desktop|translucent|popover-open",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|user-accent",
+     "runner.environment|kanagawa-dragon|desktop|opaque|user-font",
+     "runner.environment|kanagawa-dragon|desktop|opaque|quick-switcher-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|file-explorer-focused",
+     "runner.environment|kanagawa-dragon|desktop|opaque|menu-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque|popover-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque|tooltip-open",
+     "runner.environment|kanagawa-dragon|desktop|translucent|quick-switcher-open",
+     "runner.environment|kanagawa-dragon|desktop|translucent|fullscreen-class",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque (after translucent)|popover-open"
+    ],
+    "unexpected": []
+   },
+   "same": true
+  },
+  {
+   "name": "E43.8.3 run 1 vs run 2",
+   "a": "run 1",
+   "b": "run 2",
+   "count": [
+    3871,
+    3871
+   ],
+   "breakdown": [
+    {
+     "DIFF": 606,
+     "PASS (EMULATED)": 805,
+     "PASS": 2430,
+     "UNSUPPORTED": 30
+    },
+    {
+     "DIFF": 606,
+     "PASS (EMULATED)": 805,
+     "PASS": 2430,
+     "UNSUPPORTED": 30
+    }
+   ],
+   "onlyA": 0,
+   "onlyB": 0,
+   "repeatDiff": 0,
+   "stateDiff": 0,
+   "detailDiff": 24,
+   "unexpected": 0,
+   "samples": {
+    "onlyA": [],
+    "onlyB": [],
+    "repeatDiff": [],
+    "stateDiff": [],
+    "detailDiff": [
+     "runner.environment|solarized-dark|desktop|opaque|default",
+     "runner.environment|solarized-dark|desktop|opaque|user-accent",
+     "runner.environment|solarized-dark|desktop|opaque|user-font",
+     "runner.environment|solarized-dark|desktop|opaque|quick-switcher-open",
+     "runner.environment|solarized-dark|desktop|opaque|file-explorer-focused",
+     "runner.environment|solarized-dark|desktop|opaque|menu-open",
+     "runner.environment|solarized-dark|desktop|opaque|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|popover-open",
+     "runner.environment|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.environment|solarized-dark|desktop|opaque|md-source",
+     "runner.pointer-prepared|solarized-dark|desktop|translucent|popover-open",
+     "runner.environment|solarized-dark|desktop|opaque (after translucent)|user-accent",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque (after translucent)|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque (after translucent)|tooltip-open",
+     "runner.environment|kanagawa-dragon|desktop|opaque|user-accent",
+     "runner.environment|kanagawa-dragon|desktop|opaque|popover-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque|tooltip-open",
+     "runner.environment|kanagawa-dragon|desktop|translucent|quick-switcher-open",
+     "runner.environment|kanagawa-dragon|desktop|translucent|fullscreen-class"
+    ],
+    "unexpected": []
+   },
+   "same": true
+  }
+ ],
+ "problems": [
+  "the measured spec or sources changed since the baseline (f7dd00a); compare the unchanged checks only: src/common/components/markdown.css        |  13 +++;  src/common/platform/translucent.css       |   8 ++;  src/palette/kanagawa-dragon.css           |   2 +-;  src/palette/solarized-dark.css            |   2 +-;  tests/fixtures/vault/Mermaid.md           |  10 ++;  tests/runtime/code-tokens.js              |  17 ++-;  tests/runtime/current-installer.sh        |  17 ++-;  tests/runtime/inkdrop-isolated.sh         | 127 +++++++++++++++++++++;  tests/runtime/inkdrop-production.sh       | 177 ++++++++++++++++++++++++++++++;  tests/runtime/lib/mermaid.mjs             |  49 +++++++--;  tests/runtime/mermaid-dump.js             |  12 +-;  tests/runtime/mermaid-judge-self-test.mjs |  76 +++++++++++++;  tests/runtime/obsidian-isolated.sh        |  12 +-;  tests/runtime/run.mjs                     |  32 +++++-;  tests/runtime/self-test-spec.json         |  28 +++++;  tests/spec/runtime/desktop.json           |  66 +++++++++++",
+  "kit dry run: missing kit-dry-run-work/report-emulated.json",
+  "gate: 149 units differ from the saved judgement",
+  "gate: kit dry run: missing kit-dry-run-work/report-emulated.json"
+ ],
+ "specSinceBaseline": [
+  "src/common/components/markdown.css        |  13 +++",
+  " src/common/platform/translucent.css       |   8 ++",
+  " src/palette/kanagawa-dragon.css           |   2 +-",
+  " src/palette/solarized-dark.css            |   2 +-",
+  " tests/fixtures/vault/Mermaid.md           |  10 ++",
+  " tests/runtime/code-tokens.js              |  17 ++-",
+  " tests/runtime/current-installer.sh        |  17 ++-",
+  " tests/runtime/inkdrop-isolated.sh         | 127 +++++++++++++++++++++",
+  " tests/runtime/inkdrop-production.sh       | 177 ++++++++++++++++++++++++++++++",
+  " tests/runtime/lib/mermaid.mjs             |  49 +++++++--",
+  " tests/runtime/mermaid-dump.js             |  12 +-",
+  " tests/runtime/mermaid-judge-self-test.mjs |  76 +++++++++++++",
+  " tests/runtime/obsidian-isolated.sh        |  12 +-",
+  " tests/runtime/run.mjs                     |  32 +++++-",
+  " tests/runtime/self-test-spec.json         |  28 +++++",
+  " tests/spec/runtime/desktop.json           |  66 +++++++++++"
+ ],
+ "gate": {
+  "met": false,
+  "units": 558,
+  "savedUnits": 550,
+  "differentFromSaved": 149,
+  "samples": [
+   "qd1.ribbon-background|solarized-dark|macOS|desktop|1.14.5",
+   "qd1.ribbon-background|kanagawa-dragon|macOS|desktop|1.14.5",
+   "qd1.dock-background|solarized-dark|macOS|desktop|1.14.5",
+   "qd1.dock-background|kanagawa-dragon|macOS|desktop|1.14.5",
+   "qd1.dock-tab-strip|solarized-dark|macOS|desktop|1.14.5",
+   "qd1.dock-tab-strip|kanagawa-dragon|macOS|desktop|1.14.5",
+   "qd1.centre-tab-strip|solarized-dark|macOS|desktop|1.14.5",
+   "qd1.centre-tab-strip|kanagawa-dragon|macOS|desktop|1.14.5",
+   "qd1.centre-inactive-tab|solarized-dark|macOS|desktop|1.14.5",
+   "qd1.centre-inactive-tab|kanagawa-dragon|macOS|desktop|1.14.5"
+  ]
+ },
+ "finishedAt": "2026-10-25T12:02:01.071Z"
+}

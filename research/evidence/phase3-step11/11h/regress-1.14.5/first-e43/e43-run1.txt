@@ -1,0 +1,21 @@
+node:internal/deps/undici/undici:14902
+      Error.captureStackTrace(err);
+            ^
+
+TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async connect (file://~/ghq/github.com/shuheykoyama/inkdrop-themes-for-obsidian/tests/runtime/lib/cdp.mjs:7:26)
+    at async evaluate (file://~/ghq/github.com/shuheykoyama/inkdrop-themes-for-obsidian/tests/runtime/lib/cdp.mjs:30:13)
+    at async file://~/ghq/github.com/shuheykoyama/inkdrop-themes-for-obsidian/tests/runtime/run.mjs:208:16 {
+  [cause]: Error: connect ECONNREFUSED 127.0.0.1:9333
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16) {
+    errno: -61,
+    code: 'ECONNREFUSED',
+    syscall: 'connect',
+    address: '127.0.0.1',
+    port: 9333
+  }
+}
+
+Node.js v22.22.0
