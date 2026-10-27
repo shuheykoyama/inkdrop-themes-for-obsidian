@@ -71,7 +71,9 @@
     }
     return { text: doc.sliceString(b.start, b.start + b.code.length), ranges };
   };
-  const codes = () => [...document.querySelectorAll(".mde-preview pre > code")];
+  // Inkdrop 6.1.5 / 6.2.0: div.codeblock > pre > div.mde-preview-code > [code.mde-preview-code-line-number] code.mde-preview-code-body;
+  // only the body is measured (not the line numbers nor the copy button).
+  const codes = () => [...document.querySelectorAll(".mde-preview pre code.mde-preview-code-body")];
   const readPreview = (i) => {
     const el = codes()[i];
     if (!el) return null;

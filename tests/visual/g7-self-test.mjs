@@ -52,6 +52,32 @@ throws("locate: two loading entries of one language stop the run", () => locate(
 throws("locate: unknown arguments stop the run", () => locate(bundle({ "app.js": app(undefined, langData({ TypeScript: entry("TypeScript", load("dist-js.js", ".then(e=>e.t).then(e=>e.javascript({jsx:!0}))")) })) })), /arguments \{jsx:!0\} not understood/);
 throws("locate: a load that is not understood stops the run", () => locate(bundle({ "app.js": app(undefined, langData({ Go: entry("Go", "load(){return somethingElse()") })) })), /Go: load not understood/);
 
+// ---------- g7-measure.js: the preview code-block selector on Inkdrop 6.2.0's markup ----------
+// A minimal matcher for compound selectors (tag and .class) joined by " " or ">", enough for the selectors here.
+const el = (tag, cls = "", ...children) => ({ tag, cls: cls.split(" ").filter(Boolean), children });
+const matches = (node, ancestors, sel) => {
+  const parts = sel.trim().split(/\s*(>)\s*|\s+/).filter(Boolean);
+  const fits = (n, c) => { const [tag, ...cls] = c.split("."); return (!tag || n.tag === tag) && cls.every((k) => n.cls.includes(k)); };
+  // Right to left: the last compound is the node itself; each earlier one an ancestor (">" = the direct parent).
+  let i = parts.length - 1, a = ancestors.length;
+  if (!fits(node, parts[i--])) return false;
+  while (i >= 0) {
+    const child = parts[i] === ">"; if (child) i--;
+    if (child) { if (!a || !fits(ancestors[--a], parts[i])) return false; }
+    else { do { a--; } while (a >= 0 && !fits(ancestors[a], parts[i])); if (a < 0) return false; }
+    i--;
+  }
+  return true;
+};
+const select = (root, sel, up = []) => [...(matches(root, up, sel) ? [root] : []), ...root.children.flatMap((c) => select(c, sel, [...up, root]))];
+const block = (lang, lines) => el("div", `codeblock lang-${lang}`, el("pre", "", el("button", "code-copy-button"),
+  el("div", `mde-preview-code${lines ? " with-line-numbers" : ""}`, ...(lines ? [el("code", "mde-preview-code-line-number", el("div", "tok-number"))] : []), el("code", "mde-preview-code-body", el("span", "tok-keyword")))));
+const page = el("div", "mde-preview", block("js", false), el("p"), block("ts", true));
+const sel = readFileSync(path.join(repo, "tests/visual/g7-measure.js"), "utf8").match(/const codes = \(\) => \[\.\.\.document\.querySelectorAll\("([^"]+)"\)\]/)?.[1];
+const found = sel ? select(page, sel) : [];
+ok("measure: the preview selector finds each code body, not the line numbers", found.length === 2 && found.every((n) => n.cls.includes("mde-preview-code-body")), `${sel}: ${found.length}`);
+ok("measure: the old selector (pre > code) finds none on this markup", select(page, ".mde-preview pre > code").length === 0);
+
 // ---------- g7-rules ----------
 const note = readFileSync(path.join(repo, "tests/fixtures/vault/Code blocks.md"), "utf8");
 const bs = blocks(note);
