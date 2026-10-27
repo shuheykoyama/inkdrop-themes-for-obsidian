@@ -9,6 +9,7 @@ import path from "node:path";
 import { LANGUAGES, locate } from "./inkdrop-chunks.mjs";
 import { blocks, coverage, judgeBlocks, noteDoc, NOTE_TITLE, removeNote, requireFocus } from "./g7-rules.mjs";
 import { shoot } from "./g6-shot.mjs";
+import { alignRows, classify, normClasses, parseCsv, placeMisses } from "./g7-reclassify.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
 let fails = 0, n = 0;
@@ -77,6 +78,25 @@ const sel = readFileSync(path.join(repo, "tests/visual/g7-measure.js"), "utf8").
 const found = sel ? select(page, sel) : [];
 ok("measure: the preview selector finds each code body, not the line numbers", found.length === 2 && found.every((n) => n.cls.includes("mde-preview-code-body")), `${sel}: ${found.length}`);
 ok("measure: the old selector (pre > code) finds none on this markup", select(page, ".mde-preview pre > code").length === 0);
+
+// ---------- g7-reclassify: placing recorded runs and classifying groups ----------
+ok("reclassify: CSV with quoted fields", JSON.stringify(parseCsv('a,b\njs,"""fs""",","')) === JSON.stringify([["a", "b"], ["js", '"fs"', ","]]));
+const rowsAt = alignRows("let x = 1;\n  y", [{ text: "let" }, { text: "x" }, { text: "= 1;" }, { text: "y" }]);
+ok("reclassify: table rows placed in order across whitespace", rowsAt.map((r) => r.from).join() === "0,4,6,13");
+throws("reclassify: a row not next in the code stops", () => alignRows("ab cd", [{ text: "cd" }, { text: "ab" }]), /not found/);
+ok("reclassify: Obsidian classes as the table writes them", normClasses("cm-hmd-codeblock") === "-" && normClasses("token.keyword < token.module") === "keyword module" && normClasses("(bare text)") === "-");
+const code = "a { b } { c }";
+const inkCls = [...code].map((ch) => ("{}".includes(ch) ? "tok-brace" : ""));
+const obsCls = [...code].map((ch, i) => (i < 7 ? "-" : "punctuation"));
+const at2 = placeMisses(code, [{ text: "{", inkdrop: "tok-brace", obsidian: "punctuation" }], inkCls, obsCls);
+ok("reclassify: a run is placed where its text and both classes match, not at the first equal text", at2.indexOf(0) === 8 && at2.filter((x) => x === 0).length === 1);
+throws("reclassify: a run that fits nowhere stops", () => placeMisses(code, [{ text: "{", inkdrop: "tok-paren", obsidian: "-" }], inkCls, obsCls), /not placed/);
+const inks = (o) => new Map(Object.entries(o));
+ok("reclassify: EXACT / MISMATCH / CONFLICT / DOMINATED / MIXED",
+  classify(["rgb(1, 2, 3)"], inks({ "rgb(1, 2, 3)": 4 })) === "EXACT" && classify(["rgb(1, 2, 3)"], inks({ "rgb(9, 9, 9)": 4 })) === "MISMATCH" &&
+  classify(["rgb(1, 2, 3)"], inks({ "rgb(1, 2, 3)": 1, "rgb(9, 9, 9)": 4 })) === "CONFLICT" && classify(["rgb(1, 2, 3)"], inks({ "rgb(8, 8, 8)": 1, "rgb(9, 9, 9)": 4 })) === "DOMINATED" &&
+  classify(["rgb(1, 2, 3)", "rgb(9, 9, 9)"], inks({ "rgb(1, 2, 3)": 1 })) === "MIXED");
+ok("reclassify: an alpha difference is a different colour", classify(["rgba(197, 201, 197, 0.9)"], inks({ "rgb(197, 201, 197)": 3 })) === "MISMATCH");
 
 // ---------- g7-rules ----------
 const note = readFileSync(path.join(repo, "tests/fixtures/vault/Code blocks.md"), "utf8");
