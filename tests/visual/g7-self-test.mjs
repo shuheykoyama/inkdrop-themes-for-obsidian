@@ -2,11 +2,13 @@
 // a synthetic bundle, the completeness rules of the measurement (g7-rules.mjs), and g7-c-run.sh with stand-ins for
 // the production script and g6-run.mjs (the note is deleted and the config restored on every way out).
 import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { chmodSync, existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { LANGUAGES, locate } from "./inkdrop-chunks.mjs";
-import { blocks, coverage, judgeBlocks, noteDoc, NOTE_TITLE } from "./g7-rules.mjs";
+import { blocks, coverage, judgeBlocks, noteDoc, NOTE_TITLE, removeNote, requireFocus } from "./g7-rules.mjs";
+import { shoot } from "./g6-shot.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
 let fails = 0, n = 0;
@@ -56,23 +58,96 @@ const bs = blocks(note);
 const fixture = JSON.parse(readFileSync(path.join(repo, "tests/fixtures/inkdrop-tokens.json"), "utf8"));
 ok("blocks: the 21 blocks of V-31, same languages and code", bs.length === 21 && bs.every((b, i) => b.lang === fixture[i].lang && b.code === fixture[i].code));
 ok("blocks: start is the body offset of each block's code", bs.every((b) => note.slice(b.start, b.start + b.code.length) === b.code));
-// A perfect measurement: one range per line of each block (all characters, newlines excluded), with a colour.
-const perfect = (b) => ({ index: 0, lang: b.lang, text: b.code, ranges: b.code.split("\n").reduce((acc, line) => { const from = acc.at; acc.at += line.length + 1; if (line.length) acc.r.push({ from, to: from + line.length, color: "rgb(1, 2, 3)" }); return acc; }, { at: 0, r: [] }).r });
-const all = { blocks: bs.map(perfect) };
-ok("judgeBlocks: a full measurement is COMPLETE", judgeBlocks(bs, all).state === "COMPLETE", JSON.stringify(judgeBlocks(bs, all).problems));
-const cut = structuredClone(all); cut.blocks[3].ranges[0].from += 1;
-ok("judgeBlocks: a character not measured is INCOMPLETE", judgeBlocks(bs, cut).state === "INCOMPLETE" && /block 3 \(css\): 1 characters not measured/.test(judgeBlocks(bs, cut).problems.join()));
-const twice = structuredClone(all); twice.blocks[0].ranges.push({ from: 0, to: 2, color: "rgb(0, 0, 0)" });
-ok("judgeBlocks: a character measured twice is INCOMPLETE", /measured twice/.test(judgeBlocks(bs, twice).problems.join()));
-const less = { blocks: all.blocks.slice(0, 20) };
-ok("judgeBlocks: a missing block is INCOMPLETE", /20 blocks measured, 21 expected/.test(judgeBlocks(bs, less).problems.join()) && /block 20 .*not measured/.test(judgeBlocks(bs, less).problems.join()));
+// A perfect measurement: one range per line of each block (all characters, newlines excluded), with its text and a
+// colour, in the expected theme and view, the note unchanged before and after.
+const perfect = (b, i) => ({ index: i, lang: b.lang, text: b.code, ranges: b.code.split("\n").reduce((acc, line) => { const from = acc.at; acc.at += line.length + 1; if (line.length) acc.r.push({ from, to: from + line.length, text: line, color: "rgb(1, 2, 3)" }); return acc; }, { at: 0, r: [] }).r });
+const st = { theme: "solarized-dark", noteShown: true, titleSame: true, bodySame: true, shownBodySame: true };
+const all = { mode: "editor", theme: "solarized-dark", stateBefore: st, stateAfter: st, blocks: bs.map(perfect) };
+const EX = { theme: "solarized-dark", view: "editor" };
+const probs = (g, ex = EX) => judgeBlocks(bs, g, ex).problems.join("; ");
+ok("judgeBlocks: a full measurement is COMPLETE", judgeBlocks(bs, all, EX).state === "COMPLETE", probs(all));
+const cut = structuredClone(all); cut.blocks[3].ranges[0].from += 1; cut.blocks[3].ranges[0].text = cut.blocks[3].ranges[0].text.slice(1);
+ok("judgeBlocks: a character not measured is INCOMPLETE", judgeBlocks(bs, cut, EX).state === "INCOMPLETE" && /block 3 \(css\): 1 characters not measured/.test(probs(cut)), probs(cut));
+const twice = structuredClone(all); twice.blocks[0].ranges.push({ from: 0, to: 2, text: bs[0].code.slice(0, 2), color: "rgb(0, 0, 0)" });
+ok("judgeBlocks: a character measured twice is INCOMPLETE", /measured twice/.test(probs(twice)));
+const less = { ...all, blocks: all.blocks.slice(0, 20) };
+ok("judgeBlocks: a missing block is INCOMPLETE", /20 blocks measured, 21 expected/.test(probs(less)) && /block 20 .*not measured/.test(probs(less)));
 const text = structuredClone(all); text.blocks[5].text = "x";
-ok("judgeBlocks: a block whose text differs is INCOMPLETE", /block 5 \(json\): the shown text differs/.test(judgeBlocks(bs, text).problems.join()));
+ok("judgeBlocks: a block whose text differs is INCOMPLETE", /block 5 \(json\): the shown text differs/.test(probs(text)));
 const err = structuredClone(all); err.blocks[2] = { index: 2, lang: "python", error: "not shown or the highlighting did not settle" };
-ok("judgeBlocks: a block that did not settle is INCOMPLETE", /block 2 \(python\): not shown/.test(judgeBlocks(bs, err).problems.join()));
+ok("judgeBlocks: a block that did not settle is INCOMPLETE", /block 2 \(python\): not shown/.test(probs(err)));
 const nocol = structuredClone(all); delete nocol.blocks[1].ranges[0].color;
-ok("judgeBlocks: a range without a colour is INCOMPLETE", /without a computed colour/.test(judgeBlocks(bs, nocol).problems.join()));
-ok("judgeBlocks: no result is INCOMPLETE", judgeBlocks(bs, null).state === "INCOMPLETE");
+ok("judgeBlocks: a range without a colour is INCOMPLETE", /without a computed colour/.test(probs(nocol)));
+ok("judgeBlocks: no result is INCOMPLETE", judgeBlocks(bs, null, EX).state === "INCOMPLETE");
+// Review of c77d7b5 (research/14 §6.127): the measured characters, the block identity, the theme, view and note state.
+const wrongText = structuredClone(all); wrongText.blocks[0].ranges[0].text = "X" + wrongText.blocks[0].ranges[0].text.slice(1);
+ok("judgeBlocks: right positions but other text is INCOMPLETE", judgeBlocks(bs, wrongText, EX).state === "INCOMPLETE" && /block 0 \(js\): 1 ranges whose text is not the block's text/.test(probs(wrongText)), probs(wrongText));
+const swapped = structuredClone(all); [swapped.blocks[7], swapped.blocks[8]] = [swapped.blocks[8], swapped.blocks[7]];
+ok("judgeBlocks: a block result of another index is INCOMPLETE", /block 7 \(go\): the result is of block 8 \(rust\)/.test(probs(swapped)), probs(swapped));
+const lang = structuredClone(all); lang.blocks[4].lang = "xml";
+ok("judgeBlocks: a block result of another language is INCOMPLETE", /block 4 \(html\): the result is of block 4 \(xml\)/.test(probs(lang)));
+ok("judgeBlocks: another measured view is INCOMPLETE", /measured the editor view, not the preview/.test(probs(all, { theme: "solarized-dark", view: "preview" })));
+ok("judgeBlocks: another measured theme is INCOMPLETE", /measured theme solarized-dark, not kanagawa-dragon/.test(probs(all, { theme: "kanagawa-dragon", view: "editor" })) && /theme before the measurement: solarized-dark/.test(probs(all, { theme: "kanagawa-dragon", view: "editor" })));
+const themeAfter = structuredClone(all); themeAfter.stateAfter.theme = "default-dark";
+ok("judgeBlocks: a theme changed during the measurement is INCOMPLETE", /theme after the measurement: default-dark/.test(probs(themeAfter)));
+const prev = { ...structuredClone(all), mode: "preview" }; prev.stateBefore.shownBodySame = null; prev.stateAfter.shownBodySame = null;
+const PX = { theme: "solarized-dark", view: "preview" };
+ok("judgeBlocks: the preview without a document is judged on the note's own body", judgeBlocks(bs, prev, PX).state === "COMPLETE", probs(prev, PX));
+const prevChanged = structuredClone(prev); prevChanged.stateAfter.bodySame = false;
+ok("judgeBlocks: a preview whose note body changed is INCOMPLETE", /after the measurement the note's title or body was not the one created/.test(probs(prevChanged, PX)));
+const prevUnknown = structuredClone(prev); prevUnknown.stateBefore.bodySame = null;
+ok("judgeBlocks: a preview whose note could not be read is INCOMPLETE", /before the measurement the note's title or body was not the one created \(or could not be read\)/.test(probs(prevUnknown, PX)));
+const noState = structuredClone(prev); delete noState.stateAfter;
+ok("judgeBlocks: a missing state is INCOMPLETE", /no state after the measurement/.test(probs(noState, PX)));
+const otherNote = structuredClone(all); otherNote.stateBefore.noteShown = false;
+ok("judgeBlocks: another note shown is INCOMPLETE", /before the measurement another note \(or none\) was shown/.test(probs(otherNote)));
+const editorDoc = structuredClone(all); editorDoc.stateAfter.shownBodySame = false;
+ok("judgeBlocks: an editor not showing the note's body is INCOMPLETE", /after the measurement the editor did not show the note's body/.test(probs(editorDoc)));
+
+// removeNote with a stand-in for inkdrop.localDB.notes (errors shaped as Inkdrop 6.2.0 gives them across IPC).
+const nf = () => Object.assign(new Error("missing"), { name: "not_found", status: 404, reason: "missing" });
+const dbErr = () => Object.assign(new Error("database is closed"), { name: "Error" });
+const sha256 = (s) => createHash("sha256").update(s).digest("hex");
+const REC = { id: "note:g7", title: NOTE_TITLE, bodySha256: sha256(note) };
+const fakeDb = ({ get, remove = async () => ({ ok: true }) }) => { const calls = []; return { calls, get: async (id) => { calls.push("get"); return get(calls.filter((c) => c === "get").length, id); }, remove: async (id) => { calls.push("remove"); return remove(id); } }; };
+const doc = { _id: "note:g7", title: NOTE_TITLE, body: note };
+let db = fakeDb({ get: (k) => { if (k === 1) return doc; throw nf(); } });
+let rm = await removeNote(db, REC);
+ok("removeNote: the created note is deleted and confirmed gone -> REMOVED", rm.state === "REMOVED" && db.calls.join() === "get,remove,get", JSON.stringify(rm));
+db = fakeDb({ get: () => { throw nf(); } });
+rm = await removeNote(db, REC);
+ok("removeNote: Inkdrop's not-found error before the delete -> ABSENT", rm.state === "ABSENT" && !db.calls.includes("remove"));
+db = fakeDb({ get: () => { throw dbErr(); } });
+rm = await removeNote(db, REC);
+ok("removeNote: another database error on the first read is not ABSENT", rm.state === "NOT REMOVED" && /could not be read \(Error: database is closed\)/.test(rm.why) && !db.calls.includes("remove"), JSON.stringify(rm));
+db = fakeDb({ get: () => { throw Object.assign(new Error("missing"), { name: "not_found" }); } });
+rm = await removeNote(db, REC);
+ok("removeNote: not_found without status 404 is not ABSENT", rm.state === "NOT REMOVED");
+db = fakeDb({ get: (k) => { if (k === 1) return doc; throw dbErr(); } });
+rm = await removeNote(db, REC);
+ok("removeNote: a read error after the delete is not REMOVED", rm.state === "NOT REMOVED" && /absence could not be confirmed/.test(rm.why), JSON.stringify(rm));
+db = fakeDb({ get: () => doc });
+rm = await removeNote(db, REC);
+ok("removeNote: a note still found after the delete is not REMOVED", rm.state === "NOT REMOVED" && /still found/.test(rm.why));
+db = fakeDb({ get: () => doc, remove: async () => { throw dbErr(); } });
+rm = await removeNote(db, REC);
+ok("removeNote: a failed delete is NOT REMOVED", rm.state === "NOT REMOVED" && /the delete failed/.test(rm.why));
+db = fakeDb({ get: () => ({ ...doc, body: note + "edited" }) });
+rm = await removeNote(db, REC);
+ok("removeNote: a note whose body changed is not deleted", rm.state === "NOT REMOVED" && !db.calls.includes("remove"));
+db = fakeDb({ get: () => ({ ...doc, title: "My note" }) });
+rm = await removeNote(db, REC);
+ok("removeNote: a note whose title changed is not deleted", rm.state === "NOT REMOVED" && !db.calls.includes("remove"));
+ok("removeNote: runs from its own source (as in the page)", (await (0, eval)(`(${removeNote})`)(fakeDb({ get: () => { throw nf(); } }), REC)).state === "ABSENT");
+
+// requireFocus inside shoot (g6-shot.mjs): without focus no capture command runs and the backdrop is closed.
+const sdir = mkdtempSync(path.join(tmpdir(), "g7-shot-"));
+const shotFile = path.join(sdir, "shot.png");
+let shotErr = null;
+await shoot({ backdrop: ["sleep", "30"], capture: ["touch", shotFile], file: shotFile, settleMs: 50, between: async () => requireFocus({ focused: false }) }).catch((e) => { shotErr = e.message; });
+ok("requireFocus: no focus -> no capture taken, the run stops", /did not have focus; no capture taken/.test(shotErr ?? "") && !existsSync(shotFile), shotErr);
+ok("requireFocus: focus -> the capture goes on", requireFocus({ focused: true }).focused === true);
+rmSync(sdir, { recursive: true, force: true });
 ok("coverage: a range outside the block is counted", coverage("ab", [{ from: 0, to: 3 }]).outside === 1);
 const d = noteDoc({ id: "note:x", bookId: "book:y", body: "b", now: 5 });
 ok("noteDoc: inkdrop-model's required fields", ["_id", "bookId", "title", "doctype", "body", "updatedAt", "createdAt", "timestamp"].every((k) => k in d) && d.title === NOTE_TITLE && d.doctype === "markdown");
@@ -111,7 +186,7 @@ ok("c-run: order prepare, start, check, create, SD, KD, remove, restore", r.call
 r = crun({ G7T_SYNTAX_kanagawa_dragon: "1" });
 ok("c-run: a stopped measurement still deletes the note and restores (exit 1)", r.code === 1 && /stopped at syntax kanagawa-dragon/.test(r.out) && /NOTE: REMOVED/.test(r.out) && /RESTORE: RESTORED/.test(r.out) && /run note-remove/.test(r.calls), r.out);
 r = crun({ G7T_SYNTAX_solarized_dark: "5" });
-ok("c-run: an INCOMPLETE view goes on, is not COMPLETE (exit 1), note deleted", r.code === 1 && /MEASURE: INCOMPLETE: solarized-dark/.test(r.out) && /run syntax kanagawa-dragon/.test(r.calls) && /NOTE: REMOVED/.test(r.out), r.out);
+ok("c-run: after an INCOMPLETE view nothing more is measured; note deleted, config restored (exit 1)", r.code === 1 && /MEASURE: INCOMPLETE: solarized-dark/.test(r.out) && !/run syntax kanagawa-dragon/.test(r.calls) && /run note-remove/.test(r.calls) && /NOTE: REMOVED/.test(r.out) && /RESTORE: RESTORED/.test(r.out), r.out);
 r = crun({ G7T_CREATE: "fail" });
 ok("c-run: a failed create after the record is cleaned up (exit 1)", r.code === 1 && /stopped at note-create/.test(r.out) && /run note-remove/.test(r.calls) && /NOTE: REMOVED/.test(r.out) && !/run syntax/.test(r.calls), r.out);
 r = crun({ G7T_REMOVE: "NOT REMOVED: still found after remove" });

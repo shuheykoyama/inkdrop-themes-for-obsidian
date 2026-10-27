@@ -1,14 +1,28 @@
 // Step 11G G7-1 (research/14 §6.125): read-only measurement of the syntax colours Inkdrop renders for the
-// temporary verification note, in one view. Caller sets window.__G7 = { noteId, view: "editor" | "preview",
-// blocks: [{ lang, code, start }] (tests/visual/g7-rules.mjs blocks()), vars: ["--syntax-…-color", …] }.
+// temporary verification note, in one view. Caller sets window.__G7 = { noteId, title, bodySha256, theme,
+// view: "editor" | "preview", blocks: [{ lang, code, start }] (tests/visual/g7-rules.mjs blocks()),
+// vars: ["--syntax-…-color", …] }. Before and after the measurement the state is recorded (stateBefore / stateAfter):
+// the theme, whether the note shown is that note, whether its title and body in the database are the recorded ones,
+// and in the editor whether the shown document is that body. Before each block the theme and the shown note are
+// checked again; a change ends the measurement there (the blocks not reached are reported, not measured).
 // Only view state changes (the note is opened, the view toggled, the editor scrolled); no transaction changes the
 // document. Each block is scrolled into view and measured once its text is shown and its highlighting stays the
 // same between two reads, so a block outside the viewport or still being highlighted is not measured half done.
 // For every text node inside a block: its block offsets, the classes of the elements around it (inside the line or
 // the code element) and the computed colour of its parent. The judgement is in g7-rules.mjs (judgeBlocks).
 (async () => {
-  const { noteId, view: mode, blocks, vars } = window.__G7;
+  const { noteId, title, bodySha256, theme, view: mode, blocks, vars } = window.__G7;
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const sha = async (s) => [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)))].map((b) => b.toString(16).padStart(2, "0")).join("");
+  // The state around the measurement; a value that cannot be read is null (judged as not the expected one).
+  const stateNow = async (cmView) => {
+    const d = await inkdrop.localDB.notes.get(noteId).catch(() => null);
+    return {
+      theme: inkdrop.config.get("core.theme"), noteShown: inkdrop.store.getState().editingNote?._id === noteId,
+      titleSame: d ? d.title === title : null, bodySame: d ? (await sha(d.body ?? "")) === bodySha256 : null,
+      shownBodySame: cmView ? (await sha(cmView.state.doc.toString())) === bodySha256 : null,
+    };
+  };
   const frames = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
   const shown = (el) => !!el && el.getBoundingClientRect().width > 0 && el.getBoundingClientRect().height > 0;
   if (inkdrop.store.getState().editingNote?._id !== noteId) {
@@ -26,6 +40,7 @@
   const cmx = inkdrop.getExports()["@codemirror"];
   const cmView = editorShown() ? cmx.view.EditorView.findFromDOM(document.querySelector(".cm-editor")) : null;
   const docBefore = cmView?.state.doc.toString() ?? null;
+  const stateBefore = await stateNow(mode === "editor" ? cmView : null);
   // The classes of the elements from `node` up to (not including) `stop`, innermost first, and the parent's colour.
   const around = (node, stop) => {
     const els = [];
@@ -49,7 +64,9 @@
         try { pos = cmView.posAtDOM(t, 0); } catch { return null; }
         const from = pos - b.start, to = from + t.nodeValue.length;
         if (to <= 0 || from >= b.code.length) continue;
-        ranges.push({ from, to, text: t.nodeValue, ...around(t, el) });
+        // Cut at the block's edges, the text with it, so a range never claims characters outside the block.
+        const f = Math.max(0, from), e = Math.min(b.code.length, to);
+        ranges.push({ from: f, to: e, text: t.nodeValue.slice(f - from, e - from), ...around(t, el) });
       }
     }
     return { text: doc.sliceString(b.start, b.start + b.code.length), ranges };
@@ -67,10 +84,15 @@
       off += len;
     }
     // The preview keeps the block's final newline; the note's block text has none.
-    return { text: el.textContent.replace(/\n$/, ""), ranges: ranges.map((r) => ({ ...r, to: Math.min(r.to, el.textContent.replace(/\n$/, "").length) })).filter((r) => r.from < r.to), lang: [...el.classList].join(" ") };
+    // Ranges are cut at the end of the block text, their text with them (the final newline is not measured).
+    const end = el.textContent.replace(/\n$/, "").length;
+    return { text: el.textContent.slice(0, end), ranges: ranges.filter((r) => r.from < end).map((r) => (r.to > end ? { ...r, to: end, text: r.text.slice(0, end - r.from) } : r)), codeClass: [...el.classList].join(" ") };
   };
   const out = [];
+  let stopped = null;
   for (const [i, b] of blocks.entries()) {
+    if (!stopped && (inkdrop.config.get("core.theme") !== theme || inkdrop.store.getState().editingNote?._id !== noteId)) stopped = `the theme or the shown note changed before block ${i}`;
+    if (stopped) { out.push({ index: i, lang: b.lang, error: stopped }); continue; }
     let last = null, got = null;
     // Up to 20 reads: scrolled into view, then two equal reads in a row (the highlighting has settled).
     for (let k = 0; k < 20; k++) {
@@ -83,7 +105,7 @@
       if (r && key === last) { got = r; break; }
       last = key;
     }
-    out.push(got ? { index: i, lang: b.lang, ...got } : { index: i, lang: b.lang, error: "not shown or the highlighting did not settle" });
+    out.push(got ? { ...got, index: i, lang: b.lang } : { index: i, lang: b.lang, error: "not shown or the highlighting did not settle" });
   }
   // The colour each --syntax-* variable gives in this view (a probe span inside the view's own scope). In the
   // editor the probe goes into .cm-editor, never into .cm-content: CodeMirror reads changes there as edits.
@@ -97,6 +119,7 @@
   }
   return {
     mode, measuredAt: new Date().toISOString(), theme: inkdrop.config.get("core.theme"), inkdropVersion: inkdrop.appVersion ?? null,
-    docUnchanged: cmView ? cmView.state.doc.toString() === docBefore : null, previewCodeBlocks: codes().length, blocks: out, varColors,
+    docUnchanged: cmView ? cmView.state.doc.toString() === docBefore : null, stateBefore, stateAfter: await stateNow(mode === "editor" ? cmView : null),
+    previewCodeBlocks: codes().length, blocks: out, varColors,
   };
 })();

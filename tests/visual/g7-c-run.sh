@@ -70,16 +70,15 @@ step start $PROD start "$work"
 step check $RUN isolation "$work" instance-1.json
 step note-create $RUN note-create "$work" "$NOTE_MD"
 note="CREATED (not yet removed)"
-incomplete=""
 for theme in solarized-dark kanagawa-dragon; do
   echo "-- syntax $theme"
   $RUN syntax "$work" "$out" "$tmp" "$NOTE_MD" "$theme"; r=$?
-  # 5: a view was not fully measured; its records are kept and the run goes on, but MEASURE is not COMPLETE.
-  if [ $r -eq 5 ]; then incomplete="$incomplete $theme"
+  # 5: a view was not fully measured; its record is kept, nothing more is measured or captured, and the run goes to
+  # the clean-up (the trap deletes the note and restores).
+  if [ $r -eq 5 ]; then measure="INCOMPLETE: $theme (see the measurements; later views not measured, no reference images of it)"; exit 1
   elif [ $r -ne 0 ]; then measure="stopped at syntax $theme (exit $r)"; exit 1; fi
 done
 echo "-- note-remove"
 nout="$($RUN note-remove "$work" 2>&1)"; echo "$nout"
 note="$(echo "$nout" | tail -1)"
-if [ -n "$incomplete" ]; then measure="INCOMPLETE:$incomplete (see the measurements)"; exit 1; fi
 measure="COMPLETE: both themes, editor and preview, all 21 blocks"

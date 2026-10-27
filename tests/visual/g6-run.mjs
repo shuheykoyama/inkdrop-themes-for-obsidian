@@ -23,8 +23,9 @@
 //                                  BEFORE it is written, so the clean-up always knows what to delete
 //   syntax <work> <out> <tmp> <note.md> <theme>  that theme, the editor and the preview: g7-measure.js and judgeBlocks
 //                                  into <out>/measurements, reference captures page by page into <out>/screenshots;
-//                                  exit 5 when a view is INCOMPLETE (the records are kept), 1 when it stopped (theme
-//                                  not active, another note shown, a failed capture), 3 when the document changed
+//                                  exit 5 at the first view that is INCOMPLETE (its record is kept; nothing more is
+//                                  measured or captured), 1 when it stopped (theme not active, another note shown, no
+//                                  focus before a capture, a failed capture), 3 when the document changed
 //   note-remove <work>             deletes that note, only if its title and body hash are still the ones created, and
 //                                  confirms it is gone (REMOVED / ABSENT / NOT REMOVED; exit 1 unless REMOVED or ABSENT)
 // Every subcommand first checks the isolation again and does nothing when it fails (exit 4), or when the window
@@ -36,7 +37,7 @@ import { existsSync, lstatSync, mkdirSync, readFileSync, realpathSync, writeFile
 import path from "node:path";
 import { isolationProblems, productionProblems } from "./g6-rules.mjs";
 import { captureLoop, shoot, splitNote } from "./g6-shot.mjs";
-import { NOTE_TITLE, blocks, judgeBlocks, noteDoc } from "./g7-rules.mjs";
+import { NOTE_TITLE, blocks, judgeBlocks, noteDoc, removeNote, requireFocus } from "./g7-rules.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
 const PORT = Number(process.env.G6_PORT || 9334); // G6_PORT: self-test only
@@ -197,7 +198,8 @@ if (sub === "isolation") {
   // Recorded before the write: whatever happens next, the clean-up knows which note to look for.
   writeFileSync(out, `${JSON.stringify({ id: where.id, bookId: where.bookId, title: NOTE_TITLE, bodySha256, recordedAt: new Date().toISOString() }, null, 1)}\n`, { flag: "wx", mode: 0o600 });
   const doc = noteDoc({ id: where.id, bookId: where.bookId, body, now: Date.now() });
-  const got = await evaluate(`(async () => { const db = inkdrop.localDB.notes; if (await db.get(${JSON.stringify(where.id)}).then(() => true, () => false)) return { error: "a note with that ID exists" }; await db.put(${JSON.stringify(doc)}); const d = await db.get(${JSON.stringify(where.id)}).catch(() => null); return d ? { title: d.title, body: d.body } : { error: "not found after put" }; })()`).catch((e) => ({ error: e.message }));
+  // The ID must be free: only Inkdrop's not-found error (name not_found, status 404; g7-rules.mjs removeNote) says so.
+  const got = await evaluate(`(async () => { const db = inkdrop.localDB.notes; const free = await db.get(${JSON.stringify(where.id)}).then(() => "exists", (e) => (e?.name === "not_found" && e?.status === 404 ? "free" : \`could not be checked (\${e?.name}: \${e?.message})\`)); if (free !== "free") return { error: \`the note ID \${free}\` }; await db.put(${JSON.stringify(doc)}); const d = await db.get(${JSON.stringify(where.id)}).catch(() => null); return d ? { title: d.title, body: d.body } : { error: "not found after put" }; })()`).catch((e) => ({ error: e.message }));
   if (got.error || got.title !== NOTE_TITLE || createHash("sha256").update(got.body ?? "").digest("hex") !== bodySha256) { console.log(`STOPPED: the note was not created as written (${got.error ?? "title or body differ"})`); process.exit(1); }
   writeFileSync(path.join(path.dirname(out), "g7-note-created.txt"), `${new Date().toISOString()}\n`, { flag: "wx", mode: 0o600 });
   console.log("NOTE CREATED: the temporary verification note (ID private)");
@@ -213,34 +215,38 @@ if (sub === "isolation") {
   const sel = await evaluate(`window.__P2B_THEME = ${JSON.stringify(theme)};\n${readFileSync(path.join(p2b, "inkdrop-select-theme.js"), "utf8")}`);
   if (!sel.active?.includes(theme)) { console.log(`STOPPED: theme ${theme} is not active (${sel.active})`); process.exit(1); }
   await evaluate(readFileSync(path.join(p2b, "inkdrop-window-geometry.js"), "utf8"));
-  let incomplete = false;
   for (const view of ["editor", "preview"]) {
-    const res = await evaluate(`window.__G7 = ${JSON.stringify({ noteId: rec.id, view, blocks: want, vars })};\n${here("g7-measure.js")}`, 180000);
-    const verdict = res?.error ? { state: "INCOMPLETE", problems: [res.error] } : judgeBlocks(want, res);
+    const res = await evaluate(`window.__G7 = ${JSON.stringify({ noteId: rec.id, title: rec.title, bodySha256: rec.bodySha256, theme, view, blocks: want, vars })};\n${here("g7-measure.js")}`, 180000);
+    const verdict = res?.error ? { state: "INCOMPLETE", problems: [res.error] } : judgeBlocks(want, res, { theme, view });
     const name = `inkdrop-${theme}-g7-${view}`;
     writeFileSync(path.join(dir, "measurements", `${name}.json`), `${JSON.stringify({ name, theme, view, ...verdict, result: res }, null, 1)}\n`, { flag: "wx" });
     console.log(`${name}: ${verdict.state}${verdict.problems.length ? ` (${verdict.problems.slice(0, 3).join("; ")})` : ""}`);
     if (res?.docUnchanged === false) { console.log("DOCUMENT CHANGED, STOPPED"); process.exit(3); }
-    if (verdict.state !== "COMPLETE") incomplete = true;
+    // An INCOMPLETE measurement is kept, and nothing more is captured or measured: images of a view not fully
+    // measured are never reference images (exit 5; the caller deletes the note and restores).
+    if (verdict.state !== "COMPLETE") process.exit(5);
     // Reference captures, page by page from the top (the scroller of the view, 90 % of its height per page).
     for (let k = 0, pages = 1; k < pages; k++) {
       const pg = await evaluate(`(async () => { const mode = ${JSON.stringify(view)}; let s = null; if (mode === "editor") s = document.querySelector(".cm-scroller"); else for (let e = document.querySelector(".mde-preview"); e && !s; e = e.parentElement) { const o = getComputedStyle(e).overflowY; if ((o === "auto" || o === "scroll") && e.scrollHeight > e.clientHeight) s = e; } if (!s) return { error: "no scroller" }; const step = Math.floor(s.clientHeight * 0.9); s.scrollTop = ${k} * step; await new Promise((r) => setTimeout(r, 700)); return { pages: Math.max(1, Math.ceil((s.scrollHeight - s.clientHeight) / step) + 1), scrollTop: s.scrollTop, noteOk: inkdrop.store.getState().editingNote?._id === ${JSON.stringify(rec.id)} }; })()`);
       if (pg?.error || !pg.noteOk) { console.log(`STOPPED: ${pg?.error ?? "another note is shown"}`); process.exit(1); }
       pages = pg.pages;
       const shot = path.join(dir, "screenshots", `${name}-p${String(k + 1).padStart(2, "0")}.png`);
+      // Focus is checked right before the capture: without it, no capture is taken and the run stops (exit 1).
       const focus = await shoot({ backdrop: [backdrop, "gray", "300", "150", "1400", "900"], capture: ["/usr/sbin/screencapture", "-x", "-R400,250,1200,700", shot], file: shot,
-        between: () => evaluate(`(async () => { await inkdrop.window.show(); await inkdrop.window.focus(); await new Promise((x) => setTimeout(x, 800)); return { focused: document.hasFocus() }; })()`) });
+        between: async () => requireFocus(await evaluate(`(async () => { await inkdrop.window.show(); await inkdrop.window.focus(); await new Promise((x) => setTimeout(x, 800)); return { focused: document.hasFocus() && !document.body.classList.contains("is-blurred") }; })()`)) })
+        .catch((e) => { console.log(`STOPPED: ${name} page ${k + 1}: ${e.message}`); process.exit(1); });
       const img = readFileSync(shot);
       writeFileSync(path.join(dir, "measurements", `${name}-p${String(k + 1).padStart(2, "0")}.json`), `${JSON.stringify({ image: path.relative(dir, shot), imageSha256: createHash("sha256").update(img).digest("hex"), pixels: [img.readUInt32BE(16), img.readUInt32BE(20)], page: k + 1, pages, scrollTop: pg.scrollTop, focus, capturedAt: new Date().toISOString() }, null, 1)}\n`, { flag: "wx" });
     }
   }
-  process.exit(incomplete ? 5 : 0);
+  process.exit(0);
 } else if (sub === "note-remove") {
   const file = path.join(work, "private", "g7-note.json");
   if (!existsSync(file)) { console.log("ABSENT: no note was recorded by this run"); process.exit(0); }
   const rec = JSON.parse(readFileSync(file, "utf8"));
   // Only the note this run created: same ID, title and body hash; anything else is left alone and reported.
-  const res = await evaluate(`(async () => { const db = inkdrop.localDB.notes; const id = ${JSON.stringify(rec.id)}; const d = await db.get(id).catch(() => null); if (!d) return { state: "ABSENT" }; const h = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(d.body ?? "")))].map((b) => b.toString(16).padStart(2, "0")).join(""); if (d.title !== ${JSON.stringify(rec.title)} || h !== ${JSON.stringify(rec.bodySha256)}) return { state: "NOT REMOVED", why: "the note is not the one this run created (title or body changed)" }; await db.remove(id); const gone = await db.get(id).then(() => false, () => true); return gone ? { state: "REMOVED" } : { state: "NOT REMOVED", why: "still found after remove" }; })()`).catch((e) => ({ state: "NOT REMOVED", why: e.message }));
+  // removeNote (g7-rules.mjs, self-tested) runs in the page as it is.
+  const res = await evaluate(`(${removeNote})(inkdrop.localDB.notes, ${JSON.stringify({ id: rec.id, title: rec.title, bodySha256: rec.bodySha256 })})`).catch((e) => ({ state: "NOT REMOVED", why: e.message }));
   writeFileSync(path.join(work, "private", `g7-note-${res.state === "NOT REMOVED" ? "not-removed" : res.state.toLowerCase()}-${Date.now()}.json`), `${JSON.stringify({ ...res, at: new Date().toISOString() }, null, 1)}\n`, { flag: "wx", mode: 0o600 });
   console.log(`${res.state}${res.why ? `: ${res.why}` : ""}`);
   process.exit(res.state === "NOT REMOVED" ? 1 : 0);
