@@ -1,0 +1,222 @@
+{
+ "name": "inkdrop-solarized-dark-g7-preview",
+ "theme": "solarized-dark",
+ "view": "preview",
+ "state": "INCOMPLETE",
+ "problems": [
+  "block 0 (js): not shown or the highlighting did not settle",
+  "block 1 (ts): not shown or the highlighting did not settle",
+  "block 2 (python): not shown or the highlighting did not settle",
+  "block 3 (css): not shown or the highlighting did not settle",
+  "block 4 (html): not shown or the highlighting did not settle",
+  "block 5 (json): not shown or the highlighting did not settle",
+  "block 6 (sh): not shown or the highlighting did not settle",
+  "block 7 (go): not shown or the highlighting did not settle",
+  "block 8 (rust): not shown or the highlighting did not settle",
+  "block 9 (yaml): not shown or the highlighting did not settle",
+  "block 10 (sql): not shown or the highlighting did not settle",
+  "block 11 (markdown): not shown or the highlighting did not settle",
+  "block 12 (javascript): not shown or the highlighting did not settle",
+  "block 13 (typescript): not shown or the highlighting did not settle",
+  "block 14 (py): not shown or the highlighting did not settle",
+  "block 15 (bash): not shown or the highlighting did not settle",
+  "block 16 (shell): not shown or the highlighting did not settle",
+  "block 17 (zsh): not shown or the highlighting did not settle",
+  "block 18 (yml): not shown or the highlighting did not settle",
+  "block 19 (rs): not shown or the highlighting did not settle",
+  "block 20 (md): not shown or the highlighting did not settle"
+ ],
+ "result": {
+  "mode": "preview",
+  "measuredAt": "2026-10-27T04:15:34.128Z",
+  "theme": "solarized-dark",
+  "inkdropVersion": "6.2.0",
+  "docUnchanged": null,
+  "stateBefore": {
+   "theme": "solarized-dark",
+   "noteShown": true,
+   "titleSame": true,
+   "bodySame": true,
+   "shownBodySame": null
+  },
+  "stateAfter": {
+   "theme": "solarized-dark",
+   "noteShown": true,
+   "titleSame": true,
+   "bodySame": true,
+   "shownBodySame": null
+  },
+  "previewCodeBlocks": 0,
+  "blocks": [
+   {
+    "index": 0,
+    "lang": "js",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 1,
+    "lang": "ts",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 2,
+    "lang": "python",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 3,
+    "lang": "css",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 4,
+    "lang": "html",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 5,
+    "lang": "json",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 6,
+    "lang": "sh",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 7,
+    "lang": "go",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 8,
+    "lang": "rust",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 9,
+    "lang": "yaml",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 10,
+    "lang": "sql",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 11,
+    "lang": "markdown",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 12,
+    "lang": "javascript",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 13,
+    "lang": "typescript",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 14,
+    "lang": "py",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 15,
+    "lang": "bash",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 16,
+    "lang": "shell",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 17,
+    "lang": "zsh",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 18,
+    "lang": "yml",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 19,
+    "lang": "rs",
+    "error": "not shown or the highlighting did not settle"
+   },
+   {
+    "index": 20,
+    "lang": "md",
+    "error": "not shown or the highlighting did not settle"
+   }
+  ],
+  "varColors": {
+   "--syntax-angle-bracket-color": "rgb(42, 162, 152)",
+   "--syntax-arithmetic-operator-color": "rgb(109, 114, 197)",
+   "--syntax-atom-color": "rgb(211, 54, 130)",
+   "--syntax-attribute-name-color": "rgb(42, 162, 152)",
+   "--syntax-attribute-value-color": "rgb(131, 148, 149)",
+   "--syntax-block-comment-color": "rgb(88, 110, 116)",
+   "--syntax-bool-color": "rgb(211, 54, 130)",
+   "--syntax-brace-color": "rgb(42, 162, 152)",
+   "--syntax-character-color": "rgb(179, 134, 0)",
+   "--syntax-class-name-color": "rgb(202, 76, 22)",
+   "--syntax-color-color": "rgb(211, 54, 130)",
+   "--syntax-comment-color": "rgb(88, 110, 116)",
+   "--syntax-compare-operator-color": "rgb(109, 114, 197)",
+   "--syntax-content-color": "rgb(131, 148, 149)",
+   "--syntax-control-keyword-color": "rgb(133, 153, 0)",
+   "--syntax-definition-keyword-color": "rgb(133, 153, 0)",
+   "--syntax-definition-operator-color": "rgb(109, 114, 197)",
+   "--syntax-deref-operator-color": "rgb(109, 114, 197)",
+   "--syntax-document-meta-color": "rgb(131, 148, 149)",
+   "--syntax-emphasis-color": "rgb(133, 153, 0)",
+   "--syntax-float-color": "rgb(131, 148, 149)",
+   "--syntax-heading-1-color": "rgb(179, 134, 0)",
+   "--syntax-integer-color": "rgb(131, 148, 149)",
+   "--syntax-keyword-color": "rgb(133, 153, 0)",
+   "--syntax-label-name-color": "rgb(211, 54, 130)",
+   "--syntax-line-comment-color": "rgb(88, 110, 116)",
+   "--syntax-link-color": "rgb(42, 162, 152)",
+   "--syntax-list-color": "rgb(131, 148, 149)",
+   "--syntax-logic-operator-color": "rgb(109, 114, 197)",
+   "--syntax-macro-name-color": "rgb(42, 162, 152)",
+   "--syntax-meta-color": "rgb(220, 49, 46)",
+   "--syntax-modifier-color": "rgb(211, 54, 130)",
+   "--syntax-module-keyword-color": "rgb(133, 153, 0)",
+   "--syntax-monospace-color": "rgb(173, 184, 184)",
+   "--syntax-name-color": "rgb(42, 162, 152)",
+   "--syntax-name-definition-color": "rgb(39, 139, 211)",
+   "--syntax-namespace-color": "rgb(211, 54, 130)",
+   "--syntax-null-color": "rgb(131, 148, 149)",
+   "--syntax-number-color": "rgb(211, 54, 130)",
+   "--syntax-operator-color": "rgb(109, 114, 197)",
+   "--syntax-operator-keyword-color": "rgb(133, 153, 0)",
+   "--syntax-paren-color": "rgb(42, 162, 152)",
+   "--syntax-processing-instruction-color": "rgb(133, 153, 0)",
+   "--syntax-property-name-color": "rgb(42, 162, 152)",
+   "--syntax-property-name-definition-color": "rgb(42, 162, 152)",
+   "--syntax-property-name-function-color": "rgb(42, 162, 152)",
+   "--syntax-punctuation-color": "rgb(42, 162, 152)",
+   "--syntax-regexp-color": "rgb(179, 134, 0)",
+   "--syntax-self-color": "rgb(211, 54, 130)",
+   "--syntax-separator-color": "rgb(42, 162, 152)",
+   "--syntax-square-bracket-color": "rgb(42, 162, 152)",
+   "--syntax-string-color": "rgb(179, 134, 0)",
+   "--syntax-string-special-color": "rgb(179, 134, 0)",
+   "--syntax-strong-color": "rgb(173, 184, 184)",
+   "--syntax-tag-name-color": "rgb(39, 139, 211)",
+   "--syntax-unit-color": "rgb(131, 148, 149)",
+   "--syntax-update-operator-color": "rgb(109, 114, 197)",
+   "--syntax-url-color": "rgb(179, 134, 0)",
+   "--syntax-variable-name-color": "rgb(100, 122, 130)",
+   "--syntax-variable-name-definition-color": "rgb(100, 122, 130)",
+   "--syntax-variable-name-function-color": "rgb(39, 139, 211)",
+   "--syntax-variable-name-standard-color": "rgb(100, 122, 130)"
+  }
+ }
+}

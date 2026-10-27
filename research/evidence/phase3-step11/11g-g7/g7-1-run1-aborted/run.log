@@ -1,0 +1,20 @@
+-- prepare
+prepared: Inkdrop was running before: no; config.json backed up and checked
+-- start
+started (pid 36329)
+-- check
+the started Inkdrop 6.2.0 on 9334, using the user's config.json, nothing else running; signed in
+-- note-create
+NOTE CREATED: the temporary verification note (ID private)
+-- syntax solarized-dark
+inkdrop-solarized-dark-g7-editor: COMPLETE
+inkdrop-solarized-dark-g7-preview: INCOMPLETE (block 0 (js): not shown or the highlighting did not settle; block 1 (ts): not shown or the highlighting did not settle; block 2 (python): not shown or the highlighting did not settle)
+-- note-remove (clean-up)
+REMOVED
+-- restore
+not restored by design: state-cache files before 6, after 5; the database and the sync state are not compared
+RESTORED: config.json, keymap.json, styles.css, init.js and packages/ as before; Inkdrop left quit as before; port 9334 closed
+MEASURE: INCOMPLETE: solarized-dark (see the measurements; later views not measured, no reference images of it)
+NOTE: REMOVED
+RESTORE: RESTORED: config.json, keymap.json, styles.css, init.js and packages/ as before; Inkdrop left quit as before; port 9334 closed
+exit 1
