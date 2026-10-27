@@ -1,0 +1,15 @@
+{
+ "image": "screenshots/inkdrop-solarized-dark-g7-editor-p05.png",
+ "imageSha256": "1ba9bb54e6c67d5c0dbf2b3c1c2f4d7140ef2e00fff13d07dc01688a341cdaaa",
+ "pixels": [
+  2400,
+  1400
+ ],
+ "page": 5,
+ "pages": 9,
+ "scrollTop": 2128,
+ "focus": {
+  "focused": true
+ },
+ "capturedAt": "2026-10-27T04:41:24.207Z"
+}

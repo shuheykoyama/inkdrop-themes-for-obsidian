@@ -1,0 +1,23 @@
+-- prepare
+prepared: Inkdrop was running before: no; config.json backed up and checked
+-- start
+started (pid 48367)
+-- check
+the started Inkdrop 6.2.0 on 9334, using the user's config.json, nothing else running; signed in
+-- note-create
+NOTE CREATED: the temporary verification note (ID private)
+-- syntax solarized-dark
+inkdrop-solarized-dark-g7-editor: COMPLETE
+inkdrop-solarized-dark-g7-preview: COMPLETE
+-- syntax kanagawa-dragon
+inkdrop-kanagawa-dragon-g7-editor: COMPLETE
+inkdrop-kanagawa-dragon-g7-preview: COMPLETE
+-- note-remove
+REMOVED
+-- restore
+not restored by design: state-cache files before 5, after 5; the database and the sync state are not compared
+RESTORED: config.json, keymap.json, styles.css, init.js and packages/ as before; Inkdrop left quit as before; port 9334 closed
+MEASURE: COMPLETE: both themes, editor and preview, all 21 blocks
+NOTE: REMOVED
+RESTORE: RESTORED: config.json, keymap.json, styles.css, init.js and packages/ as before; Inkdrop left quit as before; port 9334 closed
+exit 0

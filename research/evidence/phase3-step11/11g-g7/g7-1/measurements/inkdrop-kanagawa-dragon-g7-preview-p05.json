@@ -1,0 +1,15 @@
+{
+ "image": "screenshots/inkdrop-kanagawa-dragon-g7-preview-p05.png",
+ "imageSha256": "83b6e7e64f8299f87c09c0489c7f44a245ebe562f7d8ab5cdb150d0501c0cea4",
+ "pixels": [
+  2400,
+  1400
+ ],
+ "page": 5,
+ "pages": 8,
+ "scrollTop": 2128,
+ "focus": {
+  "focused": true
+ },
+ "capturedAt": "2026-10-27T04:43:06.348Z"
+}

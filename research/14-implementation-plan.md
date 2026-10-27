@@ -7184,3 +7184,29 @@ INCOMPLETE の後に同じビューを撮らないことは、`g6-run.mjs` の�
 ### 6.130 次の作業
 
 修正のコミットと CI の後、ユーザーの「準備できた」を受けて G7-1 を再実行する。
+
+（修正は `53184a1`。CI は success。再実行の結果は §6.131。）
+
+### 6.131 G7-1 の再実行（2026-10-27、独立レビュー待ち）
+
+記録は `research/evidence/phase3-step11/11g-g7/g7-1/` に置く（`run.log`、`measurements/`、`screenshots/`、`compare-g7-0.*`）。
+
+- **実行**: 2026-10-27 04:40:43Z〜04:43:25Z、コミット `2316ea8`、Inkdrop 6.2.0。
+- **MEASURE**: COMPLETE。SD・KD × 編集・プレビューの 4 つとも COMPLETE で、どれも 21 ブロックを測り、エラーは 0。測定の前と後の状態は同じ（テーマ、表示しているノート、題、本文。編集では表示している文書も。`docUnchanged` は編集で true）。
+- **NOTE**: REMOVED。
+- **RESTORE**: RESTORED（config.json・keymap.json・styles.css・init.js・packages/ が前と同じ。Inkdrop は前と同じく終了。9334 は閉じた）。同期の履歴、データベースの内部の記録、同期の先は比べていない。
+- **撮影した画像**: 34 枚（テーマごとに、編集 9 枚・プレビュー 8 枚）。Inkdrop 以外のウィンドウは写っていない。
+  - アップデートの通知（「New version 6.3.0 is available!」）は、SD・編集の p01〜p05 にはなく、p06 以降とすべての KD に写っている。スクリプトは通知を閉じない。比較では、サイドバーの下の通知の部分を外す。
+  - サイドバーの下の「Synced at」の時刻が、実行の途中で 13:40:59 から 13:42:00 に変わった（実行中に同期が走った）。ノートの題と本文の照合は、測定の前後とも一致した。
+
+**G7-0 の静的解析との対応**（`compare-g7-0.txt`。空白でない 2014 文字を、文字ごとに比べる）:
+
+- **`py`（ブロック 14）と `rs`（ブロック 19）**: 実機では色が付かない。編集は `tok-monospace`（地の文字の色）、プレビューはクラスなし。G7-0 は `py`→Python、`rs`→Rust として色を予測していた（`inkdrop-chunks.mjs` の `ALIASES`）。6.2.0 の `LanguageDescription.matchLanguageName` は、名前と `alias` だけを照らし、拡張子は使わない。Python と Rust の項目は `py`・`rs` を `alias` に持たない（`extensions` にだけある）。G7-0 の誤りである。
+- **ブロック 11（markdown）の `-`**: クラスは予測と同じ（`tok-list tok-processing-instruction`。実機では `md-list-mark` などもつく）。G7-0 は色を `--syntax-processing-instruction-color` としていたが、実機の色は `--syntax-list-color` と同じだった。KD で違いが出る（SD は 2 つの変数が同じ色）。
+- **それ以外**: 19 ブロックはクラスも色も予測どおりだった。G7-0 で候補とした markdown・md の 2 ブロックも、クラスは一致した。
+
+これらを DIFF の分類にどう使うかは G7-2 で扱う。CSS、期待値、許容差、Q-D、サポートの範囲は変えていない。
+
+### 6.132 次の作業
+
+§6.131 の独立レビュー。そのあと G7-2（DIFF の分類）に進む。
