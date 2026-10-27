@@ -1,0 +1,45 @@
+== solarized-dark source (live = source)
+  bare (bare text) @ rgb(131, 148, 149): CONFLICT -> CONFLICT; 369 chars, differing 288, a colour choice could fix 121 (best rgb(42, 162, 152)); Inkdrop rgb(42, 162, 152) x202, rgb(131, 148, 149) x81, rgb(173, 184, 184) x46, rgb(179, 134, 0) x19, rgb(109, 114, 197) x13, rgb(133, 153, 0) x8
+  elem cm-atom @ rgb(211, 54, 130): CONFLICT -> CONFLICT; 116 chars, differing 82, a colour choice could fix 20 (best rgb(42, 162, 152)); Inkdrop rgb(42, 162, 152) x54, rgb(211, 54, 130) x34, rgb(131, 148, 149) x14, rgb(100, 122, 130) x9, rgb(179, 134, 0) x5
+== solarized-dark reading (live = source)
+  bare python (bare text) @ rgb(131, 148, 149): MISMATCH -> CONFLICT; 44 chars, differing 42, a colour choice could fix 40 (best rgb(100, 122, 130)); Inkdrop rgb(100, 122, 130) x42, rgb(131, 148, 149) x2
+  bare ts (bare text) @ rgb(131, 148, 149): DOMINATED -> DOMINATED; 58 chars, differing 58, a colour choice could fix 36 (best rgb(42, 162, 152)); Inkdrop rgb(42, 162, 152) x36, rgb(100, 122, 130) x17, rgb(39, 139, 211) x5
+  bare js (bare text) @ rgb(131, 148, 149): MISMATCH -> MISMATCH; 33 chars, differing 33, a colour choice could fix 33 (best rgb(100, 122, 130)); Inkdrop rgb(100, 122, 130) x33
+  bare sql (bare text) @ rgb(131, 148, 149): MISMATCH -> MISMATCH; 32 chars, differing 32, a colour choice could fix 32 (best rgb(42, 162, 152)); Inkdrop rgb(42, 162, 152) x32
+  bare css (bare text) @ rgb(131, 148, 149): MISMATCH -> MISMATCH; 14 chars, differing 14, a colour choice could fix 14 (best rgb(211, 54, 130)); Inkdrop rgb(211, 54, 130) x14
+  bare go (bare text) @ rgb(131, 148, 149): DOMINATED -> DOMINATED; 28 chars, differing 28, a colour choice could fix 14 (best rgb(100, 122, 130)); Inkdrop rgb(100, 122, 130) x14, rgb(42, 162, 152) x9, rgb(39, 139, 211) x5
+  elem js function @ rgb(39, 139, 211): CONFLICT -> CONFLICT; 25 chars, differing 20, a colour choice could fix 10 (best rgb(42, 162, 152)); Inkdrop rgb(42, 162, 152) x15, rgb(100, 122, 130) x5, rgb(39, 139, 211) x5
+  elem ts operator @ rgb(109, 114, 197): CONFLICT -> CONFLICT; 17 chars, differing 13, a colour choice could fix 8 (best rgb(42, 162, 152)); Inkdrop rgb(42, 162, 152) x12, rgb(109, 114, 197) x4, rgb(131, 148, 149) x1
+  elem python annotation decorator punctuation @ rgb(220, 49, 46): CONFLICT -> CONFLICT; 10 chars, differing 9, a colour choice could fix 8 (best rgb(100, 122, 130)); Inkdrop rgb(100, 122, 130) x9, rgb(220, 49, 46) x1
+  elem python boolean @ rgb(211, 54, 130): CONFLICT -> CONFLICT; 16 chars, differing 12, a colour choice could fix 8 (best rgb(131, 148, 149)); Inkdrop rgb(131, 148, 149) x12, rgb(211, 54, 130) x4
+  elem sql operator @ rgb(109, 114, 197): CONFLICT -> CONFLICT; 9 chars, differing 7, a colour choice could fix 5 (best rgb(133, 153, 0)); Inkdrop rgb(133, 153, 0) x7, rgb(109, 114, 197) x2
+  elem sh operator @ rgb(109, 114, 197): CONFLICT -> CONFLICT; 6 chars, differing 4, a colour choice could fix 2 (best rgb(131, 148, 149)); Inkdrop rgb(131, 148, 149) x4, rgb(109, 114, 197) x2
+  elem go boolean @ rgb(211, 54, 130): CONFLICT -> CONFLICT; 10 chars, differing 6, a colour choice could fix 2 (best rgb(131, 148, 149)); Inkdrop rgb(131, 148, 149) x6, rgb(211, 54, 130) x4
+  elem rust operator @ rgb(109, 114, 197): CONFLICT -> CONFLICT; 6 chars, differing 4, a colour choice could fix 2 (best rgb(131, 148, 149)); Inkdrop rgb(131, 148, 149) x4, rgb(109, 114, 197) x2
+  elem python function @ rgb(100, 122, 130): EXACT -> CONFLICT; 9 chars, differing 4, a colour choice could fix 0 (best rgb(100, 122, 130)); Inkdrop rgb(100, 122, 130) x5, rgb(131, 148, 149) x4
+  elem css id selector @ rgb(211, 54, 130): CONFLICT -> EXACT; 5 chars, differing 0, a colour choice could fix 0 (best rgb(211, 54, 130)); Inkdrop rgb(211, 54, 130) x5
+== kanagawa-dragon source (live = source)
+  bare (bare text) @ rgb(197, 201, 197): CONFLICT -> CONFLICT; 369 chars, differing 263, a colour choice could fix 70 (best rgb(158, 155, 148)); Inkdrop rgb(158, 155, 148) x176, rgb(197, 201, 197) x106, rgb(200, 192, 146) x42, rgb(150, 160, 182) x19, rgb(196, 116, 110) x17, rgb(137, 153, 122) x8, rgb(140, 165, 177) x1
+== kanagawa-dragon reading (live = source)
+  bare python (bare text) @ rgba(197, 201, 197, 0.9): MISMATCH -> DOMINATED; 44 chars, differing 44, a colour choice could fix 42 (best rgb(197, 201, 197)); Inkdrop rgb(197, 201, 197) x42, rgb(200, 192, 146) x2
+  bare ts (bare text) @ rgba(197, 201, 197, 0.9): DOMINATED -> DOMINATED; 58 chars, differing 58, a colour choice could fix 37 (best rgb(197, 201, 197)); Inkdrop rgb(197, 201, 197) x37, rgb(195, 177, 136) x16, rgb(140, 165, 177) x5
+  bare js (bare text) @ rgba(197, 201, 197, 0.9): MISMATCH -> MISMATCH; 33 chars, differing 33, a colour choice could fix 33 (best rgb(197, 201, 197)); Inkdrop rgb(197, 201, 197) x33
+  bare sql (bare text) @ rgba(197, 201, 197, 0.9): MISMATCH -> MISMATCH; 32 chars, differing 32, a colour choice could fix 32 (best rgb(197, 201, 197)); Inkdrop rgb(197, 201, 197) x32
+  bare sh (bare text) @ rgba(197, 201, 197, 0.9): CONFLICT -> DOMINATED; 43 chars, differing 43, a colour choice could fix 24 (best rgb(200, 192, 146)); Inkdrop rgb(200, 192, 146) x24, rgb(138, 147, 168) x11, rgb(197, 201, 197) x4, rgb(195, 177, 136) x2, rgb(137, 153, 122) x2
+  bare go (bare text) @ rgba(197, 201, 197, 0.9): DOMINATED -> DOMINATED; 28 chars, differing 28, a colour choice could fix 19 (best rgb(197, 201, 197)); Inkdrop rgb(197, 201, 197) x19, rgb(140, 165, 177) x5, rgb(195, 177, 136) x4
+  bare rust (bare text) @ rgba(197, 201, 197, 0.9): DOMINATED -> DOMINATED; 30 chars, differing 30, a colour choice could fix 19 (best rgb(200, 192, 146)); Inkdrop rgb(200, 192, 146) x19, rgb(197, 201, 197) x9, rgb(195, 177, 136) x2
+  bare markdown (bare text) @ rgba(197, 201, 197, 0.9): MISMATCH -> MISMATCH; 16 chars, differing 16, a colour choice could fix 16 (best rgb(197, 201, 197)); Inkdrop rgb(197, 201, 197) x16
+  bare css (bare text) @ rgba(197, 201, 197, 0.9): MISMATCH -> MISMATCH; 14 chars, differing 14, a colour choice could fix 14 (best rgb(183, 146, 123)); Inkdrop rgb(183, 146, 123) x14
+  bare yaml (bare text) @ rgba(197, 201, 197, 0.9): MISMATCH -> MISMATCH; 14 chars, differing 14, a colour choice could fix 14 (best rgb(197, 201, 197)); Inkdrop rgb(197, 201, 197) x14
+  elem js function @ rgb(140, 165, 177): CONFLICT -> CONFLICT; 25 chars, differing 20, a colour choice could fix 10 (best rgb(195, 177, 136)); Inkdrop rgb(195, 177, 136) x15, rgb(197, 201, 197) x5, rgb(140, 165, 177) x5
+  elem ts operator @ rgb(196, 116, 110): CONFLICT -> CONFLICT; 17 chars, differing 13, a colour choice could fix 8 (best rgb(158, 155, 148)); Inkdrop rgb(158, 155, 148) x12, rgb(196, 116, 110) x4, rgb(200, 192, 146) x1
+  elem python annotation decorator punctuation @ rgb(196, 116, 110): CONFLICT -> CONFLICT; 10 chars, differing 9, a colour choice could fix 8 (best rgb(197, 201, 197)); Inkdrop rgb(197, 201, 197) x9, rgb(196, 116, 110) x1
+  bare html (bare text) @ rgba(197, 201, 197, 0.9): MISMATCH -> MISMATCH; 8 chars, differing 8, a colour choice could fix 8 (best rgb(197, 201, 197)); Inkdrop rgb(197, 201, 197) x8
+  elem sh punctuation @ rgba(197, 201, 197, 0.9): EXACT -> MISMATCH; 6 chars, differing 6, a colour choice could fix 6 (best rgb(200, 192, 146)); Inkdrop rgb(200, 192, 146) x6
+  elem sql operator @ rgb(196, 116, 110): CONFLICT -> CONFLICT; 9 chars, differing 7, a colour choice could fix 5 (best rgb(138, 147, 168)); Inkdrop rgb(138, 147, 168) x7, rgb(196, 116, 110) x2
+  elem sh operator @ rgb(196, 116, 110): CONFLICT -> CONFLICT; 6 chars, differing 4, a colour choice could fix 2 (best rgb(200, 192, 146)); Inkdrop rgb(200, 192, 146) x4, rgb(196, 116, 110) x2
+  elem sh file-descriptor important @ rgba(197, 201, 197, 0.9): EXACT -> MISMATCH; 2 chars, differing 2, a colour choice could fix 2 (best rgb(200, 192, 146)); Inkdrop rgb(200, 192, 146) x2
+  elem rust operator @ rgb(196, 116, 110): CONFLICT -> CONFLICT; 6 chars, differing 4, a colour choice could fix 2 (best rgb(200, 192, 146)); Inkdrop rgb(200, 192, 146) x4, rgb(196, 116, 110) x2
+  elem sh for-or-select variable @ rgba(197, 201, 197, 0.9): EXACT -> MISMATCH; 1 chars, differing 1, a colour choice could fix 1 (best rgb(200, 192, 146)); Inkdrop rgb(200, 192, 146) x1
+  elem markdown list punctuation @ rgb(137, 153, 122): EXACT -> MISMATCH; 1 chars, differing 1, a colour choice could fix 1 (best rgb(150, 160, 182)); Inkdrop rgb(150, 160, 182) x1
+  elem python function @ rgb(197, 201, 197): EXACT -> CONFLICT; 9 chars, differing 4, a colour choice could fix 0 (best rgb(197, 201, 197)); Inkdrop rgb(197, 201, 197) x5, rgb(200, 192, 146) x4

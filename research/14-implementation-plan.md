@@ -7210,3 +7210,144 @@ INCOMPLETE の後に同じビューを撮らないことは、`g6-run.mjs` の�
 ### 6.132 次の作業
 
 §6.131 の独立レビュー。そのあと G7-2（DIFF の分類）に進む。
+
+### 6.133 G7-1 の完了と G7-2 の分析（2026-10-27、独立レビュー待ち）
+
+#### 6.133.1 G7-1 の完了
+
+- 独立レビューで、G7-1 の実測は APPROVE、G7-1 は COMPLETE と判定された。画像の証跡は、小さな条件付きで APPROVE。
+- G7-1 の正本は `research/evidence/phase3-step11/11g-g7/g7-1/`。Inkdrop 6.2.0 の構文の色付けの、実際の描画の基準データとする。`g7-1-run1-aborted/` は正式な測定値に使わない。
+- 次の 4 枚は末尾の余白を撮ったもので、コードブロックが写っていない。PNG は残すが、目で比べる対象から外す。
+  - `inkdrop-solarized-dark-g7-editor-p09.png`
+  - `inkdrop-solarized-dark-g7-preview-p08.png`
+  - `inkdrop-kanagawa-dragon-g7-editor-p09.png`
+  - `inkdrop-kanagawa-dragon-g7-preview-p08.png`
+- アップデートの通知（「New version 6.3.0 is available!」）と同期の時刻は、動的な表示として、目で比べる対象から外す。元の画像は変えない。
+- この撮影スクリプトを使い直すときは、最後の中身の位置で撮影を終え、余白だけのページを作らない（このためだけの修正の工程は足さない）。
+
+#### 6.133.2 G7-2 の方法（`tests/visual/g7-reclassify.mjs`）
+
+アプリは動かさず、記録されたデータだけを使う。テストのノートの文字ごとに、テーマ・Obsidian の環境・ビューごとに、次の 3 つの色を並べる。
+
+- **静的な期待値**: `tests/fixtures/inkdrop-tokens.json`（6.1.5 の静的解析）の `--syntax-*` 変数の、Obsidian のパレットでの色。qd13.fidelity が比べてきた色である。
+- **Obsidian の色**: 静的な期待値の色。ただし、1.14.5 の記録（`11h/regress-1.14.5/runtime-electron-39.5.1-run1.json`）で違うとされた run の文字は、その run のグループにテーマが与えた色。
+- **Inkdrop の色**: G7-1 の実測。Source mode と Live Preview は編集ビュー、Reading view はプレビューと比べる。
+
+Obsidian の環境は、デスクトップと、モバイル（スマホ）の 2 つを使う。1.14.5 の qd13 の記録は、Electron の版（E39・E43 の run1・run2）で変わらなかった。違うのはデスクトップとモバイル（タブレット・スマホ・ナビゲーションの浮かないスマホ）の間だけだった。
+
+記録された run には位置がないので、位置を補う。
+
+- 各 run を、順に、同じ文字列・同じ Inkdrop のクラス・同じ Obsidian のクラスを持つ、次の場所に置く。
+- Obsidian のクラスは、V-12/V-31 の対応表（`phase3-step8/v12-v31-correspondence.csv`、デスクトップ）から取る。
+- 全 run を置けた（置けない run があれば止まる）。
+- 同じ文字列・同じクラスの run どうしが入れ替わることはありえるが、ブロックごとの数は変わらない。
+
+(C) のクラスのグループは、デスクトップについて、対応表から作り直した。
+
+- 対応表は入れ子の要素を 1 つのクラスの集合にまとめるので、テーマの色もグループを分ける鍵に入れた（qd13 のグループは色が 1 つなので、本当のグループは分かれない）。
+- 静的な色で作り直した集計は、記録された集計と同じだった。違いは、Reading view の要素のグループの EXACT が 1 つ少ないことだけ（SD 122 対 123、KD 125 対 126。同じ色の 2 つのグループが 1 つにまとまったため）。
+
+#### 6.133.3 結果（`research/evidence/phase3-step11/11g-g7/g7-2/`。デスクトップの数。モバイルも同じ数）
+
+空白でない 2014 文字について:
+
+| テーマ | ビュー | 違う文字（前 → 実測） | 実測で解消 | 実測で新たに違う | 静的な期待値の誤り | DIFF のチェック（前 → 実測） |
+|---|---|---|---|---|---|---|
+| SD | Source・Live | 716 → 720 | 0 | 4 | 43 | 17 → 17 |
+| SD | Reading | 427 → 428 | 19 | 20 | 39 | 15 → 14 |
+| KD | Source・Live | 594 → 606 | 0 | 12 | 43 | 17 → 17 |
+| KD | Reading | 439 → 493 | 0 | 54 | 101 | 18 → 19 |
+
+DIFF のチェックの数は、1 つの環境あたり。SD は 17 + 17 + 15 = 49、KD は 17 + 17 + 18 = 52 で、記録と同じ。
+
+記録された違う run のうち、実測ではすべての文字が Inkdrop の色になる run:
+
+- SD・Reading: 169 のうち 13（py・rs のブロック）
+- そのほか: 0
+
+(C) の集計（要素のグループ／素の文字のグループ。静的な色 → 実測の色）:
+
+| テーマ | ビュー | 要素のグループ | 素の文字のグループ |
+|---|---|---|---|
+| SD | Source・Live | EXACT 8, CONFLICT 20（変わらない） | CONFLICT 1（変わらない） |
+| SD | Reading | EXACT 122, CONFLICT 29（数は変わらない。python function が EXACT → CONFLICT、css id selector が CONFLICT → EXACT） | CONFLICT 2 → 3, MISMATCH 4 → 3, EXACT 3, DOMINATED 2 |
+| KD | Source・Live | EXACT 8, CONFLICT 20（変わらない） | CONFLICT 1（変わらない） |
+| KD | Reading | EXACT 125 → 120, CONFLICT 26 → 27, **MISMATCH 0 → 4** | CONFLICT 1 → 0, MISMATCH 7 → 6, DOMINATED 3 → 5 |
+
+KD の Reading で MISMATCH になる要素のグループは 4 つ: sh の punctuation（6 文字）、sh の file-descriptor important（2 文字）、sh の for-or-select variable（1 文字）、markdown の list punctuation（1 文字）。今の規則（MISMATCH は syn.reading.classes の FAIL）で実測を期待値にすると、KD の syn.reading.classes は FAIL になる。
+
+#### 6.133.4 静的な期待値の誤り
+
+| # | どこ | 静的な期待値 | Inkdrop 6.2.0 の実測 | 文字 |
+|---|---|---|---|---|
+| E1 | `py`・`rs` のブロック | Python・Rust として色付け | 色付けされない。編集は `tok-monospace`（SD rgb(173, 184, 184)、KD rgb(200, 192, 146)）、プレビューは地の色（SD rgb(131, 148, 149)、KD rgb(200, 192, 146)） | 編集 42、プレビュー 38 |
+| E2 | css の `#main` の `#` | `tok-deref-operator`（6.1.5） | `#main` 全体が `tok-label-name`（6.2.0、G7-0 で既知） | 1 |
+| E3 | markdown の `-`（KD） | `--syntax-processing-instruction-color` | `--syntax-list-color` と同じ色 | 1 |
+| E4 | KD の Reading の、トークンのない文字 | `--ink-mde-preview-codeblock-text-color`（rgba(197, 201, 197, 0.9)） | rgb(200, 192, 146)（59 文字すべて。KD の `--syntax-monospace-color` と同じ値） | 59 |
+
+E4 について:
+
+- SD の Reading は、トークンのない文字 59 文字すべてが期待値と同じだった。
+- 編集ビューは、両テーマとも 58 文字が期待値と同じだった。残る 1 文字は py・rs のブロックの文字である。
+- E4 の色が Inkdrop のどの規則から来るかは、確かめていない。
+
+E1 の原因は、G7-0 の `ALIASES` が拡張子を別名として扱ったことである（§6.131）。E3 は、複数のクラスを持つトークンの変数を、Inkdrop の CSS の優先順位で決めていなかったことによる。
+
+#### 6.133.5 改善の見込み（デスクトップ、テストのノートの文字数、上限）
+
+「色の選び直し」は、グループごとに、Inkdrop の色のうち最も多い文字の色を選んだときの数である。
+
+| テーマ | ビュー | 要素のグループの違う文字 | うち、色の選び直しで直る | 残る（構造的） | 素の文字の違う文字 | うち、直る | 残る |
+|---|---|---|---|---|---|---|---|
+| SD | Source・Live | 432 | 20 | 412 | 288 | 121 | 167 |
+| SD | Reading | 191 | 45 | 146 | 237 | 169 | 68 |
+| KD | Source・Live | 343 | 0 | 343 | 263 | 70 | 193 |
+| KD | Reading | 173 | 45 | 128 | 320 | 258 | 62 |
+
+この数には、次の注意がいる。
+
+- **グループどうしは独立に見ている。**
+  - 編集ビューの素の文字の色は、全言語の地の色を兼ねる。
+  - Reading view の素の文字は言語ごとに分けられるが、各言語の地の色も兼ねる（§6.19 の開いた選択）。
+  - 実際に選べるかは、ほかの文字への影響を見て決める。
+- **数はテストのノートの文字数**で、コード一般の割合ではない。
+- **残る（構造的）文字は、同じクラスに Inkdrop の色が複数ある。** 字句解析とトークンの区切りが違う（Obsidian の CM5 のモードと Prism、Inkdrop の Lezer）。CSS では分けられない。
+- **編集ビューは、行に言語がない（V-12）。** py・rs のブロックだけを地の色にすることはできない（E1 の編集の分は構造的）。
+
+候補（グループ別の内訳は `groups.txt`）:
+
+1. **KD の Reading の地の色（E4）。**
+   - Inkdrop は、トークンのない文字を rgb(200, 192, 146) で描く。
+   - これに合わせると、MISMATCH の 4 グループのうち sh の 3 つ（9 文字）と、sh・rs などの素の文字が直る。
+   - ただし、js・sql・yaml などの素の文字では、Inkdrop の色が rgb(197, 201, 197) なので、逆に離れる。言語ごとの地の色の選択と合わせて決める。
+2. **KD の Reading の素の文字の不透明度。**
+   - js（33）・sql（32）・markdown（16）・yaml（14）・html（8）の素の文字は、Inkdrop が rgb(197, 201, 197)、テーマは rgba(197, 201, 197, 0.9) で、違いは不透明度だけである。
+   - 実測でも、前の記録（bare の MISMATCH 7）と同じ。
+3. **KD の markdown の list mark（E3）。**
+   - Reading view の list punctuation のグループを `--syntax-list-color` にすると、1 文字直る。
+4. **Reading view の言語ごとの地の色（§6.19）。**
+   - SD・KD とも、js・ts・python・css・go・sql などの素の文字で、言語ごとに選び直すと大きく減る（上の表の素の文字の「直る」）。
+5. **SD の編集ビューの `cm-atom`。**
+   - rgb(42, 162, 152) を選ぶと 20 文字直る。
+   - RV5（§6.19）で選んだ色を見直すことになる。
+6. **py の Reading view。**
+   - Obsidian は `py` を色付けし、Inkdrop は色付けしない（4 文字）。
+   - `code.language-py` の色付けを消せば一致するが、色付けを捨てることになる。勧めない。
+
+#### 6.133.6 期待値の修正の候補（今回は変えない）
+
+- **期待値の出どころを G7-1 の実測に替える。** qd13.fidelity の Inkdrop の色を、静的な変数名ではなく、G7-1 の実測の色（編集は編集ビュー、Reading はプレビュー）にする。これで E1〜E4 がまとめて直る。
+- **静的な期待値を残すなら、次を直す。**
+  - E1: `inkdrop-chunks.mjs` の `ALIASES` から py・rs を外し、色付けのないブロックとして扱う。
+  - E3: 複数クラスのトークンの変数を、Inkdrop の CSS の優先順位で決める。
+  - E4: `syntax.json` の `inkdropDefault.reading` が、KD では実際の色と違う。
+  - E2 は、基準を 6.2.0 にするかどうかで決まる。
+
+どちらも、期待値・Q-D の変更なので、承認の後に行う。
+
+### 6.134 次の作業
+
+§6.133 の独立レビュー。そのあと、承認された範囲で次を行う。
+
+1. 期待値の修正（§6.133.6 のどちらか）
+2. CSS の候補（§6.133.5）の、Obsidian での検証
