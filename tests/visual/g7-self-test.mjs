@@ -88,8 +88,13 @@ ok("reclassify: Obsidian classes as the table writes them", normClasses("cm-hmd-
 const code = "a { b } { c }";
 const inkCls = [...code].map((ch) => ("{}".includes(ch) ? "tok-brace" : ""));
 const obsCls = [...code].map((ch, i) => (i < 7 ? "-" : "punctuation"));
-const at2 = placeMisses(code, [{ text: "{", inkdrop: "tok-brace", obsidian: "punctuation" }], inkCls, obsCls);
-ok("reclassify: a run is placed where its text and both classes match, not at the first equal text", at2.indexOf(0) === 8 && at2.filter((x) => x === 0).length === 1);
+const p2 = placeMisses(code, [{ text: "{", inkdrop: "tok-brace", obsidian: "punctuation" }], inkCls, obsCls);
+ok("reclassify: a run is placed where its text and both classes match, not at the first equal text", p2.at.indexOf(0) === 8 && p2.at.filter((x) => x === 0).length === 1 && p2.candidates[0].join() === "8");
+const p3 = placeMisses(code, [{ text: "{", inkdrop: "tok-brace", obsidian: "-" }], inkCls, obsCls);
+ok("reclassify: every position a run would fit is reported", p3.at.indexOf(0) === 2 && p3.candidates[0].join() === "2");
+const two = "ab ab";
+const p4 = placeMisses(two, [{ text: "ab", inkdrop: "tok-x", obsidian: "k" }], ["tok-x", "tok-x", "", "tok-x", "tok-x"], ["k", "-", "-", "k", "k"]);
+ok("reclassify: every character of a run must match, not only the first", p4.at.join() === "-1,-1,-1,0,0" && p4.candidates[0].join() === "3");
 throws("reclassify: a run that fits nowhere stops", () => placeMisses(code, [{ text: "{", inkdrop: "tok-paren", obsidian: "-" }], inkCls, obsCls), /not placed/);
 const inks = (o) => new Map(Object.entries(o));
 ok("reclassify: EXACT / MISMATCH / CONFLICT / DOMINATED / MIXED",

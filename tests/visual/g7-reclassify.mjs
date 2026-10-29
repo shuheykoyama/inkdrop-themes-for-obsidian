@@ -53,22 +53,23 @@ export function alignRows(code, rows) {
 // Obsidian classes as the table writes them: without cm-hmd-codeblock / token, sorted, "-" for none.
 export const normClasses = (s) => [...new Set(s.split(/[\s.<]+/).filter((c) => c && c !== "cm-hmd-codeblock" && c !== "token" && c !== "(bare" && c !== "text)"))].sort().join(" ") || "-";
 
-// Places each differing run (in order) at the next position with its text whose Inkdrop class and Obsidian
-// classes match; returns per character the run's index or -1. Throws when a run cannot be placed.
+// Places each differing run (in order) at the next position with its text where every non-space character has the
+// run's Inkdrop class and Obsidian classes; throws when a run cannot be placed. Returns per character the run's
+// index or -1, and per run every position in the block (in any order) where it would fit: more than one means
+// the placement is a choice, whose effect the caller checks.
 export function placeMisses(code, misses, inkCls, obsCls) {
   const at = new Array(code.length).fill(-1);
+  const fits = (m, p) => [...m.text].every((ch, i) => /\s/.test(ch) || ((inkCls[p + i] || "(no token)") === m.inkdrop && obsCls[p + i] === normClasses(m.obsidian)));
+  const where = (m, from = 0) => { const ps = []; for (let p = code.indexOf(m.text, from); p >= 0; p = code.indexOf(m.text, p + 1)) if (fits(m, p)) ps.push(p); return ps; };
   let from = 0;
-  misses.forEach((m, k) => {
-    for (let p = code.indexOf(m.text, from); p >= 0; p = code.indexOf(m.text, p + 1)) {
-      if ((inkCls[p] || "(no token)") === m.inkdrop && obsCls[p] === normClasses(m.obsidian)) {
-        for (let c = p; c < p + m.text.length; c++) at[c] = k;
-        from = p + m.text.length;
-        return;
-      }
-    }
-    throw new Error(`differing run "${m.text}" (${m.inkdrop}, ${m.obsidian}) not placed after ${from}`);
+  const candidates = misses.map((m, k) => {
+    const p = where(m, from)[0];
+    if (p === undefined) throw new Error(`differing run "${m.text}" (${m.inkdrop}, ${m.obsidian}) not placed after ${from}`);
+    for (let c = p; c < p + m.text.length; c++) at[c] = k;
+    from = p + m.text.length;
+    return where(m);
   });
-  return at;
+  return { at, candidates };
 }
 
 // (C) for one group: the theme's colours and Inkdrop's colours with their characters.
@@ -114,15 +115,23 @@ function main(outPath) {
         for (const g of classes.measured) { groupColour[g.sig] = g.theme; for (const i of g.inks) for (const t of i.tokens) pal[t] = i.colour; }
         const staticName = (v) => (v ? v.replace("--syntax-", "") .replace(/-color$/, "") : spec.inkdropDefault[kind].replace(/-color$/, ""));
         const meas = g7[view === "reading" ? "preview" : "editor"];
-        const res = { theme, platform, view, chars: 0, oldDiff: 0, newDiff: 0, expErr: 0, noToken: { chars: 0, asDefault: 0, colours: {} }, checks: { before: 0, now: 0 }, both: { resolved: 0, still: 0, newly: 0 }, oldRuns: 0, runsResolved: 0, perBlock: {}, groups: null };
+        const res = { theme, platform, view, chars: 0, oldDiff: 0, newDiff: 0, expErr: 0, noToken: { chars: 0, asDefault: 0, colours: {} }, checks: { before: 0, now: 0 }, ambiguous: { runs: 0, chars: 0, notInvariant: [] }, both: { resolved: 0, still: 0, newly: 0 }, oldRuns: 0, runsResolved: 0, perBlock: {}, groups: null };
         const groupData = new Map(); // desktop: key -> { bare, theme: [], old: Map, now: Map }
         for (const [k, b] of blocks.entries()) {
           const fid = rec.find((x) => x.id === `syn.${view}.${b.lang}.fidelity`);
           const misses = fid.measured ?? [];
-          const at = placeMisses(b.code, misses, b.inkCls, b.obsCls[view]);
+          const { at, candidates } = placeMisses(b.code, misses, b.inkCls, b.obsCls[view]);
           const got = meas.blocks[k].ranges;
           const inkNow = new Array(b.code.length).fill(null);
           for (const r of got) for (let c = r.from; c < r.to; c++) inkNow[c] = r.color;
+          // A run that fits at several positions: the result does not depend on the choice when every candidate has
+          // the same static and measured colours character by character (the classes are equal by construction).
+          const sig = (m, p) => [...m.text].map((ch, i) => (/\s/.test(ch) ? "" : `${pal[staticName(b.inkVar[p + i])]}|${inkNow[p + i]}`)).join(";");
+          misses.forEach((m, i) => {
+            if (candidates[i].length < 2) return;
+            res.ambiguous.runs++; res.ambiguous.chars += m.text.replace(/\s/g, "").length;
+            if (new Set(candidates[i].map((p) => sig(m, p))).size > 1) res.ambiguous.notInvariant.push({ lang: b.lang, text: m.text, candidates: candidates[i].length });
+          });
           const pb = { lang: b.lang, chars: 0, oldDiff: 0, newDiff: 0, expErr: 0, examples: {} };
           const runOk = misses.map(() => true);
           for (let c = 0; c < b.code.length; c++) {
@@ -144,12 +153,16 @@ function main(outPath) {
               // The table flattens nested elements into one class set, which can join two of qd13's groups; the
               // theme's colour (one per qd13 group) keeps them apart.
               const key = (cls === "-" ? (kind === "reading" ? `${lang} (bare text)` : "(bare text)") : (kind === "reading" ? `${lang} ` : "") + cls) + ` @ ${obs}`;
-              if (!groupData.has(key)) groupData.set(key, { bare: cls === "-", theme: [], old: new Map(), now: new Map(), byFence: {} });
+              if (!groupData.has(key)) groupData.set(key, { bare: cls === "-", theme: [], old: new Map(), now: new Map(), byFence: {}, text: {} });
               const g = groupData.get(key);
               g.theme.push(obs);
               g.old.set(stat, (g.old.get(stat) ?? 0) + 1);
               g.now.set(now, (g.now.get(now) ?? 0) + 1);
               if (newD) g.byFence[b.lang] = (g.byFence[b.lang] ?? 0) + 1;
+              // Which text each Inkdrop colour covers (to judge a colour choice beyond the counts).
+              const t = `${b.lang}:${b.inkCls[c] || "-"}`;
+              g.text[now] ??= {};
+              g.text[now][t] = (g.text[now][t] ?? "") + b.code[c];
             }
           }
           res.checks.before += misses.length > 0; res.checks.now += pb.newDiff > 0;
@@ -165,7 +178,7 @@ function main(outPath) {
             return { sig, bare: g.bare, theme, before: classify(g.theme, g.old), after: classify(g.theme, g.now), chars: g.theme.length,
               inkdrop: now.map(([colour, n]) => ({ colour, chars: n })), differing: g.theme.length - hitNow,
               // The most a colour choice for this group could reach: all characters of its most common Inkdrop colour.
-              bestColour: now[0][0], gainIfBest: now[0][1] - hitNow, byFence: g.byFence };
+              bestColour: now[0][0], gainIfBest: now[0][1] - hitNow, byFence: g.byFence, text: g.text };
           });
           const tally = (f, bare) => Object.fromEntries(["EXACT", "CONFLICT", "MISMATCH", "DOMINATED", "MIXED"].map((c) => [c, res.groups.filter((x) => x[f] === c && x.bare === bare).length]));
           // Differing characters a colour choice per group could fix, and those it could not (bare text apart).
@@ -178,7 +191,7 @@ function main(outPath) {
     }
   }
   writeFileSync(outPath, `${JSON.stringify(out, null, 1)}\n`);
-  for (const r of out.results) console.log(`${r.theme} ${r.platform} ${r.view}: ${r.chars} chars; differing before ${r.oldDiff}, now ${r.newDiff} (resolved ${r.both.resolved}, still ${r.both.still}, new ${r.both.newly}); static expectation wrong on ${r.expErr}; DIFF checks ${r.checks.before} -> ${r.checks.now}; no-token chars ${r.noToken.chars} (as the default ${r.noToken.asDefault}); recorded runs ${r.oldRuns}, of them now all Inkdrop's colour ${r.runsResolved}${r.reach ? `\n  colour choice per group: ${JSON.stringify(r.reach)}` : ""}${r.tally ? `\n  recorded: ${r.tally.recorded}\n  rebuilt (static): ${JSON.stringify(r.tally.rebuiltStatic)}\n  measured:         ${JSON.stringify(r.tally.measured)}` : ""}`);
+  for (const r of out.results) console.log(`${r.theme} ${r.platform} ${r.view}: ${r.chars} chars; differing before ${r.oldDiff}, now ${r.newDiff} (resolved ${r.both.resolved}, still ${r.both.still}, new ${r.both.newly}); static expectation wrong on ${r.expErr}; DIFF checks ${r.checks.before} -> ${r.checks.now}; no-token chars ${r.noToken.chars} (as the default ${r.noToken.asDefault}); runs with several positions ${r.ambiguous.runs} (${r.ambiguous.chars} chars), result depends on the choice for ${r.ambiguous.notInvariant.length}; recorded runs ${r.oldRuns}, of them now all Inkdrop's colour ${r.runsResolved}${r.reach ? `\n  colour choice per group: ${JSON.stringify(r.reach)}` : ""}${r.tally ? `\n  recorded: ${r.tally.recorded}\n  rebuilt (static): ${JSON.stringify(r.tally.rebuiltStatic)}\n  measured:         ${JSON.stringify(r.tally.measured)}` : ""}`);
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) main(process.argv[2]);
