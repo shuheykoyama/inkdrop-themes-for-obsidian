@@ -57,6 +57,7 @@ const probe = readFileSync(path.join(repo, "tests/runtime/probe.js"), "utf8");
 // oracle and Inkdrop's token ranges (tests/runtime/lib/syntax.mjs).
 const syntaxSpec = JSON.parse(readFileSync(path.join(repo, "tests/spec/syntax.json"), "utf8"));
 const inkdropTokens = JSON.parse(readFileSync(path.join(repo, syntaxSpec.inkdrop), "utf8"));
+const inkdropRendered = JSON.parse(readFileSync(path.join(repo, syntaxSpec.rendered), "utf8"));
 const codeDump = readFileSync(path.join(repo, "tests/runtime/code-tokens.js"), "utf8");
 async function syntaxPage() {
   progress("syntax dump");
@@ -289,7 +290,7 @@ try {
         }
         if (!selfTest && frame === "hidden") {
           const where = { theme, platform, appearance: pass === 2 ? "opaque (after translucent)" : appearance, state: "syntax" };
-          results.push(...judgeSyntax(syntaxSpec, inkdropTokens, await syntaxPage(), where, platform === "desktop" ? "PASS" : "PASS (EMULATED)"));
+          results.push(...judgeSyntax(syntaxSpec, inkdropTokens, inkdropRendered, await syntaxPage(), where, platform === "desktop" ? "PASS" : "PASS (EMULATED)"));
           const ok = platform === "desktop" ? "PASS" : "PASS (EMULATED)";
           const mwhere = { ...where, state: "mermaid" };
           for (const view of ["reading", "live", "source"]) results.push(...judgeMermaid(mermaidSpec, await mermaidPage(view), "dark", mwhere, ok));
@@ -343,8 +344,13 @@ if (selfTest) {
   const editRule = (cls, v) => (s) => { s.editing.rules.find((r) => r.on.join() === `cm-hmd-codeblock,${cls}`).var = v; };
   const tagIsString = editRule("cm-tag", "string");
   const editCss = (sel, value) => `.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.${sel} { color: ${value} !important; }`;
+  // Inkdrop's rendered colours changed for the tag names in the editor (Source mode / Live Preview), each with
+  // the colour `pick` gives its index: the editing tag group then has other Inkdrop colours than the theme's.
+  const renderTags = (pick) => { const r = structuredClone(inkdropRendered); let n = 0; for (const b of r.themes[THEMES[0]].editor) for (const x of b.ranges) if (x.cls.split(/[\s<]+/).includes("tok-tag-name")) x.color = pick(n++); return r; };
   const cases = [
     { name: "positive control (theme and oracle as committed)", expect: "PASS" },
+    { name: "Inkdrop renders the tag names in one other colour (rendered: EXACT -> MISMATCH)", expect: "FAIL", rendered: renderTags(() => "rgb(1, 2, 3)"), only: "classes" },
+    { name: "Inkdrop renders the tag names in two other colours (rendered: EXACT -> DOMINATED)", expect: "FAIL", rendered: renderTags((n) => (n % 2 ? "rgb(1, 2, 3)" : "rgb(4, 5, 6)")), only: "classes" },
     { name: "other theme's colour on editing keywords", expect: "FAIL", css: `.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-keyword { color: ${kdKeyword} !important; }` },
     { name: "Reading view function rule lost (code text colour)", expect: "FAIL", css: `.theme-dark .markdown-rendered code[class*="language-"] .token.function { color: var(--code-normal) !important; }` },
     { name: "comments not italic", expect: "FAIL", css: `.theme-dark .markdown-source-view.mod-cm6 .cm-hmd-codeblock.cm-comment { font-style: normal !important; }` },
@@ -360,7 +366,7 @@ if (selfTest) {
   ];
   for (const c of cases) {
     await evaluate(args.port, `(() => { document.getElementById("ink-syntax-self-test")?.remove(); ${c.css ? `document.head.createEl("style", { attr: { id: "ink-syntax-self-test" }, text: ${JSON.stringify(c.css)} });` : ""} return 1; })()`);
-    const res = judgeSyntax(c.spec ?? syntaxSpec, inkdropTokens, await syntaxPage(), {}, "PASS");
+    const res = judgeSyntax(c.spec ?? syntaxSpec, inkdropTokens, c.rendered ?? inkdropRendered, await syntaxPage(), { theme: THEMES[0] }, "PASS");
     // `only`: the case must fail through that kind of result alone (the others must pass).
     const failed = res.filter((r) => r.status === "FAIL");
     if (c.only && failed.some((r) => !r.id.endsWith(`.${c.only}`))) failed.push({ id: "syn.self-test", detail: `a result other than .${c.only} failed` });

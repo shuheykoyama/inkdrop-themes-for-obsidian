@@ -1,11 +1,12 @@
 // Judgement of the syntax colours of code blocks (Q-D13, step 8, research/14 §6.17), from the page dump of
-// tests/runtime/code-tokens.js, the oracle tests/spec/syntax.json and Inkdrop's own token ranges for the same
-// note (tests/fixtures/inkdrop-tokens.json). The text of every block is cut into runs on which both the
-// Inkdrop range and the Obsidian range stay the same; for each run with visible text:
+// tests/runtime/code-tokens.js, the oracle tests/spec/syntax.json and the colours Inkdrop 6.2.0 renders for the
+// same note (tests/fixtures/inkdrop-rendered-6.2.0.json, measured in G7-1, research/14 §6.135: its editor for
+// Source mode and Live Preview, its preview for Reading view). The text of every block is cut into runs on
+// which both the Inkdrop range and the Obsidian range stay the same; for each run with visible text:
 //   (A) implementation: Obsidian's computed colour (and italic / bold where the rule sets them) equals the
 //       colour the oracle gives the run's elements in this theme -> syn.<view>.<lang>.impl PASS / FAIL;
-//   (B) fidelity: that colour equals the colour Inkdrop gives the run (its --syntax-* token, resolved in this
-//       theme) -> syn.<view>.<lang>.fidelity PASS, or DIFF with every differing run and why it differs
+//   (B) fidelity: that colour equals the colour Inkdrop renders for the run in this theme and view
+//       -> syn.<view>.<lang>.fidelity PASS, or DIFF with every differing run and why it differs
 //       (`shared`: its class carries other Inkdrop colours and the theme chose one of them; `bare`: text
 //       without an element, coloured by the code block's base colour). A difference never counts as PASS;
 //   (C) class choice: the runs are grouped by what CSS can tell apart -- the element classes (in any order)
@@ -57,9 +58,12 @@ function oracle(spec, kind, lang, els) {
   return { var: spec[kind].default, rule: null };
 }
 
-// Results for one page dump (one platform, theme and appearance). `where` is spread into every result.
-export function judgeSyntax(spec, inkdrop, page, where, ok) {
+// Results for one page dump (one platform, theme and appearance). `where` is spread into every result; its
+// theme picks Inkdrop's rendered colours.
+export function judgeSyntax(spec, inkdrop, rendered, page, where, ok) {
   const results = [];
+  const shown = rendered.themes[where.theme];
+  if (!shown) throw new Error(`no rendered Inkdrop colours for theme ${where.theme}`);
   const colour = (name) => parseComputedColor(page.vars[name] ?? "");
   for (const view of VIEWS) {
     const kind = view === "reading" ? "reading" : "editing";
@@ -67,6 +71,9 @@ export function judgeSyntax(spec, inkdrop, page, where, ok) {
     const fidelity = [];
     for (const [k, ink] of inkdrop.entries()) {
       const obs = page.views[view][k];
+      // Inkdrop's ranges for this block as rendered in the matching view (same blocks and text as `inkdrop`).
+      const rb = shown[kind === "reading" ? "preview" : "editor"][k];
+      if (rb.lang !== ink.lang || rb.code !== ink.code) throw new Error(`rendered block ${k} is not ${ink.lang}'s text`);
       const id = `syn.${view}.${ink.lang}`;
       const code = ink.code;
       // The dump must hold the same text: Reading keeps the newlines, the editing views have one range list per line.
@@ -78,7 +85,7 @@ export function judgeSyntax(spec, inkdrop, page, where, ok) {
       }
       // Per character: index of the Inkdrop range and of the Obsidian range (offsets are body offsets).
       const inkAt = new Array(code.length).fill(-1);
-      ink.ranges.forEach((r, i) => { for (let c = r.from; c < r.to; c++) inkAt[c] = i; });
+      rb.ranges.forEach((r, i) => { for (let c = r.from; c < r.to; c++) inkAt[c] = i; });
       const obsAt = new Array(code.length).fill(-1);
       obs.ranges.forEach((r, i) => { for (let c = r.from; c < Math.min(r.to, code.length); c++) obsAt[c] = i; });
       let runs = 0;
@@ -91,8 +98,9 @@ export function judgeSyntax(spec, inkdrop, page, where, ok) {
         const o = obs.ranges[obsAt[s]];
         if (text.trim() && o) {
           runs++;
-          const r = inkAt[s] >= 0 ? ink.ranges[inkAt[s]] : null;
-          const inkName = r?.var ? r.var.replace("--syntax-", "--ink-syntax-") : spec.inkdropDefault[kind];
+          const r = inkAt[s] >= 0 ? rb.ranges[inkAt[s]] : null;
+          // Inkdrop's colour; text the measurement did not cover (none in a complete measurement) has none.
+          const inkColour = r?.color ?? null;
           const want = oracle(spec, kind, ink.lang, o.els);
           const actual = parseComputedColor(o.color);
           // (A) the theme applies the oracle's colour (and font style / weight where the rule sets them).
@@ -112,13 +120,12 @@ export function judgeSyntax(spec, inkdrop, page, where, ok) {
           if (!groups.has(sig)) groups.set(sig, { bare, themeColours: new Set(), inks: new Map(), miss: [] });
           const g = groups.get(sig);
           g.themeColours.add(page.vars[want.var]);
-          const inkColour = page.vars[inkName];
           const ic = g.inks.get(inkColour) ?? { runs: 0, chars: 0, tokens: new Set() };
-          ic.runs++; ic.chars += text.trim().length; ic.tokens.add(inkName.replace("--ink-syntax-", "").replace(/-color$/, ""));
+          ic.runs++; ic.chars += text.trim().length; ic.tokens.add(r?.cls || "(no token)");
           g.inks.set(inkColour, ic);
           // (B) the result equals Inkdrop's colour for this text.
-          if (!sameColor(colour(want.var), colour(inkName))) {
-            const miss = { text: text.trim(), inkdrop: r?.cls ?? "(no token)", inkdropVar: inkName, obsidian: o.els.map((x) => x.join(".")).join(" < ") || "(bare text)", got: want.var, group: sig };
+          if (!sameColor(colour(want.var), parseComputedColor(inkColour ?? ""))) {
+            const miss = { text: text.trim(), inkdrop: r?.cls || "(no token)", inkdropColour: inkColour, obsidian: o.els.map((x) => x.join(".")).join(" < ") || "(bare text)", got: want.var, group: sig };
             misses.push(miss);
             g.miss.push(miss);
           }

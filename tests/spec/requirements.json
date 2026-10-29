@@ -831,9 +831,9 @@
       "mandatory": true,
       "verifiedBy": [
         {
-          "method": "Runtime syntax checks syn.<view>.classes (tests/runtime/lib/syntax.mjs) against Inkdrop 6.1.5's own token ranges for the same note (tests/fixtures/inkdrop-tokens.json); the per-language share of runs with Inkdrop's colour is reported as syn.<view>.<lang>.fidelity (PASS or DIFF with the reason of every differing run, never counted as PASS); negative cases in syn.self-test",
-          "evidence": "research/evidence/phase3-step8",
-          "result": "see research/14 §6.17 and §6.19"
+          "method": "Runtime syntax checks syn.<view>.classes (tests/runtime/lib/syntax.mjs) against the colours Inkdrop 6.2.0 renders for the same note, measured in its editor (for Source mode and Live Preview) and its preview (for Reading view) per theme (tests/fixtures/inkdrop-rendered-6.2.0.json, made by tests/visual/inkdrop-rendered.mjs from the G7-1 measurements); the per-language share of runs with Inkdrop's colour is reported as syn.<view>.<lang>.fidelity (PASS or DIFF with the reason of every differing run, never counted as PASS); negative cases in syn.self-test. Results judged before this reference (Inkdrop 6.1.5's static token ranges, tests/fixtures/inkdrop-tokens.json) are not results of this method",
+          "evidence": "research/evidence/phase3-step11/11g-g7",
+          "result": "see research/14 §6.135 and §6.137"
         }
       ]
     },

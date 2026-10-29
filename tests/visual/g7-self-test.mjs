@@ -10,6 +10,8 @@ import { LANGUAGES, locate } from "./inkdrop-chunks.mjs";
 import { blocks, coverage, judgeBlocks, noteDoc, NOTE_TITLE, removeNote, requireFocus } from "./g7-rules.mjs";
 import { shoot } from "./g6-shot.mjs";
 import { alignRows, classify, normClasses, parseCsv, placeMisses } from "./g7-reclassify.mjs";
+import { renderedView } from "./inkdrop-rendered.mjs";
+import { judgeSyntax } from "../runtime/lib/syntax.mjs";
 
 const repo = path.resolve(import.meta.dirname, "..", "..");
 let fails = 0, n = 0;
@@ -102,6 +104,38 @@ ok("reclassify: EXACT / MISMATCH / CONFLICT / DOMINATED / MIXED",
   classify(["rgb(1, 2, 3)"], inks({ "rgb(1, 2, 3)": 1, "rgb(9, 9, 9)": 4 })) === "CONFLICT" && classify(["rgb(1, 2, 3)"], inks({ "rgb(8, 8, 8)": 1, "rgb(9, 9, 9)": 4 })) === "DOMINATED" &&
   classify(["rgb(1, 2, 3)", "rgb(9, 9, 9)"], inks({ "rgb(1, 2, 3)": 1 })) === "MIXED");
 ok("reclassify: an alpha difference is a different colour", classify(["rgba(197, 201, 197, 0.9)"], inks({ "rgb(197, 201, 197)": 3 })) === "MISMATCH");
+
+// ---------- inkdrop-rendered: the Q-D13 reference made from the G7-1 measurements ----------
+const check = spawnSync(process.execPath, [path.join(repo, "tests/visual/inkdrop-rendered.mjs"), "--check"], { encoding: "utf8" });
+ok("rendered: the committed reference is what the measurements give (same bytes)", check.status === 0, check.stdout + check.stderr);
+const mBlocks = [{ lang: "js", code: "if x\ny" }];
+const meas = (ranges, extra = {}) => ({ name: "t", state: "COMPLETE", result: { inkdropVersion: "6.2.0", mode: "editor", blocks: [{ index: 0, lang: "js", text: "if x\ny", ranges }] }, ...extra });
+const rg = (from, to, text, color = "rgb(1, 2, 3)", cls = "tok-a") => ({ from, to, text, color, cls });
+const full = [rg(0, 2, "if"), rg(2, 3, " "), rg(3, 4, "x"), rg(5, 6, "y")];
+ok("rendered: touching ranges of one colour and class are joined; the editor's newline may stay uncovered", JSON.stringify(renderedView(meas(full), mBlocks, "editor")[0].ranges) === JSON.stringify([{ from: 0, to: 4, color: "rgb(1, 2, 3)", cls: "tok-a" }, { from: 5, to: 6, color: "rgb(1, 2, 3)", cls: "tok-a" }]));
+throws("rendered: a character not covered stops", () => renderedView(meas([rg(0, 2, "if"), rg(3, 4, "x"), rg(5, 6, "y")]), mBlocks, "editor"), /covered 0 times/);
+throws("rendered: a character covered twice stops", () => renderedView(meas([...full, rg(1, 2, "f")]), mBlocks, "editor"), /covered 2 times/);
+throws("rendered: a range whose text is not the block's stops", () => renderedView(meas([rg(0, 2, "IF"), ...full.slice(1)]), mBlocks, "editor"), /wrong text/);
+throws("rendered: an INCOMPLETE measurement stops", () => renderedView({ ...meas(full), state: "INCOMPLETE" }, mBlocks, "editor"), /not COMPLETE/);
+throws("rendered: another Inkdrop version stops", () => renderedView({ ...meas(full), result: { ...meas(full).result, inkdropVersion: "6.1.5" } }, mBlocks, "editor"), /Inkdrop 6.1.5/);
+
+// ---------- judgeSyntax with the rendered reference (no Obsidian: a hand-made page dump) ----------
+const K = "rgb(10, 20, 30)", D = "rgb(90, 90, 90)";
+const jSpec = { inkdropDefault: { editing: "--d", reading: "--r" }, codeVars: {}, langAliases: {},
+  editing: { default: "--d", rules: [{ on: ["cm-hmd-codeblock", "cm-keyword"], var: "keyword" }], obsidian: [] },
+  reading: { default: "--r", rules: [{ on: ["token", "keyword"], var: "keyword" }], obsidian: [] } };
+const jInk = [{ lang: "js", code: "if x", ranges: [] }];
+const jRend = (kw) => ({ themes: { t: Object.fromEntries(["editor", "preview"].map((v) => [v, [{ lang: "js", code: "if x", ranges: [{ from: 0, to: 2, color: kw, cls: "tok-keyword" }, { from: 2, to: 4, color: D, cls: "" }] }]])) } });
+const run2 = (els) => [{ from: 0, to: 2, text: "if", els: [els], color: K }, { from: 2, to: 3, text: " ", els: [], color: D }, { from: 3, to: 4, text: "x", els: [], color: D }];
+const jPage = { vars: { "--ink-syntax-keyword-color": K, "--d": D, "--r": D }, views: { source: [{ lang: "js", ranges: run2(["cm-hmd-codeblock", "cm-keyword"]) }], live: [{ lang: "js", ranges: run2(["cm-hmd-codeblock", "cm-keyword"]) }], reading: [{ lang: "js", ranges: run2(["token", "keyword"]) }] } };
+const st2 = (res, id) => res.find((r) => r.id === id)?.status;
+const same2 = judgeSyntax(jSpec, jInk, jRend(K), jPage, { theme: "t" }, "PASS");
+ok("judgeSyntax: Inkdrop's rendered colours equal the theme's -> fidelity PASS, classes PASS", ["source", "live", "reading"].every((v) => st2(same2, `syn.${v}.js.fidelity`) === "PASS" && st2(same2, `syn.${v}.classes`) === "PASS" && st2(same2, `syn.${v}.js.impl`) === "PASS"));
+const other = judgeSyntax(jSpec, jInk, jRend("rgb(200, 0, 0)"), jPage, { theme: "t" }, "PASS");
+ok("judgeSyntax: another rendered colour -> fidelity DIFF (with that colour), classes FAIL (MISMATCH), implementation unchanged",
+  st2(other, "syn.source.js.fidelity") === "DIFF" && other.find((r) => r.id === "syn.source.js.fidelity").measured[0].inkdropColour === "rgb(200, 0, 0)" &&
+  st2(other, "syn.source.classes") === "FAIL" && /MISMATCH 1/.test(other.find((r) => r.id === "syn.source.classes").detail) && st2(other, "syn.source.js.impl") === "PASS");
+throws("judgeSyntax: no rendered colours for the theme stops", () => judgeSyntax(jSpec, jInk, jRend(K), jPage, { theme: "u" }, "PASS"), /no rendered Inkdrop colours/);
 
 // ---------- g7-rules ----------
 const note = readFileSync(path.join(repo, "tests/fixtures/vault/Code blocks.md"), "utf8");

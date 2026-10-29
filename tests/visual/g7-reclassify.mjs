@@ -190,6 +190,9 @@ function main(outPath) {
       }
     }
   }
+  // A run whose placement changes the result makes the numbers a guess: no output, non-zero exit.
+  const guess = out.results.flatMap((r) => r.ambiguous.notInvariant.map((x) => `${r.theme} ${r.platform} ${r.view} ${x.lang} "${x.text}"`));
+  if (guess.length) { console.error(`not written: the result depends on where these runs are placed: ${guess.join("; ")}`); process.exit(1); }
   writeFileSync(outPath, `${JSON.stringify(out, null, 1)}\n`);
   for (const r of out.results) console.log(`${r.theme} ${r.platform} ${r.view}: ${r.chars} chars; differing before ${r.oldDiff}, now ${r.newDiff} (resolved ${r.both.resolved}, still ${r.both.still}, new ${r.both.newly}); static expectation wrong on ${r.expErr}; DIFF checks ${r.checks.before} -> ${r.checks.now}; no-token chars ${r.noToken.chars} (as the default ${r.noToken.asDefault}); runs with several positions ${r.ambiguous.runs} (${r.ambiguous.chars} chars), result depends on the choice for ${r.ambiguous.notInvariant.length}; recorded runs ${r.oldRuns}, of them now all Inkdrop's colour ${r.runsResolved}${r.reach ? `\n  colour choice per group: ${JSON.stringify(r.reach)}` : ""}${r.tally ? `\n  recorded: ${r.tally.recorded}\n  rebuilt (static): ${JSON.stringify(r.tally.rebuiltStatic)}\n  measured:         ${JSON.stringify(r.tally.measured)}` : ""}`);
 }

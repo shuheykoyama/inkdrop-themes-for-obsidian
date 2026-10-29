@@ -29,7 +29,7 @@ def main [result: string, out: string] {
   | where status == "DIFF"
   | each {|r|
       let parts = ($r.id | split row ".")
-      $r.measured | each {|m| { view: ($parts | get 1), lang: ($parts | get 2), text: $m.text, category: $m.category, inkdrop: $m.inkdrop, inkdrop_var: $m.inkdropVar, obsidian: $m.obsidian, theme_var: $m.got, theme: $r.theme } }
+      $r.measured | each {|m| { view: ($parts | get 1), lang: ($parts | get 2), text: $m.text, category: $m.category, inkdrop: $m.inkdrop, inkdrop_colour: $m.inkdropColour, obsidian: $m.obsidian, theme_var: $m.got, theme: $r.theme } }
     }
   | flatten
   | group-by {|m| [$m.view $m.lang $m.text $m.inkdrop $m.obsidian] | str join "|" }

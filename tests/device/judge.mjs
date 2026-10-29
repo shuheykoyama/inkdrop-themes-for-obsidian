@@ -25,6 +25,7 @@ const env = run.environment;
 const checks = new Map(loadChecks(runtimeSpecFiles(path.join(repo, "tests/spec"))).map((c) => [c.id, c]));
 const syntaxSpec = JSON.parse(readFileSync(path.join(repo, "tests/spec/syntax.json"), "utf8"));
 const inkdropTokens = JSON.parse(readFileSync(path.join(repo, syntaxSpec.inkdrop), "utf8"));
+const inkdropRendered = JSON.parse(readFileSync(path.join(repo, syntaxSpec.rendered), "utf8"));
 const mermaidSpec = JSON.parse(readFileSync(path.join(repo, "tests/spec/mermaid.json"), "utf8"));
 const defsOf = new Map();
 const defs = (theme) => {
@@ -72,7 +73,7 @@ for (const rec of run.results) {
       results.push({ id, requirement: c.requirement, ...where, extra: job.extra || undefined, status: na ? "N/A" : status, detail: na ? `not on a ${device}: ${detail}` : detail, measured: m });
     }
   } else if (job.kind === "syntax") {
-    results.push(...judgeSyntax(syntaxSpec, inkdropTokens, rec.page, where, "PASS"));
+    results.push(...judgeSyntax(syntaxSpec, inkdropTokens, inkdropRendered, rec.page, where, "PASS"));
   } else {
     if (job.scheme === "light") results.push({ id: "device.light-scheme", ...where, status: rec.lightApplied ? "PASS" : "FAIL", detail: rec.lightApplied ? "theme-light" : "light scheme not applied" });
     results.push(...judgeMermaid(mermaidSpec, rec.page, job.scheme, where, "PASS"));
