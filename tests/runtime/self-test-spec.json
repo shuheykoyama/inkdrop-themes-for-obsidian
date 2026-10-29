@@ -727,6 +727,76 @@
       "selfTest": "PASS"
     },
     {
+      "id": "self.settings-button",
+      "selector": ".modal.mod-settings .vertical-tab-content .setting-item:has(select.dropdown) + .setting-item:last-child > .setting-item-control > button:only-child:not(.mod-cta)",
+      "document": "settings",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-derived-button-background-color",
+      "selfTest": "PASS"
+    },
+    {
+      "id": "self.settings-button-decoys",
+      "selector": ".modal.mod-settings .vertical-tab-content .setting-item:has(select.dropdown) + .setting-item:last-child > .setting-item-control > button:only-child:not(.mod-cta)",
+      "document": "settings",
+      "property": "background-color",
+      "state": "self-test-settings-decoys",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-derived-button-background-color",
+      "selfTest": "PASS"
+    },
+    {
+      "id": "self.settings-button-first-match-decoys",
+      "selector": ".modal.mod-settings .vertical-tab-content button:not(.mod-cta):not(.clickable-icon)",
+      "document": "settings",
+      "property": "background-color",
+      "state": "self-test-settings-decoys",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-derived-button-background-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.settings-button-help-displaced",
+      "selector": ".modal.mod-settings .vertical-tab-content .setting-item:has(select.dropdown) + .setting-item:last-child > .setting-item-control > button:only-child:not(.mod-cta)",
+      "document": "settings",
+      "property": "background-color",
+      "state": "self-test-settings-help-displaced",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-derived-button-background-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.settings-button-help-gone",
+      "selector": ".modal.mod-settings .vertical-tab-content .setting-item:has(select.dropdown) + .setting-item:last-child > .setting-item-control > button:only-child:not(.mod-cta)",
+      "document": "settings",
+      "property": "background-color",
+      "state": "self-test-settings-help-gone",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-derived-button-background-color",
+      "selfTest": "FAIL"
+    },
+    {
+      "id": "self.settings-button-wrong-expectation",
+      "selector": ".modal.mod-settings .vertical-tab-content .setting-item:has(select.dropdown) + .setting-item:last-child > .setting-item-control > button:only-child:not(.mod-cta)",
+      "document": "settings",
+      "property": "background-color",
+      "appearance": [
+        "opaque"
+      ],
+      "token": "--ink-sidebar-background",
+      "selfTest": "FAIL"
+    },
+    {
       "id": "self.pointer-missed",
       "selector": ".popover.hover-popover",
       "document": "main",

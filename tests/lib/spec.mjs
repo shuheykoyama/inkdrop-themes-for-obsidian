@@ -21,7 +21,10 @@ export const PLATFORMS = ["desktop", "tablet", "phone", "phone-nonfloating"];
 // "self-test-*" states take a prepared state away on purpose (step 10 re-review, research/14 §6.25):
 // "self-test-ed-gutter-lost" (the line-number setting reverted in memory), "self-test-fold-lost" (the fold
 // opened again), "self-test-settings-search" (text in the settings search hides the tab list),
-// "self-test-pointer-missed" (the pointer hovers where no link preview opens).
+// "self-test-pointer-missed" (the pointer hovers where no link preview opens). Three change Settings > About
+// around the Help row that ui.button.background measures (research/14 §6.139): "self-test-settings-decoys"
+// (a hidden and a red button row before the general rows), "self-test-settings-help-displaced" (a button row
+// between Language and Help), "self-test-settings-help-gone" (Help's button removed).
 // Step 5: "file-explorer-focused" (the File Explorer leaf is the active one), "user-font" (an interface font in
 // the test vault's settings), and three states the runner opens with a real pointer through CDP:
 // "menu-open" (right-click a file, pointer on the first item; DOM menus), "popover-open" (Cmd + hover on an
@@ -37,7 +40,8 @@ export const STATES = ["default", "user-accent", "user-font", "quick-switcher-op
   "ed-source", "ed-live", "ed-source-no-lines", "ed-live-no-lines", "ed-code-line", "ed-widget-line", "ed-selection",
   "ed-search", "ed-fold", "ed-suggest",
   "left-drawer-open", "right-drawer-open", "self-test-translucent-leak",
-  "self-test-ed-gutter-lost", "self-test-fold-lost", "self-test-settings-search", "self-test-pointer-missed"];
+  "self-test-ed-gutter-lost", "self-test-fold-lost", "self-test-settings-search", "self-test-pointer-missed",
+  "self-test-settings-decoys", "self-test-settings-help-displaced", "self-test-settings-help-gone"];
 export const POINTER_STATES = ["menu-open", "popover-open", "tooltip-open", "ed-suggest", "self-test-pointer-missed"];
 // color: a computed colour property; text: exact string (e.g. --accent-h); first-color: the first rgb()/rgba()
 // in the value (e.g. the colour of a box-shadow); var: a custom property whose computed value is a colour

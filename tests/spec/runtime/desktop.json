@@ -865,7 +865,7 @@
     {
       "id": "ui.button.background",
       "requirement": "ui.controls",
-      "selector": ".modal.mod-settings .vertical-tab-content button:not(.mod-cta):not(.clickable-icon)",
+      "selector": ".modal.mod-settings .vertical-tab-content .setting-item:has(select.dropdown) + .setting-item:last-child > .setting-item-control > button:only-child:not(.mod-cta)",
       "document": "settings",
       "property": "background-color",
       "appearance": [

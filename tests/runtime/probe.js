@@ -250,7 +250,31 @@
     const doc = m && m.isConnected ? m.ownerDocument : null;
     out.settingsDocument = doc ? { sameAsMain: doc === document, bodyClasses: [...doc.body.classList] } : null;
     out.settingsPrepared = { activeItemShown: !!activeItem(), ms: settingsMs, tab: app.setting.activeTab?.id ?? null, searchLength: app.setting.searchComponent?.getValue?.()?.length ?? null, strayCleared: strayLength, tabListShown: !!doc?.querySelector(".vertical-tab-header-group-container")?.checkVisibility(), window: doc ? [doc.defaultView.innerWidth, doc.defaultView.innerHeight] : null };
+    // Runner self-test only: change Settings > About around the Help row (the row after Language, the tab's only
+    // dropdown) that ui.button.background measures, then undo it after measuring (research/14 §6.139).
+    const helpRow = doc?.querySelector(".vertical-tab-content .setting-item:has(select.dropdown) + .setting-item");
+    const added = [];
+    let removed = null;
+    const buttonRow = (hidden, red) => {
+      const row = doc.createElement("div");
+      row.className = "setting-item";
+      if (hidden) row.style.display = "none";
+      const control = row.appendChild(doc.createElement("div"));
+      control.className = "setting-item-control";
+      const b = control.appendChild(doc.createElement("button"));
+      b.textContent = "self-test";
+      if (red) b.style.backgroundColor = "rgb(255, 0, 0)";
+      added.push(row);
+      return row;
+    };
+    // A hidden row first (as "Update Available" is on a current installer), then a visible red one.
+    if (helpRow && state === "self-test-settings-decoys") helpRow.parentElement.prepend(buttonRow(true, false), buttonRow(false, true));
+    // A themed button row right after Language: it must not be taken for Help.
+    if (helpRow && state === "self-test-settings-help-displaced") helpRow.before(buttonRow(false, false));
+    if (helpRow && state === "self-test-settings-help-gone") { const b = helpRow.querySelector("button"); removed = [b, b.parentElement]; b.remove(); }
     for (const c of settingsChecks) out.results[c.id] = doc ? measure(doc, c) : { found: false, count: 0, displayed: false, size: null, value: null, error: "settings document not found" };
+    added.forEach((row) => row.remove());
+    if (removed) removed[1].append(removed[0]);
     if (state === "self-test-settings-search") { app.setting.searchComponent?.setValue(""); app.setting.onSearchChanged?.(); }
     if (searchInput) searchInput.readOnly = false;
     app.setting.close();
