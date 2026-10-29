@@ -185,7 +185,7 @@
 
 /* Shell: Inkdrop's shell mode leaves brackets and ; as plain text (here for the same reason as above). */
 .theme-dark .markdown-rendered :is(code.language-sh, code.language-bash, code.language-shell) .token.punctuation {
-  color: var(--ink-mde-preview-codeblock-text-color);
+  color: var(--ink-mde-preview-inline-code-text-color);
 }
 
 .theme-dark .markdown-rendered code[class*="language-"] .token.function {
@@ -419,7 +419,7 @@
 /* &1 and the loop variable are plain text for Inkdrop's shell mode (after the important / variable rules
    these spans also match). */
 .theme-dark .markdown-rendered :is(code.language-sh, code.language-bash, code.language-shell) :is(.token.file-descriptor, .token.for-or-select) {
-  color: var(--ink-mde-preview-codeblock-text-color);
+  color: var(--ink-mde-preview-inline-code-text-color);
 }
 
 /* The 2 of 2>: a number for Inkdrop. */

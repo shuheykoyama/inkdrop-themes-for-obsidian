@@ -103,12 +103,13 @@
   --blockquote-color: var(--ink-mde-preview-blockquote-text-color);
   --blockquote-font-style: normal;
 
-  /* Code blocks (E20): preview background, border and text, 6 px corners. Inline code redefines these on
+  /* Code blocks (E20): preview background, border and text, 6 px corners. The text is Inkdrop's inline code
+     colour: its .mde-preview code rule also reaches the code inside pre (G7-1). Inline code redefines these on
      itself (components/markdown.css). */
   --code-background: var(--ink-mde-preview-codeblock-background-color);
   --code-border-width: 1px;
   --code-border-color: var(--ink-mde-preview-codeblock-border-color);
-  --code-normal: var(--ink-mde-preview-codeblock-text-color);
+  --code-normal: var(--ink-mde-preview-inline-code-text-color);
   --code-radius: 6px;
 
   /* Highlight (E18). */

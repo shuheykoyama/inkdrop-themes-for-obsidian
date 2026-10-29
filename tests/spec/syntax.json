@@ -52,7 +52,7 @@
     ]
   },
   "reading": {
-    "default": "--ink-mde-preview-codeblock-text-color",
+    "default": "--ink-mde-preview-inline-code-text-color",
     "rules": [
       { "on": ["token", "comment"], "var": "comment", "italic": true },
       { "on": ["token", "prolog"], "var": "comment", "italic": true },
@@ -67,7 +67,7 @@
       { "on": ["token", "operator"], "var": "operator" },
       { "on": ["token", "punctuation"], "var": "punctuation" },
       { "on": ["token", "punctuation"], "lang": ["markdown", "md"], "var": "processing-instruction" },
-      { "on": ["token", "punctuation"], "lang": ["sh", "bash", "shell"], "var": "--ink-mde-preview-codeblock-text-color" },
+      { "on": ["token", "punctuation"], "lang": ["sh", "bash", "shell"], "var": "--ink-mde-preview-inline-code-text-color" },
       { "on": ["token", "function"], "var": "variable-name-function" },
       { "on": ["token", "interpolation"], "var": "variable-name" },
       { "on": ["token", "parameter"], "var": "variable-name-definition" },
@@ -131,8 +131,8 @@
       { "on": ["token", "environment"], "lang": ["sh", "bash", "shell"], "var": "variable-name-definition" },
       { "on": ["token", "assign-left"], "lang": ["sh", "bash", "shell"], "var": "variable-name-definition" },
       { "on": ["token", "parameter"], "lang": ["sh", "bash", "shell"], "var": "attribute-name" },
-      { "on": ["token", "file-descriptor"], "lang": ["sh", "bash", "shell"], "var": "--ink-mde-preview-codeblock-text-color" },
-      { "on": ["token", "for-or-select"], "lang": ["sh", "bash", "shell"], "var": "--ink-mde-preview-codeblock-text-color" },
+      { "on": ["token", "file-descriptor"], "lang": ["sh", "bash", "shell"], "var": "--ink-mde-preview-inline-code-text-color" },
+      { "on": ["token", "for-or-select"], "lang": ["sh", "bash", "shell"], "var": "--ink-mde-preview-inline-code-text-color" },
       { "on": ["token", "file-descriptor"], "in": ["token", "operator"], "lang": ["sh", "bash", "shell"], "var": "number" },
       { "on": ["token", "title"], "lang": ["markdown", "md"], "var": "heading", "bold": true },
       { "on": ["token", "italic"], "lang": ["markdown", "md"], "var": "emphasis", "italic": true },
