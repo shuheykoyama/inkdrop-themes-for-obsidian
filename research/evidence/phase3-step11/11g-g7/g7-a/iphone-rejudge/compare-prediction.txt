@@ -1,0 +1,7 @@
+as predicted solarized-dark phone/opaque source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark phone/opaque live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark phone/opaque reading: fidelity DIFF 14, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon phone/opaque source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon phone/opaque live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon phone/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+every theme x context x view as predicted

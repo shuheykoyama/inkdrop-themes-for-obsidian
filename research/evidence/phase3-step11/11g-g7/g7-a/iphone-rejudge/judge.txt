@@ -1,0 +1,17 @@
+N/A ui.toggle.on-user-accent [solarized-dark, phone, user-accent] (desktop check) -- not on a phone: element not found
+N/A ui.font.user-override-first [solarized-dark, phone, user-font] (desktop check) -- not on a phone: element not displayed (size [0,0])
+UNSUPPORTED mm.reading.unsupported [solarized-dark, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.live.unsupported [solarized-dark, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.reading.unsupported [solarized-dark, phone, mermaid re-render] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.light.reading.unsupported [solarized-dark, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+UNSUPPORTED mm.light.live.unsupported [solarized-dark, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+N/A ui.toggle.on-user-accent [kanagawa-dragon, phone, user-accent] (desktop check) -- not on a phone: element not found
+N/A ui.font.user-override-first [kanagawa-dragon, phone, user-font] (desktop check) -- not on a phone: element not displayed (size [0,0])
+FAIL syn.reading.classes [kanagawa-dragon, phone, syntax] -- element groups: EXACT 121, CONFLICT 27, MISMATCH 4, DOMINATED 0; base colour (bare text, not failed): EXACT 0, CONFLICT 0, MISMATCH 6, DOMINATED 5 -- MISMATCH sh punctuation.token: theme rgba(197, 201, 197, 0.9), Inkdrop
+UNSUPPORTED mm.reading.unsupported [kanagawa-dragon, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.live.unsupported [kanagawa-dragon, phone, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.reading.unsupported [kanagawa-dragon, phone, mermaid re-render] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+UNSUPPORTED mm.light.reading.unsupported [kanagawa-dragon, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+UNSUPPORTED mm.light.live.unsupported [kanagawa-dragon, phone, mermaid light] -- 7 kinds keep filter none (not themed)
+
+916 results on iPhone 12 Pro, iOS 27.0, Obsidian 1.14.5 (387), kit abfb7c19 (measured 2026-10-20); re-judged offline from the page dumps against the Inkdrop 6.2.0 rendered reference: PASS 800, FAIL 1, DIFF 101, UNSUPPORTED 10, N/A 4 (desktop checks measured on the device: 410)
