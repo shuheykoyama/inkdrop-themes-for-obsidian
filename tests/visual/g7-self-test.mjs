@@ -109,15 +109,16 @@ ok("reclassify: an alpha difference is a different colour", classify(["rgba(197,
 const check = spawnSync(process.execPath, [path.join(repo, "tests/visual/inkdrop-rendered.mjs"), "--check"], { encoding: "utf8" });
 ok("rendered: the committed reference is what the measurements give (same bytes)", check.status === 0, check.stdout + check.stderr);
 const mBlocks = [{ lang: "js", code: "if x\ny" }];
-const meas = (ranges, extra = {}) => ({ name: "t", state: "COMPLETE", result: { inkdropVersion: "6.2.0", mode: "editor", blocks: [{ index: 0, lang: "js", text: "if x\ny", ranges }] }, ...extra });
+const meas = (ranges, extra = {}) => ({ name: "t", state: "COMPLETE", result: { inkdropVersion: "6.2.0", mode: "editor", theme: "solarized-dark", blocks: [{ index: 0, lang: "js", text: "if x\ny", ranges }] }, ...extra });
 const rg = (from, to, text, color = "rgb(1, 2, 3)", cls = "tok-a") => ({ from, to, text, color, cls });
 const full = [rg(0, 2, "if"), rg(2, 3, " "), rg(3, 4, "x"), rg(5, 6, "y")];
-ok("rendered: touching ranges of one colour and class are joined; the editor's newline may stay uncovered", JSON.stringify(renderedView(meas(full), mBlocks, "editor")[0].ranges) === JSON.stringify([{ from: 0, to: 4, color: "rgb(1, 2, 3)", cls: "tok-a" }, { from: 5, to: 6, color: "rgb(1, 2, 3)", cls: "tok-a" }]));
-throws("rendered: a character not covered stops", () => renderedView(meas([rg(0, 2, "if"), rg(3, 4, "x"), rg(5, 6, "y")]), mBlocks, "editor"), /covered 0 times/);
-throws("rendered: a character covered twice stops", () => renderedView(meas([...full, rg(1, 2, "f")]), mBlocks, "editor"), /covered 2 times/);
-throws("rendered: a range whose text is not the block's stops", () => renderedView(meas([rg(0, 2, "IF"), ...full.slice(1)]), mBlocks, "editor"), /wrong text/);
-throws("rendered: an INCOMPLETE measurement stops", () => renderedView({ ...meas(full), state: "INCOMPLETE" }, mBlocks, "editor"), /not COMPLETE/);
-throws("rendered: another Inkdrop version stops", () => renderedView({ ...meas(full), result: { ...meas(full).result, inkdropVersion: "6.1.5" } }, mBlocks, "editor"), /Inkdrop 6.1.5/);
+ok("rendered: touching ranges of one colour and class are joined; the editor's newline may stay uncovered", JSON.stringify(renderedView(meas(full), mBlocks, "editor", "solarized-dark")[0].ranges) === JSON.stringify([{ from: 0, to: 4, color: "rgb(1, 2, 3)", cls: "tok-a" }, { from: 5, to: 6, color: "rgb(1, 2, 3)", cls: "tok-a" }]));
+throws("rendered: a character not covered stops", () => renderedView(meas([rg(0, 2, "if"), rg(3, 4, "x"), rg(5, 6, "y")]), mBlocks, "editor", "solarized-dark"), /covered 0 times/);
+throws("rendered: a character covered twice stops", () => renderedView(meas([...full, rg(1, 2, "f")]), mBlocks, "editor", "solarized-dark"), /covered 2 times/);
+throws("rendered: a range whose text is not the block's stops", () => renderedView(meas([rg(0, 2, "IF"), ...full.slice(1)]), mBlocks, "editor", "solarized-dark"), /wrong text/);
+throws("rendered: an INCOMPLETE measurement stops", () => renderedView({ ...meas(full), state: "INCOMPLETE" }, mBlocks, "editor", "solarized-dark"), /not COMPLETE/);
+throws("rendered: another Inkdrop version stops", () => renderedView({ ...meas(full), result: { ...meas(full).result, inkdropVersion: "6.1.5" } }, mBlocks, "editor", "solarized-dark"), /Inkdrop 6.1.5/);
+throws("rendered: a measurement of another theme stops", () => renderedView({ ...meas(full), result: { ...meas(full).result, theme: "kanagawa-dragon" } }, mBlocks, "editor", "solarized-dark"), /kanagawa-dragon/);
 
 // ---------- judgeSyntax with the rendered reference (no Obsidian: a hand-made page dump) ----------
 const K = "rgb(10, 20, 30)", D = "rgb(90, 90, 90)";

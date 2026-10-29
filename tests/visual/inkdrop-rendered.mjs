@@ -1,7 +1,7 @@
 // Step 11G (research/14 §6.135.3): the Q-D13 fidelity reference -- the colours Inkdrop 6.2.0 renders for the test
 // note in its editor and preview, per theme -- made from the G7-1 measurements (research/evidence/phase3-step11/
 // 11g-g7/g7-1/measurements). Deterministic: the same measurement files give the same bytes. Each view of each theme
-// must be a COMPLETE measurement of Inkdrop 6.2.0 with the note's blocks in order (language and text as
+// must be a COMPLETE measurement of that theme in Inkdrop 6.2.0 with the note's blocks in order (language and text as
 // tests/fixtures/inkdrop-tokens.json); its ranges must carry their text and cover every character of each block
 // once (in the editor, the newlines between lines are not text nodes and stay uncovered). Neighbouring ranges of
 // the same colour and classes are joined.
@@ -20,10 +20,10 @@ const OUT = "tests/fixtures/inkdrop-rendered-6.2.0.json";
 const SOURCE = { inkdrop: "6.2.0", measuredAt: "2026-10-27T04:40:43Z", commit: "2316ea8", themePackages: { "solarized-dark": "2.2.1", "kanagawa-dragon": "1.2.1" } };
 
 // One view of one theme: the blocks with their joined ranges, or an Error naming what is wrong.
-export function renderedView(measurement, blocks, view) {
+export function renderedView(measurement, blocks, view, theme) {
   if (measurement.state !== "COMPLETE") throw new Error(`${measurement.name}: not COMPLETE`);
   const res = measurement.result;
-  if (res.inkdropVersion !== SOURCE.inkdrop || res.mode !== view) throw new Error(`${measurement.name}: Inkdrop ${res.inkdropVersion}, ${res.mode}`);
+  if (res.inkdropVersion !== SOURCE.inkdrop || res.mode !== view || res.theme !== theme) throw new Error(`${measurement.name}: Inkdrop ${res.inkdropVersion}, ${res.mode}, ${res.theme}`);
   if (res.blocks.length !== blocks.length) throw new Error(`${measurement.name}: ${res.blocks.length} blocks, not ${blocks.length}`);
   return blocks.map((b, i) => {
     const m = res.blocks[i];
@@ -53,7 +53,7 @@ function build() {
       const rel = `${MEASURED}/inkdrop-${theme}-g7-${view}.json`;
       const raw = readFileSync(path.join(repo, rel));
       out.source.files[rel] = createHash("sha256").update(raw).digest("hex");
-      out.themes[theme][view] = renderedView(JSON.parse(raw), blocks, view);
+      out.themes[theme][view] = renderedView(JSON.parse(raw), blocks, view, theme);
     }
   }
   return `${JSON.stringify(out, null, 1)}\n`;
