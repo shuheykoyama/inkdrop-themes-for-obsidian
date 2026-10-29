@@ -7293,11 +7293,11 @@ E4 について:
 
 E1 の原因は、G7-0 の `ALIASES` が拡張子を別名として扱ったことである（§6.131）。E3 は、複数のクラスを持つトークンの変数を、Inkdrop の CSS の優先順位で決めていなかったことによる。
 
-#### 6.133.5 改善の見込み（デスクトップ、テストのノートの文字数、上限）
+#### 6.133.5 改善の見込み（デスクトップ、テストのノートの文字数、理論上の上限）
 
-「色の選び直し」は、グループごとに、Inkdrop の色のうち最も多い文字の色を選んだときの数である。
+「色の選び直し」は、今のグループの分け方で、グループごとに Inkdrop の色のうち最も多い文字の色を独立に選べると仮定したときの数である。理論上の上限であり、CSS で直る文字数を保証しない（§6.135.1 の独立レビューによる）。「残る」は、今の DOM の情報とセレクタでは分けられないという意味に限る。DOM の文脈で分ける方法があれば、別に検討する（ノートの行や文字の位置に頼る方法はとらない）。
 
-| テーマ | ビュー | 要素のグループの違う文字 | うち、色の選び直しで直る | 残る（構造的） | 素の文字の違う文字 | うち、直る | 残る |
+| テーマ | ビュー | 要素のグループの違う文字 | うち、色の選び直しで直る（上限） | 残る（今のセレクタで分けられない） | 素の文字の違う文字 | うち、直る（上限） | 残る |
 |---|---|---|---|---|---|---|---|
 | SD | Source・Live | 432 | 20 | 412 | 288 | 121 | 167 |
 | SD | Reading | 191 | 45 | 146 | 237 | 169 | 68 |
@@ -7311,7 +7311,7 @@ E1 の原因は、G7-0 の `ALIASES` が拡張子を別名として扱ったこ�
   - Reading view の素の文字は言語ごとに分けられるが、各言語の地の色も兼ねる（§6.19 の開いた選択）。
   - 実際に選べるかは、ほかの文字への影響を見て決める。
 - **数はテストのノートの文字数**で、コード一般の割合ではない。
-- **残る（構造的）文字は、同じクラスに Inkdrop の色が複数ある。** 字句解析とトークンの区切りが違う（Obsidian の CM5 のモードと Prism、Inkdrop の Lezer）。CSS では分けられない。
+- **残る文字は、同じクラスに Inkdrop の色が複数ある。** 字句解析とトークンの区切りが違う（Obsidian の CM5 のモードと Prism、Inkdrop の Lezer）。今のクラスによるセレクタでは分けられない。
 - **編集ビューは、行に言語がない（V-12）。** py・rs のブロックだけを地の色にすることはできない（E1 の編集の分は構造的）。
 
 候補（グループ別の内訳は `groups.txt`）:
@@ -7351,3 +7351,178 @@ E1 の原因は、G7-0 の `ALIASES` が拡張子を別名として扱ったこ�
 
 1. 期待値の修正（§6.133.6 のどちらか）
 2. CSS の候補（§6.133.5）の、Obsidian での検証
+
+（§6.133 は独立レビューで APPROVE WITH QUALIFICATIONS。G7-2 は分析の工程として COMPLETE。期待値は案 A（G7-1 の実測）を勧められた。CSS と期待値の変更は、まだ承認されていない。続きは §6.135。）
+
+### 6.135 G7-2 の補強：位置合わせの検証、案 A の実装案、CSS の候補の影響（2026-10-29、独立レビュー待ち）
+
+#### 6.135.1 位置合わせの検証（`placeMisses`）
+
+- **全文字の照合**: 違う run は、その空白でない文字すべてで、Inkdrop のクラスと Obsidian のクラスが一致する位置にだけ置く（前は先頭の文字だけを見ていた）。照合を強めても、すべての run を置けた。集計の数は §6.133.3 と変わらない。
+- **位置の候補**: run ごとに、ブロックの中で置ける位置をすべて数える（順番を問わない）。候補が 2 つ以上ある run（デスクトップ。モバイルも同じ）は次のとおり。
+
+| テーマ | ビュー | 候補が複数ある run | その文字 | 置き方で結果が変わる run |
+|---|---|---|---|---|
+| SD | Source・Live | 222 | 268 | 0 |
+| SD | Reading | 79 | 159 | 0 |
+| KD | Source・Live | 209 | 243 | 0 |
+| KD | Reading | 74 | 141 | 0 |
+
+- **置き方を変えても結果は同じか**: 候補のどの位置でも、文字ごとの静的な期待値の色と Inkdrop の実測の色が同じなら、どこに置いても集計は同じである（クラスは、候補の条件で同じになる）。すべての run が、この条件を満たした。したがって、§6.133.3 の数は、位置の選び方によらない。
+- **確定できなければ**: 置けない run があれば、分析はそこで止まる（推測の値を出さない）。置き方で結果が変わる run があれば、その run を `notInvariant` に挙げる（今回は 0）。
+- **残る制約**: Obsidian の文字ごとのクラスは、ステップ 8 のデスクトップの対応表から取っている。1.14.5 の記録のすべての run が、全文字で対応表と一致したので矛盾はないが、Obsidian の今のクラスを直接読んだものではない。モバイルの (C) のグループは作り直していない。
+- 自己テスト: 71 件 → 73 件（全文字の照合、置ける位置の列挙）。
+
+#### 6.135.2 E3・E4 の原因（Inkdrop 6.2.0 の CSS を読んで確かめた）
+
+- **E4**: `@inkdropapp/css` の `markdown.css` の `.mde-preview code { color: var(--mde-preview-inline-code-text-color, currentColor) }` が、`pre` の中の `code` にも効く（`pre > code` は色を戻さない）。
+  - そのため、プレビューのコードの地の色は、インラインコードの文字色になる（`pre` の `--mde-preview-codeblock-text-color` は、`code` の外にしか効かない）。
+  - SD は、インラインコードの文字色（neutral-400）が本文の色と同じなので、違いが出ない。KD は oldWhite（rgb(200, 192, 146)）。
+- **E3**: `syntax.css` の `.md-list-mark { color: var(--md-list-mark-color) }`（mdTokenHighlighter が付ける印）が、`.tok-processing-instruction` より後にあり、勝つ。
+  - KD は dragonTeal で、`--syntax-list-color` と同じ値だったのは偶然。SD は green-500 で、processing-instruction と同じ色。
+  - 正しい変数は、両テーマとも `--md-list-mark-color`（Obsidian の `--ink-md-list-mark-color`）。
+  - 入れ子のリストでは、`--md-list-mark-2-color`・`-3-color` になる。
+
+#### 6.135.3 案 A の実装案（G7-1 の実測を新しい忠実度の基準にする。今回は実施しない）
+
+**新しい基準のファイル** `tests/fixtures/inkdrop-rendered-6.2.0.json`
+
+- G7-1 の測定（`g7-1/measurements/inkdrop-<theme>-g7-<editor|preview>.json`）から、小さなスクリプトで作る。
+- 構造: `{ source, themes: { <theme>: { editor: [blocks], preview: [blocks] } } }`。
+  - ブロック: `{ lang, code, ranges: [{ from, to, color, cls }] }`。同じ色・同じクラスの続く区間はまとめる。空白の区間も残し、区間の位置と文字を保つ。
+  - `source`: 測定のファイルのパスと SHA-256、測定のコミット（`2316ea8`）、Inkdrop の版（6.2.0）、テーマのパッケージの版（kanagawa-dragon 1.2.1、solarized-dark 2.2.1）。
+- 作るときに確かめること: ブロックの数・言語・本文がテストのノートと同じこと、区間が本文を欠けも重なりもなく覆うこと。
+- 旧 fixture（`inkdrop-tokens.json`、6.1.5）と V-31 の証跡は、残す。
+
+**`tests/spec/syntax.json`**
+
+- `"rendered": "tests/fixtures/inkdrop-rendered-6.2.0.json"` を足す。
+- `inkdrop`（旧 fixture）は残す。`syntaxVars` と V-31 の照合に使う。
+
+**`tests/runtime/lib/syntax.mjs` の `judgeSyntax`**
+
+- (A) `qd13.implementation`（oracle と Obsidian の計算された色）は変えない。
+- (B) と (C) の Inkdrop の色だけを替える。
+  - run の切れ目と Inkdrop の色は、`rendered.themes[where.theme]` のビューの区間から取る。Source・Live は `editor`、Reading は `preview`。
+  - 前は、静的な区間の `--syntax-*` を Obsidian のパレットで解いた色を使っていた。
+- 違う run の記録には、実測のクラスと色（`inkdrop`、`inkdropColour`）を残す。
+- (C) のグループの `inks` は、実測の色で数える。
+- EXACT・MISMATCH・CONFLICT・DOMINATED の規則と、MISMATCH・DOMINATED で FAIL にすることは変えない。
+- E1〜E4 は、実測の色にそのまま含まれるので、個別の例外は書かない。
+
+**`tests/runtime/run.mjs`**
+
+- `rendered` を読み、`judgeSyntax` に渡す。
+- syn.self-test の合成の例にも、同じ形の `rendered` を足す。そして、実測の色で MISMATCH・DOMINATED が FAIL になることを確かめる例を足す。
+
+**`tests/spec/requirements.json` の `qd13.fidelity`**
+
+- verifiedBy の method の「Inkdrop 6.1.5's own token ranges」を、「Inkdrop 6.2.0's rendered colours (G7-1)」に替える。
+- verifiedBy の変更なので、承認が要る。
+
+**前後の比較**
+
+- 切り替えた後の Obsidian の runtime の結果（新しい run）を、G7-2 の予測（`g7-2/reclassify.json`）と、チェックごとに照らす。
+- 合わなければ、切り替えか分析のどちらかが誤りなので、受け入れない。
+
+**版の範囲**
+
+- 基準は Inkdrop 6.2.0 に限る。Inkdrop やテーマのパッケージが変われば、G7-1 の道具で測り直す。
+
+#### 6.135.4 ゲートへの予想（G7-2 の予測。切り替えの後に Obsidian で確かめる）
+
+**qd13.implementation**: 変わらない（Obsidian の色と oracle の比較で、期待値を使わない）。
+
+**qd13.fidelity の syn.<view>.<lang>.fidelity の DIFF の数**（1 つの環境あたり）:
+
+- SD: 49 → 48。syn.reading.rs.fidelity が PASS になる（16 文字の違いが 0 に）。
+- KD: 52 → 53。syn.reading.shell.fidelity が DIFF になる（0 → 1 文字）。
+
+**qd13.fidelity の syn.<view>.classes**:
+
+- SD: 3 つのビューとも PASS のまま。
+- KD:
+  - syn.source.classes・syn.live.classes は PASS のまま。
+  - syn.reading.classes は、要素のグループが MISMATCH 4 で FAIL になる（デスクトップ）。
+  - モバイルは、(C) のグループを作り直していないので予想に留まる。違う文字の数はデスクトップと同じ。
+
+**リリースゲート**（1.14.5）:
+
+- qd13.fidelity|solarized-dark は DIFF のまま。
+- qd13.fidelity|kanagawa-dragon は DIFF から FAIL になる。
+- PASS 132、DIFF 2 → 1、FAIL 0 → 1、NO RESULT 4。数える単位は増えず、NOT MET のまま。
+- CSS の候補 C1・C3 を入れれば、KD の MISMATCH 4 は 0 になる見込み（§6.135.5）。
+
+#### 6.135.5 CSS の候補の影響範囲（今回は変えない）
+
+数はデスクトップ・テストのノート・文字。上限の意味は §6.133.5 と同じ。グループの内訳は `g7-2/groups.txt`。
+
+**C1. Reading view のコードの地の色**（E4、KD Reading の MISMATCH 3 つ）
+
+- 変えるもの:
+  - `mapping/markdown.css` の Reading の `--code-normal`（今は `--ink-mde-preview-codeblock-text-color` = `--ink-text-color`）
+  - `components/syntax.css` で sh の「Inkdrop では素の文字」を `--ink-mde-preview-codeblock-text-color` で塗っている 3 つの規則（punctuation、file-descriptor・for-or-select）
+- 案 a:
+  - 両方を、Inkdrop と同じ `--ink-mde-preview-inline-code-text-color` にする。
+  - SD は値が同じ（neutral-400）で、見た目は変わらない見込み。
+  - KD は rgba(197, 201, 197, 0.9) → rgb(200, 192, 146)。
+  - 地の色を使う KD Reading の文字で、Inkdrop の色が rgb(200, 192, 146) の 54 文字が合う。今は不透明度のため 0 文字。
+  - sh の 3 グループ（9 文字）が EXACT になる。
+  - 悪化はない（今そこで合っている文字はない）。
+- 案 b:
+  - sh の 3 規則だけを案 a にする。
+  - 地の色は不透明な rgb(197, 201, 197)（`--ink-syntax-variable-name-color` と同じ値）にする。
+  - 合うのは 214 文字。Obsidian が素の文字にするところの多くは、Inkdrop では変数名なので。
+  - ただし、Inkdrop がトークンなしで描く文字（KD の 59 文字）の色からは離れる。
+- 影響:
+  - KD の Reading view のすべてのコードブロックの、Prism がトークンにしない文字（識別子が主）。
+  - 編集ビューと、インラインコードは変わらない。
+  - 一般のノートでも、識別子が多いほど案 b の方が Inkdrop に近く、記号・素の文字が多いほど案 a が近い。
+  - 読みやすさは、どちらも今の色との差が小さい（明るさがほぼ同じ）。
+
+**C2. Reading view の言語ごとの地の色**（§6.19 の開いた選択）
+
+- 変えるもの: `components/syntax.css` に `code.language-<名前>` ごとの `--code-normal`（または color）を足す。
+
+| 言語 | SD の最多の Inkdrop の色（上限） | KD の最多の Inkdrop の色（上限） |
+|---|---|---|
+| js | variable-name 100,122,130（+33） | 197,201,197（+33） |
+| ts | 42,162,152（property-name など、+36） | 197,201,197（+37） |
+| python | variable-name（+40） | 197,201,197（+42） |
+| css | atom 211,54,130（+14） | atom 183,146,123（+14） |
+| go | variable-name（+14） | 197,201,197（+19） |
+| sql | 42,162,152（name、+32） | 197,201,197（+32） |
+| sh・rust・yaml・html・markdown | SD は今の地の色で合う（+0） | sh・rust は 200,192,146（+24・+19）、ほかは 197,201,197 |
+
+- 影響:
+  - その言語の Reading view のトークンのない文字のすべて。
+  - js・python・go は識別子が主なので、一般のコードでも変数名の色がふさわしい見込み。
+  - ts・sql の SD の候補（cyan）は、テストのノートでは property-name と name が多いためで、一般のコードで同じとは限らない（変数名の色との比較が要る）。
+  - rust の SD の地の色は、rs（色付けなし）と合わせて今のままでよい。
+  - Reading のこの候補は、C1 の地の色と重なるので、C1 と一緒に決める。
+
+**C3. KD の markdown の list mark**（E3、KD Reading の MISMATCH 1 つ）
+
+- 変えるもの: `components/syntax.css` に、`:is(code.language-markdown, code.language-md) .token.list.punctuation { color: var(--ink-md-list-mark-color) }` を、今の markdown の punctuation の規則（processing-instruction）より詳しいセレクタで足す。
+- 影響:
+  - Reading view の markdown・md のブロックのリストの印。
+  - SD は同じ色（green-500）で、見た目は変わらない。KD は dragon-green2 → dragonTeal。
+  - Inkdrop は入れ子のリストの印を別の色（`-2`・`-3`）にするが、Prism のクラスでは深さを分けられないので、入れ子の分は今のセレクタでは合わない。
+  - 編集ビューでは、印は `cm-variable-2` のグループ（KD は 53 文字のうち 42 文字が rgb(197, 201, 197)）に入っていて、色の選び直しでは直らない。
+
+**C4. SD の編集ビューの `cm-atom`**
+
+- 変えるもの: `components/syntax.css` の `.cm-hmd-codeblock.cm-atom`（今は `--ink-syntax-atom-color`）。
+- Inkdrop の色の内訳（SD）:
+  - cyan 54 文字: yaml・yml のキー、rust の型名（i32、str）
+  - 今の atom の色 34 文字: true・false、css の色と atom
+  - null・nil 14 文字、undefined 1、`&amp;` 1
+- cyan にすると、上限で 20 文字直る。代わりに、すべての言語の真偽値・css の値・null が cyan になる。一般のノートでは真偽値を区別しにくくなるので、勧めない。
+- KD は、どの色でも直らない（+0）。
+
+### 6.136 次の作業
+
+§6.135 の独立レビュー。承認された後に、次を行う。
+
+1. 案 A の切り替え（§6.135.3）
+2. CSS の候補（C1〜C3）の実装と、Obsidian での検証

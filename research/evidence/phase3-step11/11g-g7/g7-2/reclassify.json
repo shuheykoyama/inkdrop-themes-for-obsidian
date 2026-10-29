@@ -26,6 +26,11 @@
     "before": 17,
     "now": 17
    },
+   "ambiguous": {
+    "runs": 222,
+    "chars": 268,
+    "notInvariant": []
+   },
    "both": {
     "resolved": 0,
     "still": 716,
@@ -216,6 +221,26 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 6
+     },
+     "text": {
+      "rgb(88, 110, 116)": {
+       "js:tok-line-comment": "//linecomment",
+       "js:tok-block-comment": "/*blockcomment*/",
+       "python:tok-line-comment": "#comment",
+       "css:tok-block-comment": "/*comment*/",
+       "html:tok-block-comment": "<!--comment-->",
+       "sh:tok-comment": "#comment",
+       "go:tok-line-comment": "//comment",
+       "rust:tok-line-comment": "//comment",
+       "yaml:tok-line-comment": "#comment",
+       "sql:tok-line-comment": "--comment"
+      },
+      "rgb(133, 153, 0)": {
+       "markdown:tok-processing-instruction": "``"
+      },
+      "rgb(173, 184, 184)": {
+       "markdown:tok-monospace": "code"
+      }
      }
     },
     {
@@ -254,6 +279,48 @@
       "rust": 3,
       "yaml": 4,
       "yml": 4
+     },
+     "text": {
+      "rgb(133, 153, 0)": {
+       "js:tok-module-keyword": "importfrom",
+       "js:tok-definition-keyword": "constletclassextendsfunction",
+       "js:tok-control-keyword": "returnifreturn",
+       "ts:tok-definition-keyword": "interfacetypeenumfunctionconst",
+       "ts:tok-module-keyword": "export",
+       "ts:tok-control-keyword": "return",
+       "ts:tok-operator-keyword": "as",
+       "python:tok-module-keyword": "importimport",
+       "python:tok-definition-keyword": "fromclassdef",
+       "python:tok-control-keyword": "ifreturn",
+       "python:tok-operator-keyword": "isnotand",
+       "sh:tok-keyword": "exportifthenfiforindodone",
+       "go:tok-module-keyword": "packageimport",
+       "go:tok-definition-keyword": "typestructfunc",
+       "go:tok-control-keyword": "return",
+       "rust:tok-module-keyword": "use",
+       "rust:tok-definition-keyword": "structfnlet",
+       "sql:tok-keyword": "SELECTASCOUNTFROMWHEREANDLIKEGROUPBYORDERBYDESC",
+       "javascript:tok-definition-keyword": "const",
+       "typescript:tok-definition-keyword": "function",
+       "typescript:tok-control-keyword": "return",
+       "shell:tok-keyword": "done",
+       "zsh:tok-keyword": "forindodone"
+      },
+      "rgb(211, 54, 130)": {
+       "js:tok-atom": "super",
+       "js:tok-self": "thisthis",
+       "python:tok-bool": "True",
+       "css:tok-modifier": "!important",
+       "rust:tok-modifier": "mut"
+      },
+      "rgb(131, 148, 149)": {
+       "python:tok-null": "NoneNoneNone",
+       "yaml:tok-content": "true",
+       "yml:tok-content": "true"
+      },
+      "rgb(42, 162, 152)": {
+       "go:tok-name": "intinterror"
+      }
      }
     },
     {
@@ -307,6 +374,87 @@
       "py": 23,
       "rs": 19,
       "md": 32
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "js:tok-brace": "{}{{}{}}{}",
+       "js:tok-separator": ";,,,;;;;;;,,;;",
+       "js:tok-paren": "()()()()()(())()",
+       "ts:tok-brace": "{}{}{{}}",
+       "ts:tok-punctuation": ":::::::",
+       "ts:tok-separator": ";;,,,;;",
+       "ts:tok-paren": "()",
+       "python:tok-paren": "()()(())",
+       "python:tok-separator": ",,,,,,",
+       "python:tok-brace": "{}",
+       "css:tok-paren": "()()",
+       "css:tok-punctuation": "::::::",
+       "css:tok-brace": "{{}}",
+       "css:tok-separator": ",;;,;;",
+       "json:tok-brace": "{}",
+       "json:tok-separator": ":,:,:,:,:,,:",
+       "json:tok-square-bracket": "[]",
+       "go:tok-brace": "{}{}",
+       "go:tok-separator": ",,,,,",
+       "go:tok-paren": "()()()",
+       "rust:tok-separator": "::::;,,,::;,;,,;",
+       "rust:tok-brace": "{}{}",
+       "rust:tok-paren": "()()()()()(())",
+       "sql:tok-name": "idnamelabelusersuuuidname",
+       "javascript:tok-separator": ";;",
+       "javascript:tok-paren": "()",
+       "typescript:tok-paren": "()",
+       "typescript:tok-punctuation": "::",
+       "typescript:tok-brace": "{}",
+       "typescript:tok-separator": ";",
+       "md:tok-link": "a"
+      },
+      "rgb(109, 114, 197)": {
+       "js:tok-deref-operator": ".....",
+       "ts:tok-deref-operator": ".",
+       "css:tok-logic-operator": ">",
+       "css:tok-arithmetic-operator": "-",
+       "html:tok-definition-operator": "===",
+       "rust:tok-operator": "&",
+       "javascript:tok-deref-operator": "."
+      },
+      "rgb(131, 148, 149)": {
+       "python:-": "::::",
+       "css:-": "::",
+       "html:tok-content": "linktext",
+       "sh:-": "[];|hi>/dev/null>&1f*.txt;;",
+       "rust:-": ":::.",
+       "yaml:tok-content": "demoplainvalue",
+       "markdown:tok-content": "Some,and.",
+       "bash:-": "|x",
+       "shell:-": ";",
+       "zsh:-": "f*.md;;",
+       "md:tok-content": "and"
+      },
+      "rgb(173, 184, 184)": {
+       "py:tok-definition-keyword": "def",
+       "py:tok-variable-name tok-definition": "area",
+       "py:tok-paren": "()()",
+       "py:tok-variable-name": "rr",
+       "py:-": ":",
+       "py:tok-control-keyword": "return",
+       "py:tok-variable-name tok-function": "len",
+       "rs:tok-definition-keyword": "fnlet",
+       "rs:tok-variable-name tok-definition": "mainx",
+       "rs:tok-paren": "()",
+       "rs:tok-brace": "{}",
+       "rs:tok-definition-operator": "=",
+       "rs:tok-float": "2.0",
+       "rs:tok-separator": ";",
+       "md:tok-strong": "bold"
+      },
+      "rgb(133, 153, 0)": {
+       "md:tok-strong tok-processing-instruction": "****",
+       "md:tok-link tok-processing-instruction": "[]()"
+      },
+      "rgb(179, 134, 0)": {
+       "md:tok-link tok-url": "https://example.com"
+      }
      }
     },
     {
@@ -347,6 +495,34 @@
       "python": 7,
       "css": 6,
       "rust": 5
+     },
+     "text": {
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name tok-definition": "readFileanswerratiooknoneresizegreetname",
+       "ts:tok-variable-name tok-definition": "movepdxnext",
+       "python:tok-variable-name tok-definition": "greet",
+       "sh:tok-variable-name tok-definition": "NAMEPATH$HOME$PATH$NAME${NAME}$f",
+       "rust:tok-variable-name tok-definition": "mainmap",
+       "javascript:tok-variable-name tok-definition": "s",
+       "typescript:tok-variable-name tok-definition": "idv",
+       "bash:tok-variable-name tok-definition": "$HOME",
+       "shell:tok-variable-name tok-definition": "$FILE",
+       "zsh:tok-variable-name tok-definition": "$f"
+      },
+      "rgb(202, 76, 22)": {
+       "js:tok-class-name": "Shape",
+       "python:tok-class-name": "Greeter"
+      },
+      "rgb(39, 139, 211)": {
+       "ts:tok-name tok-definition": "PointColor"
+      },
+      "rgb(42, 162, 152)": {
+       "ts:tok-property-name": "RedGreen",
+       "rust:tok-name": "Point"
+      },
+      "rgb(133, 153, 0)": {
+       "css:tok-definition-keyword": "@media"
+      }
      }
     },
     {
@@ -371,6 +547,26 @@
      "gainIfBest": 0,
      "byFence": {
       "html": 32
+     },
+     "text": {
+      "rgb(179, 134, 0)": {
+       "js:tok-string": "\"fs\"\"world\"",
+       "python:tok-string": "\"\"\"Docstring.\"\"\"",
+       "python:tok-string tok-special": "f\"hi\"",
+       "css:tok-string": "\"Inter\"",
+       "json:tok-string": "\"demo\"\"a\"\"b\"",
+       "sh:tok-string": "\"world\"\"/bin:\"\"\"\"hi\"\"\"",
+       "go:tok-string": "\"fmt\"\"moved\"",
+       "rust:tok-string": "\"one\"\"{:?}{}\"",
+       "yaml:tok-string": "\"quoted\"",
+       "sql:tok-string": "'A%'",
+       "bash:tok-string": "\"\"",
+       "shell:tok-string": "\"\"",
+       "zsh:tok-string": "\"\""
+      },
+      "rgb(131, 148, 149)": {
+       "html:tok-attribute-value": "\"box\"\"main\"\"https://example.com\""
+      }
      }
     },
     {
@@ -407,6 +603,35 @@
       "json": 1,
       "go": 1,
       "rust": 6
+     },
+     "text": {
+      "rgb(109, 114, 197)": {
+       "js:tok-definition-operator": "======",
+       "js:tok-arithmetic-operator": "*",
+       "js:tok-compare-operator": "!==",
+       "ts:tok-definition-operator": "==",
+       "ts:tok-logic-operator": "|",
+       "ts:tok-arithmetic-operator": "+",
+       "python:tok-definition-operator": "=",
+       "python:tok-compare-operator": ">",
+       "sh:tok-operator": "==",
+       "go:tok-update-operator": "+=",
+       "rust:tok-definition-operator": "=",
+       "sql:tok-operator": "*>",
+       "javascript:tok-definition-operator": "="
+      },
+      "rgb(131, 148, 149)": {
+       "ts:-": "?",
+       "python:-": "->",
+       "rust:-": "<><>"
+      },
+      "rgb(211, 54, 130)": {
+       "json:tok-number": "-",
+       "go:tok-modifier": "*"
+      },
+      "rgb(42, 162, 152)": {
+       "rust:tok-punctuation": "->"
+      }
      }
     },
     {
@@ -439,6 +664,27 @@
       "rust": 4,
       "yaml": 3,
       "yml": 1
+     },
+     "text": {
+      "rgb(211, 54, 130)": {
+       "js:tok-number": "421.5212",
+       "python:tok-number": "300x1F2.5",
+       "css:tok-number": "6000121002",
+       "json:tok-number": "30.5",
+       "sh:tok-number": "2",
+       "go:tok-number": "3.14",
+       "sql:tok-number": "21"
+      },
+      "rgb(131, 148, 149)": {
+       "css:tok-unit": "pxpx%em",
+       "rust:tok-integer": "1",
+       "rust:tok-float": "2.5",
+       "yaml:tok-content": "1.2",
+       "yml:tok-content": "3"
+      },
+      "rgb(109, 114, 197)": {
+       "go:tok-deref-operator": "..."
+      }
      }
     },
     {
@@ -481,6 +727,31 @@
       "rust": 12,
       "yaml": 35,
       "yml": 7
+     },
+     "text": {
+      "rgb(211, 54, 130)": {
+       "js:tok-bool": "true",
+       "css:tok-color": "#ff0000",
+       "css:tok-atom": "autosans-serif",
+       "json:tok-bool": "false",
+       "go:tok-bool": "true"
+      },
+      "rgb(131, 148, 149)": {
+       "js:tok-null": "null",
+       "json:tok-null": "null",
+       "go:tok-null": "nilnil"
+      },
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name": "undefined"
+      },
+      "rgb(179, 134, 0)": {
+       "html:tok-character": "&amp;"
+      },
+      "rgb(42, 162, 152)": {
+       "rust:tok-name": "i32i32stri32",
+       "yaml:tok-property-name tok-definition": "nameversionenableditemsanchorkeyref",
+       "yml:tok-property-name tok-definition": "counton"
+      }
      }
     },
     {
@@ -506,6 +777,17 @@
      "byFence": {
       "js": 3,
       "javascript": 3
+     },
+     "text": {
+      "rgb(179, 134, 0)": {
+       "js:tok-regexp": "/ab+c/g",
+       "js:tok-string tok-special": "`hi`",
+       "javascript:tok-string tok-special": "`x`"
+      },
+      "rgb(42, 162, 152)": {
+       "js:tok-brace": "${}",
+       "javascript:tok-brace": "${}"
+      }
      }
     },
     {
@@ -540,6 +822,31 @@
       "js": 5,
       "go": 25,
       "rust": 48
+     },
+     "text": {
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name": "BaseconsoleMath",
+       "python:tok-variable-name": "ostypingListBasenamecountnamecountnamename",
+       "go:tok-variable-name tok-definition": "mainpdx",
+       "go:tok-variable-name": "pdxfmtp",
+       "rust:tok-variable-name tok-definition": "HashMap",
+       "rust:tok-variable-name": "newmapmap",
+       "javascript:tok-variable-name": "yconsoles"
+      },
+      "rgb(39, 139, 211)": {
+       "js:tok-variable-name tok-function": "greet",
+       "go:tok-name tok-definition": "Point"
+      },
+      "rgb(42, 162, 152)": {
+       "go:tok-property-name": "XYMoveXPrintlnX",
+       "go:tok-name": "Point",
+       "rust:tok-property-name": "xy",
+       "rust:tok-name": "ResultStringHashMap",
+       "rust:tok-property-name tok-function": "insert"
+      },
+      "rgb(211, 54, 130)": {
+       "rust:tok-namespace": "stdcollectionsHashMap"
+      }
      }
     },
     {
@@ -558,7 +865,18 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "js:tok-property-name tok-definition": "constructorarea",
+       "js:tok-property-name": "sizesizelength",
+       "js:tok-property-name tok-function": "logmax",
+       "ts:tok-property-name tok-definition": "xlabelx",
+       "ts:tok-property-name": "x",
+       "css:tok-property-name": "max-widthcolormarginfont-familywidth",
+       "javascript:tok-property-name tok-function": "log"
+      }
+     }
     },
     {
      "sig": "cm-variable-2 @ rgb(100, 122, 130)",
@@ -596,6 +914,27 @@
       "yaml": 10,
       "sql": 9,
       "markdown": 5
+     },
+     "text": {
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name": "sizenamenamename",
+       "ts:tok-variable-name": "ppdxnext",
+       "python:tok-variable-name": "self",
+       "typescript:tok-variable-name": "v"
+      },
+      "rgb(211, 54, 130)": {
+       "yaml:tok-label-name": "&base*base"
+      },
+      "rgb(131, 148, 149)": {
+       "sql:-": "..",
+       "markdown:tok-list tok-content": "item"
+      },
+      "rgb(42, 162, 152)": {
+       "sql:tok-name": "agename"
+      },
+      "rgb(133, 153, 0)": {
+       "markdown:tok-list tok-processing-instruction": "-"
+      }
      }
     },
     {
@@ -620,6 +959,15 @@
      "gainIfBest": 0,
      "byFence": {
       "ts": 2
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "ts:tok-name": "numberstringstringnumberPointnumberPointPointPoint",
+       "typescript:tok-name": "numbernumber"
+      },
+      "rgb(39, 139, 211)": {
+       "ts:tok-name tok-definition": "Id"
+      }
      }
     },
     {
@@ -656,6 +1004,27 @@
       "html": 14,
       "yaml": 9,
       "yml": 2
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "ts:tok-punctuation": "...",
+       "yaml:tok-separator": "::::--:::",
+       "yml:tok-separator": "::"
+      },
+      "rgb(220, 49, 46)": {
+       "python:tok-meta": "@",
+       "sh:tok-meta": "#!/bin/sh",
+       "rust:tok-meta": "#",
+       "rust:tok-meta tok-square-bracket": "[]",
+       "rust:tok-meta tok-variable-name": "deriveDebug",
+       "rust:tok-meta tok-paren": "()"
+      },
+      "rgb(100, 122, 130)": {
+       "python:tok-variable-name": "decorator"
+      },
+      "rgb(131, 148, 149)": {
+       "html:tok-document-meta": "<!DOCTYPEhtml>"
+      }
      }
     },
     {
@@ -686,6 +1055,23 @@
       "python": 8,
       "css": 5,
       "rust": 2
+     },
+     "text": {
+      "rgb(100, 122, 130)": {
+       "python:tok-variable-name": "str",
+       "sh:tok-variable-name tok-standard": "echogrepcat",
+       "bash:tok-variable-name tok-standard": "lsgrep",
+       "shell:tok-variable-name tok-standard": "catecho",
+       "zsh:tok-variable-name tok-standard": "wc"
+      },
+      "rgb(39, 139, 211)": {
+       "python:tok-variable-name tok-function": "printlen",
+       "rust:tok-variable-name tok-function": "Ok"
+      },
+      "rgb(211, 54, 130)": {
+       "css:tok-deref-operator": "#",
+       "css:tok-label-name": "main"
+      }
      }
     },
     {
@@ -710,6 +1096,14 @@
      "gainIfBest": 0,
      "byFence": {
       "css": 1
+     },
+     "text": {
+      "rgb(131, 148, 149)": {
+       "css:-": "."
+      },
+      "rgb(202, 76, 22)": {
+       "css:tok-class-name": "card"
+      }
      }
     },
     {
@@ -728,7 +1122,13 @@
      "differing": 0,
      "bestColour": "rgb(39, 139, 211)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(39, 139, 211)": {
+       "css:tok-tag-name": "a",
+       "html:tok-tag-name": "divaadiv"
+      }
+     }
     },
     {
      "sig": "cm-variable-3 @ rgb(202, 76, 22)",
@@ -752,6 +1152,14 @@
      "gainIfBest": 0,
      "byFence": {
       "rust": 8
+     },
+     "text": {
+      "rgb(202, 76, 22)": {
+       "css:tok-class-name": "hoverbefore"
+      },
+      "rgb(42, 162, 152)": {
+       "rust:tok-macro-name": "println!"
+      }
      }
     },
     {
@@ -770,7 +1178,12 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "css:tok-operator-keyword": "calc"
+      }
+     }
     },
     {
      "sig": "cm-bracket cm-tag @ rgb(42, 162, 152)",
@@ -788,7 +1201,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "html:tok-angle-bracket": "<><></></>"
+      }
+     }
     },
     {
      "sig": "cm-attribute @ rgb(42, 162, 152)",
@@ -806,7 +1224,15 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "html:tok-attribute-name": "classidhiddenhref",
+       "sh:tok-attribute-name": "-n-c",
+       "bash:tok-attribute-name": "-la-c",
+       "zsh:tok-attribute-name": "-l"
+      }
+     }
     },
     {
      "sig": "cm-property cm-string @ rgb(42, 162, 152)",
@@ -824,7 +1250,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "json:tok-property-name": "\"name\"\"count\"\"ratio\"\"enabled\"\"tags\"\"empty\""
+      }
+     }
     },
     {
      "sig": "cm-punctuation @ rgb(42, 162, 152)",
@@ -848,6 +1279,14 @@
      "gainIfBest": 0,
      "byFence": {
       "sql": 1
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "sql:tok-punctuation": ",,"
+      },
+      "rgb(131, 148, 149)": {
+       "sql:-": ";"
+      }
      }
     },
     {
@@ -866,7 +1305,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "sql:tok-paren": "()"
+      }
+     }
     },
     {
      "sig": "cm-header cm-header-1 @ rgb(179, 134, 0)",
@@ -890,6 +1334,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 1
+     },
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-heading-1 tok-processing-instruction": "#"
+      },
+      "rgb(179, 134, 0)": {
+       "markdown:tok-heading-1": "Heading"
+      }
      }
     },
     {
@@ -908,7 +1360,13 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-emphasis tok-processing-instruction": "**",
+       "markdown:tok-emphasis": "emphasis"
+      }
+     }
     },
     {
      "sig": "cm-strong @ rgb(173, 184, 184)",
@@ -932,6 +1390,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 4
+     },
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-strong tok-processing-instruction": "****"
+      },
+      "rgb(173, 184, 184)": {
+       "markdown:tok-strong": "strong"
+      }
      }
     },
     {
@@ -956,6 +1422,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 2
+     },
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-list tok-link tok-processing-instruction": "[]"
+      },
+      "rgb(42, 162, 152)": {
+       "markdown:tok-list tok-link": "link"
+      }
      }
     },
     {
@@ -980,6 +1454,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 2
+     },
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-list tok-link tok-processing-instruction": "()"
+      },
+      "rgb(179, 134, 0)": {
+       "markdown:tok-list tok-link tok-url": "https://example.com"
+      }
      }
     }
    ],
@@ -1051,6 +1533,11 @@
     "before": 17,
     "now": 17
    },
+   "ambiguous": {
+    "runs": 222,
+    "chars": 268,
+    "notInvariant": []
+   },
    "both": {
     "resolved": 0,
     "still": 716,
@@ -1241,6 +1728,26 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 6
+     },
+     "text": {
+      "rgb(88, 110, 116)": {
+       "js:tok-line-comment": "//linecomment",
+       "js:tok-block-comment": "/*blockcomment*/",
+       "python:tok-line-comment": "#comment",
+       "css:tok-block-comment": "/*comment*/",
+       "html:tok-block-comment": "<!--comment-->",
+       "sh:tok-comment": "#comment",
+       "go:tok-line-comment": "//comment",
+       "rust:tok-line-comment": "//comment",
+       "yaml:tok-line-comment": "#comment",
+       "sql:tok-line-comment": "--comment"
+      },
+      "rgb(133, 153, 0)": {
+       "markdown:tok-processing-instruction": "``"
+      },
+      "rgb(173, 184, 184)": {
+       "markdown:tok-monospace": "code"
+      }
      }
     },
     {
@@ -1279,6 +1786,48 @@
       "rust": 3,
       "yaml": 4,
       "yml": 4
+     },
+     "text": {
+      "rgb(133, 153, 0)": {
+       "js:tok-module-keyword": "importfrom",
+       "js:tok-definition-keyword": "constletclassextendsfunction",
+       "js:tok-control-keyword": "returnifreturn",
+       "ts:tok-definition-keyword": "interfacetypeenumfunctionconst",
+       "ts:tok-module-keyword": "export",
+       "ts:tok-control-keyword": "return",
+       "ts:tok-operator-keyword": "as",
+       "python:tok-module-keyword": "importimport",
+       "python:tok-definition-keyword": "fromclassdef",
+       "python:tok-control-keyword": "ifreturn",
+       "python:tok-operator-keyword": "isnotand",
+       "sh:tok-keyword": "exportifthenfiforindodone",
+       "go:tok-module-keyword": "packageimport",
+       "go:tok-definition-keyword": "typestructfunc",
+       "go:tok-control-keyword": "return",
+       "rust:tok-module-keyword": "use",
+       "rust:tok-definition-keyword": "structfnlet",
+       "sql:tok-keyword": "SELECTASCOUNTFROMWHEREANDLIKEGROUPBYORDERBYDESC",
+       "javascript:tok-definition-keyword": "const",
+       "typescript:tok-definition-keyword": "function",
+       "typescript:tok-control-keyword": "return",
+       "shell:tok-keyword": "done",
+       "zsh:tok-keyword": "forindodone"
+      },
+      "rgb(211, 54, 130)": {
+       "js:tok-atom": "super",
+       "js:tok-self": "thisthis",
+       "python:tok-bool": "True",
+       "css:tok-modifier": "!important",
+       "rust:tok-modifier": "mut"
+      },
+      "rgb(131, 148, 149)": {
+       "python:tok-null": "NoneNoneNone",
+       "yaml:tok-content": "true",
+       "yml:tok-content": "true"
+      },
+      "rgb(42, 162, 152)": {
+       "go:tok-name": "intinterror"
+      }
      }
     },
     {
@@ -1332,6 +1881,87 @@
       "py": 23,
       "rs": 19,
       "md": 32
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "js:tok-brace": "{}{{}{}}{}",
+       "js:tok-separator": ";,,,;;;;;;,,;;",
+       "js:tok-paren": "()()()()()(())()",
+       "ts:tok-brace": "{}{}{{}}",
+       "ts:tok-punctuation": ":::::::",
+       "ts:tok-separator": ";;,,,;;",
+       "ts:tok-paren": "()",
+       "python:tok-paren": "()()(())",
+       "python:tok-separator": ",,,,,,",
+       "python:tok-brace": "{}",
+       "css:tok-paren": "()()",
+       "css:tok-punctuation": "::::::",
+       "css:tok-brace": "{{}}",
+       "css:tok-separator": ",;;,;;",
+       "json:tok-brace": "{}",
+       "json:tok-separator": ":,:,:,:,:,,:",
+       "json:tok-square-bracket": "[]",
+       "go:tok-brace": "{}{}",
+       "go:tok-separator": ",,,,,",
+       "go:tok-paren": "()()()",
+       "rust:tok-separator": "::::;,,,::;,;,,;",
+       "rust:tok-brace": "{}{}",
+       "rust:tok-paren": "()()()()()(())",
+       "sql:tok-name": "idnamelabelusersuuuidname",
+       "javascript:tok-separator": ";;",
+       "javascript:tok-paren": "()",
+       "typescript:tok-paren": "()",
+       "typescript:tok-punctuation": "::",
+       "typescript:tok-brace": "{}",
+       "typescript:tok-separator": ";",
+       "md:tok-link": "a"
+      },
+      "rgb(109, 114, 197)": {
+       "js:tok-deref-operator": ".....",
+       "ts:tok-deref-operator": ".",
+       "css:tok-logic-operator": ">",
+       "css:tok-arithmetic-operator": "-",
+       "html:tok-definition-operator": "===",
+       "rust:tok-operator": "&",
+       "javascript:tok-deref-operator": "."
+      },
+      "rgb(131, 148, 149)": {
+       "python:-": "::::",
+       "css:-": "::",
+       "html:tok-content": "linktext",
+       "sh:-": "[];|hi>/dev/null>&1f*.txt;;",
+       "rust:-": ":::.",
+       "yaml:tok-content": "demoplainvalue",
+       "markdown:tok-content": "Some,and.",
+       "bash:-": "|x",
+       "shell:-": ";",
+       "zsh:-": "f*.md;;",
+       "md:tok-content": "and"
+      },
+      "rgb(173, 184, 184)": {
+       "py:tok-definition-keyword": "def",
+       "py:tok-variable-name tok-definition": "area",
+       "py:tok-paren": "()()",
+       "py:tok-variable-name": "rr",
+       "py:-": ":",
+       "py:tok-control-keyword": "return",
+       "py:tok-variable-name tok-function": "len",
+       "rs:tok-definition-keyword": "fnlet",
+       "rs:tok-variable-name tok-definition": "mainx",
+       "rs:tok-paren": "()",
+       "rs:tok-brace": "{}",
+       "rs:tok-definition-operator": "=",
+       "rs:tok-float": "2.0",
+       "rs:tok-separator": ";",
+       "md:tok-strong": "bold"
+      },
+      "rgb(133, 153, 0)": {
+       "md:tok-strong tok-processing-instruction": "****",
+       "md:tok-link tok-processing-instruction": "[]()"
+      },
+      "rgb(179, 134, 0)": {
+       "md:tok-link tok-url": "https://example.com"
+      }
      }
     },
     {
@@ -1372,6 +2002,34 @@
       "python": 7,
       "css": 6,
       "rust": 5
+     },
+     "text": {
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name tok-definition": "readFileanswerratiooknoneresizegreetname",
+       "ts:tok-variable-name tok-definition": "movepdxnext",
+       "python:tok-variable-name tok-definition": "greet",
+       "sh:tok-variable-name tok-definition": "NAMEPATH$HOME$PATH$NAME${NAME}$f",
+       "rust:tok-variable-name tok-definition": "mainmap",
+       "javascript:tok-variable-name tok-definition": "s",
+       "typescript:tok-variable-name tok-definition": "idv",
+       "bash:tok-variable-name tok-definition": "$HOME",
+       "shell:tok-variable-name tok-definition": "$FILE",
+       "zsh:tok-variable-name tok-definition": "$f"
+      },
+      "rgb(202, 76, 22)": {
+       "js:tok-class-name": "Shape",
+       "python:tok-class-name": "Greeter"
+      },
+      "rgb(39, 139, 211)": {
+       "ts:tok-name tok-definition": "PointColor"
+      },
+      "rgb(42, 162, 152)": {
+       "ts:tok-property-name": "RedGreen",
+       "rust:tok-name": "Point"
+      },
+      "rgb(133, 153, 0)": {
+       "css:tok-definition-keyword": "@media"
+      }
      }
     },
     {
@@ -1396,6 +2054,26 @@
      "gainIfBest": 0,
      "byFence": {
       "html": 32
+     },
+     "text": {
+      "rgb(179, 134, 0)": {
+       "js:tok-string": "\"fs\"\"world\"",
+       "python:tok-string": "\"\"\"Docstring.\"\"\"",
+       "python:tok-string tok-special": "f\"hi\"",
+       "css:tok-string": "\"Inter\"",
+       "json:tok-string": "\"demo\"\"a\"\"b\"",
+       "sh:tok-string": "\"world\"\"/bin:\"\"\"\"hi\"\"\"",
+       "go:tok-string": "\"fmt\"\"moved\"",
+       "rust:tok-string": "\"one\"\"{:?}{}\"",
+       "yaml:tok-string": "\"quoted\"",
+       "sql:tok-string": "'A%'",
+       "bash:tok-string": "\"\"",
+       "shell:tok-string": "\"\"",
+       "zsh:tok-string": "\"\""
+      },
+      "rgb(131, 148, 149)": {
+       "html:tok-attribute-value": "\"box\"\"main\"\"https://example.com\""
+      }
      }
     },
     {
@@ -1432,6 +2110,35 @@
       "json": 1,
       "go": 1,
       "rust": 6
+     },
+     "text": {
+      "rgb(109, 114, 197)": {
+       "js:tok-definition-operator": "======",
+       "js:tok-arithmetic-operator": "*",
+       "js:tok-compare-operator": "!==",
+       "ts:tok-definition-operator": "==",
+       "ts:tok-logic-operator": "|",
+       "ts:tok-arithmetic-operator": "+",
+       "python:tok-definition-operator": "=",
+       "python:tok-compare-operator": ">",
+       "sh:tok-operator": "==",
+       "go:tok-update-operator": "+=",
+       "rust:tok-definition-operator": "=",
+       "sql:tok-operator": "*>",
+       "javascript:tok-definition-operator": "="
+      },
+      "rgb(131, 148, 149)": {
+       "ts:-": "?",
+       "python:-": "->",
+       "rust:-": "<><>"
+      },
+      "rgb(211, 54, 130)": {
+       "json:tok-number": "-",
+       "go:tok-modifier": "*"
+      },
+      "rgb(42, 162, 152)": {
+       "rust:tok-punctuation": "->"
+      }
      }
     },
     {
@@ -1464,6 +2171,27 @@
       "rust": 4,
       "yaml": 3,
       "yml": 1
+     },
+     "text": {
+      "rgb(211, 54, 130)": {
+       "js:tok-number": "421.5212",
+       "python:tok-number": "300x1F2.5",
+       "css:tok-number": "6000121002",
+       "json:tok-number": "30.5",
+       "sh:tok-number": "2",
+       "go:tok-number": "3.14",
+       "sql:tok-number": "21"
+      },
+      "rgb(131, 148, 149)": {
+       "css:tok-unit": "pxpx%em",
+       "rust:tok-integer": "1",
+       "rust:tok-float": "2.5",
+       "yaml:tok-content": "1.2",
+       "yml:tok-content": "3"
+      },
+      "rgb(109, 114, 197)": {
+       "go:tok-deref-operator": "..."
+      }
      }
     },
     {
@@ -1506,6 +2234,31 @@
       "rust": 12,
       "yaml": 35,
       "yml": 7
+     },
+     "text": {
+      "rgb(211, 54, 130)": {
+       "js:tok-bool": "true",
+       "css:tok-color": "#ff0000",
+       "css:tok-atom": "autosans-serif",
+       "json:tok-bool": "false",
+       "go:tok-bool": "true"
+      },
+      "rgb(131, 148, 149)": {
+       "js:tok-null": "null",
+       "json:tok-null": "null",
+       "go:tok-null": "nilnil"
+      },
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name": "undefined"
+      },
+      "rgb(179, 134, 0)": {
+       "html:tok-character": "&amp;"
+      },
+      "rgb(42, 162, 152)": {
+       "rust:tok-name": "i32i32stri32",
+       "yaml:tok-property-name tok-definition": "nameversionenableditemsanchorkeyref",
+       "yml:tok-property-name tok-definition": "counton"
+      }
      }
     },
     {
@@ -1531,6 +2284,17 @@
      "byFence": {
       "js": 3,
       "javascript": 3
+     },
+     "text": {
+      "rgb(179, 134, 0)": {
+       "js:tok-regexp": "/ab+c/g",
+       "js:tok-string tok-special": "`hi`",
+       "javascript:tok-string tok-special": "`x`"
+      },
+      "rgb(42, 162, 152)": {
+       "js:tok-brace": "${}",
+       "javascript:tok-brace": "${}"
+      }
      }
     },
     {
@@ -1565,6 +2329,31 @@
       "js": 5,
       "go": 25,
       "rust": 48
+     },
+     "text": {
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name": "BaseconsoleMath",
+       "python:tok-variable-name": "ostypingListBasenamecountnamecountnamename",
+       "go:tok-variable-name tok-definition": "mainpdx",
+       "go:tok-variable-name": "pdxfmtp",
+       "rust:tok-variable-name tok-definition": "HashMap",
+       "rust:tok-variable-name": "newmapmap",
+       "javascript:tok-variable-name": "yconsoles"
+      },
+      "rgb(39, 139, 211)": {
+       "js:tok-variable-name tok-function": "greet",
+       "go:tok-name tok-definition": "Point"
+      },
+      "rgb(42, 162, 152)": {
+       "go:tok-property-name": "XYMoveXPrintlnX",
+       "go:tok-name": "Point",
+       "rust:tok-property-name": "xy",
+       "rust:tok-name": "ResultStringHashMap",
+       "rust:tok-property-name tok-function": "insert"
+      },
+      "rgb(211, 54, 130)": {
+       "rust:tok-namespace": "stdcollectionsHashMap"
+      }
      }
     },
     {
@@ -1583,7 +2372,18 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "js:tok-property-name tok-definition": "constructorarea",
+       "js:tok-property-name": "sizesizelength",
+       "js:tok-property-name tok-function": "logmax",
+       "ts:tok-property-name tok-definition": "xlabelx",
+       "ts:tok-property-name": "x",
+       "css:tok-property-name": "max-widthcolormarginfont-familywidth",
+       "javascript:tok-property-name tok-function": "log"
+      }
+     }
     },
     {
      "sig": "cm-variable-2 @ rgb(100, 122, 130)",
@@ -1621,6 +2421,27 @@
       "yaml": 10,
       "sql": 9,
       "markdown": 5
+     },
+     "text": {
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name": "sizenamenamename",
+       "ts:tok-variable-name": "ppdxnext",
+       "python:tok-variable-name": "self",
+       "typescript:tok-variable-name": "v"
+      },
+      "rgb(211, 54, 130)": {
+       "yaml:tok-label-name": "&base*base"
+      },
+      "rgb(131, 148, 149)": {
+       "sql:-": "..",
+       "markdown:tok-list tok-content": "item"
+      },
+      "rgb(42, 162, 152)": {
+       "sql:tok-name": "agename"
+      },
+      "rgb(133, 153, 0)": {
+       "markdown:tok-list tok-processing-instruction": "-"
+      }
      }
     },
     {
@@ -1645,6 +2466,15 @@
      "gainIfBest": 0,
      "byFence": {
       "ts": 2
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "ts:tok-name": "numberstringstringnumberPointnumberPointPointPoint",
+       "typescript:tok-name": "numbernumber"
+      },
+      "rgb(39, 139, 211)": {
+       "ts:tok-name tok-definition": "Id"
+      }
      }
     },
     {
@@ -1681,6 +2511,27 @@
       "html": 14,
       "yaml": 9,
       "yml": 2
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "ts:tok-punctuation": "...",
+       "yaml:tok-separator": "::::--:::",
+       "yml:tok-separator": "::"
+      },
+      "rgb(220, 49, 46)": {
+       "python:tok-meta": "@",
+       "sh:tok-meta": "#!/bin/sh",
+       "rust:tok-meta": "#",
+       "rust:tok-meta tok-square-bracket": "[]",
+       "rust:tok-meta tok-variable-name": "deriveDebug",
+       "rust:tok-meta tok-paren": "()"
+      },
+      "rgb(100, 122, 130)": {
+       "python:tok-variable-name": "decorator"
+      },
+      "rgb(131, 148, 149)": {
+       "html:tok-document-meta": "<!DOCTYPEhtml>"
+      }
      }
     },
     {
@@ -1711,6 +2562,23 @@
       "python": 8,
       "css": 5,
       "rust": 2
+     },
+     "text": {
+      "rgb(100, 122, 130)": {
+       "python:tok-variable-name": "str",
+       "sh:tok-variable-name tok-standard": "echogrepcat",
+       "bash:tok-variable-name tok-standard": "lsgrep",
+       "shell:tok-variable-name tok-standard": "catecho",
+       "zsh:tok-variable-name tok-standard": "wc"
+      },
+      "rgb(39, 139, 211)": {
+       "python:tok-variable-name tok-function": "printlen",
+       "rust:tok-variable-name tok-function": "Ok"
+      },
+      "rgb(211, 54, 130)": {
+       "css:tok-deref-operator": "#",
+       "css:tok-label-name": "main"
+      }
      }
     },
     {
@@ -1735,6 +2603,14 @@
      "gainIfBest": 0,
      "byFence": {
       "css": 1
+     },
+     "text": {
+      "rgb(131, 148, 149)": {
+       "css:-": "."
+      },
+      "rgb(202, 76, 22)": {
+       "css:tok-class-name": "card"
+      }
      }
     },
     {
@@ -1753,7 +2629,13 @@
      "differing": 0,
      "bestColour": "rgb(39, 139, 211)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(39, 139, 211)": {
+       "css:tok-tag-name": "a",
+       "html:tok-tag-name": "divaadiv"
+      }
+     }
     },
     {
      "sig": "cm-variable-3 @ rgb(202, 76, 22)",
@@ -1777,6 +2659,14 @@
      "gainIfBest": 0,
      "byFence": {
       "rust": 8
+     },
+     "text": {
+      "rgb(202, 76, 22)": {
+       "css:tok-class-name": "hoverbefore"
+      },
+      "rgb(42, 162, 152)": {
+       "rust:tok-macro-name": "println!"
+      }
      }
     },
     {
@@ -1795,7 +2685,12 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "css:tok-operator-keyword": "calc"
+      }
+     }
     },
     {
      "sig": "cm-bracket cm-tag @ rgb(42, 162, 152)",
@@ -1813,7 +2708,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "html:tok-angle-bracket": "<><></></>"
+      }
+     }
     },
     {
      "sig": "cm-attribute @ rgb(42, 162, 152)",
@@ -1831,7 +2731,15 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "html:tok-attribute-name": "classidhiddenhref",
+       "sh:tok-attribute-name": "-n-c",
+       "bash:tok-attribute-name": "-la-c",
+       "zsh:tok-attribute-name": "-l"
+      }
+     }
     },
     {
      "sig": "cm-property cm-string @ rgb(42, 162, 152)",
@@ -1849,7 +2757,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "json:tok-property-name": "\"name\"\"count\"\"ratio\"\"enabled\"\"tags\"\"empty\""
+      }
+     }
     },
     {
      "sig": "cm-punctuation @ rgb(42, 162, 152)",
@@ -1873,6 +2786,14 @@
      "gainIfBest": 0,
      "byFence": {
       "sql": 1
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "sql:tok-punctuation": ",,"
+      },
+      "rgb(131, 148, 149)": {
+       "sql:-": ";"
+      }
      }
     },
     {
@@ -1891,7 +2812,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "sql:tok-paren": "()"
+      }
+     }
     },
     {
      "sig": "cm-header cm-header-1 @ rgb(179, 134, 0)",
@@ -1915,6 +2841,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 1
+     },
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-heading-1 tok-processing-instruction": "#"
+      },
+      "rgb(179, 134, 0)": {
+       "markdown:tok-heading-1": "Heading"
+      }
      }
     },
     {
@@ -1933,7 +2867,13 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-emphasis tok-processing-instruction": "**",
+       "markdown:tok-emphasis": "emphasis"
+      }
+     }
     },
     {
      "sig": "cm-strong @ rgb(173, 184, 184)",
@@ -1957,6 +2897,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 4
+     },
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-strong tok-processing-instruction": "****"
+      },
+      "rgb(173, 184, 184)": {
+       "markdown:tok-strong": "strong"
+      }
      }
     },
     {
@@ -1981,6 +2929,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 2
+     },
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-list tok-link tok-processing-instruction": "[]"
+      },
+      "rgb(42, 162, 152)": {
+       "markdown:tok-list tok-link": "link"
+      }
      }
     },
     {
@@ -2005,6 +2961,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 2
+     },
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-list tok-link tok-processing-instruction": "()"
+      },
+      "rgb(179, 134, 0)": {
+       "markdown:tok-list tok-link tok-url": "https://example.com"
+      }
      }
     }
    ],
@@ -2074,6 +3038,11 @@
    "checks": {
     "before": 15,
     "now": 14
+   },
+   "ambiguous": {
+    "runs": 79,
+    "chars": 159,
+    "notInvariant": []
    },
    "both": {
     "resolved": 19,
@@ -2237,7 +3206,13 @@
      "differing": 0,
      "bestColour": "rgb(88, 110, 116)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(88, 110, 116)": {
+       "js:tok-line-comment": "//linecomment",
+       "js:tok-block-comment": "/*blockcomment*/"
+      }
+     }
     },
     {
      "sig": "js keyword module @ rgb(133, 153, 0)",
@@ -2255,7 +3230,12 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "js:tok-module-keyword": "importfrom"
+      }
+     }
     },
     {
      "sig": "js imports punctuation @ rgb(42, 162, 152)",
@@ -2273,7 +3253,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "js:tok-brace": "{}"
+      }
+     }
     },
     {
      "sig": "js imports @ rgb(100, 122, 130)",
@@ -2291,7 +3276,12 @@
      "differing": 0,
      "bestColour": "rgb(100, 122, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name tok-definition": "readFile"
+      }
+     }
     },
     {
      "sig": "js string @ rgb(179, 134, 0)",
@@ -2309,7 +3299,12 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "js:tok-string": "\"fs\"\"world\""
+      }
+     }
     },
     {
      "sig": "js punctuation @ rgb(42, 162, 152)",
@@ -2334,6 +3329,19 @@
      "byFence": {
       "js": 5,
       "javascript": 1
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "js:tok-separator": ";,,,;;;;;;,,;;",
+       "js:tok-brace": "{{}{}}{}",
+       "js:tok-paren": "()()()()()(())()",
+       "javascript:tok-separator": ";;",
+       "javascript:tok-paren": "()"
+      },
+      "rgb(109, 114, 197)": {
+       "js:tok-deref-operator": ".....",
+       "javascript:tok-deref-operator": "."
+      }
      }
     },
     {
@@ -2358,6 +3366,16 @@
      "gainIfBest": 0,
      "byFence": {
       "js": 13
+     },
+     "text": {
+      "rgb(133, 153, 0)": {
+       "js:tok-definition-keyword": "constletclassextendsfunction",
+       "javascript:tok-definition-keyword": "const"
+      },
+      "rgb(211, 54, 130)": {
+       "js:tok-atom": "super",
+       "js:tok-self": "thisthis"
+      }
      }
     },
     {
@@ -2379,6 +3397,14 @@
      "byFence": {
       "js": 31,
       "javascript": 2
+     },
+     "text": {
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name tok-definition": "answerratiooknonere",
+       "js:tok-variable-name": "sizenamename",
+       "javascript:tok-variable-name tok-definition": "s",
+       "javascript:tok-variable-name": "s"
+      }
      }
     },
     {
@@ -2397,7 +3423,15 @@
      "differing": 0,
      "bestColour": "rgb(109, 114, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(109, 114, 197)": {
+       "js:tok-definition-operator": "======",
+       "js:tok-arithmetic-operator": "*",
+       "js:tok-compare-operator": "!==",
+       "javascript:tok-definition-operator": "="
+      }
+     }
     },
     {
      "sig": "js number @ rgb(211, 54, 130)",
@@ -2415,7 +3449,12 @@
      "differing": 0,
      "bestColour": "rgb(211, 54, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(211, 54, 130)": {
+       "js:tok-number": "421.5212"
+      }
+     }
     },
     {
      "sig": "js boolean @ rgb(211, 54, 130)",
@@ -2433,7 +3472,12 @@
      "differing": 0,
      "bestColour": "rgb(211, 54, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(211, 54, 130)": {
+       "js:tok-bool": "true"
+      }
+     }
     },
     {
      "sig": "js keyword nil null @ rgb(131, 148, 149)",
@@ -2451,7 +3495,12 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "js:tok-null": "null"
+      }
+     }
     },
     {
      "sig": "js regex regex-delimiter @ rgb(179, 134, 0)",
@@ -2469,7 +3518,12 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "js:tok-regexp": "//"
+      }
+     }
     },
     {
      "sig": "js language-regex regex regex-source @ rgb(179, 134, 0)",
@@ -2487,7 +3541,12 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "js:tok-regexp": "ab+c"
+      }
+     }
     },
     {
      "sig": "js regex regex-flags @ rgb(179, 134, 0)",
@@ -2505,7 +3564,12 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "js:tok-regexp": "g"
+      }
+     }
     },
     {
      "sig": "js class-name @ rgb(202, 76, 22)",
@@ -2529,6 +3593,14 @@
      "gainIfBest": 0,
      "byFence": {
       "js": 4
+     },
+     "text": {
+      "rgb(202, 76, 22)": {
+       "js:tok-class-name": "Shape"
+      },
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name": "Base"
+      }
      }
     },
     {
@@ -2557,6 +3629,17 @@
      "gainIfBest": 10,
      "byFence": {
       "js": 20
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "js:tok-property-name tok-definition": "constructorarea"
+      },
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name tok-definition": "greet"
+      },
+      "rgb(39, 139, 211)": {
+       "js:tok-variable-name tok-function": "greet"
+      }
      }
     },
     {
@@ -2575,7 +3658,12 @@
      "differing": 0,
      "bestColour": "rgb(100, 122, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name tok-definition": "sizename"
+      }
+     }
     },
     {
      "sig": "js property-access @ rgb(42, 162, 152)",
@@ -2593,7 +3681,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "js:tok-property-name": "sizesizelength"
+      }
+     }
     },
     {
      "sig": "js control-flow keyword @ rgb(133, 153, 0)",
@@ -2611,7 +3704,12 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "js:tok-control-keyword": "returnifreturn"
+      }
+     }
     },
     {
      "sig": "js keyword nil @ rgb(100, 122, 130)",
@@ -2629,7 +3727,12 @@
      "differing": 0,
      "bestColour": "rgb(100, 122, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name": "undefined"
+      }
+     }
     },
     {
      "sig": "js string template-punctuation template-string @ rgb(179, 134, 0)",
@@ -2647,7 +3750,13 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "js:tok-string tok-special": "``",
+       "javascript:tok-string tok-special": "``"
+      }
+     }
     },
     {
      "sig": "js string template-string @ rgb(179, 134, 0)",
@@ -2665,7 +3774,13 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "js:tok-string tok-special": "hi",
+       "javascript:tok-string tok-special": "x"
+      }
+     }
     },
     {
      "sig": "js interpolation interpolation-punctuation punctuation template-string @ rgb(42, 162, 152)",
@@ -2683,7 +3798,13 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "js:tok-brace": "${}",
+       "javascript:tok-brace": "${}"
+      }
+     }
     },
     {
      "sig": "js interpolation template-string @ rgb(100, 122, 130)",
@@ -2701,7 +3822,13 @@
      "differing": 0,
      "bestColour": "rgb(100, 122, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name": "name",
+       "javascript:tok-variable-name": "y"
+      }
+     }
     },
     {
      "sig": "js class-name console @ rgb(100, 122, 130)",
@@ -2719,7 +3846,13 @@
      "differing": 0,
      "bestColour": "rgb(100, 122, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name": "console",
+       "javascript:tok-variable-name": "console"
+      }
+     }
     },
     {
      "sig": "js function method property-access @ rgb(42, 162, 152)",
@@ -2737,7 +3870,13 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "js:tok-property-name tok-function": "logmax",
+       "javascript:tok-property-name tok-function": "log"
+      }
+     }
     },
     {
      "sig": "js class-name known-class-name @ rgb(100, 122, 130)",
@@ -2755,7 +3894,12 @@
      "differing": 0,
      "bestColour": "rgb(100, 122, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(100, 122, 130)": {
+       "js:tok-variable-name": "Math"
+      }
+     }
     },
     {
      "sig": "ts keyword @ rgb(133, 153, 0)",
@@ -2773,7 +3917,17 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "ts:tok-definition-keyword": "interfacetypeenumfunctionconst",
+       "ts:tok-module-keyword": "export",
+       "ts:tok-control-keyword": "return",
+       "ts:tok-operator-keyword": "as",
+       "typescript:tok-definition-keyword": "function",
+       "typescript:tok-control-keyword": "return"
+      }
+     }
     },
     {
      "sig": "ts class-name @ rgb(39, 139, 211)",
@@ -2791,7 +3945,12 @@
      "differing": 0,
      "bestColour": "rgb(39, 139, 211)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(39, 139, 211)": {
+       "ts:tok-name tok-definition": "PointId"
+      }
+     }
     },
     {
      "sig": "ts punctuation @ rgb(42, 162, 152)",
@@ -2815,6 +3974,19 @@
      "gainIfBest": 0,
      "byFence": {
       "ts": 1
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "ts:tok-brace": "{}{}{{}}",
+       "ts:tok-separator": ";;,,,;;",
+       "ts:tok-paren": "()",
+       "typescript:tok-paren": "()",
+       "typescript:tok-brace": "{}",
+       "typescript:tok-separator": ";"
+      },
+      "rgb(109, 114, 197)": {
+       "ts:tok-deref-operator": "."
+      }
      }
     },
     {
@@ -2844,6 +4016,22 @@
      "byFence": {
       "ts": 56,
       "typescript": 2
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "ts:tok-property-name tok-definition": "xlabelx",
+       "ts:tok-property-name": "RedGreenx",
+       "ts:tok-name": "PointPointPointPoint"
+      },
+      "rgb(39, 139, 211)": {
+       "ts:tok-name tok-definition": "Color"
+      },
+      "rgb(100, 122, 130)": {
+       "ts:tok-variable-name tok-definition": "pdxnext",
+       "ts:tok-variable-name": "ppdxnext",
+       "typescript:tok-variable-name tok-definition": "v",
+       "typescript:tok-variable-name": "v"
+      }
      }
     },
     {
@@ -2873,6 +4061,20 @@
      "byFence": {
       "ts": 11,
       "typescript": 2
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "ts:tok-punctuation": "::::::...:",
+       "typescript:tok-punctuation": "::"
+      },
+      "rgb(131, 148, 149)": {
+       "ts:-": "?"
+      },
+      "rgb(109, 114, 197)": {
+       "ts:tok-definition-operator": "==",
+       "ts:tok-logic-operator": "|",
+       "ts:tok-arithmetic-operator": "+"
+      }
      }
     },
     {
@@ -2891,7 +4093,13 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "ts:tok-name": "numberstringstringnumbernumber",
+       "typescript:tok-name": "numbernumber"
+      }
+     }
     },
     {
      "sig": "ts function @ rgb(100, 122, 130)",
@@ -2909,7 +4117,13 @@
      "differing": 0,
      "bestColour": "rgb(100, 122, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(100, 122, 130)": {
+       "ts:tok-variable-name tok-definition": "move",
+       "typescript:tok-variable-name tok-definition": "id"
+      }
+     }
     },
     {
      "sig": "python comment @ rgb(88, 110, 116)",
@@ -2927,7 +4141,12 @@
      "differing": 0,
      "bestColour": "rgb(88, 110, 116)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(88, 110, 116)": {
+       "python:tok-line-comment": "#comment"
+      }
+     }
     },
     {
      "sig": "python keyword @ rgb(133, 153, 0)",
@@ -2956,6 +4175,21 @@
      "byFence": {
       "python": 5,
       "py": 9
+     },
+     "text": {
+      "rgb(133, 153, 0)": {
+       "python:tok-module-keyword": "importimport",
+       "python:tok-definition-keyword": "fromclassdef",
+       "python:tok-control-keyword": "ifreturn",
+       "python:tok-operator-keyword": "isnotand"
+      },
+      "rgb(39, 139, 211)": {
+       "python:tok-variable-name tok-function": "print"
+      },
+      "rgb(131, 148, 149)": {
+       "py:tok-definition-keyword": "def",
+       "py:tok-control-keyword": "return"
+      }
      }
     },
     {
@@ -2980,6 +4214,14 @@
      "gainIfBest": 40,
      "byFence": {
       "python": 42
+     },
+     "text": {
+      "rgb(100, 122, 130)": {
+       "python:tok-variable-name": "ostypingListBaseselfnamecountnamecountname"
+      },
+      "rgb(131, 148, 149)": {
+       "py:tok-variable-name": "rr"
+      }
      }
     },
     {
@@ -3004,6 +4246,14 @@
      "gainIfBest": 8,
      "byFence": {
       "python": 9
+     },
+     "text": {
+      "rgb(220, 49, 46)": {
+       "python:tok-meta": "@"
+      },
+      "rgb(100, 122, 130)": {
+       "python:tok-variable-name": "decorator"
+      }
      }
     },
     {
@@ -3022,7 +4272,12 @@
      "differing": 0,
      "bestColour": "rgb(202, 76, 22)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(202, 76, 22)": {
+       "python:tok-class-name": "Greeter"
+      }
+     }
     },
     {
      "sig": "python punctuation @ rgb(42, 162, 152)",
@@ -3047,6 +4302,17 @@
      "byFence": {
       "python": 4,
       "py": 5
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "python:tok-paren": "()()(())",
+       "python:tok-separator": ",,,,,,"
+      },
+      "rgb(131, 148, 149)": {
+       "python:-": "::::",
+       "py:tok-paren": "()()",
+       "py:-": ":"
+      }
      }
     },
     {
@@ -3065,7 +4331,12 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "python:tok-string": "\"\"\"Docstring.\"\"\""
+      }
+     }
     },
     {
      "sig": "python function @ rgb(100, 122, 130)",
@@ -3089,6 +4360,14 @@
      "gainIfBest": 0,
      "byFence": {
       "py": 4
+     },
+     "text": {
+      "rgb(100, 122, 130)": {
+       "python:tok-variable-name tok-definition": "greet"
+      },
+      "rgb(131, 148, 149)": {
+       "py:tok-variable-name tok-definition": "area"
+      }
      }
     },
     {
@@ -3118,6 +4397,17 @@
      "byFence": {
       "python": 3,
       "py": 3
+     },
+     "text": {
+      "rgb(100, 122, 130)": {
+       "python:tok-variable-name": "str"
+      },
+      "rgb(39, 139, 211)": {
+       "python:tok-variable-name tok-function": "len"
+      },
+      "rgb(131, 148, 149)": {
+       "py:tok-variable-name tok-function": "len"
+      }
      }
     },
     {
@@ -3142,6 +4432,15 @@
      "gainIfBest": 0,
      "byFence": {
       "python": 2
+     },
+     "text": {
+      "rgb(109, 114, 197)": {
+       "python:tok-definition-operator": "=",
+       "python:tok-compare-operator": ">"
+      },
+      "rgb(131, 148, 149)": {
+       "python:-": "->"
+      }
      }
     },
     {
@@ -3160,7 +4459,12 @@
      "differing": 0,
      "bestColour": "rgb(211, 54, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(211, 54, 130)": {
+       "python:tok-number": "300x1F2.5"
+      }
+     }
     },
     {
      "sig": "python boolean @ rgb(211, 54, 130)",
@@ -3184,6 +4488,14 @@
      "gainIfBest": 8,
      "byFence": {
       "python": 12
+     },
+     "text": {
+      "rgb(131, 148, 149)": {
+       "python:tok-null": "NoneNoneNone"
+      },
+      "rgb(211, 54, 130)": {
+       "python:tok-bool": "True"
+      }
      }
     },
     {
@@ -3202,7 +4514,12 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "python:tok-string tok-special": "f\"hi\""
+      }
+     }
     },
     {
      "sig": "python interpolation punctuation string-interpolation @ rgb(42, 162, 152)",
@@ -3220,7 +4537,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "python:tok-brace": "{}"
+      }
+     }
     },
     {
      "sig": "python interpolation string-interpolation @ rgb(100, 122, 130)",
@@ -3238,7 +4560,12 @@
      "differing": 0,
      "bestColour": "rgb(100, 122, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(100, 122, 130)": {
+       "python:tok-variable-name": "name"
+      }
+     }
     },
     {
      "sig": "css comment @ rgb(88, 110, 116)",
@@ -3256,7 +4583,12 @@
      "differing": 0,
      "bestColour": "rgb(88, 110, 116)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(88, 110, 116)": {
+       "css:tok-block-comment": "/*comment*/"
+      }
+     }
     },
     {
      "sig": "css atrule rule @ rgb(133, 153, 0)",
@@ -3274,7 +4606,12 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "css:tok-definition-keyword": "@media"
+      }
+     }
     },
     {
      "sig": "css atrule punctuation @ rgb(42, 162, 152)",
@@ -3292,7 +4629,13 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "css:tok-paren": "()",
+       "css:tok-punctuation": ":"
+      }
+     }
     },
     {
      "sig": "css atrule property @ rgb(42, 162, 152)",
@@ -3310,7 +4653,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "css:tok-property-name": "max-width"
+      }
+     }
     },
     {
      "sig": "css atrule number @ rgb(211, 54, 130)",
@@ -3328,7 +4676,12 @@
      "differing": 0,
      "bestColour": "rgb(211, 54, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(211, 54, 130)": {
+       "css:tok-number": "600"
+      }
+     }
     },
     {
      "sig": "css atrule unit @ rgb(131, 148, 149)",
@@ -3346,7 +4699,12 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "css:tok-unit": "px"
+      }
+     }
     },
     {
      "sig": "css punctuation @ rgb(42, 162, 152)",
@@ -3364,7 +4722,15 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "css:tok-brace": "{{}}",
+       "css:tok-punctuation": "::::",
+       "css:tok-separator": ";;,;;",
+       "css:tok-paren": "()"
+      }
+     }
     },
     {
      "sig": "css class selector @ rgb(202, 76, 22)",
@@ -3388,6 +4754,14 @@
      "gainIfBest": 0,
      "byFence": {
       "css": 1
+     },
+     "text": {
+      "rgb(131, 148, 149)": {
+       "css:-": "."
+      },
+      "rgb(202, 76, 22)": {
+       "css:tok-class-name": "card"
+      }
      }
     },
     {
@@ -3406,7 +4780,12 @@
      "differing": 0,
      "bestColour": "rgb(109, 114, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(109, 114, 197)": {
+       "css:tok-logic-operator": ">"
+      }
+     }
     },
     {
      "sig": "css selector @ rgb(39, 139, 211)",
@@ -3424,7 +4803,12 @@
      "differing": 0,
      "bestColour": "rgb(39, 139, 211)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(39, 139, 211)": {
+       "css:tok-tag-name": "a"
+      }
+     }
     },
     {
      "sig": "css pseudo-class selector @ rgb(202, 76, 22)",
@@ -3448,6 +4832,14 @@
      "gainIfBest": 0,
      "byFence": {
       "css": 1
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "css:tok-punctuation": ":"
+      },
+      "rgb(202, 76, 22)": {
+       "css:tok-class-name": "hover"
+      }
      }
     },
     {
@@ -3466,7 +4858,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "css:tok-separator": ","
+      }
+     }
     },
     {
      "sig": "css id selector @ rgb(211, 54, 130)",
@@ -3484,7 +4881,13 @@
      "differing": 0,
      "bestColour": "rgb(211, 54, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(211, 54, 130)": {
+       "css:tok-deref-operator": "#",
+       "css:tok-label-name": "main"
+      }
+     }
     },
     {
      "sig": "css pseudo-element selector @ rgb(202, 76, 22)",
@@ -3508,6 +4911,14 @@
      "gainIfBest": 0,
      "byFence": {
       "css": 2
+     },
+     "text": {
+      "rgb(131, 148, 149)": {
+       "css:-": "::"
+      },
+      "rgb(202, 76, 22)": {
+       "css:tok-class-name": "before"
+      }
      }
     },
     {
@@ -3526,7 +4937,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "css:tok-property-name": "colormarginfont-familywidth"
+      }
+     }
     },
     {
      "sig": "css color hexcode @ rgb(211, 54, 130)",
@@ -3544,7 +4960,12 @@
      "differing": 0,
      "bestColour": "rgb(211, 54, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(211, 54, 130)": {
+       "css:tok-color": "#ff0000"
+      }
+     }
     },
     {
      "sig": "css number @ rgb(211, 54, 130)",
@@ -3562,7 +4983,12 @@
      "differing": 0,
      "bestColour": "rgb(211, 54, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(211, 54, 130)": {
+       "css:tok-number": "0121002"
+      }
+     }
     },
     {
      "sig": "css (bare text) @ rgb(131, 148, 149)",
@@ -3582,6 +5008,11 @@
      "gainIfBest": 14,
      "byFence": {
       "css": 14
+     },
+     "text": {
+      "rgb(211, 54, 130)": {
+       "css:tok-atom": "autosans-serif"
+      }
      }
     },
     {
@@ -3600,7 +5031,12 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "css:tok-unit": "px%em"
+      }
+     }
     },
     {
      "sig": "css string @ rgb(179, 134, 0)",
@@ -3618,7 +5054,12 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "css:tok-string": "\"Inter\""
+      }
+     }
     },
     {
      "sig": "css important @ rgb(211, 54, 130)",
@@ -3636,7 +5077,12 @@
      "differing": 0,
      "bestColour": "rgb(211, 54, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(211, 54, 130)": {
+       "css:tok-modifier": "!important"
+      }
+     }
     },
     {
      "sig": "css function @ rgb(133, 153, 0)",
@@ -3654,7 +5100,12 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "css:tok-operator-keyword": "calc"
+      }
+     }
     },
     {
      "sig": "css operator @ rgb(109, 114, 197)",
@@ -3672,7 +5123,12 @@
      "differing": 0,
      "bestColour": "rgb(109, 114, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(109, 114, 197)": {
+       "css:tok-arithmetic-operator": "-"
+      }
+     }
     },
     {
      "sig": "html comment @ rgb(88, 110, 116)",
@@ -3690,7 +5146,12 @@
      "differing": 0,
      "bestColour": "rgb(88, 110, 116)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(88, 110, 116)": {
+       "html:tok-block-comment": "<!--comment-->"
+      }
+     }
     },
     {
      "sig": "html doctype punctuation @ rgb(131, 148, 149)",
@@ -3708,7 +5169,12 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "html:tok-document-meta": "<!>"
+      }
+     }
     },
     {
      "sig": "html doctype doctype-tag @ rgb(131, 148, 149)",
@@ -3726,7 +5192,12 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "html:tok-document-meta": "DOCTYPE"
+      }
+     }
     },
     {
      "sig": "html doctype name @ rgb(131, 148, 149)",
@@ -3744,7 +5215,12 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "html:tok-document-meta": "html"
+      }
+     }
     },
     {
      "sig": "html punctuation tag @ rgb(42, 162, 152)",
@@ -3762,7 +5238,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "html:tok-angle-bracket": "<><></></>"
+      }
+     }
     },
     {
      "sig": "html tag @ rgb(39, 139, 211)",
@@ -3780,7 +5261,12 @@
      "differing": 0,
      "bestColour": "rgb(39, 139, 211)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(39, 139, 211)": {
+       "html:tok-tag-name": "divaadiv"
+      }
+     }
     },
     {
      "sig": "html attr-name tag @ rgb(42, 162, 152)",
@@ -3798,7 +5284,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "html:tok-attribute-name": "classidhiddenhref"
+      }
+     }
     },
     {
      "sig": "html attr-equals attr-value punctuation tag @ rgb(109, 114, 197)",
@@ -3816,7 +5307,12 @@
      "differing": 0,
      "bestColour": "rgb(109, 114, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(109, 114, 197)": {
+       "html:tok-definition-operator": "==="
+      }
+     }
     },
     {
      "sig": "html attr-value punctuation tag @ rgb(131, 148, 149)",
@@ -3834,7 +5330,12 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "html:tok-attribute-value": "\"\"\"\"\"\""
+      }
+     }
     },
     {
      "sig": "html attr-value tag @ rgb(131, 148, 149)",
@@ -3852,7 +5353,12 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "html:tok-attribute-value": "boxmainhttps://example.com"
+      }
+     }
     },
     {
      "sig": "html (bare text) @ rgb(131, 148, 149)",
@@ -3870,7 +5376,12 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "html:tok-content": "linktext"
+      }
+     }
     },
     {
      "sig": "html entity named-entity @ rgb(179, 134, 0)",
@@ -3888,7 +5399,12 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "html:tok-character": "&amp;"
+      }
+     }
     },
     {
      "sig": "json punctuation @ rgb(42, 162, 152)",
@@ -3906,7 +5422,14 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "json:tok-brace": "{}",
+       "json:tok-separator": ",,,,,,",
+       "json:tok-square-bracket": "[]"
+      }
+     }
     },
     {
      "sig": "json property @ rgb(42, 162, 152)",
@@ -3924,7 +5447,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "json:tok-property-name": "\"name\"\"count\"\"ratio\"\"enabled\"\"tags\"\"empty\""
+      }
+     }
     },
     {
      "sig": "json operator @ rgb(42, 162, 152)",
@@ -3942,7 +5470,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "json:tok-separator": "::::::"
+      }
+     }
     },
     {
      "sig": "json string @ rgb(179, 134, 0)",
@@ -3960,7 +5493,12 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "json:tok-string": "\"demo\"\"a\"\"b\""
+      }
+     }
     },
     {
      "sig": "json number @ rgb(211, 54, 130)",
@@ -3978,7 +5516,12 @@
      "differing": 0,
      "bestColour": "rgb(211, 54, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(211, 54, 130)": {
+       "json:tok-number": "3-0.5"
+      }
+     }
     },
     {
      "sig": "json boolean @ rgb(211, 54, 130)",
@@ -3996,7 +5539,12 @@
      "differing": 0,
      "bestColour": "rgb(211, 54, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(211, 54, 130)": {
+       "json:tok-bool": "false"
+      }
+     }
     },
     {
      "sig": "json keyword null @ rgb(131, 148, 149)",
@@ -4014,7 +5562,12 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "json:tok-null": "null"
+      }
+     }
     },
     {
      "sig": "sh important shebang @ rgb(220, 49, 46)",
@@ -4032,7 +5585,12 @@
      "differing": 0,
      "bestColour": "rgb(220, 49, 46)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(220, 49, 46)": {
+       "sh:tok-meta": "#!/bin/sh"
+      }
+     }
     },
     {
      "sig": "sh comment @ rgb(88, 110, 116)",
@@ -4050,7 +5608,12 @@
      "differing": 0,
      "bestColour": "rgb(88, 110, 116)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(88, 110, 116)": {
+       "sh:tok-comment": "#comment"
+      }
+     }
     },
     {
      "sig": "sh assign-left variable @ rgb(100, 122, 130)",
@@ -4068,7 +5631,12 @@
      "differing": 0,
      "bestColour": "rgb(100, 122, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(100, 122, 130)": {
+       "sh:tok-variable-name tok-definition": "NAME"
+      }
+     }
     },
     {
      "sig": "sh operator @ rgb(109, 114, 197)",
@@ -4093,6 +5661,15 @@
      "byFence": {
       "sh": 3,
       "bash": 1
+     },
+     "text": {
+      "rgb(109, 114, 197)": {
+       "sh:tok-operator": "=="
+      },
+      "rgb(131, 148, 149)": {
+       "sh:-": "|>>",
+       "bash:-": "|"
+      }
      }
     },
     {
@@ -4111,7 +5688,14 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "sh:tok-string": "\"world\"\"/bin:\"\"\"\"hi\"\"\"",
+       "bash:tok-string": "\"\"",
+       "shell:tok-string": "\"\""
+      }
+     }
     },
     {
      "sig": "sh builtin class-name @ rgb(100, 122, 130)",
@@ -4135,6 +5719,15 @@
      "gainIfBest": 0,
      "byFence": {
       "sh": 6
+     },
+     "text": {
+      "rgb(133, 153, 0)": {
+       "sh:tok-keyword": "export"
+      },
+      "rgb(100, 122, 130)": {
+       "sh:tok-variable-name tok-standard": "echo",
+       "shell:tok-variable-name tok-standard": "echo"
+      }
      }
     },
     {
@@ -4153,7 +5746,12 @@
      "differing": 0,
      "bestColour": "rgb(100, 122, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(100, 122, 130)": {
+       "sh:tok-variable-name tok-definition": "PATH"
+      }
+     }
     },
     {
      "sig": "sh constant environment string @ rgb(100, 122, 130)",
@@ -4171,7 +5769,13 @@
      "differing": 0,
      "bestColour": "rgb(100, 122, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(100, 122, 130)": {
+       "sh:tok-variable-name tok-definition": "$HOME$PATH",
+       "bash:tok-variable-name tok-definition": "$HOME"
+      }
+     }
     },
     {
      "sig": "sh keyword @ rgb(133, 153, 0)",
@@ -4189,7 +5793,13 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "sh:tok-keyword": "ifthenfiforindodone",
+       "shell:tok-keyword": "done"
+      }
+     }
     },
     {
      "sig": "sh punctuation @ rgb(131, 148, 149)",
@@ -4207,7 +5817,13 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "sh:-": "[];;;",
+       "shell:-": ";"
+      }
+     }
     },
     {
      "sig": "sh parameter variable @ rgb(42, 162, 152)",
@@ -4225,7 +5841,13 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "sh:tok-attribute-name": "-n-c",
+       "bash:tok-attribute-name": "-la-c"
+      }
+     }
     },
     {
      "sig": "sh string variable @ rgb(100, 122, 130)",
@@ -4243,7 +5865,13 @@
      "differing": 0,
      "bestColour": "rgb(100, 122, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(100, 122, 130)": {
+       "sh:tok-variable-name tok-definition": "$NAME${NAME}$f",
+       "shell:tok-variable-name tok-definition": "$FILE"
+      }
+     }
     },
     {
      "sig": "sh function @ rgb(100, 122, 130)",
@@ -4261,7 +5889,14 @@
      "differing": 0,
      "bestColour": "rgb(100, 122, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(100, 122, 130)": {
+       "sh:tok-variable-name tok-standard": "grepcat",
+       "bash:tok-variable-name tok-standard": "lsgrep",
+       "shell:tok-variable-name tok-standard": "cat"
+      }
+     }
     },
     {
      "sig": "sh (bare text) @ rgb(131, 148, 149)",
@@ -4297,6 +5932,26 @@
      "gainIfBest": 0,
      "byFence": {
       "zsh": 19
+     },
+     "text": {
+      "rgb(131, 148, 149)": {
+       "sh:-": "hi/dev/null*.txt",
+       "bash:-": "x",
+       "zsh:-": "f*.md;;"
+      },
+      "rgb(133, 153, 0)": {
+       "zsh:tok-keyword": "forindodone"
+      },
+      "rgb(100, 122, 130)": {
+       "zsh:tok-variable-name tok-standard": "wc",
+       "zsh:tok-variable-name tok-definition": "$f"
+      },
+      "rgb(42, 162, 152)": {
+       "zsh:tok-attribute-name": "-l"
+      },
+      "rgb(179, 134, 0)": {
+       "zsh:tok-string": "\"\""
+      }
      }
     },
     {
@@ -4315,7 +5970,12 @@
      "differing": 0,
      "bestColour": "rgb(211, 54, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(211, 54, 130)": {
+       "sh:tok-number": "2"
+      }
+     }
     },
     {
      "sig": "sh file-descriptor important @ rgb(131, 148, 149)",
@@ -4333,7 +5993,12 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "sh:-": "&1"
+      }
+     }
     },
     {
      "sig": "sh for-or-select variable @ rgb(131, 148, 149)",
@@ -4351,7 +6016,12 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "sh:-": "f"
+      }
+     }
     },
     {
      "sig": "go comment @ rgb(88, 110, 116)",
@@ -4369,7 +6039,12 @@
      "differing": 0,
      "bestColour": "rgb(88, 110, 116)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(88, 110, 116)": {
+       "go:tok-line-comment": "//comment"
+      }
+     }
     },
     {
      "sig": "go keyword @ rgb(133, 153, 0)",
@@ -4387,7 +6062,14 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "go:tok-module-keyword": "packageimport",
+       "go:tok-definition-keyword": "typestructfunc",
+       "go:tok-control-keyword": "return"
+      }
+     }
     },
     {
      "sig": "go (bare text) @ rgb(131, 148, 149)",
@@ -4415,6 +6097,19 @@
      "gainIfBest": 14,
      "byFence": {
       "go": 28
+     },
+     "text": {
+      "rgb(100, 122, 130)": {
+       "go:tok-variable-name tok-definition": "mainpdx",
+       "go:tok-variable-name": "pdxfmtp"
+      },
+      "rgb(39, 139, 211)": {
+       "go:tok-name tok-definition": "Point"
+      },
+      "rgb(42, 162, 152)": {
+       "go:tok-property-name": "XYXX",
+       "go:tok-name": "Point"
+      }
      }
     },
     {
@@ -4433,7 +6128,12 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "go:tok-string": "\"fmt\"\"moved\""
+      }
+     }
     },
     {
      "sig": "go punctuation @ rgb(42, 162, 152)",
@@ -4457,6 +6157,16 @@
      "gainIfBest": 0,
      "byFence": {
       "go": 3
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "go:tok-brace": "{}{}",
+       "go:tok-separator": ",,,,,",
+       "go:tok-paren": "()()()"
+      },
+      "rgb(109, 114, 197)": {
+       "go:tok-deref-operator": "..."
+      }
      }
     },
     {
@@ -4475,7 +6185,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "go:tok-name": "intinterror"
+      }
+     }
     },
     {
      "sig": "go operator @ rgb(109, 114, 197)",
@@ -4499,6 +6214,14 @@
      "gainIfBest": 0,
      "byFence": {
       "go": 1
+     },
+     "text": {
+      "rgb(211, 54, 130)": {
+       "go:tok-modifier": "*"
+      },
+      "rgb(109, 114, 197)": {
+       "go:tok-update-operator": "+="
+      }
      }
     },
     {
@@ -4517,7 +6240,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "go:tok-property-name": "MovePrintln"
+      }
+     }
     },
     {
      "sig": "go number @ rgb(211, 54, 130)",
@@ -4535,7 +6263,12 @@
      "differing": 0,
      "bestColour": "rgb(211, 54, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(211, 54, 130)": {
+       "go:tok-number": "3.14"
+      }
+     }
     },
     {
      "sig": "go boolean @ rgb(211, 54, 130)",
@@ -4559,6 +6292,14 @@
      "gainIfBest": 2,
      "byFence": {
       "go": 6
+     },
+     "text": {
+      "rgb(211, 54, 130)": {
+       "go:tok-bool": "true"
+      },
+      "rgb(131, 148, 149)": {
+       "go:tok-null": "nilnil"
+      }
      }
     },
     {
@@ -4577,7 +6318,12 @@
      "differing": 0,
      "bestColour": "rgb(88, 110, 116)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(88, 110, 116)": {
+       "rust:tok-line-comment": "//comment"
+      }
+     }
     },
     {
      "sig": "rust keyword @ rgb(133, 153, 0)",
@@ -4605,6 +6351,18 @@
      "gainIfBest": 0,
      "byFence": {
       "rust": 15
+     },
+     "text": {
+      "rgb(133, 153, 0)": {
+       "rust:tok-module-keyword": "use",
+       "rust:tok-definition-keyword": "structfnlet"
+      },
+      "rgb(42, 162, 152)": {
+       "rust:tok-name": "i32i32stri32"
+      },
+      "rgb(211, 54, 130)": {
+       "rust:tok-modifier": "mut"
+      }
      }
     },
     {
@@ -4623,7 +6381,12 @@
      "differing": 0,
      "bestColour": "rgb(211, 54, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(211, 54, 130)": {
+       "rust:tok-namespace": "stdcollections"
+      }
+     }
     },
     {
      "sig": "rust namespace punctuation @ rgb(42, 162, 152)",
@@ -4641,7 +6404,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "rust:tok-separator": "::::"
+      }
+     }
     },
     {
      "sig": "rust class-name @ rgb(42, 162, 152)",
@@ -4673,6 +6441,20 @@
      "gainIfBest": 0,
      "byFence": {
       "rust": 16
+     },
+     "text": {
+      "rgb(100, 122, 130)": {
+       "rust:tok-variable-name tok-definition": "HashMap"
+      },
+      "rgb(42, 162, 152)": {
+       "rust:tok-name": "ResultStringHashMap"
+      },
+      "rgb(211, 54, 130)": {
+       "rust:tok-namespace": "HashMap"
+      },
+      "rgb(39, 139, 211)": {
+       "rust:tok-variable-name tok-function": "Ok"
+      }
      }
     },
     {
@@ -4697,6 +6479,17 @@
      "gainIfBest": 0,
      "byFence": {
       "rust": 4
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "rust:tok-separator": ";,,,::;,;,,;",
+       "rust:tok-brace": "{}{}",
+       "rust:tok-paren": "()()()()()(())",
+       "rust:tok-punctuation": "->"
+      },
+      "rgb(131, 148, 149)": {
+       "rust:-": ":::."
+      }
      }
     },
     {
@@ -4715,7 +6508,15 @@
      "differing": 0,
      "bestColour": "rgb(220, 49, 46)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(220, 49, 46)": {
+       "rust:tok-meta": "#",
+       "rust:tok-meta tok-square-bracket": "[]",
+       "rust:tok-meta tok-variable-name": "deriveDebug",
+       "rust:tok-meta tok-paren": "()"
+      }
+     }
     },
     {
      "sig": "rust class-name type-definition @ rgb(42, 162, 152)",
@@ -4733,7 +6534,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "rust:tok-name": "Point"
+      }
+     }
     },
     {
      "sig": "rust (bare text) @ rgb(131, 148, 149)",
@@ -4761,6 +6567,24 @@
      "gainIfBest": 0,
      "byFence": {
       "rust": 11
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "rust:tok-property-name": "xy"
+      },
+      "rgb(100, 122, 130)": {
+       "rust:tok-variable-name tok-definition": "map",
+       "rust:tok-variable-name": "mapmap"
+      },
+      "rgb(131, 148, 149)": {
+       "rs:tok-definition-keyword": "fnlet",
+       "rs:tok-variable-name tok-definition": "mainx",
+       "rs:tok-paren": "()",
+       "rs:tok-brace": "{}",
+       "rs:tok-definition-operator": "=",
+       "rs:tok-float": "2.0",
+       "rs:tok-separator": ";"
+      }
      }
     },
     {
@@ -4779,7 +6603,12 @@
      "differing": 0,
      "bestColour": "rgb(100, 122, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(100, 122, 130)": {
+       "rust:tok-variable-name tok-definition": "main"
+      }
+     }
     },
     {
      "sig": "rust operator @ rgb(109, 114, 197)",
@@ -4803,6 +6632,15 @@
      "gainIfBest": 2,
      "byFence": {
       "rust": 4
+     },
+     "text": {
+      "rgb(131, 148, 149)": {
+       "rust:-": "<><>"
+      },
+      "rgb(109, 114, 197)": {
+       "rust:tok-operator": "&",
+       "rust:tok-definition-operator": "="
+      }
      }
     },
     {
@@ -4827,6 +6665,14 @@
      "gainIfBest": 0,
      "byFence": {
       "rust": 3
+     },
+     "text": {
+      "rgb(100, 122, 130)": {
+       "rust:tok-variable-name": "new"
+      },
+      "rgb(42, 162, 152)": {
+       "rust:tok-property-name tok-function": "insert"
+      }
      }
     },
     {
@@ -4845,7 +6691,12 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "rust:tok-string": "\"one\"\"{:?}{}\""
+      }
+     }
     },
     {
      "sig": "rust number @ rgb(131, 148, 149)",
@@ -4863,7 +6714,13 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "rust:tok-integer": "1",
+       "rust:tok-float": "2.5"
+      }
+     }
     },
     {
      "sig": "rust macro property @ rgb(42, 162, 152)",
@@ -4881,7 +6738,12 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "rust:tok-macro-name": "println!"
+      }
+     }
     },
     {
      "sig": "yaml comment @ rgb(88, 110, 116)",
@@ -4899,7 +6761,12 @@
      "differing": 0,
      "bestColour": "rgb(88, 110, 116)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(88, 110, 116)": {
+       "yaml:tok-line-comment": "#comment"
+      }
+     }
     },
     {
      "sig": "yaml atrule key @ rgb(42, 162, 152)",
@@ -4917,7 +6784,13 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "yaml:tok-property-name tok-definition": "nameversionenableditemsanchorkeyref",
+       "yml:tok-property-name tok-definition": "counton"
+      }
+     }
     },
     {
      "sig": "yaml punctuation @ rgb(42, 162, 152)",
@@ -4935,7 +6808,13 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "yaml:tok-separator": "::::--:::",
+       "yml:tok-separator": "::"
+      }
+     }
     },
     {
      "sig": "yaml (bare text) @ rgb(131, 148, 149)",
@@ -4953,7 +6832,12 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "yaml:tok-content": "demoplainvalue"
+      }
+     }
     },
     {
      "sig": "yaml number @ rgb(131, 148, 149)",
@@ -4971,7 +6855,13 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "yaml:tok-content": "1.2",
+       "yml:tok-content": "3"
+      }
+     }
     },
     {
      "sig": "yaml boolean important @ rgb(131, 148, 149)",
@@ -4989,7 +6879,13 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "yaml:tok-content": "true",
+       "yml:tok-content": "true"
+      }
+     }
     },
     {
      "sig": "yaml string @ rgb(179, 134, 0)",
@@ -5007,7 +6903,12 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "yaml:tok-string": "\"quoted\""
+      }
+     }
     },
     {
      "sig": "yaml important @ rgb(211, 54, 130)",
@@ -5025,7 +6926,12 @@
      "differing": 0,
      "bestColour": "rgb(211, 54, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(211, 54, 130)": {
+       "yaml:tok-label-name": "&base*base"
+      }
+     }
     },
     {
      "sig": "sql comment @ rgb(88, 110, 116)",
@@ -5043,7 +6949,12 @@
      "differing": 0,
      "bestColour": "rgb(88, 110, 116)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(88, 110, 116)": {
+       "sql:tok-line-comment": "--comment"
+      }
+     }
     },
     {
      "sig": "sql keyword @ rgb(133, 153, 0)",
@@ -5061,7 +6972,12 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "sql:tok-keyword": "SELECTASFROMWHEREGROUPBYORDERBYDESC"
+      }
+     }
     },
     {
      "sig": "sql (bare text) @ rgb(131, 148, 149)",
@@ -5081,6 +6997,11 @@
      "gainIfBest": 32,
      "byFence": {
       "sql": 32
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "sql:tok-name": "idnamelabelusersuuageunameidname"
+      }
      }
     },
     {
@@ -5105,6 +7026,15 @@
      "gainIfBest": 0,
      "byFence": {
       "sql": 3
+     },
+     "text": {
+      "rgb(42, 162, 152)": {
+       "sql:tok-punctuation": ",,",
+       "sql:tok-paren": "()"
+      },
+      "rgb(131, 148, 149)": {
+       "sql:-": "..;"
+      }
      }
     },
     {
@@ -5123,7 +7053,12 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "sql:tok-keyword": "COUNT"
+      }
+     }
     },
     {
      "sig": "sql operator @ rgb(109, 114, 197)",
@@ -5147,6 +7082,14 @@
      "gainIfBest": 5,
      "byFence": {
       "sql": 7
+     },
+     "text": {
+      "rgb(109, 114, 197)": {
+       "sql:tok-operator": "*>"
+      },
+      "rgb(133, 153, 0)": {
+       "sql:tok-keyword": "ANDLIKE"
+      }
      }
     },
     {
@@ -5165,7 +7108,12 @@
      "differing": 0,
      "bestColour": "rgb(211, 54, 130)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(211, 54, 130)": {
+       "sql:tok-number": "21"
+      }
+     }
     },
     {
      "sig": "sql string @ rgb(179, 134, 0)",
@@ -5183,7 +7131,12 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "sql:tok-string": "'A%'"
+      }
+     }
     },
     {
      "sig": "markdown important punctuation title @ rgb(133, 153, 0)",
@@ -5201,7 +7154,12 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-heading-1 tok-processing-instruction": "#"
+      }
+     }
     },
     {
      "sig": "markdown important title @ rgb(179, 134, 0)",
@@ -5219,7 +7177,12 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "markdown:tok-heading-1": "Heading"
+      }
+     }
     },
     {
      "sig": "markdown (bare text) @ rgb(131, 148, 149)",
@@ -5237,7 +7200,14 @@
      "differing": 0,
      "bestColour": "rgb(131, 148, 149)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(131, 148, 149)": {
+       "markdown:tok-content": "Some,and.",
+       "markdown:tok-list tok-content": "item",
+       "md:tok-content": "and"
+      }
+     }
     },
     {
      "sig": "markdown italic punctuation @ rgb(133, 153, 0)",
@@ -5255,7 +7225,12 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-emphasis tok-processing-instruction": "**"
+      }
+     }
     },
     {
      "sig": "markdown content italic @ rgb(133, 153, 0)",
@@ -5273,7 +7248,12 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-emphasis": "emphasis"
+      }
+     }
     },
     {
      "sig": "markdown bold punctuation @ rgb(133, 153, 0)",
@@ -5291,7 +7271,13 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-strong tok-processing-instruction": "****",
+       "md:tok-strong tok-processing-instruction": "****"
+      }
+     }
     },
     {
      "sig": "markdown bold content @ rgb(173, 184, 184)",
@@ -5309,7 +7295,13 @@
      "differing": 0,
      "bestColour": "rgb(173, 184, 184)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(173, 184, 184)": {
+       "markdown:tok-strong": "strong",
+       "md:tok-strong": "bold"
+      }
+     }
     },
     {
      "sig": "markdown code code-snippet keyword @ rgb(173, 184, 184)",
@@ -5333,6 +7325,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 2
+     },
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-processing-instruction": "``"
+      },
+      "rgb(173, 184, 184)": {
+       "markdown:tok-monospace": "code"
+      }
      }
     },
     {
@@ -5351,7 +7351,12 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-list tok-processing-instruction": "-"
+      }
+     }
     },
     {
      "sig": "markdown url @ rgb(133, 153, 0)",
@@ -5369,7 +7374,13 @@
      "differing": 0,
      "bestColour": "rgb(133, 153, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(133, 153, 0)": {
+       "markdown:tok-list tok-link tok-processing-instruction": "[]()",
+       "md:tok-link tok-processing-instruction": "[]()"
+      }
+     }
     },
     {
      "sig": "markdown content url @ rgb(42, 162, 152)",
@@ -5387,7 +7398,13 @@
      "differing": 0,
      "bestColour": "rgb(42, 162, 152)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(42, 162, 152)": {
+       "markdown:tok-list tok-link": "link",
+       "md:tok-link": "a"
+      }
+     }
     },
     {
      "sig": "markdown url @ rgb(179, 134, 0)",
@@ -5405,7 +7422,13 @@
      "differing": 0,
      "bestColour": "rgb(179, 134, 0)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(179, 134, 0)": {
+       "markdown:tok-list tok-link tok-url": "https://example.com",
+       "md:tok-link tok-url": "https://example.com"
+      }
+     }
     }
    ],
    "reach": {
@@ -5475,6 +7498,11 @@
    "checks": {
     "before": 17,
     "now": 17
+   },
+   "ambiguous": {
+    "runs": 222,
+    "chars": 268,
+    "notInvariant": []
    },
    "both": {
     "resolved": 0,
@@ -5660,6 +7688,11 @@
    "checks": {
     "before": 17,
     "now": 17
+   },
+   "ambiguous": {
+    "runs": 222,
+    "chars": 268,
+    "notInvariant": []
    },
    "both": {
     "resolved": 0,
@@ -5845,6 +7878,11 @@
     "before": 15,
     "now": 14
    },
+   "ambiguous": {
+    "runs": 79,
+    "chars": 159,
+    "notInvariant": []
+   },
    "both": {
     "resolved": 19,
     "still": 408,
@@ -6012,6 +8050,11 @@
     "before": 17,
     "now": 17
    },
+   "ambiguous": {
+    "runs": 209,
+    "chars": 243,
+    "notInvariant": []
+   },
    "both": {
     "resolved": 0,
     "still": 594,
@@ -6202,6 +8245,26 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 6
+     },
+     "text": {
+      "rgb(115, 125, 115)": {
+       "js:tok-line-comment": "//linecomment",
+       "js:tok-block-comment": "/*blockcomment*/",
+       "python:tok-line-comment": "#comment",
+       "css:tok-block-comment": "/*comment*/",
+       "html:tok-block-comment": "<!--comment-->",
+       "sh:tok-comment": "#comment",
+       "go:tok-line-comment": "//comment",
+       "rust:tok-line-comment": "//comment",
+       "yaml:tok-line-comment": "#comment",
+       "sql:tok-line-comment": "--comment"
+      },
+      "rgb(137, 153, 122)": {
+       "markdown:tok-processing-instruction": "``"
+      },
+      "rgb(200, 192, 146)": {
+       "markdown:tok-monospace": "code"
+      }
      }
     },
     {
@@ -6238,6 +8301,48 @@
       "go": 11,
       "yaml": 4,
       "yml": 4
+     },
+     "text": {
+      "rgb(138, 147, 168)": {
+       "js:tok-module-keyword": "importfrom",
+       "js:tok-definition-keyword": "constletclassextendsfunction",
+       "js:tok-control-keyword": "returnifreturn",
+       "ts:tok-definition-keyword": "interfacetypeenumfunctionconst",
+       "ts:tok-module-keyword": "export",
+       "ts:tok-control-keyword": "return",
+       "ts:tok-operator-keyword": "as",
+       "python:tok-module-keyword": "importimport",
+       "python:tok-definition-keyword": "fromclassdef",
+       "python:tok-control-keyword": "ifreturn",
+       "python:tok-operator-keyword": "isnotand",
+       "css:tok-modifier": "!important",
+       "sh:tok-keyword": "exportifthenfiforindodone",
+       "go:tok-module-keyword": "packageimport",
+       "go:tok-definition-keyword": "typestructfunc",
+       "go:tok-control-keyword": "return",
+       "rust:tok-module-keyword": "use",
+       "rust:tok-definition-keyword": "structfnlet",
+       "rust:tok-modifier": "mut",
+       "sql:tok-keyword": "SELECTASCOUNTFROMWHEREANDLIKEGROUPBYORDERBYDESC",
+       "javascript:tok-definition-keyword": "const",
+       "typescript:tok-definition-keyword": "function",
+       "typescript:tok-control-keyword": "return",
+       "shell:tok-keyword": "done",
+       "zsh:tok-keyword": "forindodone"
+      },
+      "rgb(183, 146, 123)": {
+       "js:tok-atom": "super",
+       "python:tok-null": "NoneNoneNone",
+       "python:tok-bool": "True"
+      },
+      "rgb(196, 116, 110)": {
+       "js:tok-self": "thisthis"
+      },
+      "rgb(197, 201, 197)": {
+       "go:tok-name": "intinterror",
+       "yaml:tok-content": "true",
+       "yml:tok-content": "true"
+      }
      }
     },
     {
@@ -6294,6 +8399,89 @@
       "py": 23,
       "rs": 19,
       "md": 32
+     },
+     "text": {
+      "rgb(158, 155, 148)": {
+       "js:tok-brace": "{}{{}{}}{}",
+       "js:tok-separator": ";,,,;;;;;;,,;;",
+       "js:tok-paren": "()()()()()(())()",
+       "ts:tok-brace": "{}{}{{}}",
+       "ts:tok-punctuation": ":::::::",
+       "ts:tok-separator": ";;,,,;;",
+       "ts:tok-paren": "()",
+       "python:tok-paren": "()()(())",
+       "python:tok-separator": ",,,,,,",
+       "python:tok-brace": "{}",
+       "css:tok-paren": "()()",
+       "css:tok-punctuation": "::::::",
+       "css:tok-brace": "{{}}",
+       "css:tok-separator": ",;;,;;",
+       "json:tok-brace": "{}",
+       "json:tok-separator": ":,:,:,:,:,,:",
+       "json:tok-square-bracket": "[]",
+       "go:tok-brace": "{}{}",
+       "go:tok-separator": ",,,,,",
+       "go:tok-paren": "()()()",
+       "rust:tok-separator": "::::;,,,::;,;,,;",
+       "rust:tok-brace": "{}{}",
+       "rust:tok-paren": "()()()()()(())",
+       "javascript:tok-separator": ";;",
+       "javascript:tok-paren": "()",
+       "typescript:tok-paren": "()",
+       "typescript:tok-punctuation": "::",
+       "typescript:tok-brace": "{}",
+       "typescript:tok-separator": ";"
+      },
+      "rgb(196, 116, 110)": {
+       "js:tok-deref-operator": ".....",
+       "ts:tok-deref-operator": ".",
+       "css:tok-logic-operator": ">",
+       "css:tok-arithmetic-operator": "-",
+       "html:tok-definition-operator": "===",
+       "rust:tok-operator": "&",
+       "javascript:tok-deref-operator": ".",
+       "md:tok-strong": "bold"
+      },
+      "rgb(197, 201, 197)": {
+       "python:-": "::::",
+       "css:-": "::",
+       "html:tok-content": "linktext",
+       "sh:-": "[];|hi>/dev/null>&1f*.txt;;",
+       "rust:-": ":::.",
+       "yaml:tok-content": "demoplainvalue",
+       "sql:tok-name": "idnamelabelusersuuuidname",
+       "markdown:tok-content": "Some,and.",
+       "bash:-": "|x",
+       "shell:-": ";",
+       "zsh:-": "f*.md;;",
+       "md:tok-content": "and"
+      },
+      "rgb(200, 192, 146)": {
+       "py:tok-definition-keyword": "def",
+       "py:tok-variable-name tok-definition": "area",
+       "py:tok-paren": "()()",
+       "py:tok-variable-name": "rr",
+       "py:-": ":",
+       "py:tok-control-keyword": "return",
+       "py:tok-variable-name tok-function": "len",
+       "rs:tok-definition-keyword": "fnlet",
+       "rs:tok-variable-name tok-definition": "mainx",
+       "rs:tok-paren": "()",
+       "rs:tok-brace": "{}",
+       "rs:tok-definition-operator": "=",
+       "rs:tok-float": "2.0",
+       "rs:tok-separator": ";"
+      },
+      "rgb(137, 153, 122)": {
+       "md:tok-strong tok-processing-instruction": "****",
+       "md:tok-link tok-processing-instruction": "[]()"
+      },
+      "rgb(140, 165, 177)": {
+       "md:tok-link": "a"
+      },
+      "rgb(150, 160, 182)": {
+       "md:tok-link tok-url": "https://example.com"
+      }
      }
     },
     {
@@ -6333,6 +8521,34 @@
       "ts": 18,
       "python": 7,
       "css": 6
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name tok-definition": "readFileanswerratiooknoneresizegreetname",
+       "ts:tok-variable-name tok-definition": "movepdxnext",
+       "python:tok-variable-name tok-definition": "greet",
+       "sh:tok-variable-name tok-definition": "NAMEPATH$HOME$PATH$NAME${NAME}$f",
+       "rust:tok-name": "Point",
+       "rust:tok-variable-name tok-definition": "mainmap",
+       "javascript:tok-variable-name tok-definition": "s",
+       "typescript:tok-variable-name tok-definition": "idv",
+       "bash:tok-variable-name tok-definition": "$HOME",
+       "shell:tok-variable-name tok-definition": "$FILE",
+       "zsh:tok-variable-name tok-definition": "$f"
+      },
+      "rgb(142, 164, 162)": {
+       "js:tok-class-name": "Shape",
+       "python:tok-class-name": "Greeter"
+      },
+      "rgb(140, 165, 177)": {
+       "ts:tok-name tok-definition": "PointColor"
+      },
+      "rgb(195, 177, 136)": {
+       "ts:tok-property-name": "RedGreen"
+      },
+      "rgb(138, 147, 168)": {
+       "css:tok-definition-keyword": "@media"
+      }
      }
     },
     {
@@ -6351,7 +8567,25 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "js:tok-string": "\"fs\"\"world\"",
+       "python:tok-string": "\"\"\"Docstring.\"\"\"",
+       "python:tok-string tok-special": "f\"hi\"",
+       "css:tok-string": "\"Inter\"",
+       "html:tok-attribute-value": "\"box\"\"main\"\"https://example.com\"",
+       "json:tok-string": "\"demo\"\"a\"\"b\"",
+       "sh:tok-string": "\"world\"\"/bin:\"\"\"\"hi\"\"\"",
+       "go:tok-string": "\"fmt\"\"moved\"",
+       "rust:tok-string": "\"one\"\"{:?}{}\"",
+       "yaml:tok-string": "\"quoted\"",
+       "sql:tok-string": "'A%'",
+       "bash:tok-string": "\"\"",
+       "shell:tok-string": "\"\"",
+       "zsh:tok-string": "\"\""
+      }
+     }
     },
     {
      "sig": "cm-operator @ rgb(196, 116, 110)",
@@ -6391,6 +8625,37 @@
       "json": 1,
       "go": 1,
       "rust": 6
+     },
+     "text": {
+      "rgb(196, 116, 110)": {
+       "js:tok-definition-operator": "======",
+       "js:tok-arithmetic-operator": "*",
+       "js:tok-compare-operator": "!==",
+       "ts:tok-definition-operator": "==",
+       "ts:tok-logic-operator": "|",
+       "ts:tok-arithmetic-operator": "+",
+       "python:tok-definition-operator": "=",
+       "python:tok-compare-operator": ">",
+       "sh:tok-operator": "==",
+       "go:tok-update-operator": "+=",
+       "rust:tok-definition-operator": "=",
+       "sql:tok-operator": "*>",
+       "javascript:tok-definition-operator": "="
+      },
+      "rgb(197, 201, 197)": {
+       "ts:-": "?",
+       "python:-": "->",
+       "rust:-": "<><>"
+      },
+      "rgb(162, 148, 164)": {
+       "json:tok-number": "-"
+      },
+      "rgb(138, 147, 168)": {
+       "go:tok-modifier": "*"
+      },
+      "rgb(158, 155, 148)": {
+       "rust:tok-punctuation": "->"
+      }
      }
     },
     {
@@ -6426,6 +8691,29 @@
       "go": 3,
       "yaml": 3,
       "yml": 1
+     },
+     "text": {
+      "rgb(162, 148, 164)": {
+       "js:tok-number": "421.5212",
+       "python:tok-number": "300x1F2.5",
+       "css:tok-number": "6000121002",
+       "json:tok-number": "30.5",
+       "sh:tok-number": "2",
+       "go:tok-number": "3.14",
+       "rust:tok-integer": "1",
+       "rust:tok-float": "2.5",
+       "sql:tok-number": "21"
+      },
+      "rgb(183, 146, 123)": {
+       "css:tok-unit": "pxpx%em"
+      },
+      "rgb(196, 116, 110)": {
+       "go:tok-deref-operator": "..."
+      },
+      "rgb(197, 201, 197)": {
+       "yaml:tok-content": "1.2",
+       "yml:tok-content": "3"
+      }
      }
     },
     {
@@ -6462,6 +8750,29 @@
       "rust": 12,
       "yaml": 35,
       "yml": 7
+     },
+     "text": {
+      "rgb(183, 146, 123)": {
+       "js:tok-bool": "true",
+       "js:tok-null": "null",
+       "css:tok-color": "#ff0000",
+       "css:tok-atom": "autosans-serif",
+       "json:tok-bool": "false",
+       "json:tok-null": "null",
+       "go:tok-bool": "true",
+       "go:tok-null": "nilnil"
+      },
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name": "undefined",
+       "rust:tok-name": "i32i32stri32"
+      },
+      "rgb(137, 153, 122)": {
+       "html:tok-character": "&amp;"
+      },
+      "rgb(195, 177, 136)": {
+       "yaml:tok-property-name tok-definition": "nameversionenableditemsanchorkeyref",
+       "yml:tok-property-name tok-definition": "counton"
+      }
      }
     },
     {
@@ -6491,6 +8802,19 @@
      "byFence": {
       "js": 10,
       "javascript": 3
+     },
+     "text": {
+      "rgb(196, 116, 110)": {
+       "js:tok-regexp": "/ab+c/g"
+      },
+      "rgb(137, 153, 122)": {
+       "js:tok-string tok-special": "`hi`",
+       "javascript:tok-string tok-special": "`x`"
+      },
+      "rgb(158, 155, 148)": {
+       "js:tok-brace": "${}",
+       "javascript:tok-brace": "${}"
+      }
      }
     },
     {
@@ -6525,6 +8849,31 @@
       "js": 5,
       "go": 20,
       "rust": 29
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name": "BaseconsoleMath",
+       "python:tok-variable-name": "ostypingListBasenamecountnamecountnamename",
+       "go:tok-variable-name tok-definition": "mainpdx",
+       "go:tok-name": "Point",
+       "go:tok-variable-name": "pdxfmtp",
+       "rust:tok-variable-name tok-definition": "HashMap",
+       "rust:tok-name": "ResultStringHashMap",
+       "rust:tok-variable-name": "newmapmap",
+       "javascript:tok-variable-name": "yconsoles"
+      },
+      "rgb(140, 165, 177)": {
+       "js:tok-variable-name tok-function": "greet",
+       "go:tok-name tok-definition": "Point",
+       "rust:tok-property-name tok-function": "insert"
+      },
+      "rgb(195, 177, 136)": {
+       "go:tok-property-name": "XYMoveXPrintlnX",
+       "rust:tok-property-name": "xy"
+      },
+      "rgb(142, 164, 162)": {
+       "rust:tok-namespace": "stdcollectionsHashMap"
+      }
      }
     },
     {
@@ -6550,6 +8899,19 @@
      "byFence": {
       "js": 6,
       "javascript": 3
+     },
+     "text": {
+      "rgb(195, 177, 136)": {
+       "js:tok-property-name tok-definition": "constructorarea",
+       "js:tok-property-name": "sizesizelength",
+       "ts:tok-property-name tok-definition": "xlabelx",
+       "ts:tok-property-name": "x",
+       "css:tok-property-name": "max-widthcolormarginfont-familywidth"
+      },
+      "rgb(140, 165, 177)": {
+       "js:tok-property-name tok-function": "logmax",
+       "javascript:tok-property-name tok-function": "log"
+      }
      }
     },
     {
@@ -6579,6 +8941,23 @@
      "byFence": {
       "yaml": 10,
       "markdown": 1
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name": "sizenamenamename",
+       "ts:tok-variable-name": "ppdxnext",
+       "python:tok-variable-name": "self",
+       "sql:-": "..",
+       "sql:tok-name": "agename",
+       "markdown:tok-list tok-content": "item",
+       "typescript:tok-variable-name": "v"
+      },
+      "rgb(196, 116, 110)": {
+       "yaml:tok-label-name": "&base*base"
+      },
+      "rgb(150, 160, 182)": {
+       "markdown:tok-list tok-processing-instruction": "-"
+      }
      }
     },
     {
@@ -6603,6 +8982,15 @@
      "gainIfBest": 0,
      "byFence": {
       "ts": 2
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "ts:tok-name": "numberstringstringnumberPointnumberPointPointPoint",
+       "typescript:tok-name": "numbernumber"
+      },
+      "rgb(140, 165, 177)": {
+       "ts:tok-name tok-definition": "Id"
+      }
      }
     },
     {
@@ -6635,6 +9023,25 @@
       "html": 14,
       "yaml": 9,
       "yml": 2
+     },
+     "text": {
+      "rgb(158, 155, 148)": {
+       "ts:tok-punctuation": "...",
+       "yaml:tok-separator": "::::--:::",
+       "yml:tok-separator": "::"
+      },
+      "rgb(196, 116, 110)": {
+       "python:tok-meta": "@",
+       "sh:tok-meta": "#!/bin/sh",
+       "rust:tok-meta": "#",
+       "rust:tok-meta tok-square-bracket": "[]",
+       "rust:tok-meta tok-variable-name": "deriveDebug",
+       "rust:tok-meta tok-paren": "()"
+      },
+      "rgb(197, 201, 197)": {
+       "python:tok-variable-name": "decorator",
+       "html:tok-document-meta": "<!DOCTYPEhtml>"
+      }
      }
     },
     {
@@ -6665,6 +9072,23 @@
       "python": 8,
       "css": 5,
       "rust": 2
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "python:tok-variable-name": "str",
+       "sh:tok-variable-name tok-standard": "echogrepcat",
+       "bash:tok-variable-name tok-standard": "lsgrep",
+       "shell:tok-variable-name tok-standard": "catecho",
+       "zsh:tok-variable-name tok-standard": "wc"
+      },
+      "rgb(140, 165, 177)": {
+       "python:tok-variable-name tok-function": "printlen",
+       "rust:tok-variable-name tok-function": "Ok"
+      },
+      "rgb(196, 116, 110)": {
+       "css:tok-deref-operator": "#",
+       "css:tok-label-name": "main"
+      }
      }
     },
     {
@@ -6689,6 +9113,14 @@
      "gainIfBest": 0,
      "byFence": {
       "css": 1
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "css:-": "."
+      },
+      "rgb(142, 164, 162)": {
+       "css:tok-class-name": "card"
+      }
      }
     },
     {
@@ -6707,7 +9139,13 @@
      "differing": 0,
      "bestColour": "rgb(140, 165, 177)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(140, 165, 177)": {
+       "css:tok-tag-name": "a",
+       "html:tok-tag-name": "divaadiv"
+      }
+     }
     },
     {
      "sig": "cm-variable-3 @ rgb(142, 164, 162)",
@@ -6731,6 +9169,14 @@
      "gainIfBest": 0,
      "byFence": {
       "rust": 8
+     },
+     "text": {
+      "rgb(142, 164, 162)": {
+       "css:tok-class-name": "hoverbefore"
+      },
+      "rgb(196, 116, 110)": {
+       "rust:tok-macro-name": "println!"
+      }
      }
     },
     {
@@ -6749,7 +9195,12 @@
      "differing": 0,
      "bestColour": "rgb(138, 147, 168)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(138, 147, 168)": {
+       "css:tok-operator-keyword": "calc"
+      }
+     }
     },
     {
      "sig": "cm-bracket cm-tag @ rgb(158, 155, 148)",
@@ -6767,7 +9218,12 @@
      "differing": 0,
      "bestColour": "rgb(158, 155, 148)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(158, 155, 148)": {
+       "html:tok-angle-bracket": "<><></></>"
+      }
+     }
     },
     {
      "sig": "cm-attribute @ rgb(195, 177, 136)",
@@ -6785,7 +9241,15 @@
      "differing": 0,
      "bestColour": "rgb(195, 177, 136)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(195, 177, 136)": {
+       "html:tok-attribute-name": "classidhiddenhref",
+       "sh:tok-attribute-name": "-n-c",
+       "bash:tok-attribute-name": "-la-c",
+       "zsh:tok-attribute-name": "-l"
+      }
+     }
     },
     {
      "sig": "cm-property cm-string @ rgb(195, 177, 136)",
@@ -6803,7 +9267,12 @@
      "differing": 0,
      "bestColour": "rgb(195, 177, 136)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(195, 177, 136)": {
+       "json:tok-property-name": "\"name\"\"count\"\"ratio\"\"enabled\"\"tags\"\"empty\""
+      }
+     }
     },
     {
      "sig": "cm-punctuation @ rgb(158, 155, 148)",
@@ -6827,6 +9296,14 @@
      "gainIfBest": 0,
      "byFence": {
       "sql": 1
+     },
+     "text": {
+      "rgb(158, 155, 148)": {
+       "sql:tok-punctuation": ",,"
+      },
+      "rgb(197, 201, 197)": {
+       "sql:-": ";"
+      }
      }
     },
     {
@@ -6845,7 +9322,12 @@
      "differing": 0,
      "bestColour": "rgb(158, 155, 148)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(158, 155, 148)": {
+       "sql:tok-paren": "()"
+      }
+     }
     },
     {
      "sig": "cm-header cm-header-1 @ rgb(195, 177, 136)",
@@ -6869,6 +9351,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 1
+     },
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-heading-1 tok-processing-instruction": "#"
+      },
+      "rgb(195, 177, 136)": {
+       "markdown:tok-heading-1": "Heading"
+      }
      }
     },
     {
@@ -6887,7 +9377,13 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-emphasis tok-processing-instruction": "**",
+       "markdown:tok-emphasis": "emphasis"
+      }
+     }
     },
     {
      "sig": "cm-strong @ rgb(196, 116, 110)",
@@ -6911,6 +9407,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 4
+     },
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-strong tok-processing-instruction": "****"
+      },
+      "rgb(196, 116, 110)": {
+       "markdown:tok-strong": "strong"
+      }
      }
     },
     {
@@ -6935,6 +9439,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 2
+     },
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-list tok-link tok-processing-instruction": "[]"
+      },
+      "rgb(140, 165, 177)": {
+       "markdown:tok-list tok-link": "link"
+      }
      }
     },
     {
@@ -6959,6 +9471,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 2
+     },
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-list tok-link tok-processing-instruction": "()"
+      },
+      "rgb(150, 160, 182)": {
+       "markdown:tok-list tok-link tok-url": "https://example.com"
+      }
      }
     }
    ],
@@ -7030,6 +9550,11 @@
     "before": 17,
     "now": 17
    },
+   "ambiguous": {
+    "runs": 209,
+    "chars": 243,
+    "notInvariant": []
+   },
    "both": {
     "resolved": 0,
     "still": 594,
@@ -7220,6 +9745,26 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 6
+     },
+     "text": {
+      "rgb(115, 125, 115)": {
+       "js:tok-line-comment": "//linecomment",
+       "js:tok-block-comment": "/*blockcomment*/",
+       "python:tok-line-comment": "#comment",
+       "css:tok-block-comment": "/*comment*/",
+       "html:tok-block-comment": "<!--comment-->",
+       "sh:tok-comment": "#comment",
+       "go:tok-line-comment": "//comment",
+       "rust:tok-line-comment": "//comment",
+       "yaml:tok-line-comment": "#comment",
+       "sql:tok-line-comment": "--comment"
+      },
+      "rgb(137, 153, 122)": {
+       "markdown:tok-processing-instruction": "``"
+      },
+      "rgb(200, 192, 146)": {
+       "markdown:tok-monospace": "code"
+      }
      }
     },
     {
@@ -7256,6 +9801,48 @@
       "go": 11,
       "yaml": 4,
       "yml": 4
+     },
+     "text": {
+      "rgb(138, 147, 168)": {
+       "js:tok-module-keyword": "importfrom",
+       "js:tok-definition-keyword": "constletclassextendsfunction",
+       "js:tok-control-keyword": "returnifreturn",
+       "ts:tok-definition-keyword": "interfacetypeenumfunctionconst",
+       "ts:tok-module-keyword": "export",
+       "ts:tok-control-keyword": "return",
+       "ts:tok-operator-keyword": "as",
+       "python:tok-module-keyword": "importimport",
+       "python:tok-definition-keyword": "fromclassdef",
+       "python:tok-control-keyword": "ifreturn",
+       "python:tok-operator-keyword": "isnotand",
+       "css:tok-modifier": "!important",
+       "sh:tok-keyword": "exportifthenfiforindodone",
+       "go:tok-module-keyword": "packageimport",
+       "go:tok-definition-keyword": "typestructfunc",
+       "go:tok-control-keyword": "return",
+       "rust:tok-module-keyword": "use",
+       "rust:tok-definition-keyword": "structfnlet",
+       "rust:tok-modifier": "mut",
+       "sql:tok-keyword": "SELECTASCOUNTFROMWHEREANDLIKEGROUPBYORDERBYDESC",
+       "javascript:tok-definition-keyword": "const",
+       "typescript:tok-definition-keyword": "function",
+       "typescript:tok-control-keyword": "return",
+       "shell:tok-keyword": "done",
+       "zsh:tok-keyword": "forindodone"
+      },
+      "rgb(183, 146, 123)": {
+       "js:tok-atom": "super",
+       "python:tok-null": "NoneNoneNone",
+       "python:tok-bool": "True"
+      },
+      "rgb(196, 116, 110)": {
+       "js:tok-self": "thisthis"
+      },
+      "rgb(197, 201, 197)": {
+       "go:tok-name": "intinterror",
+       "yaml:tok-content": "true",
+       "yml:tok-content": "true"
+      }
      }
     },
     {
@@ -7312,6 +9899,89 @@
       "py": 23,
       "rs": 19,
       "md": 32
+     },
+     "text": {
+      "rgb(158, 155, 148)": {
+       "js:tok-brace": "{}{{}{}}{}",
+       "js:tok-separator": ";,,,;;;;;;,,;;",
+       "js:tok-paren": "()()()()()(())()",
+       "ts:tok-brace": "{}{}{{}}",
+       "ts:tok-punctuation": ":::::::",
+       "ts:tok-separator": ";;,,,;;",
+       "ts:tok-paren": "()",
+       "python:tok-paren": "()()(())",
+       "python:tok-separator": ",,,,,,",
+       "python:tok-brace": "{}",
+       "css:tok-paren": "()()",
+       "css:tok-punctuation": "::::::",
+       "css:tok-brace": "{{}}",
+       "css:tok-separator": ",;;,;;",
+       "json:tok-brace": "{}",
+       "json:tok-separator": ":,:,:,:,:,,:",
+       "json:tok-square-bracket": "[]",
+       "go:tok-brace": "{}{}",
+       "go:tok-separator": ",,,,,",
+       "go:tok-paren": "()()()",
+       "rust:tok-separator": "::::;,,,::;,;,,;",
+       "rust:tok-brace": "{}{}",
+       "rust:tok-paren": "()()()()()(())",
+       "javascript:tok-separator": ";;",
+       "javascript:tok-paren": "()",
+       "typescript:tok-paren": "()",
+       "typescript:tok-punctuation": "::",
+       "typescript:tok-brace": "{}",
+       "typescript:tok-separator": ";"
+      },
+      "rgb(196, 116, 110)": {
+       "js:tok-deref-operator": ".....",
+       "ts:tok-deref-operator": ".",
+       "css:tok-logic-operator": ">",
+       "css:tok-arithmetic-operator": "-",
+       "html:tok-definition-operator": "===",
+       "rust:tok-operator": "&",
+       "javascript:tok-deref-operator": ".",
+       "md:tok-strong": "bold"
+      },
+      "rgb(197, 201, 197)": {
+       "python:-": "::::",
+       "css:-": "::",
+       "html:tok-content": "linktext",
+       "sh:-": "[];|hi>/dev/null>&1f*.txt;;",
+       "rust:-": ":::.",
+       "yaml:tok-content": "demoplainvalue",
+       "sql:tok-name": "idnamelabelusersuuuidname",
+       "markdown:tok-content": "Some,and.",
+       "bash:-": "|x",
+       "shell:-": ";",
+       "zsh:-": "f*.md;;",
+       "md:tok-content": "and"
+      },
+      "rgb(200, 192, 146)": {
+       "py:tok-definition-keyword": "def",
+       "py:tok-variable-name tok-definition": "area",
+       "py:tok-paren": "()()",
+       "py:tok-variable-name": "rr",
+       "py:-": ":",
+       "py:tok-control-keyword": "return",
+       "py:tok-variable-name tok-function": "len",
+       "rs:tok-definition-keyword": "fnlet",
+       "rs:tok-variable-name tok-definition": "mainx",
+       "rs:tok-paren": "()",
+       "rs:tok-brace": "{}",
+       "rs:tok-definition-operator": "=",
+       "rs:tok-float": "2.0",
+       "rs:tok-separator": ";"
+      },
+      "rgb(137, 153, 122)": {
+       "md:tok-strong tok-processing-instruction": "****",
+       "md:tok-link tok-processing-instruction": "[]()"
+      },
+      "rgb(140, 165, 177)": {
+       "md:tok-link": "a"
+      },
+      "rgb(150, 160, 182)": {
+       "md:tok-link tok-url": "https://example.com"
+      }
      }
     },
     {
@@ -7351,6 +10021,34 @@
       "ts": 18,
       "python": 7,
       "css": 6
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name tok-definition": "readFileanswerratiooknoneresizegreetname",
+       "ts:tok-variable-name tok-definition": "movepdxnext",
+       "python:tok-variable-name tok-definition": "greet",
+       "sh:tok-variable-name tok-definition": "NAMEPATH$HOME$PATH$NAME${NAME}$f",
+       "rust:tok-name": "Point",
+       "rust:tok-variable-name tok-definition": "mainmap",
+       "javascript:tok-variable-name tok-definition": "s",
+       "typescript:tok-variable-name tok-definition": "idv",
+       "bash:tok-variable-name tok-definition": "$HOME",
+       "shell:tok-variable-name tok-definition": "$FILE",
+       "zsh:tok-variable-name tok-definition": "$f"
+      },
+      "rgb(142, 164, 162)": {
+       "js:tok-class-name": "Shape",
+       "python:tok-class-name": "Greeter"
+      },
+      "rgb(140, 165, 177)": {
+       "ts:tok-name tok-definition": "PointColor"
+      },
+      "rgb(195, 177, 136)": {
+       "ts:tok-property-name": "RedGreen"
+      },
+      "rgb(138, 147, 168)": {
+       "css:tok-definition-keyword": "@media"
+      }
      }
     },
     {
@@ -7369,7 +10067,25 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "js:tok-string": "\"fs\"\"world\"",
+       "python:tok-string": "\"\"\"Docstring.\"\"\"",
+       "python:tok-string tok-special": "f\"hi\"",
+       "css:tok-string": "\"Inter\"",
+       "html:tok-attribute-value": "\"box\"\"main\"\"https://example.com\"",
+       "json:tok-string": "\"demo\"\"a\"\"b\"",
+       "sh:tok-string": "\"world\"\"/bin:\"\"\"\"hi\"\"\"",
+       "go:tok-string": "\"fmt\"\"moved\"",
+       "rust:tok-string": "\"one\"\"{:?}{}\"",
+       "yaml:tok-string": "\"quoted\"",
+       "sql:tok-string": "'A%'",
+       "bash:tok-string": "\"\"",
+       "shell:tok-string": "\"\"",
+       "zsh:tok-string": "\"\""
+      }
+     }
     },
     {
      "sig": "cm-operator @ rgb(196, 116, 110)",
@@ -7409,6 +10125,37 @@
       "json": 1,
       "go": 1,
       "rust": 6
+     },
+     "text": {
+      "rgb(196, 116, 110)": {
+       "js:tok-definition-operator": "======",
+       "js:tok-arithmetic-operator": "*",
+       "js:tok-compare-operator": "!==",
+       "ts:tok-definition-operator": "==",
+       "ts:tok-logic-operator": "|",
+       "ts:tok-arithmetic-operator": "+",
+       "python:tok-definition-operator": "=",
+       "python:tok-compare-operator": ">",
+       "sh:tok-operator": "==",
+       "go:tok-update-operator": "+=",
+       "rust:tok-definition-operator": "=",
+       "sql:tok-operator": "*>",
+       "javascript:tok-definition-operator": "="
+      },
+      "rgb(197, 201, 197)": {
+       "ts:-": "?",
+       "python:-": "->",
+       "rust:-": "<><>"
+      },
+      "rgb(162, 148, 164)": {
+       "json:tok-number": "-"
+      },
+      "rgb(138, 147, 168)": {
+       "go:tok-modifier": "*"
+      },
+      "rgb(158, 155, 148)": {
+       "rust:tok-punctuation": "->"
+      }
      }
     },
     {
@@ -7444,6 +10191,29 @@
       "go": 3,
       "yaml": 3,
       "yml": 1
+     },
+     "text": {
+      "rgb(162, 148, 164)": {
+       "js:tok-number": "421.5212",
+       "python:tok-number": "300x1F2.5",
+       "css:tok-number": "6000121002",
+       "json:tok-number": "30.5",
+       "sh:tok-number": "2",
+       "go:tok-number": "3.14",
+       "rust:tok-integer": "1",
+       "rust:tok-float": "2.5",
+       "sql:tok-number": "21"
+      },
+      "rgb(183, 146, 123)": {
+       "css:tok-unit": "pxpx%em"
+      },
+      "rgb(196, 116, 110)": {
+       "go:tok-deref-operator": "..."
+      },
+      "rgb(197, 201, 197)": {
+       "yaml:tok-content": "1.2",
+       "yml:tok-content": "3"
+      }
      }
     },
     {
@@ -7480,6 +10250,29 @@
       "rust": 12,
       "yaml": 35,
       "yml": 7
+     },
+     "text": {
+      "rgb(183, 146, 123)": {
+       "js:tok-bool": "true",
+       "js:tok-null": "null",
+       "css:tok-color": "#ff0000",
+       "css:tok-atom": "autosans-serif",
+       "json:tok-bool": "false",
+       "json:tok-null": "null",
+       "go:tok-bool": "true",
+       "go:tok-null": "nilnil"
+      },
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name": "undefined",
+       "rust:tok-name": "i32i32stri32"
+      },
+      "rgb(137, 153, 122)": {
+       "html:tok-character": "&amp;"
+      },
+      "rgb(195, 177, 136)": {
+       "yaml:tok-property-name tok-definition": "nameversionenableditemsanchorkeyref",
+       "yml:tok-property-name tok-definition": "counton"
+      }
      }
     },
     {
@@ -7509,6 +10302,19 @@
      "byFence": {
       "js": 10,
       "javascript": 3
+     },
+     "text": {
+      "rgb(196, 116, 110)": {
+       "js:tok-regexp": "/ab+c/g"
+      },
+      "rgb(137, 153, 122)": {
+       "js:tok-string tok-special": "`hi`",
+       "javascript:tok-string tok-special": "`x`"
+      },
+      "rgb(158, 155, 148)": {
+       "js:tok-brace": "${}",
+       "javascript:tok-brace": "${}"
+      }
      }
     },
     {
@@ -7543,6 +10349,31 @@
       "js": 5,
       "go": 20,
       "rust": 29
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name": "BaseconsoleMath",
+       "python:tok-variable-name": "ostypingListBasenamecountnamecountnamename",
+       "go:tok-variable-name tok-definition": "mainpdx",
+       "go:tok-name": "Point",
+       "go:tok-variable-name": "pdxfmtp",
+       "rust:tok-variable-name tok-definition": "HashMap",
+       "rust:tok-name": "ResultStringHashMap",
+       "rust:tok-variable-name": "newmapmap",
+       "javascript:tok-variable-name": "yconsoles"
+      },
+      "rgb(140, 165, 177)": {
+       "js:tok-variable-name tok-function": "greet",
+       "go:tok-name tok-definition": "Point",
+       "rust:tok-property-name tok-function": "insert"
+      },
+      "rgb(195, 177, 136)": {
+       "go:tok-property-name": "XYMoveXPrintlnX",
+       "rust:tok-property-name": "xy"
+      },
+      "rgb(142, 164, 162)": {
+       "rust:tok-namespace": "stdcollectionsHashMap"
+      }
      }
     },
     {
@@ -7568,6 +10399,19 @@
      "byFence": {
       "js": 6,
       "javascript": 3
+     },
+     "text": {
+      "rgb(195, 177, 136)": {
+       "js:tok-property-name tok-definition": "constructorarea",
+       "js:tok-property-name": "sizesizelength",
+       "ts:tok-property-name tok-definition": "xlabelx",
+       "ts:tok-property-name": "x",
+       "css:tok-property-name": "max-widthcolormarginfont-familywidth"
+      },
+      "rgb(140, 165, 177)": {
+       "js:tok-property-name tok-function": "logmax",
+       "javascript:tok-property-name tok-function": "log"
+      }
      }
     },
     {
@@ -7597,6 +10441,23 @@
      "byFence": {
       "yaml": 10,
       "markdown": 1
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name": "sizenamenamename",
+       "ts:tok-variable-name": "ppdxnext",
+       "python:tok-variable-name": "self",
+       "sql:-": "..",
+       "sql:tok-name": "agename",
+       "markdown:tok-list tok-content": "item",
+       "typescript:tok-variable-name": "v"
+      },
+      "rgb(196, 116, 110)": {
+       "yaml:tok-label-name": "&base*base"
+      },
+      "rgb(150, 160, 182)": {
+       "markdown:tok-list tok-processing-instruction": "-"
+      }
      }
     },
     {
@@ -7621,6 +10482,15 @@
      "gainIfBest": 0,
      "byFence": {
       "ts": 2
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "ts:tok-name": "numberstringstringnumberPointnumberPointPointPoint",
+       "typescript:tok-name": "numbernumber"
+      },
+      "rgb(140, 165, 177)": {
+       "ts:tok-name tok-definition": "Id"
+      }
      }
     },
     {
@@ -7653,6 +10523,25 @@
       "html": 14,
       "yaml": 9,
       "yml": 2
+     },
+     "text": {
+      "rgb(158, 155, 148)": {
+       "ts:tok-punctuation": "...",
+       "yaml:tok-separator": "::::--:::",
+       "yml:tok-separator": "::"
+      },
+      "rgb(196, 116, 110)": {
+       "python:tok-meta": "@",
+       "sh:tok-meta": "#!/bin/sh",
+       "rust:tok-meta": "#",
+       "rust:tok-meta tok-square-bracket": "[]",
+       "rust:tok-meta tok-variable-name": "deriveDebug",
+       "rust:tok-meta tok-paren": "()"
+      },
+      "rgb(197, 201, 197)": {
+       "python:tok-variable-name": "decorator",
+       "html:tok-document-meta": "<!DOCTYPEhtml>"
+      }
      }
     },
     {
@@ -7683,6 +10572,23 @@
       "python": 8,
       "css": 5,
       "rust": 2
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "python:tok-variable-name": "str",
+       "sh:tok-variable-name tok-standard": "echogrepcat",
+       "bash:tok-variable-name tok-standard": "lsgrep",
+       "shell:tok-variable-name tok-standard": "catecho",
+       "zsh:tok-variable-name tok-standard": "wc"
+      },
+      "rgb(140, 165, 177)": {
+       "python:tok-variable-name tok-function": "printlen",
+       "rust:tok-variable-name tok-function": "Ok"
+      },
+      "rgb(196, 116, 110)": {
+       "css:tok-deref-operator": "#",
+       "css:tok-label-name": "main"
+      }
      }
     },
     {
@@ -7707,6 +10613,14 @@
      "gainIfBest": 0,
      "byFence": {
       "css": 1
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "css:-": "."
+      },
+      "rgb(142, 164, 162)": {
+       "css:tok-class-name": "card"
+      }
      }
     },
     {
@@ -7725,7 +10639,13 @@
      "differing": 0,
      "bestColour": "rgb(140, 165, 177)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(140, 165, 177)": {
+       "css:tok-tag-name": "a",
+       "html:tok-tag-name": "divaadiv"
+      }
+     }
     },
     {
      "sig": "cm-variable-3 @ rgb(142, 164, 162)",
@@ -7749,6 +10669,14 @@
      "gainIfBest": 0,
      "byFence": {
       "rust": 8
+     },
+     "text": {
+      "rgb(142, 164, 162)": {
+       "css:tok-class-name": "hoverbefore"
+      },
+      "rgb(196, 116, 110)": {
+       "rust:tok-macro-name": "println!"
+      }
      }
     },
     {
@@ -7767,7 +10695,12 @@
      "differing": 0,
      "bestColour": "rgb(138, 147, 168)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(138, 147, 168)": {
+       "css:tok-operator-keyword": "calc"
+      }
+     }
     },
     {
      "sig": "cm-bracket cm-tag @ rgb(158, 155, 148)",
@@ -7785,7 +10718,12 @@
      "differing": 0,
      "bestColour": "rgb(158, 155, 148)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(158, 155, 148)": {
+       "html:tok-angle-bracket": "<><></></>"
+      }
+     }
     },
     {
      "sig": "cm-attribute @ rgb(195, 177, 136)",
@@ -7803,7 +10741,15 @@
      "differing": 0,
      "bestColour": "rgb(195, 177, 136)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(195, 177, 136)": {
+       "html:tok-attribute-name": "classidhiddenhref",
+       "sh:tok-attribute-name": "-n-c",
+       "bash:tok-attribute-name": "-la-c",
+       "zsh:tok-attribute-name": "-l"
+      }
+     }
     },
     {
      "sig": "cm-property cm-string @ rgb(195, 177, 136)",
@@ -7821,7 +10767,12 @@
      "differing": 0,
      "bestColour": "rgb(195, 177, 136)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(195, 177, 136)": {
+       "json:tok-property-name": "\"name\"\"count\"\"ratio\"\"enabled\"\"tags\"\"empty\""
+      }
+     }
     },
     {
      "sig": "cm-punctuation @ rgb(158, 155, 148)",
@@ -7845,6 +10796,14 @@
      "gainIfBest": 0,
      "byFence": {
       "sql": 1
+     },
+     "text": {
+      "rgb(158, 155, 148)": {
+       "sql:tok-punctuation": ",,"
+      },
+      "rgb(197, 201, 197)": {
+       "sql:-": ";"
+      }
      }
     },
     {
@@ -7863,7 +10822,12 @@
      "differing": 0,
      "bestColour": "rgb(158, 155, 148)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(158, 155, 148)": {
+       "sql:tok-paren": "()"
+      }
+     }
     },
     {
      "sig": "cm-header cm-header-1 @ rgb(195, 177, 136)",
@@ -7887,6 +10851,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 1
+     },
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-heading-1 tok-processing-instruction": "#"
+      },
+      "rgb(195, 177, 136)": {
+       "markdown:tok-heading-1": "Heading"
+      }
      }
     },
     {
@@ -7905,7 +10877,13 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-emphasis tok-processing-instruction": "**",
+       "markdown:tok-emphasis": "emphasis"
+      }
+     }
     },
     {
      "sig": "cm-strong @ rgb(196, 116, 110)",
@@ -7929,6 +10907,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 4
+     },
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-strong tok-processing-instruction": "****"
+      },
+      "rgb(196, 116, 110)": {
+       "markdown:tok-strong": "strong"
+      }
      }
     },
     {
@@ -7953,6 +10939,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 2
+     },
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-list tok-link tok-processing-instruction": "[]"
+      },
+      "rgb(140, 165, 177)": {
+       "markdown:tok-list tok-link": "link"
+      }
      }
     },
     {
@@ -7977,6 +10971,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 2
+     },
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-list tok-link tok-processing-instruction": "()"
+      },
+      "rgb(150, 160, 182)": {
+       "markdown:tok-list tok-link tok-url": "https://example.com"
+      }
      }
     }
    ],
@@ -8046,6 +11048,11 @@
    "checks": {
     "before": 18,
     "now": 19
+   },
+   "ambiguous": {
+    "runs": 74,
+    "chars": 141,
+    "notInvariant": []
    },
    "both": {
     "resolved": 0,
@@ -8261,7 +11268,13 @@
      "differing": 0,
      "bestColour": "rgb(115, 125, 115)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(115, 125, 115)": {
+       "js:tok-line-comment": "//linecomment",
+       "js:tok-block-comment": "/*blockcomment*/"
+      }
+     }
     },
     {
      "sig": "js keyword module @ rgb(138, 147, 168)",
@@ -8279,7 +11292,12 @@
      "differing": 0,
      "bestColour": "rgb(138, 147, 168)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(138, 147, 168)": {
+       "js:tok-module-keyword": "importfrom"
+      }
+     }
     },
     {
      "sig": "js imports punctuation @ rgb(158, 155, 148)",
@@ -8297,7 +11315,12 @@
      "differing": 0,
      "bestColour": "rgb(158, 155, 148)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(158, 155, 148)": {
+       "js:tok-brace": "{}"
+      }
+     }
     },
     {
      "sig": "js imports @ rgb(197, 201, 197)",
@@ -8315,7 +11338,12 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name tok-definition": "readFile"
+      }
+     }
     },
     {
      "sig": "js string @ rgb(137, 153, 122)",
@@ -8333,7 +11361,12 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "js:tok-string": "\"fs\"\"world\""
+      }
+     }
     },
     {
      "sig": "js punctuation @ rgb(158, 155, 148)",
@@ -8358,6 +11391,19 @@
      "byFence": {
       "js": 5,
       "javascript": 1
+     },
+     "text": {
+      "rgb(158, 155, 148)": {
+       "js:tok-separator": ";,,,;;;;;;,,;;",
+       "js:tok-brace": "{{}{}}{}",
+       "js:tok-paren": "()()()()()(())()",
+       "javascript:tok-separator": ";;",
+       "javascript:tok-paren": "()"
+      },
+      "rgb(196, 116, 110)": {
+       "js:tok-deref-operator": ".....",
+       "javascript:tok-deref-operator": "."
+      }
      }
     },
     {
@@ -8386,6 +11432,18 @@
      "gainIfBest": 0,
      "byFence": {
       "js": 13
+     },
+     "text": {
+      "rgb(138, 147, 168)": {
+       "js:tok-definition-keyword": "constletclassextendsfunction",
+       "javascript:tok-definition-keyword": "const"
+      },
+      "rgb(183, 146, 123)": {
+       "js:tok-atom": "super"
+      },
+      "rgb(196, 116, 110)": {
+       "js:tok-self": "thisthis"
+      }
      }
     },
     {
@@ -8407,6 +11465,14 @@
      "byFence": {
       "js": 31,
       "javascript": 2
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name tok-definition": "answerratiooknonere",
+       "js:tok-variable-name": "sizenamename",
+       "javascript:tok-variable-name tok-definition": "s",
+       "javascript:tok-variable-name": "s"
+      }
      }
     },
     {
@@ -8425,7 +11491,15 @@
      "differing": 0,
      "bestColour": "rgb(196, 116, 110)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(196, 116, 110)": {
+       "js:tok-definition-operator": "======",
+       "js:tok-arithmetic-operator": "*",
+       "js:tok-compare-operator": "!==",
+       "javascript:tok-definition-operator": "="
+      }
+     }
     },
     {
      "sig": "js number @ rgb(162, 148, 164)",
@@ -8443,7 +11517,12 @@
      "differing": 0,
      "bestColour": "rgb(162, 148, 164)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(162, 148, 164)": {
+       "js:tok-number": "421.5212"
+      }
+     }
     },
     {
      "sig": "js boolean @ rgb(183, 146, 123)",
@@ -8461,7 +11540,12 @@
      "differing": 0,
      "bestColour": "rgb(183, 146, 123)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(183, 146, 123)": {
+       "js:tok-bool": "true"
+      }
+     }
     },
     {
      "sig": "js keyword nil null @ rgb(183, 146, 123)",
@@ -8479,7 +11563,12 @@
      "differing": 0,
      "bestColour": "rgb(183, 146, 123)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(183, 146, 123)": {
+       "js:tok-null": "null"
+      }
+     }
     },
     {
      "sig": "js regex regex-delimiter @ rgb(196, 116, 110)",
@@ -8497,7 +11586,12 @@
      "differing": 0,
      "bestColour": "rgb(196, 116, 110)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(196, 116, 110)": {
+       "js:tok-regexp": "//"
+      }
+     }
     },
     {
      "sig": "js language-regex regex regex-source @ rgb(196, 116, 110)",
@@ -8515,7 +11609,12 @@
      "differing": 0,
      "bestColour": "rgb(196, 116, 110)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(196, 116, 110)": {
+       "js:tok-regexp": "ab+c"
+      }
+     }
     },
     {
      "sig": "js regex regex-flags @ rgb(196, 116, 110)",
@@ -8533,7 +11632,12 @@
      "differing": 0,
      "bestColour": "rgb(196, 116, 110)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(196, 116, 110)": {
+       "js:tok-regexp": "g"
+      }
+     }
     },
     {
      "sig": "js class-name @ rgb(142, 164, 162)",
@@ -8557,6 +11661,14 @@
      "gainIfBest": 0,
      "byFence": {
       "js": 4
+     },
+     "text": {
+      "rgb(142, 164, 162)": {
+       "js:tok-class-name": "Shape"
+      },
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name": "Base"
+      }
      }
     },
     {
@@ -8585,6 +11697,17 @@
      "gainIfBest": 10,
      "byFence": {
       "js": 20
+     },
+     "text": {
+      "rgb(195, 177, 136)": {
+       "js:tok-property-name tok-definition": "constructorarea"
+      },
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name tok-definition": "greet"
+      },
+      "rgb(140, 165, 177)": {
+       "js:tok-variable-name tok-function": "greet"
+      }
      }
     },
     {
@@ -8603,7 +11726,12 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name tok-definition": "sizename"
+      }
+     }
     },
     {
      "sig": "js property-access @ rgb(195, 177, 136)",
@@ -8621,7 +11749,12 @@
      "differing": 0,
      "bestColour": "rgb(195, 177, 136)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(195, 177, 136)": {
+       "js:tok-property-name": "sizesizelength"
+      }
+     }
     },
     {
      "sig": "js control-flow keyword @ rgb(138, 147, 168)",
@@ -8639,7 +11772,12 @@
      "differing": 0,
      "bestColour": "rgb(138, 147, 168)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(138, 147, 168)": {
+       "js:tok-control-keyword": "returnifreturn"
+      }
+     }
     },
     {
      "sig": "js keyword nil @ rgb(197, 201, 197)",
@@ -8657,7 +11795,12 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name": "undefined"
+      }
+     }
     },
     {
      "sig": "js string template-punctuation template-string @ rgb(137, 153, 122)",
@@ -8675,7 +11818,13 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "js:tok-string tok-special": "``",
+       "javascript:tok-string tok-special": "``"
+      }
+     }
     },
     {
      "sig": "js string template-string @ rgb(137, 153, 122)",
@@ -8693,7 +11842,13 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "js:tok-string tok-special": "hi",
+       "javascript:tok-string tok-special": "x"
+      }
+     }
     },
     {
      "sig": "js interpolation interpolation-punctuation punctuation template-string @ rgb(158, 155, 148)",
@@ -8711,7 +11866,13 @@
      "differing": 0,
      "bestColour": "rgb(158, 155, 148)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(158, 155, 148)": {
+       "js:tok-brace": "${}",
+       "javascript:tok-brace": "${}"
+      }
+     }
     },
     {
      "sig": "js interpolation template-string @ rgb(197, 201, 197)",
@@ -8729,7 +11890,13 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name": "name",
+       "javascript:tok-variable-name": "y"
+      }
+     }
     },
     {
      "sig": "js class-name console @ rgb(197, 201, 197)",
@@ -8747,7 +11914,13 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name": "console",
+       "javascript:tok-variable-name": "console"
+      }
+     }
     },
     {
      "sig": "js function method property-access @ rgb(140, 165, 177)",
@@ -8765,7 +11938,13 @@
      "differing": 0,
      "bestColour": "rgb(140, 165, 177)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(140, 165, 177)": {
+       "js:tok-property-name tok-function": "logmax",
+       "javascript:tok-property-name tok-function": "log"
+      }
+     }
     },
     {
      "sig": "js class-name known-class-name @ rgb(197, 201, 197)",
@@ -8783,7 +11962,12 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "js:tok-variable-name": "Math"
+      }
+     }
     },
     {
      "sig": "ts keyword @ rgb(138, 147, 168)",
@@ -8801,7 +11985,17 @@
      "differing": 0,
      "bestColour": "rgb(138, 147, 168)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(138, 147, 168)": {
+       "ts:tok-definition-keyword": "interfacetypeenumfunctionconst",
+       "ts:tok-module-keyword": "export",
+       "ts:tok-control-keyword": "return",
+       "ts:tok-operator-keyword": "as",
+       "typescript:tok-definition-keyword": "function",
+       "typescript:tok-control-keyword": "return"
+      }
+     }
     },
     {
      "sig": "ts class-name @ rgb(140, 165, 177)",
@@ -8819,7 +12013,12 @@
      "differing": 0,
      "bestColour": "rgb(140, 165, 177)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(140, 165, 177)": {
+       "ts:tok-name tok-definition": "PointId"
+      }
+     }
     },
     {
      "sig": "ts punctuation @ rgb(158, 155, 148)",
@@ -8843,6 +12042,19 @@
      "gainIfBest": 0,
      "byFence": {
       "ts": 1
+     },
+     "text": {
+      "rgb(158, 155, 148)": {
+       "ts:tok-brace": "{}{}{{}}",
+       "ts:tok-separator": ";;,,,;;",
+       "ts:tok-paren": "()",
+       "typescript:tok-paren": "()",
+       "typescript:tok-brace": "{}",
+       "typescript:tok-separator": ";"
+      },
+      "rgb(196, 116, 110)": {
+       "ts:tok-deref-operator": "."
+      }
      }
     },
     {
@@ -8872,6 +12084,22 @@
      "byFence": {
       "ts": 56,
       "typescript": 2
+     },
+     "text": {
+      "rgb(195, 177, 136)": {
+       "ts:tok-property-name tok-definition": "xlabelx",
+       "ts:tok-property-name": "RedGreenx"
+      },
+      "rgb(140, 165, 177)": {
+       "ts:tok-name tok-definition": "Color"
+      },
+      "rgb(197, 201, 197)": {
+       "ts:tok-variable-name tok-definition": "pdxnext",
+       "ts:tok-name": "PointPointPointPoint",
+       "ts:tok-variable-name": "ppdxnext",
+       "typescript:tok-variable-name tok-definition": "v",
+       "typescript:tok-variable-name": "v"
+      }
      }
     },
     {
@@ -8901,6 +12129,20 @@
      "byFence": {
       "ts": 11,
       "typescript": 2
+     },
+     "text": {
+      "rgb(158, 155, 148)": {
+       "ts:tok-punctuation": "::::::...:",
+       "typescript:tok-punctuation": "::"
+      },
+      "rgb(200, 192, 146)": {
+       "ts:-": "?"
+      },
+      "rgb(196, 116, 110)": {
+       "ts:tok-definition-operator": "==",
+       "ts:tok-logic-operator": "|",
+       "ts:tok-arithmetic-operator": "+"
+      }
      }
     },
     {
@@ -8919,7 +12161,13 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "ts:tok-name": "numberstringstringnumbernumber",
+       "typescript:tok-name": "numbernumber"
+      }
+     }
     },
     {
      "sig": "ts function @ rgb(197, 201, 197)",
@@ -8937,7 +12185,13 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "ts:tok-variable-name tok-definition": "move",
+       "typescript:tok-variable-name tok-definition": "id"
+      }
+     }
     },
     {
      "sig": "python comment @ rgb(115, 125, 115)",
@@ -8955,7 +12209,12 @@
      "differing": 0,
      "bestColour": "rgb(115, 125, 115)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(115, 125, 115)": {
+       "python:tok-line-comment": "#comment"
+      }
+     }
     },
     {
      "sig": "python keyword @ rgb(138, 147, 168)",
@@ -8984,6 +12243,21 @@
      "byFence": {
       "python": 5,
       "py": 9
+     },
+     "text": {
+      "rgb(138, 147, 168)": {
+       "python:tok-module-keyword": "importimport",
+       "python:tok-definition-keyword": "fromclassdef",
+       "python:tok-control-keyword": "ifreturn",
+       "python:tok-operator-keyword": "isnotand"
+      },
+      "rgb(140, 165, 177)": {
+       "python:tok-variable-name tok-function": "print"
+      },
+      "rgb(200, 192, 146)": {
+       "py:tok-definition-keyword": "def",
+       "py:tok-control-keyword": "return"
+      }
      }
     },
     {
@@ -9009,6 +12283,14 @@
      "byFence": {
       "python": 42,
       "py": 2
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "python:tok-variable-name": "ostypingListBaseselfnamecountnamecountname"
+      },
+      "rgb(200, 192, 146)": {
+       "py:tok-variable-name": "rr"
+      }
      }
     },
     {
@@ -9033,6 +12315,14 @@
      "gainIfBest": 8,
      "byFence": {
       "python": 9
+     },
+     "text": {
+      "rgb(196, 116, 110)": {
+       "python:tok-meta": "@"
+      },
+      "rgb(197, 201, 197)": {
+       "python:tok-variable-name": "decorator"
+      }
      }
     },
     {
@@ -9051,7 +12341,12 @@
      "differing": 0,
      "bestColour": "rgb(142, 164, 162)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(142, 164, 162)": {
+       "python:tok-class-name": "Greeter"
+      }
+     }
     },
     {
      "sig": "python punctuation @ rgb(158, 155, 148)",
@@ -9076,6 +12371,17 @@
      "byFence": {
       "python": 4,
       "py": 5
+     },
+     "text": {
+      "rgb(158, 155, 148)": {
+       "python:tok-paren": "()()(())",
+       "python:tok-separator": ",,,,,,"
+      },
+      "rgb(200, 192, 146)": {
+       "python:-": "::::",
+       "py:tok-paren": "()()",
+       "py:-": ":"
+      }
      }
     },
     {
@@ -9094,7 +12400,12 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "python:tok-string": "\"\"\"Docstring.\"\"\""
+      }
+     }
     },
     {
      "sig": "python function @ rgb(197, 201, 197)",
@@ -9118,6 +12429,14 @@
      "gainIfBest": 0,
      "byFence": {
       "py": 4
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "python:tok-variable-name tok-definition": "greet"
+      },
+      "rgb(200, 192, 146)": {
+       "py:tok-variable-name tok-definition": "area"
+      }
      }
     },
     {
@@ -9147,6 +12466,17 @@
      "byFence": {
       "python": 3,
       "py": 3
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "python:tok-variable-name": "str"
+      },
+      "rgb(140, 165, 177)": {
+       "python:tok-variable-name tok-function": "len"
+      },
+      "rgb(200, 192, 146)": {
+       "py:tok-variable-name tok-function": "len"
+      }
      }
     },
     {
@@ -9171,6 +12501,15 @@
      "gainIfBest": 0,
      "byFence": {
       "python": 2
+     },
+     "text": {
+      "rgb(196, 116, 110)": {
+       "python:tok-definition-operator": "=",
+       "python:tok-compare-operator": ">"
+      },
+      "rgb(200, 192, 146)": {
+       "python:-": "->"
+      }
      }
     },
     {
@@ -9189,7 +12528,12 @@
      "differing": 0,
      "bestColour": "rgb(162, 148, 164)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(162, 148, 164)": {
+       "python:tok-number": "300x1F2.5"
+      }
+     }
     },
     {
      "sig": "python boolean @ rgb(183, 146, 123)",
@@ -9207,7 +12551,13 @@
      "differing": 0,
      "bestColour": "rgb(183, 146, 123)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(183, 146, 123)": {
+       "python:tok-null": "NoneNoneNone",
+       "python:tok-bool": "True"
+      }
+     }
     },
     {
      "sig": "python string string-interpolation @ rgb(137, 153, 122)",
@@ -9225,7 +12575,12 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "python:tok-string tok-special": "f\"hi\""
+      }
+     }
     },
     {
      "sig": "python interpolation punctuation string-interpolation @ rgb(158, 155, 148)",
@@ -9243,7 +12598,12 @@
      "differing": 0,
      "bestColour": "rgb(158, 155, 148)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(158, 155, 148)": {
+       "python:tok-brace": "{}"
+      }
+     }
     },
     {
      "sig": "python interpolation string-interpolation @ rgb(197, 201, 197)",
@@ -9261,7 +12621,12 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "python:tok-variable-name": "name"
+      }
+     }
     },
     {
      "sig": "css comment @ rgb(115, 125, 115)",
@@ -9279,7 +12644,12 @@
      "differing": 0,
      "bestColour": "rgb(115, 125, 115)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(115, 125, 115)": {
+       "css:tok-block-comment": "/*comment*/"
+      }
+     }
     },
     {
      "sig": "css atrule rule @ rgb(138, 147, 168)",
@@ -9297,7 +12667,12 @@
      "differing": 0,
      "bestColour": "rgb(138, 147, 168)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(138, 147, 168)": {
+       "css:tok-definition-keyword": "@media"
+      }
+     }
     },
     {
      "sig": "css atrule punctuation @ rgb(158, 155, 148)",
@@ -9315,7 +12690,13 @@
      "differing": 0,
      "bestColour": "rgb(158, 155, 148)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(158, 155, 148)": {
+       "css:tok-paren": "()",
+       "css:tok-punctuation": ":"
+      }
+     }
     },
     {
      "sig": "css atrule property @ rgb(195, 177, 136)",
@@ -9333,7 +12714,12 @@
      "differing": 0,
      "bestColour": "rgb(195, 177, 136)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(195, 177, 136)": {
+       "css:tok-property-name": "max-width"
+      }
+     }
     },
     {
      "sig": "css atrule number @ rgb(162, 148, 164)",
@@ -9351,7 +12737,12 @@
      "differing": 0,
      "bestColour": "rgb(162, 148, 164)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(162, 148, 164)": {
+       "css:tok-number": "600"
+      }
+     }
     },
     {
      "sig": "css atrule unit @ rgb(183, 146, 123)",
@@ -9369,7 +12760,12 @@
      "differing": 0,
      "bestColour": "rgb(183, 146, 123)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(183, 146, 123)": {
+       "css:tok-unit": "px"
+      }
+     }
     },
     {
      "sig": "css punctuation @ rgb(158, 155, 148)",
@@ -9387,7 +12783,15 @@
      "differing": 0,
      "bestColour": "rgb(158, 155, 148)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(158, 155, 148)": {
+       "css:tok-brace": "{{}}",
+       "css:tok-punctuation": "::::",
+       "css:tok-separator": ";;,;;",
+       "css:tok-paren": "()"
+      }
+     }
     },
     {
      "sig": "css class selector @ rgb(142, 164, 162)",
@@ -9411,6 +12815,14 @@
      "gainIfBest": 0,
      "byFence": {
       "css": 1
+     },
+     "text": {
+      "rgb(200, 192, 146)": {
+       "css:-": "."
+      },
+      "rgb(142, 164, 162)": {
+       "css:tok-class-name": "card"
+      }
      }
     },
     {
@@ -9429,7 +12841,12 @@
      "differing": 0,
      "bestColour": "rgb(196, 116, 110)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(196, 116, 110)": {
+       "css:tok-logic-operator": ">"
+      }
+     }
     },
     {
      "sig": "css selector @ rgb(140, 165, 177)",
@@ -9447,7 +12864,12 @@
      "differing": 0,
      "bestColour": "rgb(140, 165, 177)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(140, 165, 177)": {
+       "css:tok-tag-name": "a"
+      }
+     }
     },
     {
      "sig": "css pseudo-class selector @ rgb(142, 164, 162)",
@@ -9471,6 +12893,14 @@
      "gainIfBest": 0,
      "byFence": {
       "css": 1
+     },
+     "text": {
+      "rgb(158, 155, 148)": {
+       "css:tok-punctuation": ":"
+      },
+      "rgb(142, 164, 162)": {
+       "css:tok-class-name": "hover"
+      }
      }
     },
     {
@@ -9489,7 +12919,12 @@
      "differing": 0,
      "bestColour": "rgb(158, 155, 148)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(158, 155, 148)": {
+       "css:tok-separator": ","
+      }
+     }
     },
     {
      "sig": "css id selector @ rgb(196, 116, 110)",
@@ -9507,7 +12942,13 @@
      "differing": 0,
      "bestColour": "rgb(196, 116, 110)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(196, 116, 110)": {
+       "css:tok-deref-operator": "#",
+       "css:tok-label-name": "main"
+      }
+     }
     },
     {
      "sig": "css pseudo-element selector @ rgb(142, 164, 162)",
@@ -9531,6 +12972,14 @@
      "gainIfBest": 0,
      "byFence": {
       "css": 2
+     },
+     "text": {
+      "rgb(200, 192, 146)": {
+       "css:-": "::"
+      },
+      "rgb(142, 164, 162)": {
+       "css:tok-class-name": "before"
+      }
      }
     },
     {
@@ -9549,7 +12998,12 @@
      "differing": 0,
      "bestColour": "rgb(195, 177, 136)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(195, 177, 136)": {
+       "css:tok-property-name": "colormarginfont-familywidth"
+      }
+     }
     },
     {
      "sig": "css color hexcode @ rgb(183, 146, 123)",
@@ -9567,7 +13021,12 @@
      "differing": 0,
      "bestColour": "rgb(183, 146, 123)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(183, 146, 123)": {
+       "css:tok-color": "#ff0000"
+      }
+     }
     },
     {
      "sig": "css number @ rgb(162, 148, 164)",
@@ -9585,7 +13044,12 @@
      "differing": 0,
      "bestColour": "rgb(162, 148, 164)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(162, 148, 164)": {
+       "css:tok-number": "0121002"
+      }
+     }
     },
     {
      "sig": "css (bare text) @ rgba(197, 201, 197, 0.9)",
@@ -9605,6 +13069,11 @@
      "gainIfBest": 14,
      "byFence": {
       "css": 14
+     },
+     "text": {
+      "rgb(183, 146, 123)": {
+       "css:tok-atom": "autosans-serif"
+      }
      }
     },
     {
@@ -9623,7 +13092,12 @@
      "differing": 0,
      "bestColour": "rgb(183, 146, 123)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(183, 146, 123)": {
+       "css:tok-unit": "px%em"
+      }
+     }
     },
     {
      "sig": "css string @ rgb(137, 153, 122)",
@@ -9641,7 +13115,12 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "css:tok-string": "\"Inter\""
+      }
+     }
     },
     {
      "sig": "css important @ rgb(138, 147, 168)",
@@ -9659,7 +13138,12 @@
      "differing": 0,
      "bestColour": "rgb(138, 147, 168)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(138, 147, 168)": {
+       "css:tok-modifier": "!important"
+      }
+     }
     },
     {
      "sig": "css function @ rgb(138, 147, 168)",
@@ -9677,7 +13161,12 @@
      "differing": 0,
      "bestColour": "rgb(138, 147, 168)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(138, 147, 168)": {
+       "css:tok-operator-keyword": "calc"
+      }
+     }
     },
     {
      "sig": "css operator @ rgb(196, 116, 110)",
@@ -9695,7 +13184,12 @@
      "differing": 0,
      "bestColour": "rgb(196, 116, 110)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(196, 116, 110)": {
+       "css:tok-arithmetic-operator": "-"
+      }
+     }
     },
     {
      "sig": "html comment @ rgb(115, 125, 115)",
@@ -9713,7 +13207,12 @@
      "differing": 0,
      "bestColour": "rgb(115, 125, 115)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(115, 125, 115)": {
+       "html:tok-block-comment": "<!--comment-->"
+      }
+     }
     },
     {
      "sig": "html doctype punctuation @ rgb(197, 201, 197)",
@@ -9731,7 +13230,12 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "html:tok-document-meta": "<!>"
+      }
+     }
     },
     {
      "sig": "html doctype doctype-tag @ rgb(197, 201, 197)",
@@ -9749,7 +13253,12 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "html:tok-document-meta": "DOCTYPE"
+      }
+     }
     },
     {
      "sig": "html doctype name @ rgb(197, 201, 197)",
@@ -9767,7 +13276,12 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "html:tok-document-meta": "html"
+      }
+     }
     },
     {
      "sig": "html punctuation tag @ rgb(158, 155, 148)",
@@ -9785,7 +13299,12 @@
      "differing": 0,
      "bestColour": "rgb(158, 155, 148)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(158, 155, 148)": {
+       "html:tok-angle-bracket": "<><></></>"
+      }
+     }
     },
     {
      "sig": "html tag @ rgb(140, 165, 177)",
@@ -9803,7 +13322,12 @@
      "differing": 0,
      "bestColour": "rgb(140, 165, 177)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(140, 165, 177)": {
+       "html:tok-tag-name": "divaadiv"
+      }
+     }
     },
     {
      "sig": "html attr-name tag @ rgb(195, 177, 136)",
@@ -9821,7 +13345,12 @@
      "differing": 0,
      "bestColour": "rgb(195, 177, 136)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(195, 177, 136)": {
+       "html:tok-attribute-name": "classidhiddenhref"
+      }
+     }
     },
     {
      "sig": "html attr-equals attr-value punctuation tag @ rgb(196, 116, 110)",
@@ -9839,7 +13368,12 @@
      "differing": 0,
      "bestColour": "rgb(196, 116, 110)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(196, 116, 110)": {
+       "html:tok-definition-operator": "==="
+      }
+     }
     },
     {
      "sig": "html attr-value punctuation tag @ rgb(137, 153, 122)",
@@ -9857,7 +13391,12 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "html:tok-attribute-value": "\"\"\"\"\"\""
+      }
+     }
     },
     {
      "sig": "html attr-value tag @ rgb(137, 153, 122)",
@@ -9875,7 +13414,12 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "html:tok-attribute-value": "boxmainhttps://example.com"
+      }
+     }
     },
     {
      "sig": "html (bare text) @ rgba(197, 201, 197, 0.9)",
@@ -9895,6 +13439,11 @@
      "gainIfBest": 8,
      "byFence": {
       "html": 8
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "html:tok-content": "linktext"
+      }
      }
     },
     {
@@ -9913,7 +13462,12 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "html:tok-character": "&amp;"
+      }
+     }
     },
     {
      "sig": "json punctuation @ rgb(158, 155, 148)",
@@ -9931,7 +13485,14 @@
      "differing": 0,
      "bestColour": "rgb(158, 155, 148)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(158, 155, 148)": {
+       "json:tok-brace": "{}",
+       "json:tok-separator": ",,,,,,",
+       "json:tok-square-bracket": "[]"
+      }
+     }
     },
     {
      "sig": "json property @ rgb(195, 177, 136)",
@@ -9949,7 +13510,12 @@
      "differing": 0,
      "bestColour": "rgb(195, 177, 136)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(195, 177, 136)": {
+       "json:tok-property-name": "\"name\"\"count\"\"ratio\"\"enabled\"\"tags\"\"empty\""
+      }
+     }
     },
     {
      "sig": "json operator @ rgb(158, 155, 148)",
@@ -9967,7 +13533,12 @@
      "differing": 0,
      "bestColour": "rgb(158, 155, 148)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(158, 155, 148)": {
+       "json:tok-separator": "::::::"
+      }
+     }
     },
     {
      "sig": "json string @ rgb(137, 153, 122)",
@@ -9985,7 +13556,12 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "json:tok-string": "\"demo\"\"a\"\"b\""
+      }
+     }
     },
     {
      "sig": "json number @ rgb(162, 148, 164)",
@@ -10003,7 +13579,12 @@
      "differing": 0,
      "bestColour": "rgb(162, 148, 164)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(162, 148, 164)": {
+       "json:tok-number": "3-0.5"
+      }
+     }
     },
     {
      "sig": "json boolean @ rgb(183, 146, 123)",
@@ -10021,7 +13602,12 @@
      "differing": 0,
      "bestColour": "rgb(183, 146, 123)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(183, 146, 123)": {
+       "json:tok-bool": "false"
+      }
+     }
     },
     {
      "sig": "json keyword null @ rgb(183, 146, 123)",
@@ -10039,7 +13625,12 @@
      "differing": 0,
      "bestColour": "rgb(183, 146, 123)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(183, 146, 123)": {
+       "json:tok-null": "null"
+      }
+     }
     },
     {
      "sig": "sh important shebang @ rgb(196, 116, 110)",
@@ -10057,7 +13648,12 @@
      "differing": 0,
      "bestColour": "rgb(196, 116, 110)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(196, 116, 110)": {
+       "sh:tok-meta": "#!/bin/sh"
+      }
+     }
     },
     {
      "sig": "sh comment @ rgb(115, 125, 115)",
@@ -10075,7 +13671,12 @@
      "differing": 0,
      "bestColour": "rgb(115, 125, 115)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(115, 125, 115)": {
+       "sh:tok-comment": "#comment"
+      }
+     }
     },
     {
      "sig": "sh assign-left variable @ rgb(197, 201, 197)",
@@ -10093,7 +13694,12 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "sh:tok-variable-name tok-definition": "NAME"
+      }
+     }
     },
     {
      "sig": "sh operator @ rgb(196, 116, 110)",
@@ -10118,6 +13724,15 @@
      "byFence": {
       "sh": 3,
       "bash": 1
+     },
+     "text": {
+      "rgb(196, 116, 110)": {
+       "sh:tok-operator": "=="
+      },
+      "rgb(200, 192, 146)": {
+       "sh:-": "|>>",
+       "bash:-": "|"
+      }
      }
     },
     {
@@ -10136,7 +13751,14 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "sh:tok-string": "\"world\"\"/bin:\"\"\"\"hi\"\"\"",
+       "bash:tok-string": "\"\"",
+       "shell:tok-string": "\"\""
+      }
+     }
     },
     {
      "sig": "sh builtin class-name @ rgb(197, 201, 197)",
@@ -10160,6 +13782,15 @@
      "gainIfBest": 0,
      "byFence": {
       "sh": 6
+     },
+     "text": {
+      "rgb(138, 147, 168)": {
+       "sh:tok-keyword": "export"
+      },
+      "rgb(197, 201, 197)": {
+       "sh:tok-variable-name tok-standard": "echo",
+       "shell:tok-variable-name tok-standard": "echo"
+      }
      }
     },
     {
@@ -10178,7 +13809,12 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "sh:tok-variable-name tok-definition": "PATH"
+      }
+     }
     },
     {
      "sig": "sh constant environment string @ rgb(197, 201, 197)",
@@ -10196,7 +13832,13 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "sh:tok-variable-name tok-definition": "$HOME$PATH",
+       "bash:tok-variable-name tok-definition": "$HOME"
+      }
+     }
     },
     {
      "sig": "sh keyword @ rgb(138, 147, 168)",
@@ -10214,7 +13856,13 @@
      "differing": 0,
      "bestColour": "rgb(138, 147, 168)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(138, 147, 168)": {
+       "sh:tok-keyword": "ifthenfiforindodone",
+       "shell:tok-keyword": "done"
+      }
+     }
     },
     {
      "sig": "sh punctuation @ rgba(197, 201, 197, 0.9)",
@@ -10235,6 +13883,12 @@
      "byFence": {
       "sh": 5,
       "shell": 1
+     },
+     "text": {
+      "rgb(200, 192, 146)": {
+       "sh:-": "[];;;",
+       "shell:-": ";"
+      }
      }
     },
     {
@@ -10253,7 +13907,13 @@
      "differing": 0,
      "bestColour": "rgb(195, 177, 136)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(195, 177, 136)": {
+       "sh:tok-attribute-name": "-n-c",
+       "bash:tok-attribute-name": "-la-c"
+      }
+     }
     },
     {
      "sig": "sh string variable @ rgb(197, 201, 197)",
@@ -10271,7 +13931,13 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "sh:tok-variable-name tok-definition": "$NAME${NAME}$f",
+       "shell:tok-variable-name tok-definition": "$FILE"
+      }
+     }
     },
     {
      "sig": "sh function @ rgb(197, 201, 197)",
@@ -10289,7 +13955,14 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "sh:tok-variable-name tok-standard": "grepcat",
+       "bash:tok-variable-name tok-standard": "lsgrep",
+       "shell:tok-variable-name tok-standard": "cat"
+      }
+     }
     },
     {
      "sig": "sh (bare text) @ rgba(197, 201, 197, 0.9)",
@@ -10327,6 +14000,26 @@
       "sh": 16,
       "bash": 1,
       "zsh": 26
+     },
+     "text": {
+      "rgb(200, 192, 146)": {
+       "sh:-": "hi/dev/null*.txt",
+       "bash:-": "x",
+       "zsh:-": "f*.md;;"
+      },
+      "rgb(138, 147, 168)": {
+       "zsh:tok-keyword": "forindodone"
+      },
+      "rgb(197, 201, 197)": {
+       "zsh:tok-variable-name tok-standard": "wc",
+       "zsh:tok-variable-name tok-definition": "$f"
+      },
+      "rgb(195, 177, 136)": {
+       "zsh:tok-attribute-name": "-l"
+      },
+      "rgb(137, 153, 122)": {
+       "zsh:tok-string": "\"\""
+      }
      }
     },
     {
@@ -10345,7 +14038,12 @@
      "differing": 0,
      "bestColour": "rgb(162, 148, 164)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(162, 148, 164)": {
+       "sh:tok-number": "2"
+      }
+     }
     },
     {
      "sig": "sh file-descriptor important @ rgba(197, 201, 197, 0.9)",
@@ -10365,6 +14063,11 @@
      "gainIfBest": 2,
      "byFence": {
       "sh": 2
+     },
+     "text": {
+      "rgb(200, 192, 146)": {
+       "sh:-": "&1"
+      }
      }
     },
     {
@@ -10385,6 +14088,11 @@
      "gainIfBest": 1,
      "byFence": {
       "sh": 1
+     },
+     "text": {
+      "rgb(200, 192, 146)": {
+       "sh:-": "f"
+      }
      }
     },
     {
@@ -10403,7 +14111,12 @@
      "differing": 0,
      "bestColour": "rgb(115, 125, 115)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(115, 125, 115)": {
+       "go:tok-line-comment": "//comment"
+      }
+     }
     },
     {
      "sig": "go keyword @ rgb(138, 147, 168)",
@@ -10421,7 +14134,14 @@
      "differing": 0,
      "bestColour": "rgb(138, 147, 168)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(138, 147, 168)": {
+       "go:tok-module-keyword": "packageimport",
+       "go:tok-definition-keyword": "typestructfunc",
+       "go:tok-control-keyword": "return"
+      }
+     }
     },
     {
      "sig": "go (bare text) @ rgba(197, 201, 197, 0.9)",
@@ -10449,6 +14169,19 @@
      "gainIfBest": 19,
      "byFence": {
       "go": 28
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "go:tok-variable-name tok-definition": "mainpdx",
+       "go:tok-name": "Point",
+       "go:tok-variable-name": "pdxfmtp"
+      },
+      "rgb(140, 165, 177)": {
+       "go:tok-name tok-definition": "Point"
+      },
+      "rgb(195, 177, 136)": {
+       "go:tok-property-name": "XYXX"
+      }
      }
     },
     {
@@ -10467,7 +14200,12 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "go:tok-string": "\"fmt\"\"moved\""
+      }
+     }
     },
     {
      "sig": "go punctuation @ rgb(158, 155, 148)",
@@ -10491,6 +14229,16 @@
      "gainIfBest": 0,
      "byFence": {
       "go": 3
+     },
+     "text": {
+      "rgb(158, 155, 148)": {
+       "go:tok-brace": "{}{}",
+       "go:tok-separator": ",,,,,",
+       "go:tok-paren": "()()()"
+      },
+      "rgb(196, 116, 110)": {
+       "go:tok-deref-operator": "..."
+      }
      }
     },
     {
@@ -10509,7 +14257,12 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "go:tok-name": "intinterror"
+      }
+     }
     },
     {
      "sig": "go operator @ rgb(196, 116, 110)",
@@ -10533,6 +14286,14 @@
      "gainIfBest": 0,
      "byFence": {
       "go": 1
+     },
+     "text": {
+      "rgb(138, 147, 168)": {
+       "go:tok-modifier": "*"
+      },
+      "rgb(196, 116, 110)": {
+       "go:tok-update-operator": "+="
+      }
      }
     },
     {
@@ -10551,7 +14312,12 @@
      "differing": 0,
      "bestColour": "rgb(195, 177, 136)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(195, 177, 136)": {
+       "go:tok-property-name": "MovePrintln"
+      }
+     }
     },
     {
      "sig": "go number @ rgb(162, 148, 164)",
@@ -10569,7 +14335,12 @@
      "differing": 0,
      "bestColour": "rgb(162, 148, 164)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(162, 148, 164)": {
+       "go:tok-number": "3.14"
+      }
+     }
     },
     {
      "sig": "go boolean @ rgb(183, 146, 123)",
@@ -10587,7 +14358,13 @@
      "differing": 0,
      "bestColour": "rgb(183, 146, 123)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(183, 146, 123)": {
+       "go:tok-bool": "true",
+       "go:tok-null": "nilnil"
+      }
+     }
     },
     {
      "sig": "rust comment @ rgb(115, 125, 115)",
@@ -10605,7 +14382,12 @@
      "differing": 0,
      "bestColour": "rgb(115, 125, 115)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(115, 125, 115)": {
+       "rust:tok-line-comment": "//comment"
+      }
+     }
     },
     {
      "sig": "rust keyword @ rgb(138, 147, 168)",
@@ -10629,6 +14411,16 @@
      "gainIfBest": 0,
      "byFence": {
       "rust": 12
+     },
+     "text": {
+      "rgb(138, 147, 168)": {
+       "rust:tok-module-keyword": "use",
+       "rust:tok-definition-keyword": "structfnlet",
+       "rust:tok-modifier": "mut"
+      },
+      "rgb(197, 201, 197)": {
+       "rust:tok-name": "i32i32stri32"
+      }
      }
     },
     {
@@ -10647,7 +14439,12 @@
      "differing": 0,
      "bestColour": "rgb(142, 164, 162)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(142, 164, 162)": {
+       "rust:tok-namespace": "stdcollections"
+      }
+     }
     },
     {
      "sig": "rust namespace punctuation @ rgb(158, 155, 148)",
@@ -10665,7 +14462,12 @@
      "differing": 0,
      "bestColour": "rgb(158, 155, 148)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(158, 155, 148)": {
+       "rust:tok-separator": "::::"
+      }
+     }
     },
     {
      "sig": "rust class-name @ rgb(197, 201, 197)",
@@ -10693,6 +14495,18 @@
      "gainIfBest": 0,
      "byFence": {
       "rust": 9
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "rust:tok-variable-name tok-definition": "HashMap",
+       "rust:tok-name": "ResultStringHashMap"
+      },
+      "rgb(142, 164, 162)": {
+       "rust:tok-namespace": "HashMap"
+      },
+      "rgb(140, 165, 177)": {
+       "rust:tok-variable-name tok-function": "Ok"
+      }
      }
     },
     {
@@ -10717,6 +14531,17 @@
      "gainIfBest": 0,
      "byFence": {
       "rust": 4
+     },
+     "text": {
+      "rgb(158, 155, 148)": {
+       "rust:tok-separator": ";,,,::;,;,,;",
+       "rust:tok-brace": "{}{}",
+       "rust:tok-paren": "()()()()()(())",
+       "rust:tok-punctuation": "->"
+      },
+      "rgb(200, 192, 146)": {
+       "rust:-": ":::."
+      }
      }
     },
     {
@@ -10735,7 +14560,15 @@
      "differing": 0,
      "bestColour": "rgb(196, 116, 110)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(196, 116, 110)": {
+       "rust:tok-meta": "#",
+       "rust:tok-meta tok-square-bracket": "[]",
+       "rust:tok-meta tok-variable-name": "deriveDebug",
+       "rust:tok-meta tok-paren": "()"
+      }
+     }
     },
     {
      "sig": "rust class-name type-definition @ rgb(197, 201, 197)",
@@ -10753,7 +14586,12 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "rust:tok-name": "Point"
+      }
+     }
     },
     {
      "sig": "rust (bare text) @ rgba(197, 201, 197, 0.9)",
@@ -10782,6 +14620,24 @@
      "byFence": {
       "rust": 11,
       "rs": 19
+     },
+     "text": {
+      "rgb(195, 177, 136)": {
+       "rust:tok-property-name": "xy"
+      },
+      "rgb(197, 201, 197)": {
+       "rust:tok-variable-name tok-definition": "map",
+       "rust:tok-variable-name": "mapmap"
+      },
+      "rgb(200, 192, 146)": {
+       "rs:tok-definition-keyword": "fnlet",
+       "rs:tok-variable-name tok-definition": "mainx",
+       "rs:tok-paren": "()",
+       "rs:tok-brace": "{}",
+       "rs:tok-definition-operator": "=",
+       "rs:tok-float": "2.0",
+       "rs:tok-separator": ";"
+      }
      }
     },
     {
@@ -10800,7 +14656,12 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "rust:tok-variable-name tok-definition": "main"
+      }
+     }
     },
     {
      "sig": "rust operator @ rgb(196, 116, 110)",
@@ -10824,6 +14685,15 @@
      "gainIfBest": 2,
      "byFence": {
       "rust": 4
+     },
+     "text": {
+      "rgb(200, 192, 146)": {
+       "rust:-": "<><>"
+      },
+      "rgb(196, 116, 110)": {
+       "rust:tok-operator": "&",
+       "rust:tok-definition-operator": "="
+      }
      }
     },
     {
@@ -10848,6 +14718,14 @@
      "gainIfBest": 0,
      "byFence": {
       "rust": 3
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "rust:tok-variable-name": "new"
+      },
+      "rgb(140, 165, 177)": {
+       "rust:tok-property-name tok-function": "insert"
+      }
      }
     },
     {
@@ -10866,7 +14744,12 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "rust:tok-string": "\"one\"\"{:?}{}\""
+      }
+     }
     },
     {
      "sig": "rust number @ rgb(162, 148, 164)",
@@ -10884,7 +14767,13 @@
      "differing": 0,
      "bestColour": "rgb(162, 148, 164)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(162, 148, 164)": {
+       "rust:tok-integer": "1",
+       "rust:tok-float": "2.5"
+      }
+     }
     },
     {
      "sig": "rust macro property @ rgb(196, 116, 110)",
@@ -10902,7 +14791,12 @@
      "differing": 0,
      "bestColour": "rgb(196, 116, 110)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(196, 116, 110)": {
+       "rust:tok-macro-name": "println!"
+      }
+     }
     },
     {
      "sig": "yaml comment @ rgb(115, 125, 115)",
@@ -10920,7 +14814,12 @@
      "differing": 0,
      "bestColour": "rgb(115, 125, 115)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(115, 125, 115)": {
+       "yaml:tok-line-comment": "#comment"
+      }
+     }
     },
     {
      "sig": "yaml atrule key @ rgb(195, 177, 136)",
@@ -10938,7 +14837,13 @@
      "differing": 0,
      "bestColour": "rgb(195, 177, 136)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(195, 177, 136)": {
+       "yaml:tok-property-name tok-definition": "nameversionenableditemsanchorkeyref",
+       "yml:tok-property-name tok-definition": "counton"
+      }
+     }
     },
     {
      "sig": "yaml punctuation @ rgb(158, 155, 148)",
@@ -10956,7 +14861,13 @@
      "differing": 0,
      "bestColour": "rgb(158, 155, 148)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(158, 155, 148)": {
+       "yaml:tok-separator": "::::--:::",
+       "yml:tok-separator": "::"
+      }
+     }
     },
     {
      "sig": "yaml (bare text) @ rgba(197, 201, 197, 0.9)",
@@ -10976,6 +14887,11 @@
      "gainIfBest": 14,
      "byFence": {
       "yaml": 14
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "yaml:tok-content": "demoplainvalue"
+      }
      }
     },
     {
@@ -10994,7 +14910,13 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "yaml:tok-content": "1.2",
+       "yml:tok-content": "3"
+      }
+     }
     },
     {
      "sig": "yaml boolean important @ rgb(197, 201, 197)",
@@ -11012,7 +14934,13 @@
      "differing": 0,
      "bestColour": "rgb(197, 201, 197)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(197, 201, 197)": {
+       "yaml:tok-content": "true",
+       "yml:tok-content": "true"
+      }
+     }
     },
     {
      "sig": "yaml string @ rgb(137, 153, 122)",
@@ -11030,7 +14958,12 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "yaml:tok-string": "\"quoted\""
+      }
+     }
     },
     {
      "sig": "yaml important @ rgb(196, 116, 110)",
@@ -11048,7 +14981,12 @@
      "differing": 0,
      "bestColour": "rgb(196, 116, 110)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(196, 116, 110)": {
+       "yaml:tok-label-name": "&base*base"
+      }
+     }
     },
     {
      "sig": "sql comment @ rgb(115, 125, 115)",
@@ -11066,7 +15004,12 @@
      "differing": 0,
      "bestColour": "rgb(115, 125, 115)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(115, 125, 115)": {
+       "sql:tok-line-comment": "--comment"
+      }
+     }
     },
     {
      "sig": "sql keyword @ rgb(138, 147, 168)",
@@ -11084,7 +15027,12 @@
      "differing": 0,
      "bestColour": "rgb(138, 147, 168)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(138, 147, 168)": {
+       "sql:tok-keyword": "SELECTASFROMWHEREGROUPBYORDERBYDESC"
+      }
+     }
     },
     {
      "sig": "sql (bare text) @ rgba(197, 201, 197, 0.9)",
@@ -11104,6 +15052,11 @@
      "gainIfBest": 32,
      "byFence": {
       "sql": 32
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "sql:tok-name": "idnamelabelusersuuageunameidname"
+      }
      }
     },
     {
@@ -11128,6 +15081,15 @@
      "gainIfBest": 0,
      "byFence": {
       "sql": 3
+     },
+     "text": {
+      "rgb(158, 155, 148)": {
+       "sql:tok-punctuation": ",,",
+       "sql:tok-paren": "()"
+      },
+      "rgb(200, 192, 146)": {
+       "sql:-": "..;"
+      }
      }
     },
     {
@@ -11146,7 +15108,12 @@
      "differing": 0,
      "bestColour": "rgb(138, 147, 168)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(138, 147, 168)": {
+       "sql:tok-keyword": "COUNT"
+      }
+     }
     },
     {
      "sig": "sql operator @ rgb(196, 116, 110)",
@@ -11170,6 +15137,14 @@
      "gainIfBest": 5,
      "byFence": {
       "sql": 7
+     },
+     "text": {
+      "rgb(196, 116, 110)": {
+       "sql:tok-operator": "*>"
+      },
+      "rgb(138, 147, 168)": {
+       "sql:tok-keyword": "ANDLIKE"
+      }
      }
     },
     {
@@ -11188,7 +15163,12 @@
      "differing": 0,
      "bestColour": "rgb(162, 148, 164)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(162, 148, 164)": {
+       "sql:tok-number": "21"
+      }
+     }
     },
     {
      "sig": "sql string @ rgb(137, 153, 122)",
@@ -11206,7 +15186,12 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "sql:tok-string": "'A%'"
+      }
+     }
     },
     {
      "sig": "markdown important punctuation title @ rgb(137, 153, 122)",
@@ -11224,7 +15209,12 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-heading-1 tok-processing-instruction": "#"
+      }
+     }
     },
     {
      "sig": "markdown important title @ rgb(195, 177, 136)",
@@ -11242,7 +15232,12 @@
      "differing": 0,
      "bestColour": "rgb(195, 177, 136)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(195, 177, 136)": {
+       "markdown:tok-heading-1": "Heading"
+      }
+     }
     },
     {
      "sig": "markdown (bare text) @ rgba(197, 201, 197, 0.9)",
@@ -11263,6 +15258,13 @@
      "byFence": {
       "markdown": 13,
       "md": 3
+     },
+     "text": {
+      "rgb(197, 201, 197)": {
+       "markdown:tok-content": "Some,and.",
+       "markdown:tok-list tok-content": "item",
+       "md:tok-content": "and"
+      }
      }
     },
     {
@@ -11281,7 +15283,12 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-emphasis tok-processing-instruction": "**"
+      }
+     }
     },
     {
      "sig": "markdown content italic @ rgb(137, 153, 122)",
@@ -11299,7 +15306,12 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-emphasis": "emphasis"
+      }
+     }
     },
     {
      "sig": "markdown bold punctuation @ rgb(137, 153, 122)",
@@ -11317,7 +15329,13 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-strong tok-processing-instruction": "****",
+       "md:tok-strong tok-processing-instruction": "****"
+      }
+     }
     },
     {
      "sig": "markdown bold content @ rgb(196, 116, 110)",
@@ -11335,7 +15353,13 @@
      "differing": 0,
      "bestColour": "rgb(196, 116, 110)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(196, 116, 110)": {
+       "markdown:tok-strong": "strong",
+       "md:tok-strong": "bold"
+      }
+     }
     },
     {
      "sig": "markdown code code-snippet keyword @ rgb(200, 192, 146)",
@@ -11359,6 +15383,14 @@
      "gainIfBest": 0,
      "byFence": {
       "markdown": 2
+     },
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-processing-instruction": "``"
+      },
+      "rgb(200, 192, 146)": {
+       "markdown:tok-monospace": "code"
+      }
      }
     },
     {
@@ -11379,6 +15411,11 @@
      "gainIfBest": 1,
      "byFence": {
       "markdown": 1
+     },
+     "text": {
+      "rgb(150, 160, 182)": {
+       "markdown:tok-list tok-processing-instruction": "-"
+      }
      }
     },
     {
@@ -11397,7 +15434,13 @@
      "differing": 0,
      "bestColour": "rgb(137, 153, 122)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(137, 153, 122)": {
+       "markdown:tok-list tok-link tok-processing-instruction": "[]()",
+       "md:tok-link tok-processing-instruction": "[]()"
+      }
+     }
     },
     {
      "sig": "markdown content url @ rgb(140, 165, 177)",
@@ -11415,7 +15458,13 @@
      "differing": 0,
      "bestColour": "rgb(140, 165, 177)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(140, 165, 177)": {
+       "markdown:tok-list tok-link": "link",
+       "md:tok-link": "a"
+      }
+     }
     },
     {
      "sig": "markdown url @ rgb(150, 160, 182)",
@@ -11433,7 +15482,13 @@
      "differing": 0,
      "bestColour": "rgb(150, 160, 182)",
      "gainIfBest": 0,
-     "byFence": {}
+     "byFence": {},
+     "text": {
+      "rgb(150, 160, 182)": {
+       "markdown:tok-list tok-link tok-url": "https://example.com",
+       "md:tok-link tok-url": "https://example.com"
+      }
+     }
     }
    ],
    "reach": {
@@ -11503,6 +15558,11 @@
    "checks": {
     "before": 17,
     "now": 17
+   },
+   "ambiguous": {
+    "runs": 209,
+    "chars": 243,
+    "notInvariant": []
    },
    "both": {
     "resolved": 0,
@@ -11689,6 +15749,11 @@
     "before": 17,
     "now": 17
    },
+   "ambiguous": {
+    "runs": 209,
+    "chars": 243,
+    "notInvariant": []
+   },
    "both": {
     "resolved": 0,
     "still": 594,
@@ -11872,6 +15937,11 @@
    "checks": {
     "before": 18,
     "now": 19
+   },
+   "ambiguous": {
+    "runs": 74,
+    "chars": 141,
+    "notInvariant": []
    },
    "both": {
     "resolved": 0,
