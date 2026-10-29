@@ -1,0 +1,828 @@
+2026-10-29T09:17:55.913Z probe desktop solarized-dark opaque 1 default
+2026-10-29T09:17:58.579Z probe desktop solarized-dark opaque 1 user-font
+2026-10-29T09:18:01.455Z probe desktop solarized-dark opaque 1 file-explorer-focused
+2026-10-29T09:18:02.878Z probe desktop solarized-dark opaque 1 menu-open
+2026-10-29T09:18:06.755Z probe desktop solarized-dark opaque 1 popover-open
+2026-10-29T09:18:09.038Z probe desktop solarized-dark opaque 1 tooltip-open
+2026-10-29T09:18:11.302Z probe desktop solarized-dark opaque 1 md-source
+2026-10-29T09:18:15.182Z probe desktop solarized-dark opaque 1 md-live
+2026-10-29T09:18:16.972Z probe desktop solarized-dark opaque 1 md-reading
+2026-10-29T09:18:19.395Z probe desktop solarized-dark opaque 1 md-user-fonts
+2026-10-29T09:18:24.042Z probe desktop solarized-dark opaque 1 ed-source
+2026-10-29T09:18:28.765Z probe desktop solarized-dark opaque 1 ed-source-no-lines
+2026-10-29T09:18:33.464Z probe desktop solarized-dark opaque 1 ed-search
+2026-10-29T09:18:38.490Z probe desktop solarized-dark opaque 1 ed-fold
+2026-10-29T09:18:43.218Z probe desktop solarized-dark opaque 1 self-test-ed-gutter-lost
+2026-10-29T09:18:48.731Z probe desktop solarized-dark opaque 1 self-test-fold-lost
+2026-10-29T09:18:53.955Z probe desktop solarized-dark opaque 1 self-test-settings-search
+2026-10-29T09:18:59.394Z probe desktop solarized-dark opaque 1 self-test-pointer-missed
+2026-10-29T09:19:12.067Z probe desktop solarized-dark translucent 1 default
+2026-10-29T09:19:13.480Z probe desktop solarized-dark translucent 1 fullscreen-class
+2026-10-29T09:19:14.894Z probe desktop solarized-dark opaque 2 default
+2026-10-29T09:19:17.294Z probe desktop solarized-dark opaque 2 user-font
+2026-10-29T09:19:20.148Z probe desktop solarized-dark opaque 2 file-explorer-focused
+2026-10-29T09:19:21.569Z probe desktop solarized-dark opaque 2 menu-open
+2026-10-29T09:19:24.968Z probe desktop solarized-dark opaque 2 popover-open
+2026-10-29T09:19:27.218Z probe desktop solarized-dark opaque 2 tooltip-open
+2026-10-29T09:19:29.467Z probe desktop solarized-dark opaque 2 md-source
+2026-10-29T09:19:33.303Z probe desktop solarized-dark opaque 2 md-live
+2026-10-29T09:19:35.075Z probe desktop solarized-dark opaque 2 md-reading
+2026-10-29T09:19:37.475Z probe desktop solarized-dark opaque 2 md-user-fonts
+2026-10-29T09:19:42.176Z probe desktop solarized-dark opaque 2 ed-source
+2026-10-29T09:19:46.885Z probe desktop solarized-dark opaque 2 ed-source-no-lines
+2026-10-29T09:19:51.577Z probe desktop solarized-dark opaque 2 ed-search
+2026-10-29T09:19:56.585Z probe desktop solarized-dark opaque 2 ed-fold
+2026-10-29T09:20:01.308Z probe desktop solarized-dark opaque 2 self-test-ed-gutter-lost
+2026-10-29T09:20:06.817Z probe desktop solarized-dark opaque 2 self-test-fold-lost
+2026-10-29T09:20:12.027Z probe desktop solarized-dark opaque 2 self-test-settings-search
+2026-10-29T09:20:17.463Z probe desktop solarized-dark opaque 2 self-test-pointer-missed
+2026-10-29T09:20:30.155Z probe desktop kanagawa-dragon opaque 1 default
+2026-10-29T09:20:32.576Z probe desktop kanagawa-dragon opaque 1 user-font
+2026-10-29T09:20:35.437Z probe desktop kanagawa-dragon opaque 1 file-explorer-focused
+2026-10-29T09:20:36.857Z probe desktop kanagawa-dragon opaque 1 menu-open
+2026-10-29T09:20:40.264Z probe desktop kanagawa-dragon opaque 1 popover-open
+2026-10-29T09:20:42.520Z probe desktop kanagawa-dragon opaque 1 tooltip-open
+2026-10-29T09:20:44.769Z probe desktop kanagawa-dragon opaque 1 md-source
+2026-10-29T09:20:48.613Z probe desktop kanagawa-dragon opaque 1 md-live
+2026-10-29T09:20:50.399Z probe desktop kanagawa-dragon opaque 1 md-reading
+2026-10-29T09:20:52.803Z probe desktop kanagawa-dragon opaque 1 md-user-fonts
+2026-10-29T09:20:57.484Z probe desktop kanagawa-dragon opaque 1 ed-source
+2026-10-29T09:21:02.204Z probe desktop kanagawa-dragon opaque 1 ed-source-no-lines
+2026-10-29T09:21:06.919Z probe desktop kanagawa-dragon opaque 1 ed-search
+2026-10-29T09:21:11.941Z probe desktop kanagawa-dragon opaque 1 ed-fold
+2026-10-29T09:21:16.660Z probe desktop kanagawa-dragon opaque 1 self-test-ed-gutter-lost
+2026-10-29T09:21:22.191Z probe desktop kanagawa-dragon opaque 1 self-test-fold-lost
+2026-10-29T09:21:27.425Z probe desktop kanagawa-dragon opaque 1 self-test-settings-search
+2026-10-29T09:21:32.864Z probe desktop kanagawa-dragon opaque 1 self-test-pointer-missed
+2026-10-29T09:21:45.522Z probe desktop kanagawa-dragon translucent 1 default
+2026-10-29T09:21:46.937Z probe desktop kanagawa-dragon translucent 1 fullscreen-class
+2026-10-29T09:21:48.354Z probe desktop kanagawa-dragon opaque 2 default
+2026-10-29T09:21:50.764Z probe desktop kanagawa-dragon opaque 2 user-font
+2026-10-29T09:21:53.625Z probe desktop kanagawa-dragon opaque 2 file-explorer-focused
+2026-10-29T09:21:55.040Z probe desktop kanagawa-dragon opaque 2 menu-open
+2026-10-29T09:21:58.444Z probe desktop kanagawa-dragon opaque 2 popover-open
+2026-10-29T09:22:00.704Z probe desktop kanagawa-dragon opaque 2 tooltip-open
+2026-10-29T09:22:02.956Z probe desktop kanagawa-dragon opaque 2 md-source
+2026-10-29T09:22:06.807Z probe desktop kanagawa-dragon opaque 2 md-live
+2026-10-29T09:22:08.587Z probe desktop kanagawa-dragon opaque 2 md-reading
+2026-10-29T09:22:10.984Z probe desktop kanagawa-dragon opaque 2 md-user-fonts
+2026-10-29T09:22:15.649Z probe desktop kanagawa-dragon opaque 2 ed-source
+2026-10-29T09:22:20.363Z probe desktop kanagawa-dragon opaque 2 ed-source-no-lines
+2026-10-29T09:22:25.069Z probe desktop kanagawa-dragon opaque 2 ed-search
+2026-10-29T09:22:30.080Z probe desktop kanagawa-dragon opaque 2 ed-fold
+2026-10-29T09:22:34.791Z probe desktop kanagawa-dragon opaque 2 self-test-ed-gutter-lost
+2026-10-29T09:22:40.309Z probe desktop kanagawa-dragon opaque 2 self-test-fold-lost
+2026-10-29T09:22:45.525Z probe desktop kanagawa-dragon opaque 2 self-test-settings-search
+2026-10-29T09:22:50.951Z probe desktop kanagawa-dragon opaque 2 self-test-pointer-missed
+2026-10-29T09:23:05.157Z probe tablet solarized-dark opaque 1 default
+2026-10-29T09:23:07.972Z probe tablet solarized-dark opaque 1 left-drawer-open
+2026-10-29T09:23:10.106Z probe tablet solarized-dark opaque 1 self-test-translucent-leak
+2026-10-29T09:23:12.260Z probe tablet kanagawa-dragon opaque 1 default
+2026-10-29T09:23:14.400Z probe tablet kanagawa-dragon opaque 1 left-drawer-open
+2026-10-29T09:23:16.526Z probe tablet kanagawa-dragon opaque 1 self-test-translucent-leak
+2026-10-29T09:23:20.211Z probe phone solarized-dark opaque 1 default
+2026-10-29T09:23:22.374Z probe phone kanagawa-dragon opaque 1 default
+2026-10-29T09:23:27.479Z syntax dump
+2026-10-29T09:23:58.501Z syntax dump
+2026-10-29T09:24:29.448Z syntax dump
+2026-10-29T09:25:00.381Z syntax dump
+2026-10-29T09:25:31.284Z syntax dump
+2026-10-29T09:26:02.180Z syntax dump
+2026-10-29T09:26:32.936Z syntax dump
+2026-10-29T09:27:03.820Z syntax dump
+2026-10-29T09:27:34.700Z syntax dump
+2026-10-29T09:28:05.606Z syntax dump
+2026-10-29T09:28:36.495Z syntax dump
+2026-10-29T09:29:07.416Z syntax dump
+2026-10-29T09:29:38.308Z mermaid dump reading {}
+2026-10-29T09:29:42.961Z mermaid dump live {}
+2026-10-29T09:29:48.125Z mermaid dump reading {"reference":"default"}
+2026-10-29T09:29:53.338Z mermaid dump reading {}
+2026-10-29T09:29:57.729Z mermaid dump reading {}
+2026-10-29T09:30:02.117Z mermaid dump reading {}
+2026-10-29T09:30:06.509Z mermaid dump reading {}
+2026-10-29T09:30:10.913Z mermaid dump reading {"inline":[{"selector":"g.node rect.label-container:not([style*=\"fill\"])","property":"fill","value":"rgb(51, 51, 51)"}]}
+2026-10-29T09:30:15.301Z mermaid dump reading {"inline":[{"selector":"g.node rect.label-container:not([style*=\"fill\"])","property":"fill","value":"rgb(51, 51, 51)","priority":"important"}]}
+2026-10-29T09:30:19.677Z mermaid dump reading {}
+2026-10-29T09:30:24.865Z mermaid dump reading {"reference":"default"}
+2026-10-29T09:30:30.081Z mermaid dump reading {}
+2026-10-29T09:30:34.469Z mermaid dump reading {}
+2026-10-29T09:30:38.864Z mermaid dump reading {"inline":[{"selector":"g.edgeLabel text","property":"fill","value":"rgb(255, 0, 255)","priority":"important"}]}
+2026-10-29T09:30:43.260Z mermaid dump reading {"inline":[{"selector":"g.edgeLabel text","property":"color","value":"rgb(255, 0, 255)","priority":"important"}]}
+2026-10-29T09:30:47.675Z mermaid dump reading {"inline":[{"selector":"g.edgeLabel text","property":"fill","value":"currentColor","priority":"important"},{"selector":"g.edgeLabel text","property":"color","value":"rgb(255, 0, 255)","priority":"important"}]}
+2026-10-29T09:30:52.058Z mermaid dump reading {"inline":[{"selector":"g.edgeLabel rect.background","property":"opacity","value":"1","priority":"important"}]}
+2026-10-29T09:30:56.440Z mermaid dump reading {"inline":[{"selector":"g.edgeLabel rect.background","property":"background-color","value":"rgb(255, 0, 255)","priority":"important"}]}
+2026-10-29T09:31:00.809Z mermaid dump reading {"inline":[{"selector":"g.cluster-label rect.background","property":"width","value":"40px","priority":"important"},{"selector":"g.cluster-label rect.background","property":"height","value":"10px","priority":"important"}]}
+2026-10-29T09:31:05.189Z mermaid dump reading {"inline":[{"selector":"foreignObject span.nodeLabel","property":"color","value":"rgb(255, 0, 255)","priority":"important"}]}
+2026-10-29T09:31:09.582Z mermaid dump reading {"inline":[{"selector":"foreignObject span.edgeLabel","property":"background-color","value":"rgb(255, 0, 255)","priority":"important"}]}
+2026-10-29T09:31:13.967Z mermaid dump reading {"inline":[{"selector":"foreignObject span.nodeLabel","property":"filter","value":"blur(2px)","priority":"important"}]}
+2026-10-29T09:31:18.362Z mermaid dump reading {"inline":[{"selector":"g.node rect.label-container:not([style*=\"fill\"])","property":"filter","value":"blur(1px)","priority":"important"}]}
+2026-10-29T09:31:22.744Z mermaid dump reading {"inline":[{"selector":"path.flowchart-link:not([style*=\"stroke:\"])","property":"stroke-opacity","value":"0.3","priority":"important"}]}
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, default] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, default] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, default] -- document.hasFocus() true
+OK   expected PASS: PASS runner.settings-prepared [solarized-dark, desktop, opaque, default] -- {"activeItemShown":true,"ms":0,"tab":"about","searchLength":0,"strayCleared":0,"tabListShown":true,"window":[900,700]}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, default] -- 0 open
+OK   expected PASS: PASS self.positive-control.editor [solarized-dark, desktop, opaque, default] -- rgb(0, 33, 41)
+OK   expected FAIL: FAIL self.missing-element [solarized-dark, desktop, opaque, default] -- element not found
+OK   expected FAIL: FAIL self.hidden-element [solarized-dark, desktop, opaque, default] -- element not displayed (size [0,0])
+OK   expected FAIL: FAIL self.wrong-expectation [solarized-dark, desktop, opaque, default] -- rgb(0, 33, 41) != rgba(6.8,53.1,64.6, 1)
+OK   expected FAIL: FAIL self.unparseable-value [solarized-dark, desktop, opaque, default] -- value not a colour: "none"
+OK   expected FAIL: FAIL self.unknown-token [solarized-dark, desktop, opaque, default] -- expected colour unresolved (--ink-token-that-does-not-exist)
+OK   expected PASS: PASS self.declared-hidden [solarized-dark, desktop, opaque, default] -- hidden: Hidden frame (default): .titlebar is display:none (research/11 §7)
+OK   expected FAIL: FAIL self.declared-hidden-but-missing [solarized-dark, desktop, opaque, default] -- expected hidden (a hidden expectation must not accept a missing element), element not found
+OK   expected PASS: PASS self.declared-absent [solarized-dark, desktop, opaque, default] -- absent: self-test: no such element
+OK   expected FAIL: FAIL self.declared-absent-but-present [solarized-dark, desktop, opaque, default] -- expected absent (self-test: an absent expectation must not accept a present element), found 1
+OK   expected PASS: PASS self.settings-popout [solarized-dark, desktop, opaque, default] -- rgb(0, 33, 41)
+OK   expected FAIL: FAIL self.settings-popout-missing-element [solarized-dark, desktop, opaque, default] -- element not found
+OK   expected FAIL: FAIL self.main-document-does-not-see-popout [solarized-dark, desktop, opaque, default] -- element not found
+OK   expected PASS: PASS self.text-kind-correct [solarized-dark, desktop, opaque, default] -- 205
+OK   expected FAIL: FAIL self.text-kind-wrong-value [solarized-dark, desktop, opaque, default] -- "205" != "1"
+OK   expected FAIL: FAIL self.text-kind-unset-property [solarized-dark, desktop, opaque, default] -- value not readable
+OK   expected FAIL: FAIL self.first-color-none [solarized-dark, desktop, opaque, default] -- no colour in value: "none"
+OK   expected FAIL: FAIL self.var-wrong [solarized-dark, desktop, opaque, default] -- hsl(218deg 11% 65% / 10%) != rgba(155.9,163.1,175.6, 1)
+OK   expected FAIL: FAIL self.var-unset [solarized-dark, desktop, opaque, default] -- no colour in value: null
+OK   expected FAIL: FAIL self.menu-needs-pointer [solarized-dark, desktop, opaque, default] -- element not found
+OK   expected FAIL: FAIL self.popover-needs-pointer [solarized-dark, desktop, opaque, default] -- element not found
+OK   expected FAIL: FAIL self.pseudo-wrong-token [solarized-dark, desktop, opaque, default] -- rgb(0, 45, 56) != rgba(6.8,53.1,64.6, 1)
+OK   expected FAIL: FAIL self.pseudo-ignored [solarized-dark, desktop, opaque, default] -- rgb(7, 53, 65) != rgba(0.0,44.9,56.1, 1)
+OK   expected PASS: PASS self.settings-active-item [solarized-dark, desktop, opaque, default] -- rgba(71, 173, 245, 0.2)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, user-font] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, user-font] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, user-font] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque, user-font] -- {"held":true,"now":{"interfaceFontFamily":"Courier New"},"wanted":{"interfaceFontFamily":"Courier New"},"writes":[{"key":"interfaceFontFamily","value":"Courier New","writes":1,"held":true}]}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, user-font] -- 0 open
+OK   expected FAIL: FAIL self.first-family-wrong [solarized-dark, desktop, opaque, user-font] -- Courier New != Helvetica
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, file-explorer-focused] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, file-explorer-focused] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, file-explorer-focused] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, file-explorer-focused] -- 0 open
+OK   expected FAIL: FAIL self.first-color-wrong [solarized-dark, desktop, opaque, file-explorer-focused] -- rgba(39, 139, 211, 0.4) 5px 0px 0px 0px inset != rgba(38.7,139.3,211.2, 0.2)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, menu-open] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, menu-open] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.pointer-prepared [solarized-dark, desktop, opaque, menu-open] -- {"overlay":".menu .menu-item.selected","shown":true,"target":true,"ms":0}
+OK   expected PASS: PASS runner.pointer-released [solarized-dark, desktop, opaque, menu-open] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, menu-open] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque, menu-open] -- {"held":true,"now":{"nativeMenus":false},"wanted":{"nativeMenus":false},"writes":[{"key":"nativeMenus","value":false,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, menu-open] -- 0 open
+OK   expected FAIL: FAIL self.menu-wrong-token [solarized-dark, desktop, opaque, menu-open] -- rgb(0, 20, 26) != rgba(0.0,32.6,40.8, 1)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, popover-open] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, popover-open] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.pointer-prepared [solarized-dark, desktop, opaque, popover-open] -- {"overlay":".popover.hover-popover","shown":true,"attempts":[{"ms":310}]}
+OK   expected PASS: PASS runner.pointer-released [solarized-dark, desktop, opaque, popover-open] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, popover-open] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, popover-open] -- 0 open
+OK   expected PASS: PASS self.popover-open [solarized-dark, desktop, opaque, popover-open] -- rgb(0, 20, 26)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, tooltip-open] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, tooltip-open] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.pointer-prepared [solarized-dark, desktop, opaque, tooltip-open] -- {"overlay":".tooltip","shown":true,"attempts":[{"ms":304}]}
+OK   expected PASS: PASS runner.pointer-released [solarized-dark, desktop, opaque, tooltip-open] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, tooltip-open] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, tooltip-open] -- 0 open
+OK   expected PASS: PASS self.tooltip-open [solarized-dark, desktop, opaque, tooltip-open] -- rgb(0, 20, 26)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, md-source] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, md-source] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, md-source] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, md-source] -- 0 open
+OK   expected FAIL: FAIL self.md-mark-obsidian-default [solarized-dark, desktop, opaque, md-source] -- rgb(133, 153, 0) != rgba(253.0,245.9,226.4, 0.3)
+OK   expected FAIL: FAIL self.md-source-wrong-token [solarized-dark, desktop, opaque, md-source] -- rgb(173, 184, 184) != rgba(132.6,153.0,0.0, 1)
+OK   expected FAIL: FAIL self.md-source-wiki-bracket-underline [solarized-dark, desktop, opaque, md-source] -- "none" != "underline"
+OK   expected FAIL: FAIL self.md-source-footnote-underline [solarized-dark, desktop, opaque, md-source] -- "none" != "underline"
+OK   expected FAIL: FAIL self.md-source-live-only-element [solarized-dark, desktop, opaque, md-source] -- element not found
+OK   expected FAIL: FAIL self.md-source-task-marker-default [solarized-dark, desktop, opaque, md-source] -- rgb(211, 54, 130) != rgba(253.0,245.9,226.4, 0.6)
+OK   expected PASS: PASS self.md-source-heading-text [solarized-dark, desktop, opaque, md-source] -- rgb(179, 134, 0)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, md-live] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, md-live] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, md-live] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, md-live] -- 0 open
+OK   expected FAIL: FAIL self.md-view-swap-quote-editor [solarized-dark, desktop, opaque, md-live] -- rgb(88, 110, 116) != rgba(6.8,53.1,64.6, 1)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, md-reading] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, md-reading] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, md-reading] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, md-reading] -- 0 open
+OK   expected FAIL: FAIL self.md-wrong-mode [solarized-dark, desktop, opaque, md-reading] -- element not displayed (size [0,0])
+OK   expected FAIL: FAIL self.md-view-swap-quote-reading [solarized-dark, desktop, opaque, md-reading] -- rgb(7, 53, 65) != rgba(87.7,109.6,116.3, 1)
+OK   expected PASS: PASS self.md-scroll [solarized-dark, desktop, opaque, md-reading] -- rgb(7, 53, 65)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, md-user-fonts] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, md-user-fonts] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, md-user-fonts] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque, md-user-fonts] -- {"held":true,"now":{"textFontFamily":"Courier New","monospaceFontFamily":"Menlo"},"wanted":{"textFontFamily":"Courier New","monospaceFontFamily":"Menlo"},"writes":[{"key":"textFontFamily","value":"Courier New","writes":1,"held":true},{"key":"monospaceFontFamily","value":"Menlo","writes":1,"held":true}]}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, md-user-fonts] -- 0 open
+OK   expected FAIL: FAIL self.md-user-font-wrong [solarized-dark, desktop, opaque, md-user-fonts] -- Courier New != Menlo
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, ed-source] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, ed-source] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, ed-source] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque, ed-source] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [solarized-dark, desktop, opaque, ed-source] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, ed-source] -- 0 open
+OK   expected FAIL: FAIL self.ed-active-wrong-token [solarized-dark, desktop, opaque, ed-source] -- linear-gradient(rgba(0, 45, 56, 0.5), rgba(0, 45, 56, 0.5)) != rgba(87.7,109.6,116.3, 1)
+OK   expected FAIL: FAIL self.ed-border-wrong-theme [solarized-dark, desktop, opaque, ed-source] -- "0px" != "1px"
+OK   expected FAIL: FAIL self.ed-task-strong-as-list [solarized-dark, desktop, opaque, ed-source] -- rgb(173, 184, 184) != rgba(131.1,147.6,149.4, 1)
+OK   expected FAIL: FAIL self.ed-suggest-needs-typing [solarized-dark, desktop, opaque, ed-source] -- element not found
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, ed-source-no-lines] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, ed-source-no-lines] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, ed-source-no-lines] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque, ed-source-no-lines] -- {"held":true,"now":{"showLineNumber":false},"wanted":{"showLineNumber":false},"writes":[{"key":"showLineNumber","value":false,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [solarized-dark, desktop, opaque, ed-source-no-lines] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":false,"want":false,"setting":false,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, ed-source-no-lines] -- 0 open
+OK   expected FAIL: FAIL self.ed-no-lines-gutter [solarized-dark, desktop, opaque, ed-source-no-lines] -- element not found
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, ed-search] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, ed-search] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, ed-search] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque, ed-search] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [solarized-dark, desktop, opaque, ed-search] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, ed-search] -- 0 open
+OK   expected FAIL: FAIL self.ed-search-other-match-colour [solarized-dark, desktop, opaque, ed-search] -- rgba(202, 76, 22, 0.45) != rgba(178.5,133.9,0.0, 0.35)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, ed-fold] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, ed-fold] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, ed-fold] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque, ed-fold] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [solarized-dark, desktop, opaque, ed-fold] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true,"unfoldedFirst":true,"folded":true}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, ed-fold] -- 0 open
+OK   expected PASS: PASS self.fold-prepared [solarized-dark, desktop, opaque, ed-fold] -- rgb(88, 110, 116)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, self-test-ed-gutter-lost] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, self-test-ed-gutter-lost] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, self-test-ed-gutter-lost] -- document.hasFocus() true
+OK   expected FAIL: FAIL runner.config-prepared [solarized-dark, desktop, opaque, self-test-ed-gutter-lost] -- {"held":false,"now":{"showLineNumber":false},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected FAIL: FAIL runner.ed-prepared [solarized-dark, desktop, opaque, self-test-ed-gutter-lost] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":false,"want":true,"setting":false,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, self-test-ed-gutter-lost] -- 0 open
+OK   expected FAIL: FAIL self.ed-gutter-lost [solarized-dark, desktop, opaque, self-test-ed-gutter-lost] -- element not found
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, self-test-fold-lost] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, self-test-fold-lost] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, self-test-fold-lost] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque, self-test-fold-lost] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected FAIL: FAIL runner.ed-prepared [solarized-dark, desktop, opaque, self-test-fold-lost] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true,"unfoldedFirst":true,"folded":false}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, self-test-fold-lost] -- 0 open
+OK   expected FAIL: FAIL self.fold-lost [solarized-dark, desktop, opaque, self-test-fold-lost] -- element not found
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, self-test-settings-search] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, self-test-settings-search] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, self-test-settings-search] -- document.hasFocus() true
+OK   expected FAIL: FAIL runner.settings-prepared [solarized-dark, desktop, opaque, self-test-settings-search] -- {"activeItemShown":false,"ms":3030,"tab":"about","searchLength":4,"strayCleared":0,"tabListShown":false,"window":[900,700]}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, self-test-settings-search] -- 0 open
+OK   expected FAIL: FAIL self.settings-search-hides-tabs [solarized-dark, desktop, opaque, self-test-settings-search] -- element not displayed (size [0,0])
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque, self-test-pointer-missed] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque, self-test-pointer-missed] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected FAIL: FAIL runner.pointer-prepared [solarized-dark, desktop, opaque, self-test-pointer-missed] -- {"overlay":".popover.hover-popover","shown":false,"attempts":[{"ms":null,"under":"status-bar-item plugin-word-count","focus":true,"visibility":"visible"},{"ms":null,"under":"status-bar-item plugin-word-count","focus":true,"visibility":"visible"},{"ms":null,"under":"status-bar-item plugin-word-count","focus":true,"visibility":"visible"}]}
+OK   expected PASS: PASS runner.pointer-released [solarized-dark, desktop, opaque, self-test-pointer-missed] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque, self-test-pointer-missed] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque, self-test-pointer-missed] -- 0 open
+OK   expected FAIL: FAIL self.pointer-missed [solarized-dark, desktop, opaque, self-test-pointer-missed] -- element not found
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, translucent, default] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, translucent, default] -- is-frameless is-hidden-frameless is-floating-nav is-translucent
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, translucent, default] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, translucent, default] -- 0 open
+OK   expected PASS: PASS self.translucent-switch [solarized-dark, desktop, translucent, default] -- rgba(0, 45, 56, 0.5)
+OK   expected FAIL: FAIL self.translucent-not-opaque-token [solarized-dark, desktop, translucent, default] -- rgba(0, 33, 41, 0.7) != rgba(0.0,44.9,56.1, 1)
+OK   expected PASS: PASS self.pseudo-corner-translucent [solarized-dark, desktop, translucent, default] -- rgba(0, 33, 41, 0.7)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, translucent, fullscreen-class] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, translucent, fullscreen-class] -- is-frameless is-hidden-frameless is-floating-nav is-translucent is-fullscreen
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, translucent, fullscreen-class] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, translucent, fullscreen-class] -- 0 open
+OK   expected FAIL: FAIL self.fullscreen-not-acrylic [solarized-dark, desktop, translucent, fullscreen-class] -- rgb(0, 45, 56) != rgba(0.0,32.6,40.8, 0.7)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), default] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), default] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), default] -- document.hasFocus() true
+OK   expected PASS: PASS runner.settings-prepared [solarized-dark, desktop, opaque (after translucent), default] -- {"activeItemShown":true,"ms":0,"tab":"about","searchLength":0,"strayCleared":0,"tabListShown":true,"window":[900,700]}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), default] -- 0 open
+OK   expected PASS: PASS self.positive-control.editor [solarized-dark, desktop, opaque (after translucent), default] -- rgb(0, 33, 41)
+OK   expected FAIL: FAIL self.missing-element [solarized-dark, desktop, opaque (after translucent), default] -- element not found
+OK   expected FAIL: FAIL self.hidden-element [solarized-dark, desktop, opaque (after translucent), default] -- element not displayed (size [0,0])
+OK   expected FAIL: FAIL self.wrong-expectation [solarized-dark, desktop, opaque (after translucent), default] -- rgb(0, 33, 41) != rgba(6.8,53.1,64.6, 1)
+OK   expected FAIL: FAIL self.unparseable-value [solarized-dark, desktop, opaque (after translucent), default] -- value not a colour: "none"
+OK   expected FAIL: FAIL self.unknown-token [solarized-dark, desktop, opaque (after translucent), default] -- expected colour unresolved (--ink-token-that-does-not-exist)
+OK   expected PASS: PASS self.declared-hidden [solarized-dark, desktop, opaque (after translucent), default] -- hidden: Hidden frame (default): .titlebar is display:none (research/11 §7)
+OK   expected FAIL: FAIL self.declared-hidden-but-missing [solarized-dark, desktop, opaque (after translucent), default] -- expected hidden (a hidden expectation must not accept a missing element), element not found
+OK   expected PASS: PASS self.declared-absent [solarized-dark, desktop, opaque (after translucent), default] -- absent: self-test: no such element
+OK   expected FAIL: FAIL self.declared-absent-but-present [solarized-dark, desktop, opaque (after translucent), default] -- expected absent (self-test: an absent expectation must not accept a present element), found 1
+OK   expected PASS: PASS self.settings-popout [solarized-dark, desktop, opaque (after translucent), default] -- rgb(0, 33, 41)
+OK   expected FAIL: FAIL self.settings-popout-missing-element [solarized-dark, desktop, opaque (after translucent), default] -- element not found
+OK   expected FAIL: FAIL self.main-document-does-not-see-popout [solarized-dark, desktop, opaque (after translucent), default] -- element not found
+OK   expected PASS: PASS self.text-kind-correct [solarized-dark, desktop, opaque (after translucent), default] -- 205
+OK   expected FAIL: FAIL self.text-kind-wrong-value [solarized-dark, desktop, opaque (after translucent), default] -- "205" != "1"
+OK   expected FAIL: FAIL self.text-kind-unset-property [solarized-dark, desktop, opaque (after translucent), default] -- value not readable
+OK   expected FAIL: FAIL self.first-color-none [solarized-dark, desktop, opaque (after translucent), default] -- no colour in value: "none"
+OK   expected FAIL: FAIL self.var-wrong [solarized-dark, desktop, opaque (after translucent), default] -- hsl(218deg 11% 65% / 10%) != rgba(155.9,163.1,175.6, 1)
+OK   expected FAIL: FAIL self.var-unset [solarized-dark, desktop, opaque (after translucent), default] -- no colour in value: null
+OK   expected FAIL: FAIL self.menu-needs-pointer [solarized-dark, desktop, opaque (after translucent), default] -- element not found
+OK   expected FAIL: FAIL self.popover-needs-pointer [solarized-dark, desktop, opaque (after translucent), default] -- element not found
+OK   expected FAIL: FAIL self.pseudo-wrong-token [solarized-dark, desktop, opaque (after translucent), default] -- rgb(0, 45, 56) != rgba(6.8,53.1,64.6, 1)
+OK   expected FAIL: FAIL self.pseudo-ignored [solarized-dark, desktop, opaque (after translucent), default] -- rgb(7, 53, 65) != rgba(0.0,44.9,56.1, 1)
+OK   expected PASS: PASS self.settings-active-item [solarized-dark, desktop, opaque (after translucent), default] -- rgba(71, 173, 245, 0.2)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), user-font] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), user-font] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), user-font] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque (after translucent), user-font] -- {"held":true,"now":{"interfaceFontFamily":"Courier New"},"wanted":{"interfaceFontFamily":"Courier New"},"writes":[{"key":"interfaceFontFamily","value":"Courier New","writes":1,"held":true}]}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), user-font] -- 0 open
+OK   expected FAIL: FAIL self.first-family-wrong [solarized-dark, desktop, opaque (after translucent), user-font] -- Courier New != Helvetica
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), file-explorer-focused] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), file-explorer-focused] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), file-explorer-focused] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), file-explorer-focused] -- 0 open
+OK   expected FAIL: FAIL self.first-color-wrong [solarized-dark, desktop, opaque (after translucent), file-explorer-focused] -- rgba(39, 139, 211, 0.4) 5px 0px 0px 0px inset != rgba(38.7,139.3,211.2, 0.2)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), menu-open] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), menu-open] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.pointer-prepared [solarized-dark, desktop, opaque (after translucent), menu-open] -- {"overlay":".menu .menu-item.selected","shown":true,"target":true,"ms":0}
+OK   expected PASS: PASS runner.pointer-released [solarized-dark, desktop, opaque (after translucent), menu-open] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), menu-open] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque (after translucent), menu-open] -- {"held":true,"now":{"nativeMenus":false},"wanted":{"nativeMenus":false},"writes":[{"key":"nativeMenus","value":false,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), menu-open] -- 0 open
+OK   expected FAIL: FAIL self.menu-wrong-token [solarized-dark, desktop, opaque (after translucent), menu-open] -- rgb(0, 20, 26) != rgba(0.0,32.6,40.8, 1)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), popover-open] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), popover-open] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.pointer-prepared [solarized-dark, desktop, opaque (after translucent), popover-open] -- {"overlay":".popover.hover-popover","shown":true,"attempts":[{"ms":305}]}
+OK   expected PASS: PASS runner.pointer-released [solarized-dark, desktop, opaque (after translucent), popover-open] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), popover-open] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), popover-open] -- 0 open
+OK   expected PASS: PASS self.popover-open [solarized-dark, desktop, opaque (after translucent), popover-open] -- rgb(0, 20, 26)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), tooltip-open] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), tooltip-open] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.pointer-prepared [solarized-dark, desktop, opaque (after translucent), tooltip-open] -- {"overlay":".tooltip","shown":true,"attempts":[{"ms":304}]}
+OK   expected PASS: PASS runner.pointer-released [solarized-dark, desktop, opaque (after translucent), tooltip-open] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), tooltip-open] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), tooltip-open] -- 0 open
+OK   expected PASS: PASS self.tooltip-open [solarized-dark, desktop, opaque (after translucent), tooltip-open] -- rgb(0, 20, 26)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), md-source] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), md-source] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), md-source] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), md-source] -- 0 open
+OK   expected FAIL: FAIL self.md-mark-obsidian-default [solarized-dark, desktop, opaque (after translucent), md-source] -- rgb(133, 153, 0) != rgba(253.0,245.9,226.4, 0.3)
+OK   expected FAIL: FAIL self.md-source-wrong-token [solarized-dark, desktop, opaque (after translucent), md-source] -- rgb(173, 184, 184) != rgba(132.6,153.0,0.0, 1)
+OK   expected FAIL: FAIL self.md-source-wiki-bracket-underline [solarized-dark, desktop, opaque (after translucent), md-source] -- "none" != "underline"
+OK   expected FAIL: FAIL self.md-source-footnote-underline [solarized-dark, desktop, opaque (after translucent), md-source] -- "none" != "underline"
+OK   expected FAIL: FAIL self.md-source-live-only-element [solarized-dark, desktop, opaque (after translucent), md-source] -- element not found
+OK   expected FAIL: FAIL self.md-source-task-marker-default [solarized-dark, desktop, opaque (after translucent), md-source] -- rgb(211, 54, 130) != rgba(253.0,245.9,226.4, 0.6)
+OK   expected PASS: PASS self.md-source-heading-text [solarized-dark, desktop, opaque (after translucent), md-source] -- rgb(179, 134, 0)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), md-live] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), md-live] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), md-live] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), md-live] -- 0 open
+OK   expected FAIL: FAIL self.md-view-swap-quote-editor [solarized-dark, desktop, opaque (after translucent), md-live] -- rgb(88, 110, 116) != rgba(6.8,53.1,64.6, 1)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), md-reading] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), md-reading] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), md-reading] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), md-reading] -- 0 open
+OK   expected FAIL: FAIL self.md-wrong-mode [solarized-dark, desktop, opaque (after translucent), md-reading] -- element not displayed (size [0,0])
+OK   expected FAIL: FAIL self.md-view-swap-quote-reading [solarized-dark, desktop, opaque (after translucent), md-reading] -- rgb(7, 53, 65) != rgba(87.7,109.6,116.3, 1)
+OK   expected PASS: PASS self.md-scroll [solarized-dark, desktop, opaque (after translucent), md-reading] -- rgb(7, 53, 65)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), md-user-fonts] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), md-user-fonts] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), md-user-fonts] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque (after translucent), md-user-fonts] -- {"held":true,"now":{"textFontFamily":"Courier New","monospaceFontFamily":"Menlo"},"wanted":{"textFontFamily":"Courier New","monospaceFontFamily":"Menlo"},"writes":[{"key":"textFontFamily","value":"Courier New","writes":1,"held":true},{"key":"monospaceFontFamily","value":"Menlo","writes":1,"held":true}]}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), md-user-fonts] -- 0 open
+OK   expected FAIL: FAIL self.md-user-font-wrong [solarized-dark, desktop, opaque (after translucent), md-user-fonts] -- Courier New != Menlo
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), ed-source] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), ed-source] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), ed-source] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque (after translucent), ed-source] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [solarized-dark, desktop, opaque (after translucent), ed-source] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), ed-source] -- 0 open
+OK   expected FAIL: FAIL self.ed-active-wrong-token [solarized-dark, desktop, opaque (after translucent), ed-source] -- linear-gradient(rgba(0, 45, 56, 0.5), rgba(0, 45, 56, 0.5)) != rgba(87.7,109.6,116.3, 1)
+OK   expected FAIL: FAIL self.ed-border-wrong-theme [solarized-dark, desktop, opaque (after translucent), ed-source] -- "0px" != "1px"
+OK   expected FAIL: FAIL self.ed-task-strong-as-list [solarized-dark, desktop, opaque (after translucent), ed-source] -- rgb(173, 184, 184) != rgba(131.1,147.6,149.4, 1)
+OK   expected FAIL: FAIL self.ed-suggest-needs-typing [solarized-dark, desktop, opaque (after translucent), ed-source] -- element not found
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), ed-source-no-lines] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), ed-source-no-lines] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), ed-source-no-lines] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque (after translucent), ed-source-no-lines] -- {"held":true,"now":{"showLineNumber":false},"wanted":{"showLineNumber":false},"writes":[{"key":"showLineNumber","value":false,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [solarized-dark, desktop, opaque (after translucent), ed-source-no-lines] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":false,"want":false,"setting":false,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), ed-source-no-lines] -- 0 open
+OK   expected FAIL: FAIL self.ed-no-lines-gutter [solarized-dark, desktop, opaque (after translucent), ed-source-no-lines] -- element not found
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), ed-search] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), ed-search] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), ed-search] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque (after translucent), ed-search] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [solarized-dark, desktop, opaque (after translucent), ed-search] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), ed-search] -- 0 open
+OK   expected FAIL: FAIL self.ed-search-other-match-colour [solarized-dark, desktop, opaque (after translucent), ed-search] -- rgba(202, 76, 22, 0.45) != rgba(178.5,133.9,0.0, 0.35)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), ed-fold] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), ed-fold] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), ed-fold] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque (after translucent), ed-fold] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [solarized-dark, desktop, opaque (after translucent), ed-fold] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true,"unfoldedFirst":true,"folded":true}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), ed-fold] -- 0 open
+OK   expected PASS: PASS self.fold-prepared [solarized-dark, desktop, opaque (after translucent), ed-fold] -- rgb(88, 110, 116)
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), self-test-ed-gutter-lost] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), self-test-ed-gutter-lost] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), self-test-ed-gutter-lost] -- document.hasFocus() true
+OK   expected FAIL: FAIL runner.config-prepared [solarized-dark, desktop, opaque (after translucent), self-test-ed-gutter-lost] -- {"held":false,"now":{"showLineNumber":false},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected FAIL: FAIL runner.ed-prepared [solarized-dark, desktop, opaque (after translucent), self-test-ed-gutter-lost] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":false,"want":true,"setting":false,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), self-test-ed-gutter-lost] -- 0 open
+OK   expected FAIL: FAIL self.ed-gutter-lost [solarized-dark, desktop, opaque (after translucent), self-test-ed-gutter-lost] -- element not found
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), self-test-fold-lost] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), self-test-fold-lost] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), self-test-fold-lost] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [solarized-dark, desktop, opaque (after translucent), self-test-fold-lost] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected FAIL: FAIL runner.ed-prepared [solarized-dark, desktop, opaque (after translucent), self-test-fold-lost] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true,"unfoldedFirst":true,"folded":false}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), self-test-fold-lost] -- 0 open
+OK   expected FAIL: FAIL self.fold-lost [solarized-dark, desktop, opaque (after translucent), self-test-fold-lost] -- element not found
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), self-test-settings-search] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), self-test-settings-search] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), self-test-settings-search] -- document.hasFocus() true
+OK   expected FAIL: FAIL runner.settings-prepared [solarized-dark, desktop, opaque (after translucent), self-test-settings-search] -- {"activeItemShown":false,"ms":3033,"tab":"about","searchLength":4,"strayCleared":0,"tabListShown":false,"window":[900,700]}
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), self-test-settings-search] -- 0 open
+OK   expected FAIL: FAIL self.settings-search-hides-tabs [solarized-dark, desktop, opaque (after translucent), self-test-settings-search] -- element not displayed (size [0,0])
+OK   expected PASS: PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), self-test-pointer-missed] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS runner.environment [solarized-dark, desktop, opaque (after translucent), self-test-pointer-missed] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected FAIL: FAIL runner.pointer-prepared [solarized-dark, desktop, opaque (after translucent), self-test-pointer-missed] -- {"overlay":".popover.hover-popover","shown":false,"attempts":[{"ms":null,"under":"status-bar-item plugin-word-count","focus":true,"visibility":"visible"},{"ms":null,"under":"status-bar-item plugin-word-count","focus":true,"visibility":"visible"},{"ms":null,"under":"status-bar-item plugin-word-count","focus":true,"visibility":"visible"}]}
+OK   expected PASS: PASS runner.pointer-released [solarized-dark, desktop, opaque (after translucent), self-test-pointer-missed] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [solarized-dark, desktop, opaque (after translucent), self-test-pointer-missed] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), self-test-pointer-missed] -- 0 open
+OK   expected FAIL: FAIL self.pointer-missed [solarized-dark, desktop, opaque (after translucent), self-test-pointer-missed] -- element not found
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, default] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, default] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, default] -- document.hasFocus() true
+OK   expected PASS: PASS runner.settings-prepared [kanagawa-dragon, desktop, opaque, default] -- {"activeItemShown":true,"ms":0,"tab":"about","searchLength":0,"strayCleared":0,"tabListShown":true,"window":[900,700]}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, default] -- 0 open
+OK   expected PASS: PASS self.positive-control.editor [kanagawa-dragon, desktop, opaque, default] -- rgb(30, 29, 26)
+OK   expected FAIL: FAIL self.missing-element [kanagawa-dragon, desktop, opaque, default] -- element not found
+OK   expected FAIL: FAIL self.hidden-element [kanagawa-dragon, desktop, opaque, default] -- element not displayed (size [0,0])
+OK   expected FAIL: FAIL self.wrong-expectation [kanagawa-dragon, desktop, opaque, default] -- rgb(30, 29, 26) != rgba(16.7,16.7,13.9, 1)
+OK   expected FAIL: FAIL self.unparseable-value [kanagawa-dragon, desktop, opaque, default] -- value not a colour: "none"
+OK   expected FAIL: FAIL self.unknown-token [kanagawa-dragon, desktop, opaque, default] -- expected colour unresolved (--ink-token-that-does-not-exist)
+OK   expected PASS: PASS self.declared-hidden [kanagawa-dragon, desktop, opaque, default] -- hidden: Hidden frame (default): .titlebar is display:none (research/11 §7)
+OK   expected FAIL: FAIL self.declared-hidden-but-missing [kanagawa-dragon, desktop, opaque, default] -- expected hidden (a hidden expectation must not accept a missing element), element not found
+OK   expected PASS: PASS self.declared-absent [kanagawa-dragon, desktop, opaque, default] -- absent: self-test: no such element
+OK   expected FAIL: FAIL self.declared-absent-but-present [kanagawa-dragon, desktop, opaque, default] -- expected absent (self-test: an absent expectation must not accept a present element), found 1
+OK   expected PASS: PASS self.settings-popout [kanagawa-dragon, desktop, opaque, default] -- rgb(30, 29, 26)
+OK   expected FAIL: FAIL self.settings-popout-missing-element [kanagawa-dragon, desktop, opaque, default] -- element not found
+OK   expected FAIL: FAIL self.main-document-does-not-see-popout [kanagawa-dragon, desktop, opaque, default] -- element not found
+OK   expected PASS: PASS self.text-kind-correct [kanagawa-dragon, desktop, opaque, default] -- 199
+OK   expected FAIL: FAIL self.text-kind-wrong-value [kanagawa-dragon, desktop, opaque, default] -- "199" != "1"
+OK   expected FAIL: FAIL self.text-kind-unset-property [kanagawa-dragon, desktop, opaque, default] -- value not readable
+OK   expected FAIL: FAIL self.first-color-none [kanagawa-dragon, desktop, opaque, default] -- no colour in value: "none"
+OK   expected FAIL: FAIL self.var-wrong [kanagawa-dragon, desktop, opaque, default] -- hsl(218deg 11% 65% / 10%) != rgba(155.9,163.1,175.6, 1)
+OK   expected FAIL: FAIL self.var-unset [kanagawa-dragon, desktop, opaque, default] -- no colour in value: null
+OK   expected FAIL: FAIL self.menu-needs-pointer [kanagawa-dragon, desktop, opaque, default] -- element not found
+OK   expected FAIL: FAIL self.popover-needs-pointer [kanagawa-dragon, desktop, opaque, default] -- element not found
+OK   expected FAIL: FAIL self.pseudo-wrong-token [kanagawa-dragon, desktop, opaque, default] -- rgb(24, 22, 22) != rgba(16.7,16.7,13.9, 1)
+OK   expected FAIL: FAIL self.pseudo-ignored [kanagawa-dragon, desktop, opaque, default] -- rgb(17, 17, 14) != rgba(23.9,22.0,22.0, 1)
+OK   expected PASS: PASS self.settings-active-item [kanagawa-dragon, desktop, opaque, default] -- rgba(140, 165, 177, 0.2)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, user-font] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, user-font] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, user-font] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque, user-font] -- {"held":true,"now":{"interfaceFontFamily":"Courier New"},"wanted":{"interfaceFontFamily":"Courier New"},"writes":[{"key":"interfaceFontFamily","value":"Courier New","writes":1,"held":true}]}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, user-font] -- 0 open
+OK   expected FAIL: FAIL self.first-family-wrong [kanagawa-dragon, desktop, opaque, user-font] -- Courier New != Helvetica
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, file-explorer-focused] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, file-explorer-focused] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, file-explorer-focused] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, file-explorer-focused] -- 0 open
+OK   expected FAIL: FAIL self.first-color-wrong [kanagawa-dragon, desktop, opaque, file-explorer-focused] -- rgba(45, 79, 103, 0.8) 5px 0px 0px 0px inset != rgba(34.3,50.3,72.8, 0.7)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, menu-open] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, menu-open] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.pointer-prepared [kanagawa-dragon, desktop, opaque, menu-open] -- {"overlay":".menu .menu-item.selected","shown":true,"target":true,"ms":0}
+OK   expected PASS: PASS runner.pointer-released [kanagawa-dragon, desktop, opaque, menu-open] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, menu-open] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque, menu-open] -- {"held":true,"now":{"nativeMenus":false},"wanted":{"nativeMenus":false},"writes":[{"key":"nativeMenus","value":false,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, menu-open] -- 0 open
+OK   expected FAIL: FAIL self.menu-wrong-token [kanagawa-dragon, desktop, opaque, menu-open] -- rgb(13, 12, 12) != rgba(30.0,29.0,26.1, 1)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, popover-open] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, popover-open] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.pointer-prepared [kanagawa-dragon, desktop, opaque, popover-open] -- {"overlay":".popover.hover-popover","shown":true,"attempts":[{"ms":303}]}
+OK   expected PASS: PASS runner.pointer-released [kanagawa-dragon, desktop, opaque, popover-open] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, popover-open] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, popover-open] -- 0 open
+OK   expected PASS: PASS self.popover-open [kanagawa-dragon, desktop, opaque, popover-open] -- rgb(24, 22, 22)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, tooltip-open] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, tooltip-open] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.pointer-prepared [kanagawa-dragon, desktop, opaque, tooltip-open] -- {"overlay":".tooltip","shown":true,"attempts":[{"ms":303}]}
+OK   expected PASS: PASS runner.pointer-released [kanagawa-dragon, desktop, opaque, tooltip-open] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, tooltip-open] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, tooltip-open] -- 0 open
+OK   expected PASS: PASS self.tooltip-open [kanagawa-dragon, desktop, opaque, tooltip-open] -- rgb(24, 22, 22)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, md-source] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, md-source] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, md-source] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, md-source] -- 0 open
+OK   expected FAIL: FAIL self.md-mark-obsidian-default [kanagawa-dragon, desktop, opaque, md-source] -- rgb(137, 153, 122) != rgba(196.7,201.1,196.7, 0.3)
+OK   expected FAIL: FAIL self.md-source-wrong-token [kanagawa-dragon, desktop, opaque, md-source] -- rgb(196, 116, 110) != rgba(137.2,152.9,122.5, 1)
+OK   expected FAIL: FAIL self.md-source-wiki-bracket-underline [kanagawa-dragon, desktop, opaque, md-source] -- "none" != "underline"
+OK   expected FAIL: FAIL self.md-source-footnote-underline [kanagawa-dragon, desktop, opaque, md-source] -- "none" != "underline"
+OK   expected FAIL: FAIL self.md-source-live-only-element [kanagawa-dragon, desktop, opaque, md-source] -- element not found
+OK   expected FAIL: FAIL self.md-source-task-marker-default [kanagawa-dragon, desktop, opaque, md-source] -- rgb(183, 146, 123) != rgba(200.3,192.2,146.5, 0.7)
+OK   expected PASS: PASS self.md-source-heading-text [kanagawa-dragon, desktop, opaque, md-source] -- rgb(195, 177, 136)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, md-live] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, md-live] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, md-live] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, md-live] -- 0 open
+OK   expected FAIL: FAIL self.md-view-swap-quote-editor [kanagawa-dragon, desktop, opaque, md-live] -- rgb(98, 94, 91) != rgba(57.8,56.7,54.4, 1)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, md-reading] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, md-reading] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, md-reading] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, md-reading] -- 0 open
+OK   expected FAIL: FAIL self.md-wrong-mode [kanagawa-dragon, desktop, opaque, md-reading] -- element not displayed (size [0,0])
+OK   expected FAIL: FAIL self.md-view-swap-quote-reading [kanagawa-dragon, desktop, opaque, md-reading] -- rgb(58, 57, 54) != rgba(98.1,94.3,90.6, 1)
+OK   expected PASS: PASS self.md-scroll [kanagawa-dragon, desktop, opaque, md-reading] -- rgb(58, 57, 54)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, md-user-fonts] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, md-user-fonts] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, md-user-fonts] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque, md-user-fonts] -- {"held":true,"now":{"textFontFamily":"Courier New","monospaceFontFamily":"Menlo"},"wanted":{"textFontFamily":"Courier New","monospaceFontFamily":"Menlo"},"writes":[{"key":"textFontFamily","value":"Courier New","writes":1,"held":true},{"key":"monospaceFontFamily","value":"Menlo","writes":1,"held":true}]}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, md-user-fonts] -- 0 open
+OK   expected FAIL: FAIL self.md-user-font-wrong [kanagawa-dragon, desktop, opaque, md-user-fonts] -- Courier New != Menlo
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, ed-source] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, ed-source] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, ed-source] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque, ed-source] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [kanagawa-dragon, desktop, opaque, ed-source] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, ed-source] -- 0 open
+OK   expected FAIL: FAIL self.ed-active-wrong-token [kanagawa-dragon, desktop, opaque, ed-source] -- linear-gradient(rgba(39, 38, 38, 0.3), rgba(39, 38, 38, 0.3)) != rgba(98.1,94.3,90.6, 1)
+OK   expected PASS: PASS self.ed-border-right-theme [kanagawa-dragon, desktop, opaque, ed-source] -- 0px
+OK   expected FAIL: FAIL self.ed-task-strong-as-list [kanagawa-dragon, desktop, opaque, ed-source] -- rgb(196, 116, 110) != rgba(149.7,160.4,181.8, 1)
+OK   expected FAIL: FAIL self.ed-suggest-needs-typing [kanagawa-dragon, desktop, opaque, ed-source] -- element not found
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, ed-source-no-lines] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, ed-source-no-lines] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, ed-source-no-lines] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque, ed-source-no-lines] -- {"held":true,"now":{"showLineNumber":false},"wanted":{"showLineNumber":false},"writes":[{"key":"showLineNumber","value":false,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [kanagawa-dragon, desktop, opaque, ed-source-no-lines] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":false,"want":false,"setting":false,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, ed-source-no-lines] -- 0 open
+OK   expected FAIL: FAIL self.ed-no-lines-gutter [kanagawa-dragon, desktop, opaque, ed-source-no-lines] -- element not found
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, ed-search] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, ed-search] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, ed-search] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque, ed-search] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [kanagawa-dragon, desktop, opaque, ed-search] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, ed-search] -- 0 open
+OK   expected FAIL: FAIL self.ed-search-other-match-colour [kanagawa-dragon, desktop, opaque, ed-search] -- rgba(195, 177, 136, 0.4) != rgba(45.1,78.8,102.8, 1)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, ed-fold] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, ed-fold] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, ed-fold] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque, ed-fold] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [kanagawa-dragon, desktop, opaque, ed-fold] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true,"unfoldedFirst":true,"folded":true}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, ed-fold] -- 0 open
+OK   expected PASS: PASS self.fold-prepared [kanagawa-dragon, desktop, opaque, ed-fold] -- rgb(98, 94, 91)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, self-test-ed-gutter-lost] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, self-test-ed-gutter-lost] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, self-test-ed-gutter-lost] -- document.hasFocus() true
+OK   expected FAIL: FAIL runner.config-prepared [kanagawa-dragon, desktop, opaque, self-test-ed-gutter-lost] -- {"held":false,"now":{"showLineNumber":false},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected FAIL: FAIL runner.ed-prepared [kanagawa-dragon, desktop, opaque, self-test-ed-gutter-lost] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":false,"want":true,"setting":false,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, self-test-ed-gutter-lost] -- 0 open
+OK   expected FAIL: FAIL self.ed-gutter-lost [kanagawa-dragon, desktop, opaque, self-test-ed-gutter-lost] -- element not found
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, self-test-fold-lost] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, self-test-fold-lost] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, self-test-fold-lost] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque, self-test-fold-lost] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected FAIL: FAIL runner.ed-prepared [kanagawa-dragon, desktop, opaque, self-test-fold-lost] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true,"unfoldedFirst":true,"folded":false}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, self-test-fold-lost] -- 0 open
+OK   expected FAIL: FAIL self.fold-lost [kanagawa-dragon, desktop, opaque, self-test-fold-lost] -- element not found
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, self-test-settings-search] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, self-test-settings-search] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, self-test-settings-search] -- document.hasFocus() true
+OK   expected FAIL: FAIL runner.settings-prepared [kanagawa-dragon, desktop, opaque, self-test-settings-search] -- {"activeItemShown":false,"ms":3040,"tab":"about","searchLength":4,"strayCleared":0,"tabListShown":false,"window":[900,700]}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, self-test-settings-search] -- 0 open
+OK   expected FAIL: FAIL self.settings-search-hides-tabs [kanagawa-dragon, desktop, opaque, self-test-settings-search] -- element not displayed (size [0,0])
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, self-test-pointer-missed] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque, self-test-pointer-missed] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected FAIL: FAIL runner.pointer-prepared [kanagawa-dragon, desktop, opaque, self-test-pointer-missed] -- {"overlay":".popover.hover-popover","shown":false,"attempts":[{"ms":null,"under":"status-bar-item plugin-word-count","focus":true,"visibility":"visible"},{"ms":null,"under":"status-bar-item plugin-word-count","focus":true,"visibility":"visible"},{"ms":null,"under":"status-bar-item plugin-word-count","focus":true,"visibility":"visible"}]}
+OK   expected PASS: PASS runner.pointer-released [kanagawa-dragon, desktop, opaque, self-test-pointer-missed] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque, self-test-pointer-missed] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, self-test-pointer-missed] -- 0 open
+OK   expected FAIL: FAIL self.pointer-missed [kanagawa-dragon, desktop, opaque, self-test-pointer-missed] -- element not found
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, translucent, default] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, translucent, default] -- is-frameless is-hidden-frameless is-floating-nav is-translucent
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, translucent, default] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, translucent, default] -- 0 open
+OK   expected PASS: PASS self.translucent-switch [kanagawa-dragon, desktop, translucent, default] -- rgba(17, 17, 14, 0.5)
+OK   expected FAIL: FAIL self.translucent-not-opaque-token [kanagawa-dragon, desktop, translucent, default] -- rgba(24, 22, 22, 0.7) != rgba(23.9,22.0,22.0, 1)
+OK   expected PASS: PASS self.pseudo-corner-translucent [kanagawa-dragon, desktop, translucent, default] -- rgba(24, 22, 22, 0.7)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, translucent, fullscreen-class] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, translucent, fullscreen-class] -- is-frameless is-hidden-frameless is-floating-nav is-translucent is-fullscreen
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, translucent, fullscreen-class] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, translucent, fullscreen-class] -- 0 open
+OK   expected FAIL: FAIL self.fullscreen-not-acrylic [kanagawa-dragon, desktop, translucent, fullscreen-class] -- rgb(24, 22, 22) != rgba(23.9,22.0,22.0, 0.7)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), default] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), default] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), default] -- document.hasFocus() true
+OK   expected PASS: PASS runner.settings-prepared [kanagawa-dragon, desktop, opaque (after translucent), default] -- {"activeItemShown":true,"ms":0,"tab":"about","searchLength":0,"strayCleared":0,"tabListShown":true,"window":[900,700]}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), default] -- 0 open
+OK   expected PASS: PASS self.positive-control.editor [kanagawa-dragon, desktop, opaque (after translucent), default] -- rgb(30, 29, 26)
+OK   expected FAIL: FAIL self.missing-element [kanagawa-dragon, desktop, opaque (after translucent), default] -- element not found
+OK   expected FAIL: FAIL self.hidden-element [kanagawa-dragon, desktop, opaque (after translucent), default] -- element not displayed (size [0,0])
+OK   expected FAIL: FAIL self.wrong-expectation [kanagawa-dragon, desktop, opaque (after translucent), default] -- rgb(30, 29, 26) != rgba(16.7,16.7,13.9, 1)
+OK   expected FAIL: FAIL self.unparseable-value [kanagawa-dragon, desktop, opaque (after translucent), default] -- value not a colour: "none"
+OK   expected FAIL: FAIL self.unknown-token [kanagawa-dragon, desktop, opaque (after translucent), default] -- expected colour unresolved (--ink-token-that-does-not-exist)
+OK   expected PASS: PASS self.declared-hidden [kanagawa-dragon, desktop, opaque (after translucent), default] -- hidden: Hidden frame (default): .titlebar is display:none (research/11 §7)
+OK   expected FAIL: FAIL self.declared-hidden-but-missing [kanagawa-dragon, desktop, opaque (after translucent), default] -- expected hidden (a hidden expectation must not accept a missing element), element not found
+OK   expected PASS: PASS self.declared-absent [kanagawa-dragon, desktop, opaque (after translucent), default] -- absent: self-test: no such element
+OK   expected FAIL: FAIL self.declared-absent-but-present [kanagawa-dragon, desktop, opaque (after translucent), default] -- expected absent (self-test: an absent expectation must not accept a present element), found 1
+OK   expected PASS: PASS self.settings-popout [kanagawa-dragon, desktop, opaque (after translucent), default] -- rgb(30, 29, 26)
+OK   expected FAIL: FAIL self.settings-popout-missing-element [kanagawa-dragon, desktop, opaque (after translucent), default] -- element not found
+OK   expected FAIL: FAIL self.main-document-does-not-see-popout [kanagawa-dragon, desktop, opaque (after translucent), default] -- element not found
+OK   expected PASS: PASS self.text-kind-correct [kanagawa-dragon, desktop, opaque (after translucent), default] -- 199
+OK   expected FAIL: FAIL self.text-kind-wrong-value [kanagawa-dragon, desktop, opaque (after translucent), default] -- "199" != "1"
+OK   expected FAIL: FAIL self.text-kind-unset-property [kanagawa-dragon, desktop, opaque (after translucent), default] -- value not readable
+OK   expected FAIL: FAIL self.first-color-none [kanagawa-dragon, desktop, opaque (after translucent), default] -- no colour in value: "none"
+OK   expected FAIL: FAIL self.var-wrong [kanagawa-dragon, desktop, opaque (after translucent), default] -- hsl(218deg 11% 65% / 10%) != rgba(155.9,163.1,175.6, 1)
+OK   expected FAIL: FAIL self.var-unset [kanagawa-dragon, desktop, opaque (after translucent), default] -- no colour in value: null
+OK   expected FAIL: FAIL self.menu-needs-pointer [kanagawa-dragon, desktop, opaque (after translucent), default] -- element not found
+OK   expected FAIL: FAIL self.popover-needs-pointer [kanagawa-dragon, desktop, opaque (after translucent), default] -- element not found
+OK   expected FAIL: FAIL self.pseudo-wrong-token [kanagawa-dragon, desktop, opaque (after translucent), default] -- rgb(24, 22, 22) != rgba(16.7,16.7,13.9, 1)
+OK   expected FAIL: FAIL self.pseudo-ignored [kanagawa-dragon, desktop, opaque (after translucent), default] -- rgb(17, 17, 14) != rgba(23.9,22.0,22.0, 1)
+OK   expected PASS: PASS self.settings-active-item [kanagawa-dragon, desktop, opaque (after translucent), default] -- rgba(140, 165, 177, 0.2)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), user-font] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), user-font] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), user-font] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque (after translucent), user-font] -- {"held":true,"now":{"interfaceFontFamily":"Courier New"},"wanted":{"interfaceFontFamily":"Courier New"},"writes":[{"key":"interfaceFontFamily","value":"Courier New","writes":1,"held":true}]}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), user-font] -- 0 open
+OK   expected FAIL: FAIL self.first-family-wrong [kanagawa-dragon, desktop, opaque (after translucent), user-font] -- Courier New != Helvetica
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), file-explorer-focused] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), file-explorer-focused] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), file-explorer-focused] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), file-explorer-focused] -- 0 open
+OK   expected FAIL: FAIL self.first-color-wrong [kanagawa-dragon, desktop, opaque (after translucent), file-explorer-focused] -- rgba(45, 79, 103, 0.8) 5px 0px 0px 0px inset != rgba(34.3,50.3,72.8, 0.7)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), menu-open] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), menu-open] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.pointer-prepared [kanagawa-dragon, desktop, opaque (after translucent), menu-open] -- {"overlay":".menu .menu-item.selected","shown":true,"target":true,"ms":0}
+OK   expected PASS: PASS runner.pointer-released [kanagawa-dragon, desktop, opaque (after translucent), menu-open] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), menu-open] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque (after translucent), menu-open] -- {"held":true,"now":{"nativeMenus":false},"wanted":{"nativeMenus":false},"writes":[{"key":"nativeMenus","value":false,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), menu-open] -- 0 open
+OK   expected FAIL: FAIL self.menu-wrong-token [kanagawa-dragon, desktop, opaque (after translucent), menu-open] -- rgb(13, 12, 12) != rgba(30.0,29.0,26.1, 1)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), popover-open] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), popover-open] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.pointer-prepared [kanagawa-dragon, desktop, opaque (after translucent), popover-open] -- {"overlay":".popover.hover-popover","shown":true,"attempts":[{"ms":302}]}
+OK   expected PASS: PASS runner.pointer-released [kanagawa-dragon, desktop, opaque (after translucent), popover-open] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), popover-open] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), popover-open] -- 0 open
+OK   expected PASS: PASS self.popover-open [kanagawa-dragon, desktop, opaque (after translucent), popover-open] -- rgb(24, 22, 22)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), tooltip-open] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), tooltip-open] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.pointer-prepared [kanagawa-dragon, desktop, opaque (after translucent), tooltip-open] -- {"overlay":".tooltip","shown":true,"attempts":[{"ms":304}]}
+OK   expected PASS: PASS runner.pointer-released [kanagawa-dragon, desktop, opaque (after translucent), tooltip-open] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), tooltip-open] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), tooltip-open] -- 0 open
+OK   expected PASS: PASS self.tooltip-open [kanagawa-dragon, desktop, opaque (after translucent), tooltip-open] -- rgb(24, 22, 22)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), md-source] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), md-source] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), md-source] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), md-source] -- 0 open
+OK   expected FAIL: FAIL self.md-mark-obsidian-default [kanagawa-dragon, desktop, opaque (after translucent), md-source] -- rgb(137, 153, 122) != rgba(196.7,201.1,196.7, 0.3)
+OK   expected FAIL: FAIL self.md-source-wrong-token [kanagawa-dragon, desktop, opaque (after translucent), md-source] -- rgb(196, 116, 110) != rgba(137.2,152.9,122.5, 1)
+OK   expected FAIL: FAIL self.md-source-wiki-bracket-underline [kanagawa-dragon, desktop, opaque (after translucent), md-source] -- "none" != "underline"
+OK   expected FAIL: FAIL self.md-source-footnote-underline [kanagawa-dragon, desktop, opaque (after translucent), md-source] -- "none" != "underline"
+OK   expected FAIL: FAIL self.md-source-live-only-element [kanagawa-dragon, desktop, opaque (after translucent), md-source] -- element not found
+OK   expected FAIL: FAIL self.md-source-task-marker-default [kanagawa-dragon, desktop, opaque (after translucent), md-source] -- rgb(183, 146, 123) != rgba(200.3,192.2,146.5, 0.7)
+OK   expected PASS: PASS self.md-source-heading-text [kanagawa-dragon, desktop, opaque (after translucent), md-source] -- rgb(195, 177, 136)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), md-live] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), md-live] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), md-live] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), md-live] -- 0 open
+OK   expected FAIL: FAIL self.md-view-swap-quote-editor [kanagawa-dragon, desktop, opaque (after translucent), md-live] -- rgb(98, 94, 91) != rgba(57.8,56.7,54.4, 1)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), md-reading] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), md-reading] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), md-reading] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), md-reading] -- 0 open
+OK   expected FAIL: FAIL self.md-wrong-mode [kanagawa-dragon, desktop, opaque (after translucent), md-reading] -- element not displayed (size [0,0])
+OK   expected FAIL: FAIL self.md-view-swap-quote-reading [kanagawa-dragon, desktop, opaque (after translucent), md-reading] -- rgb(58, 57, 54) != rgba(98.1,94.3,90.6, 1)
+OK   expected PASS: PASS self.md-scroll [kanagawa-dragon, desktop, opaque (after translucent), md-reading] -- rgb(58, 57, 54)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), md-user-fonts] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), md-user-fonts] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), md-user-fonts] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque (after translucent), md-user-fonts] -- {"held":true,"now":{"textFontFamily":"Courier New","monospaceFontFamily":"Menlo"},"wanted":{"textFontFamily":"Courier New","monospaceFontFamily":"Menlo"},"writes":[{"key":"textFontFamily","value":"Courier New","writes":1,"held":true},{"key":"monospaceFontFamily","value":"Menlo","writes":1,"held":true}]}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), md-user-fonts] -- 0 open
+OK   expected FAIL: FAIL self.md-user-font-wrong [kanagawa-dragon, desktop, opaque (after translucent), md-user-fonts] -- Courier New != Menlo
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), ed-source] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), ed-source] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), ed-source] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque (after translucent), ed-source] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [kanagawa-dragon, desktop, opaque (after translucent), ed-source] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), ed-source] -- 0 open
+OK   expected FAIL: FAIL self.ed-active-wrong-token [kanagawa-dragon, desktop, opaque (after translucent), ed-source] -- linear-gradient(rgba(39, 38, 38, 0.3), rgba(39, 38, 38, 0.3)) != rgba(98.1,94.3,90.6, 1)
+OK   expected PASS: PASS self.ed-border-right-theme [kanagawa-dragon, desktop, opaque (after translucent), ed-source] -- 0px
+OK   expected FAIL: FAIL self.ed-task-strong-as-list [kanagawa-dragon, desktop, opaque (after translucent), ed-source] -- rgb(196, 116, 110) != rgba(149.7,160.4,181.8, 1)
+OK   expected FAIL: FAIL self.ed-suggest-needs-typing [kanagawa-dragon, desktop, opaque (after translucent), ed-source] -- element not found
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), ed-source-no-lines] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), ed-source-no-lines] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), ed-source-no-lines] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque (after translucent), ed-source-no-lines] -- {"held":true,"now":{"showLineNumber":false},"wanted":{"showLineNumber":false},"writes":[{"key":"showLineNumber","value":false,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [kanagawa-dragon, desktop, opaque (after translucent), ed-source-no-lines] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":false,"want":false,"setting":false,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), ed-source-no-lines] -- 0 open
+OK   expected FAIL: FAIL self.ed-no-lines-gutter [kanagawa-dragon, desktop, opaque (after translucent), ed-source-no-lines] -- element not found
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), ed-search] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), ed-search] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), ed-search] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque (after translucent), ed-search] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [kanagawa-dragon, desktop, opaque (after translucent), ed-search] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), ed-search] -- 0 open
+OK   expected FAIL: FAIL self.ed-search-other-match-colour [kanagawa-dragon, desktop, opaque (after translucent), ed-search] -- rgba(195, 177, 136, 0.4) != rgba(45.1,78.8,102.8, 1)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), ed-fold] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), ed-fold] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), ed-fold] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque (after translucent), ed-fold] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS runner.ed-prepared [kanagawa-dragon, desktop, opaque (after translucent), ed-fold] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true,"unfoldedFirst":true,"folded":true}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), ed-fold] -- 0 open
+OK   expected PASS: PASS self.fold-prepared [kanagawa-dragon, desktop, opaque (after translucent), ed-fold] -- rgb(98, 94, 91)
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), self-test-ed-gutter-lost] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), self-test-ed-gutter-lost] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), self-test-ed-gutter-lost] -- document.hasFocus() true
+OK   expected FAIL: FAIL runner.config-prepared [kanagawa-dragon, desktop, opaque (after translucent), self-test-ed-gutter-lost] -- {"held":false,"now":{"showLineNumber":false},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected FAIL: FAIL runner.ed-prepared [kanagawa-dragon, desktop, opaque (after translucent), self-test-ed-gutter-lost] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":false,"want":true,"setting":false,"gutterHeld":true}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), self-test-ed-gutter-lost] -- 0 open
+OK   expected FAIL: FAIL self.ed-gutter-lost [kanagawa-dragon, desktop, opaque (after translucent), self-test-ed-gutter-lost] -- element not found
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), self-test-fold-lost] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), self-test-fold-lost] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), self-test-fold-lost] -- document.hasFocus() true
+OK   expected PASS: PASS runner.config-prepared [kanagawa-dragon, desktop, opaque (after translucent), self-test-fold-lost] -- {"held":true,"now":{"showLineNumber":true},"wanted":{"showLineNumber":true},"writes":[{"key":"showLineNumber","value":true,"writes":1,"held":true}]}
+OK   expected FAIL: FAIL runner.ed-prepared [kanagawa-dragon, desktop, opaque (after translucent), self-test-fold-lost] -- {"leafFound":true,"file":"Editor chrome","source":true,"gutters":true,"want":true,"setting":true,"gutterHeld":true,"unfoldedFirst":true,"folded":false}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), self-test-fold-lost] -- 0 open
+OK   expected FAIL: FAIL self.fold-lost [kanagawa-dragon, desktop, opaque (after translucent), self-test-fold-lost] -- element not found
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), self-test-settings-search] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), self-test-settings-search] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), self-test-settings-search] -- document.hasFocus() true
+OK   expected FAIL: FAIL runner.settings-prepared [kanagawa-dragon, desktop, opaque (after translucent), self-test-settings-search] -- {"activeItemShown":false,"ms":3028,"tab":"about","searchLength":4,"strayCleared":0,"tabListShown":false,"window":[900,700]}
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), self-test-settings-search] -- 0 open
+OK   expected FAIL: FAIL self.settings-search-hides-tabs [kanagawa-dragon, desktop, opaque (after translucent), self-test-settings-search] -- element not displayed (size [0,0])
+OK   expected PASS: PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), self-test-pointer-missed] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), self-test-pointer-missed] -- is-frameless is-hidden-frameless is-floating-nav
+OK   expected FAIL: FAIL runner.pointer-prepared [kanagawa-dragon, desktop, opaque (after translucent), self-test-pointer-missed] -- {"overlay":".popover.hover-popover","shown":false,"attempts":[{"ms":null,"under":"status-bar-item plugin-word-count","focus":true,"visibility":"visible"},{"ms":null,"under":"status-bar-item plugin-word-count","focus":true,"visibility":"visible"},{"ms":null,"under":"status-bar-item plugin-word-count","focus":true,"visibility":"visible"}]}
+OK   expected PASS: PASS runner.pointer-released [kanagawa-dragon, desktop, opaque (after translucent), self-test-pointer-missed] -- 0 overlay(s) still open
+OK   expected PASS: PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), self-test-pointer-missed] -- document.hasFocus() true
+OK   expected PASS: PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), self-test-pointer-missed] -- 0 open
+OK   expected FAIL: FAIL self.pointer-missed [kanagawa-dragon, desktop, opaque (after translucent), self-test-pointer-missed] -- element not found
+OK   expected PASS: PASS (EMULATED) runner.theme-applied [solarized-dark, tablet, opaque, default] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS (EMULATED) runner.environment [solarized-dark, tablet, opaque, default] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+OK   expected PASS: PASS (EMULATED) runner.focus [solarized-dark, tablet, opaque, default] -- document.hasFocus() true
+OK   expected PASS: PASS (EMULATED) runner.config-prepared [solarized-dark, tablet, opaque, default] -- {"held":true,"now":{"floatingNavigation":true},"wanted":{"floatingNavigation":true},"writes":[{"key":"floatingNavigation","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS (EMULATED) runner.modals-closed [solarized-dark, tablet, opaque, default] -- 0 open
+OK   expected FAIL: FAIL self.emulated-drawer-closed [solarized-dark, tablet, opaque, default] -- element not displayed (size [0,0])
+OK   expected PASS: PASS (EMULATED) runner.theme-applied [solarized-dark, tablet, opaque, left-drawer-open] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS (EMULATED) runner.environment [solarized-dark, tablet, opaque, left-drawer-open] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+OK   expected PASS: PASS (EMULATED) runner.focus [solarized-dark, tablet, opaque, left-drawer-open] -- document.hasFocus() true
+OK   expected PASS: PASS (EMULATED) runner.config-prepared [solarized-dark, tablet, opaque, left-drawer-open] -- {"held":true,"now":{"floatingNavigation":true},"wanted":{"floatingNavigation":true},"writes":[{"key":"floatingNavigation","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS (EMULATED) runner.modals-closed [solarized-dark, tablet, opaque, left-drawer-open] -- 0 open
+OK   expected PASS: PASS (EMULATED) self.emulated-drawer-open [solarized-dark, tablet, opaque, left-drawer-open] -- rgb(0, 45, 56)
+OK   expected PASS: PASS (EMULATED) runner.theme-applied [solarized-dark, tablet, opaque, self-test-translucent-leak] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected FAIL: FAIL runner.environment [solarized-dark, tablet, opaque, self-test-translucent-leak] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav is-translucent
+OK   expected PASS: PASS (EMULATED) runner.focus [solarized-dark, tablet, opaque, self-test-translucent-leak] -- document.hasFocus() true
+OK   expected PASS: PASS (EMULATED) runner.config-prepared [solarized-dark, tablet, opaque, self-test-translucent-leak] -- {"held":true,"now":{"floatingNavigation":true},"wanted":{"floatingNavigation":true},"writes":[{"key":"floatingNavigation","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS (EMULATED) runner.modals-closed [solarized-dark, tablet, opaque, self-test-translucent-leak] -- 0 open
+OK   expected PASS: PASS (EMULATED) self.mobile-translucent-leak [solarized-dark, tablet, opaque, self-test-translucent-leak] -- absent: the check itself is trivial; this case exists so that runner.environment must FAIL when a mobile opaque probe runs translucent
+OK   expected PASS: PASS (EMULATED) runner.theme-applied [kanagawa-dragon, tablet, opaque, default] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS (EMULATED) runner.environment [kanagawa-dragon, tablet, opaque, default] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+OK   expected PASS: PASS (EMULATED) runner.focus [kanagawa-dragon, tablet, opaque, default] -- document.hasFocus() true
+OK   expected PASS: PASS (EMULATED) runner.config-prepared [kanagawa-dragon, tablet, opaque, default] -- {"held":true,"now":{"floatingNavigation":true},"wanted":{"floatingNavigation":true},"writes":[{"key":"floatingNavigation","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS (EMULATED) runner.modals-closed [kanagawa-dragon, tablet, opaque, default] -- 0 open
+OK   expected FAIL: FAIL self.emulated-drawer-closed [kanagawa-dragon, tablet, opaque, default] -- element not displayed (size [0,0])
+OK   expected PASS: PASS (EMULATED) runner.theme-applied [kanagawa-dragon, tablet, opaque, left-drawer-open] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS (EMULATED) runner.environment [kanagawa-dragon, tablet, opaque, left-drawer-open] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav
+OK   expected PASS: PASS (EMULATED) runner.focus [kanagawa-dragon, tablet, opaque, left-drawer-open] -- document.hasFocus() true
+OK   expected PASS: PASS (EMULATED) runner.config-prepared [kanagawa-dragon, tablet, opaque, left-drawer-open] -- {"held":true,"now":{"floatingNavigation":true},"wanted":{"floatingNavigation":true},"writes":[{"key":"floatingNavigation","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS (EMULATED) runner.modals-closed [kanagawa-dragon, tablet, opaque, left-drawer-open] -- 0 open
+OK   expected PASS: PASS (EMULATED) self.emulated-drawer-open [kanagawa-dragon, tablet, opaque, left-drawer-open] -- rgb(24, 22, 22)
+OK   expected PASS: PASS (EMULATED) runner.theme-applied [kanagawa-dragon, tablet, opaque, self-test-translucent-leak] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected FAIL: FAIL runner.environment [kanagawa-dragon, tablet, opaque, self-test-translucent-leak] -- is-frameless is-hidden-frameless emulate-mobile is-tablet is-mobile is-floating-nav is-translucent
+OK   expected PASS: PASS (EMULATED) runner.focus [kanagawa-dragon, tablet, opaque, self-test-translucent-leak] -- document.hasFocus() true
+OK   expected PASS: PASS (EMULATED) runner.config-prepared [kanagawa-dragon, tablet, opaque, self-test-translucent-leak] -- {"held":true,"now":{"floatingNavigation":true},"wanted":{"floatingNavigation":true},"writes":[{"key":"floatingNavigation","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS (EMULATED) runner.modals-closed [kanagawa-dragon, tablet, opaque, self-test-translucent-leak] -- 0 open
+OK   expected PASS: PASS (EMULATED) self.mobile-translucent-leak [kanagawa-dragon, tablet, opaque, self-test-translucent-leak] -- absent: the check itself is trivial; this case exists so that runner.environment must FAIL when a mobile opaque probe runs translucent
+OK   expected PASS: PASS (EMULATED) runner.theme-applied [solarized-dark, phone, opaque, default] -- DEV solarized-dark (unnamed), 136636 chars
+OK   expected PASS: PASS (EMULATED) runner.environment [solarized-dark, phone, opaque, default] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+OK   expected PASS: PASS (EMULATED) runner.focus [solarized-dark, phone, opaque, default] -- document.hasFocus() true
+OK   expected PASS: PASS (EMULATED) runner.config-prepared [solarized-dark, phone, opaque, default] -- {"held":true,"now":{"floatingNavigation":true},"wanted":{"floatingNavigation":true},"writes":[{"key":"floatingNavigation","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS (EMULATED) runner.modals-closed [solarized-dark, phone, opaque, default] -- 0 open
+OK   expected FAIL: FAIL self.emulated-desktop-only-element [solarized-dark, phone, opaque, default] -- element not found
+OK   expected PASS: PASS (EMULATED) runner.theme-applied [kanagawa-dragon, phone, opaque, default] -- DEV kanagawa-dragon (unnamed), 139124 chars
+OK   expected PASS: PASS (EMULATED) runner.environment [kanagawa-dragon, phone, opaque, default] -- is-frameless is-hidden-frameless emulate-mobile is-phone is-mobile is-floating-nav
+OK   expected PASS: PASS (EMULATED) runner.focus [kanagawa-dragon, phone, opaque, default] -- document.hasFocus() true
+OK   expected PASS: PASS (EMULATED) runner.config-prepared [kanagawa-dragon, phone, opaque, default] -- {"held":true,"now":{"floatingNavigation":true},"wanted":{"floatingNavigation":true},"writes":[{"key":"floatingNavigation","value":true,"writes":1,"held":true}]}
+OK   expected PASS: PASS (EMULATED) runner.modals-closed [kanagawa-dragon, phone, opaque, default] -- 0 open
+OK   expected FAIL: FAIL self.emulated-desktop-only-element [kanagawa-dragon, phone, opaque, default] -- element not found
+OK   expected PASS: PASS syn.self-test.theme-applied [solarized-dark, desktop, opaque, syntax self-test] -- DEV solarized-dark (unnamed)
+OK   expected PASS: PASS syn.self-test [solarized-dark, desktop, opaque, positive control (theme and oracle as committed)] -- 129 results, none FAIL
+OK   expected FAIL: FAIL syn.self-test [solarized-dark, desktop, opaque, Inkdrop renders the tag names in one other colour (rendered: EXACT -> MISMATCH)] -- 2 FAIL: syn.source.classes element groups: EXACT 7, CONFLICT 20, MISMATCH 1, DOMINATED 0; base colour (bare text, not failed): EXACT 0, CONFLICT 1, | syn.live.classes element groups: EXACT 7, CONFLICT 20, MISMATCH 1, DOMINATED 0; base colour (bare text, not failed): EXACT 0, CONFLICT 1,
+OK   expected FAIL: FAIL syn.self-test [solarized-dark, desktop, opaque, Inkdrop renders the tag names in two other colours (rendered: EXACT -> DOMINATED)] -- 2 FAIL: syn.source.classes element groups: EXACT 7, CONFLICT 20, MISMATCH 0, DOMINATED 1; base colour (bare text, not failed): EXACT 0, CONFLICT 1, | syn.live.classes element groups: EXACT 7, CONFLICT 20, MISMATCH 0, DOMINATED 1; base colour (bare text, not failed): EXACT 0, CONFLICT 1,
+OK   expected FAIL: FAIL syn.self-test [solarized-dark, desktop, opaque, other theme's colour on editing keywords] -- 28 FAIL: syn.source.js.impl 13/105 runs: "import" rgb(138, 147, 168) != --ink-syntax-keyword-color rgb(133, 153, 0); "from" rgb(138, 147, 168) != -- | syn.source.ts.impl 8/65 runs: "interface" rgb(138, 147, 168) != --ink-syntax-keyword-color rgb(133, 153, 0); "type" rgb(138, 147, 168) != -
+OK   expected FAIL: FAIL syn.self-test [solarized-dark, desktop, opaque, Reading view function rule lost (code text colour)] -- 13 FAIL: syn.reading.js.impl 6/112 runs: "constructor" rgb(131, 148, 149) != --ink-syntax-variable-name-function-color rgb(39, 139, 211); "area" rgb( | syn.reading.ts.impl 1/65 runs: "move" rgb(131, 148, 149) != --ink-syntax-variable-name-definition-color rgb(100, 122, 130)
+OK   expected FAIL: FAIL syn.self-test [solarized-dark, desktop, opaque, comments not italic] -- 20 FAIL: syn.source.js.impl 2/105 runs: "// line comment" rgb(88, 110, 116) normal 400 != --ink-syntax-comment-color rgb(88, 110, 116); "/* block co | syn.source.python.impl 1/63 runs: "# comment" rgb(88, 110, 116) normal 400 != --ink-syntax-comment-color rgb(88, 110, 116)
+OK   expected FAIL: FAIL syn.self-test [solarized-dark, desktop, opaque, oracle expects another token for editing tags] -- 6 FAIL: syn.source.css.impl 1/51 runs: "a" rgb(39, 139, 211) != --ink-syntax-string-color rgb(179, 134, 0) | syn.source.html.impl 4/27 runs: "div" rgb(39, 139, 211) != --ink-syntax-string-color rgb(179, 134, 0); "a" rgb(39, 139, 211) != --ink-syntax-
+OK   expected FAIL: FAIL syn.self-test [solarized-dark, desktop, opaque, one Inkdrop colour, theme and oracle both choose another (EXACT -> MISMATCH)] -- 2 FAIL: syn.source.classes element groups: EXACT 7, CONFLICT 20, MISMATCH 1, DOMINATED 0; base colour (bare text, not failed): EXACT 0, CONFLICT 1, | syn.live.classes element groups: EXACT 7, CONFLICT 20, MISMATCH 1, DOMINATED 0; base colour (bare text, not failed): EXACT 0, CONFLICT 1,
+OK   expected PASS: PASS syn.self-test [solarized-dark, desktop, opaque, several Inkdrop colours, theme and oracle choose another of them (CONFLICT)] -- 129 results, none FAIL
+OK   expected FAIL: FAIL syn.self-test [solarized-dark, desktop, opaque, several Inkdrop colours, theme and oracle choose none of them (DOMINATED)] -- 2 FAIL: syn.source.classes element groups: EXACT 8, CONFLICT 19, MISMATCH 0, DOMINATED 1; base colour (bare text, not failed): EXACT 0, CONFLICT 1, | syn.live.classes element groups: EXACT 8, CONFLICT 19, MISMATCH 0, DOMINATED 1; base colour (bare text, not failed): EXACT 0, CONFLICT 1,
+OK   expected FAIL: FAIL syn.self-test [solarized-dark, desktop, opaque, class rule lost in the theme (definitions take the code text colour)] -- 22 FAIL: syn.source.js.impl 10/105 runs: "readFile" rgb(131, 148, 149) != --ink-syntax-variable-name-definition-color rgb(100, 122, 130); "answer" r | syn.source.ts.impl 8/65 runs: "Point" rgb(131, 148, 149) != --ink-syntax-variable-name-definition-color rgb(100, 122, 130); "Color" rgb(131
+OK   expected FAIL: FAIL syn.self-test [solarized-dark, desktop, opaque, class rule lost in the theme and the oracle alike] -- 2 FAIL: syn.source.classes element groups: EXACT 8, CONFLICT 19, MISMATCH 0, DOMINATED 1; base colour (bare text, not failed): EXACT 0, CONFLICT 1, | syn.live.classes element groups: EXACT 8, CONFLICT 19, MISMATCH 0, DOMINATED 1; base colour (bare text, not failed): EXACT 0, CONFLICT 1,
+OK   expected PASS: PASS mm.self-test [solarized-dark, desktop, opaque, positive control (theme and spec as committed)] -- 8 results, none FAIL
+OK   expected PASS: PASS mm.self-test [solarized-dark, desktop, opaque, positive control, Live Preview] -- 8 results, none FAIL
+OK   expected PASS: PASS mm.self-test [solarized-dark, desktop, opaque, positive control, light scheme (Mermaid's defaults)] -- 8 results, none FAIL
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, inversion filter not lifted] -- 2 FAIL: mm.reading.flowchart-v2.filter block 0: invert(1) hue-rotate(180deg) saturate(1.25); block 1: invert(1) hue-rotate(180deg) saturate(1.25); block 2: inv | mm.reading.sequence.filter block 3: invert(1) hue-rotate(180deg) saturate(1.25)
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, wrong token on node shapes] -- 1 FAIL: mm.reading.flowchart-v2.colours 5x rect.basic.label-container fill rgba(0, 45, 56, 0.4) vs rgb(7, 53, 65)
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, spec maps mainBkg to another token] -- 1 FAIL: mm.reading.flowchart-v2.colours 5x rect.basic.label-container fill rgb(7, 53, 65) vs rgba(0, 45, 56, 0.4); 3x polygon.label-container fill rgb(7, 53, 65
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, missing elements (clusters not drawn)] -- 1 FAIL: mm.reading.flowchart-v2.elements no drawn g.cluster; no drawn g.cluster-label
+OK   expected PASS: PASS mm.self-test [solarized-dark, desktop, opaque, Mermaid inline style without !important loses to the theme] -- 8 results, none FAIL
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, theme loses to an inline style with !important] -- 1 FAIL: mm.reading.flowchart-v2.colours 5x rect.basic.label-container fill rgb(51, 51, 51) vs rgb(7, 53, 65)
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, user linkStyle overridden by the theme] -- 1 FAIL: mm.reading.flowchart-v2.colours 1x path.edge-thickness-normal.edge-pattern-solid.flowchart-link stroke rgb(42, 162, 152) vs rgb(0, 255, 0)
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, light scheme leak (rule without .theme-dark)] -- 1 FAIL: mm.light.reading.flowchart-v2.colours 5x rect.basic.label-container fill rgb(51, 51, 51) vs rgb(236, 236, 255)
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, filter lifted on every kind (unsupported kinds lose their inversion)] -- 1 FAIL: mm.reading.unsupported filter not invert(1) hue-rotate(180deg) saturate(1.25): class: none; stateDiagram: none; gantt: none; pie: none; er: non
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, leak into a non-Mermaid image] -- 1 FAIL: mm.reading.others img. half-transparent.png: hue-rotate(90deg)
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, SVG label text fill changed (painted)] -- 1 FAIL: mm.reading.flowchart-v2.colours 1x text fill rgb(255, 0, 255) vs rgb(173, 184, 184); 1x tspan.text-outer-tspan.row fill rgb(255, 0, 255) vs rgb(173, 184
+OK   expected PASS: PASS mm.self-test [solarized-dark, desktop, opaque, SVG label text color changed, fill explicit (not painted)] -- 8 results, none FAIL
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, SVG label text fill: currentColor with another color (painted through color)] -- 1 FAIL: mm.reading.flowchart-v2.colours 1x text fill rgb(255, 0, 255) vs rgb(173, 184, 184); 1x tspan.text-outer-tspan.row fill rgb(255, 0, 255) vs rgb(173, 184
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, SVG edge-label rect opacity changed (painted)] -- 1 FAIL: mm.reading.flowchart-v2.colours 1x rect.background opacity 1 vs 0.5
+OK   expected PASS: PASS mm.self-test [solarized-dark, desktop, opaque, SVG edge-label rect background-color changed (not painted)] -- 8 results, none FAIL
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, not-rendered rect given a size (rendered on one side only, with the theme's stroke)] -- 1 FAIL: mm.reading.flowchart-v2.colours 1x block 2: element 24 (rect) is svg rendered vs reference svg not rendered
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, HTML label text colour changed (painted)] -- 1 FAIL: mm.reading.flowchart-v2.colours 13x span.nodeLabel color rgb(255, 0, 255) vs rgb(173, 184, 184); 12x p color rgb(255, 0, 255) vs rgb(173, 184, 184); 1x 
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, HTML edge-label background changed (painted)] -- 1 FAIL: mm.reading.flowchart-v2.colours 10x span.edgeLabel background-color rgb(255, 0, 255) vs rgba(0, 45, 56, 0.85)
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, filter on HTML node labels (painted)] -- 1 FAIL: mm.reading.flowchart-v2.colours 15x span.nodeLabel filter blur(2px) vs none
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, filter on node shapes (painted)] -- 1 FAIL: mm.reading.flowchart-v2.colours 5x rect.basic.label-container filter blur(1px) vs none
+OK   expected FAIL: FAIL mm.self-test [solarized-dark, desktop, opaque, edge stroke-opacity changed (painted)] -- 1 FAIL: mm.reading.flowchart-v2.colours 8x path.edge-thickness-normal.edge-pattern-solid.flowchart-link stroke-opacity 0.3 vs 1; 1x path.edge-thickness-normal.e
+OK   expected PASS: PASS runner.restore [-, desktop, -, -] -- size 1024,800 (was 1024,800), floating true, no mobile / translucent classes
+
+all 706 self-test results produced the declared outcome

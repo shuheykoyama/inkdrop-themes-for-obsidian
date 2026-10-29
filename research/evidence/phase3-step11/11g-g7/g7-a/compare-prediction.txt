@@ -1,0 +1,152 @@
+== runtime-electron-39.5.1-run1.json
+as predicted solarized-dark desktop/opaque source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque reading: fidelity DIFF 14, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/translucent source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/translucent live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/translucent reading: fidelity DIFF 14, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque (after translucent) source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque (after translucent) live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque (after translucent) reading: fidelity DIFF 14, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted kanagawa-dragon desktop/translucent source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/translucent live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/translucent reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque (after translucent) source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque (after translucent) live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque (after translucent) reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted solarized-dark tablet/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark tablet/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark tablet/opaque reading: fidelity DIFF 14, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon tablet/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon tablet/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon tablet/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted solarized-dark phone/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone/opaque reading: fidelity DIFF 14, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted solarized-dark phone-nonfloating/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone-nonfloating/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone-nonfloating/opaque reading: fidelity DIFF 14, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone-nonfloating/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone-nonfloating/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone-nonfloating/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+every theme x context x view as predicted
+== runtime-electron-39.5.1-run2.json
+as predicted solarized-dark desktop/opaque source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque reading: fidelity DIFF 14, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/translucent source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/translucent live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/translucent reading: fidelity DIFF 14, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque (after translucent) source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque (after translucent) live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque (after translucent) reading: fidelity DIFF 14, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted kanagawa-dragon desktop/translucent source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/translucent live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/translucent reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque (after translucent) source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque (after translucent) live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque (after translucent) reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted solarized-dark tablet/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark tablet/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark tablet/opaque reading: fidelity DIFF 14, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon tablet/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon tablet/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon tablet/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted solarized-dark phone/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone/opaque reading: fidelity DIFF 14, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted solarized-dark phone-nonfloating/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone-nonfloating/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone-nonfloating/opaque reading: fidelity DIFF 14, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone-nonfloating/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone-nonfloating/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone-nonfloating/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+every theme x context x view as predicted
+== runtime-electron-43.8.3-run1.json
+as predicted solarized-dark desktop/opaque source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque reading: fidelity DIFF 14, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/translucent source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/translucent live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/translucent reading: fidelity DIFF 14, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque (after translucent) source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque (after translucent) live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque (after translucent) reading: fidelity DIFF 14, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted kanagawa-dragon desktop/translucent source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/translucent live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/translucent reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque (after translucent) source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque (after translucent) live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque (after translucent) reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted solarized-dark tablet/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark tablet/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark tablet/opaque reading: fidelity DIFF 14, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon tablet/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon tablet/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon tablet/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted solarized-dark phone/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone/opaque reading: fidelity DIFF 14, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted solarized-dark phone-nonfloating/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone-nonfloating/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone-nonfloating/opaque reading: fidelity DIFF 14, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone-nonfloating/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone-nonfloating/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone-nonfloating/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+every theme x context x view as predicted
+== runtime-electron-43.8.3-run2.json
+as predicted solarized-dark desktop/opaque source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque reading: fidelity DIFF 14, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/translucent source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/translucent live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/translucent reading: fidelity DIFF 14, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque (after translucent) source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque (after translucent) live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted solarized-dark desktop/opaque (after translucent) reading: fidelity DIFF 14, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted kanagawa-dragon desktop/translucent source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/translucent live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/translucent reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque (after translucent) source: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque (after translucent) live: fidelity DIFF 17, classes PASS, impl not PASS 0
+as predicted kanagawa-dragon desktop/opaque (after translucent) reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted solarized-dark tablet/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark tablet/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark tablet/opaque reading: fidelity DIFF 14, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon tablet/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon tablet/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon tablet/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted solarized-dark phone/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone/opaque reading: fidelity DIFF 14, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+as predicted solarized-dark phone-nonfloating/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone-nonfloating/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted solarized-dark phone-nonfloating/opaque reading: fidelity DIFF 14, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone-nonfloating/opaque source: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone-nonfloating/opaque live: fidelity DIFF 17, classes PASS (EMULATED), impl not PASS 0
+as predicted kanagawa-dragon phone-nonfloating/opaque reading: fidelity DIFF 19, classes FAIL (MISMATCH sh punctuation.token; MISMATCH sh file-descriptor.important.token; MISMATCH sh for-or-select.token.variable; MISMATCH markdown list.punctuation.token), impl not PASS 0
+every theme x context x view as predicted

@@ -1,0 +1,6 @@
+default: /Applications/Obsidian.app
+candidate: /Applications/Obsidian.app
+candidate: ~/.cache/inkdrop-themes-for-obsidian/obsidian-1.14.5/Obsidian.app
+path:                       ~/.cache/inkdrop-themes-for-obsidian/obsidian-1.14.5/Obsidian.app (0x69b8)
+path:                       ~/Library/Daemon Containers/670D4C91-37C8-43B0-9592-17CC10DF3929/Data/Library/Caches/Placeholders-v6.noindex/md.obsidian-1.14.5/Obsidian.app (0x6a38)
+path:                       /Applications/Obsidian.app (0x1600)

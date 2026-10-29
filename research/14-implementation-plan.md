@@ -7526,3 +7526,102 @@ E1 の原因は、G7-0 の `ALIASES` が拡張子を別名として扱ったこ�
 
 1. 案 A の切り替え（§6.135.3）
 2. CSS の候補（C1〜C3）の実装と、Obsidian での検証
+
+### 6.137 案 A の実装と隔離した Obsidian での検証（2026-10-29）
+
+#### 6.137.1 独立レビューの判定（G7-2 の補強）
+
+- G7-2 の補強（§6.135）: APPROVE。
+- 案 A: 正式に採用。実装は APPROVE WITH CONDITIONS。
+- CSS の変更は、案 A を確かめた後に、別のコミットで段階を分けて行う。順は C1-a、次に C3。C2 は保留、C1-b と C4 は採用しない。
+- 条件:
+  - `placeMisses` の分析で、`notInvariant` が 0 でなければ非 0 で終わる。
+  - 基準のファイルは決まった手順で作り、元の測定と版を記録する。
+  - `qd13.implementation` の oracle は変えない。クラスの規則も変えない。E1〜E4 の個別の例外は書かない。
+  - 静的な期待値で判定した古い結果と、新しい結果を混ぜない。混ざった証跡で正式なリリース判定をしない。
+  - 予想した FAIL（KD Reading の MISMATCH 4）は、隠さず、緩めず、飛ばさない。予想と違う FAIL があれば調べる。
+  - 今は行わない: CSS の変更、許容差・規則の緩和、古い証跡の流用、MET、G8、G4・V-38、本番の Inkdrop での測定、サポート範囲の変更。
+
+#### 6.137.2 実装（コミット `b627afb`・`23aa0f5`）
+
+- `tests/visual/g7-reclassify.mjs`: 位置合わせで、run のすべての空白でない文字を両方のクラスと照らす。位置の候補で色が変わる run（`notInvariant`）があれば、書き出さずに終了コード 1 で終わる。
+- `tests/visual/inkdrop-rendered.mjs`（新規）: G7-1 の測定から `tests/fixtures/inkdrop-rendered-6.2.0.json` を作る。
+  - 確かめること: 測定が COMPLETE であること、Inkdrop 6.2.0 であること、ビューが合うこと、ブロックの数・順・言語・本文がテストのノートと同じこと、区間の文字が本文と同じで色があること、すべての文字をちょうど 1 回覆うこと（エディタの行の間の改行を除く）。
+  - `source` に、Inkdrop の版、測定の時刻とコミット、テーマのパッケージの版、4 つの測定のファイルの SHA-256 を記録する。
+  - `--check` は、作り直した結果とコミットしたファイルをバイト単位で比べる。
+  - 区間の数: SD・KD とも editor 924、preview 974。SHA-256 は `9b0f0d5c…a2fad014f`。
+- `tests/runtime/lib/syntax.mjs` の `judgeSyntax`: (B)(C) の Inkdrop の色と run の切れ目を、`rendered` の区間から取る（Source・Live は editor、Reading は preview）。テーマ・言語・本文が合わなければ例外にする。(A) の `impl` の判定とクラスの規則は変えていない。
+- 旧 fixture（`inkdrop-tokens.json`）と V-31 の証跡は残した。`syntaxVars` と V-31 の照合は、旧 fixture のまま。
+- `tests/spec/requirements.json` の `qd13.fidelity` の verifiedBy: method を「Inkdrop 6.2.0 の描画した色」に替え、静的な期待値で判定した古い結果はこの方法の結果ではないと書いた。
+- 自己テスト: `tests/visual/g7-self-test.mjs` は 83 例。runtime の syn.self-test には、実測の色で MISMATCH・DOMINATED が FAIL になる 2 例を足した。
+
+#### 6.137.3 隔離した Obsidian での検証（1.14.5、E39.5.1・E43.8.3）
+
+- 実行: 2026-10-29 08:01Z〜09:51Z。`23aa0f5` の新しいクローンで、`run-all.mjs --only e39,e43,compare`。
+  - 1 回目の実行は、PC の再起動で途中の結果ごと失われた。その結果は使っていない。
+- 証跡: `research/evidence/phase3-step11/11g-g7/g7-a/regress-1.14.5/`（ローカルのパスは伏せた）。予測との照合は `g7-a/compare-prediction.txt`。
+- 基準のファイルの再現性: `inkdrop-rendered.mjs --check` で一致。
+- 自己テスト: E39・E43 とも、706 例すべてが宣言どおりの結果。新しい 2 例も FAIL した。
+- 枠の検査（frame）: E39・E43 とも 31 件すべて PASS。
+- 各実行（E39・E43 の 1 回目・2 回目）:
+  - 3871 件のうち FAIL は 6 件。すべて `syn.reading.classes|kanagawa-dragon` で、6 つの環境（デスクトップの opaque・translucent・translucent の後の opaque、タブレット、phone、phone-nonfloating）に 1 件ずつ。
+  - FAIL のグループは、予想した MISMATCH 4 つ（sh の punctuation、sh の file-descriptor の important、sh の for-or-select の variable、markdown の list の punctuation）。
+  - `compare-prediction.mjs` で、テーマ × 環境 × ビューのすべてが予想どおり（4 回とも）。照らしたのは、言語ごとの fidelity が DIFF かどうかと違う文字の数、`impl` が PASS でない数（0）、デスクトップのクラスの集計（EXACT を除く）。
+  - 1 回目と 2 回目の状態の差は 0（E39・E43 とも）。
+- 11h の 1 回目（静的な期待値で判定した結果）との状態の差: E39・E43 とも 18 件で、すべて予想したもの。
+  - `syn.reading.rs.fidelity|solarized-dark`: DIFF → PASS（6 環境）
+  - `syn.reading.shell.fidelity|kanagawa-dragon`: PASS → DIFF（6 環境）
+  - `syn.reading.classes|kanagawa-dragon`: PASS → FAIL（6 環境）
+  - そのほかの検査は、状態が変わらない。
+- `qd13.implementation`: 1 回あたり 756 件で、状態はすべて PASS・PASS (EMULATED) のまま。
+  - detail が違うのは 204 件で、どれも `<n> runs` の数だけ。
+  - run は Inkdrop の区間の切れ目でも分かれるので、参照が変わると数が変わる。`impl` の判定は Obsidian の区間ごとに oracle と比べるので、参照の影響を受けない。
+- run-all が挙げたそのほかの問題:
+  - obsidian:// のハンドラ: 実行の前に、キャッシュの 1.14.5 の登録が残っていた。失われた 1 回目が `restore` の前に止まったための残り。実行の後は `/Applications/Obsidian.app` だけになり、11h の記録と同じ状態に戻った。既定のハンドラは、前後とも `/Applications/Obsidian.app`。
+  - kit の dry run の結果がない: `--only` で kit を選ばなかったため（11h と同じ）。
+  - 基準（`f7dd00a`）の後に CSS が変わっている: 11h の後の CSS の変更による注記。
+
+#### 6.137.4 古い証跡の扱いと移行
+
+- 次の証跡の qd13.fidelity は、静的な期待値（Inkdrop 6.1.5 のトークンの区間）で判定した結果で、案 A の方法の結果ではない:
+  - 11f-rereview（1.14.4 の E39・E43）、11h（1.14.5 の E39・E43）、11g-g1 の iPhone の報告。
+  - これらは書き換えない。リリースゲートの入力（`inputs.json`）も、今は変えない。
+- 混ぜないための手順:
+  1. 1.14.5 のデスクトップは、§6.137.3 の結果が新しい方法の結果。
+  2. 1.14.4 のデスクトップは、run-all で E39・E43 を実行し直す。
+  3. iPhone は、11g-g1 の生の結果（ページのダンプを含む）を、新しい基準でオフラインで判定し直す。新しい測定はしない。
+  4. すべてがそろってから、新しい入力でゲートを数え直す。入力ごとに、どちらの基準で判定したかを記録する。
+- それまで、正式なリリース判定はしない。
+
+#### 6.137.5 C1-a・C3 の前に確かめる副作用
+
+**C1-a**（Reading の `--code-normal` と sh の 3 規則を `--ink-mde-preview-inline-code-text-color` にする）
+
+- Reading の `--code-normal` は `.theme-dark .markdown-rendered` に置いてある。Obsidian 1.14.5 の `app.css` で、その中で `--code-normal` を使う規則:
+  - `.markdown-rendered code`・`code[class*="language-"]`: すべてのコードブロック。言語のない・知らない言語のフェンスも含む。
+  - インラインコードは、テーマが `:not(pre) > code` で `--code-normal` を置き直しているので変わらない。
+  - `kbd` は、テーマが色を直接指定しているので変わらない。
+  - `.cm-inline-code`・`.cm-math`・`.formula-editor .cm-scroller`: `.markdown-rendered` の中にエディタが入る場所（Live Preview の表のセルなど）で効く可能性がある。実際に入るかは、Obsidian で確かめる。
+- `.markdown-rendered` は Reading view のほかに、埋め込み、ホバーのプレビュー、Canvas のカード、PDF の書き出しにも使われる。どれもコードブロックの文字が対象になる。
+- 編集ビューの `--code-normal`（`--ink-md-codeblock-color`）は別の宣言なので変わらない。
+- 合わせて変える必要があるもの（どれも承認が要る）:
+  - `tests/spec/syntax.json` の `reading.default`、`inkdropDefault.reading`、sh の 3 規則の `var`（oracle の変更）。
+  - `tests/spec/runtime/desktop.json` の `md.reading.codeblock-text`（`pre.language-js` の color、token は `--ink-mde-preview-codeblock-text-color`）。`pre` の色が `--code-normal` に従うなら、token を替える必要がある。従うかを先に確かめる。
+- SD は 2 つの変数の値が同じ（neutral-400）なので、計算された色が変わらないことを確かめる。
+- KD は文字の色が rgba(197, 201, 197, 0.9) → rgb(200, 192, 146) になる。コードブロックの背景とのコントラストを確かめる。
+
+**C3**（`:is(code.language-markdown, code.language-md) .token.list.punctuation` を `--ink-md-list-mark-color` にする）
+
+- 対象は Reading view の markdown・md のフェンスの中の Prism のトークンだけ。Obsidian 自身のリストの印（`--list-marker-color`）は変わらない。
+- Prism の `list` は、順序付きリストの番号（`1.`）にも付く。Inkdrop が番号を同じ色にするかを確かめる。
+- 入れ子の深さは Prism のクラスで分けられないので、2 段目・3 段目の色は合わない（§6.135.5）。
+- セレクタの詳しさ: 今の markdown の punctuation の規則（processing-instruction）と `.tag .punctuation` の規則より後に勝つこと。公式の lint の順の要求（`syntax.css` の注記）に合うこと。
+- `tests/spec/syntax.json` の reading の規則に、同じ規則を足す（oracle の変更で、承認が要る）。
+- SD は同じ色（green-500）、KD は dragon-green2 → dragonTeal。
+
+### 6.138 次の作業
+
+§6.137 の独立レビュー。承認された後に、次を行う。
+
+1. 1.14.4 のデスクトップの実行と、iPhone のオフラインでの判定し直し（§6.137.4）
+2. C1-a の副作用の確認と実装（§6.137.5）。その後に C3。
