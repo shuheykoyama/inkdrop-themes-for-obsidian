@@ -1,0 +1,356 @@
+{
+ "measuredAt": "2026-10-29T19:49:03.098Z",
+ "environment": {
+  "frame": "custom",
+  "appVersion": "1.14.4",
+  "electron": "43.7.7"
+ },
+ "selfTest": false,
+ "results": [
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 136757 chars"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "is-frameless is-floating-nav is-focused"
+  },
+  {
+   "id": "runner.focus",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "document.hasFocus() true"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "0 open"
+  },
+  {
+   "id": "desktop.titlebar.custom-frame",
+   "requirement": "qd1.titlebar-visible-frame",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgb(0, 45, 56)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     30
+    ],
+    "value": "rgb(0, 45, 56)"
+   }
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 136757 chars"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "is-frameless is-floating-nav is-translucent"
+  },
+  {
+   "id": "runner.focus",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "document.hasFocus() true"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "0 open"
+  },
+  {
+   "id": "desktop.titlebar.custom-frame.translucent",
+   "requirement": "qd1.titlebar-visible-frame",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgba(0, 33, 41, 0.7)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     30
+    ],
+    "value": "rgba(0, 33, 41, 0.7)"
+   }
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "DEV solarized-dark (unnamed), 136757 chars"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "is-frameless is-floating-nav"
+  },
+  {
+   "id": "runner.focus",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "document.hasFocus() true"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "0 open"
+  },
+  {
+   "id": "desktop.titlebar.custom-frame",
+   "requirement": "qd1.titlebar-visible-frame",
+   "theme": "solarized-dark",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgb(0, 45, 56)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     30
+    ],
+    "value": "rgb(0, 45, 56)"
+   }
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 139245 chars"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "is-frameless is-floating-nav"
+  },
+  {
+   "id": "runner.focus",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "document.hasFocus() true"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "0 open"
+  },
+  {
+   "id": "desktop.titlebar.custom-frame",
+   "requirement": "qd1.titlebar-visible-frame",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgb(24, 22, 22)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     30
+    ],
+    "value": "rgb(24, 22, 22)"
+   }
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 139245 chars"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "is-frameless is-floating-nav is-translucent"
+  },
+  {
+   "id": "runner.focus",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "document.hasFocus() true"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "0 open"
+  },
+  {
+   "id": "desktop.titlebar.custom-frame.translucent",
+   "requirement": "qd1.titlebar-visible-frame",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "translucent",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgba(24, 22, 22, 0.7)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     30
+    ],
+    "value": "rgba(24, 22, 22, 0.7)"
+   }
+  },
+  {
+   "id": "runner.theme-applied",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "DEV kanagawa-dragon (unnamed), 139245 chars"
+  },
+  {
+   "id": "runner.environment",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "is-frameless is-floating-nav"
+  },
+  {
+   "id": "runner.focus",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "document.hasFocus() true"
+  },
+  {
+   "id": "runner.modals-closed",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "0 open"
+  },
+  {
+   "id": "desktop.titlebar.custom-frame",
+   "requirement": "qd1.titlebar-visible-frame",
+   "theme": "kanagawa-dragon",
+   "platform": "desktop",
+   "appearance": "opaque (after translucent)",
+   "state": "default",
+   "status": "PASS",
+   "detail": "rgb(24, 22, 22)",
+   "measured": {
+    "found": true,
+    "count": 1,
+    "displayed": true,
+    "size": [
+     1024,
+     30
+    ],
+    "value": "rgb(24, 22, 22)"
+   }
+  },
+  {
+   "id": "runner.restore",
+   "theme": "-",
+   "platform": "desktop",
+   "appearance": "-",
+   "state": "-",
+   "status": "PASS",
+   "detail": "size 1024,800 (was 1024,800), floating true, no mobile / translucent classes"
+  }
+ ]
+}

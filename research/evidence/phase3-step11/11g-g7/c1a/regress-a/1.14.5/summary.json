@@ -1,0 +1,616 @@
+{
+ "startedAt": "2026-10-29T16:09:50.149Z",
+ "only": [
+  "e39",
+  "e43",
+  "compare"
+ ],
+ "commit": "4a815b8",
+ "dirty": false,
+ "complete": true,
+ "interrupted": null,
+ "steps": [
+  {
+   "name": "e39-run1-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<out>/e39-run1-work/vault"
+  },
+  {
+   "name": "e39-run1",
+   "ok": false,
+   "status": 1,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1206,
+   "last": "6 runtime check(s) FAILED"
+  },
+  {
+   "name": "e39-run1-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 16,
+   "last": "stopped isolated Obsidian (pid 61988)"
+  },
+  {
+   "name": "e39-self-test-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<out>/e39-self-test-work/vault"
+  },
+  {
+   "name": "e39-self-test",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 835,
+   "last": "all 706 self-test results produced the declared outcome"
+  },
+  {
+   "name": "e39-self-test-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "stopped isolated Obsidian (pid 63969)"
+  },
+  {
+   "name": "e39-run2-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<out>/e39-run2-work/vault"
+  },
+  {
+   "name": "e39-run2",
+   "ok": false,
+   "status": 1,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1204,
+   "last": "6 runtime check(s) FAILED"
+  },
+  {
+   "name": "e39-run2-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 16,
+   "last": "stopped isolated Obsidian (pid 64729)"
+  },
+  {
+   "name": "e39-frame-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<out>/e39-frame-work/vault"
+  },
+  {
+   "name": "e39-frame",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 10,
+   "last": "all 31 runtime checks passed or are reported as DIFF / UNSUPPORTED (0 PASS (EMULATED), 0 DIFF, 0 UNSUPPORTED; Obsidian 1.14.5, Electron 39.5.1)"
+  },
+  {
+   "name": "e39-frame-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 16,
+   "last": "stopped isolated Obsidian (pid 65924)"
+  },
+  {
+   "name": "e43-installer-check-before",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 11,
+   "last": "path:                       /Applications/Obsidian.app (0x1600)"
+  },
+  {
+   "name": "e43-run1-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 6,
+   "last": "<out>/e43-run1-work/vault"
+  },
+  {
+   "name": "e43-run1",
+   "ok": false,
+   "status": 1,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1191,
+   "last": "6 runtime check(s) FAILED"
+  },
+  {
+   "name": "e43-run1-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "stopped isolated Obsidian (pid 66075)"
+  },
+  {
+   "name": "e43-self-test-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<out>/e43-self-test-work/vault"
+  },
+  {
+   "name": "e43-self-test",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 812,
+   "last": "all 706 self-test results produced the declared outcome"
+  },
+  {
+   "name": "e43-self-test-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "stopped isolated Obsidian (pid 67234)"
+  },
+  {
+   "name": "e43-run2-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<out>/e43-run2-work/vault"
+  },
+  {
+   "name": "e43-run2",
+   "ok": false,
+   "status": 1,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1192,
+   "last": "6 runtime check(s) FAILED"
+  },
+  {
+   "name": "e43-run2-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "stopped isolated Obsidian (pid 68185)"
+  },
+  {
+   "name": "e43-frame-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<out>/e43-frame-work/vault"
+  },
+  {
+   "name": "e43-frame",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 10,
+   "last": "all 31 runtime checks passed or are reported as DIFF / UNSUPPORTED (0 PASS (EMULATED), 0 DIFF, 0 UNSUPPORTED; Obsidian 1.14.5, Electron 43.8.3)"
+  },
+  {
+   "name": "e43-frame-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "stopped isolated Obsidian (pid 69041)"
+  },
+  {
+   "name": "e43-installer-restore",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "candidate: /Applications/Obsidian.app"
+  },
+  {
+   "name": "e43-installer-check-after",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 11,
+   "last": "path:                       /Applications/Obsidian.app (0x1600)"
+  }
+ ],
+ "comparisons": [
+  {
+   "name": "E39.5.1 self-test",
+   "count": 706,
+   "problems": []
+  },
+  {
+   "name": "E39.5.1 run 1 vs baseline",
+   "a": "research/evidence/phase3-step11/11g-g7/g7-a/regress-1.14.5/runtime-electron-39.5.1-run1.json",
+   "b": "run 1",
+   "count": [
+    3871,
+    3871
+   ],
+   "breakdown": [
+    {
+     "DIFF": 606,
+     "FAIL": 6,
+     "PASS (EMULATED)": 802,
+     "PASS": 2427,
+     "UNSUPPORTED": 30
+    },
+    {
+     "DIFF": 594,
+     "FAIL": 6,
+     "PASS (EMULATED)": 808,
+     "PASS": 2433,
+     "UNSUPPORTED": 30
+    }
+   ],
+   "onlyA": 0,
+   "onlyB": 0,
+   "repeatDiff": 0,
+   "stateDiff": 12,
+   "detailDiff": 223,
+   "unexpected": 0,
+   "samples": {
+    "onlyA": [],
+    "onlyB": [],
+    "repeatDiff": [],
+    "stateDiff": [
+     "syn.reading.shell.fidelity|kanagawa-dragon|desktop|opaque|syntax",
+     "syn.reading.rs.fidelity|kanagawa-dragon|desktop|opaque|syntax",
+     "syn.reading.shell.fidelity|kanagawa-dragon|desktop|translucent|syntax",
+     "syn.reading.rs.fidelity|kanagawa-dragon|desktop|translucent|syntax",
+     "syn.reading.shell.fidelity|kanagawa-dragon|desktop|opaque (after translucent)|syntax",
+     "syn.reading.rs.fidelity|kanagawa-dragon|desktop|opaque (after translucent)|syntax",
+     "syn.reading.shell.fidelity|kanagawa-dragon|tablet|opaque|syntax",
+     "syn.reading.rs.fidelity|kanagawa-dragon|tablet|opaque|syntax",
+     "syn.reading.shell.fidelity|kanagawa-dragon|phone|opaque|syntax",
+     "syn.reading.rs.fidelity|kanagawa-dragon|phone|opaque|syntax"
+    ],
+    "detailDiff": [
+     "runner.theme-applied|solarized-dark|desktop|opaque|default",
+     "runner.theme-applied|solarized-dark|desktop|opaque|user-accent",
+     "runner.environment|solarized-dark|desktop|opaque|user-accent",
+     "runner.theme-applied|solarized-dark|desktop|opaque|user-font",
+     "runner.theme-applied|solarized-dark|desktop|opaque|quick-switcher-open",
+     "runner.theme-applied|solarized-dark|desktop|opaque|file-explorer-focused",
+     "runner.environment|solarized-dark|desktop|opaque|file-explorer-focused",
+     "runner.theme-applied|solarized-dark|desktop|opaque|menu-open",
+     "runner.environment|solarized-dark|desktop|opaque|menu-open",
+     "runner.theme-applied|solarized-dark|desktop|opaque|popover-open",
+     "runner.environment|solarized-dark|desktop|opaque|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|popover-open",
+     "runner.theme-applied|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.environment|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.theme-applied|solarized-dark|desktop|opaque|md-source",
+     "runner.environment|solarized-dark|desktop|opaque|md-source",
+     "runner.theme-applied|solarized-dark|desktop|opaque|md-live",
+     "runner.environment|solarized-dark|desktop|opaque|md-live",
+     "runner.theme-applied|solarized-dark|desktop|opaque|md-reading"
+    ],
+    "unexpected": []
+   },
+   "same": false
+  },
+  {
+   "name": "E39.5.1 run 1 vs run 2",
+   "a": "run 1",
+   "b": "run 2",
+   "count": [
+    3871,
+    3871
+   ],
+   "breakdown": [
+    {
+     "DIFF": 594,
+     "FAIL": 6,
+     "PASS (EMULATED)": 808,
+     "PASS": 2433,
+     "UNSUPPORTED": 30
+    },
+    {
+     "DIFF": 594,
+     "FAIL": 6,
+     "PASS (EMULATED)": 808,
+     "PASS": 2433,
+     "UNSUPPORTED": 30
+    }
+   ],
+   "onlyA": 0,
+   "onlyB": 0,
+   "repeatDiff": 0,
+   "stateDiff": 0,
+   "detailDiff": 118,
+   "unexpected": 0,
+   "samples": {
+    "onlyA": [],
+    "onlyB": [],
+    "repeatDiff": [],
+    "stateDiff": [],
+    "detailDiff": [
+     "runner.environment|solarized-dark|desktop|opaque|default",
+     "runner.environment|solarized-dark|desktop|opaque|user-accent",
+     "runner.environment|solarized-dark|desktop|opaque|user-font",
+     "runner.environment|solarized-dark|desktop|opaque|quick-switcher-open",
+     "runner.environment|solarized-dark|desktop|opaque|file-explorer-focused",
+     "runner.environment|solarized-dark|desktop|opaque|menu-open",
+     "runner.environment|solarized-dark|desktop|opaque|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|popover-open",
+     "runner.environment|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.environment|solarized-dark|desktop|opaque|md-source",
+     "runner.environment|solarized-dark|desktop|opaque|md-live",
+     "runner.environment|solarized-dark|desktop|opaque|md-reading",
+     "runner.environment|solarized-dark|desktop|opaque|md-user-fonts",
+     "runner.environment|solarized-dark|desktop|opaque|ed-source",
+     "runner.environment|solarized-dark|desktop|opaque|ed-live",
+     "runner.environment|solarized-dark|desktop|opaque|ed-source-no-lines",
+     "runner.environment|solarized-dark|desktop|opaque|ed-live-no-lines",
+     "runner.environment|solarized-dark|desktop|opaque|ed-code-line",
+     "runner.environment|solarized-dark|desktop|translucent|quick-switcher-open"
+    ],
+    "unexpected": []
+   },
+   "same": true
+  },
+  {
+   "name": "E43.8.3 self-test",
+   "count": 706,
+   "problems": []
+  },
+  {
+   "name": "E43.8.3 run 1 vs baseline",
+   "a": "research/evidence/phase3-step11/11g-g7/g7-a/regress-1.14.5/runtime-electron-43.8.3-run1.json",
+   "b": "run 1",
+   "count": [
+    3871,
+    3871
+   ],
+   "breakdown": [
+    {
+     "DIFF": 606,
+     "FAIL": 6,
+     "PASS (EMULATED)": 802,
+     "PASS": 2427,
+     "UNSUPPORTED": 30
+    },
+    {
+     "DIFF": 594,
+     "FAIL": 6,
+     "PASS (EMULATED)": 808,
+     "PASS": 2433,
+     "UNSUPPORTED": 30
+    }
+   ],
+   "onlyA": 0,
+   "onlyB": 0,
+   "repeatDiff": 0,
+   "stateDiff": 12,
+   "detailDiff": 184,
+   "unexpected": 0,
+   "samples": {
+    "onlyA": [],
+    "onlyB": [],
+    "repeatDiff": [],
+    "stateDiff": [
+     "syn.reading.shell.fidelity|kanagawa-dragon|desktop|opaque|syntax",
+     "syn.reading.rs.fidelity|kanagawa-dragon|desktop|opaque|syntax",
+     "syn.reading.shell.fidelity|kanagawa-dragon|desktop|translucent|syntax",
+     "syn.reading.rs.fidelity|kanagawa-dragon|desktop|translucent|syntax",
+     "syn.reading.shell.fidelity|kanagawa-dragon|desktop|opaque (after translucent)|syntax",
+     "syn.reading.rs.fidelity|kanagawa-dragon|desktop|opaque (after translucent)|syntax",
+     "syn.reading.shell.fidelity|kanagawa-dragon|tablet|opaque|syntax",
+     "syn.reading.rs.fidelity|kanagawa-dragon|tablet|opaque|syntax",
+     "syn.reading.shell.fidelity|kanagawa-dragon|phone|opaque|syntax",
+     "syn.reading.rs.fidelity|kanagawa-dragon|phone|opaque|syntax"
+    ],
+    "detailDiff": [
+     "runner.theme-applied|solarized-dark|desktop|opaque|default",
+     "runner.theme-applied|solarized-dark|desktop|opaque|user-accent",
+     "runner.theme-applied|solarized-dark|desktop|opaque|user-font",
+     "runner.theme-applied|solarized-dark|desktop|opaque|quick-switcher-open",
+     "runner.theme-applied|solarized-dark|desktop|opaque|file-explorer-focused",
+     "runner.theme-applied|solarized-dark|desktop|opaque|menu-open",
+     "runner.theme-applied|solarized-dark|desktop|opaque|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|popover-open",
+     "runner.theme-applied|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.theme-applied|solarized-dark|desktop|opaque|md-source",
+     "runner.theme-applied|solarized-dark|desktop|opaque|md-live",
+     "runner.theme-applied|solarized-dark|desktop|opaque|md-reading",
+     "runner.theme-applied|solarized-dark|desktop|opaque|md-user-fonts",
+     "runner.theme-applied|solarized-dark|desktop|opaque|ed-source",
+     "runner.theme-applied|solarized-dark|desktop|opaque|ed-live",
+     "runner.theme-applied|solarized-dark|desktop|opaque|ed-source-no-lines",
+     "runner.theme-applied|solarized-dark|desktop|opaque|ed-live-no-lines",
+     "runner.theme-applied|solarized-dark|desktop|opaque|ed-code-line",
+     "runner.theme-applied|solarized-dark|desktop|opaque|ed-widget-line"
+    ],
+    "unexpected": []
+   },
+   "same": false
+  },
+  {
+   "name": "E43.8.3 run 1 vs run 2",
+   "a": "run 1",
+   "b": "run 2",
+   "count": [
+    3871,
+    3871
+   ],
+   "breakdown": [
+    {
+     "DIFF": 594,
+     "FAIL": 6,
+     "PASS (EMULATED)": 808,
+     "PASS": 2433,
+     "UNSUPPORTED": 30
+    },
+    {
+     "DIFF": 594,
+     "FAIL": 6,
+     "PASS (EMULATED)": 808,
+     "PASS": 2433,
+     "UNSUPPORTED": 30
+    }
+   ],
+   "onlyA": 0,
+   "onlyB": 0,
+   "repeatDiff": 0,
+   "stateDiff": 0,
+   "detailDiff": 9,
+   "unexpected": 0,
+   "samples": {
+    "onlyA": [],
+    "onlyB": [],
+    "repeatDiff": [],
+    "stateDiff": [],
+    "detailDiff": [
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|translucent|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque (after translucent)|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque (after translucent)|tooltip-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque|popover-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque|tooltip-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|translucent|popover-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque (after translucent)|popover-open",
+     "runner.pointer-prepared|kanagawa-dragon|desktop|opaque (after translucent)|tooltip-open"
+    ],
+    "unexpected": []
+   },
+   "same": true
+  }
+ ],
+ "problems": [
+  "e39-run1: exit 1: 6 runtime check(s) FAILED",
+  "e39-run2: exit 1: 6 runtime check(s) FAILED",
+  "e43-run1: exit 1: 6 runtime check(s) FAILED",
+  "e43-run2: exit 1: 6 runtime check(s) FAILED",
+  "the measured spec or sources changed since the baseline (f7dd00a); compare the unchanged checks only: src/common/components/markdown.css         |    13 +;  src/common/components/syntax.css           |     4 +-;  src/common/mapping/markdown.css            |     5 +-;  src/common/platform/translucent.css        |     8 +;  src/palette/kanagawa-dragon.css            |     2 +-;  src/palette/solarized-dark.css             |     2 +-;  tests/fixtures/inkdrop-rendered-6.2.0.json | 23312 +++++++++++++++++++++++++++;  tests/fixtures/vault/Mermaid.md            |    10 +;  tests/runtime/code-tokens.js               |    17 +-;  tests/runtime/current-installer.sh         |    17 +-;  tests/runtime/inkdrop-isolated.sh          |   127 +;  tests/runtime/inkdrop-production.sh        |   177 +;  tests/runtime/lib/mermaid.mjs              |    49 +-;  tests/runtime/lib/syntax.mjs               |    35 +-;  tests/runtime/mermaid-dump.js              |    12 +-;  tests/runtime/mermaid-judge-self-test.mjs  |    76 +;  tests/runtime/obsidian-isolated.sh         |    12 +-;  tests/runtime/run.mjs                      |    42 +-;  tests/runtime/self-test-spec.json          |    28 +;  tests/spec/runtime/desktop.json            |    66 +;  tests/spec/syntax.json                     |     9 +-",
+  "E39.5.1 run1: 6 FAIL (e.g. syn.reading.classes|kanagawa-dragon|desktop|opaque|syntax)",
+  "E39.5.1 run2: 6 FAIL (e.g. syn.reading.classes|kanagawa-dragon|desktop|opaque|syntax)",
+  "compare E39.5.1 run 1 vs baseline: not the same (see summary.json)",
+  "E43.8.3 run1: 6 FAIL (e.g. syn.reading.classes|kanagawa-dragon|desktop|opaque|syntax)",
+  "E43.8.3 run2: 6 FAIL (e.g. syn.reading.classes|kanagawa-dragon|desktop|opaque|syntax)",
+  "compare E43.8.3 run 1 vs baseline: not the same (see summary.json)",
+  "kit dry run: missing kit-dry-run-work/report-emulated.json"
+ ],
+ "specSinceBaseline": [
+  "src/common/components/markdown.css         |    13 +",
+  " src/common/components/syntax.css           |     4 +-",
+  " src/common/mapping/markdown.css            |     5 +-",
+  " src/common/platform/translucent.css        |     8 +",
+  " src/palette/kanagawa-dragon.css            |     2 +-",
+  " src/palette/solarized-dark.css             |     2 +-",
+  " tests/fixtures/inkdrop-rendered-6.2.0.json | 23312 +++++++++++++++++++++++++++",
+  " tests/fixtures/vault/Mermaid.md            |    10 +",
+  " tests/runtime/code-tokens.js               |    17 +-",
+  " tests/runtime/current-installer.sh         |    17 +-",
+  " tests/runtime/inkdrop-isolated.sh          |   127 +",
+  " tests/runtime/inkdrop-production.sh        |   177 +",
+  " tests/runtime/lib/mermaid.mjs              |    49 +-",
+  " tests/runtime/lib/syntax.mjs               |    35 +-",
+  " tests/runtime/mermaid-dump.js              |    12 +-",
+  " tests/runtime/mermaid-judge-self-test.mjs  |    76 +",
+  " tests/runtime/obsidian-isolated.sh         |    12 +-",
+  " tests/runtime/run.mjs                      |    42 +-",
+  " tests/runtime/self-test-spec.json          |    28 +",
+  " tests/spec/runtime/desktop.json            |    66 +",
+  " tests/spec/syntax.json                     |     9 +-"
+ ],
+ "finishedAt": "2026-10-29T17:59:29.669Z"
+}

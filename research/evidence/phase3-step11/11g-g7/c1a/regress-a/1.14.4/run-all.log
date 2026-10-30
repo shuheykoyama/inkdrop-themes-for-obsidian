@@ -1,0 +1,72 @@
+2026-10-29T17:59:29.811Z start e39-run1-start
+2026-10-29T17:59:34.938Z ok   e39-run1-start (exit 0, 5 s) <out>/e39
+2026-10-29T17:59:34.939Z start e39-run1
+2026-10-29T18:19:38.067Z FAIL e39-run1 (exit 1, 1203 s) 6 runtime check(s) FAILED
+2026-10-29T18:19:38.068Z start e39-run1-stop
+2026-10-29T18:19:54.290Z ok   e39-run1-stop (exit 0, 16 s) stopped isolated Obsidian (pid 69556)
+2026-10-29T18:19:54.291Z start e39-self-test-start
+2026-10-29T18:19:59.423Z ok   e39-self-test-start (exit 0, 5 s) <out>/e39
+2026-10-29T18:19:59.423Z start e39-self-test
+2026-10-29T18:33:47.045Z ok   e39-self-test (exit 0, 828 s) all 706 self-test results produced the declared outcome
+2026-10-29T18:33:47.046Z start e39-self-test-stop
+2026-10-29T18:33:48.110Z ok   e39-self-test-stop (exit 0, 1 s) stopped isolated Obsidian (pid 76959)
+2026-10-29T18:33:48.110Z start e39-run2-start
+2026-10-29T18:33:54.344Z ok   e39-run2-start (exit 0, 6 s) <out>/e39
+2026-10-29T18:33:54.344Z start e39-run2
+2026-10-29T18:54:08.016Z FAIL e39-run2 (exit 1, 1214 s) 6 runtime check(s) FAILED
+2026-10-29T18:54:08.017Z start e39-run2-stop
+2026-10-29T18:54:24.224Z ok   e39-run2-stop (exit 0, 16 s) stopped isolated Obsidian (pid 87077)
+2026-10-29T18:54:24.224Z start e39-frame-start
+2026-10-29T18:54:29.544Z ok   e39-frame-start (exit 0, 5 s) <out>/e39
+2026-10-29T18:54:29.544Z start e39-frame
+2026-10-29T18:54:39.640Z ok   e39-frame (exit 0, 10 s) all 31 runtime checks passed or are reported as DIFF / UNSUPPORTED (0 PASS (EMULATED), 0 DIFF, 0 UNSUPPORTED; Obsidian 1.14.4, Electron 39.5.1)
+2026-10-29T18:54:39.640Z start e39-frame-stop
+2026-10-29T18:54:55.888Z ok   e39-frame-stop (exit 0, 16 s) stopped isolated Obsidian (pid 98915)
+2026-10-29T18:54:55.888Z start e43-installer-check-before
+2026-10-29T18:55:09.810Z ok   e43-installer-check-before (exit 0, 14 s) path:                       /Applications/Obsidian.app (0x1600)
+2026-10-29T18:55:09.810Z start e43-run1-start
+2026-10-29T18:55:15.985Z ok   e43-run1-start (exit 0, 6 s) <out>/e43
+2026-10-29T18:55:15.985Z start e43-run1
+2026-10-29T19:15:09.333Z FAIL e43-run1 (exit 1, 1193 s) 10 runtime check(s) FAILED
+2026-10-29T19:15:09.333Z start e43-run1-stop
+2026-10-29T19:15:10.379Z ok   e43-run1-stop (exit 0, 1 s) stopped isolated Obsidian (pid 99175)
+2026-10-29T19:15:10.379Z start e43-self-test-start
+2026-10-29T19:15:15.543Z ok   e43-self-test-start (exit 0, 5 s) <out>/e43
+2026-10-29T19:15:15.543Z start e43-self-test
+2026-10-29T19:28:48.106Z ok   e43-self-test (exit 0, 813 s) all 706 self-test results produced the declared outcome
+2026-10-29T19:28:48.106Z start e43-self-test-stop
+2026-10-29T19:28:49.148Z ok   e43-self-test-stop (exit 0, 1 s) stopped isolated Obsidian (pid 1977)
+2026-10-29T19:28:49.148Z start e43-run2-start
+2026-10-29T19:28:54.278Z ok   e43-run2-start (exit 0, 5 s) <out>/e43
+2026-10-29T19:28:54.278Z start e43-run2
+2026-10-29T19:48:46.864Z FAIL e43-run2 (exit 1, 1193 s) 10 runtime check(s) FAILED
+2026-10-29T19:48:46.864Z start e43-run2-stop
+2026-10-29T19:48:47.907Z ok   e43-run2-stop (exit 0, 1 s) stopped isolated Obsidian (pid 4367)
+2026-10-29T19:48:47.907Z start e43-frame-start
+2026-10-29T19:48:53.045Z ok   e43-frame-start (exit 0, 5 s) <out>/e43
+2026-10-29T19:48:53.046Z start e43-frame
+2026-10-29T19:49:03.106Z ok   e43-frame (exit 0, 10 s) all 31 runtime checks passed or are reported as DIFF / UNSUPPORTED (0 PASS (EMULATED), 0 DIFF, 0 UNSUPPORTED; Obsidian 1.14.4, Electron 43.7.7)
+2026-10-29T19:49:03.106Z start e43-frame-stop
+2026-10-29T19:49:04.147Z ok   e43-frame-stop (exit 0, 1 s) stopped isolated Obsidian (pid 20013)
+2026-10-29T19:49:04.148Z start e43-installer-restore
+2026-10-29T19:49:05.078Z ok   e43-installer-restore (exit 0, 1 s) candidate: /Applications/Obsidian.app
+2026-10-29T19:49:05.078Z start e43-installer-check-after
+2026-10-29T19:49:16.857Z ok   e43-installer-check-after (exit 0, 12 s) path:                       /Applications/Obsidian.app (0x1600)
+2026-10-29T19:49:17.112Z DIFFERENT E39.5.1 run 1 vs baseline: 3871 / 3871 results, 18 state differences, 0+0 keys on one side only, 0 repetition differences, 0 unexpected states, 574 detail differences
+2026-10-29T19:49:17.131Z same E39.5.1 run 1 vs run 2: 3871 / 3871 results, 0 state differences, 0+0 keys on one side only, 0 repetition differences, 0 unexpected states, 15 detail differences
+2026-10-29T19:49:17.268Z DIFFERENT E43.7.7 run 1 vs baseline: 3871 / 3871 results, 22 state differences, 0+0 keys on one side only, 0 repetition differences, 0 unexpected states, 609 detail differences
+2026-10-29T19:49:17.281Z same E43.7.7 run 1 vs run 2: 3871 / 3871 results, 0 state differences, 0+0 keys on one side only, 0 repetition differences, 0 unexpected states, 58 detail differences
+2026-10-29T19:49:17.282Z 12 problems:
+  e39-run1: exit 1: 6 runtime check(s) FAILED
+  e39-run2: exit 1: 6 runtime check(s) FAILED
+  e43-run1: exit 1: 10 runtime check(s) FAILED
+  e43-run2: exit 1: 10 runtime check(s) FAILED
+  the measured spec or sources changed since the baseline (f7dd00a); compare the unchanged checks only: src/common/components/markdown.css         |    13 +;  src/common/components/syntax.css           |     4 +-;  src/common/mapping/markdown.css            |     5 +-;  src/common/platform/translucent.css        |     8 +;  src/palette/kanagawa-dragon.css            |     2 +-;  src/palette/solarized-dark.css             |     2 +-;  tests/fixtures/inkdrop-rendered-6.2.0.json | 23312 +++++++++++++++++++++++++++;  tests/fixtures/vault/Mermaid.md            |    10 +;  tests/runtime/code-tokens.js               |    17 +-;  tests/runtime/current-installer.sh         |    17 +-;  tests/runtime/inkdrop-isolated.sh          |   127 +;  tests/runtime/inkdrop-production.sh        |   177 +;  tests/runtime/lib/mermaid.mjs              |    49 +-;  tests/runtime/lib/syntax.mjs               |    35 +-;  tests/runtime/mermaid-dump.js              |    12 +-;  tests/runtime/mermaid-judge-self-test.mjs  |    76 +;  tests/runtime/obsidian-isolated.sh         |    12 +-;  tests/runtime/run.mjs                      |    42 +-;  tests/runtime/self-test-spec.json          |    28 +;  tests/spec/runtime/desktop.json            |    66 +;  tests/spec/syntax.json                     |     9 +-
+  E39.5.1 run1: 6 FAIL (e.g. syn.reading.classes|kanagawa-dragon|desktop|opaque|syntax)
+  E39.5.1 run2: 6 FAIL (e.g. syn.reading.classes|kanagawa-dragon|desktop|opaque|syntax)
+  compare E39.5.1 run 1 vs baseline: not the same (see summary.json)
+  E43.7.7 run1: 10 FAIL (e.g. ui.button.background|solarized-dark|desktop|opaque|default)
+  E43.7.7 run2: 10 FAIL (e.g. ui.button.background|solarized-dark|desktop|opaque|default)
+  compare E43.7.7 run 1 vs baseline: not the same (see summary.json)
+  kit dry run: missing kit-dry-run-work/report-emulated.json
+exit 1

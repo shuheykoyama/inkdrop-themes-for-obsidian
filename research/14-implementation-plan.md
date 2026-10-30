@@ -7625,3 +7625,101 @@ E1 の原因は、G7-0 の `ALIASES` が拡張子を別名として扱ったこ�
 
 1. 1.14.4 のデスクトップの実行と、iPhone のオフラインでの判定し直し（§6.137.4）
 2. C1-a の副作用の確認と実装（§6.137.5）。その後に C3。
+
+### 6.139 iPhone の判定し直し・C1-a・設定のボタンの検査（2026-10-29〜30）
+
+#### 6.139.1 独立レビューの判定
+
+- §6.137 の案 A の実装と検証: 承認。次を行うことになった。
+  - `inkdrop-rendered.mjs` で、測定のテーマも確かめる。
+  - iPhone の結果を、新しい基準でオフラインで判定し直す。元の結果と旧いレポートは変えない。Q-D13 以外の結果を認め直さない。
+  - C1-a: 副作用を先に測り、CSS を変え、oracle を合わせる。1.14.4 と 1.14.5 のデスクトップで回帰を確かめる。
+- C1-a の回帰で出た予想外の FAIL（§6.139.5）: 停止は承認。直し方は、検査の対象を安定させる（spec を変える）。自動更新を止めるランナーの機能は足さない。
+- 今は行わない: C1-b、C2、C3、C4、本番の Inkdrop での測定、規則・許容差の緩和、Q-D10 の変更、G8、G4・V-38、DIFF の受容、MET。正式なリリース判定は NOT MET のまま。
+
+#### 6.139.2 測定のテーマの確認（コミット `74f2797`）
+
+- `renderedView` は、測定の結果の `theme` が作ろうとしているテーマと違えば、基準のファイルを作らずに止まる。
+- `g7-self-test.mjs` に「ほかのテーマの測定は止まる」例を足した（84 例）。基準のファイルは変わらない（`--check` で一致）。
+
+#### 6.139.3 iPhone の判定し直し（コミット `f3f1ce0`）
+
+- 証跡: `research/evidence/phase3-step11/11g-g7/g7-a/iphone-rejudge/`。
+- G1 の生の結果（実機の測定は 2026-10-20T06:10:39Z〜06:17:51Z）を、2026-10-29T15:39:23Z に、`74f2797` の `tests/device/judge.mjs` で判定し直した。参照は Inkdrop 6.2.0 の描画した色。判定は、生の結果に入っているページのダンプから行い、新しく測っていない。
+- 当時のキットの `theme.css` は、`74f2797` のビルドとバイト単位で同じ（KD `7a3715ca…`、SD `b98da149…`）。
+- 916 件: PASS 800、FAIL 1、DIFF 101、UNSUPPORTED 10、N/A 4。旧いレポートとの状態の差は、予想した 3 件だけ（SD の rs.fidelity が DIFF → PASS、KD の shell.fidelity が PASS → DIFF、KD の classes が PASS → FAIL）。
+- Q-D13 以外の結果は、状態も detail も同じ。認め直したものではない。
+- C1-a の前の CSS の結果なので、C1-a の後の iPhone の結果の代わりにはならない。
+
+#### 6.139.4 C1-a（コミット `4a815b8`）
+
+- 副作用の測定: `research/evidence/phase3-step11/11g-g7/c1a/`（README に詳細）。隔離した 1.14.5（E39.5.1）で、変更の前と後の CSS について、全要素の計算された色を比べた。
+  - Reading の `--code-normal` が届くのは、コードブロックの `code`（言語あり・なし・知らない言語）と、その中で自分の色の規則がないトークンだけ。Reading view、コールアウト、埋め込み、KD のホバーのプレビュー、Live Preview の中のコールアウトと埋め込みで同じ。
+  - `pre` には届かない（本文の色を受け継ぐ）。インラインコード、`kbd`、表、数式、Source mode と Live Preview の本文のコードにも届かない。
+  - SD: 変わった要素は 0。KD: 届く要素と sh の 8 つの span だけが rgba(197, 201, 197, 0.9) → rgb(200, 192, 146) に変わる。
+  - KD のコントラスト（コードの背景 rgba(24, 22, 22, 0.5) をページの背景に重ねた色に対して、計算）: 8.65 → 9.48。
+- CSS: Reading の `--code-normal` を `--ink-mde-preview-inline-code-text-color` にした（`src/common/mapping/markdown.css`）。sh の punctuation と、file-descriptor・for-or-select の規則も同じ変数にした（`src/common/components/syntax.css`）。
+- oracle: `tests/spec/syntax.json` の `reading.default` と sh の 3 規則の `var` を同じ変数にした。`inkdropDefault` は変えていない。
+- G7-2 の分析: `g7-reclassify.mjs` が読むのは `inkdropDefault` と `langAliases` だけ。変更の後に実行し直した結果は、コミットした `g7-2/reclassify.json` とバイト単位で同じ。
+- 注記: `md.reading.codeblock-text`（`desktop.json`）は `pre.language-js` の色を測る。`pre` には `--code-normal` が届かないので、この検査は変わらない。token（`--ink-mde-preview-codeblock-text-color`）も変えていない。
+- 測れていないもの: SD のホバーのプレビュー（3 回とも開かなかった）。`.formula-editor`（開いた画面では測っていない）。
+
+#### 6.139.5 C1-a の回帰での予想外の FAIL と原因
+
+- 実行: 2026-10-29 16:09Z〜19:49Z。`4a815b8` の新しいクローンで、1.14.5（E39.5.1・E43.8.3）、次に 1.14.4（E39.5.1・E43.7.7）。証跡は `c1a/regress-a/`（ローカルのパスは伏せた）。
+- 1.14.5 と 1.14.4 の E39: FAIL は KD の `syn.reading.classes` の 6 件だけ（MISMATCH 1）。
+- 1.14.4 の E43.7.7: 上の 6 件に加えて、`ui.button.background` が 4 件 FAIL（SD・KD の opaque と、translucent の後の opaque）。2 回の実行とも `element not displayed (size [0,0])`。11f では PASS だった。
+- 原因（隔離した Obsidian の About タブを読み取った。証跡は `c1a/button-dom/`）:
+  - 隔離した 1.14.4 は、起動した直後に 1.14.5 の asar を隔離したユーザーデータにダウンロードし、`ipcRenderer.sendSync("update")` が `update-downloaded` を返す。11f のときは 1.14.5 がまだなかった。
+  - この状態では、Version の行のボタンが「Check for updates」から `mod-cta` の「Relaunch」に替わる（1.14.4 の `app.js` の `updateVersionSetting`）。
+  - そのため、旧いセレクタ `button:not(.mod-cta):not(.clickable-icon)` の最初の要素が、「Update Available」の行の「Download」に移った。この行は、インストーラーが古いときだけ見える。
+    - E43.7.7（インストーラー 1.14.4）: 行は隠れていて、0 × 0。FAIL。
+    - E39（インストーラー 1.11.7）: 行は見えていて、84 × 30。PASS。ただし 11f とは違うボタンを測っていた。
+  - 1.14.5 には新しい版がないので、「Check for updates」を測っていて、影響はない。
+  - C1-a はコードの文字の色だけを変える。副作用の測定でも、設定のボタンは変わっていなかった。
+- 調べるために隔離した Obsidian を起動した前と後で、obsidian:// のハンドラは同じ（restore 済み）。スクリーンショットは撮っていない。
+- 1 回目と 2 回目の detail の差（1.14.5 E39 118、E43 9、1.14.4 E39 15、E43 58 件）は、どれも `runner.environment` の `is-focused` の有無と、`runner.pointer-prepared` のホバーのプレビューが出るまでの時間（303〜311 ms）。測った値の違いはない。
+
+#### 6.139.6 ui.button.background の対象（コミット `35647fd`）
+
+- 4 つの条件（1.14.4・1.14.5 × E39・E43。1.14.4 は更新がダウンロード済み）で About タブの DOM を読み取った（`c1a/button-dom/dom-*.json`）。
+  - どの条件でも、最初のグループ（見出しのないグループ）は Version、Update Available、Automatic updates、Receive early access versions、Language、Help の順。Help は最後の項目で、「Open」のボタンが 1 つだけある。
+  - Language は、タブの中でただ 1 つドロップダウンを持つ項目。
+  - 背景は、ほかの普通のボタンと同じく `--interactive-normal`（テーマは `--ink-derived-button-background-color`）で塗られる。
+- 新しいセレクタ: `.modal.mod-settings .vertical-tab-content .setting-item:has(select.dropdown) + .setting-item:last-child > .setting-item-control > button:only-child:not(.mod-cta)`。
+  - Language のすぐ後で、グループの最後の項目の、ただ 1 つのボタン。どれかが崩れると、要素が見つからずに FAIL になる。
+  - 4 つの条件のすべてで、合うのは「Open」の 1 件だけ（57 × 30、表示中）。`c1a/button-dom/selectors.txt`。
+- token・許容差・Q-D・判定の規則は変えていない。
+- 自己テスト（`tests/runtime/self-test-spec.json`。状態は `probe.js` が About タブを変えて、測った後に戻す）:
+  - `self.settings-button`: 新しいセレクタ。PASS。
+  - `self.settings-button-decoys`: グループの先頭に、隠れたボタンの行と赤いボタンの行を足す。新しいセレクタは「Open」を測って PASS。
+  - `self.settings-button-first-match-decoys`: 同じ状態で旧いセレクタ。隠れた行を測って FAIL（今回の FAIL と同じ形）。
+  - `self.settings-button-help-displaced`: Language と Help の間に、テーマの色のボタンの行を足す。要素が見つからずに FAIL。
+  - `self.settings-button-help-gone`: Help のボタンを取り除く。FAIL。
+  - `self.settings-button-wrong-expectation`: 違う token。FAIL。
+- 隔離した 1.14.4 E43.7.7 で自己テストを実行: 790 例のすべてが宣言どおり。
+
+#### 6.139.7 新しい spec での回帰（コミット `35647fd`）
+
+- 実行: 2026-10-29T20:35:38Z〜2026-10-30T00:16:38Z。`35647fd` の新しいクローンで、1.14.4（E39.5.1・E43.7.7）、次に 1.14.5（E39.5.1・E43.8.3）。ビルドしたテーマは C1-a の回帰と同じ（KD `0ffa883e…`、SD `0f8e864f…`）。比べる基準は `c1a/regress-a/` の 1 回目。証跡は `c1a/regress-b/`（ローカルのパスは伏せた）。
+- 読み込んだ版: 結果の `environment` は、どれも狙った Obsidian と Electron（1.14.4・39.5.1、1.14.4・43.7.7、1.14.5・39.5.1、1.14.5・43.8.3）。E39 の 1.14.4 は既定の asar（`obsidian-1.14.4.asar`）、E43 の 1.14.4 はキャッシュした 1.14.4 のインストーラー。
+- 自己テスト: 4 つの条件のすべてで、790 例が宣言どおり。
+- FAIL: 4 つの条件の 1 回目と 2 回目で、KD の `syn.reading.classes` の 6 件だけ（MISMATCH 1、既知）。隠れた FAIL や、新しい FAIL はない。
+- `ui.button.background`:
+  - 1.14.4 E43.7.7: 4 件が FAIL → PASS。値は SD rgba(0, 45, 56, 0.7)、KD rgb(39, 38, 38)。
+  - ほかの 3 つの条件: PASS → PASS。値は同じ。
+  - 測ったボタンは、セレクタが 1 件だけに合う「Open」（§6.139.6）。結果の detail は色だけで、要素の名前は入らない。
+- `regress-a` との状態の差: 1.14.4 E43.7.7 の上の 4 件だけ。ほかの 3 つの条件は 0 件。結果は 3871 件で、片方だけにある結果はない。
+- 1 回目と 2 回目: どの条件も状態の差は 0。detail の差（1.14.4 E39 65、E43 7、1.14.5 E39 6、E43 7 件）は、`runner.environment` の `is-focused` の有無と、`runner.pointer-prepared` のホバーのプレビューが出るまでの時間だけ。`regress-a` との detail の差も、同じ 2 種類だけ。
+- obsidian:// のハンドラ: どちらの版でも、実行の前と後で同じ（restore 済み）。スクリーンショットは撮っていない。
+- run-all の「kit dry run: missing」は、`--only e39,e43,compare` で kit の段階を飛ばしたため。`regress-a` でも同じ。
+- 結論: 4 件の FAIL は、検査の対象が更新の状態で替わったためで、spec の修正で消えた。C1-a による CSS の FAIL はない。残る FAIL は C3 の対象（KD の markdown の list の印）だけ。
+
+### 6.140 次の作業
+
+§6.139 の独立レビュー。承認された後に、次を行う。
+
+1. C3（KD の markdown の list の印、最後の MISMATCH）。
+2. C1-a の後の CSS で、iPhone の実機の測定をし直す（§6.139.3 の結果は C1-a の前のもの）。
+3. 1.14.4・1.14.5・iPhone の入力を、新しい方法の結果にそろえてから、ゲートを数え直す。
+4. 将来: 隔離した Obsidian の自動更新を、公式の設定（Settings → General → Automatic updates、https://obsidian.md/help/updates）で止められるかを調べる。普段の Obsidian の設定には触れない。

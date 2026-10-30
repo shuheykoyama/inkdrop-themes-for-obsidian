@@ -1,0 +1,350 @@
+{
+ "label": "1144-e39",
+ "appVersion": "1.14.4",
+ "electron": "39.5.1",
+ "update": "update-downloaded",
+ "tab": "about",
+ "contentAttrs": "class=vertical-tab-content",
+ "items": [
+  {
+   "i": 0,
+   "attrs": "class=setting-item tabindex=-1",
+   "name": "Version 1.14.4",
+   "visible": true,
+   "size": [
+    611,
+    108
+   ],
+   "controls": [
+    {
+     "tag": "button",
+     "attrs": "class=mod-cta",
+     "text": "Relaunch",
+     "size": [
+      80,
+      30
+     ],
+     "visible": true,
+     "bg": "rgb(138, 92, 245)"
+    }
+   ]
+  },
+  {
+   "i": 1,
+   "attrs": "class=setting-item tabindex=-1",
+   "name": "Update Available",
+   "visible": true,
+   "size": [
+    611,
+    108
+   ],
+   "controls": [
+    {
+     "tag": "button",
+     "attrs": "",
+     "text": "Download",
+     "size": [
+      84,
+      30
+     ],
+     "visible": true,
+     "bg": "rgb(51, 51, 51)"
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "attrs": "class=setting-item mod-toggle tabindex=-1",
+   "name": "Automatic updates",
+   "visible": true,
+   "size": [
+    611,
+    76
+   ],
+   "controls": [
+    {
+     "tag": "label",
+     "attrs": "class=checkbox-container is-enabled tabindex=0",
+     "text": "",
+     "size": [
+      44,
+      20
+     ],
+     "visible": true,
+     "bg": "rgb(138, 92, 245)"
+    }
+   ]
+  },
+  {
+   "i": 3,
+   "attrs": "class=setting-item tabindex=-1",
+   "name": "Receive early access versions",
+   "visible": false,
+   "size": [
+    0,
+    0
+   ],
+   "controls": []
+  },
+  {
+   "i": 4,
+   "attrs": "class=setting-item tabindex=-1",
+   "name": "Language",
+   "visible": true,
+   "size": [
+    611,
+    92
+   ],
+   "controls": [
+    {
+     "tag": "button",
+     "attrs": "class=mod-cta",
+     "text": "Relaunch",
+     "size": [
+      0,
+      0
+     ],
+     "visible": false,
+     "bg": "rgb(138, 92, 245)"
+    },
+    {
+     "tag": "select",
+     "attrs": "class=dropdown",
+     "text": "አማርኛاَلْعَرَبِيَّةُбеларуская ",
+     "size": [
+      86,
+      30
+     ],
+     "visible": true,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    {
+     "tag": "select",
+     "attrs": "class=dropdown is-measuring aria-hidden=true tabindex=-1",
+     "text": "English",
+     "size": [
+      86,
+      30
+     ],
+     "visible": false,
+     "bg": "rgba(0, 0, 0, 0)"
+    }
+   ]
+  },
+  {
+   "i": 5,
+   "attrs": "class=setting-item tabindex=-1",
+   "name": "Help",
+   "visible": true,
+   "size": [
+    611,
+    76
+   ],
+   "controls": [
+    {
+     "tag": "button",
+     "attrs": "",
+     "text": "Open",
+     "size": [
+      57,
+      30
+     ],
+     "visible": true,
+     "bg": "rgb(51, 51, 51)"
+    }
+   ]
+  },
+  {
+   "i": 6,
+   "attrs": "class=setting-item setting-item-heading",
+   "name": "Account",
+   "visible": true,
+   "size": [
+    611,
+    20
+   ],
+   "controls": []
+  },
+  {
+   "i": 7,
+   "attrs": "class=setting-item tabindex=-1",
+   "name": "Your account",
+   "visible": true,
+   "size": [
+    611,
+    92
+   ],
+   "controls": [
+    {
+     "tag": "button",
+     "attrs": "",
+     "text": "Log in",
+     "size": [
+      61,
+      30
+     ],
+     "visible": true,
+     "bg": "rgb(51, 51, 51)"
+    },
+    {
+     "tag": "button",
+     "attrs": "",
+     "text": "Sign up",
+     "size": [
+      70,
+      30
+     ],
+     "visible": true,
+     "bg": "rgb(51, 51, 51)"
+    }
+   ]
+  },
+  {
+   "i": 8,
+   "attrs": "class=setting-item tabindex=-1",
+   "name": "Catalyst license",
+   "visible": false,
+   "size": [
+    0,
+    0
+   ],
+   "controls": []
+  },
+  {
+   "i": 9,
+   "attrs": "class=setting-item tabindex=-1",
+   "name": "Commercial license",
+   "visible": true,
+   "size": [
+    611,
+    92
+   ],
+   "controls": [
+    {
+     "tag": "button",
+     "attrs": "",
+     "text": "Activate",
+     "size": [
+      73,
+      30
+     ],
+     "visible": true,
+     "bg": "rgb(51, 51, 51)"
+    },
+    {
+     "tag": "button",
+     "attrs": "",
+     "text": "Purchase",
+     "size": [
+      80,
+      30
+     ],
+     "visible": true,
+     "bg": "rgb(51, 51, 51)"
+    }
+   ]
+  },
+  {
+   "i": 10,
+   "attrs": "class=setting-item setting-item-heading",
+   "name": "Advanced",
+   "visible": true,
+   "size": [
+    611,
+    20
+   ],
+   "controls": []
+  },
+  {
+   "i": 11,
+   "attrs": "class=setting-item mod-toggle tabindex=-1",
+   "name": "Notify if startup takes longer than expe",
+   "visible": true,
+   "size": [
+    611,
+    76
+   ],
+   "controls": [
+    {
+     "tag": "div",
+     "attrs": "class=clickable-icon extra-setting-button tabindex=0 aria-label=Check now",
+     "text": "",
+     "size": [
+      24,
+      24
+     ],
+     "visible": true,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    {
+     "tag": "label",
+     "attrs": "class=checkbox-container tabindex=0",
+     "text": "",
+     "size": [
+      44,
+      20
+     ],
+     "visible": true,
+     "bg": "rgb(63, 63, 63)"
+    }
+   ]
+  },
+  {
+   "i": 12,
+   "attrs": "class=setting-item mod-toggle tabindex=-1",
+   "name": "Command line interface",
+   "visible": true,
+   "size": [
+    611,
+    76
+   ],
+   "controls": [
+    {
+     "tag": "label",
+     "attrs": "class=checkbox-container tabindex=0",
+     "text": "",
+     "size": [
+      44,
+      20
+     ],
+     "visible": true,
+     "bg": "rgb(63, 63, 63)"
+    }
+   ]
+  },
+  {
+   "i": 13,
+   "attrs": "class=setting-item mod-toggle tabindex=-1",
+   "name": "Hardware acceleration",
+   "visible": true,
+   "size": [
+    611,
+    92
+   ],
+   "controls": [
+    {
+     "tag": "button",
+     "attrs": "class=mod-cta",
+     "text": "Relaunch",
+     "size": [
+      0,
+      0
+     ],
+     "visible": false,
+     "bg": "rgb(138, 92, 245)"
+    },
+    {
+     "tag": "label",
+     "attrs": "class=checkbox-container is-enabled tabindex=0",
+     "text": "",
+     "size": [
+      44,
+      20
+     ],
+     "visible": true,
+     "bg": "rgb(138, 92, 245)"
+    }
+   ]
+  }
+ ]
+}
