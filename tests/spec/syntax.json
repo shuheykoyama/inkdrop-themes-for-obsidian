@@ -67,6 +67,7 @@
       { "on": ["token", "operator"], "var": "operator" },
       { "on": ["token", "punctuation"], "var": "punctuation" },
       { "on": ["token", "punctuation"], "lang": ["markdown", "md"], "var": "processing-instruction" },
+      { "on": ["token", "list", "punctuation"], "lang": ["markdown", "md"], "var": "--ink-md-list-mark-color" },
       { "on": ["token", "punctuation"], "lang": ["sh", "bash", "shell"], "var": "--ink-mde-preview-inline-code-text-color" },
       { "on": ["token", "function"], "var": "variable-name-function" },
       { "on": ["token", "interpolation"], "var": "variable-name" },

@@ -183,6 +183,13 @@
   color: var(--ink-syntax-processing-instruction-color);
 }
 
+/* List marks (bullets and numbers): Inkdrop's .md-list-mark comes after .tok-processing-instruction and wins
+   (research/14 §6.135.2). Prism cannot tell the nesting level, so nested marks keep the first level's colour
+   where Inkdrop uses --md-list-mark-2/3-color. */
+.theme-dark .markdown-rendered :is(code.language-markdown, code.language-md) .token.list.punctuation {
+  color: var(--ink-md-list-mark-color);
+}
+
 /* Shell: Inkdrop's shell mode leaves brackets and ; as plain text (here for the same reason as above). */
 .theme-dark .markdown-rendered :is(code.language-sh, code.language-bash, code.language-shell) .token.punctuation {
   color: var(--ink-mde-preview-inline-code-text-color);
