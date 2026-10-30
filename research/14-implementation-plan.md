@@ -7791,3 +7791,63 @@ E1 の原因は、G7-0 の `ALIASES` が拡張子を別名として扱ったこ�
   - 790 例すべてが宣言どおり。前に失敗した状態（KD、translucent の後の opaque、`popover-open`）は、プレビューが 303 ms で出て PASS。
   - obsidian:// のハンドラは、前と後で同じ。
 - 扱い: 最初の 2 例の失敗は、原因が分からない一時的な準備の失敗として記録する。原因が解けたわけではない。ランナーは変えていない。フル回帰はやり直さない。
+
+#### 6.141.7 C3 の最終レビュー: APPROVE / COMPLETE
+
+- C3: APPROVE / COMPLETE。macOS の回帰と、自己テストのやり直しも承認（`d388397`・`8b719e1`、CI run 41020460355）。
+- 成功した実行時の検査と、別に成功した自己テストのやり直しを合わせて承認された。最初の自己テストの原因は分からないままで、統合の実行が exit 1 だったことは書き換えない。既存の証跡は変えない。フル回帰や自己テストを繰り返す必要はない。
+- 同じ `target:false` の自己テストの失敗がまた起きたら、leaf・表示のモード・DOM の準備の状態を調べる。試す回数や待つ時間は、根拠なく増やさない。
+- 次: C1-a と C3 を含む `8b719e1` から新しいデバイスキットを作り、iPhone の実機の検証の準備をする（§6.142）。iPhone を操作する前に準備を報告し、ユーザーの準備ができたことを確かめてから進める。
+- 今は行わない: C1-b・C2・C4、G8、G4・V-38、Q-D10 の変更、DIFF の受容、本番の Inkdrop での測り直し、MET。正式なリリース判定は NOT MET のまま。
+
+### 6.142 C1-a・C3 の後の iPhone の実機の検証の準備（2026-10-30、iPhone の操作の前）
+
+#### 6.142.1 新しいキット
+
+- 証跡: `research/evidence/phase3-step11/11g-g7/iphone-c3/kit/`。
+- `8b719e1` の新しいクローン（作業ツリーに変更なし）で、両テーマをビルドし、`tests/device/build-kit.mjs` で新しい出力先に作った。既存のキットのフォルダや zip は上書きしていない。
+  - kit id `bb2510e4-ee76-4791-b4b4-fa497cdb0d1f`。zip の SHA-256 `818c2443…ef1163`。
+  - キットの 18 ファイルすべての SHA-256 は `kit-files.sha256`。目印（`inkdrop-device-kit.json`）は 17 ファイル（目印のほか）を記録する。
+  - `theme.css`: KD `a2977a35…`、SD `8f2c6b48…`。C3 の回帰（`c3/regress/`）のビルドと同じ。
+  - phone は 66 ジョブ、ツアー 38 段（G1 と同じ）。
+  - G1 のキット（`abfb7c19…`）と違うファイルは 3 つ: 両テーマの `theme.css`（C1-a・C3）と、プラグインの `main.js`（kit id と、`35647fd` で変わった `probe.js` を含む）。ノートと設定は同じ。
+- キットの自己テスト（2026-10-30T07:39Z〜07:59Z）:
+  - `build`: 34 件 PASS（同じ名前を上書きしない、ほかの zip を受け付けない、など）。
+  - `plugin`: 63 件 PASS（プラグインと `cable.mjs` がほかの Vault・ほかのキットを拒む）。
+  - `dry-run`（Mac の隔離した 1.14.4、phone の模擬）: 7 件 PASS。判定は 916 件で PASS 751、FAIL 52、DIFF 99、UNSUPPORTED 10、N/A 4。
+    - FAIL 52 は、すべて `device.environment`（模擬なので `emulate-mobile` があり、実機ではない）。11f の dry-run と同じで、設計どおり。
+    - 11f の dry-run（PASS 749、DIFF 101）との差は 2 件: `syn.reading.rs.fidelity` が SD・KD とも DIFF → PASS（実測の基準と C1-a による。§6.139.3 の予想と同じ）。`classes` は両テーマとも PASS。
+
+#### 6.142.2 iPhone の今の状態（G1 の後の記録から。まだ確かめていない）
+
+- 「このiPhone内」→「Obsidian」に、`InkdropThemeTest`（G1 のキット `abfb7c19…`。`device-results` に `results-2026-10-20T06-17-51-248Z.json` と `tour-2026-10-20T08-19-09-315Z.json` があるはず）と、`InkdropThemeTest-step10`（工程 10 のキット）がある。
+- どちらの写しも、リポジトリ（`11g-g1/device/`・`11g-g1/tour/`、`11g-g1/old-vault/`）にある。
+
+#### 6.142.3 手順（G1 の流れを使う。iPhone の操作はユーザーの準備ができてから）
+
+1. 準備（ユーザー）: iPhone をケーブルで Mac につなぐ。Safari の Web インスペクタをオン。自動ロックを一時的に「なし」。通知を止めるため、集中モードを任意で使う。Obsidian で今の `InkdropThemeTest` を開いておく。
+2. 中継（Mac）: USB の iPhone がちょうど 1 台であることを確かめ、その識別子をシェルの変数で `--udid` に渡して `pymobiledevice3 remote start-tunnel --native --script-mode` を起動する（識別子は出力にもファイルにも残さない）。`pymobiledevice3 webinspector cdp --port 9244` を起動する。
+3. G1 の Vault の照合と控え（Mac、読むだけ）: `cable.mjs 9244 probe` で、Vault 名、目印の kit id が `abfb7c19…` であること、Obsidian と iOS の版を確かめる。`cable.mjs 9244 pull <新しいフォルダ>` で `device-results` を写し、名前と SHA-256 をリポジトリの写しと照合する。
+4. G1 の Vault の退避（ユーザー）: Obsidian を完全に終了し、「ファイル」アプリで `InkdropThemeTest` → `InkdropThemeTest-g1` に名前を変える。そのあと、`InkdropThemeTest` がないことと、`InkdropThemeTest-g1`・`InkdropThemeTest-step10` があることを確かめる。削除はしない。
+5. 新しいキットの配置（ユーザー）: Mac から AirDrop で送る zip を受け、「このiPhone内」→「Obsidian」に `InkdropThemeTest` として展開する。Obsidian で開き、制限モードを切り、プラグインを有効にする（Vault の中の設定だけ）。
+6. 照合（Mac）: `cable.mjs 9244 probe` で、目印の kit id が `bb2510e4…` で、プラグインの kit id と一致し、`device-results` が空で、`is-phone` であることを確かめる。Obsidian が前から動いていたなら `reload` する（古いプラグインを残さない）。
+7. 検査（Mac）: `cable.mjs 9244 checks <out>` → `tests/device/judge.mjs`（実測の基準）。
+8. ツアー（Mac とユーザー）: `cable.mjs 9244 tour <host> <port> <out>`（38 段。キーボードの 2 段だけ、Mac の音声の合図でユーザーがタップする）。すべての画像を目で確かめる。`tests/device/drawer-header.py --tour` で、ドロワーのヘッダーを判定する。
+9. 復元: ユーザーが Web インスペクタをオフ、自動ロックを元の値、集中モードを元に戻し、ケーブルを外す。Mac は自分が起動した中継だけを止める。テスト Vault は新旧ともに残す。
+
+#### 6.142.4 実機で確かめること
+
+- Obsidian・iOS の版、端末、新しい kit id、両テーマの `theme.css` のハッシュ（目印と、ジョブの CSS の長さ）。
+- `device.theme-applied`、`device.environment`、FAIL 0。
+- C1-a（Reading のコードの地の色）と C3（markdown のリストの印）の検査。KD の `syn.reading.classes` が PASS になること（G1 の旧い CSS の判定し直しでは FAIL）。
+- Q-D13 の implementation と fidelity（DIFF は報告する）、ほかの Q-D の回帰（G1 の判定し直しとの差）、ドロワーのヘッダー 4 件。
+- 期待と違えば、原因を調べる。検査の規則や許容差は緩めない。
+
+#### 6.142.5 残るリスク
+
+- 結果のファイルに kit id が入らないので、結果と新しいキットの結び付きは、直前の照合と結果の内容による（G1 と同じ）。
+- ケーブルの接続が途中で切れることがある（G1 で 1 回）。切れたら、自分の中継だけを止めて起動し直し、probe からやり直す。
+- iOS の Obsidian が 1.14.5 より新しくなっている可能性がある。版は probe で記録し、変わっていたら報告する。
+- ツアーの撮影は画面全体を写す。撮影の直前の確認から撮影までの約 2.5 秒は確かめられないので、通知などが写りうる。すべての画像を目で確かめ、個人の情報が写っていれば証跡に入れない。
+- iPhone のテスト Vault の一覧を、名前を変える前にユーザーが確かめる（G1 の後に変わっていないか）。
+- 正式なリリース判定は NOT MET のまま。実機の検証の独立レビューが済むまで、ゲートの入力に新しい iPhone の結果を入れない。

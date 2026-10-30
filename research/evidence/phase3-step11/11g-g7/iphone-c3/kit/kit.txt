@@ -1,0 +1,5 @@
+source commit: 8b719e1 (clean tree, fresh clone)
+kit id: bb2510e4-ee76-4791-b4b4-fa497cdb0d1f
+InkdropThemeTest.zip SHA-256: 818c24434653f753b9acae5f9494532be956990776c28c1d1e2fa69ce4ef1163
+theme.css SHA-256: kanagawa-dragon a2977a35c68dddaafd6b6f5345defbfa5ab52e849a09f10e72a3be169660e0bb, solarized-dark 8f2c6b48907883530c1c5095af0c0ace752278e2212742e6de8fb34559ec2e09 (same as the C3 regression build)
+jobs 80 (probe 66, extra 32), checks 480; on a phone 66 jobs, on a tablet 28; tour steps phone 38, tablet 18
