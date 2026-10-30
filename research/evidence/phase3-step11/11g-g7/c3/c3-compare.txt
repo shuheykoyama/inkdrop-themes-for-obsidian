@@ -1,0 +1,20 @@
+solarized-dark C3 probe.md reading: 94 / 94 elements, 94 compared, reached 3, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+solarized-dark C3 probe.md live: 139 / 137 elements, 129 compared, reached 0, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+solarized-dark C3 probe.md source: 112 / 112 elements, 112 compared, reached 0, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+solarized-dark Code blocks.md reading: 771 / 771 elements, 771 compared, reached 24, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+solarized-dark Code blocks.md live: 1195 / 1195 elements, 1195 compared, reached 0, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+solarized-dark Code blocks.md source: 1099 / 1099 elements, 1099 compared, reached 0, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+solarized-dark Markdown elements.md reading: 307 / 307 elements, 307 compared, reached 2, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+solarized-dark Markdown elements.md live: 490 / 490 elements, 490 compared, reached 0, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+solarized-dark Markdown elements.md source: 268 / 268 elements, 268 compared, reached 0, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+kanagawa-dragon C3 probe.md reading: 94 / 94 elements, 94 compared, reached 3, changed 10; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+  10 x not reached (own rule) span.list.punctuation.token: color rgb(137, 153, 122) -> rgb(150, 160, 182); border-top rgb(137, 153, 122) -> rgb(150, 160, 182); border-left rgb(137, 153, 122) -> rgb(150, 160, 182); text-decoration rgb(137, 153, 122) -> rgb(150, 160, 182)
+kanagawa-dragon C3 probe.md live: 139 / 139 elements, 139 compared, reached 0, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+kanagawa-dragon C3 probe.md source: 112 / 112 elements, 112 compared, reached 0, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+kanagawa-dragon Code blocks.md reading: 771 / 771 elements, 771 compared, reached 24, changed 1; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+  1 x not reached (own rule) span.list.punctuation.token: color rgb(137, 153, 122) -> rgb(150, 160, 182); border-top rgb(137, 153, 122) -> rgb(150, 160, 182); border-left rgb(137, 153, 122) -> rgb(150, 160, 182); text-decoration rgb(137, 153, 122) -> rgb(150, 160, 182)
+kanagawa-dragon Code blocks.md live: 1195 / 1195 elements, 1195 compared, reached 0, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+kanagawa-dragon Code blocks.md source: 1099 / 1099 elements, 1099 compared, reached 0, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+kanagawa-dragon Markdown elements.md reading: 307 / 307 elements, 307 compared, reached 2, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+kanagawa-dragon Markdown elements.md live: 490 / 490 elements, 490 compared, reached 0, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0
+kanagawa-dragon Markdown elements.md source: 268 / 268 elements, 268 compared, reached 0, changed 0; hover popover null / null; editors inside .markdown-rendered 0 / 0; .formula-editor 0 / 0

@@ -1,0 +1,1 @@
+stopped isolated Obsidian (pid 87768)

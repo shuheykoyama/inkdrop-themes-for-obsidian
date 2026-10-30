@@ -1,0 +1,5 @@
+probe started 2026-10-30T02:33:35Z
+probe ended 2026-10-30T02:37:02Z
+before: 660bf35 clone build (KD 0ffa883e, SD 0f8e864f)
+after: working tree = d388397 (KD a2977a35, SD 8f2c6b48)
+Obsidian 1.14.5 asar on installer 1.11.7, Electron 39.5.1

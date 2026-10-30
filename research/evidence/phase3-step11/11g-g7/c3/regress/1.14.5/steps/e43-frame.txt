@@ -1,0 +1,39 @@
+2026-10-30T06:48:34.505Z probe desktop solarized-dark opaque 1 default
+2026-10-30T06:48:36.084Z probe desktop solarized-dark translucent 1 default
+2026-10-30T06:48:37.499Z probe desktop solarized-dark opaque 2 default
+2026-10-30T06:48:38.931Z probe desktop kanagawa-dragon opaque 1 default
+2026-10-30T06:48:40.362Z probe desktop kanagawa-dragon translucent 1 default
+2026-10-30T06:48:41.819Z probe desktop kanagawa-dragon opaque 2 default
+PASS runner.theme-applied [solarized-dark, desktop, opaque, default] -- DEV solarized-dark (unnamed), 137175 chars
+PASS runner.environment [solarized-dark, desktop, opaque, default] -- is-frameless is-floating-nav
+PASS runner.focus [solarized-dark, desktop, opaque, default] -- document.hasFocus() true
+PASS runner.modals-closed [solarized-dark, desktop, opaque, default] -- 0 open
+PASS desktop.titlebar.custom-frame [solarized-dark, desktop, opaque, default] -- rgb(0, 45, 56)
+PASS runner.theme-applied [solarized-dark, desktop, translucent, default] -- DEV solarized-dark (unnamed), 137175 chars
+PASS runner.environment [solarized-dark, desktop, translucent, default] -- is-frameless is-floating-nav is-translucent
+PASS runner.focus [solarized-dark, desktop, translucent, default] -- document.hasFocus() true
+PASS runner.modals-closed [solarized-dark, desktop, translucent, default] -- 0 open
+PASS desktop.titlebar.custom-frame.translucent [solarized-dark, desktop, translucent, default] -- rgba(0, 33, 41, 0.7)
+PASS runner.theme-applied [solarized-dark, desktop, opaque (after translucent), default] -- DEV solarized-dark (unnamed), 137175 chars
+PASS runner.environment [solarized-dark, desktop, opaque (after translucent), default] -- is-frameless is-floating-nav
+PASS runner.focus [solarized-dark, desktop, opaque (after translucent), default] -- document.hasFocus() true
+PASS runner.modals-closed [solarized-dark, desktop, opaque (after translucent), default] -- 0 open
+PASS desktop.titlebar.custom-frame [solarized-dark, desktop, opaque (after translucent), default] -- rgb(0, 45, 56)
+PASS runner.theme-applied [kanagawa-dragon, desktop, opaque, default] -- DEV kanagawa-dragon (unnamed), 139663 chars
+PASS runner.environment [kanagawa-dragon, desktop, opaque, default] -- is-frameless is-floating-nav
+PASS runner.focus [kanagawa-dragon, desktop, opaque, default] -- document.hasFocus() true
+PASS runner.modals-closed [kanagawa-dragon, desktop, opaque, default] -- 0 open
+PASS desktop.titlebar.custom-frame [kanagawa-dragon, desktop, opaque, default] -- rgb(24, 22, 22)
+PASS runner.theme-applied [kanagawa-dragon, desktop, translucent, default] -- DEV kanagawa-dragon (unnamed), 139663 chars
+PASS runner.environment [kanagawa-dragon, desktop, translucent, default] -- is-frameless is-floating-nav is-translucent
+PASS runner.focus [kanagawa-dragon, desktop, translucent, default] -- document.hasFocus() true
+PASS runner.modals-closed [kanagawa-dragon, desktop, translucent, default] -- 0 open
+PASS desktop.titlebar.custom-frame.translucent [kanagawa-dragon, desktop, translucent, default] -- rgba(24, 22, 22, 0.7)
+PASS runner.theme-applied [kanagawa-dragon, desktop, opaque (after translucent), default] -- DEV kanagawa-dragon (unnamed), 139663 chars
+PASS runner.environment [kanagawa-dragon, desktop, opaque (after translucent), default] -- is-frameless is-floating-nav
+PASS runner.focus [kanagawa-dragon, desktop, opaque (after translucent), default] -- document.hasFocus() true
+PASS runner.modals-closed [kanagawa-dragon, desktop, opaque (after translucent), default] -- 0 open
+PASS desktop.titlebar.custom-frame [kanagawa-dragon, desktop, opaque (after translucent), default] -- rgb(24, 22, 22)
+PASS runner.restore [-, desktop, -, -] -- size 1024,800 (was 1024,800), floating true, no mobile / translucent classes
+
+all 31 runtime checks passed or are reported as DIFF / UNSUPPORTED (0 PASS (EMULATED), 0 DIFF, 0 UNSUPPORTED; Obsidian 1.14.5, Electron 43.8.3)

@@ -1,0 +1,4 @@
+started 2026-10-30T07:00:00Z
+ended 2026-10-30T07:14:23Z
+commit d388397 (the fresh clone of the regression, clean)
+Obsidian 1.14.4 asar on installer 1.11.7, Electron 39.5.1, Hidden frame; a new isolated work folder and vault copy; nothing else running

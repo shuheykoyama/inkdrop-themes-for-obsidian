@@ -7723,3 +7723,71 @@ E1 の原因は、G7-0 の `ALIASES` が拡張子を別名として扱ったこ�
 2. C1-a の後の CSS で、iPhone の実機の測定をし直す（§6.139.3 の結果は C1-a の前のもの）。
 3. 1.14.4・1.14.5・iPhone の入力を、新しい方法の結果にそろえてから、ゲートを数え直す。
 4. 将来: 隔離した Obsidian の自動更新を、公式の設定（Settings → General → Automatic updates、https://obsidian.md/help/updates）で止められるかを調べる。普段の Obsidian の設定には触れない。
+
+### 6.141 C3（2026-10-30）
+
+#### 6.141.1 §6.139 の独立レビューの判定
+
+- C1-a: 承認。`ui.button.background` の修正: 承認。1.14.4・1.14.5 の回帰: 条件付きで承認。iPhone の旧い CSS の判定し直し: 承認。
+- CI（run 40990997572）は static のジョブで、macOS での実行の成功を直接は保証しない。
+- 新しいボタンのセレクタは項目の並びに依存する。今の 4 つの環境では承認。Obsidian が更新されたら、測る対象が同じかを確かめ直す。
+- C3 の実装と macOS での回帰: 承認。C3 の後の iPhone の実機の測定: 手順を確かめ、ユーザーの準備ができてから行う。C1-a だけの中間のビルドでは測らない。
+- ゲートの入力は、C3 と iPhone の新しい測定の後に更新する。正式なゲートの数え直しの前に、Obsidian の公開の最新版を公式の情報で確かめ直す。旧い結果を新しい CSS の証拠に流用しない。
+- 今は行わない: C1-b、C2、C4、G8、G4・V-38、Q-D10 の変更、DIFF の受容、期待値・許容差の緩和、本番の Inkdrop での測り直し、MET。正式なリリース判定は NOT MET のまま。
+
+#### 6.141.2 Inkdrop の list の印（Inkdrop 6.2.0 の `app.asar` を読んで確かめた）
+
+- `ListMark` は `md-list-mark` のクラスを持つ（mdTokenHighlighter）。`syntax.css` の `.md-list-mark { color: var(--md-list-mark-color) }` が `.tok-processing-instruction` より後にあり、勝つ（§6.135.2）。
+- 箇条書き（`-`・`*`・`+`）と、順序付き（`1.`・`1)`）のどちらも、パーサーは同じ `ListMark` を足す（`BulletList` と `OrderedList` の処理）。番号も同じ色になる。
+- 入れ子の 2 段目・3 段目は、別の装飾（`md-list-mark-2`・`-3`）で `--md-list-mark-2-color`・`-3-color` になる。
+- G7-1 の測定（`Code blocks.md` の markdown のブロックの `-`、1 段目だけ）: SD rgb(133, 153, 0)（green-500）、KD rgb(150, 160, 182)（dragonTeal）。どちらも `--md-list-mark-color` の値と同じ。
+
+#### 6.141.3 CSS と oracle
+
+- `src/common/components/syntax.css`: `.theme-dark .markdown-rendered :is(code.language-markdown, code.language-md) .token.list.punctuation { color: var(--ink-md-list-mark-color) }`。今の markdown の punctuation の規則のすぐ後に置いた。クラスが 1 つ多いので勝つ。色のリテラルは足していない。公式の lint（S5）は通る。
+- `tests/spec/syntax.json` の reading の規則に、同じ規則（`on` token・list・punctuation、`lang` markdown・md）を足した。fixture（Inkdrop 6.2.0 の実測）、`inkdropDefault`、`langAliases`、判定の規則、許容差、ゲートは変えていない。
+- ビルド: 前（`660bf35`、C1-a の CSS）KD `0ffa883e…`、SD `0f8e864f…`。後 KD `a2977a35…`、SD `8f2c6b48…`。
+- コミット: `d388397`。
+
+#### 6.141.4 対象の検査（隔離した 1.14.5、E39.5.1）
+
+- 証跡: `research/evidence/phase3-step11/11g-g7/c3/`（README に詳細）。
+- 前と後の CSS で、全要素の計算された色を比べた（C1-a と同じ方法。調べるためのノートに、`-`・`*`・`+`・`1.`・`2)`、3 段の入れ子、タスク、md のブロック、ブロックの外のふつうのリストを入れた）。
+  - 変わったのは、KD の Reading view の markdown・md のブロックの `.token.list.punctuation` だけ（rgb(137, 153, 122) → rgb(150, 160, 182)、Inkdrop の実測と同じ）。
+  - SD で変わった要素は 0。Live Preview・Source mode、ふつうのリスト、ほかのトークンは変わらない。
+- 実行時の検査を 1 回すべて実行し、`c1a/regress-b/` の 1.14.5 E39.5.1 の 1 回目と比べた。
+  - FAIL は 0。KD の `syn.reading.classes` の 6 件が FAIL → PASS（デスクトップ 3 件）・PASS (EMULATED)（モバイル 3 件）。ほかに状態の差はない。
+  - KD の Reading の要素のグループ: MISMATCH 1 → 0（EXACT 125、CONFLICT 27、DOMINATED 0）。
+  - `syn.reading.markdown.fidelity`（KD）は DIFF のまま（Inkdrop の色の範囲 14/22 → 15/22）。DIFF の合計は 594 のまま。
+- 合わないまま残るもの:
+  - 入れ子の 2 段目・3 段目の印（Prism では深さを分けられない）。
+  - `2)` の形の番号（Prism の markdown が list のトークンにしない）。
+  - テストのノート（`Code blocks.md`）は 1 段目の `-` だけなので、どちらも判定には出ない。
+- `npm test` は、隔離した Obsidian を同時に動かしていたときに g5 の自己テストが 1 件 FAIL（`SCREEN NOT CONFIRMED RELEASED`）。止めてから実行し直すと exit 0（FAIL 0）。
+
+#### 6.141.5 1.14.4・1.14.5 の回帰（コミット `d388397`、自己テストの予想外の結果で停止）
+
+- 実行: 2026-10-30T03:06:15Z〜06:48:59Z。`d388397` の新しいクローンで、1.14.4（E39.5.1・E43.7.7）、次に 1.14.5（E39.5.1・E43.8.3）。ビルドは KD `a2977a35…`、SD `8f2c6b48…`。比べる基準は `c1a/regress-b/` の 1 回目。証跡は `c3/regress/`（ローカルのパスは伏せた）。
+- 読み込んだ版: 結果の `environment` は、どれも狙った Obsidian と Electron。
+- 1 回目・2 回目の実行（4 つの条件）:
+  - FAIL は 0（前は KD の `syn.reading.classes` の 6 件）。
+  - `regress-b` との状態の差は、どの条件も KD の `syn.reading.classes` の 6 件（FAIL → PASS・PASS (EMULATED)）だけ。結果は 3871 件で、片方だけにある結果はない。
+  - 1 回目と 2 回目の状態の差は 0。
+  - detail の差は、テーマの CSS の長さ（`runner.theme-applied`）、`is-focused` の有無、ホバーのプレビューが出るまでの時間、`syn.reading.markdown.fidelity`（KD、DIFF のまま、14/22 → 15/22）だけ。
+- 自己テスト: 1.14.5 の E39・E43 と 1.14.4 の E43 は 790 例が宣言どおり。**1.14.4 の E39 で 2 例が宣言と違った**。
+  - `runner.pointer-prepared`（KD、translucent の後の opaque、`popover-open`）: PASS のはずが FAIL。detail は `{"shown":false,"attempts":[{"target":false}]}`。ホバーする内部リンク（`.workspace-leaf.mod-active .internal-link` など）が見つからず、1 回目で試すのをやめた。
+  - `self.popover-open`（同じ状態）: プレビューが開かなかったので、要素が見つからずに FAIL。
+  - 同じ版・同じ Electron の 1 回目と 2 回目の実行では、この状態は PASS（プレビューは 302〜306 ms で出た）。
+  - C3 が変えるのは、Reading view の markdown・md のブロックの list の印の色だけで、リンクの有無や位置には関わらない。原因は確かめていない（ノートの表示が間に合わなかったかどうかは記録にない）。
+- obsidian:// のハンドラは、どちらの版でも、実行の前と後で同じ（restore 済み）。スクリーンショットは撮っていない。
+- レビューの指示（予想外の FAIL で停止）に従い、ここで止めた。自己テストのやり直しも、push もしていない。
+
+#### 6.141.6 停止のレビューと、自己テストのやり直し
+
+- レビュー: 停止は承認。C3 の実装と対象の検査は暫定的に妥当で、正式な COMPLETE は保留。1.14.4 E39.5.1 の自己テストを 1 回だけやり直すことを承認。待つ時間や試す回数は増やさない。
+- 最初の失敗の証跡は `c3/regress/1.14.4/`（`runtime-electron-39.5.1-self-test.json`、`steps/e39-self-test.txt`、`run-all.log`）に残し、上書きしていない。
+- やり直し: 2026-10-30T07:00:00Z〜07:14:23Z。証跡は `c3/selftest-rerun/`。
+  - フル回帰と同じ `d388397` のクローン（`src`・`tests`・`scripts` に変更なし）。Obsidian 1.14.4 / Electron 39.5.1、Hidden frame、新しい隔離の作業フォルダと Vault のコピー。ほかの隔離した Obsidian やテストは動かしていない。手順は run-all と同じ（`obsidian-isolated.sh start` → `run.mjs --self-test` → `stop`）。
+  - 790 例すべてが宣言どおり。前に失敗した状態（KD、translucent の後の opaque、`popover-open`）は、プレビューが 303 ms で出て PASS。
+  - obsidian:// のハンドラは、前と後で同じ。
+- 扱い: 最初の 2 例の失敗は、原因が分からない一時的な準備の失敗として記録する。原因が解けたわけではない。ランナーは変えていない。フル回帰はやり直さない。
