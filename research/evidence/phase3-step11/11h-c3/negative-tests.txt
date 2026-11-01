@@ -1,0 +1,23 @@
+== a-selftest
+inputs: research/evidence/phase3-step11/11g-g7/c3/regress/1.14.4/runtime-electron-39.5.1-self-test.json is a self-test run
+exit 1
+== b-no-1145
+release conditions (research/14 §2.3): NOT MET; minimum Obsidian 1.14.4
+macOS desktop: NOT met; 138 units {"DIFF":2,"PASS":136}
+  136 x not verified on the latest public version 1.14.5: PASS @1.14.4
+  2 x no counting unit at >= 1.14.4: DIFF @1.14.4  [qd13.fidelity|solarized-dark; qd13.fidelity|kanagawa-dragon]
+iOS phone: NOT met; 34 units {"DIFF":2,"PASS":32}
+  2 x no counting unit at >= 1.14.4: DIFF @1.14.5  [qd13.fidelity|solarized-dark; qd13.fidelity|kanagawa-dragon]
+  34 x no counting unit at >= 1.14.4: BLOCKED
+  34 x no counting unit at >= 1.14.4: BLOCKED
+exit 0
+== c-emulated
+release conditions (research/14 §2.3): NOT MET; minimum Obsidian 1.14.4
+macOS desktop: NOT met; 276 units {"NO RESULT":4,"DIFF":4,"PASS":268}
+  4 x not verified on the latest public version 1.14.5: PASS @1.14.4, NO RESULT @1.14.5  [qd22.real-fullscreen|solarized-dark; qd22.real-fullscreen|kanagawa-dragon; qd22.visual-active-vs-inkdrop|solarized-dark; qd22.visual-active-vs-inkdrop|kanagawa-dragon]
+  2 x no counting unit at >= 1.14.4: DIFF @1.14.4, DIFF @1.14.5  [qd13.fidelity|solarized-dark; qd13.fidelity|kanagawa-dragon]
+iOS phone: NOT met; 34 units {"EMULATED ONLY":32,"PASS":2}
+  32 x no counting unit at >= 1.14.4: EMULATED ONLY
+  34 x no counting unit at >= 1.14.4: BLOCKED
+  34 x no counting unit at >= 1.14.4: BLOCKED
+exit 0

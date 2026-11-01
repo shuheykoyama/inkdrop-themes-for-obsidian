@@ -1,0 +1,128 @@
+{
+ "_comment": "Inputs of tests/release/gate.mjs (step 11A, research/14 §6.30.3): the result files that count for the release judgement and the targets of Q-D10. Only result files of the final code of a reviewed step belong here. Desktop runtime files carry their Obsidian and Electron versions; device reports carry the device's environment. BLOCKED targets say why (research/14 §6.23). Step 11H after C3 (research/14 §6.144): the runs are the final results of the current theme code (src and scripts unchanged since d388397), judged against the Inkdrop 6.2.0 rendered reference.",
+ "minAppVersion": "1.14.4",
+ "latestPublic": {
+  "macOS": {
+   "version": "1.14.5",
+   "checked": "2026-11-01",
+   "source": "https://obsidian.md/changelog/ (Desktop 1.14.5 public, 2026-10-22; Desktop 1.15.0 and Mobile 1.15.0 are Catalyst only, 2026-10-22)"
+  },
+  "iOS": {
+   "version": "1.14.5",
+   "checked": "2026-11-01",
+   "source": "https://apps.apple.com/jp/app/obsidian-connected-notes/id1557175442 (App Store: current version 1.14.5 of 10/9, after 1.14.4 of 10/5; the obsidian.md changelog lists Mobile 1.15.0 as Catalyst only)"
+  }
+ },
+ "runs": [
+  {
+   "kind": "desktop-runtime",
+   "os": "macOS",
+   "label": "desktop, Obsidian 1.14.4 on Electron 39.5.1 (step 11G C3 run-all d388397, run 1)",
+   "file": "research/evidence/phase3-step11/11g-g7/c3/regress/1.14.4/runtime-electron-39.5.1-run1.json"
+  },
+  {
+   "kind": "desktop-runtime",
+   "os": "macOS",
+   "label": "desktop, Obsidian 1.14.4 on Electron 39.5.1, custom frame (step 11G C3 run-all d388397)",
+   "file": "research/evidence/phase3-step11/11g-g7/c3/regress/1.14.4/runtime-electron-39.5.1-frame.json"
+  },
+  {
+   "kind": "desktop-runtime",
+   "os": "macOS",
+   "label": "desktop, Obsidian 1.14.4 on Electron 43.7.7 (step 11G C3 run-all d388397, run 1)",
+   "file": "research/evidence/phase3-step11/11g-g7/c3/regress/1.14.4/runtime-electron-43.7.7-run1.json"
+  },
+  {
+   "kind": "desktop-runtime",
+   "os": "macOS",
+   "label": "desktop, Obsidian 1.14.4 on Electron 43.7.7, custom frame (step 11G C3 run-all d388397)",
+   "file": "research/evidence/phase3-step11/11g-g7/c3/regress/1.14.4/runtime-electron-43.7.7-frame.json"
+  },
+  {
+   "kind": "desktop-runtime",
+   "os": "macOS",
+   "label": "desktop, Obsidian 1.14.5 app.asar on Electron 39.5.1 (step 11G C3 run-all d388397, run 1)",
+   "file": "research/evidence/phase3-step11/11g-g7/c3/regress/1.14.5/runtime-electron-39.5.1-run1.json"
+  },
+  {
+   "kind": "desktop-runtime",
+   "os": "macOS",
+   "label": "desktop, Obsidian 1.14.5 app.asar on Electron 39.5.1, custom frame (step 11G C3 run-all d388397)",
+   "file": "research/evidence/phase3-step11/11g-g7/c3/regress/1.14.5/runtime-electron-39.5.1-frame.json"
+  },
+  {
+   "kind": "desktop-runtime",
+   "os": "macOS",
+   "label": "desktop, Obsidian 1.14.5 installer on Electron 43.8.3 (step 11G C3 run-all d388397, run 1)",
+   "file": "research/evidence/phase3-step11/11g-g7/c3/regress/1.14.5/runtime-electron-43.8.3-run1.json"
+  },
+  {
+   "kind": "desktop-runtime",
+   "os": "macOS",
+   "label": "desktop, Obsidian 1.14.5 installer on Electron 43.8.3, custom frame (step 11G C3 run-all d388397)",
+   "file": "research/evidence/phase3-step11/11g-g7/c3/regress/1.14.5/runtime-electron-43.8.3-frame.json"
+  },
+  {
+   "kind": "device-report",
+   "label": "iPhone 12 Pro, iOS 27.0, Obsidian 1.14.5 (step 11G iPhone after C1-a and C3, kit bb2510e4 from 8b719e1)",
+   "file": "research/evidence/phase3-step11/11g-g7/iphone-c3/device/report.json"
+  },
+  {
+   "kind": "desktop-runtime",
+   "os": "macOS",
+   "label": "self-test",
+   "file": "research/evidence/phase3-step11/11g-g7/c3/regress/1.14.4/runtime-electron-39.5.1-self-test.json"
+  }
+ ],
+ "targets": [
+  {
+   "os": "macOS",
+   "device": "desktop",
+   "gated": true
+  },
+  {
+   "os": "iOS",
+   "device": "phone",
+   "gated": true
+  },
+  {
+   "os": "iOS",
+   "device": "tablet",
+   "gated": true,
+   "blocked": {
+    "reason": "no device verification planned: the user limited the step 11G device runs to macOS and iPhone (2026-10-20, research/14 §6.61); BLOCKED, still in the supported range (Q-D10)",
+    "since": "2026-10-13"
+   }
+  },
+  {
+   "os": "Android",
+   "device": "phone",
+   "gated": true,
+   "blocked": {
+    "reason": "no Android device and no adb (step 10); no device verification planned: the user limited the step 11G device runs to macOS and iPhone (2026-10-20, research/14 §6.61); BLOCKED, still in the supported range (Q-D10)",
+    "since": "2026-10-13"
+   }
+  },
+  {
+   "os": "Android",
+   "device": "tablet",
+   "gated": true,
+   "blocked": {
+    "reason": "no Android device and no adb (step 10); no device verification planned: the user limited the step 11G device runs to macOS and iPhone (2026-10-20, research/14 §6.61); BLOCKED, still in the supported range (Q-D10)",
+    "since": "2026-10-13"
+   }
+  },
+  {
+   "os": "Windows",
+   "device": "desktop",
+   "gated": false,
+   "note": "Q-D10: not guaranteed until verified on a real machine; UNVERIFIED, not a release failure"
+  },
+  {
+   "os": "Linux",
+   "device": "desktop",
+   "gated": false,
+   "note": "Q-D10: not guaranteed until verified on a real machine; UNVERIFIED, not a release failure"
+  }
+ ]
+}

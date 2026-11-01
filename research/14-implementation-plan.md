@@ -7937,3 +7937,76 @@ E1 の原因は、G7-0 の `ALIASES` が拡張子を別名として扱ったこ�
 3. CI: `7aa565c` は [run 41269111892](https://github.com/shuheykoyama/inkdrop-themes-for-obsidian/actions/runs/41269111892)、`d0827e6` は [run 41278810288](https://github.com/shuheykoyama/inkdrop-themes-for-obsidian/actions/runs/41278810288)、どちらも success。
 4. 公開した画像の監査: `d0827e6` の 179 枚（1 回目 35、2 回目 34、3 回目 37、4 回目 35、5 回目 38）を、全体の縮小と、通知の出る上部（各画像の上 420 px）の拡大で確かめた。上部に写っているのは、時刻・電波・電池の表示、Obsidian の画面、キットのプラグインの段の表示（「n/38 …」と「Screenshot tour done: device-results/tour-….json」）だけで、ほかのアプリの通知や個人の情報はない。ChatGPT の通知が写った 2 回目の 17 段目は、Git の履歴に一度も入っていない（`git log --all` で 0 件）。履歴は書き換えていない。
 
+### 6.144 工程 11H: C3 の後の入力の差し替えとリリースの判定の集計（2026-11-01、独立レビュー待ち）
+
+証拠: [`evidence/phase3-step11/11h-c3/`](evidence/phase3-step11/11h-c3/README.md)。前回の 11H（§6.121、`evidence/phase3-step11/11h/`）は消していない。
+
+- 変えていないもの: CSS、期待値、許容差、Q-D、`verifiedBy`、`gated`、Q-D10、判定（MET にしていない）。実機・Inkdrop・Obsidian は操作していない。
+
+#### 6.144.1 公開の最新版（2026-11-01 に確かめた）
+
+- [公式の changelog](https://obsidian.md/changelog/): Desktop 1.14.5 が Public（2026-10-22）。Desktop 1.15.0 と Mobile 1.15.0 は Catalyst（2026-10-22）で、公開版ではない。
+- [App Store](https://apps.apple.com/jp/app/obsidian-connected-notes/id1557175442): 今の版は 1.14.5（10 月 9 日）、その前が 1.14.4（10 月 5 日）。
+- `latestPublic` は macOS・iOS とも 1.14.5 のまま。確かめた日と出典を更新した。
+- 今後の互換性の注意: Desktop 1.15.0 で、Mermaid の描画が Obsidian の新しいライブラリ Pele に替わった（テーマの色とフォントを使い、SVG のクラスは Mermaid のものでなくなる）。テーマの Mermaid の CSS（Q-D12）に影響しうる。今回は Catalyst への対応を足していない。
+
+#### 6.144.2 入力の差し替え（`tests/release/inputs.json`）
+
+| 入力 | 前 | 後 |
+|---|---|---|
+| macOS 1.14.4、E39.5.1・E43.7.7（run1 と custom frame） | 11F の再レビューの run-all（`d027f61`） | C3 の回帰の run-all（`d388397`、`11g-g7/c3/regress/1.14.4/`） |
+| macOS 1.14.5、E39.5.1・E43.8.3（同じ） | 11H の run-all（`b618637`） | 同じ run-all（`…/1.14.5/`） |
+| iPhone | G1（キット `abfb7c19`、`daac8e2`） | C1-a・C3 の後（キット `bb2510e4`、`8b719e1`、`11g-g7/iphone-c3/device/report.json`） |
+
+- 来歴の詳細（測定の時刻、版、コード、期待値、CSS の長さとハッシュ）は README の表。入力の 9 ファイルの SHA-256 は `inputs-sha256.txt`。
+- 前の入力は、どれも 6.2.0 の実測の基準より前の期待値（Inkdrop 6.1.5 の同梱のコードの解析、V-31）で判定されていた。新しい入力は、すべて `tests/fixtures/inkdrop-rendered-6.2.0.json` による。古い CSS や古い期待値による結果は、入力に残っていない。
+- `src/`・`scripts/`・`tests/` は `d388397` から今まで変わっていない。ランナーと判定器は、測定と判定のときのものと同じ。
+- 1.14.4 の結果を 1.14.5 として使っていない（ゲートは版ごとに単位を分ける。陰性テスト b）。
+- iPhone の G1 の結果は入力から外した。実機の結果だけを数え、Mac の模擬は数えない（陰性テスト c）。
+- 既存の `verifiedBy` の記録（`qd1.titlebar-visible-frame`、`qd1.mobile-drawer-header`、`qd22.real-fullscreen`、`qd22.visual-active-vs-inkdrop`、`qd23.continuity` ほか）は変えていない。どれも C1-a・C3 より前のビルドでの記録だが、G1 の後に変わった CSS はコードブロックの文字の色とリストの印だけ（`syntax.css`、`markdown.css`）で、記録の対象の面（タイトルバー、ドロワーのヘッダー、全画面、V-38 の 14 の面、Source mode の連続性）には及ばない。ドロワーのヘッダーは、新しい CSS でも 5 回目のツアーで 4 件 PASS だった（記録は G1 のまま）。
+- 陰性テスト（`negative-tests.txt`）: (a) 自己テストのファイルを入力に入れると exit 1 で拒む。(b) 1.14.5 の結果を抜くと、macOS の 136 単位が「公開の最新版 1.14.5 で未確認」になる（1.14.4 で埋めない）。(c) Mac の模擬の結果を iPhone の結果として入れると、32 単位が EMULATED ONLY になり、PASS に数えない（残る 2 単位は `verifiedBy` の記録による PASS）。
+
+#### 6.144.3 差し替えの前後の判定（`gate-before.txt`、`gate-after.txt`、`gate-compare.txt`）
+
+| 対象 | 前 | 後 |
+|---|---|---|
+| macOS desktop（276 単位 = 138 × 2 版） | NOT met。PASS 268、DIFF 4、NO RESULT 4 | 同じ |
+| iOS phone（34 単位） | NOT met。PASS 32、DIFF 2 | 同じ |
+| iOS tablet・Android phone・Android tablet | BLOCKED 34 ずつ | 同じ |
+| Windows・Linux（ゲートの対象外） | UNVERIFIED 138 ずつ | 同じ |
+
+- 688 単位すべてで状態は同じ。証拠のファイルが替わったのは 310 単位。
+- 状態が変わった部分は、`qd13.fidelity` の中の `syn.reading.rs.fidelity` だけ（DIFF → PASS）。macOS 1.14.4・1.14.5 の 3 つの外観 × 2 回の実行と iOS phone、両テーマ。C1-a の効果で、単位は DIFF のまま。
+- `qd13.fidelity` の DIFF の検査（言語 × ビュー）: SD 49 → 48、KD 52 → 51。DIFF の部分は macOS で版ごとに 606 → 594、iOS で 101 → 99。
+- 前の入力でも KD の `syn.reading.classes` は PASS だった。前の入力が 6.2.0 より前の期待値で判定されていたため（6.2.0 の基準では、C3 の前は FAIL だった。§6.139.3、§6.141）。新しい入力では、6.2.0 の基準で PASS。
+
+#### 6.144.4 未達の全件（2026-11-01、新しい入力から数えた）
+
+| 対象 | 単位 | 状態 | 根拠 |
+|---|---|---|---|
+| macOS desktop @1.14.4・@1.14.5 | `qd13.fidelity` × 両テーマ（4 単位） | DIFF | 構文の色の忠実度。Inkdrop 6.2.0 の実測の色と違うトークン。DIFF の検査 SD 48、KD 51（言語 × ビュー） |
+| macOS desktop @1.14.5 | `qd22.real-fullscreen` × 両テーマ、`qd22.visual-active-vs-inkdrop` × 両テーマ（4 単位） | NO RESULT | 記録の検証（`verifiedBy`）が 1.14.4（Electron 43.7.7）でのものだけ。1.14.5 では測っていない（G4・V-38 の相当） |
+| iOS phone @1.14.5 | `qd13.fidelity` × 両テーマ（2 単位） | DIFF | 同じ。DIFF の検査 SD 48、KD 51 |
+| iOS tablet、Android phone、Android tablet | 34 単位ずつ（102 単位） | BLOCKED | 実機の検証をしない（ユーザーの決定、§6.61）。Q-D10 でサポートの範囲に入っている |
+
+- FAIL 0、ゲートの対象の UNVERIFIED 0、EMULATED ONLY 0、UNSUPPORTED 0（単位にも部分にもない）。
+- 新しい入力で初めて分かった未達は、ない。
+- Windows・Linux は Q-D10 でゲートの対象外（UNVERIFIED 138 ずつ。リリースの失敗ではない）。
+
+#### 6.144.5 残る問題の分類と判断の材料
+
+| 問題 | 分類 | 追加の検証・修正の案 | ユーザーの判断 |
+|---|---|---|---|
+| `qd13.fidelity` の DIFF（SD 48、KD 51 の検査） | 主に Obsidian の字句解析（Prism・CodeMirror）と Inkdrop の解析の違い（トークンの区切りと種類）。テーマの候補は、C1-a・C3 は実施済み、C2 は保留、C1-b と C4 は採用しない（§6.137.1） | (a) 残る DIFF を、言語ごとに「Obsidian の DOM では区別できない」ものと「テーマで寄せられる」ものに分けて記録する。(b) C2 を再開するかを、(a) の結果で決める | DIFF をリリースに数えるか（`accepts` の決定）。決める前に (a) で残りの内訳を確かめるのがよい |
+| `qd22.*` の @1.14.5 の NO RESULT（4 単位） | 実機・視覚の検証の不足（全画面と V-38 はネイティブの撮影が要る） | G4（実際の全画面）と V-38（Inkdrop との並べた撮影）を、1.14.5 の隔離インスタンスで撮り直す。Inkdrop の操作と全画面の承認が要る | 1.14.5 で撮り直すか。撮り直さない場合、1.14.4 の記録を 1.14.5 にも当てはめるかは、記録の適用範囲の変更になる |
+| iOS tablet・Android の BLOCKED（102 単位） | サポートの範囲の判断 | §6.61.1 の (i) Q-D10 を維持（BLOCKED の間は NOT MET）、(ii) 正式サポートを macOS と iPhone に限る（iPad・Android は Windows・Linux と同じ扱い）、(iii) 外部の実機サービス | (i)〜(iii) のどれにするか |
+| Obsidian 1.15.0（Catalyst）の Mermaid の Pele への切り替え | 描画の基盤の変更（今は公開版ではない） | 1.15.0 が公開されたら、Q-D12 の検査と Mermaid の CSS を確かめる | 公開の前に Catalyst で先に確かめるか |
+
+- テーマの実装の問題として残っているもの: FAIL はない。`qd13.fidelity` の DIFF のうちテーマで寄せられる部分があるかは、上の (a) で確かめる（保留の C2 を含む）。
+- 既に決めた Q-D との差: なし（Q-D13 の DIFF は、Q-D13 の決定のもとで判定したもの）。
+
+リリースの判定は NOT MET のまま。判断はどれも確定していない。
+
+### 6.145 次の作業
+
+§6.143.6 と §6.144 の独立レビュー。

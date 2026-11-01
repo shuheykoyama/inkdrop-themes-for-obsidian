@@ -1,0 +1,15 @@
+  part DIFF -> PASS  qd13.fidelity|kanagawa-dragon|iOS|phone|1.14.5  syn.reading.rs.fidelity opaque syntax
+  part DIFF,DIFF -> PASS,PASS  qd13.fidelity|kanagawa-dragon|macOS|desktop|1.14.4  syn.reading.rs.fidelity opaque syntax
+  part DIFF,DIFF -> PASS,PASS  qd13.fidelity|kanagawa-dragon|macOS|desktop|1.14.4  syn.reading.rs.fidelity translucent syntax
+  part DIFF,DIFF -> PASS,PASS  qd13.fidelity|kanagawa-dragon|macOS|desktop|1.14.4  syn.reading.rs.fidelity opaque (after translucent) syntax
+  part DIFF,DIFF -> PASS,PASS  qd13.fidelity|kanagawa-dragon|macOS|desktop|1.14.5  syn.reading.rs.fidelity opaque syntax
+  part DIFF,DIFF -> PASS,PASS  qd13.fidelity|kanagawa-dragon|macOS|desktop|1.14.5  syn.reading.rs.fidelity translucent syntax
+  part DIFF,DIFF -> PASS,PASS  qd13.fidelity|kanagawa-dragon|macOS|desktop|1.14.5  syn.reading.rs.fidelity opaque (after translucent) syntax
+  part DIFF -> PASS  qd13.fidelity|solarized-dark|iOS|phone|1.14.5  syn.reading.rs.fidelity opaque syntax
+  part DIFF,DIFF -> PASS,PASS  qd13.fidelity|solarized-dark|macOS|desktop|1.14.4  syn.reading.rs.fidelity opaque syntax
+  part DIFF,DIFF -> PASS,PASS  qd13.fidelity|solarized-dark|macOS|desktop|1.14.4  syn.reading.rs.fidelity translucent syntax
+  part DIFF,DIFF -> PASS,PASS  qd13.fidelity|solarized-dark|macOS|desktop|1.14.4  syn.reading.rs.fidelity opaque (after translucent) syntax
+  part DIFF,DIFF -> PASS,PASS  qd13.fidelity|solarized-dark|macOS|desktop|1.14.5  syn.reading.rs.fidelity opaque syntax
+  part DIFF,DIFF -> PASS,PASS  qd13.fidelity|solarized-dark|macOS|desktop|1.14.5  syn.reading.rs.fidelity translucent syntax
+  part DIFF,DIFF -> PASS,PASS  qd13.fidelity|solarized-dark|macOS|desktop|1.14.5  syn.reading.rs.fidelity opaque (after translucent) syntax
+units: 688 before, 688 after; same state 688; evidence files changed in 310
