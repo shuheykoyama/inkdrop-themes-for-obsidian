@@ -8079,3 +8079,86 @@ E1 の原因は、G7-0 の `ALIASES` が拡張子を別名として扱ったこ�
 - **見立て**: KD は、根拠のある候補で読みやすさを落とさずに +199 の上限がある。SD は、根拠のある候補が読みやすさを下げる（3.53）。C2 を実装するか、テーマごとに分けるかは、独立レビューで決める。実装する場合は、隔離した Obsidian での実測と、一般のコードのサンプル（テストのノートの外）での確認を伴うのがよい。
 - DIFF の一括の受け入れはしていない。
 
+### 6.146 G4・V-38 の Obsidian 1.14.5 での実行の計画（2026-11-01、計画だけ。実施はしない）
+
+対象は、macOS の @1.14.5 の NO RESULT の 4 単位（`qd22.real-fullscreen` と `qd22.visual-active-vs-inkdrop`、両テーマ）。検査を緩めず、1.14.4 の記録を 1.14.5 に広げない。
+
+#### 6.146.1 再利用できるもの
+
+| 項目 | 1.14.4 での記録 | 1.14.5 での再利用 |
+|---|---|---|
+| G4（本物の全画面） | KD 2026-10-11、SD 2026-10-20（§6.69）。E43 の隔離インスタンス、`electronWindow.setFullScreen`、12 の面の計算値（`11g-g4/g4.mjs`）、Space の数え方（`spaces.sh`） | 手順と道具はそのまま。インスタンスを 1.14.5 のインストーラー（Electron 43.8.3、`tests/runtime/current-installer.sh`）にする |
+| V-38（Inkdrop との並べた撮影） | 2026-10-11、Inkdrop 6.1.5（Electron 43.7.1）と Obsidian 1.14.4（E43.7.7）、灰色の背景・アクティブ、7 組 × 2 テーマ、ΔE2000 ≤ 1.0（`tests/visual/capture-inkdrop.sh`・`capture-obsidian.sh`・`v38-compare.py`、`configs/v38-*.json`） | 道具と判定の規則はそのまま。Inkdrop は 6.2.0、Obsidian は 1.14.5（E43.8.3）で、同じ時刻に撮り直す |
+
+- V-38 の古い画像は、Inkdrop 6.1.5 のもの。translucent の合成は撮影の時刻と壁紙で変わる（§6.6）ので、1.14.5 の比較には使えない。Inkdrop 6.2.0 の新しい撮影が要る。
+
+#### 6.146.2 1.14.5 で行う測定
+
+1. **G4（全画面、両テーマ）**: 1.14.5（E43.8.3）の隔離インスタンスで、translucent を有効に、テーマごとに次を行う。
+   - 準備（自律）: 不透明と translucent で 12 の面の計算値を読む。
+   - 全画面（承認の後）: `setFullScreen(true)` → `isFullScreen()` と `is-fullscreen` を待って読む → `setFullScreen(false)` → 出たことを待って読む。
+   - 合格の条件は §6.67.4 と同じ（全画面の中は不透明と同じ、前後は translucent と同じ、不透明と translucent が違う面があること）。許容差なし。
+   - E39.5.1 の 1.14.5（app.asar）も測るかは、レビューで決める（1.14.4 の記録は E43 だけ）。
+2. **V-38（ネイティブの撮影、両テーマ）**: 灰色の背景・アクティブで、テーマごとに Inkdrop 6.2.0 と Obsidian 1.14.5 を約 10 秒の間隔で交互に撮る。7 組を `v38-compare.py` の既定（平らさの基準、ΔE2000 ≤ 1.0）で比べる。非アクティブと柄の背景は、前と同じく記録だけ。
+   - 本物の全画面とネイティブの撮影は別のもの。V-38 は全画面にしない窓の撮影で、G4 は計算値だけ（全画面の中の画素は撮らない）。混ぜない。
+
+#### 6.146.3 Inkdrop 6.2.0 の扱い
+
+- Inkdrop は本番のアプリで、ユーザーのアカウントで動いている。操作は次だけにする（V-38 と G6 の手順）。
+  - 通常の終了（強制の終了はしない）→ `127.0.0.1:9334` だけのリモートデバッグで起動 → 既存のノート（V-38 と同じ既定のサンプルノート）を表示 → テーマを SD・KD に切り替え → 窓を 1200×700 にする。
+  - ノートの作成・編集はしない。サインイン・サインアウトはしない。キーチェーンは読み書きしない。
+- 撮影の前後で、`config.json` を控え、終わったら控えで書き戻して通常の起動に戻す。ノートの `updatedAt` が前後で同じことを確かめる。
+- Inkdrop 6.2.0 の対象の面の CSS が 6.1.5 と同じかは、確かめていない。撮影のときに、Inkdrop の面の計算値も読んで記録する。
+
+#### 6.146.4 撮影の条件と比較の領域
+
+- V-38 の `conditions.json` と同じ: 窓 1200×700 pt を (400, 250)、背景の窓 1400×900 pt を (300, 150)、`screencapture -x -R400,250,1200,700`、PNG。外観・壁紙・「透明度を下げる」・「ウインドウで壁紙の色合いを調整」は変えず、撮影の時の値を記録する。
+- 比較の領域は `configs/v38-inkdrop.json`・`v38-obsidian.json`。Inkdrop 6.2.0 で領域が平らでなければ、測定は無効として止め、領域を変えるかは承認を得てから決める。
+- 撮影のあと、すべての画像を目で確かめる（ほかの窓、通知、個人の内容）。
+
+#### 6.146.5 バックアップと復元、画面と Space への影響
+
+- 控えと戻し: Inkdrop の `config.json`、隔離インスタンスの作業の dir（毎回新しく作る）、LaunchServices の `check`（前後で比べる）。普段の Obsidian と Vault には触れない。
+- 画面: 撮影と全画面には、画面がオンであることが要る。画面を起こすのは毎回の承認。ロックは解除しない。撮影の前に、ユーザーに対象のアプリのほかの窓を片付けてもらう。
+- Space: G4 の全画面は、一時的な Space を作って切り替える（10〜20 秒）。その間はユーザーに手を止めてもらう。終わったら、全画面の Space が 0 であることを読み、ユーザーに Mission Control で残りがないことを見てもらう。出られないときは、隔離インスタンスを止める。
+- 撮影の間の撮影の時間と、Mac の熱の制限（`pmset -g therm`）も記録する（§6.143.6 の教訓。V-38 は撮影の時間の制約は緩いが、記録はする）。
+
+#### 6.146.6 必要なユーザーの操作と承認
+
+| 承認が要るもの | 内容 |
+|---|---|
+| Inkdrop の操作 | 通常の終了、デバッグの起動、テーマの切り替え、窓の大きさ、`config.json` の控えと戻し |
+| 画面を起こすこと、撮影 | 実施の時刻。撮影の前に画面を片付けてもらう |
+| 本物の全画面 | 隔離インスタンスの窓だけ。Space の一時的な作成と切り替え。その間は手を止めてもらう |
+| `verifiedBy` の追加 | 合格の後、独立レビューを経てから、範囲を macOS desktop・1.14.5・E43.8.3 に限って足す |
+
+- 所要時間の見込み: G4 は両テーマで約 10 分（手を止めるのは 2 回、各 1 分弱）。V-38 は Inkdrop の再起動を含めて約 20 分。
+
+### 6.147 Q-D10（サポートの範囲）の選択肢の比較（2026-11-01、変更はしない）
+
+今の範囲（Q-D10）は保ち、BLOCKED は解かない。
+
+| | A: Q-D10 を保ち、実機で確かめる | B: 正式サポートを macOS と iPhone に限る | C: 外部の実機の環境を使う |
+|---|---|---|---|
+| 確かめられる範囲 | iPad・Android phone・Android tablet を、iPhone と同じキット（`build-kit.mjs`、`cable.mjs`）で全項目。Android は `adb` と Chrome の DevTools の中継が要る（工程 10 で未整備） | macOS と iPhone だけ。iPad・Android は Windows・Linux と同じ「確かめるまで保証しない」（UNVERIFIED、ゲートの対象外） | サービスの実機。BrowserStack の App Live は、App Store・Play Store からアプリを実機に入れられる（有料のプラン）。WebView Inspector は Pro のプラン（Android 13 以上、iOS 16 以上）。ただし、Obsidian の WebView に接続できるか、テスト Vault を実機に置けるか、`cable.mjs` のような CDP の自動化ができるかは**確かめていない** |
+| 費用 | 端末を用意する費用（iPad、Android の phone と tablet）。金額は調べていない | なし | 第三者の掲載では App Live の Individual が月 29〜49 ドル。公式の料金のページでは確かめていない。Pro のプランの額は不明 |
+| 再現性 | 高い（iPhone と同じ手順と道具、同じ端末を繰り返し使える） | 対象の範囲では高い | 端末とOS の版がサービスの在庫による。セッションの後に端末が消去される。自動化が難しければ、手作業の確認になる |
+| 公開後の保守 | 版ごとに 3 種の端末で確かめる手間（今の iPhone の約 3 倍） | 小さい。iPad・Android の不具合は報告を受けて対応 | 契約の継続、サービスの変更への追従 |
+| 確かめないことのリスク | 低い | iPad（タブレットのレイアウト、`is-tablet`）と Android（WebView の違い）の不具合が、公開の後に見つかる。今の判定ではタブレットの検査はエミュレーションだけ | 自動化ができなければ、確かめられる項目が少ない。端末とサービスの違いが、測定の差になりうる |
+
+- どれを選ぶかはユーザーの判断。今回は Q-D10・`gated`・BLOCKED を変えていない。
+- 出典: [BrowserStack の FAQ（ストアからの導入）](https://www.browserstack.com/support/faq/app-live/features-app-live/can-i-install-apps-from-apple-app-store-and-google-play-store-on-app-live)、[WebView Inspector](https://www.browserstack.com/docs/app-live/session-debugging/webview-inspector)、料金は第三者の掲載（[Capterra](https://www.capterra.com/p/162900/BrowserStack/pricing/)、[TrustRadius](https://www.trustradius.com/products/browserstack/pricing)）。2026-11-01 に検索で確かめた。
+
+### 6.148 Obsidian 1.15.0 の互換性の注意（2026-11-01、記録だけ）
+
+- [公式の changelog](https://obsidian.md/changelog/) で、Desktop 1.15.0 と Mobile 1.15.0 は Catalyst（2026-10-22）。公開版ではない。
+- Desktop 1.15.0 で、Mermaid の図は Obsidian の新しいライブラリ Pele で描かれる（Mermaid 12.1.0 の書き方と互換）。changelog によれば次のとおり。
+  - 図はテーマの色とフォントを使い、ノートの幅に合わせて大きさが変わる。
+  - 「Show Mermaid diagrams in notes」の設定はなくなり、図は自動で表示される。
+  - Obsidian は Mermaid を同梱しなくなり、`loadMermaid()` と `window.mermaid` は Pele で描く。SVG は Mermaid のクラスではなく、Pele のクラスを使う。
+- このテーマへの影響の見込み（確かめていない）: Q-D12（Mermaid の配色）の CSS は Mermaid の SVG のクラスを選ぶので、1.15.0 では当たらなくなる可能性が高い。Mermaid の検査（`mm.*`）と `qd12.*` は、1.15.0 で大きく変わりうる。
+- 今回は Catalyst の検証も、Pele への対応の CSS もしていない。1.15.0 が公開されたら、`latestPublic` の更新と同時に、Mermaid の検査と CSS を確かめる。
+
+### 6.149 次の作業
+
+§6.144.6〜§6.148 の独立レビュー。C2 の採否、G4・V-38 の実施、Q-D10 の選択肢は、レビューとユーザーの判断を待つ。
