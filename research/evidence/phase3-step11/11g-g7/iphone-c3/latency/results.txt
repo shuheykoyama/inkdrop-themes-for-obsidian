@@ -1,0 +1,32 @@
+Why the tour screenshots were slow (2026-11-01). Mac: Intel Core i9-9980HK, pymobiledevice3 11.29.0.
+
+1. Shot time per step, seconds (cable.mjs shot = one `pymobiledevice3 developer dvt screenshot` process)
+   G1 (2026-10-20): 1.4 .. 2.1 for all 38 steps
+   run 3: steps 1-14 1.6 .. 2.7, then 16:3.8 17:5.3 18:6.4 19:7.7 20:8.5 21:10.8 22:7.4 23:6.4, 33:7.5 .. 38:16.0
+   run 4: steps 1-14 2.4 .. 2.9, then 15:3.8 16:6.3 17:9.0 18:15.5 20:15.6 22:10.0 23:11.9, then 4 .. 5
+   run 5: 1.7 .. 3.2 for all 38 steps
+   The image size (0.2 .. 0.6 MB) does not follow the shot time.
+
+2. Device side: the step intervals and holds in the tour logs of runs 3 and 4 equal G1's to 0.1 s
+   (startedAt deltas 14.7 .. 29.1 s, holds 9.0 s and 20.0 s). Obsidian on the iPhone was not slower.
+
+3. Trial shots (tools/latency.sh, the note opened in Reading view with tools/open-note.mjs, 8 s settle):
+   Sample note  real 2.06 .. 2.31 s, user 1.56 .. 1.73 s
+   Mermaid      real 2.22 .. 2.94 s, user 1.58 .. 1.82 s
+   With the page polled like cable.mjs tour does (tools/poll.mjs, every 300 ms):
+   Sample note  real 2.45 .. 2.79 s, user 1.86 .. 2.17 s, CDP relay 9.5 .. 12.3 % CPU
+   Mermaid      real 4.11 .. 6.10 s, user 3.29 .. 4.04 s, CDP relay 16 .. 17.5 % CPU (still slow after the poll ended)
+
+4. cProfile of one screenshot process: about 1.30 million calls in both cases (Mermaid 7.7 s, Sample note 5.7 s
+   under the profiler); the time is Python start-up (imports, marshal, dataclasses); waiting for the device
+   (kqueue) is about 0.3 s in both. The same work ran slower.
+
+5. pmset -g therm, 14:15 JST: CPU_Speed_Limit = 22, then 20 for 30 s; load average 9 .. 12.
+   14:25 JST, after a pause: 100, 96, 94; load average about 2.8.
+   During run 5 (tour-run5/cpu-speed-limit.log, every 30 s): 38 .. 100, mostly about 50.
+
+Conclusion: the Intel Mac's CPU was thermally limited (to about 20 % at worst), so each screenshot process
+(CPU-bound Python start-up) took up to 16 s and missed the step's hold. With the Mac cooled down (run 5),
+all 38 shots fell inside their holds.
+Not separated: how much the CDP relay load and the Mermaid steps add on top of the thermal limit; the
+speed limit was not logged during runs 1-4, nor during G1.

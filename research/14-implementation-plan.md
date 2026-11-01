@@ -7851,3 +7851,66 @@ E1 の原因は、G7-0 の `ALIASES` が拡張子を別名として扱ったこ�
 - ツアーの撮影は画面全体を写す。撮影の直前の確認から撮影までの約 2.5 秒は確かめられないので、通知などが写りうる。すべての画像を目で確かめ、個人の情報が写っていれば証跡に入れない。
 - iPhone のテスト Vault の一覧を、名前を変える前にユーザーが確かめる（G1 の後に変わっていないか）。
 - 正式なリリース判定は NOT MET のまま。実機の検証の独立レビューが済むまで、ゲートの入力に新しい iPhone の結果を入れない。
+
+### 6.143 C1-a・C3 の後の iPhone の実機の検証（2026-11-01）
+
+証跡: `research/evidence/phase3-step11/11g-g7/iphone-c3/`（README に各フォルダの説明）。§6.142.3 の手順で行った。
+
+#### 6.143.1 環境と Vault の入れ替え
+
+- iPhone 12 Pro（iPhone13,3）、iOS 27.0、Obsidian 1.14.5（G1 と同じ版）。USB の iPhone はちょうど 1 台で、その識別子はシェルの変数で `--udid` に渡した（記録していない）。
+- G1 の Vault の照合（読むだけ）: Vault 名 `InkdropThemeTest`、目印の kit id `abfb7c19…`、プラグインの照合 ok。`device-results` は記録どおりの 2 ファイルで、Mac に写した控えの SHA-256 はリポジトリの写しと一致した（`migration/g1-vault-check.txt`）。
+- ユーザーが Obsidian を終了し、「ファイル」アプリで `InkdropThemeTest` → `InkdropThemeTest-g1` に名前を変えた（削除なし）。新しいキットの zip（`818c2443…`）を AirDrop で受け、`InkdropThemeTest` として展開し、制限モードを切ってプラグインを有効にした。
+- 新しい Vault の照合: 目印の kit id `bb2510e4…`、プラグインの照合 ok、`device-results` は空。Obsidian は起動して 44 秒なので、reload はしなかった。
+- 確かめていない: 名前を変えたあとのフォルダの一覧（ユーザーの報告がない）。
+
+#### 6.143.2 検査
+
+- `cable.mjs 9244 checks`（2026-11-01T03:30Z〜03:49Z、66 ジョブ）→ `tests/device/judge.mjs`。
+- 916 件: PASS 803、FAIL 0、DIFF 99、UNSUPPORTED 10、N/A 4。
+- `device.theme-applied`・`device.environment` はすべての状態で PASS。iPhone で読み込まれた CSS の長さは、キットの `theme.css` と同じ（SD 137,175 文字 `8f2c6b48…`、KD 139,663 文字 `a2977a35…`）。
+- G1 の判定し直し（§6.139.3 の `g7-a/iphone-rejudge/`、PASS 800、FAIL 1、DIFF 101）との差は 3 件だけで、すべて KD:
+  - `syn.reading.classes`: FAIL → PASS。要素のグループ EXACT 121 → 125、MISMATCH 4 → 0。
+  - `syn.reading.rs.fidelity`: DIFF → PASS（0/1 → 1/1、C1-a）。
+  - `syn.reading.shell.fidelity`: DIFF → PASS（6/7 → 7/7）。
+  - ほかの 913 件は同じ状態。
+- C1-a・C3 の実測値（`device/c1a-c3-values.txt`）:
+  - Reading のコードの地の色: 全 18 言語で SD rgb(131, 148, 149)、KD rgb(200, 192, 146)。
+  - markdown のブロックのリストの印 `-`: SD rgb(133, 153, 0)、KD rgb(150, 160, 182)。Inkdrop 6.2.0 で測った色と同じ。
+- Q-D13: `syn.reading.markdown.fidelity`（KD）は DIFF のまま（Inkdrop の色の範囲 14/22 → 15/22）。DIFF の合計は 101 → 99。検査の規則や許容差は変えていない。
+
+#### 6.143.3 ツアー
+
+- 5 回行った。判定には 5 回目（`tour-run5/`）を使う。1〜4 回目は失敗した記録として残す。
+
+  | 回 | 撮影 | ドロワーのヘッダー | 何が起きたか |
+  |---|---|---|---|
+  | 1 | 35/38 | 判定できない | 撮影が遅く段を飛ばし、最後の段の合図を待ったまま止まった。私が止めた |
+  | 2 | 34/38 を保存 | 4 件 FAIL | 1 段目で中継の接続が一度切れた。17 段目の画像に ChatGPT アプリの通知（本文の一部）が写り、証跡から除いた |
+  | 3 | 37/38 | SD 2 件 PASS、KD 2 件 FAIL | Aside を終了し中継を起動し直した。Mermaid の段から遅くなった |
+  | 4 | 35/38 | SD 2 件 PASS、KD 2 件 FAIL | 3 回目と同じ形 |
+  | 5 | 38/38 | 4 件 PASS | 原因を調べ、Mac を冷ましてから実行 |
+
+- 1〜4 回目のドロワーの FAIL は、撮影が遅れ、撮影の後の測定（`geometryAfter`）でドロワーが閉じていたもの。色の FAIL ではない。
+- 5 回目:
+  - 38 枚とも、その段の表示の時間帯の中で撮った（いちばん小さい余裕 2.0 秒。Mac と iPhone の時計の比較なので記録で、判定ではない。`timing.txt`）。
+  - ドロワーのヘッダー 4 件 PASS（dE2000: SD 左 0.013、右 0.010、KD 左 0.006、右 0.009）。
+  - すべての画像を目で確かめた。どの画像もその段の画面で、通知や個人の情報は写っていない。
+- 撮影の道具（`cable.mjs`、`drawer-header.py`）も、ツアーの手順も変えていない。
+
+#### 6.143.4 撮影が遅くなった原因（`latency/results.txt`）
+
+- iPhone 側のツアーの記録では、段の間隔と表示の時間が G1 と 0.1 秒の単位で同じだった。iPhone の Obsidian は遅くなっていない。
+- 画像の大きさと撮影の時間には関係がない。
+- 1 枚の撮影は、毎回新しく起動する pymobiledevice3（Python）の処理。プロファイルでは、遅いときも速いときも同じ量の処理（約 130 万回の呼び出し）で、時間の大半は起動。iPhone を待つ時間は約 0.3 秒だった。
+- Mac（Intel Core i9-9980HK）の `pmset -g therm` が `CPU_Speed_Limit = 20〜22` だった。熱で CPU が約 20% に制限され、CPU で決まる撮影の処理が最大 16 秒かかり、段の表示の時間（9 秒）を外れた。
+- Mac を冷ましたあとの 5 回目は、上限が 38〜100 の間（`cpu-speed-limit.log`）で、撮影は 1.7〜3.2 秒だった。
+- 分けられていないこと: Mermaid の段と CDP の中継の負荷が、熱の制限にどれだけ上乗せしたか。1〜4 回目と G1 の間の上限の値は記録していない。
+- 次から: ツアーの前に `pmset -g therm` と試しの撮影の時間を確かめる。
+
+#### 6.143.5 片付けと残すもの
+
+- Mac は、自分が起動した中継だけを止めた。iPhone の設定（Web インスペクタ、自動ロック、集中モード、ケーブル）はユーザーが元に戻す。テスト Vault（`InkdropThemeTest`、`-g1`、`-step10`）は残す。
+- 撮影が遅い原因の調査で、`open-note.mjs` がテスト Vault のノートを開き替えた（Vault の中身は変えていない）。
+- 正式なリリース判定は NOT MET のまま。新しい iPhone の結果は、独立レビューが済むまでゲートの入力に入れない。
+- 次: 独立レビュー。今は行わない: C1-b・C2・C4、G8、G4・V-38、Q-D10 の変更、DIFF の受容、本番の Inkdrop での測り直し、MET、ゲートの数え直し（Obsidian の最新の公開版の確認を含む）。

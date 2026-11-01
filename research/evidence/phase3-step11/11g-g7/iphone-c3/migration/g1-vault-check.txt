@@ -1,0 +1,25 @@
+G1 test vault, read only, before the user renamed it (2026-11-01, about 12:27 JST)
+
+USB devices: exactly one (iPhone13,3, iOS 27.0); its identifier was passed to --udid from a shell variable and is not recorded.
+
+cable.mjs 9244 probe:
+  vault InkdropThemeTest, ua [iPhone OS 18_7 (frozen UA value), obsidian/1.14.5], viewport 390 x 844 x 3
+  commands ink-device-check:run-checks, ink-device-check:screenshot-tour
+
+tools/kitid.mjs:
+  vault InkdropThemeTest, markerKitId abfb7c19-790d-477f-ac54-7ca4184684b8, plugin loaded, notTheKitVault() ok
+  device-results: results-2026-10-20T06-17-51-248Z.json, tour-2026-10-20T08-19-09-315Z.json
+
+cable.mjs 9244 pull (to a scratch folder) and SHA-256 against the repository copies (first 16 hex digits):
+  results-2026-10-20T06-17-51-248Z.json  pulled f42f2ada406c0b9f  repo f42f2ada406c0b9f  11g-g1/device/
+  tour-2026-10-20T08-19-09-315Z.json     pulled 3c51f40922838c0a  repo 3c51f40922838c0a  11g-g1/tour/
+
+Then the user quit Obsidian, renamed InkdropThemeTest to InkdropThemeTest-g1 in Files (nothing deleted),
+received the new kit zip (SHA-256 818c2443...ef1163) by AirDrop and extracted it as InkdropThemeTest,
+turned restricted mode off and enabled the plugin.
+
+New vault, read only (about 12:30 JST):
+  vault InkdropThemeTest, markerKitId bb2510e4-ee76-4791-b4b4-fa497cdb0d1f, plugin loaded, notTheKitVault() ok,
+  device-results empty, Obsidian uptime 44 s (fresh start, no reload needed)
+
+Not checked: the user did not report the folder list of On My iPhone > Obsidian after the rename.

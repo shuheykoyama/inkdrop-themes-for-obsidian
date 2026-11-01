@@ -1,0 +1,441 @@
+{
+ "tourFile": "device-results/tour-2026-11-01T04-24-25-587Z.json",
+ "shots": [
+  {
+   "n": 1,
+   "label": "solarized-dark phone, floating navigation",
+   "error": "Error: screenshot failed: 2026-11-01 13:13:50 <host> pymobiledevice3.__main__[31982] ERROR Connection was terminated abruptly\n"
+  },
+  {
+   "n": 2,
+   "label": "solarized-dark phone, navigation not floating",
+   "file": "02-solarized-dark-phone-navigation-not-floating.png",
+   "before": "2026-11-01T04:13:58.748Z",
+   "after": "2026-11-01T04:14:04.777Z"
+  },
+  {
+   "n": 3,
+   "label": "solarized-dark left drawer",
+   "file": "03-solarized-dark-left-drawer.png",
+   "before": "2026-11-01T04:14:13.670Z",
+   "after": "2026-11-01T04:14:21.649Z",
+   "geometryBefore": {
+    "dpr": 3,
+    "viewport": [
+     390,
+     844
+    ],
+    "inset": 4,
+    "drawers": [
+     {
+      "side": "left",
+      "drawer": [
+       0,
+       0,
+       327.59,
+       843.98
+      ],
+      "header": {
+       "rect": [
+        0,
+        753.98,
+        327.59,
+        56
+       ],
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "backdropFilter": "none",
+       "boxShadow": "none"
+      },
+      "headerArea": [
+       197.52,
+       757.98,
+       58.08,
+       48
+      ],
+      "bodyArea": [
+       20,
+       366.84,
+       287.59,
+       290.89
+      ]
+     }
+    ]
+   },
+   "geometryAfter": {
+    "dpr": 3,
+    "viewport": [
+     390,
+     844
+    ],
+    "inset": 4,
+    "drawers": [
+     {
+      "side": "right",
+      "drawer": [
+       62.41,
+       0,
+       327.59,
+       843.98
+      ],
+      "header": {
+       "rect": [
+        62.41,
+        753.98,
+        327.59,
+        56
+       ],
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "backdropFilter": "none",
+       "boxShadow": "none"
+      },
+      "headerArea": [
+       232.48,
+       757.98,
+       85.52,
+       48
+      ],
+      "bodyArea": [
+       82.41,
+       171.25,
+       287.59,
+       486.48
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "n": 4,
+   "label": "solarized-dark right drawer",
+   "file": "04-solarized-dark-right-drawer.png",
+   "before": "2026-11-01T04:14:28.221Z",
+   "after": "2026-11-01T04:14:37.314Z",
+   "geometryBefore": {
+    "dpr": 3,
+    "viewport": [
+     390,
+     844
+    ],
+    "inset": 4,
+    "drawers": [
+     {
+      "side": "right",
+      "drawer": [
+       62.41,
+       0,
+       327.59,
+       843.98
+      ],
+      "header": {
+       "rect": [
+        62.41,
+        753.98,
+        327.59,
+        56
+       ],
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "backdropFilter": "none",
+       "boxShadow": "none"
+      },
+      "headerArea": [
+       232.48,
+       757.98,
+       85.52,
+       48
+      ],
+      "bodyArea": [
+       82.41,
+       171.25,
+       287.59,
+       486.48
+      ]
+     }
+    ]
+   },
+   "geometryAfter": {
+    "dpr": 3,
+    "viewport": [
+     390,
+     844
+    ],
+    "inset": 4,
+    "drawers": []
+   }
+  },
+  {
+   "n": 5,
+   "label": "solarized-dark Markdown, Live Preview",
+   "file": "05-solarized-dark-Markdown-Live-Preview.png",
+   "before": "2026-11-01T04:14:43.873Z",
+   "after": "2026-11-01T04:14:50.711Z"
+  },
+  {
+   "n": 6,
+   "label": "solarized-dark Markdown, Live Preview, table and callout",
+   "file": "06-solarized-dark-Markdown-Live-Preview-table-and-callout.png",
+   "before": "2026-11-01T04:15:00.679Z",
+   "after": "2026-11-01T04:15:05.378Z"
+  },
+  {
+   "n": 7,
+   "label": "solarized-dark Markdown, Reading view",
+   "file": "07-solarized-dark-Markdown-Reading-view.png",
+   "before": "2026-11-01T04:15:15.803Z",
+   "after": "2026-11-01T04:15:21.706Z"
+  },
+  {
+   "n": 8,
+   "label": "solarized-dark Markdown, Reading view, table and callout",
+   "file": "08-solarized-dark-Markdown-Reading-view-table-and-callout.png",
+   "before": "2026-11-01T04:15:33.598Z",
+   "after": "2026-11-01T04:15:38.054Z"
+  },
+  {
+   "n": 9,
+   "label": "solarized-dark Markdown, Source mode",
+   "file": "09-solarized-dark-Markdown-Source-mode.png",
+   "before": "2026-11-01T04:15:48.846Z",
+   "after": "2026-11-01T04:15:52.815Z"
+  },
+  {
+   "n": 10,
+   "label": "solarized-dark editor, Live Preview, line numbers",
+   "file": "10-solarized-dark-editor-Live-Preview-line-numbers.png",
+   "before": "2026-11-01T04:16:06.357Z",
+   "after": "2026-11-01T04:16:09.632Z"
+  },
+  {
+   "n": 11,
+   "label": "solarized-dark editor, Source mode, no line numbers",
+   "file": "11-solarized-dark-editor-Source-mode-no-line-numbers.png",
+   "before": "2026-11-01T04:16:24.349Z",
+   "after": "2026-11-01T04:16:28.307Z"
+  },
+  {
+   "n": 12,
+   "label": "solarized-dark editor, keyboard: tap a line of text now",
+   "file": "12-solarized-dark-editor-keyboard-tap-a-line-of-text-now.png",
+   "before": "2026-11-01T04:16:55.364Z",
+   "after": "2026-11-01T04:16:58.558Z"
+  },
+  {
+   "n": 13,
+   "label": "solarized-dark code blocks, Reading view",
+   "file": "13-solarized-dark-code-blocks-Reading-view.png",
+   "before": "2026-11-01T04:17:09.874Z",
+   "after": "2026-11-01T04:17:12.762Z"
+  },
+  {
+   "n": 14,
+   "label": "solarized-dark code blocks, Live Preview",
+   "file": "14-solarized-dark-code-blocks-Live-Preview.png",
+   "before": "2026-11-01T04:17:25.628Z",
+   "after": "2026-11-01T04:17:28.404Z"
+  },
+  {
+   "n": 15,
+   "label": "solarized-dark Mermaid flowchart, Reading view",
+   "file": "15-solarized-dark-Mermaid-flowchart-Reading-view.png",
+   "before": "2026-11-01T04:17:43.654Z",
+   "after": "2026-11-01T04:17:46.253Z"
+  },
+  {
+   "n": 16,
+   "label": "solarized-dark Mermaid sequence, Reading view",
+   "file": "16-solarized-dark-Mermaid-sequence-Reading-view.png",
+   "before": "2026-11-01T04:18:01.832Z",
+   "after": "2026-11-01T04:18:04.332Z"
+  },
+  {
+   "n": 17,
+   "label": "solarized-dark Mermaid other kinds and image, Reading view",
+   "file": "17-solarized-dark-Mermaid-other-kinds-and-image-Reading-view.png",
+   "before": "2026-11-01T04:18:19.823Z",
+   "after": "2026-11-01T04:18:22.763Z"
+  },
+  {
+   "n": 18,
+   "label": "solarized-dark quick switcher",
+   "file": "18-solarized-dark-quick-switcher.png",
+   "before": "2026-11-01T04:18:34.592Z",
+   "after": "2026-11-01T04:18:38.055Z"
+  },
+  {
+   "n": 19,
+   "label": "solarized-dark accent colour of the user",
+   "file": "19-solarized-dark-accent-colour-of-the-user.png",
+   "before": "2026-11-01T04:18:50.428Z",
+   "after": "2026-11-01T04:18:55.095Z"
+  },
+  {
+   "n": 20,
+   "label": "kanagawa-dragon phone, floating navigation",
+   "file": "20-kanagawa-dragon-phone-floating-navigation.png",
+   "before": "2026-11-01T04:19:05.989Z",
+   "after": "2026-11-01T04:19:15.033Z"
+  },
+  {
+   "n": 21,
+   "label": "kanagawa-dragon phone, navigation not floating",
+   "file": "21-kanagawa-dragon-phone-navigation-not-floating.png",
+   "before": "2026-11-01T04:19:21.592Z",
+   "after": "2026-11-01T04:19:36.961Z"
+  },
+  {
+   "n": 23,
+   "label": "kanagawa-dragon right drawer",
+   "file": "23-kanagawa-dragon-right-drawer.png",
+   "before": "2026-11-01T04:19:50.005Z",
+   "after": "2026-11-01T04:20:08.199Z",
+   "geometryBefore": {
+    "dpr": 3,
+    "viewport": [
+     390,
+     844
+    ],
+    "inset": 4,
+    "drawers": [
+     {
+      "side": "right",
+      "drawer": [
+       62.41,
+       0,
+       327.59,
+       843.98
+      ],
+      "header": {
+       "rect": [
+        62.41,
+        753.98,
+        327.59,
+        56
+       ],
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "backdropFilter": "none",
+       "boxShadow": "none"
+      },
+      "headerArea": [
+       232.48,
+       757.98,
+       85.52,
+       48
+      ],
+      "bodyArea": [
+       82.41,
+       171.25,
+       287.59,
+       486.48
+      ]
+     }
+    ]
+   },
+   "geometryAfter": {
+    "dpr": 3,
+    "viewport": [
+     390,
+     844
+    ],
+    "inset": 4,
+    "drawers": []
+   }
+  },
+  {
+   "n": 25,
+   "label": "kanagawa-dragon Markdown, Live Preview, table and callout",
+   "file": "25-kanagawa-dragon-Markdown-Live-Preview-table-and-callout.png",
+   "before": "2026-11-01T04:20:22.187Z",
+   "after": "2026-11-01T04:20:31.429Z"
+  },
+  {
+   "n": 26,
+   "label": "kanagawa-dragon Markdown, Reading view",
+   "file": "26-kanagawa-dragon-Markdown-Reading-view.png",
+   "before": "2026-11-01T04:20:38.021Z",
+   "after": "2026-11-01T04:20:47.151Z"
+  },
+  {
+   "n": 27,
+   "label": "kanagawa-dragon Markdown, Reading view, table and callout",
+   "file": "27-kanagawa-dragon-Markdown-Reading-view-table-and-callout.png",
+   "before": "2026-11-01T04:20:55.359Z",
+   "after": "2026-11-01T04:21:00.307Z"
+  },
+  {
+   "n": 28,
+   "label": "kanagawa-dragon Markdown, Source mode",
+   "file": "28-kanagawa-dragon-Markdown-Source-mode.png",
+   "before": "2026-11-01T04:21:10.284Z",
+   "after": "2026-11-01T04:21:15.422Z"
+  },
+  {
+   "n": 29,
+   "label": "kanagawa-dragon editor, Live Preview, line numbers",
+   "file": "29-kanagawa-dragon-editor-Live-Preview-line-numbers.png",
+   "before": "2026-11-01T04:21:27.804Z",
+   "after": "2026-11-01T04:21:31.426Z"
+  },
+  {
+   "n": 30,
+   "label": "kanagawa-dragon editor, Source mode, no line numbers",
+   "file": "30-kanagawa-dragon-editor-Source-mode-no-line-numbers.png",
+   "before": "2026-11-01T04:21:45.767Z",
+   "after": "2026-11-01T04:21:48.722Z"
+  },
+  {
+   "n": 31,
+   "label": "kanagawa-dragon editor, keyboard: tap a line of text now",
+   "file": "31-kanagawa-dragon-editor-keyboard-tap-a-line-of-text-now.png",
+   "before": "2026-11-01T04:22:16.953Z",
+   "after": "2026-11-01T04:22:19.392Z"
+  },
+  {
+   "n": 32,
+   "label": "kanagawa-dragon code blocks, Reading view",
+   "file": "32-kanagawa-dragon-code-blocks-Reading-view.png",
+   "before": "2026-11-01T04:22:31.712Z",
+   "after": "2026-11-01T04:22:33.959Z"
+  },
+  {
+   "n": 33,
+   "label": "kanagawa-dragon code blocks, Live Preview",
+   "file": "33-kanagawa-dragon-code-blocks-Live-Preview.png",
+   "before": "2026-11-01T04:22:47.214Z",
+   "after": "2026-11-01T04:22:49.288Z"
+  },
+  {
+   "n": 34,
+   "label": "kanagawa-dragon Mermaid flowchart, Reading view",
+   "file": "34-kanagawa-dragon-Mermaid-flowchart-Reading-view.png",
+   "before": "2026-11-01T04:23:05.081Z",
+   "after": "2026-11-01T04:23:07.180Z"
+  },
+  {
+   "n": 35,
+   "label": "kanagawa-dragon Mermaid sequence, Reading view",
+   "file": "35-kanagawa-dragon-Mermaid-sequence-Reading-view.png",
+   "before": "2026-11-01T04:23:23.342Z",
+   "after": "2026-11-01T04:23:25.219Z"
+  },
+  {
+   "n": 36,
+   "label": "kanagawa-dragon Mermaid other kinds and image, Reading view",
+   "file": "36-kanagawa-dragon-Mermaid-other-kinds-and-image-Reading-view.png",
+   "before": "2026-11-01T04:23:41.295Z",
+   "after": "2026-11-01T04:23:43.116Z"
+  },
+  {
+   "n": 37,
+   "label": "kanagawa-dragon quick switcher",
+   "file": "37-kanagawa-dragon-quick-switcher.png",
+   "before": "2026-11-01T04:23:56.193Z",
+   "after": "2026-11-01T04:23:57.942Z"
+  },
+  {
+   "n": 38,
+   "label": "kanagawa-dragon accent colour of the user",
+   "file": "38-kanagawa-dragon-accent-colour-of-the-user.png",
+   "before": "2026-11-01T04:24:11.878Z",
+   "after": "2026-11-01T04:24:13.812Z"
+  }
+ ]
+}

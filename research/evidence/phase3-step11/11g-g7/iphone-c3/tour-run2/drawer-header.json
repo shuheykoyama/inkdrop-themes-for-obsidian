@@ -1,0 +1,30 @@
+{
+ "maxSd": 1.0,
+ "maxDE2000": 1.0,
+ "results": [
+  {
+   "label": "solarized-dark left drawer",
+   "side": "left",
+   "status": "FAIL",
+   "detail": "not exactly one left drawer in the geometry: after the screenshot"
+  },
+  {
+   "label": "solarized-dark right drawer",
+   "side": "right",
+   "status": "FAIL",
+   "detail": "not exactly one right drawer in the geometry: after the screenshot"
+  },
+  {
+   "label": "kanagawa-dragon left drawer",
+   "side": "left",
+   "status": "FAIL",
+   "detail": "0 screenshots for this step (one required)"
+  },
+  {
+   "label": "kanagawa-dragon right drawer",
+   "side": "right",
+   "status": "FAIL",
+   "detail": "not exactly one right drawer in the geometry: after the screenshot"
+  }
+ ]
+}

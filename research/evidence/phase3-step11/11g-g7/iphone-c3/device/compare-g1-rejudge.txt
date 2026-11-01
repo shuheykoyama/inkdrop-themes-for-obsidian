@@ -1,0 +1,4 @@
+DIFF -> PASS  syn.reading.shell.fidelity|kanagawa-dragon|phone|opaque|syntax#1
+DIFF -> PASS  syn.reading.rs.fidelity|kanagawa-dragon|phone|opaque|syntax#1
+FAIL -> PASS  syn.reading.classes|kanagawa-dragon|phone|opaque|syntax#1
+same status: 913 of 916

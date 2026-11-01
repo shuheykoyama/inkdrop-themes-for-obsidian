@@ -1,0 +1,136 @@
+{
+ "maxSd": 1.0,
+ "maxDE2000": 1.0,
+ "results": [
+  {
+   "label": "kanagawa-dragon left drawer",
+   "side": "left",
+   "status": "FAIL",
+   "detail": "not exactly one left drawer in the geometry: after the screenshot"
+  },
+  {
+   "label": "kanagawa-dragon right drawer",
+   "side": "right",
+   "status": "FAIL",
+   "detail": "not exactly one right drawer in the geometry: after the screenshot"
+  },
+  {
+   "label": "solarized-dark left drawer",
+   "side": "left",
+   "png": "03-solarized-dark-left-drawer.png",
+   "scale": 3.0,
+   "dpr": 3,
+   "header": {
+    "rect": [
+     0,
+     753.98,
+     327.59,
+     56
+    ],
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "backdropFilter": "none",
+    "boxShadow": "none"
+   },
+   "areas": {
+    "headerArea": {
+     "px": [
+      593,
+      2274,
+      173,
+      143
+     ],
+     "mean": [
+      14.64,
+      44.07,
+      54.64
+     ],
+     "sd": [
+      0.07,
+      0.145,
+      0.18
+     ]
+    },
+    "bodyArea": {
+     "px": [
+      60,
+      1101,
+      862,
+      872
+     ],
+     "mean": [
+      14.66,
+      44.11,
+      54.69
+     ],
+     "sd": [
+      0.037,
+      0.053,
+      0.05
+     ]
+    }
+   },
+   "dE2000": 0.013,
+   "status": "PASS",
+   "detail": "dE2000 0.013 <= 1.0"
+  },
+  {
+   "label": "solarized-dark right drawer",
+   "side": "right",
+   "png": "04-solarized-dark-right-drawer.png",
+   "scale": 3.0,
+   "dpr": 3,
+   "header": {
+    "rect": [
+     62.41,
+     753.98,
+     327.59,
+     56
+    ],
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "backdropFilter": "none",
+    "boxShadow": "none"
+   },
+   "areas": {
+    "headerArea": {
+     "px": [
+      698,
+      2274,
+      256,
+      143
+     ],
+     "mean": [
+      14.65,
+      44.08,
+      54.66
+     ],
+     "sd": [
+      0.062,
+      0.128,
+      0.158
+     ]
+    },
+    "bodyArea": {
+     "px": [
+      248,
+      514,
+      862,
+      1459
+     ],
+     "mean": [
+      14.66,
+      44.11,
+      54.69
+     ],
+     "sd": [
+      0.028,
+      0.041,
+      0.039
+     ]
+    }
+   },
+   "dE2000": 0.01,
+   "status": "PASS",
+   "detail": "dE2000 0.010 <= 1.0"
+  }
+ ]
+}

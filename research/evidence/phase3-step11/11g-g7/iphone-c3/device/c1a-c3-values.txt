@@ -1,0 +1,9 @@
+C1-a and C3 values measured on the iPhone (Reading view, from the syntax jobs of results-2026-11-01T03-49-03-310Z.json)
+
+solarized-dark
+  C1-a, bare code text (no token) per language: js rgb(131, 148, 149); ts rgb(131, 148, 149); python rgb(131, 148, 149); css rgb(131, 148, 149); html rgb(131, 148, 149); sh rgb(131, 148, 149); go rgb(131, 148, 149); rust rgb(131, 148, 149); yaml rgb(131, 148, 149); sql rgb(131, 148, 149); markdown rgb(131, 148, 149); javascript rgb(131, 148, 149); typescript rgb(131, 148, 149); py rgb(131, 148, 149); bash rgb(131, 148, 149); zsh rgb(131, 148, 149); rs rgb(131, 148, 149); md rgb(131, 148, 149)
+  C3, list marks (.token.list.punctuation): markdown "-" rgb(133, 153, 0)
+
+kanagawa-dragon
+  C1-a, bare code text (no token) per language: js rgb(200, 192, 146); ts rgb(200, 192, 146); python rgb(200, 192, 146); css rgb(200, 192, 146); html rgb(200, 192, 146); sh rgb(200, 192, 146); go rgb(200, 192, 146); rust rgb(200, 192, 146); yaml rgb(200, 192, 146); sql rgb(200, 192, 146); markdown rgb(200, 192, 146); javascript rgb(200, 192, 146); typescript rgb(200, 192, 146); py rgb(200, 192, 146); bash rgb(200, 192, 146); zsh rgb(200, 192, 146); rs rgb(200, 192, 146); md rgb(200, 192, 146)
+  C3, list marks (.token.list.punctuation): markdown "-" rgb(150, 160, 182)
