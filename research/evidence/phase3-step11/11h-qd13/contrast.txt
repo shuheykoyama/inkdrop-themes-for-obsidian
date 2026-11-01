@@ -1,0 +1,15 @@
+C2 candidates: contrast and colour difference (2026-11-01, computed, not measured on screen)
+
+Background: the Reading code block background (md.reading.codeblock) over the editor background
+(desktop.editor.background), from 11g-g7/c3/regress/1.14.5/runtime-electron-39.5.1-run1.json (desktop, opaque):
+  SD rgba(0, 45, 56, 0.4) over rgb(0, 33, 41)    -> rgb(0, 38, 47)
+  KD rgba(24, 22, 22, 0.5) over rgb(30, 29, 26)  -> rgb(27, 26, 24)
+Contrast ratio: WCAG 2 relative luminance. CIEDE2000: tests/visual/sample-regions.py (de2000, to_lab; sRGB).
+
+SD  now rgb(131, 148, 149)            5.04
+SD  variable name rgb(100, 122, 130)  3.53  (below WCAG AA 4.5)   CIEDE2000 from now 2.80
+SD  cyan rgb(42, 162, 152)            5.11                         CIEDE2000 from now 8.86
+SD  atom rgb(211, 54, 130)            3.51
+KD  now rgb(200, 192, 146)            9.48
+KD  variable name rgb(197, 201, 197)  10.42                        CIEDE2000 from now 8.14
+KD  atom rgb(183, 146, 123)           6.16
