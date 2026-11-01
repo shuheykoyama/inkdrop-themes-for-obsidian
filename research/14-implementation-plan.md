@@ -8276,3 +8276,23 @@ E1 の原因は、G7-0 の `ALIASES` が拡張子を別名として扱ったこ�
 
 - 撮影した画像は、ほかの窓・通知・個人の内容が写っていないかをすべて確かめてから、コミットする。
 - 合格しても、`verifiedBy` は実測の結果の独立レビューのあとに足す。
+
+### 6.155 Q-D10 の選択肢 C の追記（公式の情報、2026-11-01）
+
+Q-D10 は変えていない。BLOCKED も解いていない。
+
+- **WebView Inspector の制約**（[公式の文書](https://www.browserstack.com/docs/app-live/session-debugging/webview-inspector)）:
+  - Pro のプラン（または Pro の試用の期間）で使える。Android 13 以上、iOS 16 以上。
+  - 調べられるのは、アプリがリモートデバッグを有効にした WebView だけ。Android は `WebView.setWebContentsDebuggingEnabled(true)`、iOS 16.4 以上は `WKWebView.isInspectable = true` が要る。BrowserStack の側では有効にできない。ストアの版は、ふつう有効になっていない。
+  - Obsidian について: iOS のストアの版は、手元の iPhone で Web Inspector から WebView に接続できた（§6.143 などの実機の検証）。Android のストアの版がリモートデバッグを有効にしているかは、**確かめていない**。有効でなければ、C では Android の計算値を読めない。
+- **料金**（[公式の料金のページ](https://www.browserstack.com/pricing?product=app-live)、2026-11-01 に読んだ。年払いの月額）:
+  - 公式のページに、App Live という名前のプランの価格は見当たらなかった。実機を含むのは Live の「Desktop & Mobile」39 ドル、「Team」150 ドル（Mobile DevTools を含む）、「Team Pro」249 ドル。月払いの価格は、Freelancer（月 19 ドル、100 分）だけが載っていた。
+  - WebView Inspector の条件の「Pro のプラン」が、これらのどれに当たるかは、公式のページからは分からなかった。
+  - 第三者の掲載（[G2](https://www.g2.com/products/browserstack/pricing)、[Capterra](https://www.capterra.com/p/162900/BrowserStack/pricing/) など）では、App Live の Individual が月 39〜49 ドル、Team Pro が 199 ドルか 249 ドルで、出どころによって違う。
+- 見立ては変わらない。C を選ぶなら、試用の期間に、Android の Obsidian の WebView に接続できるか、テスト Vault を置けるかを先に確かめる必要がある。
+
+### 6.156 次の作業
+
+- §6.150〜§6.155 の独立レビュー（KD の C2 の試験の結果と採否、G4 の道具、V-38 の事前の確認とアップデートの通知の扱い）。
+- G4・V-38 の実測は、ユーザーの「準備できた」の連絡を待ってから行う（§6.154）。
+- 正式なリリースの判定は NOT MET のまま。C2 の正式な採用、SD の C2、DIFF の受け入れ、Q-D10 の変更、`verifiedBy` の追加、G8 はしていない。
