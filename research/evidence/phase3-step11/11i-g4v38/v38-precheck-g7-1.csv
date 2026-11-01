@@ -1,0 +1,10 @@
+image,region,"rect_points(x,y,w,h)",mean_r,mean_g,mean_b,sd_r,sd_g,sd_b,dE76_vs_inkdrop_v32,dE2000_vs_inkdrop_v32
+inkdrop-kanagawa-dragon-g7-editor-p01.png,sidebar,"20,470,130,160",47.3,43.2,38.4,44.82,25.84,11.46,,
+inkdrop-kanagawa-dragon-g7-editor-p01.png,note-list,"220,300,260,380",35.0,33.0,32.0,0.0,0.0,0.0,,
+inkdrop-kanagawa-dragon-g7-editor-p01.png,editor,"700,590,450,12",36.6,35.9,34.7,34.58,35.49,34.75,,
+inkdrop-solarized-dark-g7-editor-p01.png,sidebar,"20,470,130,160",30.0,52.0,56.0,0.0,0.0,0.0,,
+inkdrop-solarized-dark-g7-editor-p01.png,note-list,"220,300,260,380",18.0,40.0,45.0,0.0,0.0,0.0,,
+inkdrop-solarized-dark-g7-editor-p01.png,editor,"700,590,450,12",6.5,44.8,53.0,10.79,24.0,20.67,,
+inkdrop-solarized-dark-g7-editor-p06.png,sidebar,"20,470,130,160",34.8,55.5,55.9,31.39,17.26,13.49,,
+inkdrop-solarized-dark-g7-editor-p06.png,note-list,"220,300,260,380",18.0,40.0,45.0,0.0,0.0,0.0,,
+inkdrop-solarized-dark-g7-editor-p06.png,editor,"700,590,450,12",4.0,39.0,48.0,0.0,0.0,0.0,,

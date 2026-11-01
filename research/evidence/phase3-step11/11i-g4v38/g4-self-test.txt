@@ -1,0 +1,14 @@
+PASS g4 self-test: prep kanagawa-dragon: the theme is installed and checked (name, length, SHA-256)
+PASS g4 self-test: prep solarized-dark
+PASS g4 self-test: prep refuses a theme that does not exist
+PASS g4 self-test: prep fails when the loaded text is not the built file
+PASS g4 self-test: full, normal: COMPLETE with during and after
+PASS g4 self-test: full, a read fails in full screen: leaves, ABORTED, nothing stored as during/after
+PASS g4 self-test: full, never enters: still asks to leave, ABORTED
+PASS g4 self-test: full, cannot leave: STUCK, exit 3
+PASS g4 self-test: full, the connection dies in full screen: STUCK, exit 3
+PASS g4 self-test: full refuses a file prepared for the other theme (no full screen asked)
+PASS g4 self-test: full refuses when the loaded theme changed since prep
+PASS g4 self-test: full refuses a file that already holds a run
+
+all 12 g4 self-test cases behaved as expected

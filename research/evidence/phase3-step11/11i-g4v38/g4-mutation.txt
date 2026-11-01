@@ -1,0 +1,17 @@
+Mutation check of g4-self-test.mjs (2026-11-01): two altered copies of g4.mjs, run in a scratch directory.
+
+m1: the exit request in the finally block removed
+FAIL g4 self-test: full, normal: COMPLETE with during and after -- exit 3, declared 0: STUCK: the window may still be in full screen. Tell the user; check Mission Control; stop the isolated instance.
+FAIL g4 self-test: full, a read fails in full screen: leaves, ABORTED, nothing stored as during/after -- exit 3, declared 1: STUCK: the window may still be in full screen. Tell the user; check Mission Control; stop the isolated instance.
+FAIL g4 self-test: full, never enters: still asks to leave, ABORTED -- (stored JSON omitted)
+FAIL g4 self-test: full refuses a file that already holds a run -- calls , status STUCK
+
+4 of 12 g4 self-test cases FAILED
+
+m2: every run stored as COMPLETE
+FAIL g4 self-test: full, a read fails in full screen: leaves, ABORTED, nothing stored as during/after -- exit 0, declared 1: 
+FAIL g4 self-test: full, never enters: still asks to leave, ABORTED -- exit 0, declared 1: 
+FAIL g4 self-test: full, cannot leave: STUCK, exit 3 -- exit 0, declared 3: 
+FAIL g4 self-test: full, the connection dies in full screen: STUCK, exit 3 -- exit 0, declared 3: 
+
+4 of 12 g4 self-test cases FAILED
