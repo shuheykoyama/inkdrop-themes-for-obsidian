@@ -1,0 +1,39 @@
+checks: 3871 before, 3871 after, 0 in only one of them
+
+== status changes
+PASS -> FAIL: 35
+  kanagawa-dragon syn.reading.js.impl x3
+  kanagawa-dragon syn.reading.ts.impl x3
+  kanagawa-dragon syn.reading.python.impl x3
+  kanagawa-dragon syn.reading.html.impl x3
+  kanagawa-dragon syn.reading.go.impl x3
+  kanagawa-dragon syn.reading.yaml.impl x3
+  kanagawa-dragon syn.reading.sql.impl x3
+  kanagawa-dragon syn.reading.markdown.impl x3
+  kanagawa-dragon syn.reading.javascript.impl x3
+  kanagawa-dragon syn.reading.typescript.impl x3
+  kanagawa-dragon syn.reading.md.impl x3
+  kanagawa-dragon md.reading.h1-rule-width x1
+  kanagawa-dragon md.reading.h2-rule-width x1
+PASS (EMULATED) -> FAIL: 33
+  kanagawa-dragon syn.reading.js.impl x3
+  kanagawa-dragon syn.reading.ts.impl x3
+  kanagawa-dragon syn.reading.python.impl x3
+  kanagawa-dragon syn.reading.html.impl x3
+  kanagawa-dragon syn.reading.go.impl x3
+  kanagawa-dragon syn.reading.yaml.impl x3
+  kanagawa-dragon syn.reading.sql.impl x3
+  kanagawa-dragon syn.reading.markdown.impl x3
+  kanagawa-dragon syn.reading.javascript.impl x3
+  kanagawa-dragon syn.reading.typescript.impl x3
+  kanagawa-dragon syn.reading.md.impl x3
+
+== fidelity, desktop / opaque: theme view lang: statusBefore -> statusAfter, differing chars before -> after, fixed, broke
+
+== totals (differing chars before -> after, fixed, broke, DIFF checks after)
+solarized-dark source: 720 -> 720, fixed 0, broke 0, DIFF checks 17
+solarized-dark live: 720 -> 720, fixed 0, broke 0, DIFF checks 17
+solarized-dark reading: 428 -> 428, fixed 0, broke 0, DIFF checks 14
+kanagawa-dragon source: 606 -> 606, fixed 0, broke 0, DIFF checks 17
+kanagawa-dragon live: 606 -> 606, fixed 0, broke 0, DIFF checks 17
+kanagawa-dragon reading: 438 -> 438, fixed 0, broke 0, DIFF checks 17

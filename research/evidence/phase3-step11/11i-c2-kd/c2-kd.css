@@ -1,0 +1,24 @@
+/* C2 trial (research/14 §6.151), Kanagawa Dragon only, NOT part of the product CSS: in Reading view, the text
+   Prism leaves without a .token span takes the colour Inkdrop gives that text in the same language (variable
+   names, SQL names, the content of HTML / YAML / Markdown), instead of the code text colour of every language.
+   Applied by appending this file to src/themes/kanagawa-dragon.css in a scratch clone only.
+   Fence names: the ones Inkdrop 6.2.0 (name or alias in its language list) and Obsidian's Prism both read as the
+   language. Not `py` (Inkdrop 6.2.0 does not colour it, research/14 §6.131) nor names only one side knows. */
+.theme-dark .markdown-rendered :is(code.language-js, code.language-javascript, code.language-ts, code.language-typescript, code.language-python, code.language-go) {
+  color: var(--ink-syntax-variable-name-color);
+}
+
+.theme-dark .markdown-rendered code.language-sql {
+  color: var(--ink-syntax-name-color);
+}
+
+.theme-dark .markdown-rendered :is(code.language-html, code.language-yaml, code.language-yml, code.language-markdown, code.language-md) {
+  color: var(--ink-syntax-content-color);
+}
+
+/* Token spans without a colour rule of their own keep the code text colour, as before: only the bare text
+   changes. One class of specificity, so every existing token rule (this theme's, and Obsidian's .token.<kind>
+   rules with two classes) still wins. */
+.theme-dark :where(.markdown-rendered :is(code.language-js, code.language-javascript, code.language-ts, code.language-typescript, code.language-python, code.language-go, code.language-sql, code.language-html, code.language-yaml, code.language-yml, code.language-markdown, code.language-md) > .token) {
+  color: var(--code-normal);
+}

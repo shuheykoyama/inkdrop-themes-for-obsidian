@@ -1,0 +1,9 @@
+diff --git a/src/themes/kanagawa-dragon.css b/src/themes/kanagawa-dragon.css
+index d02a54d..da1126c 100644
+--- a/src/themes/kanagawa-dragon.css
++++ b/src/themes/kanagawa-dragon.css
+@@ -18,3 +18,4 @@
+ @import "../common/components/mermaid.css";
+ @import "../common/platform/translucent.css";
+ @import "../common/platform/mobile.css";
++@import "../common/components/c2-kd-trial.css";

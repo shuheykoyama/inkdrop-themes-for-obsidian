@@ -1,0 +1,56 @@
+== kanagawa-dragon C2 general.md: lang chars inkdropBefore inkdropAfter fixed broke stillDiffering changed
+language-js is-loaded: 374 258 333 75 0 10 85
+    fixed: tok-variable-name tok-definition x23, tok-variable-name x52
+    still differing: tok-property-name tok-definition x10
+language-javascript is-loaded: 161 123 149 26 0 0 26
+    fixed: tok-variable-name tok-definition x10, tok-variable-name x16
+language-ts is-loaded: 288 178 228 50 0 40 90
+    fixed: tok-variable-name tok-definition x16, tok-name x10, tok-variable-name x24
+    still differing: tok-property-name tok-definition x22, tok-property-name x18
+language-typescript is-loaded: 142 62 104 42 0 16 58
+    fixed: tok-variable-name tok-definition x15, tok-variable-name x22, tok-name x5
+    still differing: tok-name tok-definition x5, tok-property-name x11
+language-python is-loaded: 303 121 221 100 0 30 130
+    fixed: tok-variable-name x100
+    still differing: tok-property-name x15, tok-variable-name tok-function x9, tok-property-name tok-function x6
+language-py is-loaded: 78 11 11 0 0 0 0
+language-go is-loaded: 282 179 244 65 0 26 91
+    fixed: tok-variable-name tok-definition x16, tok-name x12, tok-variable-name x37
+    still differing: tok-name tok-definition x6, tok-property-name x20
+language-sql is-loaded: 231 103 212 109 0 0 109
+    fixed: tok-name x109
+language-html is-loaded: 254 189 254 65 0 0 65
+    fixed: tok-content x65
+language-yaml is-loaded: 143 88 140 52 0 0 52
+    fixed: tok-content x52
+language-yml is-loaded: 62 41 62 21 0 0 21
+    fixed: tok-content x21
+language-markdown is-loaded: 192 72 183 111 0 0 111
+    fixed: tok-content x31, tok-list tok-content x46, tok-list tok-list tok-content x10, tok-quote tok-content x24
+language-md is-loaded: 61 19 57 38 0 0 38
+    fixed: tok-content x11, tok-list tok-content x27
+language-css is-loaded: 125 103 103 0 0 0 0
+language-rust is-loaded: 110 70 70 0 0 0 0
+language-sh is-loaded: 89 77 77 0 0 0 0
+language-json is-loaded: 89 89 89 0 0 0 0
+language-js is-loaded in callout: 35 - - - - - 15
+TOTAL kanagawa-dragon C2 general.md (language blocks) {"chars":2984,"before":1783,"after":2537,"fixed":754,"broke":0,"moved":122,"changed":876}
+== solarized-dark C2 general.md: lang chars inkdropBefore inkdropAfter fixed broke stillDiffering changed
+language-js is-loaded: 374 250 250 0 0 0 0
+language-javascript is-loaded: 161 123 123 0 0 0 0
+language-ts is-loaded: 288 178 178 0 0 0 0
+language-typescript is-loaded: 142 55 55 0 0 0 0
+language-python is-loaded: 303 117 117 0 0 0 0
+language-py is-loaded: 78 11 11 0 0 0 0
+language-go is-loaded: 282 176 176 0 0 0 0
+language-sql is-loaded: 231 103 103 0 0 0 0
+language-html is-loaded: 254 254 254 0 0 0 0
+language-yaml is-loaded: 143 140 140 0 0 0 0
+language-yml is-loaded: 62 62 62 0 0 0 0
+language-markdown is-loaded: 192 190 190 0 0 0 0
+language-md is-loaded: 61 59 59 0 0 0 0
+language-css is-loaded: 125 103 103 0 0 0 0
+language-rust is-loaded: 110 70 70 0 0 0 0
+language-sh is-loaded: 89 77 77 0 0 0 0
+language-json is-loaded: 89 89 89 0 0 0 0
+TOTAL solarized-dark C2 general.md (language blocks) {"chars":2984,"before":2057,"after":2057,"fixed":0,"broke":0,"moved":0,"changed":0}

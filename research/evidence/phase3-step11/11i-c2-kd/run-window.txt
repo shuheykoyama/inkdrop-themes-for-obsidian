@@ -1,0 +1,9 @@
+base: clone of 3756411, KD theme.css a2977a35c68dddaafd6b6f5345defbfa5ab52e849a09f10e72a3be169660e0bb, SD 8f2c6b48907883530c1c5095af0c0ace752278e2212742e6de8fb34559ec2e09
+trial: clone of 3756411 + trial.patch + c2-kd.css as src/common/components/c2-kd-trial.css, KD theme.css 11ef58c8009f986f299946bcf48ed338be0de1b8f9c077be0a7915cb02e72b46, SD 8f2c6b48907883530c1c5095af0c0ace752278e2212742e6de8fb34559ec2e09
+Obsidian 1.14.5 asar on installer 1.11.7, Electron 39.5.1 (isolated, tests/runtime/obsidian-isolated.sh)
+Inkdrop 6.2.0 app.asar SHA-256 015a7af5... (read only, same as G7-0)
+probe (first, discarded: no test-note dump) started / stopped: 2026-11-01T09:13:13Z 2026-11-01T09:19:16Z 
+runtime run1: 2026-11-01T09:19:26Z exit 1 2026-11-01T09:39:29Z 
+runtime run2: 2026-11-01T09:40:19Z exit 1 2026-11-01T10:00:22Z 
+probe (kept) started / stopped: 2026-11-01T10:00:56Z 2026-11-01T10:06:07Z 
+trial clone npm test: exit 0 (745 PASS lines)
