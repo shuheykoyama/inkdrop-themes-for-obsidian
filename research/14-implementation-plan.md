@@ -8007,6 +8007,10 @@ E1 の原因は、G7-0 の `ALIASES` が拡張子を別名として扱ったこ�
 
 リリースの判定は NOT MET のまま。判断はどれも確定していない。
 
-### 6.145 次の作業
+#### 6.144.6 独立レビューの結果（`bc8aeba`・`8485140`）
 
-§6.143.6 と §6.144 の独立レビュー。
+- §6.144: **APPROVE**。入力の更新とゲートの数え直しは **COMPLETE**。正式なリリースの判定は NOT MET のまま。
+- 正本のゲートの結果: macOS PASS 268・DIFF 4・NO RESULT 4、iOS phone PASS 32・DIFF 2、iOS tablet・Android phone・Android tablet は BLOCKED 34 ずつ、Windows・Linux は UNVERIFIED 138 ずつ（ゲートの対象外）。全体で 688 単位。FAIL 0 でも NOT MET。新しい入力で初めて分かった未達はない。
+- `verifiedBy` は範囲を広げずに保つ。`qd1.mobile-drawer-header` は、次に証跡を更新するときに `iphone-c3/tour-run5` を正本にすることを勧める（今回は `requirements.json` を変えない）。G4・V-38 の古い記録は 1.14.4 のものとして保ち、1.14.5 に広げない。
+- 次: Q-D13 の残る差の分析（CSS は変えない）、G4・V-38 の 1.14.5 の計画、Q-D10 の選択肢の比較、1.15.0 の注意点の記録。
+
