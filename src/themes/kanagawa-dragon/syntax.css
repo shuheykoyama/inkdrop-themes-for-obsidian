@@ -1,0 +1,20 @@
+/* Theme exception (§1.7): Reading view base colour of SQL, HTML, YAML and Markdown code blocks (C2, research/14
+   §6.151, §6.158). Text that Prism leaves without a .token span is, in Inkdrop, SQL names (.tok-name) and the
+   content of HTML / YAML / Markdown (.tok-content). Kanagawa Dragon gives those --syntax-name-color and
+   --syntax-content-color = --editor-foreground-color (inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/syntax.css:167,
+   :279), not the preview code text (preview.css:31) that --code-normal holds. In Solarized Dark the content colour
+   already renders as the code text and the name colour is not adopted (§6.151), so the rules are this theme's only.
+   Fence names: the ones Inkdrop 6.2.0 and Prism both read as these languages. */
+.theme-dark .markdown-rendered code.language-sql {
+  color: var(--ink-syntax-name-color);
+}
+
+.theme-dark .markdown-rendered :is(code.language-html, code.language-yaml, code.language-yml, code.language-markdown, code.language-md) {
+  color: var(--ink-syntax-content-color);
+}
+
+/* Token spans without a colour rule of their own keep the code text colour: only the bare text changes. One class of
+   specificity, so every token rule (components/syntax.css, and Obsidian's .token.<kind> with two classes) wins. */
+.theme-dark :where(.markdown-rendered :is(code.language-sql, code.language-html, code.language-yaml, code.language-yml, code.language-markdown, code.language-md) > .token) {
+  color: var(--code-normal);
+}

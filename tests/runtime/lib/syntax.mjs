@@ -28,15 +28,17 @@ const inkVar = (v) => (v.startsWith("--") ? v : `--ink-syntax-${v}-color`);
 // The variable names the page has to resolve: every one the oracle or the Inkdrop ranges can name.
 export function syntaxVars(spec, inkdrop) {
   const names = new Set([spec.editing.default, spec.reading.default, ...Object.values(spec.inkdropDefault)]);
-  for (const kind of ["editing", "reading"]) for (const r of spec[kind].rules) names.add(inkVar(r.var));
+  for (const kind of ["editing", "reading"]) for (const r of [...spec[kind].rules, ...(spec[kind].bare ?? [])]) names.add(inkVar(r.var));
   for (const v of Object.values(spec.codeVars)) names.add(inkVar(v));
   for (const b of inkdrop) for (const r of b.ranges) if (r.var) names.add(r.var.replace("--syntax-", "--ink-syntax-"));
   return [...names];
 }
 
 // The oracle's answer for a run: walk from the innermost element outwards; at each element the matching rule
-// with the most classes wins (the later one on a tie), then Obsidian's own rules; none -> the parent.
-function oracle(spec, kind, lang, els) {
+// with the most classes wins (the later one on a tie), then Obsidian's own rules; none -> the parent. Bare text
+// (no element) takes the language's base colour where the theme has one (`bare`); a token span without any rule
+// does not: it keeps the default, as the theme's CSS resets it.
+function oracle(spec, kind, lang, els, theme) {
   const has = (cls, list) => list.every((c) => cls.includes(c));
   const match = (rules, i) => {
     let best = null;
@@ -55,6 +57,8 @@ function oracle(spec, kind, lang, els) {
     const base = match(spec[kind].obsidian, i);
     if (base) return { var: inkVar(spec.codeVars[base.code]), rule: base };
   }
+  const bare = els.length === 0 && (spec[kind].bare ?? []).find((b) => b.theme.includes(theme) && b.lang.includes(lang));
+  if (bare) return { var: inkVar(bare.var), rule: bare };
   return { var: spec[kind].default, rule: null };
 }
 
@@ -101,7 +105,7 @@ export function judgeSyntax(spec, inkdrop, rendered, page, where, ok) {
           const r = inkAt[s] >= 0 ? rb.ranges[inkAt[s]] : null;
           // Inkdrop's colour; text the measurement did not cover (none in a complete measurement) has none.
           const inkColour = r?.color ?? null;
-          const want = oracle(spec, kind, ink.lang, o.els);
+          const want = oracle(spec, kind, ink.lang, o.els, where.theme);
           const actual = parseComputedColor(o.color);
           // (A) the theme applies the oracle's colour (and font style / weight where the rule sets them).
           const fontOk = (!want.italic || o.fontStyle === "italic") && (!want.bold || Number(o.fontWeight) >= 600);
