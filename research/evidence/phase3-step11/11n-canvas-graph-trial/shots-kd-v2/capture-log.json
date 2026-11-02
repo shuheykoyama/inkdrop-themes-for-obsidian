@@ -1,0 +1,235 @@
+{
+ "at": "2026-11-02T15:03:01.952Z",
+ "check": false,
+ "size": {
+  "width": 1200,
+  "height": 800
+ },
+ "problems": [],
+ "log": [
+  {
+   "condition": "kanagawa-dragon-final",
+   "themeName": "DEV kanagawa-dragon (unnamed) [final]",
+   "cssSha256": "b784835fed4a26f7d1f2f39a867e4ed8bcbe084bb9e801b8c9ac4aac6b1adee9",
+   "cssLength": 141863,
+   "window": {
+    "width": 1200,
+    "height": 800
+   },
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-final",
+   "scene": "canvas-overview",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [],
+   "domClasses": null,
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-final",
+   "scene": "canvas-select-plain",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "n0"
+   ],
+   "domClasses": [
+    "canvas-node",
+    "is-focused"
+   ],
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-final",
+   "scene": "canvas-select-coloured",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "c4"
+   ],
+   "domClasses": [
+    "canvas-node",
+    "is-themed",
+    "mod-canvas-color-4",
+    "is-focused"
+   ],
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-final",
+   "scene": "canvas-select-edge",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "e1"
+   ],
+   "domClasses": null,
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-trial",
+   "themeName": "DEV kanagawa-dragon (unnamed) [trial]",
+   "cssSha256": "9cc55c6fcbab47cf7137e3805550840f3fd1b0004321ddd51794b3a95994dc52",
+   "cssLength": 144036,
+   "window": {
+    "width": 1200,
+    "height": 800
+   },
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-trial",
+   "scene": "canvas-overview",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [],
+   "domClasses": null,
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-trial",
+   "scene": "canvas-select-plain",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "n0"
+   ],
+   "domClasses": [
+    "canvas-node",
+    "is-focused"
+   ],
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-trial",
+   "scene": "canvas-select-coloured",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "c4"
+   ],
+   "domClasses": [
+    "canvas-node",
+    "is-themed",
+    "mod-canvas-color-4",
+    "is-focused"
+   ],
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-trial",
+   "scene": "canvas-select-edge",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "e1"
+   ],
+   "domClasses": null,
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  }
+ ]
+}

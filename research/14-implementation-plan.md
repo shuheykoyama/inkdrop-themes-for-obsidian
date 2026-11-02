@@ -8566,3 +8566,11 @@ Q-D10 は変えていない。BLOCKED も解いていない。
 - **画像で確認すること**: KD の Canvas で、色 2（橙）と色 3（黄）が区別できるか、色 2・4 が色なしの枠と区別できるか、Kanagawa の落ち着いた雰囲気が保たれるか。
 - **レビュー用の比較画像**（`11n-canvas-graph-trial/review/` の 4 枚。`make-review-images.py` で、撮影済みの 20 枚から作る）: ユーザーが ChatGPT に添付する。
 - 今回していないこと: 新しい撮影、製品の CSS・検査の仕様の変更、iPhone、本番の Inkdrop の操作。
+
+### 6.175 KD の Canvas 色 2・4 の再撮影（`evidence/phase3-step11/11n-canvas-graph-trial/shots-kd-v2/`）
+
+- **レビュー**: 色 2 → autumn-yellow、色 4 → spring-green だけ追加調整を進める。色 5・6 は (a) 受け入れ。色 1・3 は維持。Graph と SD は再撮影不要。色 2 と 3 が近すぎる場合に限り、色 2 の代替（`ronin-yellow` など）を再検討する。製品 CSS の統合、iPhone、G4・V-38 は進めない。
+- **実行**: ユーザーの許可のあと、KD の Canvas だけを 8 枚撮影（最終ビルドと試験ビルド × 4 画面）。`capture.mjs` に `--theme=<key>` と `--canvas-only` を足した（`capture-self-test` 25 例は変わらず宣言どおり）。`--check` が通ってから撮影。CSS の SHA-256 は、最終 `b784835f…`、試験 `9cc55c6f…`。2 条件で状態が一致（問題 0）。隔離 Obsidian は終了済み。8 枚すべてを全体画像で確認、写り込みなし。
+- **見えたこと**（採否の判定ではない。詳細は `11o-kd-canvas-colours/README.md` と、比較画像 `kanagawa-dragon-canvas-three-way.png`）: 色 2（琥珀色）と色 4（オリーブ寄りの緑）は、色なしの枠と区別できるようになった（試験 1 では灰色）。色 2 と色 3 は、区別できるが差は大きくない。`ronin-yellow` への替えは、今の画像では要らないと見る。色付きのグループの背景は、色 4 らしい黄緑になる。色 5・6 は灰色のまま。全体の落ち着いた雰囲気は保たれる。
+- 次: 独立レビューで採否を決める。採用なら、製品 CSS への統合（共通の `canvas-graph.css` と、KD の `canvas.css`）、静的・対象限定・回帰の検査、新キットで iPhone 1 回。
+- 今回していないこと: 製品の CSS・検査の仕様の変更、iPhone、本番の Inkdrop・通常の Vault の操作、macOS の全画面。

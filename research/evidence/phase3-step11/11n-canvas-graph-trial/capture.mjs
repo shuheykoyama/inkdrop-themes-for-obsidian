@@ -9,7 +9,8 @@
 // (same nodes, edges, view, selection, graph nodes and links, window); a Graph's layout is a force simulation and may
 // differ in position, so only the colours of its nodes and lines are compared by eye.
 //
-// usage: node capture.mjs <base-repo> <trial-repo> <vault> <out-dir> [--check]
+// usage: node capture.mjs <base-repo> <trial-repo> <vault> <out-dir> [--check] [--theme=<key>] [--canvas-only]
+//   --theme=<key>: only that theme (both builds); --canvas-only: no Graph scene (a narrower re-shoot, e.g. one theme's Canvas).
 //   --check: set up and verify every state but take no screenshot (it still drives the isolated Obsidian window).
 // <out-dir> must not exist.
 import { createHash } from "node:crypto";
@@ -19,6 +20,8 @@ import { canvasProblems, graphProblems, incomparableScenes, isolatedVaultProblem
 
 const [baseRepo, trialRepo, vault, outDir] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
 const check = process.argv.includes("--check");
+const onlyTheme = (process.argv.find((a) => a.startsWith("--theme=")) ?? "").slice(8) || null;
+const canvasOnly = process.argv.includes("--canvas-only");
 if (!baseRepo || !trialRepo || !vault || !outDir) { console.error("usage: node capture.mjs <base-repo> <trial-repo> <vault> <out-dir> [--check]"); process.exit(2); }
 if (existsSync(outDir)) { console.error(`${outDir} exists; refusing to overwrite`); process.exit(2); }
 const PORT = 9333;
@@ -75,7 +78,7 @@ try {
       THEMES.push({ key, label, name, id: `${key}-${label}`, sha: sha256(css) });
     }
   }
-  for (const key of ["solarized-dark", "kanagawa-dragon"]) {
+  for (const key of ["solarized-dark", "kanagawa-dragon"].filter((k) => !onlyTheme || k === onlyTheme)) {
     const [a, b] = THEMES.filter((t) => t.key === key);
     if (a.sha === b.sha) fail("builds", [`${key}: the final and trial builds are the same file`]);
   }
@@ -178,7 +181,7 @@ try {
     writeFileSync(path.join(outDir, file), Buffer.from(r.data, "base64"));
   };
 
-  for (const t of THEMES) {
+  for (const t of THEMES.filter((x) => !onlyTheme || x.key === onlyTheme)) {
     const set = await setTheme(t.name);
     const sizeOk = fail(`${t.id} theme`, themeProblems({ theme: set.theme, wantedTheme: t.name, sha: set.sha, wantedSha: t.sha, width: bounds.width, height: bounds.height, wantedSize: SIZE }));
     note({ condition: t.id, themeName: t.name, cssSha256: set.sha, cssLength: set.cssLength, window: bounds, inner: [set.innerWidth, set.innerHeight] });
@@ -193,14 +196,16 @@ try {
       rows.push({ condition: t.id, scene, sig: { nodes: c.nodes, edges: c.edges, selected: c.selected, view: c.view, wrap: c.wrap, inner: [c.innerWidth, c.innerHeight] } });
       await shot(`${t.id}-${scene}.png`);
     }
-    const g = await graphScene();
-    const gOk = fail(`${t.id} graph`, graphProblems({ expected: g.expected, nodes: g.nodes, links: g.links, options: g.options, wantedOptions: GRAPH_OPTIONS }).concat(g.hubOpen ? [] : ["the hub note is not open beside the graph"]));
-    const kinds = {};
-    for (const n of g.nodes) (kinds[n.type] ??= []).push(n.id);
-    note({ condition: t.id, scene: "graph", nodes: g.nodes.length, links: g.links.length, types: Object.fromEntries(Object.entries(kinds).map(([k, v]) => [k, v.length])), options: g.options, hubOpen: g.hubOpen, colourKeys: g.colours });
-    if (!gOk) { note({ condition: t.id, scene: "graph-nodes-for-diagnosis", nodes: g.nodes.slice(0, 60), links: g.links.slice(0, 60) }); throw new Error(`${t.id} graph: state not as expected; no shot taken`); }
-    rows.push({ condition: t.id, scene: "graph", sig: { nodes: g.nodes.map((n) => `${n.id}|${n.type}`).sort(), links: g.links.map((l) => `${l.source}>${l.target}`).sort(), options: g.options, hubOpen: g.hubOpen, inner: [g.innerWidth, g.innerHeight] } });
-    await shot(`${t.id}-graph.png`);
+    if (!canvasOnly) {
+      const g = await graphScene();
+      const gOk = fail(`${t.id} graph`, graphProblems({ expected: g.expected, nodes: g.nodes, links: g.links, options: g.options, wantedOptions: GRAPH_OPTIONS }).concat(g.hubOpen ? [] : ["the hub note is not open beside the graph"]));
+      const kinds = {};
+      for (const n of g.nodes) (kinds[n.type] ??= []).push(n.id);
+      note({ condition: t.id, scene: "graph", nodes: g.nodes.length, links: g.links.length, types: Object.fromEntries(Object.entries(kinds).map(([k, v]) => [k, v.length])), options: g.options, hubOpen: g.hubOpen, colourKeys: g.colours });
+      if (!gOk) { note({ condition: t.id, scene: "graph-nodes-for-diagnosis", nodes: g.nodes.slice(0, 60), links: g.links.slice(0, 60) }); throw new Error(`${t.id} graph: state not as expected; no shot taken`); }
+      rows.push({ condition: t.id, scene: "graph", sig: { nodes: g.nodes.map((n) => `${n.id}|${n.type}`).sort(), links: g.links.map((l) => `${l.source}>${l.target}`).sort(), options: g.options, hubOpen: g.hubOpen, inner: [g.innerWidth, g.innerHeight] } });
+      await shot(`${t.id}-graph.png`);
+    }
   }
   fail("comparability", incomparableScenes(rows));
 } catch (e) {
