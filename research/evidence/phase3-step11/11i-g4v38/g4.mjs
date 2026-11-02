@@ -5,11 +5,16 @@
 // <theme> is solarized-dark or kanagawa-dragon (dist/<theme>/theme.css of <repo>). prep checks that Obsidian loaded
 // exactly that file (theme name, length and SHA-256 of the loaded text); full refuses an <out.json> prepared for
 // another theme or with another file, and checks the loaded theme again before entering.
+// Before entering, full also requires (research/14 §6.160): the Obsidian and Electron versions named by G4_EXPECT_APP
+// and G4_EXPECT_ELECTRON (e.g. 1.14.5 and 43.8.3) in prep's record and in the live window, all 12 surfaces read in
+// prep, the window out of full screen (no is-fullscreen), and the macOS Spaces by type readable (../11g-g4/spaces.sh,
+// or G4_SPACES); otherwise it refuses without asking for full screen.
 // full always tries to leave full screen once it asked to enter, whatever fails in between, and then reads
-// isFullScreen(), the body's is-fullscreen class and the macOS Spaces by type (../11g-g4/spaces.sh, or G4_SPACES).
-// Only a run that entered, read and left with no error is stored as `during` / `after` with status COMPLETE; any
-// other run is stored apart as `failedRun` with status ABORTED (left full screen) or STUCK (did not leave: tell the
-// user, stop the isolated instance), and the exit status is 1 (ABORTED) or 3 (STUCK).
+// isFullScreen(), the body's is-fullscreen class and the Spaces by type (for up to 10 s until they equal the counts
+// before). Only a run that entered, read, left and got the same Spaces back with no error is stored as `during` /
+// `after` with status COMPLETE; any other run is stored apart as `failedRun` with status ABORTED (left full screen,
+// but something failed or the Spaces differ) or STUCK (did not leave: tell the user, stop the isolated instance), and
+// the exit status is 1 (ABORTED) or 3 (STUCK).
 // Self-test: g4-self-test.mjs (a fake <repo> whose tests/runtime/lib/cdp.mjs plays the window).
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
@@ -83,7 +88,18 @@ try {
     if ("status" in result) throw new Error(`${out} already holds a full-screen run (${result.status}); use a new file`);
     const l = await loaded();
     if (!sameTheme(l)) throw new Error(`the loaded theme changed since prep: ${JSON.stringify(l)}`);
-    const run = { spacesBefore: process.env.SPACES_BEFORE ? JSON.parse(process.env.SPACES_BEFORE) : null, fullscreenRequestedAt: new Date().toISOString() };
+    // The environment the run is for, in prep's record and in the live window.
+    const want = { app: process.env.G4_EXPECT_APP, electron: process.env.G4_EXPECT_ELECTRON };
+    if (!want.app || !want.electron) throw new Error("set G4_EXPECT_APP and G4_EXPECT_ELECTRON");
+    const live = await E(`(() => ({ app: window.require("electron").ipcRenderer.sendSync("version"), electron: (/Electron\\/([\\d.]+)/.exec(navigator.userAgent) || [])[1] }))()`);
+    for (const [k, v] of Object.entries(want)) if (result.environment?.[k] !== v || live[k] !== v) throw new Error(`${k} is ${result.environment?.[k]} in prep and ${live[k]} now, not ${v}`);
+    const unread = ["opaque", "translucentBefore"].flatMap((s) => Object.keys(SURFACES).filter((k) => !result[s].values[k]).map((k) => `${s}.${k}`));
+    if (unread.length) throw new Error(`surfaces not read in prep: ${unread.join(", ")}`);
+    const pre = await state();
+    if (pre.isFullScreen || pre.isFullscreenClass) throw new Error(`the window is already in full screen: ${JSON.stringify(pre)}`);
+    const spacesBefore = spaces();
+    if (spacesBefore.error) throw new Error(`cannot read the Spaces: ${spacesBefore.error}`);
+    const run = { expected: want, live, stateBefore: pre, spacesBefore, fullscreenRequestedAt: new Date().toISOString() };
     let error = null;
     try {
       await E("(() => { electronWindow.setFullScreen(true); return 1; })()");
@@ -105,14 +121,18 @@ try {
       await sleep(2000);
       if (!error) run.after = await read().catch((e) => { error = e; return null; });
       run.stateAfterExit = await state().catch((e) => ({ error: String(e.message ?? e) }));
+      // macOS may update the Spaces record a little after the exit: read again for up to 10 s.
+      const same = (a) => JSON.stringify(a) === JSON.stringify(run.spacesBefore);
       run.spacesAfterExit = spaces();
+      for (let i = 0; i < 10 && !same(run.spacesAfterExit); i++) { await sleep(1000); run.spacesAfterExit = spaces(); }
+      run.spacesRestored = same(run.spacesAfterExit);
       run.fullscreenEndedAt = new Date().toISOString();
     }
-    if (!error && run.leftFullScreen && run.after) {
+    if (!error && run.leftFullScreen && run.after && run.spacesRestored && run.stateAfterExit.isFullScreen === false && run.stateAfterExit.isFullscreenClass === false) {
       Object.assign(result, run, { status: "COMPLETE" });
     } else {
       result.status = run.leftFullScreen ? "ABORTED" : "STUCK";
-      result.failedRun = { ...run, error: error ? String(error.message ?? error) : null };
+      result.failedRun = { ...run, error: error ? String(error.message ?? error) : run.spacesRestored ? null : "the Spaces by type differ from before" };
       exitCode = run.leftFullScreen ? 1 : 3;
     }
   }
@@ -121,6 +141,6 @@ try {
   fs.writeFileSync(out, `${JSON.stringify(result, null, 1)}\n`);
 }
 if (phase === "prep") console.log(JSON.stringify(result.translucentBefore?.classes), result.environment, result.loadedTheme);
-else console.log(result.status, { entered: (result.failedRun ?? result).enteredFullScreen, left: (result.failedRun ?? result).leftFullScreen, spacesAfterExit: (result.failedRun ?? result).spacesAfterExit, error: result.failedRun?.error });
+else console.log(result.status, { entered: (result.failedRun ?? result).enteredFullScreen, left: (result.failedRun ?? result).leftFullScreen, spacesBefore: (result.failedRun ?? result).spacesBefore, spacesAfterExit: (result.failedRun ?? result).spacesAfterExit, error: result.failedRun?.error });
 if (result.status === "STUCK") console.error("STUCK: the window may still be in full screen. Tell the user; check Mission Control; stop the isolated instance.");
 process.exit(exitCode);

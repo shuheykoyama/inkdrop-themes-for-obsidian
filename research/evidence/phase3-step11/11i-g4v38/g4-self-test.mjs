@@ -22,7 +22,8 @@ import vm from "node:vm";
 const S = JSON.parse(process.env.G4_FAKE);
 const log = (x) => fs.appendFileSync(S.log, x + "\n");
 const classes = new Set(["is-focused"]);
-let full = false, dead = false;
+let full = !!S.startFull, dead = false;
+if (S.startFull) classes.add("is-fullscreen");
 const styleEl = { textContent: "" };
 const themeFile = (n) => S.vault + "/.obsidian/themes/" + n + "/theme.css";
 const customCss = {
@@ -61,11 +62,20 @@ export async function evaluate(port, expression) {
 }
 export async function holdFocus() { return () => {}; }
 `);
+// Spaces by type: the same on every read, or (FAKE_SPACES=changed) a full-screen Space left after the first read, or
+// (FAKE_SPACES=error) unreadable. FAKE_SPACES_COUNT counts the reads.
 const spacesFake = path.join(tmp, "spaces.sh");
-fs.writeFileSync(spacesFake, `printf '{"0": 5}\\n'\n`);
+fs.writeFileSync(spacesFake, `n=$(cat "$FAKE_SPACES_COUNT" 2>/dev/null || echo 0); echo $((n + 1)) > "$FAKE_SPACES_COUNT"
+case "$FAKE_SPACES" in
+  error) exit 1 ;;
+  changed) if [ "$n" -gt 0 ]; then printf '{"0": 5, "4": 1}\\n'; else printf '{"0": 5}\\n'; fi ;;
+  *) printf '{"0": 5}\\n' ;;
+esac
+`);
 
 let n = 0, failed = 0;
-const run = (name, { phase, theme, out, fake = {}, expectExit, check }) => {
+const EXPECT = { G4_EXPECT_APP: "1.14.5", G4_EXPECT_ELECTRON: "43.8.3" };
+const run = (name, { phase, theme, out, fake = {}, env = EXPECT, spacesMode = "same", expectExit, check }) => {
   n++;
   const vault = path.join(tmp, `vault-${n}`);
   if (fake.preloaded) {
@@ -77,7 +87,7 @@ const run = (name, { phase, theme, out, fake = {}, expectExit, check }) => {
   fs.writeFileSync(log, "");
   const p = spawnSync(process.execPath, [G4, repo, vault, out, phase, theme], {
     encoding: "utf8",
-    env: { ...process.env, G4_FAKE: JSON.stringify({ ...fake, vault, log }), G4_SPACES: spacesFake, G4_TIME_SCALE: "0.001" },
+    env: { ...process.env, ...env, G4_FAKE: JSON.stringify({ ...fake, vault, log }), G4_SPACES: spacesFake, G4_TIME_SCALE: "0.001", FAKE_SPACES: spacesMode, FAKE_SPACES_COUNT: path.join(tmp, `spaces-count-${n}`) },
   });
   const stored = fs.existsSync(out) ? JSON.parse(fs.readFileSync(out, "utf8")) : null;
   const calls = fs.readFileSync(log, "utf8").trim().split("\n").filter(Boolean);
@@ -98,7 +108,19 @@ run("prep refuses a theme that does not exist", { phase: "prep", theme: "solariz
 run("prep fails when the loaded text is not the built file", { phase: "prep", theme: "kanagawa-dragon", out: file("bad-load"), fake: { loadedText: "/* something else */" }, expectExit: 1,
   check: (r) => (r.opaque || r.translucentBefore ? "read the surfaces anyway" : null) });
 run("full, normal: COMPLETE with during and after", { phase: "full", theme: "kanagawa-dragon", out: prepared("ok"), fake: pre, expectExit: 0,
-  check: (r, c) => (r.status === "COMPLETE" && r.during.isFullScreen && r.during.classes.includes("is-fullscreen") && !r.after.isFullScreen && r.spacesAfterExit["0"] === 5 && !r.failedRun && c.join() === "setFullScreen true,setFullScreen false" ? null : JSON.stringify({ r, c })) });
+  check: (r, c) => (r.status === "COMPLETE" && r.during.isFullScreen && r.during.classes.includes("is-fullscreen") && !r.after.isFullScreen && r.spacesRestored && r.spacesBefore["0"] === 5 && r.spacesAfterExit["0"] === 5 && r.live.electron === "43.8.3" && !r.failedRun && c.join() === "setFullScreen true,setFullScreen false" ? null : JSON.stringify({ r, c })) });
+run("full, a full-screen Space is left after the exit: ABORTED, not COMPLETE", { phase: "full", theme: "kanagawa-dragon", out: prepared("spaces-left"), fake: pre, spacesMode: "changed", expectExit: 1,
+  check: (r) => (r.status === "ABORTED" && !r.during && r.failedRun.leftFullScreen && r.failedRun.spacesRestored === false && r.failedRun.spacesAfterExit["4"] === 1 && /Spaces/.test(r.failedRun.error) ? null : JSON.stringify(r)) });
+run("full refuses when the Spaces cannot be read (no full screen asked)", { phase: "full", theme: "kanagawa-dragon", out: prepared("spaces-error"), fake: pre, spacesMode: "error", expectExit: 1,
+  check: (r, c) => (c.length || r.status ? `calls ${c}, status ${r.status}` : null) });
+run("full refuses another Electron than expected (no full screen asked)", { phase: "full", theme: "kanagawa-dragon", out: prepared("other-electron"), fake: pre, env: { ...EXPECT, G4_EXPECT_ELECTRON: "39.5.1" }, expectExit: 1,
+  check: (r, c) => (c.length || r.status ? `calls ${c}, status ${r.status}` : null) });
+run("full refuses without the expected versions", { phase: "full", theme: "kanagawa-dragon", out: prepared("no-expect"), fake: pre, env: {}, expectExit: 1,
+  check: (r, c) => (c.length || r.status ? `calls ${c}, status ${r.status}` : null) });
+run("full refuses a window already in full screen", { phase: "full", theme: "kanagawa-dragon", out: prepared("already-full"), fake: { ...pre, startFull: true }, expectExit: 1,
+  check: (r, c) => (c.length || r.status ? `calls ${c}, status ${r.status}` : null) });
+run("full refuses when prep did not read every surface", { phase: "full", theme: "kanagawa-dragon", out: (() => { const f = prepared("unread"); const j = JSON.parse(fs.readFileSync(f, "utf8")); j.opaque.values.vaultProfile = null; fs.writeFileSync(f, JSON.stringify(j)); return f; })(), fake: pre, expectExit: 1,
+  check: (r, c) => (c.length || r.status ? `calls ${c}, status ${r.status}` : null) });
 run("full, a read fails in full screen: leaves, ABORTED, nothing stored as during/after", { phase: "full", theme: "kanagawa-dragon", out: prepared("read-fails"), fake: { ...pre, failReadInFull: true }, expectExit: 1,
   check: (r, c) => (r.status === "ABORTED" && !r.during && !r.after && r.failedRun.leftFullScreen && r.failedRun.stateAfterExit.isFullScreen === false && /read failed/.test(r.failedRun.error) && c.at(-1) === "setFullScreen false" ? null : JSON.stringify({ r, c })) });
 run("full, never enters: still asks to leave, ABORTED", { phase: "full", theme: "kanagawa-dragon", out: prepared("no-enter"), fake: { ...pre, enter: false }, expectExit: 1,
