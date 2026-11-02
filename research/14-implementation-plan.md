@@ -2,7 +2,7 @@
 
 - 作成日: 2026-10-11
 - 基準: `main` の `5b730b4`（Q-D21 PoC の最終レビュー対象）と、09 §0.1 の確定事項（2026-10-11 時点）
-- 位置づけ: **計画であり、テーマ本体はまだ実装していない。** 本書のレビュー後に工程 1 から着手する。
+- 位置づけ: 計画策定時（2026-10-11）の説明は、「計画であり、テーマ本体はまだ実装していない。本書のレビュー後に工程 1 から着手する」だった。**現在（2026-11-02）は、2 つのテーマが実装・ビルド済みで、最終的な視覚の検証が進行中**（§6.167 とゴールの節）。以降の本文は、各工程の時点の記述を残している。
 - 本書の区分: 「事実」は既存の検証記録（11・12・13）に基づくもので、出典の節を付けた。「方針」「判断」は本書で決めた計画上の選択で、実装中に変えうる。「未検証」は、実装時に検証してから扱いを決める。
 
 ## ゴールと完成条件（2026-11-02 追記。§6.167）
@@ -8454,3 +8454,22 @@ Q-D10 は変えていない。BLOCKED も解いていない。
   1. iPhone の検証（キット `79751c34-af7d-495d-a88a-037648f82809`）。ユーザーの準備が整うまで、実機の操作はしない。G1・C3 のキットと結果は保持し、新しい Vault を区別する。実機では、最終 CSS とキット ID の対応、Obsidian と iOS の版、CSS のハッシュを確かめ、実機のチェック全体を行い、KD Reading のコードの文字の色を重点に、コードブロックは画像でも見る。変更の影響が及ばない UI は、前回のツアーの証跡を再利用できるか評価し、理由のない全ツアーの再実行はしない。予想外の結果なら止めて報告する。
   2. G4・V-38。画面を占有する操作、本番の Inkdrop の操作、macOS の実フルスクリーンは、ユーザーの準備完了を確かめてから。復元の手順と通知への対処は変えない。
   3. G8 と、Inkdrop に直接の対応物がない Obsidian 固有 UI の棚卸し。まず既存の実装と検証の範囲を確かめ、UI ごとに、対応する Inkdrop の要素の有無、今の見た目、問題、優先度を簡潔に整理する。この段階では、大きな CSS の追加や UI の作り直しはしない。必要な部分に限って Minimal・Things などを参考にする。
+
+### 6.168 G8・Obsidian 固有 UI の事前調査と iPhone の再検証の範囲（画面を使わない、`evidence/phase3-step11/11l-ui-audit/`）
+
+- §6.167 の独立レビュー（`226b329`、APPROVE WITH MINOR QUALIFICATIONS）を受けた。README の状態と、この計画書の冒頭の位置づけの古い記述を、現在の状態（2 テーマは実装・ビルド済み、最終の視覚の検証が進行中）に直した。過去の工程の記録と確定済みの Q-D は変えていない。
+- **G8 と Obsidian 固有 UI の棚卸し**: 12 の UI を、Inkdrop の対応、今の CSS とトークン、実際の表示の証跡、問題、テーマごとの影響、優先度で整理した（`11l-ui-audit/README.md`）。要点:
+  - G8（V-33）は未実施。メニュー・モーダル・パレットなどの色は、一次資料のトークンと Computed Style で一致を確認済み。影・角・余白は Inkdrop の値を調べておらず、Obsidian の既定のまま。デスクトップのオーバーレイの画像はない。
+  - `src/` に規則も変数もなく、検査もない UI: Canvas、Graph View、Bases、Slider、右ドックのパネルの中身。`--color-base-*`・`--color-<色名>` も定義していないので、これらを参照する既定の色がテーマの配色になっていない可能性が高い（未測定）。
+  - 優先度は、高: Properties、Canvas。中: Bases、Graph View、右ドックのパネル、Obsidian 固有の Callout の種類、コントロールの形。低: オーバーレイの形（G8）、Popover・ツールチップ・通知、ステータスバーの同期の表示、Scrollbar。対象外: PDF・Slides・Web viewer・Publish。
+  - 実測のない項目は「未確認」とし、コードだけから見た目が良いとは言わない。Minimal・Things などを参考にする箇所は、`research/04` で読み済みの内容（Properties と Bases の変数での調整、Canvas の `--canvas-color-*` と themed ノード、`--color-base-*` の全段割り当て）に限る。配色や装飾は写さない。
+  - 次の段階（提案）: 隔離した Obsidian で Computed Style を測る（撮影なし）→ 変数を足せば直るものを優先して範囲を決める → 手を入れる前後を画像で確かめる（画面を使うのでユーザーの準備を待つ）。製品の CSS は、この調査では変えていない。
+- **iPhone の再検証の範囲**:
+  - 前回の iPhone の証跡（C3）のキットは `8b719e1`（kit id `bb2510e4…`）。`8b719e1` から今の HEAD までの `src/`・`dist/` の差は、KD の `src/themes/kanagawa-dragon.css` の `@import` 1 行と、`src/themes/kanagawa-dragon/syntax.css`（27 行の追加）だけ。**SD の `theme.css` は同じバイト列**（`8f2c6b48…`）。KD は `a2977a35…` → `b784835f…`。
+  - 新しい CSS の規則は、`.theme-dark .markdown-rendered code.language-<js, javascript, ts, typescript, python, go, sql, html, yaml, yml, markdown, md>` の素の文字と、その `> .token` の色の戻しだけ。影響する面は、Reading view と、Live Preview の描画ブロック（埋め込み・Callout の中）の、これらの言語のコードブロック。Source mode、Live Preview の通常のコードブロック、インラインコード、Mermaid、SD、ほかの言語には及ばない（macOS で 35 要素の変化だけを確認済み、§6.158・§6.164）。
+  - 影響を受けるツアーの段（KD のみ）: phone の「Markdown, Reading view」2 段（Markdown 用のノートに js のブロックがある。段が開くノートは、キットの読み込みで再確認する）、「code blocks, Reading view」1 段。tablet は Reading の 2 段（iPad は未実施なので範囲外）。ほかの phone 16 段は、`default` の状態が `Sample note.md` を Live Preview で開くこと、Mermaid が `mermaid` のフェンスだけであることから、影響しない。SD の 19 段は CSS が同じバイト列なので再利用できる（再利用の条件は、SD の `device.theme-applied` で CSS の長さと SHA-256 が `8f2c6b48…` と同じこと）。
+  - 実機の検査（916 件、`device.theme-applied`・`device.environment` を含む）は、最終の CSS で両テーマとも実施する。ツアーは、KD の 3 段（コードの色の確認が主）と、「quick switcher」「left drawer」「Markdown, Live Preview」の 3 段を新しいキットの動作の確認として撮る案を提案する。ツアー 38 段の全面の再実施は、影響の範囲が上のとおり狭いので、判断をレビューに諮る。
+  - 目視で確認するコードブロック: `Code blocks.md` の js・javascript・ts・python・go・sql・html・yaml・markdown・md。対照として css・rust・sh・json、言語のないブロック、`py`（対象外）。プロパティ名（既知の限界）が Inkdrop の色から離れることを、画像でも確かめる。
+  - 準備の手順（iPhone の操作の直前に提示）: iPhone を解錠、有線で Mac に接続、Mac の `pmset -g therm` を確認、キットの ZIP（SHA-256 `9271b378…`）を新しい Vault に展開（G1・C3 の Vault と区別）、Obsidian の iOS の版を記録。端末の操作は、ユーザーの「準備できた」のあとに始める。
+- **生の証跡の保全**: `~/inkdrop-obsidian-evidence-raw/11k/` の gzip 8 件と `raw-json.sha256` の対応は維持している。独立したバックアップ先の候補: (1) 外付けのディスクにコピーし、`raw-json.sha256` で照合する（Time Machine は未設定、ほかのボリュームもなし、ホームのディスクは空き 35 GB）。(2) リポジトリの外の、パスワード管理された別の保存先。外部サービスへのアップロードと、Git リポジトリへの追加は、ユーザーの許可なしにはしない。
+- **今回していないこと**: 製品の CSS の変更、本番の Inkdrop・iPhone の操作、macOS の全画面・ネイティブ撮影、Q-D10 や検査の判定の変更、リリースに関する作業。
