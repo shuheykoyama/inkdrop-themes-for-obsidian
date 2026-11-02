@@ -115,11 +115,16 @@ export function judgeSyntax(spec, inkdrop, rendered, page, where, ok) {
           // (C) group by what CSS can tell apart. Fence names of one language share the per-language rules
           // (code.language-a, code.language-b); bare text in the editing views shares --code-normal across languages.
           const lang = spec.langAliases?.[ink.lang] ?? ink.lang;
+          // Bare text of a fence name that the language's base colour (`bare`) does not cover (py: Inkdrop 6.2.0 does not
+          // read it as Python) is a group of its own where the other names of the language are covered: CSS tells them apart.
+          const bareCovers = (fence) => (spec[kind].bare ?? []).some((b) => b.theme.includes(where.theme) && b.lang.includes(fence));
+          const family = [lang, ...Object.entries(spec.langAliases ?? {}).filter(([, to]) => to === lang).map(([name]) => name)];
+          const bareLang = family.some(bareCovers) && !bareCovers(ink.lang) ? ink.lang : lang;
           // Bare text: no element, or (editing views) only the span CodeMirror puts around untokenised text in a
           // code block, which carries no token class.
           const bare = o.els.every((e) => e.every((c) => c === "cm-hmd-codeblock"));
           const sig = bare
-            ? (kind === "reading" ? `${lang} (bare text)` : "(bare text)")
+            ? (kind === "reading" ? `${bareLang} (bare text)` : "(bare text)")
             : (kind === "reading" ? `${lang} ` : "") + o.els.map((x) => [...x].sort().join(".")).join(" < ");
           if (!groups.has(sig)) groups.set(sig, { bare, themeColours: new Set(), inks: new Map(), miss: [] });
           const g = groups.get(sig);

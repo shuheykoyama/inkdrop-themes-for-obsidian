@@ -54,6 +54,7 @@
   "reading": {
     "default": "--ink-mde-preview-inline-code-text-color",
     "bare": [
+      { "theme": ["kanagawa-dragon"], "lang": ["js", "javascript", "ts", "typescript", "python", "go"], "var": "variable-name" },
       { "theme": ["kanagawa-dragon"], "lang": ["sql"], "var": "name" },
       { "theme": ["kanagawa-dragon"], "lang": ["html", "yaml", "yml", "markdown", "md"], "var": "content" }
     ],

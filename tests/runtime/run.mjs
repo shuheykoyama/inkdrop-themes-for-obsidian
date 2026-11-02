@@ -362,6 +362,10 @@ if (selfTest) {
     { name: "several Inkdrop colours, theme and oracle choose another of them (CONFLICT)", expect: "PASS", spec: mutate(editRule("cm-atom", "property-name-definition")), css: editCss("cm-atom", "var(--ink-syntax-property-name-definition-color)"), group: { view: "source", sig: "cm-atom.cm-hmd-codeblock", class: "CONFLICT" } },
     { name: "several Inkdrop colours, theme and oracle choose none of them (DOMINATED)", expect: "FAIL", spec: mutate(editRule("cm-atom", "tag-name")), css: editCss("cm-atom", "var(--ink-syntax-tag-name-color)"), only: "classes" },
     { name: "class rule lost in the theme (definitions take the code text colour)", expect: "FAIL", css: editCss("cm-def", "inherit"), only: "impl" },
+    // A language's base colour (reading.bare) that covers python but not py (Inkdrop 6.2.0 does not read py as Python):
+    // the two bare-text groups stay apart and neither is MIXED. The reset keeps token spans on the code text colour.
+    { name: "base colour for python bare text, not py (separate groups, no MIXED)", expect: "PASS", spec: mutate((s) => { (s.reading.bare ??= []).push({ theme: ["solarized-dark"], lang: ["python"], var: "variable-name" }); }),
+      css: `.theme-dark .markdown-rendered code.language-python { color: var(--ink-syntax-variable-name-color); } .theme-dark :where(.markdown-rendered code.language-python > .token) { color: var(--code-normal); }`, group: { view: "reading", sig: "py (bare text)", class: "EXACT" } },
     { name: "class rule lost in the theme and the oracle alike", expect: "FAIL", spec: mutate((s) => { s.editing.rules = s.editing.rules.filter((r) => r.on.join() !== "cm-hmd-codeblock,cm-def"); }), css: editCss("cm-def", "inherit"), only: "classes" },
   ];
   for (const c of cases) {
