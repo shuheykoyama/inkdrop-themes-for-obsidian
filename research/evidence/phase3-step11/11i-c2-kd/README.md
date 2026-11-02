@@ -21,6 +21,7 @@
 | `c2-general.mjs` | 文字ごとの比較。`static`（Inkdrop の同梱のパーサーでの静的な色）か、`rendered`（G7-1 で実測した Inkdrop 6.2.0 の色）と比べる |
 | `c2-testnote.txt` | テストのノート（`Code blocks.md`）の文字。Inkdrop 6.2.0 の**実測の**プレビューの色と比べた |
 | `c2-general.txt`・`inkdrop-tokens-general-6.2.0.json` | 一般的なコードの文字。Inkdrop 6.2.0 の同梱のパーサーで求めた**静的な**色と比べた（`tests/visual/inkdrop-tokens.mjs`） |
+| `c2-de.py`・`c2-de.txt` | 色の差の分析（§6.159）。`c2-general.mjs` の第 6 引数で書き出した文字ごとの記録から、文字ごとの CIEDE2000 を求めた。js・ts・python・go と、採用した sql・html・yaml・markdown を分け、テストのノート（実測）と一般的なコード（静的）も分ける |
 | `c2-testnote.mjs`・`runtime/` | 試験のビルドでの実行時の検査（`tests/runtime/run.mjs`、2 回）と、C3 の回帰の 1.14.5 E39.5.1 の 1 回目との、検査ごとの比較 |
 
 ## 結果
@@ -36,6 +37,7 @@
   - 1 回目だけ、KD の `md.reading.h1-rule-width`・`h2-rule-width`（opaque (after translucent)）が FAIL（2px が 1.83px、1px が 0.91px。比は同じ 0.913）。2 回目は PASS。試験の CSS はコードの色だけを変えるので、関係はないと見ているが、原因は確かめていない。
   - `syn.*.fidelity` の DIFF は変わらない。この検査はオラクルの色を Inkdrop の色と比べるので、オラクルを変えない試験では動かない。そのため、テストのノートの改善は、上の文字ごとの比較で測った。
 - **読みやすさ**: Reading のコードの背景とのコントラスト比は 9.48 → 10.42（`../11h-qd13/contrast.txt`）。
+- **訂正**（§6.159.3）: `../11h-qd13/contrast.txt` の CIEDE2000 の値（KD 8.14、SD 2.80）は誤り。`tests/visual/sample-regions.py` と、別の実装（`../../phase3-step9/step8-rv5-39.5.1/rv5measure.py`）の両方で、KD は 14.70、SD は 10.37 になる。
 
 ## 確かめていないこと
 

@@ -12,11 +12,15 @@
 // fixed and broke, how many changed colour but still differ (each by Inkdrop's token class), and how many changed
 // colour at all. Blocks without a language and the callout's block are listed too (changes only).
 //
-// usage: node c2-general.mjs <base.json> <trial.json> <note> static <tokens.json>
-//        node c2-general.mjs <base.json> <trial.json> <note> rendered <fixture.json>
-import { readFileSync } from "node:fs";
+// <dump.json> (optional) receives every non-space character of the language blocks: theme, block, language, offset,
+// character, Inkdrop's class and colour, and the colour before and after (for c2-de.py).
+//
+// usage: node c2-general.mjs <base.json> <trial.json> <note> static <tokens.json> [<dump.json>]
+//        node c2-general.mjs <base.json> <trial.json> <note> rendered <fixture.json> [<dump.json>]
+import { readFileSync, writeFileSync } from "node:fs";
 
-const [baseFile, trialFile, note, kind, inkFile] = process.argv.slice(2);
+const [baseFile, trialFile, note, kind, inkFile, dumpFile] = process.argv.slice(2);
+const dump = [];
 if (!["static", "rendered"].includes(kind)) throw new Error("kind must be static or rendered");
 const load = (f) => JSON.parse(readFileSync(f, "utf8")).results.filter((r) => r.file === note && r.mode === "reading");
 const inkData = JSON.parse(readFileSync(inkFile, "utf8"));
@@ -63,6 +67,7 @@ for (const theme of ["kanagawa-dragon", "solarized-dark"]) {
       if (b.colours[c] !== t.colours[c]) row.changed++;
       if (!block) continue;
       const { colour, cls } = inkdropAt(block, c);
+      dump.push({ theme, block: i, lang: block.lang, at: c, ch: b.text[c], cls, inkdrop: colour, before: b.colours[c], after: t.colours[c] });
       const was = b.colours[c] === colour, now = t.colours[c] === colour;
       row.before += was; row.after += now;
       if (!was && now) { row.fixed++; fixed[cls] = (fixed[cls] ?? 0) + 1; }
@@ -76,3 +81,4 @@ for (const theme of ["kanagawa-dragon", "solarized-dark"]) {
   }
   console.log(`TOTAL ${theme} ${note} (language blocks) ${JSON.stringify(total)}`);
 }
+if (dumpFile) writeFileSync(dumpFile, JSON.stringify(dump));
