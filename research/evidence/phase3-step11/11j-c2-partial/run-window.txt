@@ -1,0 +1,5 @@
+base: clone of 3756411 (KD theme.css a2977a35..., SD 8f2c6b48...)
+C2 partial: working tree before the commit, KD theme.css 3f0f4df5b226cdd3f8e9e9e4d9232a26887545cf7a86d920be96ef6565706a62, SD 8f2c6b48907883530c1c5095af0c0ace752278e2212742e6de8fb34559ec2e09
+Obsidian 1.14.5 asar on installer 1.11.7, Electron 39.5.1 (isolated)
+runtime run: 2026-11-01T10:51:44Z exit 0 2026-11-01T11:11:50Z 
+probe started / stopped: 2026-11-02T03:44:00Z 2026-11-02T03:49:10Z 

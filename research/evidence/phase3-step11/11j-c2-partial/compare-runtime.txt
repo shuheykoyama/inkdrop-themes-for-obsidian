@@ -1,0 +1,26 @@
+checks: 3871 before, 3871 after, 0 in only one of them
+
+== status changes
+DIFF -> PASS: 9
+  kanagawa-dragon syn.reading.html.fidelity x3
+  kanagawa-dragon syn.reading.yaml.fidelity x3
+  kanagawa-dragon syn.reading.md.fidelity x3
+DIFF -> PASS (EMULATED): 9
+  kanagawa-dragon syn.reading.html.fidelity x3
+  kanagawa-dragon syn.reading.yaml.fidelity x3
+  kanagawa-dragon syn.reading.md.fidelity x3
+
+== fidelity, desktop / opaque: theme view lang: statusBefore -> statusAfter, differing chars before -> after, fixed, broke
+kanagawa-dragon reading html: DIFF -> PASS, 8 -> 0, fixed 8, broke 0
+kanagawa-dragon reading yaml: DIFF -> PASS, 14 -> 0, fixed 14, broke 0
+kanagawa-dragon reading sql: DIFF -> DIFF, 42 -> 10, fixed 32, broke 0
+kanagawa-dragon reading markdown: DIFF -> DIFF, 15 -> 2, fixed 13, broke 0
+kanagawa-dragon reading md: DIFF -> PASS, 3 -> 0, fixed 3, broke 0
+
+== totals (differing chars before -> after, fixed, broke, DIFF checks after)
+solarized-dark source: 720 -> 720, fixed 0, broke 0, DIFF checks 17
+solarized-dark live: 720 -> 720, fixed 0, broke 0, DIFF checks 17
+solarized-dark reading: 428 -> 428, fixed 0, broke 0, DIFF checks 14
+kanagawa-dragon source: 606 -> 606, fixed 0, broke 0, DIFF checks 17
+kanagawa-dragon live: 606 -> 606, fixed 0, broke 0, DIFF checks 17
+kanagawa-dragon reading: 438 -> 368, fixed 70, broke 0, DIFF checks 14

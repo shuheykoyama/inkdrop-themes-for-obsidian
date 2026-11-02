@@ -8309,3 +8309,32 @@ Q-D10 は変えていない。BLOCKED も解いていない。
 - **G4**: `11i-g4v38/g4.mjs` を実測の道具として採用する。画面の操作の前に、Obsidian 1.14.5、Electron 43.8.3、テーマ名、CSS の長さと SHA-256、12 の面、全画面の状態と Space の数を確かめる。出たあとは、`isFullScreen()`・`is-fullscreen`・`spacesAfterExit`・前後の Space の種類ごとの数を照らす。Space の復元を確かめられなければ COMPLETE にしない。
 - **V-38 の通知**: 重なる場合は、ふつうの UI の操作で閉じる。また出たら、その画像を無効にし、サイドバー ↔ Ribbon を PASS にせず、領域と許容差を自動で変えず、V-38 を止めて報告する。別の領域を使うなら、同じ背景の面を代表することを確かめ、独立レビューを受ける。通知を隠すために、Inkdrop の CSS や DOM を書き換えない。G4 は V-38 と別に続けてよい。
 - **実測の時期**: G4・V-38 は、正式に採る KD の C2 の CSS が決まってから行う。今は準備まで。
+
+### 6.158 KD の C2 の部分統合（SQL・HTML・YAML・Markdown、`evidence/phase3-step11/11j-c2-partial/`）
+
+#### 6.158.1 変更
+
+- **CSS**: `src/themes/kanagawa-dragon/syntax.css`（テーマの例外、§1.7）と、KD の入口の最後の `@import`。
+  - `code.language-sql` → `--ink-syntax-name-color`。`code.language-html`・`yaml`・`yml`・`markdown`・`md` → `--ink-syntax-content-color`。
+  - これらの言語の、規則のないトークンの span は `--code-normal` に戻す（`.theme-dark :where(…> .token)`、詳細度は 1 クラス）。言語の地の色がトークンに当たらない。
+  - 出典のコメント: KD は `--syntax-name-color`・`--syntax-content-color` を `--editor-foreground-color` にする（`packages/dragon/styles/syntax.css:167`・`:279`）。プレビューのコードの文字（`preview.css:31`）とは違う色。SD は content の色が今のコードの文字の色と同じに描かれ、name の色は採らない（§6.151）ので、規則は KD だけ。
+- **オラクル**（`tests/spec/syntax.json`、`tests/runtime/lib/syntax.mjs`）:
+  - `reading.bare`: `{ theme, lang, var }` の並び。KD の sql → `name`、html・yaml・yml・markdown・md → `content`。
+  - `oracle()` は、要素のない文字（素の文字、`els` が空）にだけ、そのテーマと言語の `bare` の色を返す。規則のないトークンの span は、前と同じく `default`。`syntaxVars()` は `bare` の変数も読ませる。
+  - Inkdrop の実測の基準（`inkdrop-rendered-6.2.0.json`）は変えていない。
+- SD の `theme.css` は、バイト単位で同じ（SHA-256 `8f2c6b48…`）。KD は `a2977a35…` → `3f0f4df5…`。`npm test` は exit 0。
+
+#### 6.158.2 隔離した Obsidian 1.14.5（Electron 39.5.1）での確かめ
+
+| 確かめること | 結果 |
+|---|---|
+| 実行時の検査（3871 件） | FAIL 0。Reading の `syn.reading.<言語>.impl` は 252 件すべて PASS（`qd13.implementation`） |
+| 状態の変化（C3 の回帰の基準と比べた） | KD の `syn.reading.html`・`yaml`・`md` の fidelity の 18 件だけが DIFF → PASS・PASS (EMULATED)。DIFF の合計は 594 → 576 |
+| テストのノートの fidelity（KD の Reading の違う文字） | 438 → 368（直った 70、外れた 0）。sql は 42 → 10、markdown は 15 → 2 で DIFF のまま。SD と Source mode・Live Preview は変わらない |
+| 要素の波及（4 つのノート × 3 ビュー × 2 テーマ） | 変わったのは 13 個で、すべて対象の言語の `code` 要素。SD、ほかの言語、インラインコード、ふつうの Markdown、ほかのビューは 0 |
+| 文字（実測の Inkdrop と比べたテストのノート） | 1576 → 1646（+70、外れた 0） |
+| 文字（静的な Inkdrop と比べた一般的なコード） | 1783 → 2179（+396、外れた 0）。色が変わって合わないままの文字は 0 |
+| C1-a・C3 の表示 | 変わった要素は対象の言語の `code` 要素だけで、C3 のリストの印（`span.token.list.punctuation`）、C1-a のコードの文字の色（ほかの言語）は変わらない |
+
+- 予測（§6.157）と同じ数になった。
+- E43.8.3、1.14.4、iPhone では測っていない。ゲートの入力は変えていない（新しい CSS の証跡がそろってから差し替える）。
