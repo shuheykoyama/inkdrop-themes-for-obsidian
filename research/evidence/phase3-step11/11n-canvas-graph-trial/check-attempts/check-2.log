@@ -1,0 +1,8 @@
+{"condition":"solarized-dark-final","themeName":"DEV solarized-dark (unnamed) [final]","cssSha256":"8f2c6b48907883530c1c5095af0c0ace752278e2212742e6de8fb34559ec2e09","cssLength":137175,"window":{"width":1200,"height":800},"inner":[1200,800]}
+{"condition":"solarized-dark-final","scene":"canvas-overview","nodes":11,"edges":3,"selected":[],"view":{"zoom":-1.265,"tx":915,"ty":250},"wrap":[856,722],"inner":[1200,800]}
+PROBLEM solarized-dark-final canvas-select-plain: the selected node has no is-selected class
+{"condition":"solarized-dark-final","scene":"canvas-select-plain","nodes":11,"edges":3,"selected":["n0"],"view":{"zoom":-1.265,"tx":915,"ty":250},"wrap":[856,722],"inner":[1200,800]}
+Error: solarized-dark-final canvas-select-plain: state not as expected; no shot taken
+    at file://~/ghq/github.com/shuheykoyama/inkdrop-themes-for-obsidian/research/evidence/phase3-step11/11n-canvas-graph-trial/capture.mjs:186:22
+2 problem(s); the images, if any, are not a faithful before / after comparison
+stopped isolated Obsidian (pid 82597)

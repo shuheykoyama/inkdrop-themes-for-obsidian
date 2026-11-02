@@ -1,0 +1,651 @@
+{
+ "at": "2026-11-02T13:59:33.117Z",
+ "check": false,
+ "size": {
+  "width": 1200,
+  "height": 800
+ },
+ "problems": [],
+ "log": [
+  {
+   "condition": "solarized-dark-final",
+   "themeName": "DEV solarized-dark (unnamed) [final]",
+   "cssSha256": "8f2c6b48907883530c1c5095af0c0ace752278e2212742e6de8fb34559ec2e09",
+   "cssLength": 137175,
+   "window": {
+    "width": 1200,
+    "height": 800
+   },
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "solarized-dark-final",
+   "scene": "canvas-overview",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [],
+   "domClasses": null,
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "solarized-dark-final",
+   "scene": "canvas-select-plain",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "n0"
+   ],
+   "domClasses": [
+    "canvas-node",
+    "is-focused"
+   ],
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "solarized-dark-final",
+   "scene": "canvas-select-coloured",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "c4"
+   ],
+   "domClasses": [
+    "canvas-node",
+    "is-themed",
+    "mod-canvas-color-4",
+    "is-focused"
+   ],
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "solarized-dark-final",
+   "scene": "canvas-select-edge",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "e1"
+   ],
+   "domClasses": null,
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "solarized-dark-final",
+   "scene": "graph",
+   "nodes": 20,
+   "links": 23,
+   "types": {
+    "": 13,
+    "unresolved": 2,
+    "tag": 4,
+    "attachment": 1
+   },
+   "options": {
+    "collapse-filter": true,
+    "search": "",
+    "showTags": true,
+    "showAttachments": true,
+    "hideUnresolved": false,
+    "showOrphans": true,
+    "collapse-color-groups": true,
+    "colorGroups": [],
+    "collapse-display": true,
+    "showArrow": false,
+    "textFadeMultiplier": 0,
+    "nodeSizeMultiplier": 1,
+    "lineSizeMultiplier": 1,
+    "collapse-forces": true,
+    "centerStrength": 0.518713248970312,
+    "repelStrength": 10,
+    "linkStrength": 1,
+    "linkDistance": 250,
+    "scale": 1,
+    "close": false
+   },
+   "hubOpen": true,
+   "colourKeys": [
+    "fill",
+    "fillFocused",
+    "fillTag",
+    "fillUnresolved",
+    "fillAttachment",
+    "arrow",
+    "circle",
+    "line",
+    "text",
+    "fillHighlight",
+    "lineHighlight"
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-final",
+   "themeName": "DEV kanagawa-dragon (unnamed) [final]",
+   "cssSha256": "b784835fed4a26f7d1f2f39a867e4ed8bcbe084bb9e801b8c9ac4aac6b1adee9",
+   "cssLength": 141863,
+   "window": {
+    "width": 1200,
+    "height": 800
+   },
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-final",
+   "scene": "canvas-overview",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [],
+   "domClasses": null,
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-final",
+   "scene": "canvas-select-plain",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "n0"
+   ],
+   "domClasses": [
+    "canvas-node",
+    "is-focused"
+   ],
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-final",
+   "scene": "canvas-select-coloured",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "c4"
+   ],
+   "domClasses": [
+    "canvas-node",
+    "is-themed",
+    "mod-canvas-color-4",
+    "is-focused"
+   ],
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-final",
+   "scene": "canvas-select-edge",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "e1"
+   ],
+   "domClasses": null,
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-final",
+   "scene": "graph",
+   "nodes": 20,
+   "links": 23,
+   "types": {
+    "": 13,
+    "unresolved": 2,
+    "tag": 4,
+    "attachment": 1
+   },
+   "options": {
+    "collapse-filter": true,
+    "search": "",
+    "showTags": true,
+    "showAttachments": true,
+    "hideUnresolved": false,
+    "showOrphans": true,
+    "collapse-color-groups": true,
+    "colorGroups": [],
+    "collapse-display": true,
+    "showArrow": false,
+    "textFadeMultiplier": 0,
+    "nodeSizeMultiplier": 1,
+    "lineSizeMultiplier": 1,
+    "collapse-forces": true,
+    "centerStrength": 0.518713248970312,
+    "repelStrength": 10,
+    "linkStrength": 1,
+    "linkDistance": 250,
+    "scale": 1,
+    "close": false
+   },
+   "hubOpen": true,
+   "colourKeys": [
+    "fill",
+    "fillFocused",
+    "fillTag",
+    "fillUnresolved",
+    "fillAttachment",
+    "arrow",
+    "circle",
+    "line",
+    "text",
+    "fillHighlight",
+    "lineHighlight"
+   ]
+  },
+  {
+   "condition": "solarized-dark-trial",
+   "themeName": "DEV solarized-dark (unnamed) [trial]",
+   "cssSha256": "f6b59e616f1e2d5cb3b82aefa5e5c8a1bb44b8e1431af7f057101c4ad9ed0fac",
+   "cssLength": 138326,
+   "window": {
+    "width": 1200,
+    "height": 800
+   },
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "solarized-dark-trial",
+   "scene": "canvas-overview",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [],
+   "domClasses": null,
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "solarized-dark-trial",
+   "scene": "canvas-select-plain",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "n0"
+   ],
+   "domClasses": [
+    "canvas-node",
+    "is-focused"
+   ],
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "solarized-dark-trial",
+   "scene": "canvas-select-coloured",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "c4"
+   ],
+   "domClasses": [
+    "canvas-node",
+    "is-themed",
+    "mod-canvas-color-4",
+    "is-focused"
+   ],
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "solarized-dark-trial",
+   "scene": "canvas-select-edge",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "e1"
+   ],
+   "domClasses": null,
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "solarized-dark-trial",
+   "scene": "graph",
+   "nodes": 20,
+   "links": 23,
+   "types": {
+    "": 13,
+    "unresolved": 2,
+    "tag": 4,
+    "attachment": 1
+   },
+   "options": {
+    "collapse-filter": true,
+    "search": "",
+    "showTags": true,
+    "showAttachments": true,
+    "hideUnresolved": false,
+    "showOrphans": true,
+    "collapse-color-groups": true,
+    "colorGroups": [],
+    "collapse-display": true,
+    "showArrow": false,
+    "textFadeMultiplier": 0,
+    "nodeSizeMultiplier": 1,
+    "lineSizeMultiplier": 1,
+    "collapse-forces": true,
+    "centerStrength": 0.518713248970312,
+    "repelStrength": 10,
+    "linkStrength": 1,
+    "linkDistance": 250,
+    "scale": 1,
+    "close": false
+   },
+   "hubOpen": true,
+   "colourKeys": [
+    "fill",
+    "fillFocused",
+    "fillTag",
+    "fillUnresolved",
+    "fillAttachment",
+    "arrow",
+    "circle",
+    "line",
+    "text",
+    "fillHighlight",
+    "lineHighlight"
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-trial",
+   "themeName": "DEV kanagawa-dragon (unnamed) [trial]",
+   "cssSha256": "6644cf47cdaa375de01e10584743a8371093a561abcd8bfb535a5f6e64eebeb1",
+   "cssLength": 143014,
+   "window": {
+    "width": 1200,
+    "height": 800
+   },
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-trial",
+   "scene": "canvas-overview",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [],
+   "domClasses": null,
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-trial",
+   "scene": "canvas-select-plain",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "n0"
+   ],
+   "domClasses": [
+    "canvas-node",
+    "is-focused"
+   ],
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-trial",
+   "scene": "canvas-select-coloured",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "c4"
+   ],
+   "domClasses": [
+    "canvas-node",
+    "is-themed",
+    "mod-canvas-color-4",
+    "is-focused"
+   ],
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-trial",
+   "scene": "canvas-select-edge",
+   "nodes": 11,
+   "edges": 3,
+   "selected": [
+    "e1"
+   ],
+   "domClasses": null,
+   "view": {
+    "zoom": -1.265,
+    "tx": 915,
+    "ty": 250
+   },
+   "wrap": [
+    856,
+    722
+   ],
+   "inner": [
+    1200,
+    800
+   ]
+  },
+  {
+   "condition": "kanagawa-dragon-trial",
+   "scene": "graph",
+   "nodes": 20,
+   "links": 23,
+   "types": {
+    "": 13,
+    "unresolved": 2,
+    "tag": 4,
+    "attachment": 1
+   },
+   "options": {
+    "collapse-filter": true,
+    "search": "",
+    "showTags": true,
+    "showAttachments": true,
+    "hideUnresolved": false,
+    "showOrphans": true,
+    "collapse-color-groups": true,
+    "colorGroups": [],
+    "collapse-display": true,
+    "showArrow": false,
+    "textFadeMultiplier": 0,
+    "nodeSizeMultiplier": 1,
+    "lineSizeMultiplier": 1,
+    "collapse-forces": true,
+    "centerStrength": 0.518713248970312,
+    "repelStrength": 10,
+    "linkStrength": 1,
+    "linkDistance": 250,
+    "scale": 1,
+    "close": false
+   },
+   "hubOpen": true,
+   "colourKeys": [
+    "fill",
+    "fillFocused",
+    "fillTag",
+    "fillUnresolved",
+    "fillAttachment",
+    "arrow",
+    "circle",
+    "line",
+    "text",
+    "fillHighlight",
+    "lineHighlight"
+   ]
+  }
+ ]
+}

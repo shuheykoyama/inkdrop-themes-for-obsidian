@@ -87,11 +87,10 @@ try {
     await sleep(500);
   }
 
-  // One window size for every shot (the page's own window; the macOS screen is not captured).
-  const win = await send("Browser.getWindowForTarget", { targetId: page.id });
-  await send("Browser.setWindowBounds", { windowId: win.windowId, bounds: { windowState: "normal", ...SIZE } });
+    await run(`(() => { electronWindow.setSize(${SIZE.width}, ${SIZE.height}); return 1; })()`);
   await sleep(1000);
-  const bounds = (await send("Browser.getWindowBounds", { windowId: win.windowId })).bounds;
+  const [bw, bh] = await run("(() => electronWindow.getSize())()");
+  const bounds = { width: bw, height: bh };
 
   const setTheme = (name) => run(`(async () => {
     await app.customCss.readThemes();
@@ -112,6 +111,8 @@ try {
   // computes a box around all the nodes from their data.
   const canvasScene = (select) => run(`(async () => {
     const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+    app.workspace.detachLeavesOfType("graph");
+    await wait(500);
     const leaf = app.workspace.getLeaf(false);
     await leaf.openFile(app.vault.getAbstractFileByPath("UI Probe.canvas"), { active: true });
     await wait(2500);
@@ -130,10 +131,11 @@ try {
     const wrap = (c.wrapperEl ?? leaf.view.containerEl).getBoundingClientRect();
     const outside = [...c.nodes.values()].filter((n) => { const r = n.nodeEl.getBoundingClientRect(); return r.left < wrap.left - 1 || r.top < wrap.top - 1 || r.right > wrap.right + 1 || r.bottom > wrap.bottom + 1; }).map((n) => n.id);
     const selected = [...c.selection].map((x) => x.id);
-    const domSelected = pick && !pick.edge ? c.nodes.get(pick.node).nodeEl.classList.contains("is-selected") : null;
+    const domClasses = pick && !pick.edge ? [...c.nodes.get(pick.node).nodeEl.classList] : null;
+    const domSelected = domClasses ? domClasses.includes("is-selected") || domClasses.includes("is-focused") : null;
     const edgeData = [...c.edges.values()].map(data);
     return { nodes: nodeData.map((d) => ({ id: d.id, type: d.type, color: d.color ?? null })), edges: edgeData.map((d) => ({ id: d.id, fromNode: d.fromNode, toNode: d.toNode, color: d.color ?? null })), outside, selected, domSelected,
-      view: { zoom: Math.round(c.zoom * 1000) / 1000, tx: Math.round(c.tx), ty: Math.round(c.ty) }, wrap: [Math.round(wrap.width), Math.round(wrap.height)], innerWidth, innerHeight };
+      domClasses, view: { zoom: Math.round(c.zoom * 1000) / 1000, tx: Math.round(c.tx), ty: Math.round(c.ty) }, wrap: [Math.round(wrap.width), Math.round(wrap.height)], innerWidth, innerHeight };
   })()`);
 
   // Graph: global graph with the hub open as the active file; the display options are set and read back; the
@@ -141,12 +143,15 @@ try {
   const GRAPH_OPTIONS = { showTags: true, showAttachments: true, hideUnresolved: false, showOrphans: true };
   const graphScene = () => run(`(async () => {
     const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+    app.workspace.detachLeavesOfType("graph");
+    await wait(500);
     const leaf = app.workspace.getLeaf(false);
     await leaf.openFile(app.vault.getAbstractFileByPath("G hub.md"), { active: true });
     await wait(500);
-    let g = app.workspace.getLeavesOfType("graph")[0];
-    if (!g) { app.commands.executeCommandById("graph:open"); await wait(1500); g = app.workspace.getLeavesOfType("graph")[0]; }
-    if (!g) throw new Error("graph:open did not open a graph view");
+    const g = app.workspace.getLeaf("split");
+    await g.setViewState({ type: "graph", active: true });
+    await wait(1500);
+    if (g.view.getViewType() !== "graph") throw new Error("the split leaf is not a graph view");
     const de = g.view.dataEngine;
     for (const m of ["getOptions", "setOptions"]) if (typeof de?.[m] !== "function") throw new Error("graph dataEngine." + m + " is not a function in this Obsidian");
     de.setOptions({ ...de.getOptions(), ...${JSON.stringify(GRAPH_OPTIONS)}, search: "" });
@@ -164,7 +169,7 @@ try {
       expected: { notes: md, tags: Object.keys(mc.getTags()), attachments: [...attachments], unresolved: [...unresolved],
         requiredLinks: [["G hub.md", "G a.md"], ["G hub.md", "G b.md"], ["G hub.md", "G c.md"], ["G hub.md", "G missing"], ["G hub.md", "half-transparent.png"], ["G a.md", "G b.md"], ["G b.md", "G c.md"], ["G c.md", "G hub.md"]] },
       nodes: (r.nodes ?? []).map((n) => ({ id: n.id, type: n.type })), links: (r.links ?? []).map((l) => ({ source: idOf(l.source), target: idOf(l.target) })),
-      options: de.getOptions(), active: app.workspace.getActiveFile()?.path, colours: Object.keys(r.colors ?? {}), innerWidth, innerHeight };
+      options: de.getOptions(), hubOpen: app.workspace.getLeavesOfType("markdown").some((l) => l.view.file?.path === "G hub.md"), colours: Object.keys(r.colors ?? {}), innerWidth, innerHeight };
   })()`);
 
   const shot = async (file) => {
@@ -182,19 +187,19 @@ try {
     for (const [scene, select] of [["canvas-overview", null], ["canvas-select-plain", { node: "n0" }], ["canvas-select-coloured", { node: "c4" }], ["canvas-select-edge", { edge: "e1" }]]) {
       const c = await canvasScene(select);
       const wanted = select ? (select.node ?? select.edge) : null;
-      const ok = fail(`${t.id} ${scene}`, canvasProblems({ expected: canvas, nodes: c.nodes, edges: c.edges, outside: c.outside, selected: c.selected, wanted }).concat(c.domSelected === false ? ["the selected node has no is-selected class"] : []));
-      note({ condition: t.id, scene, nodes: c.nodes.length, edges: c.edges.length, selected: c.selected, view: c.view, wrap: c.wrap, inner: [c.innerWidth, c.innerHeight] });
+      const ok = fail(`${t.id} ${scene}`, canvasProblems({ expected: canvas, nodes: c.nodes, edges: c.edges, outside: c.outside, selected: c.selected, wanted }).concat(c.domSelected === false ? ["the selected node has neither is-selected nor is-focused"] : []));
+      note({ condition: t.id, scene, nodes: c.nodes.length, edges: c.edges.length, selected: c.selected, domClasses: c.domClasses, view: c.view, wrap: c.wrap, inner: [c.innerWidth, c.innerHeight] });
       if (!ok) throw new Error(`${t.id} ${scene}: state not as expected; no shot taken`);
       rows.push({ condition: t.id, scene, sig: { nodes: c.nodes, edges: c.edges, selected: c.selected, view: c.view, wrap: c.wrap, inner: [c.innerWidth, c.innerHeight] } });
       await shot(`${t.id}-${scene}.png`);
     }
     const g = await graphScene();
-    const gOk = fail(`${t.id} graph`, graphProblems({ expected: g.expected, nodes: g.nodes, links: g.links, options: g.options, wantedOptions: GRAPH_OPTIONS }).concat(g.active === "G hub.md" ? [] : [`active file is ${g.active}, wanted G hub.md`]));
+    const gOk = fail(`${t.id} graph`, graphProblems({ expected: g.expected, nodes: g.nodes, links: g.links, options: g.options, wantedOptions: GRAPH_OPTIONS }).concat(g.hubOpen ? [] : ["the hub note is not open beside the graph"]));
     const kinds = {};
     for (const n of g.nodes) (kinds[n.type] ??= []).push(n.id);
-    note({ condition: t.id, scene: "graph", nodes: g.nodes.length, links: g.links.length, types: Object.fromEntries(Object.entries(kinds).map(([k, v]) => [k, v.length])), options: g.options, active: g.active, colourKeys: g.colours });
+    note({ condition: t.id, scene: "graph", nodes: g.nodes.length, links: g.links.length, types: Object.fromEntries(Object.entries(kinds).map(([k, v]) => [k, v.length])), options: g.options, hubOpen: g.hubOpen, colourKeys: g.colours });
     if (!gOk) { note({ condition: t.id, scene: "graph-nodes-for-diagnosis", nodes: g.nodes.slice(0, 60), links: g.links.slice(0, 60) }); throw new Error(`${t.id} graph: state not as expected; no shot taken`); }
-    rows.push({ condition: t.id, scene: "graph", sig: { nodes: g.nodes.map((n) => `${n.id}|${n.type}`).sort(), links: g.links.map((l) => `${l.source}>${l.target}`).sort(), options: g.options, active: g.active, inner: [g.innerWidth, g.innerHeight] } });
+    rows.push({ condition: t.id, scene: "graph", sig: { nodes: g.nodes.map((n) => `${n.id}|${n.type}`).sort(), links: g.links.map((l) => `${l.source}>${l.target}`).sort(), options: g.options, hubOpen: g.hubOpen, inner: [g.innerWidth, g.innerHeight] } });
     await shot(`${t.id}-graph.png`);
   }
   fail("comparability", incomparableScenes(rows));
