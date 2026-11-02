@@ -8473,3 +8473,29 @@ Q-D10 は変えていない。BLOCKED も解いていない。
   - 準備の手順（iPhone の操作の直前に提示）: iPhone を解錠、有線で Mac に接続、Mac の `pmset -g therm` を確認、キットの ZIP（SHA-256 `9271b378…`）を新しい Vault に展開（G1・C3 の Vault と区別）、Obsidian の iOS の版を記録。端末の操作は、ユーザーの「準備できた」のあとに始める。
 - **生の証跡の保全**: `~/inkdrop-obsidian-evidence-raw/11k/` の gzip 8 件と `raw-json.sha256` の対応は維持している。独立したバックアップ先の候補: (1) 外付けのディスクにコピーし、`raw-json.sha256` で照合する（Time Machine は未設定、ほかのボリュームもなし、ホームのディスクは空き 35 GB）。(2) リポジトリの外の、パスワード管理された別の保存先。外部サービスへのアップロードと、Git リポジトリへの追加は、ユーザーの許可なしにはしない。
 - **今回していないこと**: 製品の CSS の変更、本番の Inkdrop・iPhone の操作、macOS の全画面・ネイティブ撮影、Q-D10 や検査の判定の変更、リリースに関する作業。
+
+### 6.169 工程 11L の独立レビューと、Obsidian 固有 UI の Computed Style の実測（`evidence/phase3-step11/11m-ui-measure/`）
+
+- 工程 11L は APPROVE / COMPLETE。製品の CSS、Q-D、判定基準は維持。バックアップは Mac の中だけ、外付けのディスクやクラウドは使わない。
+- **証跡の保全**: `~/inkdrop-obsidian-evidence-raw/11k/` の gzip 8 件を `~/inkdrop-obsidian-evidence-raw-copy/11k/` に 1 セットだけコピーした（1.8 MB、空き 35 GB）。8 件とも `gzip -t` が通り、展開後の SHA-256 が `raw-json.sha256` と一致。元ファイルは動かしていない。**同じディスクのコピーなので、ディスクの故障には独立のバックアップにならない。**
+- **実測**（隔離した Obsidian 1.14.5、Electron 39.5.1、約 94 秒、撮影なし。テーマなし・SD・KD の 3 条件）:
+  - Properties、Bases、右ドック（Search・Backlinks・Outline・Tags）、Graph の操作部: 見える色はすべてテーマのパレットの色。パレットにない色は 0。現状維持でよい（色について。配置と描画は画像が要る）。
+  - Canvas: ノードの枠・エッジ（`#7e7e7e`）、ドットの背景（`#333333`）、色 1〜6（Obsidian の既定の 6 色）が既定のまま。背景とカードのラベルはテーマの色。
+  - Graph の描画の色: ノード・フォーカス・文字・ハイライトはテーマの色。線（`#3f3f3f`）、タグ（緑）、添付（黄）は既定のまま。
+  - 原因は、`--color-<色名>`（`-rgb` を含む）、`--color-base-30`・`-35` を定義していないこと。`--canvas-color` は `body.theme-dark`（詳細度 (0,1,1)）で定義されるので、`.theme-dark` では上書きできない。`--color-base-*` の既定は、測った UI の見える色には出てこない。**全変数を足す必要はない。**
+- **修正候補**（独立レビューで決める。まだ実装していない）:
+
+  | 優先 | 候補 | 範囲 | 方法の案 | 確認 |
+  |---|---|---|---|---|
+  | 1 | Canvas の既定の灰色（枠、エッジ、ドット）を、テーマの境界の変数に結びつける | Canvas | Minimal と同じ設計（`--canvas-dot-pattern`、エッジ、`.canvas-node-container` の枠を `--background-modifier-border-*` に）。`--canvas-color` は `body.theme-dark` が要る | 画像（Canvas） |
+  | 1 | Canvas の色 1〜6 と、Graph のタグ・添付の色を、各テーマの Inkdrop のパレットの色にする | Canvas、Graph | `--color-red/orange/yellow/green/cyan/purple` と `-rgb` の 6 組を割り当てる（1 か所で Canvas の 6 色、Graph のタグ・添付が変わる）。対応づけ（例: cyan → teal、purple → violet）はレビューで決める | 画像（Canvas、Graph）、ほかの参照先の確認 |
+  | 2 | Graph の線 | Graph | `--graph-line` を境界の変数に | 画像（Graph） |
+  | 3 | 変更なし | Properties、Bases、右ドック | — | 画像で配置だけ確認 |
+
+  実装する場合も、Callout・タグ・Mermaid など既存の規則の値が変わらないことを、既存の検査で確かめる（`--color-*` を使う場所が、ほかにもありうる）。
+- **Minimal・Things の実際のソース**（Minimal `93321bd`、Things `9b8bef9`。読んだだけ。リポジトリには入れていない）:
+  - Minimal は、Canvas の灰色を、新しい色を作らずに、テーマの境界の変数に結びつけている。Bases と Properties は寸法と表示の制御だけで、色の規則を持たない。Graph の専用の規則はない。Things は Canvas・Graph・Bases・Properties の規則を持たない。
+  - 配色や装飾は写さない。参考にするのは、変数で足りる UI は変数だけで整えるという手法。
+- **G8 の撮影の方法**: Inkdrop 6.2.0 の実機のメニュー・モーダル・パレット・ポップアップを開いて撮る（`tests/visual/capture-inkdrop.sh` と同じ撮影の仕組み。G7-1 と同じ窓の大きさ）。Obsidian 側は、隔離した Obsidian で同じ状態を開いて撮る。比べるのは影・角・余白・重なり。画面を占有し、本番の Inkdrop を操作するので、ユーザーの準備を待つ。
+- **iPhone の撮影の方法**: キット（`79751c34…`）のツアーに、段を指定して実行する仕組みはない（`TOUR.filter(device)` で端末ごとの全段を実行する）。6 段のためだけの制御は足さない。**既存のツールのまま、phone の 38 段を撮り、判定の対象を KD の 3 段（Markdown の Reading ×2、code blocks の Reading）と、確認用の 3 段に絞る。** ツアーの所要時間は撮影の間隔が主で、段を絞っても短くならない（段の表示 3 秒＋待ち 9 秒）。ほかの 32 段は、新しいビルドの記録として残る。
+- **今回していないこと**: 製品の CSS の変更、撮影、見た目の合格判定、本番の Inkdrop・iPhone の操作、macOS の全画面。

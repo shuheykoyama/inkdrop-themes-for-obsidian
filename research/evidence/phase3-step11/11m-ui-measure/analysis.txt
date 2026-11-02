@@ -1,0 +1,262 @@
+## Variables (final values; "default" = same as Obsidian's own dark)
+
+### solarized-dark
+canvas: 13 variables, 11 default, 2 changed
+  --canvas-background: rgb(0, 33, 41) = black | color-neutral-900
+  --canvas-card-label-color: rgba(253, 246, 226, 0.3) = disabled-text-color | sidebar-menu-action-color
+  --canvas-color: rgb(126, 126, 126) [default] (nearest color-neutral-500 dE 9.6)
+  --canvas-color-1: rgb(251, 70, 76) [default] (nearest color-red-500 dE 8.9)
+  --canvas-color-2: rgb(233, 151, 63) [default] (nearest color-yellow-500 dE 14.3)
+  --canvas-color-3: rgb(224, 222, 113) [default] (nearest mermaid-note-text-color dE 7.8)
+  --canvas-color-4: rgb(68, 207, 110) [default] (nearest color-teal-500 dE 18.5)
+  --canvas-color-5: rgb(83, 223, 221) [default] (nearest color-teal-500 dE 12.2)
+  --canvas-color-6: rgb(168, 130, 255) [default] (nearest color-purple-500 dE 10.7)
+  --canvas-dot-pattern: rgb(51, 51, 51) [default] (nearest color-neutral-950 dE 12.9)
+graph: 8 variables, 4 default, 4 changed
+  --graph-line: rgb(63, 63, 63) [default] (nearest color-neutral-700 dE 14.1)
+  --graph-node: rgba(253, 246, 226, 0.6) = button-text-color | kbd-color
+  --graph-node-attachment: rgb(224, 222, 113) [default] (nearest mermaid-note-text-color dE 7.8)
+  --graph-node-focused: rgb(65, 165, 222) (nearest blue dE 8.8)
+  --graph-node-tag: rgb(68, 207, 110) [default] (nearest color-teal-500 dE 18.5)
+  --graph-node-unresolved: rgba(253, 246, 226, 0.3) = disabled-text-color | sidebar-menu-action-color
+  --graph-text: rgb(131, 148, 149) = color-neutral-400 | editor-foreground-color
+bases: 77 variables, 61 default, 16 changed
+  --bases-cards-background: rgb(0, 33, 41) = black | color-neutral-900
+  --bases-cards-cover-background: rgba(0, 45, 56, 0.4) = editor-inline-tooltip-background-color | md-codeblock-background-color
+  --bases-embed-border-color: rgba(100, 122, 130, 0.15) = border-color | editor-panel-border-color
+  --bases-filter-input-background: rgb(0, 20, 26) = color-neutral-950 | dropdown-menu-background
+  --bases-group-heading-property-color: rgba(253, 246, 226, 0.6) = button-text-color | kbd-color
+  --bases-kanban-card-background: rgb(0, 33, 41) = black | color-neutral-900
+  --bases-kanban-column-background: rgba(0, 45, 56, 0.4) = editor-inline-tooltip-background-color | md-codeblock-background-color
+  --bases-kanban-cover-background: rgb(0, 45, 56) = checkbox-background | color-neutral-800
+  --bases-table-border-color: rgba(100, 122, 130, 0.15) = border-color | editor-panel-border-color
+  --bases-table-cell-background-active: rgb(0, 33, 41) = black | color-neutral-900
+  --bases-table-cell-background-disabled: rgba(0, 45, 56, 0.4) = editor-inline-tooltip-background-color | md-codeblock-background-color
+  --bases-table-group-background: rgba(0, 45, 56, 0.4) = editor-inline-tooltip-background-color | md-codeblock-background-color
+  --bases-table-header-background: rgb(0, 33, 41) = black | color-neutral-900
+  --bases-table-header-color: rgba(253, 246, 226, 0.6) = button-text-color | kbd-color
+  --bases-table-summary-background: rgb(0, 33, 41) = black | color-neutral-900
+metadata: 46 variables, 41 default, 5 changed
+  --metadata-border-color: rgba(100, 122, 130, 0.15) = border-color | editor-panel-border-color
+  --metadata-divider-color: rgba(100, 122, 130, 0.15) = border-color | editor-panel-border-color
+  --metadata-input-text-color: rgb(131, 148, 149) = color-neutral-400 | editor-foreground-color
+  --metadata-label-text-color: rgba(253, 246, 226, 0.6) = button-text-color | kbd-color
+  --metadata-label-text-color-hover: rgba(253, 246, 226, 0.6) = button-text-color | kbd-color
+color-: 37 variables, 29 default, 8 changed
+  --color-accent: rgb(39, 139, 211) = blue | color-blue-500
+  --color-accent-1: rgb(65, 165, 222) (nearest blue dE 8.8)
+  --color-accent-2: rgb(93, 184, 229) (nearest tag-dark-default-circular-border-color dE 14.5)
+  --color-base-00: rgb(28, 28, 28) [default] (nearest color-neutral-950 dE 8.2)
+  --color-base-05: rgb(33, 33, 33) [default] (nearest color-neutral-950 dE 8.9)
+  --color-base-10: rgb(35, 35, 35) [default] (nearest color-neutral-950 dE 9.3)
+  --color-base-100: rgb(218, 218, 218) [default] (nearest tag-dark-default-active-text-color dE 6.4)
+  --color-base-20: rgb(40, 40, 40) [default] (nearest color-neutral-950 dE 10.3)
+  --color-base-25: rgb(46, 46, 46) [default] (nearest color-neutral-950 dE 11.6)
+  --color-base-30: rgb(51, 51, 51) [default] (nearest color-neutral-950 dE 12.9)
+  --color-base-35: rgb(63, 63, 63) [default] (nearest color-neutral-700 dE 14.1)
+  --color-base-40: rgb(85, 85, 85) [default] (nearest color-neutral-600 dE 12.1)
+  --color-base-50: rgb(102, 102, 102) [default] (nearest color-neutral-600 dE 9.4)
+  --color-base-60: rgb(153, 153, 153) [default] (nearest tag-dark-default-text-color dE 7.1)
+  --color-base-70: rgb(179, 179, 179) [default] (nearest color-neutral-200 dE 5.2)
+  --color-blue: rgb(2, 122, 255) [default] (nearest blue dE 8.4)
+  --color-cyan: rgb(83, 223, 221) [default] (nearest color-teal-500 dE 12.2)
+  --color-green: rgb(68, 207, 110) [default] (nearest color-teal-500 dE 18.5)
+  --color-orange: rgb(233, 151, 63) [default] (nearest color-yellow-500 dE 14.3)
+  --color-pink: rgb(250, 153, 205) [default] (nearest color-neutral-200 dE 16.9)
+  --color-purple: rgb(168, 130, 255) [default] (nearest color-purple-500 dE 10.7)
+  --color-red: rgb(251, 70, 76) [default] (nearest color-red-500 dE 8.9)
+  --color-yellow: rgb(224, 222, 113) [default] (nearest mermaid-note-text-color dE 7.8)
+
+### kanagawa-dragon
+canvas: 13 variables, 11 default, 2 changed
+  --canvas-background: rgb(30, 29, 26) = editor-background | editor-background-color
+  --canvas-card-label-color: rgba(197, 201, 197, 0.3) = disabled-text-color | sidebar-menu-action-color
+  --canvas-color: rgb(126, 126, 126) [default] (nearest editor-completion-detail-color dE 8.0)
+  --canvas-color-1: rgb(251, 70, 76) [default] (nearest mermaid-label-box-background-color dE 11.6)
+  --canvas-color-2: rgb(233, 151, 63) [default] (nearest md-inline-mark-underline-color dE 4.1)
+  --canvas-color-3: rgb(224, 222, 113) [default] (nearest editor-completion-label dE 12.7)
+  --canvas-color-4: rgb(68, 207, 110) [default] (nearest md-list-mark-3-color dE 12.0)
+  --canvas-color-5: rgb(83, 223, 221) [default] (nearest syntax-class-name-color dE 20.0)
+  --canvas-color-6: rgb(168, 130, 255) [default] (nearest blue dE 12.6)
+  --canvas-dot-pattern: rgb(51, 51, 51) [default] (nearest button-hover-background-color dE 2.8)
+graph: 8 variables, 4 default, 4 changed
+  --graph-line: rgb(63, 63, 63) [default] (nearest button-hover-background-color dE 2.8)
+  --graph-node: rgba(200, 192, 146, 0.7) = kbd-color | mde-preview-blockquote-text-color
+  --graph-node-attachment: rgb(224, 222, 113) [default] (nearest editor-completion-label dE 12.7)
+  --graph-node-focused: rgb(168, 188, 196) (nearest blue dE 7.0)
+  --graph-node-tag: rgb(68, 207, 110) [default] (nearest md-list-mark-3-color dE 12.0)
+  --graph-node-unresolved: rgba(197, 201, 197, 0.3) = disabled-text-color | sidebar-menu-action-color
+  --graph-text: rgba(197, 201, 197, 0.9) = dark-text-color | input-color
+bases: 77 variables, 61 default, 16 changed
+  --bases-cards-background: rgb(30, 29, 26) = editor-background | editor-background-color
+  --bases-cards-cover-background: rgba(24, 22, 22, 0.5) = kanagawa-preview-surface-subtle | md-codeblock-background-color
+  --bases-embed-border-color: rgba(98, 94, 91, 0.4) = border-color | editor-panel-border-color
+  --bases-filter-input-background: rgb(13, 12, 12) = dropdown-menu-background | editor-fold-placeholder-color
+  --bases-group-heading-property-color: rgba(200, 192, 146, 0.7) = kbd-color | mde-preview-blockquote-text-color
+  --bases-kanban-card-background: rgb(30, 29, 26) = editor-background | editor-background-color
+  --bases-kanban-column-background: rgba(24, 22, 22, 0.5) = kanagawa-preview-surface-subtle | md-codeblock-background-color
+  --bases-kanban-cover-background: rgb(24, 22, 22) = black | note-list-bar-background
+  --bases-table-border-color: rgba(98, 94, 91, 0.4) = border-color | editor-panel-border-color
+  --bases-table-cell-background-active: rgb(30, 29, 26) = editor-background | editor-background-color
+  --bases-table-cell-background-disabled: rgba(24, 22, 22, 0.5) = kanagawa-preview-surface-subtle | md-codeblock-background-color
+  --bases-table-group-background: rgba(24, 22, 22, 0.5) = kanagawa-preview-surface-subtle | md-codeblock-background-color
+  --bases-table-header-background: rgb(30, 29, 26) = editor-background | editor-background-color
+  --bases-table-header-color: rgba(200, 192, 146, 0.7) = kbd-color | mde-preview-blockquote-text-color
+  --bases-table-summary-background: rgb(30, 29, 26) = editor-background | editor-background-color
+metadata: 46 variables, 41 default, 5 changed
+  --metadata-border-color: rgba(98, 94, 91, 0.4) = border-color | editor-panel-border-color
+  --metadata-divider-color: rgba(98, 94, 91, 0.4) = border-color | editor-panel-border-color
+  --metadata-input-text-color: rgba(197, 201, 197, 0.9) = dark-text-color | input-color
+  --metadata-label-text-color: rgba(200, 192, 146, 0.7) = kbd-color | mde-preview-blockquote-text-color
+  --metadata-label-text-color-hover: rgba(200, 192, 146, 0.7) = kbd-color | mde-preview-blockquote-text-color
+color-: 37 variables, 29 default, 8 changed
+  --color-accent: rgb(140, 165, 177) = blue | checkbox-active-background
+  --color-accent-1: rgb(168, 188, 196) (nearest blue dE 7.0)
+  --color-accent-2: rgb(194, 209, 214) (nearest tag-dark-default-active-text-color dE 4.7)
+  --color-base-00: rgb(28, 28, 28) [default] (nearest editor-background dE 2.2)
+  --color-base-05: rgb(33, 33, 33) [default] (nearest editor-gutter-border-right-color dE 1.6)
+  --color-base-10: rgb(35, 35, 35) [default] (nearest editor-gutter-border-right-color dE 0.9)
+  --color-base-100: rgb(218, 218, 218) [default] (nearest derived-toggle-handle-color dE 5.4)
+  --color-base-20: rgb(40, 40, 40) [default] (nearest editor-gutter-border-right-color dE 0.6)
+  --color-base-25: rgb(46, 46, 46) [default] (nearest editor-gutter-border-right-color dE 2.5)
+  --color-base-30: rgb(51, 51, 51) [default] (nearest button-hover-background-color dE 2.8)
+  --color-base-35: rgb(63, 63, 63) [default] (nearest button-hover-background-color dE 2.8)
+  --color-base-40: rgb(85, 85, 85) [default] (nearest derived-fold-placeholder-border-color dE 4.3)
+  --color-base-50: rgb(102, 102, 102) [default] (nearest derived-fold-placeholder-border-color dE 3.7)
+  --color-base-60: rgb(153, 153, 153) [default] (nearest syntax-angle-bracket-color dE 3.8)
+  --color-base-70: rgb(179, 179, 179) [default] (nearest derived-toggle-handle-color dE 6.4)
+  --color-blue: rgb(2, 122, 255) [default] (nearest tag-dark-default-circular-border-color dE 19.0)
+  --color-cyan: rgb(83, 223, 221) [default] (nearest syntax-class-name-color dE 20.0)
+  --color-green: rgb(68, 207, 110) [default] (nearest md-list-mark-3-color dE 12.0)
+  --color-orange: rgb(233, 151, 63) [default] (nearest md-inline-mark-underline-color dE 4.1)
+  --color-pink: rgb(250, 153, 205) [default] (nearest pink dE 19.2)
+  --color-purple: rgb(168, 130, 255) [default] (nearest blue dE 12.6)
+  --color-red: rgb(251, 70, 76) [default] (nearest mermaid-label-box-background-color dE 11.6)
+  --color-yellow: rgb(224, 222, 113) [default] (nearest editor-completion-label dE 12.7)
+
+## Graph View renderer colours (view.renderer.colors)
+
+### none
+  fill: #b3b3b3 a=1
+  fillFocused: #a68af9 a=1
+  fillTag: #44cf6e a=1
+  fillUnresolved: #666666 a=0.5
+  fillAttachment: #e0de71 a=1
+  arrow: #dadada a=0.5
+  circle: #a68af9 a=1
+  line: #3f3f3f a=1
+  text: #dadada a=1
+  fillHighlight: #8a5cf5 a=1
+  lineHighlight: #8a5cf5 a=1
+
+### solarized-dark
+  fill: #fdf6e2 a=0.6 (nearest color-neutral-100 dE 3.2)
+  fillFocused: #41a5de a=1 (nearest blue dE 8.8)
+  fillTag: #44cf6e a=1 [default] (nearest color-teal-500 dE 18.5)
+  fillUnresolved: #fdf6e2 a=0.15 (nearest color-neutral-100 dE 3.2)
+  fillAttachment: #e0de71 a=1 [default] (nearest mermaid-note-text-color dE 7.8)
+  arrow: #839495 a=0.5 = color-neutral-400 | editor-foreground-color
+  circle: #41a5de a=1 (nearest blue dE 8.8)
+  line: #3f3f3f a=1 [default] (nearest color-neutral-700 dE 14.1)
+  text: #839495 a=1 = color-neutral-400 | editor-foreground-color
+  fillHighlight: #278bd3 a=1 = blue | color-blue-500
+  lineHighlight: #278bd3 a=1 = blue | color-blue-500
+
+### kanagawa-dragon
+  fill: #c8c092 a=0.7 = editor-completion-label | editor-inline-tooltip-color
+  fillFocused: #a8bcc4 a=1 (nearest blue dE 7.0)
+  fillTag: #44cf6e a=1 [default] (nearest md-list-mark-3-color dE 12.0)
+  fillUnresolved: #c5c9c5 a=0.15 = derived-toggle-handle-color | editor-caret-color
+  fillAttachment: #e0de71 a=1 [default] (nearest editor-completion-label dE 12.7)
+  arrow: #c5c9c5 a=0.45 = derived-toggle-handle-color | editor-caret-color
+  circle: #a8bcc4 a=1 (nearest blue dE 7.0)
+  line: #3f3f3f a=1 [default] (nearest button-hover-background-color dE 2.8)
+  text: #c5c9c5 a=0.9 = derived-toggle-handle-color | editor-caret-color
+  fillHighlight: #8ca5b1 a=1 = blue | checkbox-active-background
+  lineHighlight: #8ca5b1 a=1 = blue | checkbox-active-background
+
+## Element colours (visible colours only; text colour for leaf text; borders only with width > 0)
+
+### solarized-dark
+
+properties/live: 51 element signatures (0 without a counterpart under no theme); visible colours: 15 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+properties/reading: 51 element signatures (0 without a counterpart under no theme); visible colours: 15 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+canvas: 85 element signatures (26 without a counterpart under no theme); visible colours: 12 in the palette, 10 default-left off-palette, 8 changed off-palette
+  default-left, off-palette:
+    fill rgb(0, 0, 0)  (nearest color-neutral-950 dE 8.2)  <- svg.canvas-background, pattern, svg.canvas-edges
+    fill rgb(51, 51, 51)  (nearest color-neutral-950 dE 12.9)  <- circle
+    stroke rgb(126, 126, 126)  (nearest color-neutral-500 dE 9.6)  <- path.canvas-display-path, polygon.canvas-path-end
+    stroke rgb(224, 222, 113)  (nearest mermaid-note-text-color dE 7.8)  <- path.canvas-display-path, polygon.canvas-path-end
+    fill rgb(126, 126, 126)  (nearest color-neutral-500 dE 9.6)  <- polygon.canvas-path-end
+    fill rgb(224, 222, 113)  (nearest mermaid-note-text-color dE 7.8)  <- polygon.canvas-path-end
+    border-top-color rgb(126, 126, 126)  (nearest color-neutral-500 dE 9.6)  <- div.canvas-node-container, div.canvas-node-container
+    border-right-color rgb(126, 126, 126)  (nearest color-neutral-500 dE 9.6)  <- div.canvas-node-container, div.canvas-node-container
+    border-bottom-color rgb(126, 126, 126)  (nearest color-neutral-500 dE 9.6)  <- div.canvas-node-container, div.canvas-node-container
+    border-left-color rgb(126, 126, 126)  (nearest color-neutral-500 dE 9.6)  <- div.canvas-node-container, div.canvas-node-container
+  changed, off-palette:
+    stroke rgb(126, 126, 126)  (nearest color-neutral-500 dE 9.6)  <- svg.lucide-align-left.svg-icon, path
+    stroke rgb(255, 136, 0)  (nearest color-yellow-500 dE 18.7)  <- svg.lucide-align-left.svg-icon, path
+    stroke rgb(251, 70, 76)  (nearest color-red-500 dE 8.9)  <- svg.lucide-align-left.svg-icon, path
+    stroke rgb(233, 151, 63)  (nearest color-yellow-500 dE 14.3)  <- svg.lucide-align-left.svg-icon, path
+    stroke rgb(224, 222, 113)  (nearest mermaid-note-text-color dE 7.8)  <- svg.lucide-align-left.svg-icon, path
+    stroke rgb(68, 207, 110)  (nearest color-teal-500 dE 18.5)  <- svg.lucide-align-left.svg-icon, path
+    stroke rgb(83, 223, 221)  (nearest color-teal-500 dE 12.2)  <- svg.lucide-align-left.svg-icon, path
+    stroke rgb(168, 130, 255)  (nearest color-purple-500 dE 10.7)  <- svg.lucide-align-left.svg-icon, path
+
+bases/UI Table.base: 65 element signatures (2 without a counterpart under no theme); visible colours: 8 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+bases/UI Cards.base: 59 element signatures (2 without a counterpart under no theme); visible colours: 7 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+graph: 18 element signatures (0 without a counterpart under no theme); visible colours: 7 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+dock/search: 37 element signatures (1 without a counterpart under no theme); visible colours: 12 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+dock/backlink: 40 element signatures (2 without a counterpart under no theme); visible colours: 7 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+dock/outline: 24 element signatures (0 without a counterpart under no theme); visible colours: 5 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+dock/tag: 26 element signatures (0 without a counterpart under no theme); visible colours: 5 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+### kanagawa-dragon
+
+properties/live: 51 element signatures (0 without a counterpart under no theme); visible colours: 16 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+properties/reading: 51 element signatures (0 without a counterpart under no theme); visible colours: 15 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+canvas: 85 element signatures (26 without a counterpart under no theme); visible colours: 12 in the palette, 10 default-left off-palette, 8 changed off-palette
+  default-left, off-palette:
+    fill rgb(0, 0, 0)  (nearest dropdown-menu-background dE 2.0)  <- svg.canvas-background, pattern, svg.canvas-edges
+    fill rgb(51, 51, 51)  (nearest button-hover-background-color dE 2.8)  <- circle
+    stroke rgb(126, 126, 126)  (nearest editor-completion-detail-color dE 8.0)  <- path.canvas-display-path, polygon.canvas-path-end
+    stroke rgb(224, 222, 113)  (nearest editor-completion-label dE 12.7)  <- path.canvas-display-path, polygon.canvas-path-end
+    fill rgb(126, 126, 126)  (nearest editor-completion-detail-color dE 8.0)  <- polygon.canvas-path-end
+    fill rgb(224, 222, 113)  (nearest editor-completion-label dE 12.7)  <- polygon.canvas-path-end
+    border-top-color rgb(126, 126, 126)  (nearest editor-completion-detail-color dE 8.0)  <- div.canvas-node-container, div.canvas-node-container
+    border-right-color rgb(126, 126, 126)  (nearest editor-completion-detail-color dE 8.0)  <- div.canvas-node-container, div.canvas-node-container
+    border-bottom-color rgb(126, 126, 126)  (nearest editor-completion-detail-color dE 8.0)  <- div.canvas-node-container, div.canvas-node-container
+    border-left-color rgb(126, 126, 126)  (nearest editor-completion-detail-color dE 8.0)  <- div.canvas-node-container, div.canvas-node-container
+  changed, off-palette:
+    stroke rgb(126, 126, 126)  (nearest editor-completion-detail-color dE 8.0)  <- svg.lucide-align-left.svg-icon, path
+    stroke rgb(255, 136, 0)  (nearest md-inline-mark-underline-color dE 5.5)  <- svg.lucide-align-left.svg-icon, path
+    stroke rgb(251, 70, 76)  (nearest mermaid-label-box-background-color dE 11.6)  <- svg.lucide-align-left.svg-icon, path
+    stroke rgb(233, 151, 63)  (nearest md-inline-mark-underline-color dE 4.1)  <- svg.lucide-align-left.svg-icon, path
+    stroke rgb(224, 222, 113)  (nearest editor-completion-label dE 12.7)  <- svg.lucide-align-left.svg-icon, path
+    stroke rgb(68, 207, 110)  (nearest md-list-mark-3-color dE 12.0)  <- svg.lucide-align-left.svg-icon, path
+    stroke rgb(83, 223, 221)  (nearest syntax-class-name-color dE 20.0)  <- svg.lucide-align-left.svg-icon, path
+    stroke rgb(168, 130, 255)  (nearest blue dE 12.6)  <- svg.lucide-align-left.svg-icon, path
+
+bases/UI Table.base: 65 element signatures (2 without a counterpart under no theme); visible colours: 8 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+bases/UI Cards.base: 59 element signatures (2 without a counterpart under no theme); visible colours: 7 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+graph: 18 element signatures (0 without a counterpart under no theme); visible colours: 7 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+dock/search: 37 element signatures (1 without a counterpart under no theme); visible colours: 12 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+dock/backlink: 40 element signatures (2 without a counterpart under no theme); visible colours: 7 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+dock/outline: 25 element signatures (0 without a counterpart under no theme); visible colours: 6 in the palette, 0 default-left off-palette, 0 changed off-palette
+
+dock/tag: 26 element signatures (0 without a counterpart under no theme); visible colours: 5 in the palette, 0 default-left off-palette, 0 changed off-palette
