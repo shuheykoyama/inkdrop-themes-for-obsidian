@@ -1,0 +1,22 @@
+/* Mapping: Canvas and Graph View colours (research/14 §6.170). Obsidian-only UI with no Inkdrop counterpart: the
+   Obsidian defaults (red, orange, ... and greys) are replaced by the theme's own palette. The shared
+   --color-<name> variables stay untouched (Callouts, tags and Mermaid read them too); only the variables of
+   these two views are set. Same semantic colours in both themes, each resolved from its own palette. */
+.theme-dark {
+  --canvas-color-1: var(--ink-red);
+  --canvas-color-2: var(--ink-orange);
+  --canvas-color-3: var(--ink-yellow);
+  --canvas-color-4: var(--ink-green);
+  --canvas-color-5: var(--ink-teal);
+  --canvas-color-6: var(--ink-violet);
+  --canvas-dot-pattern: var(--ink-solid-border-color);
+  --graph-line: var(--ink-strong-border-color);
+  --graph-node-tag: var(--ink-green);
+  --graph-node-attachment: var(--ink-yellow);
+}
+
+/* The default node colour (uncoloured nodes, edges): app.css sets it on body.theme-dark (0,1,1), which a plain
+   .theme-dark rule cannot beat; .theme-dark:is(body) has the same specificity and comes later. */
+.theme-dark:is(body) {
+  --canvas-color: var(--ink-disabled-text-color);
+}

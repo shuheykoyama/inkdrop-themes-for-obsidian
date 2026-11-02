@@ -1,5 +1,5 @@
 {
-  "_comment": "Runtime checks on the real desktop app (macOS). Format: research/14 §3.3. Selectors follow the Q-D21 PoC (research/13 T3) and V-04 (research/12). The runner measures opaque, then translucent, then opaque again (the second pass re-runs every opaque check).",
+  "_comment": "Runtime checks on the real desktop app (macOS). Format: research/14 \u00a73.3. Selectors follow the Q-D21 PoC (research/13 T3) and V-04 (research/12). The runner measures opaque, then translucent, then opaque again (the second pass re-runs every opaque check).",
   "checks": [
     {
       "id": "desktop.ribbon.background",
@@ -132,7 +132,7 @@
         "opaque"
       ],
       "expect": "hidden",
-      "reason": "Hidden frame (the macOS default) does not display .titlebar (research/11 §7); its colour shows through the top tab strips, checked above"
+      "reason": "Hidden frame (the macOS default) does not display .titlebar (research/11 \u00a77); its colour shows through the top tab strips, checked above"
     },
     {
       "id": "desktop.titlebar.custom-frame",
@@ -3719,6 +3719,174 @@
       ],
       "kind": "var",
       "token": "--ink-popup-background"
+    },
+    {
+      "id": "ui.canvas-graph.canvas-color.var",
+      "requirement": "ui.canvas-graph",
+      "selector": "body",
+      "document": "main",
+      "property": "--canvas-color",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-disabled-text-color"
+    },
+    {
+      "id": "ui.canvas-graph.canvas-color-1.var",
+      "requirement": "ui.canvas-graph",
+      "selector": "body",
+      "document": "main",
+      "property": "--canvas-color-1",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-red"
+    },
+    {
+      "id": "ui.canvas-graph.canvas-color-2.var",
+      "requirement": "ui.canvas-graph",
+      "selector": "body",
+      "document": "main",
+      "property": "--canvas-color-2",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-orange",
+      "themes": [
+        "solarized-dark"
+      ]
+    },
+    {
+      "id": "ui.canvas-graph.canvas-color-2.kd.var",
+      "requirement": "ui.canvas-graph",
+      "selector": "body",
+      "document": "main",
+      "property": "--canvas-color-2",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "themes": [
+        "kanagawa-dragon"
+      ],
+      "token": "--ink-syntax-changed-color"
+    },
+    {
+      "id": "ui.canvas-graph.canvas-color-3.var",
+      "requirement": "ui.canvas-graph",
+      "selector": "body",
+      "document": "main",
+      "property": "--canvas-color-3",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-yellow"
+    },
+    {
+      "id": "ui.canvas-graph.canvas-color-4.var",
+      "requirement": "ui.canvas-graph",
+      "selector": "body",
+      "document": "main",
+      "property": "--canvas-color-4",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-green",
+      "themes": [
+        "solarized-dark"
+      ]
+    },
+    {
+      "id": "ui.canvas-graph.canvas-color-4.kd.var",
+      "requirement": "ui.canvas-graph",
+      "selector": "body",
+      "document": "main",
+      "property": "--canvas-color-4",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "themes": [
+        "kanagawa-dragon"
+      ],
+      "token": "--ink-md-list-mark-3-color"
+    },
+    {
+      "id": "ui.canvas-graph.canvas-color-5.var",
+      "requirement": "ui.canvas-graph",
+      "selector": "body",
+      "document": "main",
+      "property": "--canvas-color-5",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-teal"
+    },
+    {
+      "id": "ui.canvas-graph.canvas-color-6.var",
+      "requirement": "ui.canvas-graph",
+      "selector": "body",
+      "document": "main",
+      "property": "--canvas-color-6",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-violet"
+    },
+    {
+      "id": "ui.canvas-graph.canvas-dot-pattern.var",
+      "requirement": "ui.canvas-graph",
+      "selector": "body",
+      "document": "main",
+      "property": "--canvas-dot-pattern",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-solid-border-color"
+    },
+    {
+      "id": "ui.canvas-graph.graph-line.var",
+      "requirement": "ui.canvas-graph",
+      "selector": "body",
+      "document": "main",
+      "property": "--graph-line",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-strong-border-color"
+    },
+    {
+      "id": "ui.canvas-graph.graph-node-tag.var",
+      "requirement": "ui.canvas-graph",
+      "selector": "body",
+      "document": "main",
+      "property": "--graph-node-tag",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-green"
+    },
+    {
+      "id": "ui.canvas-graph.graph-node-attachment.var",
+      "requirement": "ui.canvas-graph",
+      "selector": "body",
+      "document": "main",
+      "property": "--graph-node-attachment",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "var",
+      "token": "--ink-yellow"
     }
   ]
 }

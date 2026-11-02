@@ -639,6 +639,15 @@
       "mandatory": true
     },
     {
+      "id": "ui.canvas-graph",
+      "qd": "Q-D1",
+      "description": "Canvas (default node colour and edges, dot background, colours 1-6) and Graph View (line, tag and attachment nodes) take the theme palette instead of Obsidian's defaults. Obsidian-only UI with no Inkdrop counterpart (research/14 §6.170): the variables are checked, not the look",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": false
+    },
+    {
       "id": "qd23.active-line",
       "qd": "Q-D23",
       "description": "Active line (Source mode and Live Preview, line numbers on or off) = Inkdrop --editor-active-line-background-color, layered over the line's own background; other lines unpainted",

@@ -1,0 +1,12 @@
+/* Theme exception (§1.7): Canvas colours 2 (orange) and 4 (green) in Kanagawa Dragon (research/14 §6.174).
+   The shared mapping (common/mapping/canvas-graph.css) gives every Canvas colour the palette colour of its name
+   (--ink-orange, --ink-green, ...). Kanagawa Dragon's own orange and green have chroma 20 and 18 in CIELAB, so a 1px
+   node border in them reads as grey next to an uncoloured node. The same palette's autumn yellow (hue 33deg, an
+   orange) and spring green keep the meaning and have chroma 45: the colours Kanagawa Dragon uses for changed text
+   (--syntax-changed-color) and the third list marker (--md-list-mark-3-color). Colours 3, 5 and 6 stay: the palette
+   has no more saturated yellow, aqua or violet (research/evidence/phase3-step11/11o-kd-canvas-colours).
+   Same selector as the body rule in the shared mapping, so it comes later at equal specificity. */
+.theme-dark:is(body) {
+  --canvas-color-2: var(--ink-syntax-changed-color);
+  --canvas-color-4: var(--ink-md-list-mark-3-color);
+}
