@@ -1,0 +1,83 @@
+diff --git a/src/themes/kanagawa-dragon.css b/src/themes/kanagawa-dragon.css
+index 8e7ced8..46926a0 100644
+--- a/src/themes/kanagawa-dragon.css
++++ b/src/themes/kanagawa-dragon.css
+@@ -20,3 +20,4 @@
+ @import "../common/platform/mobile.css";
+ @import "../common/mapping/canvas-graph.css";
+ @import "./kanagawa-dragon/syntax.css";
++@import "./kanagawa-dragon/canvas.css";
+diff --git a/tests/spec/runtime/desktop.json b/tests/spec/runtime/desktop.json
+index 2d541ff..d177769 100644
+--- a/tests/spec/runtime/desktop.json
++++ b/tests/spec/runtime/desktop.json
+@@ -1,5 +1,5 @@
+ {
+-  "_comment": "Runtime checks on the real desktop app (macOS). Format: research/14 §3.3. Selectors follow the Q-D21 PoC (research/13 T3) and V-04 (research/12). The runner measures opaque, then translucent, then opaque again (the second pass re-runs every opaque check).",
++  "_comment": "Runtime checks on the real desktop app (macOS). Format: research/14 \u00a73.3. Selectors follow the Q-D21 PoC (research/13 T3) and V-04 (research/12). The runner measures opaque, then translucent, then opaque again (the second pass re-runs every opaque check).",
+   "checks": [
+     {
+       "id": "desktop.ribbon.background",
+@@ -132,7 +132,7 @@
+         "opaque"
+       ],
+       "expect": "hidden",
+-      "reason": "Hidden frame (the macOS default) does not display .titlebar (research/11 §7); its colour shows through the top tab strips, checked above"
++      "reason": "Hidden frame (the macOS default) does not display .titlebar (research/11 \u00a77); its colour shows through the top tab strips, checked above"
+     },
+     {
+       "id": "desktop.titlebar.custom-frame",
+@@ -3754,7 +3754,25 @@
+         "opaque"
+       ],
+       "kind": "var",
+-      "token": "--ink-orange"
++      "token": "--ink-orange",
++      "themes": [
++        "solarized-dark"
++      ]
++    },
++    {
++      "id": "ui.canvas-graph.canvas-color-2.kd.var",
++      "requirement": "ui.canvas-graph",
++      "selector": "body",
++      "document": "main",
++      "property": "--canvas-color-2",
++      "appearance": [
++        "opaque"
++      ],
++      "kind": "var",
++      "themes": [
++        "kanagawa-dragon"
++      ],
++      "token": "--ink-syntax-changed-color"
+     },
+     {
+       "id": "ui.canvas-graph.canvas-color-3.var",
+@@ -3778,7 +3796,25 @@
+         "opaque"
+       ],
+       "kind": "var",
+-      "token": "--ink-green"
++      "token": "--ink-green",
++      "themes": [
++        "solarized-dark"
++      ]
++    },
++    {
++      "id": "ui.canvas-graph.canvas-color-4.kd.var",
++      "requirement": "ui.canvas-graph",
++      "selector": "body",
++      "document": "main",
++      "property": "--canvas-color-4",
++      "appearance": [
++        "opaque"
++      ],
++      "kind": "var",
++      "themes": [
++        "kanagawa-dragon"
++      ],
++      "token": "--ink-md-list-mark-3-color"
+     },
+     {
+       "id": "ui.canvas-graph.canvas-color-5.var",

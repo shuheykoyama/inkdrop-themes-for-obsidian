@@ -1,0 +1,62 @@
+background rgb(30,29,26); uncoloured node colour (over the background) rgb(80,81,77)
+
+name  | hsl | rgb | chroma | contrast | dE to uncoloured | dE to current of its slot
+
+slot 2 (current kanagawa-dragon-orange)
+  kanagawa-dragon-orange   hsl(23 29% 60%) rgb(183,146,123) C  20  contrast 5.95  dE-uncoloured  33.2  dE-current   0.0
+  kanagawa-autumn-yellow   hsl(33 64% 62%) rgb(220,164,96)  C  45  contrast 7.64  dE-uncoloured  42.5  dE-current  13.1
+  kanagawa-ronin-yellow    hsl(30 100% 62%) rgb(255,158,61)  C  69  contrast 8.20  dE-uncoloured  46.6  dE-current  18.3
+
+slot 3 (current kanagawa-dragon-yellow)
+  kanagawa-dragon-yellow   hsl(41 33% 65%) rgb(195,177,136) C  23  contrast 8.00  dE-uncoloured  39.8  dE-current   0.0
+  kanagawa-old-white       hsl(51 33% 68%) rgb(200,192,146) C  25  contrast 9.16  dE-uncoloured  42.7  dE-current   5.5
+
+slot 4 (current kanagawa-dragon-green2)
+  kanagawa-dragon-green2   hsl(91 13% 54%) rgb(137,153,122) C  18  contrast 5.54  dE-uncoloured  29.4  dE-current   0.0
+  kanagawa-spring-green    hsl(87 37% 58%) rgb(152,188,108) C  45  contrast 7.82  dE-uncoloured  42.4  dE-current  14.0
+  kanagawa-autumn-green    hsl(103 17% 50%) rgb(118,149,106) C  27  contrast 5.04  dE-uncoloured  28.9  dE-current   5.7
+
+slot 5 (current kanagawa-dragon-aqua)
+  kanagawa-dragon-aqua     hsl(175 11% 60%) rgb(142,164,162) C   8  contrast 6.41  dE-uncoloured  32.6  dE-current   0.0
+  kanagawa-wave-aqua1      hsl(163 17% 50%) rgb(106,149,137) C  17  contrast 5.04  dE-uncoloured  27.6  dE-current  10.0
+
+slot 6 (current kanagawa-dragon-violet)
+  kanagawa-dragon-violet   hsl(222 15% 60%) rgb(138,147,168) C  12  contrast 5.47  dE-uncoloured  28.9  dE-current   0.0
+  kanagawa-dragon-teal     hsl(220 18% 65%) rgb(150,160,182) C  13  contrast 6.42  dE-uncoloured  33.9  dE-current   4.1
+  kanagawa-dragon-pink     hsl(296 8% 61%) rgb(162,148,164) C  10  contrast 5.87  dE-uncoloured  31.8  dE-current  10.5
+
+current set: closest pair 4-5 dE 12.3, closest to uncoloured dE 28.9
+
+best sets by number of changed slots (slot: colour); pair = closest pair among the six, vs uncoloured = closest to the uncoloured node colour
+  2 changed: 4:kanagawa-spring-green, 6:kanagawa-dragon-pink -> pair 2-3 dE 13.9, vs uncoloured dE 31.8
+  3 changed: 2:kanagawa-ronin-yellow, 4:kanagawa-spring-green, 6:kanagawa-dragon-pink -> pair 3-4 dE 16.6, vs uncoloured dE 31.8
+  4 changed: 2:kanagawa-autumn-yellow, 3:kanagawa-old-white, 4:kanagawa-spring-green, 6:kanagawa-dragon-teal -> pair 3-4 dE 13.2, vs uncoloured dE 32.6
+
+chroma C and Lab hue h of the uncoloured node colour and each candidate (a border with C below ~15 reads as grey)
+  uncoloured: C 3
+  kanagawa-dragon-red      C  35  h  29
+  kanagawa-dragon-orange   C  20  h  59
+  kanagawa-autumn-yellow   C  45  h  73
+  kanagawa-ronin-yellow    C  69  h  65
+  kanagawa-dragon-yellow   C  23  h  90
+  kanagawa-old-white       C  25  h 100
+  kanagawa-dragon-green2   C  18  h 129
+  kanagawa-spring-green    C  45  h 125
+  kanagawa-autumn-green    C  27  h 135
+  kanagawa-dragon-aqua     C   8  h 191
+  kanagawa-wave-aqua1      C  17  h 175
+  kanagawa-dragon-violet   C  12  h 276
+  kanagawa-dragon-teal     C  13  h 275
+  kanagawa-dragon-pink     C  10  h 321
+
+current: 1=dragon-red, 2=dragon-orange, 3=dragon-yellow, 4=dragon-green2, 5=dragon-aqua, 6=dragon-violet
+  chroma: 1:35 2:20 3:23 4:18 5:8 6:12
+  pairwise dE2000: 1-2:14 1-3:27 1-4:36 1-5:35 1-6:27 2-3:14 2-4:24 2-5:25 2-6:23 3-4:16 3-5:20 3-6:28 4-5:12 4-6:24 5-6:14
+
+proposed (2 and 4 only): 1=dragon-red, 2=autumn-yellow, 3=dragon-yellow, 4=spring-green, 5=dragon-aqua, 6=dragon-violet
+  chroma: 1:35 2:45 3:23 4:45 5:8 6:12
+  pairwise dE2000: 1-2:25 1-3:27 1-4:46 1-5:35 1-6:27 2-3:11 2-4:27 2-5:29 2-6:33 3-4:17 3-5:20 3-6:28 4-5:22 4-6:36 5-6:14
+
+alternative (2 loud): 1=dragon-red, 2=ronin-yellow, 3=dragon-yellow, 4=spring-green, 5=dragon-aqua, 6=dragon-violet
+  chroma: 1:35 2:69 3:23 4:45 5:8 6:12
+  pairwise dE2000: 1-2:26 1-3:27 1-4:46 1-5:35 1-6:27 2-3:19 2-4:36 2-5:34 2-6:37 3-4:17 3-5:20 3-6:28 4-5:22 4-6:36 5-6:14
