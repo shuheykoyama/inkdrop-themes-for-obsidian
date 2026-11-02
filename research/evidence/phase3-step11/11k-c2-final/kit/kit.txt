@@ -1,0 +1,8 @@
+source commit: 5a9e5b1 (clean tree, fresh clone)
+kit id: 79751c34-af7d-495d-a88a-037648f82809
+InkdropThemeTest.zip SHA-256: 9271b378ef256b8ca1eab4ec4d75ac2df8ab50d5543c331f7c6acb427202788e
+theme.css SHA-256: kanagawa-dragon b784835fed4a26f7d1f2f39a867e4ed8bcbe084bb9e801b8c9ac4aac6b1adee9, solarized-dark 8f2c6b48907883530c1c5095af0c0ace752278e2212742e6de8fb34559ec2e09
+runner and oracle: tests/runtime/lib/syntax.mjs, tests/spec/syntax.json, tests/runtime/code-tokens.js at 5a9e5b1 (the plugin runs the page-side scripts; judging on the Mac with tests/device/judge.mjs)
+jobs 80 (probe 66, extra 32), checks 480; on a phone 66 jobs, on a tablet 28; tour steps phone 38, tablet 18
+built "2026-11-02T05:46:29.490Z",
+build self-test: all 34 checks PASS (kit-self-test-build.txt); plugin 63 and dry-run 7 checks PASS (kit-self-test-plugin.txt, kit-self-test-dry.txt)

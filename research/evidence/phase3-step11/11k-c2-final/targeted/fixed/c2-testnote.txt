@@ -1,0 +1,59 @@
+== kanagawa-dragon Code blocks.md: lang chars inkdropBefore inkdropAfter fixed broke stillDiffering changed
+language-js is-loaded: 315 242 273 31 0 0 31
+    fixed: tok-variable-name tok-definition x19, tok-variable-name x12
+language-ts is-loaded: 174 106 141 35 0 21 56
+    fixed: tok-variable-name tok-definition x7, tok-name x20, tok-variable-name x8
+    still differing: tok-property-name tok-definition x7, tok-name tok-definition x5, tok-property-name x9
+language-python is-loaded: 197 132 174 42 0 0 42
+    fixed: tok-variable-name x42
+language-css is-loaded: 158 140 140 0 0 0 0
+language-html is-loaded: 111 103 111 8 0 0 8
+    fixed: tok-content x8
+language-json is-loaded: 84 84 84 0 0 0 0
+language-sh is-loaded: 141 132 132 0 0 0 0
+language-go is-loaded: 139 107 126 19 0 9 28
+    fixed: tok-variable-name tok-definition x7, tok-name x5, tok-variable-name x7
+    still differing: tok-name tok-definition x5, tok-property-name x4
+language-rust is-loaded: 203 160 160 0 0 0 0
+language-yaml is-loaded: 91 77 91 14 0 0 14
+    fixed: tok-content x14
+language-sql is-loaded: 103 61 93 32 0 0 32
+    fixed: tok-name x32
+language-markdown is-loaded: 75 60 73 13 0 0 13
+    fixed: tok-content x9, tok-list tok-content x4
+language-javascript is-loaded: 30 27 29 2 0 0 2
+    fixed: tok-variable-name tok-definition x1, tok-variable-name x1
+language-typescript is-loaded: 37 33 35 2 0 0 2
+    fixed: tok-variable-name tok-definition x1, tok-variable-name x1
+language-py is-loaded: 23 2 2 0 0 0 0
+language-bash is-loaded: 20 19 19 0 0 0 0
+language-shell is-loaded: 19 19 19 0 0 0 0
+language-zsh is-loaded: 26 7 7 0 0 0 0
+language-yml is-loaded: 14 14 14 0 0 0 0
+language-rs is-loaded: 19 19 19 0 0 0 0
+language-md is-loaded: 35 32 35 3 0 0 3
+    fixed: tok-content x3
+TOTAL kanagawa-dragon Code blocks.md (language blocks) {"chars":2014,"before":1576,"after":1777,"fixed":201,"broke":0,"moved":30,"changed":231}
+== solarized-dark Code blocks.md: lang chars inkdropBefore inkdropAfter fixed broke stillDiffering changed
+language-js is-loaded: 315 242 242 0 0 0 0
+language-ts is-loaded: 174 106 106 0 0 0 0
+language-python is-loaded: 197 120 120 0 0 0 0
+language-css is-loaded: 158 140 140 0 0 0 0
+language-html is-loaded: 111 111 111 0 0 0 0
+language-json is-loaded: 84 84 84 0 0 0 0
+language-sh is-loaded: 141 132 132 0 0 0 0
+language-go is-loaded: 139 101 101 0 0 0 0
+language-rust is-loaded: 203 150 150 0 0 0 0
+language-yaml is-loaded: 91 91 91 0 0 0 0
+language-sql is-loaded: 103 61 61 0 0 0 0
+language-markdown is-loaded: 75 73 73 0 0 0 0
+language-javascript is-loaded: 30 27 27 0 0 0 0
+language-typescript is-loaded: 37 33 33 0 0 0 0
+language-py is-loaded: 23 2 2 0 0 0 0
+language-bash is-loaded: 20 19 19 0 0 0 0
+language-shell is-loaded: 19 19 19 0 0 0 0
+language-zsh is-loaded: 26 7 7 0 0 0 0
+language-yml is-loaded: 14 14 14 0 0 0 0
+language-rs is-loaded: 19 19 19 0 0 0 0
+language-md is-loaded: 35 35 35 0 0 0 0
+TOTAL solarized-dark Code blocks.md (language blocks) {"chars":2014,"before":1586,"after":1586,"fixed":0,"broke":0,"moved":0,"changed":0}

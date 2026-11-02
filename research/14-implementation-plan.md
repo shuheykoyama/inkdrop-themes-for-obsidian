@@ -8402,3 +8402,31 @@ Q-D10 は変えていない。BLOCKED も解いていない。
 - §6.157〜§6.161 の独立レビュー（KD の C2 の部分統合の結果、js・ts・python・go の採否、G4 の最終の確認）。
 - js・ts・python・go の採否が決まったら、KD の C2 の CSS を確定し、1.14.4・1.14.5 の E39・E43 と iPhone の証跡をそろえてから、ゲートの入力を差し替える。そのあと、ユーザーの「準備できた」を待って G4・V-38 を行う。
 - 正式なリリースの判定は NOT MET のまま。SD の C2、DIFF の受け入れ、Q-D10 の変更、`verifiedBy` の追加、G8 はしていない。
+
+### 6.163 §6.158〜§6.162 の独立レビューの結果（`255ecaa`・`c3ce6fd`・`b5cb8e3`・`aafedf1`・`e692d4b`）
+
+- KD の C2 の部分統合、G4 の最終の補強、V-38 の方針は APPROVE。js・ts・python・go の正式な統合は APPROVE WITH CONDITIONS。リリースは NOT MET のまま。
+- 条件: 既存の `src/themes/kanagawa-dragon/syntax.css` に足す（新しいテーマの CSS ファイルは作らない）。`py` は対象外。SD は変えない。CSS とオラクルは独立した実装のコミットにする。プロパティ名の悪化は既知の忠実度の限界として記録し、Q-D の変更にしない。1.14.5 E39.5.1 の対象限定の検証のあと、macOS 4 環境のフル回帰、問題がなければ iPhone の新しいキット。
+
+### 6.164 js・ts・python・go の統合（`5a9e5b1`、`evidence/phase3-step11/11k-c2-final/`）
+
+- `src/themes/kanagawa-dragon/syntax.css` の最初の規則に、js・javascript・ts・typescript・python・go の `code` の素の文字を `--ink-syntax-variable-name-color` にする規則を足した。規則のないトークンの span は `--code-normal` のまま。既存のトークンの規則と SD の `theme.css` は変えていない。
+- `tests/spec/syntax.json` の `reading.bare` に同じ言語を足した。
+- 対象限定の検証（1.14.5 E39.5.1）で、最初の実行は `syn.reading.classes` が 6 件 FAIL した。`py` を CSS の対象外にしたのに、検査が `py` と `python` を同じ組にしていて、素の文字の組が MIXED になったため。`tests/runtime/lib/syntax.mjs` の組分け（`bareLang`）を直した。自己テストに 1 例を足した（修正を外すとこの例だけ FAIL する）。直したあとは FAIL 0（3871 件）、自己テスト 791 件が宣言どおり。
+- 一致文字数（実測の Inkdrop 6.2.0 との比較）: テストのノート 1646 → 1777（js・ts・python・go で +131、外れた 0）。部分統合の前からは 1576 → 1777（+201）。
+- **既知の限界（プロパティ名）**: Prism がトークンにしないプロパティ名が、素の文字の新しい色になる。Inkdrop の色は rgb(195, 177, 136)。テストのノートの 20 文字と、一般的なコードの 96 文字で、ΔE2000 が約 5.46 → 15.71 になる。Q-D の変更ではなく、既知の忠実度の限界として記録する。許容差、判定の規則、`accepts`、Q-D は変えない。`qd13.fidelity` の DIFF は記録したまま。一致の数と、ΔE の合計、プロパティ名の色の差を並べて残す。
+- `py` のブロックは、試験の前から 11/78 文字しか合わない（Inkdrop 6.2.0 が `py` を言語と見なさない）。C2 とは別の差。
+
+### 6.165 G4 の補強（さらに）
+
+- `11i-g4v38/g4.mjs`: 全画面の中と、出たあとにも、12 の面が読めることを要る。読めなければ ABORTED（exit 1）。自己テストは 20 例、検出力の確認は 4 つの変異（FAIL が 7・7・1・2 例）。
+- 全画面の前の確認、COMPLETE の条件、Space の復元は §6.160 のまま。Space の数が同じでも、完全な復元の証明にはならない。測定の最後にユーザーが Mission Control を見る。
+
+### 6.166 回帰、キット、次の作業
+
+- macOS 4 環境のフル回帰（`5a9e5b1` の新しいクローン。`11k-c2-final/regression/`）:
+  - 1.14.4 E39.5.1・E43.7.7、1.14.5 E39.5.1・E43.8.3。どれも run1・run2 は 3871 件で FAIL 0、自己テストは 791 件が宣言どおり、frame は 31 件 PASS、隔離 Obsidian の停止と E43 の installer の復元を確認した。
+  - C3 の基準（`f7dd00a`）との比較は、4 環境とも状態の違いが 18 件（部分統合の fidelity の DIFF → PASS）、予期しない状態は 0。DIFF は 576 のまま（js・ts・python・go では状態が動かない）。run1 と run2 の間の状態の違いは 0。
+  - `summary.json` の `problems` は、基準との比較が「同じでない」こと（CSS を意図して変えたため）と、この回帰の範囲に入れなかった kit dry-run。ステップの失敗は 0。
+- キット（kit id `79751c34-af7d-495d-a88a-037648f82809`、`11k-c2-final/kit/`）: ZIP の SHA-256 `9271b378…`、KD の `theme.css` は `b784835f…`、SD は `8f2c6b48…`。自己テストは build 34 件、plugin 63 件、dry-run 7 件がすべて PASS。実機にはまだ入れていない。G1・C3 のキットには触れていない。
+- 次: ユーザーが「準備できた」と言ってから、iPhone の検証（キットの ZIP の受け渡しはユーザーの操作）と、G4・V-38 を行う。ゲートの入力は、macOS と iPhone の証跡がそろってから、出所を確かめて差し替える。リリースは NOT MET のまま。SD の C2、DIFF の受け入れ、Q-D10 の変更、`verifiedBy` の追加、G8 はしていない。

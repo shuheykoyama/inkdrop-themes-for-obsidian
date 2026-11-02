@@ -1,0 +1,112 @@
+===== test note (Inkdrop 6.2.0 measured): dump-testnote.json
+
+== open (js, javascript, ts, typescript, python, go)
+lang chars matchBefore matchAfter delta changed
+js 315 242 273 +31 31
+javascript 30 27 29 +2 2
+ts 174 106 141 +35 56
+typescript 37 33 35 +2 2
+python 197 132 174 +42 42
+go 139 107 126 +19 28
+all characters, dE before: n 892, mean 4.72, median 0.00, max 32.79, sum 4213.3
+all characters, dE after:  n 892, mean 2.67, median 0.00, max 32.79, sum 2379.8
+changed characters, dE before: n 161, mean 14.23, median 14.70, max 25.69, sum 2291.6
+changed characters, dE after:  n 161, mean 2.85, median 0.00, max 15.71, sum 458.1
+by Inkdrop token kind (changed characters): kind n, dE sum before -> after (change), closer / farther / same
+  variable 106, 1558.1 -> 0.0 (-1558.1), 106 / 0 / 0
+  type/name 35, 624.3 -> 144.0 (-480.3), 35 / 0 / 0
+  property 20, 109.2 -> 314.1 (+204.9), 0 / 20 / 0
+dE decrease (sum over closer characters) 2038.4, increase (farther) 204.9, net -1833.5
+characters whose dE grew, as runs (block lang 'text' Inkdrop classes: dE before -> after):
+  1 ts 'x' tok-property-name tok-definition: 5.46 -> 15.71
+  1 ts 'label' tok-property-name tok-definition: 5.46 -> 15.71
+  1 ts 'Red' tok-property-name: 5.46 -> 15.71
+  1 ts 'Green' tok-property-name: 5.46 -> 15.71
+  1 ts 'x' tok-property-name tok-definition: 5.46 -> 15.71
+  1 ts 'x' tok-property-name: 5.46 -> 15.71
+  7 go 'X' tok-property-name: 5.46 -> 15.71
+  7 go 'Y' tok-property-name: 5.46 -> 15.71
+  7 go 'X' tok-property-name: 5.46 -> 15.71
+  7 go 'X' tok-property-name: 5.46 -> 15.71
+
+== adopted (sql, html, yaml, yml, markdown, md)
+lang chars matchBefore matchAfter delta changed
+sql 103 61 93 +32 32
+html 111 103 111 +8 8
+yaml 91 77 91 +14 14
+yml 14 14 14 +0 0
+markdown 75 60 73 +13 13
+md 35 32 35 +3 3
+all characters, dE before: n 429, mean 3.03, median 0.00, max 27.07, sum 1298.9
+all characters, dE after:  n 429, mean 0.63, median 0.00, max 27.07, sum 269.9
+changed characters, dE before: n 70, mean 14.70, median 14.70, max 14.70, sum 1028.9
+changed characters, dE after:  n 70, mean 0.00, median 0.00, max 0.00, sum 0.0
+by Inkdrop token kind (changed characters): kind n, dE sum before -> after (change), closer / farther / same
+  type/name 32, 470.4 -> 0.0 (-470.4), 32 / 0 / 0
+  other 38, 558.6 -> 0.0 (-558.6), 38 / 0 / 0
+dE decrease (sum over closer characters) 1028.9, increase (farther) 0.0, net -1028.9
+
+===== general code (Inkdrop 6.2.0 static): dump-general.json
+
+== open (js, javascript, ts, typescript, python, go)
+lang chars matchBefore matchAfter delta changed
+js 374 258 333 +75 85
+javascript 161 123 149 +26 26
+ts 288 178 228 +50 90
+typescript 142 62 104 +42 58
+python 303 121 221 +100 130
+go 282 179 244 +65 91
+all characters, dE before: n 1550, mean 6.12, median 0.00, max 32.79, sum 9488.5
+all characters, dE after:  n 1550, mean 3.17, median 0.00, max 32.79, sum 4916.5
+changed characters, dE before: n 480, mean 13.45, median 14.70, max 25.69, sum 6454.1
+changed characters, dE after:  n 480, mean 3.92, median 0.00, max 15.71, sum 1882.1
+by Inkdrop token kind (changed characters): kind n, dE sum before -> after (change), closer / farther / same
+  variable 331, 4865.4 -> 0.0 (-4865.4), 331 / 0 / 0
+  function 9, 231.2 -> 129.6 (-101.6), 9 / 0 / 0
+  type/name 38, 679.4 -> 158.4 (-521.0), 38 / 0 / 0
+  property 102, 678.2 -> 1594.1 (+916.0), 6 / 96 / 0
+dE decrease (sum over closer characters) 5555.7, increase (farther) 983.7, net -4572.0
+characters whose dE grew, as runs (block lang 'text' Inkdrop classes: dE before -> after):
+  0 js 'items' tok-property-name tok-definition: 5.46 -> 15.71
+  0 js 'total' tok-property-name tok-definition: 5.46 -> 15.71
+  2 ts 'x' tok-property-name tok-definition: 5.46 -> 15.71
+  2 ts 'y' tok-property-name tok-definition: 5.46 -> 15.71
+  2 ts 'kind' tok-property-name tok-definition: 5.46 -> 15.71
+  2 ts 'radius' tok-property-name tok-definition: 5.46 -> 15.71
+  2 ts 'kind' tok-property-name tok-definition: 5.46 -> 15.71
+  2 ts 'side' tok-property-name tok-definition: 5.46 -> 15.71
+  2 ts 'kind' tok-property-name: 5.46 -> 15.71
+  2 ts 'radius' tok-property-name: 5.46 -> 15.71
+  2 ts 'side' tok-property-name: 5.46 -> 15.71
+  2 ts 'side' tok-property-name: 5.46 -> 15.71
+  2 ts 'x' tok-property-name tok-definition: 5.46 -> 15.71
+  2 ts 'y' tok-property-name tok-definition: 5.46 -> 15.71
+  3 typescript 'Low' tok-property-name: 5.46 -> 15.71
+  3 typescript 'High' tok-property-name: 5.46 -> 15.71
+  3 typescript 'High' tok-property-name: 5.46 -> 15.71
+  4 python 'retries' tok-property-name: 5.46 -> 15.71
+  4 python 'name' tok-property-name: 5.46 -> 15.71
+  4 python 'name' tok-property-name: 5.46 -> 15.71
+  6 go 'Name' tok-property-name: 5.46 -> 15.71
+  6 go 'Port' tok-property-name: 5.46 -> 15.71
+  6 go 'Name' tok-property-name: 5.46 -> 15.71
+  6 go 'Port' tok-property-name: 5.46 -> 15.71
+  6 go 'Port' tok-property-name: 5.46 -> 15.71
+
+== adopted (sql, html, yaml, yml, markdown, md)
+lang chars matchBefore matchAfter delta changed
+sql 231 103 212 +109 109
+html 254 189 254 +65 65
+yaml 143 88 140 +52 52
+yml 62 41 62 +21 21
+markdown 192 72 183 +111 111
+md 61 19 57 +38 38
+all characters, dE before: n 943, mean 6.93, median 0.00, max 32.13, sum 6534.6
+all characters, dE after:  n 943, mean 0.76, median 0.00, max 32.13, sum 713.8
+changed characters, dE before: n 396, mean 14.70, median 14.70, max 14.70, sum 5820.8
+changed characters, dE after:  n 396, mean 0.00, median 0.00, max 0.00, sum 0.0
+by Inkdrop token kind (changed characters): kind n, dE sum before -> after (change), closer / farther / same
+  type/name 109, 1602.2 -> 0.0 (-1602.2), 109 / 0 / 0
+  other 287, 4218.6 -> 0.0 (-4218.6), 287 / 0 / 0
+dE decrease (sum over closer characters) 5820.8, increase (farther) 0.0, net -5820.8
+

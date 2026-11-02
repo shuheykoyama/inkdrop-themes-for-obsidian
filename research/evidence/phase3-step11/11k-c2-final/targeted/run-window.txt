@@ -1,0 +1,7 @@
+first run (6 FAIL, the py / python bare-text group): 2026-11-02T04:21:04Z exit 1 2026-11-02T04:41:06Z 
+fixed run: 2026-11-02T04:48:09Z exit 0 2026-11-02T05:08:12Z 
+fixed self-test: 2026-11-02T05:08:33Z exit 0 2026-11-02T05:23:27Z 
+mutant self-test (the group fix reverted; exit 1 expected): 2026-11-02T05:23:33Z exit 1 2026-11-02T05:38:17Z 
+probes (base = clone of 3756411, final = 5a9e5b1 CSS): 2026-11-02T04:41:28Z probes 0 2026-11-02T04:46:32Z 
+KD theme.css: base a2977a35..., final b784835fed4a26f7d1f2f39a867e4ed8bcbe084bb9e801b8c9ac4aac6b1adee9; SD 8f2c6b48... (same)
+Obsidian 1.14.5 asar on installer 1.11.7, Electron 39.5.1 (isolated)
