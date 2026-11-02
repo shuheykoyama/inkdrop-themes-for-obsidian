@@ -1,0 +1,210 @@
+diff --git a/src/common/mapping/canvas-graph.css b/src/common/mapping/canvas-graph.css
+new file mode 100644
+index 0000000..2c7a592
+--- /dev/null
++++ b/src/common/mapping/canvas-graph.css
+@@ -0,0 +1,22 @@
++/* Mapping: Canvas and Graph View colours (research/14 §6.170). Obsidian-only UI with no Inkdrop counterpart: the
++   Obsidian defaults (red, orange, ... and greys) are replaced by the theme's own palette. The shared
++   --color-<name> variables stay untouched (Callouts, tags and Mermaid read them too); only the variables of
++   these two views are set. Same semantic colours in both themes, each resolved from its own palette. */
++.theme-dark {
++  --canvas-color-1: var(--ink-red);
++  --canvas-color-2: var(--ink-orange);
++  --canvas-color-3: var(--ink-yellow);
++  --canvas-color-4: var(--ink-green);
++  --canvas-color-5: var(--ink-teal);
++  --canvas-color-6: var(--ink-violet);
++  --canvas-dot-pattern: var(--ink-solid-border-color);
++  --graph-line: var(--ink-strong-border-color);
++  --graph-node-tag: var(--ink-green);
++  --graph-node-attachment: var(--ink-yellow);
++}
++
++/* The default node colour (uncoloured nodes, edges): app.css sets it on body.theme-dark (0,1,1), which a plain
++   .theme-dark rule cannot beat; .theme-dark:is(body) has the same specificity and comes later. */
++.theme-dark:is(body) {
++  --canvas-color: var(--ink-disabled-text-color);
++}
+diff --git a/src/themes/kanagawa-dragon.css b/src/themes/kanagawa-dragon.css
+index ceef5e3..8e7ced8 100644
+--- a/src/themes/kanagawa-dragon.css
++++ b/src/themes/kanagawa-dragon.css
+@@ -18,4 +18,5 @@
+ @import "../common/components/mermaid.css";
+ @import "../common/platform/translucent.css";
+ @import "../common/platform/mobile.css";
++@import "../common/mapping/canvas-graph.css";
+ @import "./kanagawa-dragon/syntax.css";
+diff --git a/src/themes/solarized-dark.css b/src/themes/solarized-dark.css
+index f052f5c..a371415 100644
+--- a/src/themes/solarized-dark.css
++++ b/src/themes/solarized-dark.css
+@@ -18,3 +18,4 @@
+ @import "../common/components/mermaid.css";
+ @import "../common/platform/translucent.css";
+ @import "../common/platform/mobile.css";
++@import "../common/mapping/canvas-graph.css";
+diff --git a/tests/spec/requirements.json b/tests/spec/requirements.json
+index 039da23..22f93a7 100644
+--- a/tests/spec/requirements.json
++++ b/tests/spec/requirements.json
+@@ -638,6 +638,15 @@
+       ],
+       "mandatory": true
+     },
++    {
++      "id": "ui.canvas-graph",
++      "qd": "Q-D1",
++      "description": "Canvas (default node colour and edges, dot background, colours 1-6) and Graph View (line, tag and attachment nodes) take the theme palette instead of Obsidian's defaults. Obsidian-only UI with no Inkdrop counterpart (research/14 §6.170): the variables are checked, not the look",
++      "platforms": [
++        "desktop"
++      ],
++      "mandatory": false
++    },
+     {
+       "id": "qd23.active-line",
+       "qd": "Q-D23",
+diff --git a/tests/spec/runtime/desktop.json b/tests/spec/runtime/desktop.json
+index a0db2c4..2d541ff 100644
+--- a/tests/spec/runtime/desktop.json
++++ b/tests/spec/runtime/desktop.json
+@@ -3719,6 +3719,138 @@
+       ],
+       "kind": "var",
+       "token": "--ink-popup-background"
++    },
++    {
++      "id": "ui.canvas-graph.canvas-color.var",
++      "requirement": "ui.canvas-graph",
++      "selector": "body",
++      "document": "main",
++      "property": "--canvas-color",
++      "appearance": [
++        "opaque"
++      ],
++      "kind": "var",
++      "token": "--ink-disabled-text-color"
++    },
++    {
++      "id": "ui.canvas-graph.canvas-color-1.var",
++      "requirement": "ui.canvas-graph",
++      "selector": "body",
++      "document": "main",
++      "property": "--canvas-color-1",
++      "appearance": [
++        "opaque"
++      ],
++      "kind": "var",
++      "token": "--ink-red"
++    },
++    {
++      "id": "ui.canvas-graph.canvas-color-2.var",
++      "requirement": "ui.canvas-graph",
++      "selector": "body",
++      "document": "main",
++      "property": "--canvas-color-2",
++      "appearance": [
++        "opaque"
++      ],
++      "kind": "var",
++      "token": "--ink-orange"
++    },
++    {
++      "id": "ui.canvas-graph.canvas-color-3.var",
++      "requirement": "ui.canvas-graph",
++      "selector": "body",
++      "document": "main",
++      "property": "--canvas-color-3",
++      "appearance": [
++        "opaque"
++      ],
++      "kind": "var",
++      "token": "--ink-yellow"
++    },
++    {
++      "id": "ui.canvas-graph.canvas-color-4.var",
++      "requirement": "ui.canvas-graph",
++      "selector": "body",
++      "document": "main",
++      "property": "--canvas-color-4",
++      "appearance": [
++        "opaque"
++      ],
++      "kind": "var",
++      "token": "--ink-green"
++    },
++    {
++      "id": "ui.canvas-graph.canvas-color-5.var",
++      "requirement": "ui.canvas-graph",
++      "selector": "body",
++      "document": "main",
++      "property": "--canvas-color-5",
++      "appearance": [
++        "opaque"
++      ],
++      "kind": "var",
++      "token": "--ink-teal"
++    },
++    {
++      "id": "ui.canvas-graph.canvas-color-6.var",
++      "requirement": "ui.canvas-graph",
++      "selector": "body",
++      "document": "main",
++      "property": "--canvas-color-6",
++      "appearance": [
++        "opaque"
++      ],
++      "kind": "var",
++      "token": "--ink-violet"
++    },
++    {
++      "id": "ui.canvas-graph.canvas-dot-pattern.var",
++      "requirement": "ui.canvas-graph",
++      "selector": "body",
++      "document": "main",
++      "property": "--canvas-dot-pattern",
++      "appearance": [
++        "opaque"
++      ],
++      "kind": "var",
++      "token": "--ink-solid-border-color"
++    },
++    {
++      "id": "ui.canvas-graph.graph-line.var",
++      "requirement": "ui.canvas-graph",
++      "selector": "body",
++      "document": "main",
++      "property": "--graph-line",
++      "appearance": [
++        "opaque"
++      ],
++      "kind": "var",
++      "token": "--ink-strong-border-color"
++    },
++    {
++      "id": "ui.canvas-graph.graph-node-tag.var",
++      "requirement": "ui.canvas-graph",
++      "selector": "body",
++      "document": "main",
++      "property": "--graph-node-tag",
++      "appearance": [
++        "opaque"
++      ],
++      "kind": "var",
++      "token": "--ink-green"
++    },
++    {
++      "id": "ui.canvas-graph.graph-node-attachment.var",
++      "requirement": "ui.canvas-graph",
++      "selector": "body",
++      "document": "main",
++      "property": "--graph-node-attachment",
++      "appearance": [
++        "opaque"
++      ],
++      "kind": "var",
++      "token": "--ink-yellow"
+     }
+   ]
+ }

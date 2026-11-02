@@ -1,0 +1,60 @@
+PASS (EMULATED) syn.reading.css.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 51 runs
+PASS (EMULATED) syn.reading.html.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 36 runs
+PASS (EMULATED) syn.reading.json.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 29 runs
+PASS (EMULATED) syn.reading.sh.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 48 runs
+PASS (EMULATED) syn.reading.go.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 51 runs
+PASS (EMULATED) syn.reading.rust.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 81 runs
+PASS (EMULATED) syn.reading.yaml.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 25 runs
+PASS (EMULATED) syn.reading.sql.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 35 runs
+PASS (EMULATED) syn.reading.markdown.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 22 runs
+PASS (EMULATED) syn.reading.javascript.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 17 runs
+PASS (EMULATED) syn.reading.typescript.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 14 runs
+PASS (EMULATED) syn.reading.py.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 11 runs
+PASS (EMULATED) syn.reading.bash.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 9 runs
+PASS (EMULATED) syn.reading.shell.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 7 runs
+PASS (EMULATED) syn.reading.zsh.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 12 runs
+PASS (EMULATED) syn.reading.yml.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 6 runs
+PASS (EMULATED) syn.reading.rs.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 1 runs
+PASS (EMULATED) syn.reading.md.impl [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 9 runs
+DIFF syn.reading.js.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 100/112 runs have Inkdrop's colour; differ: 12 shared class, 0 bare text
+DIFF syn.reading.ts.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 48/65 runs have Inkdrop's colour; differ: 10 shared class, 7 bare text
+DIFF syn.reading.python.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 55/64 runs have Inkdrop's colour; differ: 9 shared class, 0 bare text
+DIFF syn.reading.css.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 46/51 runs have Inkdrop's colour; differ: 3 shared class, 2 bare text
+PASS (EMULATED) syn.reading.html.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 36/36 runs have Inkdrop's colour
+PASS (EMULATED) syn.reading.json.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 29/29 runs have Inkdrop's colour
+DIFF syn.reading.sh.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 44/48 runs have Inkdrop's colour; differ: 4 shared class, 0 bare text
+DIFF syn.reading.go.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 42/51 runs have Inkdrop's colour; differ: 4 shared class, 5 bare text
+DIFF syn.reading.rust.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 61/81 runs have Inkdrop's colour; differ: 15 shared class, 5 bare text
+PASS (EMULATED) syn.reading.yaml.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 25/25 runs have Inkdrop's colour
+DIFF syn.reading.sql.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 30/35 runs have Inkdrop's colour; differ: 5 shared class, 0 bare text
+DIFF syn.reading.markdown.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 20/22 runs have Inkdrop's colour; differ: 2 shared class, 0 bare text
+DIFF syn.reading.javascript.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 16/17 runs have Inkdrop's colour; differ: 1 shared class, 0 bare text
+DIFF syn.reading.typescript.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 12/14 runs have Inkdrop's colour; differ: 2 shared class, 0 bare text
+DIFF syn.reading.py.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 2/11 runs have Inkdrop's colour; differ: 9 shared class, 0 bare text
+DIFF syn.reading.bash.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 8/9 runs have Inkdrop's colour; differ: 1 shared class, 0 bare text
+PASS (EMULATED) syn.reading.shell.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 7/7 runs have Inkdrop's colour
+DIFF syn.reading.zsh.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 3/12 runs have Inkdrop's colour; differ: 0 shared class, 9 bare text
+PASS (EMULATED) syn.reading.yml.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 6/6 runs have Inkdrop's colour
+PASS (EMULATED) syn.reading.rs.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 1/1 runs have Inkdrop's colour
+PASS (EMULATED) syn.reading.md.fidelity [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- 9/9 runs have Inkdrop's colour
+PASS (EMULATED) syn.reading.classes [kanagawa-dragon, phone-nonfloating, opaque, syntax] -- element groups: EXACT 125, CONFLICT 27, MISMATCH 0, DOMINATED 0; base colour (bare text, not failed): EXACT 7, CONFLICT 4, MISMATCH 1, DOMINATED 0
+PASS (EMULATED) mm.reading.flowchart-v2.filter [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 3 diagram(s), filter none
+PASS (EMULATED) mm.reading.flowchart-v2.elements [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 10 element types drawn
+PASS (EMULATED) mm.reading.flowchart-v2.colours [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 3 diagram(s), 264 elements as the reference (15 not rendered, not compared)
+PASS (EMULATED) mm.reading.sequence.filter [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 1 diagram(s), filter none
+PASS (EMULATED) mm.reading.sequence.elements [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 14 element types drawn
+PASS (EMULATED) mm.reading.sequence.colours [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 1 diagram(s), 113 elements as the reference
+UNSUPPORTED mm.reading.unsupported [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+PASS (EMULATED) mm.reading.others [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 5 images / SVGs, filter none
+PASS (EMULATED) mm.live.flowchart-v2.filter [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 3 diagram(s), filter none
+PASS (EMULATED) mm.live.flowchart-v2.elements [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 10 element types drawn
+PASS (EMULATED) mm.live.flowchart-v2.colours [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 3 diagram(s), 264 elements as the reference (15 not rendered, not compared)
+PASS (EMULATED) mm.live.sequence.filter [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 1 diagram(s), filter none
+PASS (EMULATED) mm.live.sequence.elements [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 14 element types drawn
+PASS (EMULATED) mm.live.sequence.colours [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 1 diagram(s), 113 elements as the reference
+UNSUPPORTED mm.live.unsupported [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 7 kinds keep filter invert(1) hue-rotate(180deg) saturate(1.25) (not themed)
+PASS (EMULATED) mm.live.others [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 5 images / SVGs, filter none
+PASS (EMULATED) mm.source.code [kanagawa-dragon, phone-nonfloating, opaque, mermaid] -- 0 diagram(s) drawn, 81/81 block lines shown as code
+PASS runner.restore [-, desktop, -, -] -- size 1024,800 (was 1024,800), floating true, no mobile / translucent classes
+
+all 3915 runtime checks passed or are reported as DIFF / UNSUPPORTED (820 PASS (EMULATED), 576 DIFF, 30 UNSUPPORTED; Obsidian 1.14.5, Electron 39.5.1)

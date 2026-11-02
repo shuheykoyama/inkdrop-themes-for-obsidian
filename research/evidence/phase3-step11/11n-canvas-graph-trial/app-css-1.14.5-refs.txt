@@ -1,0 +1,43 @@
+# Obsidian 1.14.5 (asar sha256 3a349274…) app.css, sha256 866e50ac…: lines are file line numbers
+## definitions
+2157: --canvas-background: var(--background-primary);
+2159: --canvas-color-1: var(--color-red);
+2160: --canvas-color-2: var(--color-orange);
+2161: --canvas-color-3: var(--color-yellow);
+2162: --canvas-color-4: var(--color-green);
+2163: --canvas-color-5: var(--color-cyan);
+2164: --canvas-color-6: var(--color-purple);
+2168: --canvas-dot-pattern: var(--color-base-30);
+2311: --graph-line: var(--color-base-35, var(--background-modifier-border-focus));
+2313: --graph-node-unresolved: var(--text-faint);
+2314: --graph-node-focused: var(--text-accent);
+2315: --graph-node-tag: var(--color-green);
+2316: --graph-node-attachment: var(--color-yellow);
+18163: --canvas-color: var(--canvas-color-1);
+18166: --canvas-color: var(--canvas-color-2);
+18169: --canvas-color: var(--canvas-color-3);
+18172: --canvas-color: var(--canvas-color-4);
+18175: --canvas-color: var(--canvas-color-5);
+18178: --canvas-color: var(--canvas-color-6);
+18185: --canvas-color: #c0c0c0;
+18188: --canvas-color: #7e7e7e;
+## the rule blocks that hold them
+canvas block: 2020: body {
+graph block: 2020: body {
+  box-shadow: 0 0 0 2px var(--background-modifier-border-focus);
+}
+.mod-canvas-color-1 {
+}
+body {
+  --canvas-color: #c0c0c0;
+}
+body.theme-dark {
+  --canvas-color: #7e7e7e;
+}
+.canvas-wrapper {
+## consumers
+16757:  color: var(--graph-node-tag);
+16760:  color: var(--graph-node-attachment);
+16792:  color: var(--graph-line);
+18244:  fill: var(--canvas-dot-pattern);
+--canvas-color consumers: 25 rules

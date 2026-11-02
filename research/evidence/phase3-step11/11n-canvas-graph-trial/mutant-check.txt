@@ -1,0 +1,4 @@
+without the CSS (final build), solarized-dark: 0 of 11 variables equal the expected token
+without the CSS (final build), kanagawa-dragon: 0 of 11 variables equal the expected token
+with the CSS (trial build), solarized-dark: 11 of 11 variables equal the expected token
+with the CSS (trial build), kanagawa-dragon: 11 of 11 variables equal the expected token

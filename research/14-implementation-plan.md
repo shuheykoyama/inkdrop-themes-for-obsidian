@@ -8499,3 +8499,17 @@ Q-D10 は変えていない。BLOCKED も解いていない。
 - **G8 の撮影の方法**: Inkdrop 6.2.0 の実機のメニュー・モーダル・パレット・ポップアップを開いて撮る（`tests/visual/capture-inkdrop.sh` と同じ撮影の仕組み。G7-1 と同じ窓の大きさ）。Obsidian 側は、隔離した Obsidian で同じ状態を開いて撮る。比べるのは影・角・余白・重なり。画面を占有し、本番の Inkdrop を操作するので、ユーザーの準備を待つ。
 - **iPhone の撮影の方法**: キット（`79751c34…`）のツアーに、段を指定して実行する仕組みはない（`TOUR.filter(device)` で端末ごとの全段を実行する）。6 段のためだけの制御は足さない。**既存のツールのまま、phone の 38 段を撮り、判定の対象を KD の 3 段（Markdown の Reading ×2、code blocks の Reading）と、確認用の 3 段に絞る。** ツアーの所要時間は撮影の間隔が主で、段を絞っても短くならない（段の表示 3 秒＋待ち 9 秒）。ほかの 32 段は、新しいビルドの記録として残る。
 - **今回していないこと**: 製品の CSS の変更、撮影、見た目の合格判定、本番の Inkdrop・iPhone の操作、macOS の全画面。
+
+### 6.170 Canvas・Graph View の配色の試験実装（隔離クローン、`evidence/phase3-step11/11n-canvas-graph-trial/`）
+
+- 工程 11M は APPROVE / COMPLETE。Properties・Bases・右ドックは、測った色については現状維持（画像・配置・操作状態は未確認）。次工程として、Canvas・Graph の配色を隔離環境で試験実装した。製品の CSS への正式な統合は、画像を含む独立レビューのあとに判断する。
+- **Obsidian 1.14.5 の実際の `app.css`**（asar から抽出、行番号付きで `app-css-1.14.5-refs.txt`）: `--canvas-color-1..6` は `var(--color-red)` などを参照する（`-rgb` ではない。前回の古いコピーの記述は 1.14.5 に当てはまらない）。`--canvas-dot-pattern`・`--graph-line`・`--graph-node-tag`・`--graph-node-attachment` は `body {`（(0,0,1)）の定義で、`.theme-dark` で上書きできる。`--canvas-color` は `body.theme-dark`（(0,1,1)）で定義され、`.mod-canvas-color-N`（(0,1,0)）が色付きのノードで上書きする。
+- **試験の変更**（`trial.patch`。`7e74b5f` の隔離クローンで作った。製品の `src/` には入っていない）: 新しい `canvas-graph.css` に、`--canvas-color-1..6` = `--ink-red/orange/yellow/green/teal/violet`、`--canvas-dot-pattern` = `--ink-solid-border-color`、`--graph-line` = `--ink-strong-border-color`、`--graph-node-tag` = `--ink-green`、`--graph-node-attachment` = `--ink-yellow`、`--canvas-color` = `--ink-disabled-text-color`（`.theme-dark:is(body)`。静的検査 S4 のため `body.theme-dark` ではなく、同じ詳細度であとに読み込む）。`--color-<色名>`・`-rgb`・`--color-base-*` は触れていない。
+- **検証**（隔離 Obsidian 1.14.5、Electron 39.5.1）:
+  - 379 変数の比較で、変わったのは設計した 11 変数だけ（SD・KD）。Graph の描画の色は 3 つ（`fillTag`・`fillAttachment`・`line`）だけ。
+  - 既存の実行時の検査 3871 件は、状態の変化が 0（3915 件で FAIL 0。増えた 44 件は新しい 22 検査 × 2 テーマで、すべて PASS）。静的検査は全部通る。
+  - 新しい 11 変数の検査は、CSS がないと 0 / 11、あると 11 / 11（検出力を確認）。SD のあとに KD を測っても、変数の残留はない。
+- **視認性の予測**（Computed Style。画像で確定する）: 色なしのノードの枠・エッジは、既定より静か（コントラスト 4.1 → SD 2.6 / KD 2.1）。色なしと色付きは区別できる（ΔE2000 25 以上）。色同士で近いのは、SD の赤と橙、KD の緑とシアン（ΔE 10〜12）。ドットは既定と同程度。**SD の Graph の線は既定より薄く（1.60 → 1.29）、見えにくくなるおそれがある**。KD は既定に近い（1.74）。
+- **撮影が必要な画面**（ユーザーの許可のあと、隔離した Obsidian）: Canvas 全体（色なし・色 1〜6・色コード・ファイル・グループ・エッジ・ドット）、Canvas の選択、Graph 全体（通常・タグ・添付・線・フォーカス・未解決）、ノードの文字の視認性。両テーマ、変更前後。
+- **iPhone のツアーの撮り方の比較**: (A) 既存のツールのまま、phone の 38 段を撮る（1 段は表示 3 秒＋待ち 9 秒で、名目 8 分程度）。判定は KD の 3 段と確認の 3 段。追加の実装なし。過去の中断は Mac の熱による CPU の制限が原因なので、開始前に `pmset -g therm` を確かめ、30 秒ごとに記録する。(B) 必要な 6 段だけを撮るには、キットに段の指定を足す必要があり（キットの再ビルド、新しい kit id、自己テストの追加）、作業が増える。**(A) を提案する。**
+- 今回していないこと: 製品の CSS の変更、撮影、見た目の合格判定、本番の Inkdrop・iPhone・通常の Vault の操作、macOS の全画面。
