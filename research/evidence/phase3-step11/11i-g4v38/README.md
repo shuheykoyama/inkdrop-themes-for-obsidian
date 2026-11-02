@@ -15,11 +15,11 @@
     - それ以外は `failedRun` に分けて記録する。出られたときは `status: ABORTED` で exit 1、出られなかったときは `status: STUCK` で exit 3。
     - STUCK のときは、ユーザーに伝え、Mission Control を見てもらい、隔離インスタンスを止める。
   - 12 の面、読む時機、合格の条件（§6.67.4）は元のまま。
-- `g4-self-test.mjs`・`g4-self-test.txt`: 自己テスト（18 例）。偽の `<repo>` の `tests/runtime/lib/cdp.mjs` が窓（全画面、クラス、テーマ）を、偽の Space の数え方が Space を演じる。
+- `g4-self-test.mjs`・`g4-self-test.txt`: 自己テスト（20 例）。偽の `<repo>` の `tests/runtime/lib/cdp.mjs` が窓（全画面、クラス、テーマ）を、偽の Space の数え方が Space を演じる。
   - 確かめる場面: 両テーマの準備、ないテーマ名、読み込まれた CSS の違い、正常な全画面、全画面の中で読めない、全画面に入れない、出られない、全画面の中で接続が切れる、別のテーマで準備したファイル、準備のあとのテーマの変化、2 回目の実行。
-  - §6.160 で 6 例を足した: 全画面の Space が残る（ABORTED）、Space を読めない、Electron が違う、版の指定がない、すでに全画面、prep で読めていない面（どれも全画面を頼まずに止まる）。
+  - §6.160 で 6 例を足した: 全画面の Space が残る（ABORTED）、Space を読めない、Electron が違う、版の指定がない、すでに全画面、prep で読めていない面（どれも全画面を頼まずに止まる）。§6.165 で 2 例を足した: 全画面の中で読めない面がある、全画面のあとで読めない面がある（どちらも ABORTED。12 の面を 4 つの状態のすべてで読めることを要る）。
   - `npm test` には入れていない（ほかの証拠の道具と同じく、手で実行する）。
-- `g4-mutation.txt`: 自己テストの検出力の確認。終了処理を外した版と、すべてを COMPLETE にする版で、それぞれ 5 例、COMPLETE の条件から Space の復元を外した版で 1 例が FAIL になった。
+- `g4-mutation.txt`: 自己テストの検出力の確認（2026-11-02、20 例）。終了処理を外した版と、すべてを COMPLETE にする版で、それぞれ 7 例、COMPLETE の条件から Space の復元を外した版で 1 例、読めない面の検査を外した版で 2 例が FAIL になった。
 - `v38-precheck-g7-1.csv`: V-38 の Inkdrop の領域（`tests/visual/configs/v38-inkdrop.json`）を、G7-1 で撮った Inkdrop 6.2.0 の画像 3 枚に当てた結果（`tests/visual/sample-regions.py`）。G7-1 の画像は、V-38 と同じ 1200×700 の窓。ただし、ノートと撮影の条件は V-38 と違う。
 
 ## V-38 の事前の確認の結果

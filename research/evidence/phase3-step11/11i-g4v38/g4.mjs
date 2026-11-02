@@ -14,7 +14,8 @@
 // before). Only a run that entered, read, left and got the same Spaces back with no error is stored as `during` /
 // `after` with status COMPLETE; any other run is stored apart as `failedRun` with status ABORTED (left full screen,
 // but something failed or the Spaces differ) or STUCK (did not leave: tell the user, stop the isolated instance), and
-// the exit status is 1 (ABORTED) or 3 (STUCK).
+// the exit status is 1 (ABORTED) or 3 (STUCK). A surface that cannot be read (null) in full screen or after it also
+// makes the run ABORTED: all 12 surfaces are read in each of the four states.
 // Self-test: g4-self-test.mjs (a fake <repo> whose tests/runtime/lib/cdp.mjs plays the window).
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
@@ -109,6 +110,8 @@ try {
       if (!ok) throw new Error("did not enter full screen within 30 s");
       await sleep(1500);
       run.during = await read();
+      const unreadDuring = Object.keys(SURFACES).filter((k) => !run.during.values[k]);
+      if (unreadDuring.length) throw new Error(`surfaces not read in full screen: ${unreadDuring.join(", ")}`);
     } catch (e) {
       error = e;
     } finally {
@@ -120,6 +123,8 @@ try {
       run.leftFullScreen = left;
       await sleep(2000);
       if (!error) run.after = await read().catch((e) => { error = e; return null; });
+      const unreadAfter = run.after ? Object.keys(SURFACES).filter((k) => !run.after.values[k]) : [];
+      if (unreadAfter.length) error ??= new Error(`surfaces not read after full screen: ${unreadAfter.join(", ")}`);
       run.stateAfterExit = await state().catch((e) => ({ error: String(e.message ?? e) }));
       // macOS may update the Spaces record a little after the exit: read again for up to 10 s.
       const same = (a) => JSON.stringify(a) === JSON.stringify(run.spacesBefore);

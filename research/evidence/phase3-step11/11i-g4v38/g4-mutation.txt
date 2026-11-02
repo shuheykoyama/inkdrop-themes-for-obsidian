@@ -1,24 +1,34 @@
-Mutation check of g4-self-test.mjs (2026-11-01): altered copies of g4.mjs, run in a scratch directory.
+Mutation check of g4-self-test.mjs (2026-11-02): altered copies of g4.mjs, run in a scratch directory.
 
 m1: the exit request in the finally block removed
 FAIL g4 self-test: full, normal: COMPLETE with during and after -- exit 3, declared 0: STUCK: the window may still be in full screen. Tell the user; check Mission Control; stop the isolated instance.
 FAIL g4 self-test: full, a full-screen Space is left after the exit: ABORTED, not COMPLETE -- exit 3, declared 1: STUCK: the window may still be in full screen. Tell the user; check Mission Control; stop the isolated instance.
 FAIL g4 self-test: full, a read fails in full screen: leaves, ABORTED, nothing stored as during/after -- exit 3, declared 1: STUCK: the window may still be in full screen. Tell the user; check Mission Control; stop the isolated instance.
+FAIL g4 self-test: full, a surface cannot be read in full screen: leaves, ABORTED -- exit 3, declared 1: STUCK: the window may still be in full screen. Tell the user; check Mission Control; stop the isolated instance.
+FAIL g4 self-test: full, a surface cannot be read after full screen: ABORTED, not COMPLETE -- exit 3, declared 1: STUCK: the window may still be in full screen. Tell the user; check Mission Control; stop the isolated instance.
 FAIL g4 self-test: full, never enters: still asks to leave, ABORTED -- (stored JSON omitted)
 FAIL g4 self-test: full refuses a file that already holds a run -- calls , status STUCK
 
-5 of 18 g4 self-test cases FAILED
+7 of 20 g4 self-test cases FAILED
 
 m2: every run stored as COMPLETE
 FAIL g4 self-test: full, a full-screen Space is left after the exit: ABORTED, not COMPLETE -- exit 0, declared 1: 
 FAIL g4 self-test: full, a read fails in full screen: leaves, ABORTED, nothing stored as during/after -- exit 0, declared 1: 
+FAIL g4 self-test: full, a surface cannot be read in full screen: leaves, ABORTED -- exit 0, declared 1: 
+FAIL g4 self-test: full, a surface cannot be read after full screen: ABORTED, not COMPLETE -- exit 0, declared 1: 
 FAIL g4 self-test: full, never enters: still asks to leave, ABORTED -- exit 0, declared 1: 
 FAIL g4 self-test: full, cannot leave: STUCK, exit 3 -- exit 0, declared 3: 
 FAIL g4 self-test: full, the connection dies in full screen: STUCK, exit 3 -- exit 0, declared 3: 
 
-5 of 18 g4 self-test cases FAILED
+7 of 20 g4 self-test cases FAILED
 
 m3: the Spaces restoration dropped from the COMPLETE condition
 FAIL g4 self-test: full, a full-screen Space is left after the exit: ABORTED, not COMPLETE -- exit 0, declared 1: 
 
-1 of 18 g4 self-test cases FAILED
+1 of 20 g4 self-test cases FAILED
+
+m4: the unread-surface checks in full screen and after it removed
+FAIL g4 self-test: full, a surface cannot be read in full screen: leaves, ABORTED -- exit 0, declared 1: 
+FAIL g4 self-test: full, a surface cannot be read after full screen: ABORTED, not COMPLETE -- exit 0, declared 1: 
+
+2 of 20 g4 self-test cases FAILED

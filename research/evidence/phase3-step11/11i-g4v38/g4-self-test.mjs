@@ -22,7 +22,7 @@ import vm from "node:vm";
 const S = JSON.parse(process.env.G4_FAKE);
 const log = (x) => fs.appendFileSync(S.log, x + "\n");
 const classes = new Set(["is-focused"]);
-let full = !!S.startFull, dead = false;
+let full = !!S.startFull, dead = false, exited = false;
 if (S.startFull) classes.add("is-fullscreen");
 const styleEl = { textContent: "" };
 const themeFile = (n) => S.vault + "/.obsidian/themes/" + n + "/theme.css";
@@ -42,6 +42,7 @@ const electronWindow = {
     log("setFullScreen " + v);
     if (v ? S.enter === false : S.exit === false) return;
     full = v;
+    if (!v) exited = true;
     v ? classes.add("is-fullscreen") : classes.delete("is-fullscreen");
     if (v && S.dieAfterEnter) dead = true;
   },
@@ -50,7 +51,7 @@ const ctx = vm.createContext({
   app, electronWindow, crypto: globalThis.crypto, TextEncoder, Promise, setTimeout,
   navigator: { userAgent: "Electron/43.8.3" },
   window: { app, require: () => ({ ipcRenderer: { sendSync: (k) => (k === "version" ? "1.14.5" : "") } }) },
-  document: { body: { classList: { contains: (c) => classes.has(c), [Symbol.iterator]: () => classes.values() } }, querySelector: () => ({}) },
+  document: { body: { classList: { contains: (c) => classes.has(c), [Symbol.iterator]: () => classes.values() } }, querySelector: () => ((S.missingInFull && full) || (S.missingAfter && exited) ? null : {}) },
   getComputedStyle: () => {
     if (full && S.failReadInFull) throw new Error("read failed in full screen");
     return { backgroundColor: full ? "rgb(0, 0, 0)" : classes.has("is-translucent") ? "rgba(0, 0, 0, 0.5)" : "rgb(0, 0, 0)" };
@@ -123,6 +124,10 @@ run("full refuses when prep did not read every surface", { phase: "full", theme:
   check: (r, c) => (c.length || r.status ? `calls ${c}, status ${r.status}` : null) });
 run("full, a read fails in full screen: leaves, ABORTED, nothing stored as during/after", { phase: "full", theme: "kanagawa-dragon", out: prepared("read-fails"), fake: { ...pre, failReadInFull: true }, expectExit: 1,
   check: (r, c) => (r.status === "ABORTED" && !r.during && !r.after && r.failedRun.leftFullScreen && r.failedRun.stateAfterExit.isFullScreen === false && /read failed/.test(r.failedRun.error) && c.at(-1) === "setFullScreen false" ? null : JSON.stringify({ r, c })) });
+run("full, a surface cannot be read in full screen: leaves, ABORTED", { phase: "full", theme: "kanagawa-dragon", out: prepared("missing-in-full"), fake: { ...pre, missingInFull: true }, expectExit: 1,
+  check: (r, c) => (r.status === "ABORTED" && !r.during && r.failedRun.leftFullScreen && /surfaces not read in full screen/.test(r.failedRun.error) && c.at(-1) === "setFullScreen false" ? null : JSON.stringify({ r, c })) });
+run("full, a surface cannot be read after full screen: ABORTED, not COMPLETE", { phase: "full", theme: "kanagawa-dragon", out: prepared("missing-after"), fake: { ...pre, missingAfter: true }, expectExit: 1,
+  check: (r) => (r.status === "ABORTED" && !r.after && r.failedRun.leftFullScreen && /not read after full screen/.test(r.failedRun.error) ? null : JSON.stringify(r)) });
 run("full, never enters: still asks to leave, ABORTED", { phase: "full", theme: "kanagawa-dragon", out: prepared("no-enter"), fake: { ...pre, enter: false }, expectExit: 1,
   check: (r, c) => (r.status === "ABORTED" && r.failedRun.enteredFullScreen === false && c.at(-1) === "setFullScreen false" ? null : JSON.stringify({ r, c })) });
 run("full, cannot leave: STUCK, exit 3", { phase: "full", theme: "kanagawa-dragon", out: prepared("no-exit"), fake: { ...pre, exit: false }, expectExit: 3,

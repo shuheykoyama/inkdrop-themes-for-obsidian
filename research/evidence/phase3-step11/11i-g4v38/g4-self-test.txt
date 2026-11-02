@@ -10,6 +10,8 @@ PASS g4 self-test: full refuses without the expected versions
 PASS g4 self-test: full refuses a window already in full screen
 PASS g4 self-test: full refuses when prep did not read every surface
 PASS g4 self-test: full, a read fails in full screen: leaves, ABORTED, nothing stored as during/after
+PASS g4 self-test: full, a surface cannot be read in full screen: leaves, ABORTED
+PASS g4 self-test: full, a surface cannot be read after full screen: ABORTED, not COMPLETE
 PASS g4 self-test: full, never enters: still asks to leave, ABORTED
 PASS g4 self-test: full, cannot leave: STUCK, exit 3
 PASS g4 self-test: full, the connection dies in full screen: STUCK, exit 3
@@ -17,4 +19,4 @@ PASS g4 self-test: full refuses a file prepared for the other theme (no full scr
 PASS g4 self-test: full refuses when the loaded theme changed since prep
 PASS g4 self-test: full refuses a file that already holds a run
 
-all 18 g4 self-test cases behaved as expected
+all 20 g4 self-test cases behaved as expected
