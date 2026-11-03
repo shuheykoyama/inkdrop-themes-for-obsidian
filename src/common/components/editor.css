@@ -83,3 +83,18 @@
   color: var(--ink-editor-tooltip-autocomplete-item-selected-color);
   background-color: var(--ink-editor-tooltip-autocomplete-item-selected-background-color);
 }
+
+/* Vim block cursor (Vim mode of the editor): Inkdrop's vim package paints it with the caret colour (focused: a
+   filled block; not focused: a 1px outline), while Obsidian uses the accent colour with white text. The text
+   under the block takes the editor background so that it stays readable on the caret colour. The normal
+   cursor needs nothing here: it already follows --caret-color. (The layer is selected as `*` because the official lint rejects CodeMirror's camel-case class names.) The blink is CodeMirror's own (1.2s) and
+   Obsidian keeps it; the native caret outside Vim mode blinks as macOS decides, which CSS cannot change. */
+.theme-dark .markdown-source-view .cm-editor.cm-focused > .cm-scroller > * > .cm-fat-cursor {
+  background: var(--ink-editor-caret-color);
+  color: var(--ink-editor-background-color);
+}
+
+.theme-dark .markdown-source-view .cm-editor:not(.cm-focused) > .cm-scroller > * > .cm-fat-cursor {
+  background: none;
+  outline: 1px solid var(--ink-editor-caret-color);
+}
