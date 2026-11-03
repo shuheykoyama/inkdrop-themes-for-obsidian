@@ -4,7 +4,7 @@
     {
       "id": "qd1.ribbon-background",
       "qd": "Q-D1",
-      "description": "Ribbon background = Inkdrop sidebar background",
+      "description": "Ribbon background = Inkdrop note list background (the user's decision of 2026-11-04; it was the sidebar background)",
       "platforms": [
         "desktop"
       ],
@@ -216,7 +216,7 @@
     {
       "id": "qd22.ribbon-acrylic",
       "qd": "Q-D22",
-      "description": "Translucent: ribbon = Inkdrop sidebar acrylic",
+      "description": "Translucent: ribbon = Inkdrop note list acrylic (the user's decision of 2026-11-04; it was the sidebar acrylic)",
       "platforms": [
         "desktop"
       ],
@@ -350,7 +350,7 @@
     {
       "id": "ui.dividers",
       "qd": "Q-D1",
-      "description": "Dividers: dock/editor, tab strips and status bar = Inkdrop note-list border; ribbon edge = Inkdrop sidebar border; general borders = Inkdrop border / strong / focused colours; also while translucent",
+      "description": "Dividers: dock/editor, tab strips and status bar = Inkdrop note-list border; ribbon edge = Inkdrop note-list border too (the user's decision of 2026-11-04); general borders = Inkdrop border / strong / focused colours; also while translucent",
       "platforms": [
         "desktop"
       ],

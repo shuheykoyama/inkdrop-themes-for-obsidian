@@ -1,7 +1,6 @@
 /* Mapping: workspace backgrounds, opaque (shared structure, no colour literals). Q-D1:
-     Ribbon = Inkdrop sidebar.
-     Left / right docks and their tab strips, centre tab strip and inactive tabs, status bar,
-     title bar = Inkdrop note list.
+     Ribbon, left / right docks and their tab strips, centre tab strip and inactive tabs, status bar,
+     title bar = Inkdrop note list (the ribbon too, by the user's decision of 2026-11-04; it was the sidebar).
      Centre editor, View Header, active centre tab = Inkdrop editor.
    Hidden frame (the macOS default) does not display .titlebar; --titlebar-background reaches the screen
    through the top tab strips (.workspace-tabs.mod-top takes it as --tab-container-background, research/11 §7).
@@ -16,8 +15,8 @@
      --color-base-10 (#111) there (step 10, research/14 §6.23). */
   --background-primary-alt: var(--ink-mde-preview-codeblock-background-color);
   --background-secondary-alt: var(--ink-popup-background);
-  --ribbon-background: var(--ink-sidebar-background);
-  --ribbon-background-collapsed: var(--ink-sidebar-background);
+  --ribbon-background: var(--ink-note-list-bar-background);
+  --ribbon-background-collapsed: var(--ink-note-list-bar-background);
   --titlebar-background: var(--ink-note-list-bar-background);
   --titlebar-background-focused: var(--ink-note-list-bar-background);
   --tab-container-background: var(--ink-note-list-bar-background);

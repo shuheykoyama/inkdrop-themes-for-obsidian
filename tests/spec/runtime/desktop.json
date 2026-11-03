@@ -10,7 +10,7 @@
       "appearance": [
         "opaque"
       ],
-      "token": "--ink-sidebar-background"
+      "token": "--ink-note-list-bar-background"
     },
     {
       "id": "desktop.left-dock.background",
@@ -276,7 +276,7 @@
       "appearance": [
         "translucent"
       ],
-      "token": "--ink-sidebar-background-acrylic"
+      "token": "--ink-note-list-bar-background-acrylic"
     },
     {
       "id": "translucent.left-dock.leaf",
@@ -467,7 +467,7 @@
         "translucent"
       ],
       "state": "fullscreen-class",
-      "token": "--ink-sidebar-background"
+      "token": "--ink-note-list-bar-background"
     },
     {
       "id": "fullscreen.centre.editor",
@@ -631,7 +631,7 @@
         "opaque",
         "translucent"
       ],
-      "token": "--ink-derived-sidebar-border-color"
+      "token": "--ink-derived-note-list-bar-border-color"
     },
     {
       "id": "ui.border.var",

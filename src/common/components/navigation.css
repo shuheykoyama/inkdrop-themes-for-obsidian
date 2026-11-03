@@ -1,10 +1,11 @@
 /* Components: workspace edges and navigation states that variables alone cannot express. */
 
-/* Ribbon edge (Q-D1: ribbon = Inkdrop sidebar, left dock = note list): the boundary that stands where
-   Inkdrop's sidebar|note-list border is takes --sidebar-border-right. Scoped to the ribbon so the other
-   dividers keep the note-list border colour (mapping/borders.css). */
+/* Ribbon edge: the ribbon and the left dock are both the note list's colour (user's decision of 2026-11-04), so
+   the boundary between them takes the note list's border colour, the same as the dock|editor edge. With the
+   sidebar's border colour (as dark as the note list in Solarized Dark) the edge disappeared. Scoped to the ribbon
+   so that --divider-color stays the note-list border colour everywhere else (mapping/borders.css). */
 .theme-dark .workspace-ribbon.mod-primary {
-  --divider-color: var(--ink-derived-sidebar-border-color);
+  --divider-color: var(--ink-derived-note-list-bar-border-color);
 }
 
 /* Focused list: Inkdrop draws a 5 px bar on the left of the selected note while the note list has
