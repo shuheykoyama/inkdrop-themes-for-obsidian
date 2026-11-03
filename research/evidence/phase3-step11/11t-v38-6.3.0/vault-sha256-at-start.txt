@@ -1,0 +1,8 @@
+44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a  ./.obsidian/app.json
+30c7dc9ad53d37c57f4e19d9a798cb8a3f418e7200834e06abc80025f6966ae2  ./.obsidian/appearance.json
+79985eff638a8a3f7fe2946dca1ed0872116d31028bb1498b0efb7ac4e11077b  ./.obsidian/core-plugins.json
+3b3bb530c8338701456000b78135ca3296979ac545d4840cb432c96477c67662  ./.obsidian/workspace.json
+50090b1fd83bb2792cdca69ada245a74ce67c5aab35cc25e27e1b044baa66bda  ./Folder A/In folder.md
+ee2bb100dcf9d63847c17eae94aad1748574b04b240892975457dffe13fcb7f4  ./Folder A/Sub/Deep.md
+3084378ffbd5c1e9c61a22cbdc8d3d04ac50e349aca8089ffd4836a40de28547  ./Other note.md
+18147b8c18ef74bae118dce7c2428430031818aeade70a43d4098bbd48ce1778  ./Sample note.md

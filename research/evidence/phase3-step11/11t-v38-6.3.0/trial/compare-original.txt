@@ -1,0 +1,14 @@
+solarized-dark   sidebar    [32.0, 54.0, 58.0]       ribbon         [32.0, 54.0, 58.0]       dE2000=0.0   PASS
+solarized-dark   note-list  [19.0, 42.0, 46.0]       left-dock      [19.0, 42.0, 46.0]       dE2000=0.0   PASS
+solarized-dark   note-list  [19.0, 42.0, 46.0]       right-dock     [19.0, 42.0, 46.0]       dE2000=0.0   PASS
+solarized-dark   note-list  [19.0, 42.0, 46.0]       vault-profile  [19.0, 42.0, 46.0]       dE2000=0.0   PASS
+solarized-dark   note-list  [19.0, 42.0, 46.0]       left-tabstrip  [19.0, 42.0, 46.0]       dE2000=0.0   PASS
+solarized-dark   note-list  [19.0, 42.0, 46.0]       root-tabstrip  [19.0, 42.0, 46.0]       dE2000=0.0   PASS
+solarized-dark   editor     [7.0, 36.0, 42.0]        editor         [7.0, 36.0, 42.0]        dE2000=0.0   PASS
+kanagawa-dragon  sidebar                             ribbon                                  dE2000=      FAIL (region missing)
+kanagawa-dragon  note-list                           left-dock                               dE2000=      FAIL (region missing)
+kanagawa-dragon  note-list                           right-dock                              dE2000=      FAIL (region missing)
+kanagawa-dragon  note-list                           vault-profile                           dE2000=      FAIL (region missing)
+kanagawa-dragon  note-list                           left-tabstrip                           dE2000=      FAIL (region missing)
+kanagawa-dragon  note-list                           root-tabstrip                           dE2000=      FAIL (region missing)
+kanagawa-dragon  editor                              editor                                  dE2000=      FAIL (region missing)

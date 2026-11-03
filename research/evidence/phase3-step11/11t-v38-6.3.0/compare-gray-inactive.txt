@@ -1,0 +1,14 @@
+solarized-dark   sidebar    [32.0, 54.0, 58.0]       ribbon         [26.0, 48.0, 52.0]       dE2000=1.89  FAIL
+solarized-dark   note-list  [19.0, 42.0, 46.0]       left-dock      [15.0, 38.0, 42.0]       dE2000=1.23  FAIL
+solarized-dark   note-list  [19.0, 42.0, 46.0]       right-dock     [15.0, 38.0, 42.0]       dE2000=1.23  FAIL
+solarized-dark   note-list  [19.0, 42.0, 46.0]       vault-profile  [15.0, 38.0, 42.0]       dE2000=1.23  FAIL
+solarized-dark   note-list  [19.0, 42.0, 46.0]       left-tabstrip  [15.0, 38.0, 42.0]       dE2000=1.23  FAIL
+solarized-dark   note-list  [19.0, 42.0, 46.0]       root-tabstrip  [15.0, 38.0, 42.0]       dE2000=1.23  FAIL
+solarized-dark   editor     [7.0, 36.0, 42.0]        editor         [6.0, 35.0, 41.0]        dE2000=0.31  PASS
+kanagawa-dragon  sidebar    [40.0, 39.0, 38.0]       ribbon         [34.0, 33.0, 31.0]       dE2000=2.05  FAIL
+kanagawa-dragon  note-list  [36.0, 34.0, 33.0]       left-dock      [32.0, 30.0, 30.0]       dE2000=1.45  FAIL
+kanagawa-dragon  note-list  [36.0, 34.0, 33.0]       right-dock     [32.0, 30.0, 30.0]       dE2000=1.45  FAIL
+kanagawa-dragon  note-list  [36.0, 34.0, 33.0]       vault-profile  [32.0, 30.0, 30.0]       dE2000=1.45  FAIL
+kanagawa-dragon  note-list  [36.0, 34.0, 33.0]       left-tabstrip  [32.0, 30.0, 30.0]       dE2000=1.45  FAIL
+kanagawa-dragon  note-list  [36.0, 34.0, 33.0]       root-tabstrip  [32.0, 30.0, 30.0]       dE2000=1.45  FAIL
+kanagawa-dragon  editor     [33.0, 32.0, 30.0]       editor         [32.0, 31.0, 29.0]       dE2000=0.31  PASS

@@ -1,0 +1,69 @@
+{
+ "capture": {
+  "method": "/usr/sbin/screencapture -x -R400,250,1200,700 (native window-server composite, display colour space)",
+  "capturedAt": "2026-11-03T12:38:11Z",
+  "file": "screenshots/inkdrop-solarized-dark-acrylic-pattern-active.png",
+  "pixels": [
+   1200,
+   700
+  ],
+  "sha256": "2e2d692efaea1cde745acaf4fbed4ab45809ecc3826aa03a65a18ef5143a4ef0",
+  "windowRectPoints": [
+   400,
+   250,
+   1200,
+   700
+  ],
+  "backdrop": "pattern",
+  "backdropRectPoints": [
+   300,
+   150,
+   1400,
+   900
+  ],
+  "requestedFocus": "active",
+  "theme": "solarized-dark"
+ },
+ "theme": {
+  "requested": "solarized-dark",
+  "active": [
+   "solarized-dark"
+  ],
+  "bodyClasses": [
+   "dark-mode",
+   "platform-darwin",
+   "acrylic-window",
+   "theme-solarized-dark"
+  ]
+ },
+ "geometry": {
+  "screen": [
+   400,
+   250,
+   1200,
+   700
+  ],
+  "viewport": [
+   1200,
+   700,
+   1
+  ]
+ },
+ "before": {
+  "bodyClasses": [
+   "dark-mode",
+   "platform-darwin",
+   "acrylic-window",
+   "theme-solarized-dark"
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) inkdrop/6.3.0 Chrome/152.0.7977.130 Electron/44.7.0 Safari/537.36"
+ },
+ "after": {
+  "bodyClasses": [
+   "dark-mode",
+   "platform-darwin",
+   "acrylic-window",
+   "theme-solarized-dark"
+  ]
+ }
+}
