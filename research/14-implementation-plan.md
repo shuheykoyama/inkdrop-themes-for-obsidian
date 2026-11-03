@@ -8651,5 +8651,5 @@ Q-D10 は変えていない。BLOCKED も解いていない。
 - **レビュー**: APPROVE / COMPLETE（CI run `41601771716` 成功）。製品 CSS・検査基準・オラクル・キットの変更は不要。G8 の分類 A は「対象の静的な CSS の規則に差が確認されていない」の意味に限り、共通変数・DOM・JavaScript の動き・描画結果まで同一とは断定しない。G4 の許可は、V-38・G8 の許可とみなさない。
 - **G4 の実測**（ユーザーの「準備できた」のあと。隔離 Obsidian 1.14.5 / Electron 43.8.3、最終 CSS: SD `f6b59e61…`・KD `9cc55c6f…` を `prep` が照合）: **SD・KD とも `COMPLETE`**。12 の面すべてで、全画面の中の値 = 不透明の値、出たあとの値 = 全画面の前の translucent の値、不透明 ≠ translucent（対照）。全画面の中は `isFullScreen()` true・`is-fullscreen` あり、出たあとは false・なし。Space は前も出た直後も、通常のみ 25（全画面の Space 0）。隔離インスタンスは停止（ポート 9333 は閉じた）。
 - **途中**: `prep` を SD、KD と続けたため、SD の `full` は「`prep` のあとにテーマが変わった」として、全画面に入る前に拒否（既存の安全の検査）。SD の `prep` をやり直して `full` を行い COMPLETE。拒否の記録は残す（判定に使わない）。次回は、テーマごとに `prep` と `full` を続ける。
-- **後片付け**: 実行後の LaunchServices の `check` に E43.8.3 のコピーの候補が 1 件増えていたので、`current-installer.sh restore` で外し、`check` が作業の前と同じ出力に戻ることを確認。Space の数が同じでも完全な復元の証明にならないので、**ユーザーの Mission Control の確認は未了**（これが済むまで、G4 を完全に完了とは書かない）。
+- **後片付け**: 実行後の LaunchServices の `check` に E43.8.3 のコピーの候補が 1 件増えていたので、`current-installer.sh restore` で外し、`check` が作業の前と同じ出力に戻ることを確認。Space の数が同じでも完全な復元の証明にならないので、ユーザーが Mission Control を見て、全画面の Space が残っていないことを確認した（2026-11-03）。これで G4 は、両テーマとも完了（独立レビューの確認を待つ）。
 - 次: ユーザーの Mission Control の確認と、G4 の独立レビュー。そのあと V-38・G8（それぞれ個別の「準備できた」）。

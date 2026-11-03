@@ -24,8 +24,11 @@
 - **LaunchServices**: 実行のあとの `check` に、E43.8.3 のコピーが `obsidian://` の候補として 1 行（と、そのパスの 1 行）増えていた（`ls-after.txt`）。`current-installer.sh restore` で登録を外し、もう一度 `check` すると、作業の前と同じ出力に戻った（`ls-after-restore.txt`）。
 - **Space**: 実行のあとも `{0: 25}`。**Space の数が同じでも、完全な復元の証明にはならない**ので、ユーザーによる Mission Control の確認が要る（残っている全画面の Space がないこと）。
 
+## ユーザーの確認
+
+- Mission Control を見て、全画面の Space が残っていないことを、ユーザーが確認した（2026-11-03）。
+
 ## 確かめていないこと
 
-- ユーザーの Mission Control の確認（この記録の時点では未確認）。
 - 本物の画面の見た目（画素）。G4 は、計算値で面の色を確かめる検査。
 - translucent で全画面に入った状態（G4 の対象外）。
