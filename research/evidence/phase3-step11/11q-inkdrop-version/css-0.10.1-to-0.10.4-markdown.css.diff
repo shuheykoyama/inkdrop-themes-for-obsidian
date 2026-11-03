@@ -1,0 +1,30 @@
+157,162d156
+<     a {
+<       background-color: transparent;
+<       color: var(--mde-preview-link-color);
+<       text-decoration: none;
+<     }
+< 
+179a174,183
+>     }
+> 
+>     a {
+>       background-color: transparent;
+>       color: var(--mde-preview-link-color);
+>       text-decoration: none;
+>     }
+> 
+>     a:hover {
+>       text-decoration: underline;
+183d186
+<       margin: 0.67em 0;
+221c224,225
+<     img {
+---
+>     img,
+>     video {
+296,299d299
+<     a:hover {
+<       text-decoration: underline;
+<     }
+< 

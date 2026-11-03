@@ -1,0 +1,9 @@
+Read-only survey of the Mac for an Inkdrop 6.2.0 copy (2026-11-03). Nothing was started, moved, deleted or overwritten.
+/Applications/Inkdrop.app: CFBundleShortVersionString 6.3.0; Resources/app.asar sha256 775cb4f43fa694f1076e... (G7-0 recorded 6.2.0: 015a7af5...)
+~/Library/Caches/inkdrop-updater/: pending/inkdrop-6.3.0-x64-mac.zip and update.zip (both sha256 55df67c378393fd7e13e..., 6.3.0), pending/update-info.json (fileName inkdrop-6.3.0-x64-mac.zip)
+~/.Trash: inkdrop-6.1.5-x64-mac.dmg (6.1.5, 2026-10-10; not 6.2.0)
+Spotlight (mdfind) found no other Inkdrop app, dmg, zip or asar; ~/Downloads, ~/Desktop, ~/Documents, ~/.cache: none.
+Extracted contents of the 6.2.0 app.asar (package.json version 6.2.0) survive in the session scratch only (not a runnable app; the asar itself was not kept, so its sha256 cannot be re-checked).
+/Applications/Inkdrop.app/Contents/Resources/app-update.yml: provider s3, bucket inkdrop-dist, region ap-northeast-1, path releases, channel latest, updaterCacheDirName inkdrop-updater.
+Installed packages (~/Library/Application Support/inkdrop/packages): mermaid 4.0.0 (file date 10-23), solarized-dark 2.2.1 and kanagawa-dragon 1.2.1 (09-30).
+Code of 6.3.0 (main/index.js, read only): INKDROP_USER_DATA_PATH sets Electron's userData; INKDROP_HOME sets the Inkdrop directory (default <appData>/inkdrop); requestSingleInstanceLock; access key from INKDROP_ACCESS_KEY_ID/INKDROP_SECRET_ACCESS_KEY or the keyring (@napi-rs/keyring); electron-updater checks the S3 latest channel.

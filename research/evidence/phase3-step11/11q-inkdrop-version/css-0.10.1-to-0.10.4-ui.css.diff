@@ -1,0 +1,25 @@
+708c708
+<     --button-background: light-dark(var(--color-gray-200), hsl(var(--hsl-neutral-800) / 70%)) none;
+---
+>     --button-background: light-dark(var(--color-gray-200), var(--color-neutral-800)) none;
+724,727c724
+<     --button-hover-background-color: light-dark(
+<       var(--color-gray-300),
+<       hsl(var(--hsl-neutral-700) / 70%)
+<     );
+---
+>     --button-hover-background-color: light-dark(var(--color-gray-300), var(--color-neutral-700));
+745,748c742
+<     --button-down-background-color: light-dark(
+<       var(--color-gray-400),
+<       hsl(var(--hsl-neutral-800) / 80%)
+<     );
+---
+>     --button-down-background-color: light-dark(var(--color-gray-400), var(--color-neutral-800));
+755,758c749
+<     --button-active-background-color: light-dark(
+<       var(--color-gray-400),
+<       hsl(var(--hsl-neutral-700) / 70%)
+<     );
+---
+>     --button-active-background-color: light-dark(var(--color-gray-400), var(--color-neutral-700));
