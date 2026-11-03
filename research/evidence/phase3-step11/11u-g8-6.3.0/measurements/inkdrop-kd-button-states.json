@@ -1,0 +1,63 @@
+{
+ "app": "inkdrop",
+ "label": "kd",
+ "button": "API Documentation",
+ "states": {
+  "normal": {
+   "background-color": "rgb(39, 38, 38)",
+   "color": "rgba(197, 201, 197, 0.75)",
+   "border-top-width": "0px",
+   "border-top-color": "rgba(197, 201, 197, 0.75)",
+   "border-radius": "15px",
+   "box-shadow": "rgba(255, 255, 255, 0.15) 0px 0px 0px 1px inset",
+   "outline-style": "solid",
+   "outline-color": "rgba(0, 0, 0, 0)",
+   "outline-width": "2px",
+   "transform": "none",
+   "opacity": "1",
+   "padding": "11px 14px"
+  },
+  "hover": {
+   "background-color": "rgb(58, 57, 54)",
+   "color": "rgba(197, 201, 197, 0.95)",
+   "border-top-width": "0px",
+   "border-top-color": "rgba(197, 201, 197, 0.95)",
+   "border-radius": "15px",
+   "box-shadow": "rgba(255, 255, 255, 0.15) 0px 0px 0px 1px inset",
+   "outline-style": "solid",
+   "outline-color": "rgba(0, 0, 0, 0)",
+   "outline-width": "2px",
+   "transform": "none",
+   "opacity": "1",
+   "padding": "11px 14px"
+  },
+  "pressed": {
+   "background-color": "rgb(58, 57, 54)",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "border-top-width": "0px",
+   "border-top-color": "rgba(197, 201, 197, 0.9)",
+   "border-radius": "15px",
+   "box-shadow": "rgba(255, 255, 255, 0.15) 0px 0px 0px 1px inset",
+   "outline-style": "solid",
+   "outline-color": "rgba(140, 165, 177, 0.3)",
+   "outline-width": "2px",
+   "transform": "none",
+   "opacity": "1",
+   "padding": "11px 14px"
+  },
+  "focus": {
+   "background-color": "rgb(58, 57, 54)",
+   "color": "rgba(197, 201, 197, 0.95)",
+   "border-top-width": "0px",
+   "border-top-color": "rgba(197, 201, 197, 0.95)",
+   "border-radius": "15px",
+   "box-shadow": "none",
+   "outline-style": "solid",
+   "outline-color": "rgba(140, 165, 177, 0.3)",
+   "outline-width": "2px",
+   "transform": "none",
+   "opacity": "1",
+   "padding": "11px 14px"
+  }
+ }
+}

@@ -1,0 +1,344 @@
+
+######## Solarized Dark
+
+palette / Inkdrop container  vs  Obsidian container
+  background-color   ≠  rgba(0, 0, 0, 0)   |   rgb(0, 33, 41)
+  color              =  rgb(131, 148, 149)   |   rgb(131, 148, 149)
+  border-top-width   =  1px   |   1px
+  border-top-color   ≠  rgba(100, 122, 130, 0.15)   |   rgba(100, 122, 130, 0.22)
+  border-radius      ≠  24px   |   12px
+  box-shadow         ≠  rgba(0, 0, 0, 0.3) 0px 10px 30px 0px   |   rgba(0, 0, 0, 0.07) 0px 1.8px 7.3px 0px, rgba(0, 0, 0, 0.114) 0px 6.3p
+  padding            =  0px   |   0px
+  size               720x360   |   700x490
+
+palette / Inkdrop input  vs  Obsidian input
+  background-color   =  rgba(0, 0, 0, 0)   |   rgba(0, 0, 0, 0)
+  color              ≠  rgba(253, 246, 226, 0.85)   |   rgb(131, 148, 149)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgba(253, 246, 226, 0.85)   |   rgba(126, 212, 252, 0.6)
+  border-radius      =  0px   |   0px
+  box-shadow         =  none   |   none
+  padding            ≠  5.6px 8.4px 5.6px 11.2px   |   24px 48px 24px 24px
+  size               718x48   |   698x49
+
+palette / Inkdrop row-selected  vs  Obsidian row-selected
+  background-color   =  rgba(255, 255, 255, 0.08)   |   rgba(255, 255, 255, 0.08)
+  color              ≠  rgb(168, 219, 255)   |   rgb(131, 148, 149)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgb(168, 219, 255)   |   rgb(131, 148, 149)
+  border-radius      ≠  7px   |   4px
+  box-shadow         =  none   |   none
+  padding            ≠  8px 10px   |   6px 12px
+  size               702x37   |   674x32
+
+palette / Inkdrop row  vs  Obsidian row
+  background-color   =  rgba(0, 0, 0, 0)   |   rgba(0, 0, 0, 0)
+  color              =  rgb(131, 148, 149)   |   rgb(131, 148, 149)
+  border-top-width   =  0px   |   0px
+  border-top-color   =  rgb(131, 148, 149)   |   rgb(131, 148, 149)
+  border-radius      ≠  7px   |   4px
+  box-shadow         =  none   |   none
+  padding            ≠  8px 10px   |   6px 12px
+  size               702x37   |   674x32
+
+menu / Inkdrop menu  vs  Obsidian menu
+  background-color   ≠  rgb(0, 33, 41)   |   rgb(0, 20, 26)
+  color              =  rgb(131, 148, 149)   |   rgb(131, 148, 149)
+  border-top-width   =  1px   |   1px
+  border-top-color   ≠  rgba(100, 122, 130, 0.15)   |   rgba(100, 122, 130, 0.22)
+  border-radius      ≠  15px   |   8px
+  box-shadow         ≠  rgba(0, 0, 0, 0.4) 0px 1.5px 3px -2px, rgba(0, 0, 0, 0.2) 0px 4px 6px    |   rgba(0, 0, 0, 0.12) 0px 1px 2px 0px, rgba(0, 0, 0, 0.18) 0px 3.4px 6.7
+  padding            =  0px   |   0px
+  size               173x187   |   193x403
+
+menu / Inkdrop item  vs  Obsidian item-selected
+  background-color   ≠  rgba(0, 0, 0, 0)   |   rgba(255, 255, 255, 0.02)
+  color              ≠  rgb(168, 219, 255)   |   rgb(131, 148, 149)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgb(168, 219, 255)   |   rgb(131, 148, 149)
+  border-radius      ≠  0px   |   4px
+  box-shadow         =  none   |   none
+  padding            ≠  11px 16px   |   4px 8px
+  size               171x37   |   179x25
+
+modal / Inkdrop modal  vs  Obsidian modal
+  background-color   =  rgb(0, 33, 41)   |   rgb(0, 33, 41)
+  color              =  rgb(131, 148, 149)   |   rgb(131, 148, 149)
+  border-top-width   ≠  0px   |   1px
+  border-top-color   ≠  rgb(131, 148, 149)   |   rgba(100, 122, 130, 0.22)
+  border-radius      =  24px   |   24px
+  box-shadow         ≠  rgba(0, 0, 0, 0.067) 0px 2.8px 2.2px 0px, rgba(0, 0, 0, 0.098) 0px 6.7   |   rgba(0, 0, 0, 0.07) 0px 1.8px 7.3px 0px, rgba(0, 0, 0, 0.114) 0px 6.3p
+  padding            ≠  0px   |   16px
+  size               308x175   |   560x201
+
+modal / Inkdrop header  vs  Obsidian header
+  background-color   ≠  rgb(0, 45, 56)   |   rgba(0, 0, 0, 0)
+  color              ≠  rgba(253, 246, 226, 0.85)   |   rgb(131, 148, 149)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgba(253, 246, 226, 0.85)   |   rgb(131, 148, 149)
+  border-radius      ≠  24px 24px 0px 0px   |   0px
+  box-shadow         =  none   |   none
+  padding            ≠  14px 16.8px   |   0px
+  size               308x47   |   526x20
+
+modal / Inkdrop input  vs  Obsidian content
+  background-color   ≠  rgb(0, 20, 26)   |   rgba(0, 0, 0, 0)
+  color              ≠  rgb(168, 219, 255)   |   rgb(131, 148, 149)
+  border-top-width   ≠  1px   |   0px
+  border-top-color   ≠  rgba(126, 212, 252, 0.6)   |   rgb(131, 148, 149)
+  border-radius      ≠  15px   |   0px
+  box-shadow         ≠  rgba(237, 231, 212, 0.35) 0px 0px 0px 0px inset   |   none
+  padding            ≠  9.49999px 14px   |   0px
+  size               280x38   |   526x84
+
+modal / Inkdrop button  vs  Obsidian button
+  background-color   =  rgba(0, 45, 56, 0.7)   |   rgba(0, 45, 56, 0.7)
+  color              ≠  rgba(253, 246, 226, 0.6)   |   rgb(131, 148, 149)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgba(253, 246, 226, 0.6)   |   rgb(131, 148, 149)
+  border-radius      ≠  15px   |   8px
+  box-shadow         ≠  rgba(255, 255, 255, 0.15) 0px 0px 0px 1px inset   |   rgba(126, 212, 252, 0.6) 0px 0px 0px 3px
+  padding            ≠  10.2143px 13px   |   4px 12px
+  size               130x33   |   66x30
+
+modal / Inkdrop button-primary  vs  Obsidian button-primary
+  background-color   ≠  rgba(39, 139, 211, 0.9)   |   rgb(251, 70, 76)
+  color              ≠  rgba(0, 20, 26, 0.9)   |   rgb(255, 255, 255)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgba(0, 20, 26, 0.9)   |   rgb(255, 255, 255)
+  border-radius      ≠  15px   |   8px
+  box-shadow         ≠  rgb(0, 33, 41) 0px 1px 2px 0px   |   none
+  padding            ≠  10.2143px 13px   |   4px 12px
+  size               130x33   |   63x30
+
+notification / Inkdrop notification  vs  Obsidian notification
+  background-color   =  rgba(0, 20, 26, 0.8)   |   rgba(0, 20, 26, 0.8)
+  color              ≠  rgb(131, 148, 149)   |   rgb(250, 250, 250)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgb(131, 148, 149)   |   rgb(250, 250, 250)
+  border-radius      ≠  15px   |   8px
+  box-shadow         ≠  rgba(0, 0, 0, 0.4) 0px 1.5px 3px -2px, rgba(0, 0, 0, 0.2) 0px 4px 6px    |   none
+  padding            ≠  0px   |   8px 12px
+  size               420x69   |   160x33
+
+preferences / Inkdrop window  vs  Obsidian window
+  background-color   ≠  rgba(0, 0, 0, 0)   |   rgb(0, 33, 41)
+  color              =  rgb(131, 148, 149)   |   rgb(131, 148, 149)
+  border-top-width   =  0px   |   0px
+  border-top-color   =  rgb(131, 148, 149)   |   rgb(131, 148, 149)
+  border-radius      =  0px   |   0px
+  box-shadow         =  none   |   none
+  padding            ≠  0px   |   30px 0px 0px
+  size               1024x736   |   900x700
+
+preferences / Inkdrop sidebar-item-active  vs  Obsidian sidebar-item-active
+  background-color   ≠  rgb(52, 66, 86)   |   rgba(71, 173, 245, 0.2)
+  color              ≠  rgb(168, 219, 255)   |   rgb(131, 148, 149)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgba(39, 139, 211, 0.9)   |   rgb(131, 148, 149)
+  border-radius      ≠  0px   |   8px
+  box-shadow         =  none   |   none
+  padding            ≠  12px 16px   |   4px 8px
+  size               160x38   |   200x25
+
+preferences / Inkdrop dropdown  vs  Obsidian dropdown
+  background-color   =  rgb(0, 20, 26)   |   rgb(0, 20, 26)
+  color              =  rgb(131, 148, 149)   |   rgb(131, 148, 149)
+  border-top-width   ≠  1px   |   0px
+  border-top-color   ≠  rgba(100, 122, 130, 0.15)   |   rgb(131, 148, 149)
+  border-radius      ≠  15px   |   8px
+  box-shadow         =  none   |   none
+  padding            ≠  11px 29.4px 11px 14px   |   0px 31.2px 0px 10.4px
+  size               260x38   |   71x30
+
+preferences / Inkdrop checkbox  vs  Obsidian checkbox
+  background-color   ≠  rgba(0, 0, 0, 0)   |   rgba(255, 255, 255, 0.08)
+  color              =  rgb(131, 148, 149)   |   rgb(131, 148, 149)
+  border-top-width   =  0px   |   0px
+  border-top-color   =  rgb(131, 148, 149)   |   rgb(131, 148, 149)
+  border-radius      ≠  0px   |   24px
+  box-shadow         ≠  none   |   rgba(0, 0, 0, 0.07) 0px 4px 10px 0px inset
+  padding            =  0px   |   0px
+  size               257x43   |   44x20
+
+preferences / Inkdrop button  vs  Obsidian button
+  background-color   =  rgba(0, 45, 56, 0.7)   |   rgba(0, 45, 56, 0.7)
+  color              ≠  rgba(253, 246, 226, 0.6)   |   rgb(131, 148, 149)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgba(253, 246, 226, 0.6)   |   rgb(131, 148, 149)
+  border-radius      ≠  15px   |   8px
+  box-shadow         ≠  rgba(255, 255, 255, 0.15) 0px 0px 0px 1px inset   |   none
+  padding            ≠  11px 14px   |   4px 12px
+  size               172x36   |   72x30
+
+######## Kanagawa Dragon
+
+palette / Inkdrop container  vs  Obsidian container
+  background-color   ≠  rgba(0, 0, 0, 0)   |   rgb(30, 29, 26)
+  color              =  rgba(197, 201, 197, 0.9)   |   rgba(197, 201, 197, 0.9)
+  border-top-width   =  1px   |   1px
+  border-top-color   ≠  rgba(98, 94, 91, 0.4)   |   rgba(98, 94, 91, 0.6)
+  border-radius      ≠  24px   |   12px
+  box-shadow         ≠  rgba(0, 0, 0, 0.3) 0px 10px 30px 0px   |   rgba(0, 0, 0, 0.07) 0px 1.8px 7.3px 0px, rgba(0, 0, 0, 0.114) 0px 6.3p
+  padding            =  0px   |   0px
+  size               720x360   |   700x490
+
+palette / Inkdrop input  vs  Obsidian input
+  background-color   =  rgba(0, 0, 0, 0)   |   rgba(0, 0, 0, 0)
+  color              =  rgba(197, 201, 197, 0.9)   |   rgba(197, 201, 197, 0.9)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgba(197, 201, 197, 0.9)   |   rgba(140, 165, 177, 0.7)
+  border-radius      =  0px   |   0px
+  box-shadow         =  none   |   none
+  padding            ≠  5.6px 8.4px 5.6px 11.2px   |   24px 48px 24px 24px
+  size               718x48   |   698x49
+
+palette / Inkdrop row-selected  vs  Obsidian row-selected
+  background-color   =  rgba(255, 255, 255, 0.08)   |   rgba(255, 255, 255, 0.08)
+  color              ≠  rgb(197, 201, 197)   |   rgba(197, 201, 197, 0.9)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgb(197, 201, 197)   |   rgba(197, 201, 197, 0.9)
+  border-radius      ≠  7px   |   4px
+  box-shadow         =  none   |   none
+  padding            ≠  8px 10px   |   6px 12px
+  size               702x37   |   674x32
+
+palette / Inkdrop row  vs  Obsidian row
+  background-color   =  rgba(0, 0, 0, 0)   |   rgba(0, 0, 0, 0)
+  color              =  rgba(197, 201, 197, 0.9)   |   rgba(197, 201, 197, 0.9)
+  border-top-width   =  0px   |   0px
+  border-top-color   =  rgba(197, 201, 197, 0.9)   |   rgba(197, 201, 197, 0.9)
+  border-radius      ≠  7px   |   4px
+  box-shadow         =  none   |   none
+  padding            ≠  8px 10px   |   6px 12px
+  size               702x37   |   674x32
+
+menu / Inkdrop menu  vs  Obsidian menu
+  background-color   ≠  rgb(17, 17, 14)   |   rgb(13, 12, 12)
+  color              =  rgba(197, 201, 197, 0.9)   |   rgba(197, 201, 197, 0.9)
+  border-top-width   =  1px   |   1px
+  border-top-color   ≠  rgba(98, 94, 91, 0.4)   |   rgba(98, 94, 91, 0.6)
+  border-radius      ≠  15px   |   8px
+  box-shadow         ≠  rgba(0, 0, 0, 0.4) 0px 1.5px 3px -2px, rgba(0, 0, 0, 0.2) 0px 4px 6px    |   rgba(0, 0, 0, 0.12) 0px 1px 2px 0px, rgba(0, 0, 0, 0.18) 0px 3.4px 6.7
+  padding            =  0px   |   0px
+  size               173x187   |   193x403
+
+menu / Inkdrop item  vs  Obsidian item-selected
+  background-color   ≠  rgba(0, 0, 0, 0)   |   rgba(255, 255, 255, 0.02)
+  color              ≠  rgb(197, 201, 197)   |   rgba(197, 201, 197, 0.9)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgb(197, 201, 197)   |   rgba(197, 201, 197, 0.9)
+  border-radius      ≠  0px   |   4px
+  box-shadow         =  none   |   none
+  padding            ≠  11px 16px   |   4px 8px
+  size               171x37   |   179x25
+
+modal / Inkdrop modal  vs  Obsidian modal
+  background-color   =  rgb(30, 29, 26)   |   rgb(30, 29, 26)
+  color              =  rgba(197, 201, 197, 0.9)   |   rgba(197, 201, 197, 0.9)
+  border-top-width   ≠  0px   |   1px
+  border-top-color   ≠  rgba(197, 201, 197, 0.9)   |   rgba(98, 94, 91, 0.6)
+  border-radius      =  24px   |   24px
+  box-shadow         ≠  rgba(0, 0, 0, 0.067) 0px 2.8px 2.2px 0px, rgba(0, 0, 0, 0.098) 0px 6.7   |   rgba(0, 0, 0, 0.07) 0px 1.8px 7.3px 0px, rgba(0, 0, 0, 0.114) 0px 6.3p
+  padding            ≠  0px   |   16px
+  size               308x175   |   560x201
+
+modal / Inkdrop header  vs  Obsidian header
+  background-color   ≠  rgb(39, 38, 38)   |   rgba(0, 0, 0, 0)
+  color              ≠  rgba(122, 133, 131, 0.9)   |   rgba(197, 201, 197, 0.9)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgba(122, 133, 131, 0.9)   |   rgba(197, 201, 197, 0.9)
+  border-radius      ≠  24px 24px 0px 0px   |   0px
+  box-shadow         =  none   |   none
+  padding            ≠  14px 16.8px   |   0px
+  size               308x47   |   526x20
+
+modal / Inkdrop input  vs  Obsidian content
+  background-color   ≠  rgb(13, 12, 12)   |   rgba(0, 0, 0, 0)
+  color              ≠  rgb(197, 201, 197)   |   rgba(197, 201, 197, 0.9)
+  border-top-width   ≠  1px   |   0px
+  border-top-color   ≠  rgba(140, 165, 177, 0.7)   |   rgba(197, 201, 197, 0.9)
+  border-radius      ≠  15px   |   0px
+  box-shadow         ≠  rgba(98, 94, 91, 0.8) 0px 0px 0px 0px inset   |   none
+  padding            ≠  9.49999px 14px   |   0px
+  size               280x38   |   526x84
+
+modal / Inkdrop button  vs  Obsidian button
+  background-color   =  rgb(39, 38, 38)   |   rgb(39, 38, 38)
+  color              ≠  rgba(197, 201, 197, 0.75)   |   rgba(197, 201, 197, 0.9)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgba(197, 201, 197, 0.75)   |   rgba(197, 201, 197, 0.9)
+  border-radius      ≠  15px   |   8px
+  box-shadow         ≠  rgba(255, 255, 255, 0.15) 0px 0px 0px 1px inset   |   rgba(140, 165, 177, 0.7) 0px 0px 0px 3px
+  padding            ≠  10.2143px 13px   |   4px 12px
+  size               130x33   |   66x30
+
+modal / Inkdrop button-primary  vs  Obsidian button-primary
+  background-color   ≠  rgb(140, 165, 177)   |   rgb(251, 70, 76)
+  color              ≠  rgba(17, 17, 14, 0.9)   |   rgb(255, 255, 255)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgba(17, 17, 14, 0.9)   |   rgb(255, 255, 255)
+  border-radius      ≠  15px   |   8px
+  box-shadow         ≠  rgb(24, 22, 22) 0px 1px 2px 0px   |   none
+  padding            ≠  10.2143px 13px   |   4px 12px
+  size               130x33   |   63x30
+
+notification / Inkdrop notification  vs  Obsidian notification
+  background-color   =  rgba(13, 12, 12, 0.8)   |   rgba(13, 12, 12, 0.8)
+  color              ≠  rgba(197, 201, 197, 0.9)   |   rgb(250, 250, 250)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgba(197, 201, 197, 0.9)   |   rgb(250, 250, 250)
+  border-radius      ≠  15px   |   8px
+  box-shadow         ≠  rgba(0, 0, 0, 0.4) 0px 1.5px 3px -2px, rgba(0, 0, 0, 0.2) 0px 4px 6px    |   none
+  padding            ≠  0px   |   8px 12px
+  size               420x69   |   160x33
+
+preferences / Inkdrop window  vs  Obsidian window
+  background-color   ≠  rgba(0, 0, 0, 0)   |   rgb(30, 29, 26)
+  color              =  rgba(197, 201, 197, 0.9)   |   rgba(197, 201, 197, 0.9)
+  border-top-width   =  0px   |   0px
+  border-top-color   =  rgba(197, 201, 197, 0.9)   |   rgba(197, 201, 197, 0.9)
+  border-radius      =  0px   |   0px
+  box-shadow         =  none   |   none
+  padding            ≠  0px   |   30px 0px 0px
+  size               1024x736   |   900x700
+
+preferences / Inkdrop sidebar-item-active  vs  Obsidian sidebar-item-active
+  background-color   =  rgba(140, 165, 177, 0.2)   |   rgba(140, 165, 177, 0.2)
+  color              ≠  rgb(197, 201, 197)   |   rgba(197, 201, 197, 0.9)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgb(140, 165, 177)   |   rgba(197, 201, 197, 0.9)
+  border-radius      ≠  0px   |   8px
+  box-shadow         =  none   |   none
+  padding            ≠  12px 16px   |   4px 8px
+  size               160x38   |   200x25
+
+preferences / Inkdrop dropdown  vs  Obsidian dropdown
+  background-color   =  rgb(13, 12, 12)   |   rgb(13, 12, 12)
+  color              =  rgba(197, 201, 197, 0.9)   |   rgba(197, 201, 197, 0.9)
+  border-top-width   ≠  1px   |   0px
+  border-top-color   ≠  rgba(98, 94, 91, 0.4)   |   rgba(197, 201, 197, 0.9)
+  border-radius      ≠  15px   |   8px
+  box-shadow         =  none   |   none
+  padding            ≠  11px 29.4px 11px 14px   |   0px 31.2px 0px 10.4px
+  size               260x38   |   71x30
+
+preferences / Inkdrop checkbox  vs  Obsidian checkbox
+  background-color   ≠  rgba(0, 0, 0, 0)   |   rgba(255, 255, 255, 0.08)
+  color              =  rgba(197, 201, 197, 0.9)   |   rgba(197, 201, 197, 0.9)
+  border-top-width   =  0px   |   0px
+  border-top-color   =  rgba(197, 201, 197, 0.9)   |   rgba(197, 201, 197, 0.9)
+  border-radius      ≠  0px   |   24px
+  box-shadow         ≠  none   |   rgba(0, 0, 0, 0.07) 0px 4px 10px 0px inset
+  padding            =  0px   |   0px
+  size               257x43   |   44x20
+
+preferences / Inkdrop button  vs  Obsidian button
+  background-color   =  rgb(39, 38, 38)   |   rgb(39, 38, 38)
+  color              ≠  rgba(197, 201, 197, 0.75)   |   rgba(197, 201, 197, 0.9)
+  border-top-width   =  0px   |   0px
+  border-top-color   ≠  rgba(197, 201, 197, 0.75)   |   rgba(197, 201, 197, 0.9)
+  border-radius      ≠  15px   |   8px
+  box-shadow         ≠  rgba(255, 255, 255, 0.15) 0px 0px 0px 1px inset   |   none
+  padding            ≠  11px 14px   |   4px 12px
+  size               172x36   |   72x30

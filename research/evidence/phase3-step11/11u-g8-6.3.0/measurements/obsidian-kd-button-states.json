@@ -1,0 +1,63 @@
+{
+ "app": "obsidian",
+ "label": "kd",
+ "button": "Manage",
+ "states": {
+  "normal": {
+   "background-color": "rgb(39, 38, 38)",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "border-top-width": "0px",
+   "border-top-color": "rgba(197, 201, 197, 0.9)",
+   "border-radius": "8px",
+   "box-shadow": "none",
+   "outline-style": "none",
+   "outline-color": "rgba(197, 201, 197, 0.9)",
+   "outline-width": "3px",
+   "transform": "none",
+   "opacity": "1",
+   "padding": "4px 12px"
+  },
+  "hover": {
+   "background-color": "rgb(58, 57, 54)",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "border-top-width": "0px",
+   "border-top-color": "rgba(197, 201, 197, 0.9)",
+   "border-radius": "8px",
+   "box-shadow": "none",
+   "outline-style": "none",
+   "outline-color": "rgba(197, 201, 197, 0.9)",
+   "outline-width": "3px",
+   "transform": "none",
+   "opacity": "1",
+   "padding": "4px 12px"
+  },
+  "pressed": {
+   "background-color": "rgb(58, 57, 54)",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "border-top-width": "0px",
+   "border-top-color": "rgba(197, 201, 197, 0.9)",
+   "border-radius": "8px",
+   "box-shadow": "none",
+   "outline-style": "none",
+   "outline-color": "rgba(197, 201, 197, 0.9)",
+   "outline-width": "3px",
+   "transform": "none",
+   "opacity": "1",
+   "padding": "4px 12px"
+  },
+  "focus": {
+   "background-color": "rgb(39, 38, 38)",
+   "color": "rgba(197, 201, 197, 0.9)",
+   "border-top-width": "0px",
+   "border-top-color": "rgba(197, 201, 197, 0.9)",
+   "border-radius": "8px",
+   "box-shadow": "rgba(140, 165, 177, 0.7) 0px 0px 0px 3px",
+   "outline-style": "none",
+   "outline-color": "rgba(197, 201, 197, 0.9)",
+   "outline-width": "3px",
+   "transform": "none",
+   "opacity": "1",
+   "padding": "4px 12px"
+  }
+ }
+}
