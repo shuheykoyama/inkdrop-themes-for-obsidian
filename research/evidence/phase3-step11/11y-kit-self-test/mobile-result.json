@@ -1,0 +1,131 @@
+{
+ "sd-final": {
+  "desktop": {
+   "cls": [],
+   "prompt": {
+    "radius": "12px",
+    "row": "4px"
+   },
+   "probe": {
+    "menu": "8px",
+    "prompt": "12px",
+    "promptRow": "4px"
+   },
+   "theme": "DEV solarized-dark (unnamed) [final]"
+  },
+  "mobile": {
+   "cls": [
+    "emulate-mobile",
+    "is-tablet",
+    "is-mobile"
+   ],
+   "prompt": {
+    "radius": "24px",
+    "row": "24px"
+   },
+   "probe": {
+    "menu": "8px",
+    "prompt": "24px",
+    "promptRow": "24px"
+   },
+   "theme": "DEV solarized-dark (unnamed) [final]"
+  }
+ },
+ "sd-trial": {
+  "desktop": {
+   "cls": [],
+   "prompt": {
+    "radius": "24px",
+    "row": "7px"
+   },
+   "probe": {
+    "menu": "15px",
+    "prompt": "24px",
+    "promptRow": "7px"
+   },
+   "theme": "DEV solarized-dark (unnamed) [trial]"
+  },
+  "mobile": {
+   "cls": [
+    "emulate-mobile",
+    "is-tablet",
+    "is-mobile"
+   ],
+   "prompt": {
+    "radius": "24px",
+    "row": "24px"
+   },
+   "probe": {
+    "menu": "8px",
+    "prompt": "24px",
+    "promptRow": "24px"
+   },
+   "theme": "DEV solarized-dark (unnamed) [trial]"
+  }
+ },
+ "kd-final": {
+  "desktop": {
+   "cls": [],
+   "prompt": {
+    "radius": "12px",
+    "row": "4px"
+   },
+   "probe": {
+    "menu": "8px",
+    "prompt": "12px",
+    "promptRow": "4px"
+   },
+   "theme": "DEV kanagawa-dragon (unnamed) [final]"
+  },
+  "mobile": {
+   "cls": [
+    "emulate-mobile",
+    "is-tablet",
+    "is-mobile"
+   ],
+   "prompt": {
+    "radius": "24px",
+    "row": "24px"
+   },
+   "probe": {
+    "menu": "8px",
+    "prompt": "24px",
+    "promptRow": "24px"
+   },
+   "theme": "DEV kanagawa-dragon (unnamed) [final]"
+  }
+ },
+ "kd-trial": {
+  "desktop": {
+   "cls": [],
+   "prompt": {
+    "radius": "24px",
+    "row": "7px"
+   },
+   "probe": {
+    "menu": "15px",
+    "prompt": "24px",
+    "promptRow": "7px"
+   },
+   "theme": "DEV kanagawa-dragon (unnamed) [trial]"
+  },
+  "mobile": {
+   "cls": [
+    "emulate-mobile",
+    "is-tablet",
+    "is-mobile"
+   ],
+   "prompt": {
+    "radius": "24px",
+    "row": "24px"
+   },
+   "probe": {
+    "menu": "8px",
+    "prompt": "24px",
+    "promptRow": "24px"
+   },
+   "theme": "DEV kanagawa-dragon (unnamed) [trial]"
+  }
+ },
+ "desktopAfter": []
+}

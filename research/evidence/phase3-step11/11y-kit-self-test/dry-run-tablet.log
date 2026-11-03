@@ -1,0 +1,12 @@
+isolated instance: Obsidian ?, Electron 43.8.3
+PASS dry.emulated-tablet
+PASS dry.accepted
+PASS dry.run-checks  {"files":["results-2026-11-03T17-44-36-144Z.json"]}
+PASS dry.screenshot-tour  {"status":0,"files":["tour-2026-11-03T17-49-23-767Z.json"],"shots":18,"errors":[],"drawerShots":[{"label":"solarized-dark tablet, left sidebar","before":true,"after":true},{"label":"solarized-dark tablet, right sidebar","before":true,"after":true},{"label":"kanagawa-dragon tablet, left sidebar","before":true,"after":true},{"label":"kanagawa-dragon tablet, right sidebar","before":true,"after":true}]}
+PASS dry.tablet-jobs  {"device":"tablet","jobs":28,"probes":14,"other":[]}
+PASS dry.tablet-judged  {"total":406,"fail":14,"probes":14,"platforms":["tablet"],"other":[]}
+PASS dry.tablet-not-a-device-run  14 device.environment checks did not pass (not a device run)
+PASS dry.tablet-tour  {"device":"tablet","steps":18,"errors":[]}
+PASS dry.drawer-header-pixels  ["PASS solarized-dark tablet, left sidebar: dE2000 0.012 <= 1.0","PASS solarized-dark tablet, right sidebar: dE2000 0.002 <= 1.0","PASS kanagawa-dragon tablet, left sidebar: dE2000 0.009 <= 1.0","PASS kanagawa-dragon tablet, right sidebar: dE2000 0.007 <= 1.0"]
+PASS dry.drawer-geometry  [{"label":"solarized-dark tablet, left sidebar","start":"2026-11-03T17:44:56.590Z","end":"2026-11-03T17:45:05.593Z","drawers":[[{"side":"left","header":true,"body":true}],[{"side":"left","header":true,"body":true}]]},{"label":"solarized-dark tablet, right sidebar","start":"2026-11-03T17:45:11.231Z","end":"2026-11-03T17:45:20.233Z","drawers":[[{"side":"right","header":true,"body":true}],[{"side":"right","header":true,"body":true}]]},{"label":"kanagawa-dragon tablet, left sidebar","start":"2026-11-03T17:47:16.899Z","end":"2026-11-03T17:47:25.901Z","drawers":[[{"side":"left","header":true,"body":true}],[{"side":"left","header":true,"body":true}]]},{"label":"kanagawa-dragon tablet, right sidebar","start":"2026-11-03T17:47:31.517Z","end":"2026-11-03T17:47:40.520Z","drawers":[[{"side":"right","header":true,"body":true}],[{"side":"right","header":true,"body":true}]]}]
+all 10 kit self-test checks PASS

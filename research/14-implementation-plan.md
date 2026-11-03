@@ -8731,3 +8731,12 @@ Q-D10 は変えていない。BLOCKED も解いていない。
 - **既知の差分として据え置き**: 影、選択行の文字色、メニュー背景の参照先、行高と余白、ボタンの押下・focus、モーダルと通知の構造、V-38 の非アクティブ時の差と柄背景の Ribbon の透過差。
 - 未確認（PASS にしない）: パレットの末尾行、More options メニュー、設定画面・Canvas の未撮影 UI、Inkdrop との focus リング。
 - 次: iPhone 実機検証（ユーザーの「準備できた」が必要）、最終完成度レビュー。
+
+### 6.189 工程 11X の独立レビューと、iPhone キットの自己テスト（`evidence/phase3-step11/11y-kit-self-test/`）
+
+- **判定**: 工程 11X は APPROVE WITH CONDITIONS（CI run `41681791939`）。最終 CSS は SD `7e4936c6…`、KD `2d5556d6…`。キット `b2a24a48-cb52-49fd-9aed-fd1aaafb2f73`（ZIP `79f592fc…`）を実機検証の候補に採用。
+- **自己テスト**（ユーザーの許可のあと、隔離 Obsidian 1.14.5 / Electron 43.8.3、CDP 9335）: `plugin` 63 件、`dry-run` 7 件、`dry-run-tablet` 10 件、すべて PASS。判定レポートの FAIL は、電話 52・タブレット 14 のすべてが `device.environment`（エミュレーション由来）で、ほかの FAIL・例外・欠落はない。
+- **ラベル**: 判定レポートの「1.14.4」固定を、実行時の版から作るように直した（`kit-self-test.mjs`）。今回の保存済みレポートのラベルは「Obsidian ?, Electron 43.8.3」（直す前の実行）。
+- **モバイルでの 3 規則**: タブレットのエミュレーション（`is-mobile`）で、規則の有無でパレット（24px、行 24px）・`.menu`（8px）の Computed Style は変わらない（SD・KD）。電話エミュレーション・実機は未測定。
+- 復元: 隔離 Obsidian 停止、ポート閉、LaunchServices は `restore` 済み（作業前に残っていた 1.14.5 の複製の登録は、なくなった）、`caffeinate` 停止。
+- 次: 独立レビュー → iPhone 実機検証（ユーザーの「準備できた」が必要）→ 最終完成度レビュー。キットの再生成なし。
