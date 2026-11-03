@@ -1,0 +1,73 @@
+no theme: 0 variables differ between the two probes (expected 0)
+
+## solarized-dark
+variables read: 379; changed: 0
+Graph renderer colours:
+  unchanged: fill, fillFocused, fillTag, fillUnresolved, fillAttachment, arrow, circle, line, text, fillHighlight, lineHighlight
+Element colours that changed (section: property before -> after, elements):
+  canvas
+    fill: url("#750ad571b2788047") -> url("#ba65b92dd65e001a")  <- rect
+Against the editor background rgb(0, 33, 41) (alpha composited):
+  --canvas-color: rgba(253, 246, 226, 0.3) -> contrast 2.55
+  --canvas-dot-pattern: rgb(7, 53, 65) -> contrast 1.28
+  --graph-line: rgba(100, 122, 130, 0.22) -> contrast 1.29
+  --graph-node-tag: rgb(133, 153, 0) -> contrast 5.24
+  --graph-node-attachment: rgb(179, 134, 0) -> contrast 5.06
+  --canvas-color-1: rgb(220, 49, 46) -> contrast 3.62
+  --canvas-color-2: rgb(202, 76, 22) -> contrast 3.65
+  --canvas-color-3: rgb(179, 134, 0) -> contrast 5.06
+  --canvas-color-4: rgb(133, 153, 0) -> contrast 5.24
+  --canvas-color-5: rgb(20, 184, 165) -> contrast 6.75
+  --canvas-color-6: rgb(109, 114, 197) -> contrast 3.89
+  uncoloured node vs each coloured node (dE2000): 1: 39.7, 2: 37.2, 3: 36.3, 4: 35.0, 5: 32.2, 6: 25.3
+  closest pairs among the six colours (dE2000): 1-2: 10.3, 3-4: 18.6, 2-3: 27.1
+
+## kanagawa-dragon
+variables read: 379; changed: 2
+  --canvas-color-2: rgb(183, 146, 123) -> rgb(220, 164, 96)
+  --canvas-color-4: rgb(137, 153, 122) -> rgb(152, 188, 108)
+Graph renderer colours:
+  unchanged: fill, fillFocused, fillTag, fillUnresolved, fillAttachment, arrow, circle, line, text, fillHighlight, lineHighlight
+Element colours that changed (section: property before -> after, elements):
+  canvas
+    fill: url("#27a1baae638a3ca5") -> url("#0360b91b9e9c9849")  <- rect
+    border-top-color: oklch(0.688202 0.0547121 53.393 / 0.7) -> oklch(0.758078 0.108125 70.4983 / 0.7)  <- div.canvas-node-container
+    border-right-color: oklch(0.688202 0.0547121 53.393 / 0.7) -> oklch(0.758078 0.108125 70.4983 / 0.7)  <- div.canvas-node-container
+    border-bottom-color: oklch(0.688202 0.0547121 53.393 / 0.7) -> oklch(0.758078 0.108125 70.4983 / 0.7)  <- div.canvas-node-container
+    border-left-color: oklch(0.688202 0.0547121 53.393 / 0.7) -> oklch(0.758078 0.108125 70.4983 / 0.7)  <- div.canvas-node-container
+    box-shadow: oklch(0.688202 0.0547121 53.393 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px -> oklch(0.758078 0.108125 70.4983 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px  <- div.canvas-node-container
+    background-color: oklch(0.688202 0.0547121 53.393 / 0.1) -> oklch(0.758078 0.108125 70.4983 / 0.1)  <- div.canvas-node-placeholder
+    color: rgb(183, 146, 123) -> rgb(220, 164, 96)  <- svg.lucide-align-left.svg-icon, path
+    border-top-color: rgb(183, 146, 123) -> rgb(220, 164, 96)  <- svg.lucide-align-left.svg-icon, path
+    border-right-color: rgb(183, 146, 123) -> rgb(220, 164, 96)  <- svg.lucide-align-left.svg-icon, path
+    border-bottom-color: rgb(183, 146, 123) -> rgb(220, 164, 96)  <- svg.lucide-align-left.svg-icon, path
+    border-left-color: rgb(183, 146, 123) -> rgb(220, 164, 96)  <- svg.lucide-align-left.svg-icon, path
+    outline-color: rgb(183, 146, 123) -> rgb(220, 164, 96)  <- svg.lucide-align-left.svg-icon, path
+    stroke: rgb(183, 146, 123) -> rgb(220, 164, 96)  <- svg.lucide-align-left.svg-icon, path
+    border-top-color: oklch(0.661679 0.0474098 129.887 / 0.7) -> oklch(0.748836 0.113025 128.608 / 0.7)  <- div.canvas-node-container
+    border-right-color: oklch(0.661679 0.0474098 129.887 / 0.7) -> oklch(0.748836 0.113025 128.608 / 0.7)  <- div.canvas-node-container
+    border-bottom-color: oklch(0.661679 0.0474098 129.887 / 0.7) -> oklch(0.748836 0.113025 128.608 / 0.7)  <- div.canvas-node-container
+    border-left-color: oklch(0.661679 0.0474098 129.887 / 0.7) -> oklch(0.748836 0.113025 128.608 / 0.7)  <- div.canvas-node-container
+    box-shadow: oklch(0.661679 0.0474098 129.887 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px -> oklch(0.748836 0.113025 128.608 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px  <- div.canvas-node-container
+    background-color: oklch(0.661679 0.0474098 129.887 / 0.1) -> oklch(0.748836 0.113025 128.608 / 0.1)  <- div.canvas-node-placeholder
+    color: rgb(137, 153, 122) -> rgb(152, 188, 108)  <- svg.lucide-align-left.svg-icon, path
+    border-top-color: rgb(137, 153, 122) -> rgb(152, 188, 108)  <- svg.lucide-align-left.svg-icon, path
+    border-right-color: rgb(137, 153, 122) -> rgb(152, 188, 108)  <- svg.lucide-align-left.svg-icon, path
+    border-bottom-color: rgb(137, 153, 122) -> rgb(152, 188, 108)  <- svg.lucide-align-left.svg-icon, path
+    border-left-color: rgb(137, 153, 122) -> rgb(152, 188, 108)  <- svg.lucide-align-left.svg-icon, path
+    outline-color: rgb(137, 153, 122) -> rgb(152, 188, 108)  <- svg.lucide-align-left.svg-icon, path
+    stroke: rgb(137, 153, 122) -> rgb(152, 188, 108)  <- svg.lucide-align-left.svg-icon, path
+Against the editor background rgb(30, 29, 26) (alpha composited):
+  --canvas-color: rgba(197, 201, 197, 0.3) -> contrast 2.11
+  --canvas-dot-pattern: rgb(58, 57, 54) -> contrast 1.46
+  --graph-line: rgba(98, 94, 91, 0.6) -> contrast 1.74
+  --graph-node-tag: rgb(137, 153, 122) -> contrast 5.54
+  --graph-node-attachment: rgb(195, 177, 136) -> contrast 8.00
+  --canvas-color-1: rgb(196, 116, 110) -> contrast 4.87
+  --canvas-color-2: rgb(220, 164, 96) -> contrast 7.64
+  --canvas-color-3: rgb(195, 177, 136) -> contrast 8.00
+  --canvas-color-4: rgb(152, 188, 108) -> contrast 7.82
+  --canvas-color-5: rgb(142, 164, 162) -> contrast 6.41
+  --canvas-color-6: rgb(138, 147, 168) -> contrast 5.47
+  uncoloured node vs each coloured node (dE2000): 1: 33.3, 2: 42.5, 3: 39.8, 4: 42.4, 5: 32.6, 6: 28.9
+  closest pairs among the six colours (dE2000): 2-3: 11.3, 5-6: 14.1, 3-4: 16.6

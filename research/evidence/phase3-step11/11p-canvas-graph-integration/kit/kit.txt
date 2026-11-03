@@ -1,0 +1,7 @@
+source commit: b3d1989 (clean tree, fresh clone)
+kit id: c60ce128-4211-4b20-a132-325c72efdb49 (previous kit, kept: 79751c34-af7d-495d-a88a-037648f82809 from 5a9e5b1)
+InkdropThemeTest.zip SHA-256: f71918ffa273ee7602cffc17fd626ba523a3ff2622a61e6198c9add03c89acba
+theme.css SHA-256: kanagawa-dragon 9cc55c6fcbab47cf7137e3805550840f3fd1b0004321ddd51794b3a95994dc52, solarized-dark f6b59e616f1e2d5cb3b82aefa5e5c8a1bb44b8e1431af7f057101c4ad9ed0fac
+runner and oracle: tests/runtime/lib/syntax.mjs, tests/spec/syntax.json, tests/runtime/code-tokens.js at b3d1989 (unchanged since 5a9e5b1; the plugin runs the page-side scripts; judging on the Mac with tests/device/judge.mjs). tests/spec/runtime/desktop.json adds the ui.canvas-graph checks (desktop only: not in the kit's jobs).
+jobs 80 (probe 66, extra 32), checks 480; on a phone 66 jobs, on a tablet 28; tour steps phone 38, tablet 18 (same as the previous kit)
+difference from the previous kit (kit-files.sha256 of both, 18 files): the two theme.css files (SD 8f2c6b48 -> f6b59e61, KD b784835f -> 9cc55c6f), the marker with the new kit id, and the plugin's main.js (it carries the kit id). Nothing else.

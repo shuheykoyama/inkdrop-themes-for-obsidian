@@ -1,0 +1,391 @@
+no theme: 0 variables differ between the two probes (expected 0)
+
+## solarized-dark
+variables read: 379; changed: 11
+  --canvas-color: rgb(126, 126, 126) -> rgba(253, 246, 226, 0.3)
+  --canvas-color-1: rgb(251, 70, 76) -> rgb(220, 49, 46)
+  --canvas-color-2: rgb(233, 151, 63) -> rgb(202, 76, 22)
+  --canvas-color-3: rgb(224, 222, 113) -> rgb(179, 134, 0)
+  --canvas-color-4: rgb(68, 207, 110) -> rgb(133, 153, 0)
+  --canvas-color-5: rgb(83, 223, 221) -> rgb(20, 184, 165)
+  --canvas-color-6: rgb(168, 130, 255) -> rgb(109, 114, 197)
+  --canvas-dot-pattern: rgb(51, 51, 51) -> rgb(7, 53, 65)
+  --graph-line: rgb(63, 63, 63) -> rgba(100, 122, 130, 0.22)
+  --graph-node-attachment: rgb(224, 222, 113) -> rgb(179, 134, 0)
+  --graph-node-tag: rgb(68, 207, 110) -> rgb(133, 153, 0)
+Graph renderer colours:
+  fillTag: #44cf6e a=1 -> #859900 a=1
+  fillAttachment: #e0de71 a=1 -> #b38600 a=1
+  line: #3f3f3f a=1 -> #647a82 a=0.22
+  unchanged: fill, fillFocused, fillUnresolved, arrow, circle, text, fillHighlight, lineHighlight
+Element colours that changed (section: property before -> after, elements):
+  canvas
+    fill: rgb(51, 51, 51) -> rgb(7, 53, 65)  <- circle
+    fill: url("#92efd9b85ed56c30") -> url("#ba65b92dd65e001a")  <- rect
+    stroke: rgb(126, 126, 126) -> rgba(253, 246, 226, 0.3)  <- path.canvas-display-path, polygon.canvas-path-end, svg.lucide-align-left.svg-icon
+    stroke: rgb(224, 222, 113) -> rgb(179, 134, 0)  <- path.canvas-display-path, polygon.canvas-path-end, svg.lucide-align-left.svg-icon
+    fill: rgb(126, 126, 126) -> rgba(253, 246, 226, 0.3)  <- polygon.canvas-path-end
+    fill: rgb(224, 222, 113) -> rgb(179, 134, 0)  <- polygon.canvas-path-end
+    border-top-color: rgb(126, 126, 126) -> rgba(253, 246, 226, 0.3)  <- div.canvas-node-container, svg.lucide-align-left.svg-icon
+    border-right-color: rgb(126, 126, 126) -> rgba(253, 246, 226, 0.3)  <- div.canvas-node-container, svg.lucide-align-left.svg-icon
+    border-bottom-color: rgb(126, 126, 126) -> rgba(253, 246, 226, 0.3)  <- div.canvas-node-container, svg.lucide-align-left.svg-icon
+    border-left-color: rgb(126, 126, 126) -> rgba(253, 246, 226, 0.3)  <- div.canvas-node-container, svg.lucide-align-left.svg-icon
+    background-color: oklch(0.593064 0.0000294914 none / 0.07) -> oklch(0.973156 0.0267606 90.1783 / 0.021)  <- div.canvas-node-content
+    background-color: oklch(0.593064 0.0000294914 none / 0.1) -> oklch(0.973156 0.0267606 90.1783 / 0.03)  <- div.canvas-group-label, div.canvas-node-placeholder
+    color: rgb(126, 126, 126) -> rgba(253, 246, 226, 0.3)  <- svg.lucide-align-left.svg-icon
+    outline-color: rgb(126, 126, 126) -> rgba(253, 246, 226, 0.3)  <- svg.lucide-align-left.svg-icon
+    color: rgb(126, 126, 126) -> rgb(255, 136, 0)  <- path
+    border-top-color: rgb(126, 126, 126) -> rgb(255, 136, 0)  <- path
+    border-right-color: rgb(126, 126, 126) -> rgb(255, 136, 0)  <- path
+    border-bottom-color: rgb(126, 126, 126) -> rgb(255, 136, 0)  <- path
+    border-left-color: rgb(126, 126, 126) -> rgb(255, 136, 0)  <- path
+    outline-color: rgb(126, 126, 126) -> rgb(255, 136, 0)  <- path
+    stroke: rgb(126, 126, 126) -> rgb(255, 136, 0)  <- path
+    border-top-color: oklch(0.659714 0.216867 23.8101 / 0.7) -> oklch(0.584133 0.207141 27.185 / 0.7)  <- div.canvas-node-container
+    border-right-color: oklch(0.659714 0.216867 23.8101 / 0.7) -> oklch(0.584133 0.207141 27.185 / 0.7)  <- div.canvas-node-container
+    border-bottom-color: oklch(0.659714 0.216867 23.8101 / 0.7) -> oklch(0.584133 0.207141 27.185 / 0.7)  <- div.canvas-node-container
+    border-left-color: oklch(0.659714 0.216867 23.8101 / 0.7) -> oklch(0.584133 0.207141 27.185 / 0.7)  <- div.canvas-node-container
+    box-shadow: oklch(0.659714 0.216867 23.8101 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px -> oklch(0.584133 0.207141 27.185 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px  <- div.canvas-node-container
+    background-color: oklch(0.659714 0.216867 23.8101 / 0.1) -> oklch(0.584133 0.207141 27.185 / 0.1)  <- div.canvas-node-placeholder
+    color: rgb(251, 70, 76) -> rgb(220, 49, 46)  <- svg.lucide-align-left.svg-icon
+    border-top-color: rgb(251, 70, 76) -> rgb(220, 49, 46)  <- svg.lucide-align-left.svg-icon
+    border-right-color: rgb(251, 70, 76) -> rgb(220, 49, 46)  <- svg.lucide-align-left.svg-icon
+    border-bottom-color: rgb(251, 70, 76) -> rgb(220, 49, 46)  <- svg.lucide-align-left.svg-icon
+    border-left-color: rgb(251, 70, 76) -> rgb(220, 49, 46)  <- svg.lucide-align-left.svg-icon
+    outline-color: rgb(251, 70, 76) -> rgb(220, 49, 46)  <- svg.lucide-align-left.svg-icon
+    stroke: rgb(251, 70, 76) -> rgb(220, 49, 46)  <- svg.lucide-align-left.svg-icon
+    color: rgb(255, 136, 0) -> rgb(220, 49, 46)  <- path
+    border-top-color: rgb(255, 136, 0) -> rgb(220, 49, 46)  <- path
+    border-right-color: rgb(255, 136, 0) -> rgb(220, 49, 46)  <- path
+    border-bottom-color: rgb(255, 136, 0) -> rgb(220, 49, 46)  <- path
+    border-left-color: rgb(255, 136, 0) -> rgb(220, 49, 46)  <- path
+    outline-color: rgb(255, 136, 0) -> rgb(220, 49, 46)  <- path
+    stroke: rgb(255, 136, 0) -> rgb(220, 49, 46)  <- path
+    border-top-color: oklch(0.744305 0.140751 64.0934 / 0.7) -> oklch(0.580781 0.171019 40.0398 / 0.7)  <- div.canvas-node-container
+    border-right-color: oklch(0.744305 0.140751 64.0934 / 0.7) -> oklch(0.580781 0.171019 40.0398 / 0.7)  <- div.canvas-node-container
+    border-bottom-color: oklch(0.744305 0.140751 64.0934 / 0.7) -> oklch(0.580781 0.171019 40.0398 / 0.7)  <- div.canvas-node-container
+    border-left-color: oklch(0.744305 0.140751 64.0934 / 0.7) -> oklch(0.580781 0.171019 40.0398 / 0.7)  <- div.canvas-node-container
+    box-shadow: oklch(0.744305 0.140751 64.0934 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px -> oklch(0.580781 0.171019 40.0398 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px  <- div.canvas-node-container
+    background-color: oklch(0.744305 0.140751 64.0934 / 0.1) -> oklch(0.580781 0.171019 40.0398 / 0.1)  <- div.canvas-node-placeholder
+    color: rgb(233, 151, 63) -> rgb(202, 76, 22)  <- svg.lucide-align-left.svg-icon
+    border-top-color: rgb(233, 151, 63) -> rgb(202, 76, 22)  <- svg.lucide-align-left.svg-icon
+    border-right-color: rgb(233, 151, 63) -> rgb(202, 76, 22)  <- svg.lucide-align-left.svg-icon
+    border-bottom-color: rgb(233, 151, 63) -> rgb(202, 76, 22)  <- svg.lucide-align-left.svg-icon
+    border-left-color: rgb(233, 151, 63) -> rgb(202, 76, 22)  <- svg.lucide-align-left.svg-icon
+    outline-color: rgb(233, 151, 63) -> rgb(202, 76, 22)  <- svg.lucide-align-left.svg-icon
+    stroke: rgb(233, 151, 63) -> rgb(202, 76, 22)  <- svg.lucide-align-left.svg-icon
+    color: rgb(251, 70, 76) -> rgb(202, 76, 22)  <- path
+    border-top-color: rgb(251, 70, 76) -> rgb(202, 76, 22)  <- path
+    border-right-color: rgb(251, 70, 76) -> rgb(202, 76, 22)  <- path
+    border-bottom-color: rgb(251, 70, 76) -> rgb(202, 76, 22)  <- path
+    border-left-color: rgb(251, 70, 76) -> rgb(202, 76, 22)  <- path
+    outline-color: rgb(251, 70, 76) -> rgb(202, 76, 22)  <- path
+    stroke: rgb(251, 70, 76) -> rgb(202, 76, 22)  <- path
+    border-top-color: oklch(0.879975 0.1319 107.863 / 0.7) -> oklch(0.645308 0.132283 84.8726 / 0.7)  <- div.canvas-node-container
+    border-right-color: oklch(0.879975 0.1319 107.863 / 0.7) -> oklch(0.645308 0.132283 84.8726 / 0.7)  <- div.canvas-node-container
+    border-bottom-color: oklch(0.879975 0.1319 107.863 / 0.7) -> oklch(0.645308 0.132283 84.8726 / 0.7)  <- div.canvas-node-container
+    border-left-color: oklch(0.879975 0.1319 107.863 / 0.7) -> oklch(0.645308 0.132283 84.8726 / 0.7)  <- div.canvas-node-container
+    box-shadow: oklch(0.879975 0.1319 107.863 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px -> oklch(0.645308 0.132283 84.8726 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px  <- div.canvas-node-container
+    background-color: oklch(0.879975 0.1319 107.863 / 0.1) -> oklch(0.645308 0.132283 84.8726 / 0.1)  <- div.canvas-node-placeholder
+    color: rgb(224, 222, 113) -> rgb(179, 134, 0)  <- svg.lucide-align-left.svg-icon
+    border-top-color: rgb(224, 222, 113) -> rgb(179, 134, 0)  <- svg.lucide-align-left.svg-icon
+    border-right-color: rgb(224, 222, 113) -> rgb(179, 134, 0)  <- svg.lucide-align-left.svg-icon
+    border-bottom-color: rgb(224, 222, 113) -> rgb(179, 134, 0)  <- svg.lucide-align-left.svg-icon
+    border-left-color: rgb(224, 222, 113) -> rgb(179, 134, 0)  <- svg.lucide-align-left.svg-icon
+    outline-color: rgb(224, 222, 113) -> rgb(179, 134, 0)  <- svg.lucide-align-left.svg-icon
+    color: rgb(233, 151, 63) -> rgb(179, 134, 0)  <- path
+    border-top-color: rgb(233, 151, 63) -> rgb(179, 134, 0)  <- path
+    border-right-color: rgb(233, 151, 63) -> rgb(179, 134, 0)  <- path
+    border-bottom-color: rgb(233, 151, 63) -> rgb(179, 134, 0)  <- path
+    border-left-color: rgb(233, 151, 63) -> rgb(179, 134, 0)  <- path
+    outline-color: rgb(233, 151, 63) -> rgb(179, 134, 0)  <- path
+    stroke: rgb(233, 151, 63) -> rgb(179, 134, 0)  <- path
+    border-top-color: oklch(0.757733 0.180995 149.613 / 0.7) -> oklch(0.644043 0.151002 118.751 / 0.7)  <- div.canvas-node-container
+    border-right-color: oklch(0.757733 0.180995 149.613 / 0.7) -> oklch(0.644043 0.151002 118.751 / 0.7)  <- div.canvas-node-container
+    border-bottom-color: oklch(0.757733 0.180995 149.613 / 0.7) -> oklch(0.644043 0.151002 118.751 / 0.7)  <- div.canvas-node-container
+    border-left-color: oklch(0.757733 0.180995 149.613 / 0.7) -> oklch(0.644043 0.151002 118.751 / 0.7)  <- div.canvas-node-container
+    box-shadow: oklch(0.757733 0.180995 149.613 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px -> oklch(0.644043 0.151002 118.751 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px  <- div.canvas-node-container
+    background-color: oklch(0.757733 0.180995 149.613 / 0.1) -> oklch(0.644043 0.151002 118.751 / 0.1)  <- div.canvas-node-placeholder
+    color: rgb(68, 207, 110) -> rgb(133, 153, 0)  <- svg.lucide-align-left.svg-icon
+    border-top-color: rgb(68, 207, 110) -> rgb(133, 153, 0)  <- svg.lucide-align-left.svg-icon
+    border-right-color: rgb(68, 207, 110) -> rgb(133, 153, 0)  <- svg.lucide-align-left.svg-icon
+    border-bottom-color: rgb(68, 207, 110) -> rgb(133, 153, 0)  <- svg.lucide-align-left.svg-icon
+    border-left-color: rgb(68, 207, 110) -> rgb(133, 153, 0)  <- svg.lucide-align-left.svg-icon
+    outline-color: rgb(68, 207, 110) -> rgb(133, 153, 0)  <- svg.lucide-align-left.svg-icon
+    stroke: rgb(68, 207, 110) -> rgb(133, 153, 0)  <- svg.lucide-align-left.svg-icon
+    color: rgb(224, 222, 113) -> rgb(133, 153, 0)  <- path
+    border-top-color: rgb(224, 222, 113) -> rgb(133, 153, 0)  <- path
+    border-right-color: rgb(224, 222, 113) -> rgb(133, 153, 0)  <- path
+    border-bottom-color: rgb(224, 222, 113) -> rgb(133, 153, 0)  <- path
+    border-left-color: rgb(224, 222, 113) -> rgb(133, 153, 0)  <- path
+    outline-color: rgb(224, 222, 113) -> rgb(133, 153, 0)  <- path
+    stroke: rgb(224, 222, 113) -> rgb(133, 153, 0)  <- path
+    border-top-color: oklch(0.828554 0.118878 193.753 / 0.7) -> oklch(0.702302 0.123156 181.794 / 0.7)  <- div.canvas-node-container
+    border-right-color: oklch(0.828554 0.118878 193.753 / 0.7) -> oklch(0.702302 0.123156 181.794 / 0.7)  <- div.canvas-node-container
+    border-bottom-color: oklch(0.828554 0.118878 193.753 / 0.7) -> oklch(0.702302 0.123156 181.794 / 0.7)  <- div.canvas-node-container
+    border-left-color: oklch(0.828554 0.118878 193.753 / 0.7) -> oklch(0.702302 0.123156 181.794 / 0.7)  <- div.canvas-node-container
+    box-shadow: oklch(0.828554 0.118878 193.753 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px -> oklch(0.702302 0.123156 181.794 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px  <- div.canvas-node-container
+    background-color: oklch(0.828554 0.118878 193.753 / 0.1) -> oklch(0.702302 0.123156 181.794 / 0.1)  <- div.canvas-node-placeholder
+    color: rgb(83, 223, 221) -> rgb(20, 184, 165)  <- svg.lucide-align-left.svg-icon
+    border-top-color: rgb(83, 223, 221) -> rgb(20, 184, 165)  <- svg.lucide-align-left.svg-icon
+    border-right-color: rgb(83, 223, 221) -> rgb(20, 184, 165)  <- svg.lucide-align-left.svg-icon
+    border-bottom-color: rgb(83, 223, 221) -> rgb(20, 184, 165)  <- svg.lucide-align-left.svg-icon
+    border-left-color: rgb(83, 223, 221) -> rgb(20, 184, 165)  <- svg.lucide-align-left.svg-icon
+    outline-color: rgb(83, 223, 221) -> rgb(20, 184, 165)  <- svg.lucide-align-left.svg-icon
+    stroke: rgb(83, 223, 221) -> rgb(20, 184, 165)  <- svg.lucide-align-left.svg-icon
+    color: rgb(68, 207, 110) -> rgb(20, 184, 165)  <- path
+    border-top-color: rgb(68, 207, 110) -> rgb(20, 184, 165)  <- path
+    border-right-color: rgb(68, 207, 110) -> rgb(20, 184, 165)  <- path
+    border-bottom-color: rgb(68, 207, 110) -> rgb(20, 184, 165)  <- path
+    border-left-color: rgb(68, 207, 110) -> rgb(20, 184, 165)  <- path
+    outline-color: rgb(68, 207, 110) -> rgb(20, 184, 165)  <- path
+    stroke: rgb(68, 207, 110) -> rgb(20, 184, 165)  <- path
+    border-top-color: oklch(0.697277 0.179083 295.408 / 0.7) -> oklch(0.584665 0.126421 279.451 / 0.7)  <- div.canvas-node-container
+    border-right-color: oklch(0.697277 0.179083 295.408 / 0.7) -> oklch(0.584665 0.126421 279.451 / 0.7)  <- div.canvas-node-container
+    border-bottom-color: oklch(0.697277 0.179083 295.408 / 0.7) -> oklch(0.584665 0.126421 279.451 / 0.7)  <- div.canvas-node-container
+    border-left-color: oklch(0.697277 0.179083 295.408 / 0.7) -> oklch(0.584665 0.126421 279.451 / 0.7)  <- div.canvas-node-container
+    box-shadow: oklch(0.697277 0.179083 295.408 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px -> oklch(0.584665 0.126421 279.451 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px  <- div.canvas-node-container
+    background-color: oklch(0.697277 0.179083 295.408 / 0.1) -> oklch(0.584665 0.126421 279.451 / 0.1)  <- div.canvas-node-placeholder
+    color: rgb(168, 130, 255) -> rgb(109, 114, 197)  <- svg.lucide-align-left.svg-icon
+    border-top-color: rgb(168, 130, 255) -> rgb(109, 114, 197)  <- svg.lucide-align-left.svg-icon
+    border-right-color: rgb(168, 130, 255) -> rgb(109, 114, 197)  <- svg.lucide-align-left.svg-icon
+    border-bottom-color: rgb(168, 130, 255) -> rgb(109, 114, 197)  <- svg.lucide-align-left.svg-icon
+    border-left-color: rgb(168, 130, 255) -> rgb(109, 114, 197)  <- svg.lucide-align-left.svg-icon
+    outline-color: rgb(168, 130, 255) -> rgb(109, 114, 197)  <- svg.lucide-align-left.svg-icon
+    stroke: rgb(168, 130, 255) -> rgb(109, 114, 197)  <- svg.lucide-align-left.svg-icon
+    color: rgb(83, 223, 221) -> rgb(109, 114, 197)  <- path
+    border-top-color: rgb(83, 223, 221) -> rgb(109, 114, 197)  <- path
+    border-right-color: rgb(83, 223, 221) -> rgb(109, 114, 197)  <- path
+    border-bottom-color: rgb(83, 223, 221) -> rgb(109, 114, 197)  <- path
+    border-left-color: rgb(83, 223, 221) -> rgb(109, 114, 197)  <- path
+    outline-color: rgb(83, 223, 221) -> rgb(109, 114, 197)  <- path
+    stroke: rgb(83, 223, 221) -> rgb(109, 114, 197)  <- path
+  bases/UI Table.base
+    color: rgba(253, 246, 226, 0.6) -> rgb(131, 148, 149)  <- div.view-header-title
+    border-top-color: rgba(253, 246, 226, 0.6) -> rgb(131, 148, 149)  <- div.view-header-title
+    border-right-color: rgba(253, 246, 226, 0.6) -> rgb(131, 148, 149)  <- div.view-header-title
+    border-bottom-color: rgba(253, 246, 226, 0.6) -> rgb(131, 148, 149)  <- div.view-header-title
+    border-left-color: rgba(253, 246, 226, 0.6) -> rgb(131, 148, 149)  <- div.view-header-title
+    outline-color: rgba(253, 246, 226, 0.6) -> rgb(131, 148, 149)  <- div.view-header-title
+  bases/UI Cards.base
+    color: rgba(253, 246, 226, 0.6) -> rgb(131, 148, 149)  <- div.view-header-title
+    border-top-color: rgba(253, 246, 226, 0.6) -> rgb(131, 148, 149)  <- div.view-header-title
+    border-right-color: rgba(253, 246, 226, 0.6) -> rgb(131, 148, 149)  <- div.view-header-title
+    border-bottom-color: rgba(253, 246, 226, 0.6) -> rgb(131, 148, 149)  <- div.view-header-title
+    border-left-color: rgba(253, 246, 226, 0.6) -> rgb(131, 148, 149)  <- div.view-header-title
+    outline-color: rgba(253, 246, 226, 0.6) -> rgb(131, 148, 149)  <- div.view-header-title
+  dock/search
+    border-top-color: rgba(100, 122, 130, 0.15) -> rgba(126, 212, 252, 0.6)  <- input|search
+    border-right-color: rgba(100, 122, 130, 0.15) -> rgba(126, 212, 252, 0.6)  <- input|search
+    border-bottom-color: rgba(100, 122, 130, 0.15) -> rgba(126, 212, 252, 0.6)  <- input|search
+    border-left-color: rgba(100, 122, 130, 0.15) -> rgba(126, 212, 252, 0.6)  <- input|search
+    box-shadow: none -> rgba(126, 212, 252, 0.6) 0px 0px 0px 2px  <- input|search
+Against the editor background rgb(0, 33, 41) (alpha composited):
+  --canvas-color: rgba(253, 246, 226, 0.3) -> contrast 2.55
+  --canvas-dot-pattern: rgb(7, 53, 65) -> contrast 1.28
+  --graph-line: rgba(100, 122, 130, 0.22) -> contrast 1.29
+  --graph-node-tag: rgb(133, 153, 0) -> contrast 5.24
+  --graph-node-attachment: rgb(179, 134, 0) -> contrast 5.06
+  --canvas-color-1: rgb(220, 49, 46) -> contrast 3.62
+  --canvas-color-2: rgb(202, 76, 22) -> contrast 3.65
+  --canvas-color-3: rgb(179, 134, 0) -> contrast 5.06
+  --canvas-color-4: rgb(133, 153, 0) -> contrast 5.24
+  --canvas-color-5: rgb(20, 184, 165) -> contrast 6.75
+  --canvas-color-6: rgb(109, 114, 197) -> contrast 3.89
+  uncoloured node vs each coloured node (dE2000): 1: 39.7, 2: 37.2, 3: 36.3, 4: 35.0, 5: 32.2, 6: 25.3
+  closest pairs among the six colours (dE2000): 1-2: 10.3, 3-4: 18.6, 2-3: 27.1
+
+## kanagawa-dragon
+variables read: 379; changed: 11
+  --canvas-color: rgb(126, 126, 126) -> rgba(197, 201, 197, 0.3)
+  --canvas-color-1: rgb(251, 70, 76) -> rgb(196, 116, 110)
+  --canvas-color-2: rgb(233, 151, 63) -> rgb(220, 164, 96)
+  --canvas-color-3: rgb(224, 222, 113) -> rgb(195, 177, 136)
+  --canvas-color-4: rgb(68, 207, 110) -> rgb(152, 188, 108)
+  --canvas-color-5: rgb(83, 223, 221) -> rgb(142, 164, 162)
+  --canvas-color-6: rgb(168, 130, 255) -> rgb(138, 147, 168)
+  --canvas-dot-pattern: rgb(51, 51, 51) -> rgb(58, 57, 54)
+  --graph-line: rgb(63, 63, 63) -> rgba(98, 94, 91, 0.6)
+  --graph-node-attachment: rgb(224, 222, 113) -> rgb(195, 177, 136)
+  --graph-node-tag: rgb(68, 207, 110) -> rgb(137, 153, 122)
+Graph renderer colours:
+  fillTag: #44cf6e a=1 -> #89997a a=1
+  fillAttachment: #e0de71 a=1 -> #c3b188 a=1
+  line: #3f3f3f a=1 -> #625e5b a=0.6
+  unchanged: fill, fillFocused, fillUnresolved, arrow, circle, text, fillHighlight, lineHighlight
+Element colours that changed (section: property before -> after, elements):
+  canvas
+    fill: rgb(51, 51, 51) -> rgb(58, 57, 54)  <- circle
+    fill: url("#0f82c98122e93a56") -> url("#0360b91b9e9c9849")  <- rect
+    stroke: rgb(126, 126, 126) -> rgba(197, 201, 197, 0.3)  <- path.canvas-display-path, polygon.canvas-path-end, svg.lucide-align-left.svg-icon
+    stroke: rgb(224, 222, 113) -> rgb(195, 177, 136)  <- path.canvas-display-path, polygon.canvas-path-end, svg.lucide-align-left.svg-icon
+    fill: rgb(126, 126, 126) -> rgba(197, 201, 197, 0.3)  <- polygon.canvas-path-end
+    fill: rgb(224, 222, 113) -> rgb(195, 177, 136)  <- polygon.canvas-path-end
+    border-top-color: rgb(126, 126, 126) -> rgba(197, 201, 197, 0.3)  <- div.canvas-node-container, svg.lucide-align-left.svg-icon
+    border-right-color: rgb(126, 126, 126) -> rgba(197, 201, 197, 0.3)  <- div.canvas-node-container, svg.lucide-align-left.svg-icon
+    border-bottom-color: rgb(126, 126, 126) -> rgba(197, 201, 197, 0.3)  <- div.canvas-node-container, svg.lucide-align-left.svg-icon
+    border-left-color: rgb(126, 126, 126) -> rgba(197, 201, 197, 0.3)  <- div.canvas-node-container, svg.lucide-align-left.svg-icon
+    background-color: oklch(0.593064 0.0000294914 none / 0.07) -> oklch(0.831498 0.00785566 none / 0.021)  <- div.canvas-node-content
+    background-color: oklch(0.593064 0.0000294914 none / 0.1) -> oklch(0.831498 0.00785566 none / 0.03)  <- div.canvas-group-label, div.canvas-node-placeholder
+    color: rgb(126, 126, 126) -> rgba(197, 201, 197, 0.3)  <- svg.lucide-align-left.svg-icon
+    outline-color: rgb(126, 126, 126) -> rgba(197, 201, 197, 0.3)  <- svg.lucide-align-left.svg-icon
+    color: rgb(126, 126, 126) -> rgb(255, 136, 0)  <- path
+    border-top-color: rgb(126, 126, 126) -> rgb(255, 136, 0)  <- path
+    border-right-color: rgb(126, 126, 126) -> rgb(255, 136, 0)  <- path
+    border-bottom-color: rgb(126, 126, 126) -> rgb(255, 136, 0)  <- path
+    border-left-color: rgb(126, 126, 126) -> rgb(255, 136, 0)  <- path
+    outline-color: rgb(126, 126, 126) -> rgb(255, 136, 0)  <- path
+    stroke: rgb(126, 126, 126) -> rgb(255, 136, 0)  <- path
+    border-top-color: oklch(0.659714 0.216867 23.8101 / 0.7) -> oklch(0.64422 0.101839 24.6445 / 0.7)  <- div.canvas-node-container
+    border-right-color: oklch(0.659714 0.216867 23.8101 / 0.7) -> oklch(0.64422 0.101839 24.6445 / 0.7)  <- div.canvas-node-container
+    border-bottom-color: oklch(0.659714 0.216867 23.8101 / 0.7) -> oklch(0.64422 0.101839 24.6445 / 0.7)  <- div.canvas-node-container
+    border-left-color: oklch(0.659714 0.216867 23.8101 / 0.7) -> oklch(0.64422 0.101839 24.6445 / 0.7)  <- div.canvas-node-container
+    box-shadow: oklch(0.659714 0.216867 23.8101 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px -> oklch(0.64422 0.101839 24.6445 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px  <- div.canvas-node-container
+    background-color: oklch(0.659714 0.216867 23.8101 / 0.1) -> oklch(0.64422 0.101839 24.6445 / 0.1)  <- div.canvas-node-placeholder
+    color: rgb(251, 70, 76) -> rgb(196, 116, 110)  <- svg.lucide-align-left.svg-icon
+    border-top-color: rgb(251, 70, 76) -> rgb(196, 116, 110)  <- svg.lucide-align-left.svg-icon
+    border-right-color: rgb(251, 70, 76) -> rgb(196, 116, 110)  <- svg.lucide-align-left.svg-icon
+    border-bottom-color: rgb(251, 70, 76) -> rgb(196, 116, 110)  <- svg.lucide-align-left.svg-icon
+    border-left-color: rgb(251, 70, 76) -> rgb(196, 116, 110)  <- svg.lucide-align-left.svg-icon
+    outline-color: rgb(251, 70, 76) -> rgb(196, 116, 110)  <- svg.lucide-align-left.svg-icon
+    stroke: rgb(251, 70, 76) -> rgb(196, 116, 110)  <- svg.lucide-align-left.svg-icon
+    color: rgb(255, 136, 0) -> rgb(196, 116, 110)  <- path
+    border-top-color: rgb(255, 136, 0) -> rgb(196, 116, 110)  <- path
+    border-right-color: rgb(255, 136, 0) -> rgb(196, 116, 110)  <- path
+    border-bottom-color: rgb(255, 136, 0) -> rgb(196, 116, 110)  <- path
+    border-left-color: rgb(255, 136, 0) -> rgb(196, 116, 110)  <- path
+    outline-color: rgb(255, 136, 0) -> rgb(196, 116, 110)  <- path
+    stroke: rgb(255, 136, 0) -> rgb(196, 116, 110)  <- path
+    border-top-color: oklch(0.744305 0.140751 64.0934 / 0.7) -> oklch(0.758078 0.108125 70.4983 / 0.7)  <- div.canvas-node-container
+    border-right-color: oklch(0.744305 0.140751 64.0934 / 0.7) -> oklch(0.758078 0.108125 70.4983 / 0.7)  <- div.canvas-node-container
+    border-bottom-color: oklch(0.744305 0.140751 64.0934 / 0.7) -> oklch(0.758078 0.108125 70.4983 / 0.7)  <- div.canvas-node-container
+    border-left-color: oklch(0.744305 0.140751 64.0934 / 0.7) -> oklch(0.758078 0.108125 70.4983 / 0.7)  <- div.canvas-node-container
+    box-shadow: oklch(0.744305 0.140751 64.0934 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px -> oklch(0.758078 0.108125 70.4983 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px  <- div.canvas-node-container
+    background-color: oklch(0.744305 0.140751 64.0934 / 0.1) -> oklch(0.758078 0.108125 70.4983 / 0.1)  <- div.canvas-node-placeholder
+    color: rgb(233, 151, 63) -> rgb(220, 164, 96)  <- svg.lucide-align-left.svg-icon
+    border-top-color: rgb(233, 151, 63) -> rgb(220, 164, 96)  <- svg.lucide-align-left.svg-icon
+    border-right-color: rgb(233, 151, 63) -> rgb(220, 164, 96)  <- svg.lucide-align-left.svg-icon
+    border-bottom-color: rgb(233, 151, 63) -> rgb(220, 164, 96)  <- svg.lucide-align-left.svg-icon
+    border-left-color: rgb(233, 151, 63) -> rgb(220, 164, 96)  <- svg.lucide-align-left.svg-icon
+    outline-color: rgb(233, 151, 63) -> rgb(220, 164, 96)  <- svg.lucide-align-left.svg-icon
+    stroke: rgb(233, 151, 63) -> rgb(220, 164, 96)  <- svg.lucide-align-left.svg-icon
+    color: rgb(251, 70, 76) -> rgb(220, 164, 96)  <- path
+    border-top-color: rgb(251, 70, 76) -> rgb(220, 164, 96)  <- path
+    border-right-color: rgb(251, 70, 76) -> rgb(220, 164, 96)  <- path
+    border-bottom-color: rgb(251, 70, 76) -> rgb(220, 164, 96)  <- path
+    border-left-color: rgb(251, 70, 76) -> rgb(220, 164, 96)  <- path
+    outline-color: rgb(251, 70, 76) -> rgb(220, 164, 96)  <- path
+    stroke: rgb(251, 70, 76) -> rgb(220, 164, 96)  <- path
+    border-top-color: oklch(0.879975 0.1319 107.863 / 0.7) -> oklch(0.764759 0.0584435 85.9688 / 0.7)  <- div.canvas-node-container
+    border-right-color: oklch(0.879975 0.1319 107.863 / 0.7) -> oklch(0.764759 0.0584435 85.9688 / 0.7)  <- div.canvas-node-container
+    border-bottom-color: oklch(0.879975 0.1319 107.863 / 0.7) -> oklch(0.764759 0.0584435 85.9688 / 0.7)  <- div.canvas-node-container
+    border-left-color: oklch(0.879975 0.1319 107.863 / 0.7) -> oklch(0.764759 0.0584435 85.9688 / 0.7)  <- div.canvas-node-container
+    box-shadow: oklch(0.879975 0.1319 107.863 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px -> oklch(0.764759 0.0584435 85.9688 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px  <- div.canvas-node-container
+    background-color: oklch(0.879975 0.1319 107.863 / 0.1) -> oklch(0.764759 0.0584435 85.9688 / 0.1)  <- div.canvas-node-placeholder
+    color: rgb(224, 222, 113) -> rgb(195, 177, 136)  <- svg.lucide-align-left.svg-icon
+    border-top-color: rgb(224, 222, 113) -> rgb(195, 177, 136)  <- svg.lucide-align-left.svg-icon
+    border-right-color: rgb(224, 222, 113) -> rgb(195, 177, 136)  <- svg.lucide-align-left.svg-icon
+    border-bottom-color: rgb(224, 222, 113) -> rgb(195, 177, 136)  <- svg.lucide-align-left.svg-icon
+    border-left-color: rgb(224, 222, 113) -> rgb(195, 177, 136)  <- svg.lucide-align-left.svg-icon
+    outline-color: rgb(224, 222, 113) -> rgb(195, 177, 136)  <- svg.lucide-align-left.svg-icon
+    color: rgb(233, 151, 63) -> rgb(195, 177, 136)  <- path
+    border-top-color: rgb(233, 151, 63) -> rgb(195, 177, 136)  <- path
+    border-right-color: rgb(233, 151, 63) -> rgb(195, 177, 136)  <- path
+    border-bottom-color: rgb(233, 151, 63) -> rgb(195, 177, 136)  <- path
+    border-left-color: rgb(233, 151, 63) -> rgb(195, 177, 136)  <- path
+    outline-color: rgb(233, 151, 63) -> rgb(195, 177, 136)  <- path
+    stroke: rgb(233, 151, 63) -> rgb(195, 177, 136)  <- path
+    border-top-color: oklch(0.757733 0.180995 149.613 / 0.7) -> oklch(0.748836 0.113025 128.608 / 0.7)  <- div.canvas-node-container
+    border-right-color: oklch(0.757733 0.180995 149.613 / 0.7) -> oklch(0.748836 0.113025 128.608 / 0.7)  <- div.canvas-node-container
+    border-bottom-color: oklch(0.757733 0.180995 149.613 / 0.7) -> oklch(0.748836 0.113025 128.608 / 0.7)  <- div.canvas-node-container
+    border-left-color: oklch(0.757733 0.180995 149.613 / 0.7) -> oklch(0.748836 0.113025 128.608 / 0.7)  <- div.canvas-node-container
+    box-shadow: oklch(0.757733 0.180995 149.613 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px -> oklch(0.748836 0.113025 128.608 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px  <- div.canvas-node-container
+    background-color: oklch(0.757733 0.180995 149.613 / 0.1) -> oklch(0.748836 0.113025 128.608 / 0.1)  <- div.canvas-node-placeholder
+    color: rgb(68, 207, 110) -> rgb(152, 188, 108)  <- svg.lucide-align-left.svg-icon
+    border-top-color: rgb(68, 207, 110) -> rgb(152, 188, 108)  <- svg.lucide-align-left.svg-icon
+    border-right-color: rgb(68, 207, 110) -> rgb(152, 188, 108)  <- svg.lucide-align-left.svg-icon
+    border-bottom-color: rgb(68, 207, 110) -> rgb(152, 188, 108)  <- svg.lucide-align-left.svg-icon
+    border-left-color: rgb(68, 207, 110) -> rgb(152, 188, 108)  <- svg.lucide-align-left.svg-icon
+    outline-color: rgb(68, 207, 110) -> rgb(152, 188, 108)  <- svg.lucide-align-left.svg-icon
+    stroke: rgb(68, 207, 110) -> rgb(152, 188, 108)  <- svg.lucide-align-left.svg-icon
+    color: rgb(224, 222, 113) -> rgb(152, 188, 108)  <- path
+    border-top-color: rgb(224, 222, 113) -> rgb(152, 188, 108)  <- path
+    border-right-color: rgb(224, 222, 113) -> rgb(152, 188, 108)  <- path
+    border-bottom-color: rgb(224, 222, 113) -> rgb(152, 188, 108)  <- path
+    border-left-color: rgb(224, 222, 113) -> rgb(152, 188, 108)  <- path
+    outline-color: rgb(224, 222, 113) -> rgb(152, 188, 108)  <- path
+    stroke: rgb(224, 222, 113) -> rgb(152, 188, 108)  <- path
+    border-top-color: oklch(0.828554 0.118878 193.753 / 0.7) -> oklch(0.701501 0.0252307 190.441 / 0.7)  <- div.canvas-node-container
+    border-right-color: oklch(0.828554 0.118878 193.753 / 0.7) -> oklch(0.701501 0.0252307 190.441 / 0.7)  <- div.canvas-node-container
+    border-bottom-color: oklch(0.828554 0.118878 193.753 / 0.7) -> oklch(0.701501 0.0252307 190.441 / 0.7)  <- div.canvas-node-container
+    border-left-color: oklch(0.828554 0.118878 193.753 / 0.7) -> oklch(0.701501 0.0252307 190.441 / 0.7)  <- div.canvas-node-container
+    box-shadow: oklch(0.828554 0.118878 193.753 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px -> oklch(0.701501 0.0252307 190.441 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px  <- div.canvas-node-container
+    background-color: oklch(0.828554 0.118878 193.753 / 0.1) -> oklch(0.701501 0.0252307 190.441 / 0.1)  <- div.canvas-node-placeholder
+    color: rgb(83, 223, 221) -> rgb(142, 164, 162)  <- svg.lucide-align-left.svg-icon
+    border-top-color: rgb(83, 223, 221) -> rgb(142, 164, 162)  <- svg.lucide-align-left.svg-icon
+    border-right-color: rgb(83, 223, 221) -> rgb(142, 164, 162)  <- svg.lucide-align-left.svg-icon
+    border-bottom-color: rgb(83, 223, 221) -> rgb(142, 164, 162)  <- svg.lucide-align-left.svg-icon
+    border-left-color: rgb(83, 223, 221) -> rgb(142, 164, 162)  <- svg.lucide-align-left.svg-icon
+    outline-color: rgb(83, 223, 221) -> rgb(142, 164, 162)  <- svg.lucide-align-left.svg-icon
+    stroke: rgb(83, 223, 221) -> rgb(142, 164, 162)  <- svg.lucide-align-left.svg-icon
+    color: rgb(68, 207, 110) -> rgb(142, 164, 162)  <- path
+    border-top-color: rgb(68, 207, 110) -> rgb(142, 164, 162)  <- path
+    border-right-color: rgb(68, 207, 110) -> rgb(142, 164, 162)  <- path
+    border-bottom-color: rgb(68, 207, 110) -> rgb(142, 164, 162)  <- path
+    border-left-color: rgb(68, 207, 110) -> rgb(142, 164, 162)  <- path
+    outline-color: rgb(68, 207, 110) -> rgb(142, 164, 162)  <- path
+    stroke: rgb(68, 207, 110) -> rgb(142, 164, 162)  <- path
+    border-top-color: oklch(0.697277 0.179083 295.408 / 0.7) -> oklch(0.662624 0.0335536 267.109 / 0.7)  <- div.canvas-node-container
+    border-right-color: oklch(0.697277 0.179083 295.408 / 0.7) -> oklch(0.662624 0.0335536 267.109 / 0.7)  <- div.canvas-node-container
+    border-bottom-color: oklch(0.697277 0.179083 295.408 / 0.7) -> oklch(0.662624 0.0335536 267.109 / 0.7)  <- div.canvas-node-container
+    border-left-color: oklch(0.697277 0.179083 295.408 / 0.7) -> oklch(0.662624 0.0335536 267.109 / 0.7)  <- div.canvas-node-container
+    box-shadow: oklch(0.697277 0.179083 295.408 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px -> oklch(0.662624 0.0335536 267.109 / 0.7) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0.5px  <- div.canvas-node-container
+    background-color: oklch(0.697277 0.179083 295.408 / 0.1) -> oklch(0.662624 0.0335536 267.109 / 0.1)  <- div.canvas-node-placeholder
+    color: rgb(168, 130, 255) -> rgb(138, 147, 168)  <- svg.lucide-align-left.svg-icon
+    border-top-color: rgb(168, 130, 255) -> rgb(138, 147, 168)  <- svg.lucide-align-left.svg-icon
+    border-right-color: rgb(168, 130, 255) -> rgb(138, 147, 168)  <- svg.lucide-align-left.svg-icon
+    border-bottom-color: rgb(168, 130, 255) -> rgb(138, 147, 168)  <- svg.lucide-align-left.svg-icon
+    border-left-color: rgb(168, 130, 255) -> rgb(138, 147, 168)  <- svg.lucide-align-left.svg-icon
+    outline-color: rgb(168, 130, 255) -> rgb(138, 147, 168)  <- svg.lucide-align-left.svg-icon
+    stroke: rgb(168, 130, 255) -> rgb(138, 147, 168)  <- svg.lucide-align-left.svg-icon
+    color: rgb(83, 223, 221) -> rgb(138, 147, 168)  <- path
+    border-top-color: rgb(83, 223, 221) -> rgb(138, 147, 168)  <- path
+    border-right-color: rgb(83, 223, 221) -> rgb(138, 147, 168)  <- path
+    border-bottom-color: rgb(83, 223, 221) -> rgb(138, 147, 168)  <- path
+    border-left-color: rgb(83, 223, 221) -> rgb(138, 147, 168)  <- path
+    outline-color: rgb(83, 223, 221) -> rgb(138, 147, 168)  <- path
+    stroke: rgb(83, 223, 221) -> rgb(138, 147, 168)  <- path
+  bases/UI Table.base
+    color: rgba(200, 192, 146, 0.7) -> rgba(197, 201, 197, 0.9)  <- div.view-header-title
+    border-top-color: rgba(200, 192, 146, 0.7) -> rgba(197, 201, 197, 0.9)  <- div.view-header-title
+    border-right-color: rgba(200, 192, 146, 0.7) -> rgba(197, 201, 197, 0.9)  <- div.view-header-title
+    border-bottom-color: rgba(200, 192, 146, 0.7) -> rgba(197, 201, 197, 0.9)  <- div.view-header-title
+    border-left-color: rgba(200, 192, 146, 0.7) -> rgba(197, 201, 197, 0.9)  <- div.view-header-title
+    outline-color: rgba(200, 192, 146, 0.7) -> rgba(197, 201, 197, 0.9)  <- div.view-header-title
+  bases/UI Cards.base
+    color: rgba(200, 192, 146, 0.7) -> rgba(197, 201, 197, 0.9)  <- div.view-header-title
+    border-top-color: rgba(200, 192, 146, 0.7) -> rgba(197, 201, 197, 0.9)  <- div.view-header-title
+    border-right-color: rgba(200, 192, 146, 0.7) -> rgba(197, 201, 197, 0.9)  <- div.view-header-title
+    border-bottom-color: rgba(200, 192, 146, 0.7) -> rgba(197, 201, 197, 0.9)  <- div.view-header-title
+    border-left-color: rgba(200, 192, 146, 0.7) -> rgba(197, 201, 197, 0.9)  <- div.view-header-title
+    outline-color: rgba(200, 192, 146, 0.7) -> rgba(197, 201, 197, 0.9)  <- div.view-header-title
+  dock/search
+    border-top-color: rgba(98, 94, 91, 0.4) -> rgba(140, 165, 177, 0.7)  <- input|search
+    border-right-color: rgba(98, 94, 91, 0.4) -> rgba(140, 165, 177, 0.7)  <- input|search
+    border-bottom-color: rgba(98, 94, 91, 0.4) -> rgba(140, 165, 177, 0.7)  <- input|search
+    border-left-color: rgba(98, 94, 91, 0.4) -> rgba(140, 165, 177, 0.7)  <- input|search
+    box-shadow: none -> rgba(140, 165, 177, 0.7) 0px 0px 0px 2px  <- input|search
+Against the editor background rgb(30, 29, 26) (alpha composited):
+  --canvas-color: rgba(197, 201, 197, 0.3) -> contrast 2.11
+  --canvas-dot-pattern: rgb(58, 57, 54) -> contrast 1.46
+  --graph-line: rgba(98, 94, 91, 0.6) -> contrast 1.74
+  --graph-node-tag: rgb(137, 153, 122) -> contrast 5.54
+  --graph-node-attachment: rgb(195, 177, 136) -> contrast 8.00
+  --canvas-color-1: rgb(196, 116, 110) -> contrast 4.87
+  --canvas-color-2: rgb(220, 164, 96) -> contrast 7.64
+  --canvas-color-3: rgb(195, 177, 136) -> contrast 8.00
+  --canvas-color-4: rgb(152, 188, 108) -> contrast 7.82
+  --canvas-color-5: rgb(142, 164, 162) -> contrast 6.41
+  --canvas-color-6: rgb(138, 147, 168) -> contrast 5.47
+  uncoloured node vs each coloured node (dE2000): 1: 33.3, 2: 42.5, 3: 39.8, 4: 42.4, 5: 32.6, 6: 28.9
+  closest pairs among the six colours (dE2000): 2-3: 11.3, 5-6: 14.1, 3-4: 16.6

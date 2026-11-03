@@ -1,0 +1,320 @@
+{
+ "startedAt": "2026-11-03T02:40:39.159Z",
+ "only": [
+  "e39",
+  "compare"
+ ],
+ "commit": "b3d1989",
+ "dirty": false,
+ "complete": true,
+ "interrupted": null,
+ "steps": [
+  {
+   "name": "e39-run1-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 6,
+   "last": "<out>/e39-run1-work/vault"
+  },
+  {
+   "name": "e39-run1",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1207,
+   "last": "all 3915 runtime checks passed or are reported as DIFF / UNSUPPORTED (820 PASS (EMULATED), 576 DIFF, 30 UNSUPPORTED; Obsidian 1.14.4, Electron 39.5.1)"
+  },
+  {
+   "name": "e39-run1-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 16,
+   "last": "stopped isolated Obsidian (pid 72290)"
+  },
+  {
+   "name": "e39-self-test-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<out>/e39-self-test-work/vault"
+  },
+  {
+   "name": "e39-self-test",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 954,
+   "last": "all 791 self-test results produced the declared outcome"
+  },
+  {
+   "name": "e39-self-test-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1,
+   "last": "stopped isolated Obsidian (pid 74149)"
+  },
+  {
+   "name": "e39-run2-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 6,
+   "last": "<out>/e39-run2-work/vault"
+  },
+  {
+   "name": "e39-run2",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 1203,
+   "last": "all 3915 runtime checks passed or are reported as DIFF / UNSUPPORTED (820 PASS (EMULATED), 576 DIFF, 30 UNSUPPORTED; Obsidian 1.14.4, Electron 39.5.1)"
+  },
+  {
+   "name": "e39-run2-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 16,
+   "last": "stopped isolated Obsidian (pid 75290)"
+  },
+  {
+   "name": "e39-frame-start",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 5,
+   "last": "<out>/e39-frame-work/vault"
+  },
+  {
+   "name": "e39-frame",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 10,
+   "last": "all 31 runtime checks passed or are reported as DIFF / UNSUPPORTED (0 PASS (EMULATED), 0 DIFF, 0 UNSUPPORTED; Obsidian 1.14.4, Electron 39.5.1)"
+  },
+  {
+   "name": "e39-frame-stop",
+   "ok": true,
+   "status": 0,
+   "signal": null,
+   "timedOut": false,
+   "groupStopped": true,
+   "error": null,
+   "seconds": 16,
+   "last": "stopped isolated Obsidian (pid 76716)"
+  }
+ ],
+ "comparisons": [
+  {
+   "name": "E39.5.1 self-test",
+   "count": 791,
+   "problems": []
+  },
+  {
+   "name": "E39.5.1 run 1 vs baseline",
+   "a": "<scratch>/REG/out-1.14.4/runtime-electron-39.5.1-run1.json",
+   "b": "run 1",
+   "count": [
+    3871,
+    3915
+   ],
+   "breakdown": [
+    {
+     "DIFF": 576,
+     "PASS (EMULATED)": 820,
+     "PASS": 2445,
+     "UNSUPPORTED": 30
+    },
+    {
+     "DIFF": 576,
+     "PASS (EMULATED)": 820,
+     "PASS": 2489,
+     "UNSUPPORTED": 30
+    }
+   ],
+   "onlyA": 0,
+   "onlyB": 44,
+   "repeatDiff": 0,
+   "stateDiff": 0,
+   "detailDiff": 280,
+   "unexpected": 0,
+   "samples": {
+    "onlyA": [],
+    "onlyB": [
+     "ui.canvas-graph.canvas-color.var|solarized-dark|desktop|opaque|default",
+     "ui.canvas-graph.canvas-color-1.var|solarized-dark|desktop|opaque|default",
+     "ui.canvas-graph.canvas-color-2.var|solarized-dark|desktop|opaque|default",
+     "ui.canvas-graph.canvas-color-3.var|solarized-dark|desktop|opaque|default",
+     "ui.canvas-graph.canvas-color-4.var|solarized-dark|desktop|opaque|default",
+     "ui.canvas-graph.canvas-color-5.var|solarized-dark|desktop|opaque|default",
+     "ui.canvas-graph.canvas-color-6.var|solarized-dark|desktop|opaque|default",
+     "ui.canvas-graph.canvas-dot-pattern.var|solarized-dark|desktop|opaque|default",
+     "ui.canvas-graph.graph-line.var|solarized-dark|desktop|opaque|default",
+     "ui.canvas-graph.graph-node-tag.var|solarized-dark|desktop|opaque|default"
+    ],
+    "repeatDiff": [],
+    "stateDiff": [],
+    "detailDiff": [
+     "runner.theme-applied|solarized-dark|desktop|opaque|default",
+     "runner.environment|solarized-dark|desktop|opaque|default",
+     "runner.theme-applied|solarized-dark|desktop|opaque|user-accent",
+     "runner.environment|solarized-dark|desktop|opaque|user-accent",
+     "runner.theme-applied|solarized-dark|desktop|opaque|user-font",
+     "runner.theme-applied|solarized-dark|desktop|opaque|quick-switcher-open",
+     "runner.theme-applied|solarized-dark|desktop|opaque|file-explorer-focused",
+     "runner.theme-applied|solarized-dark|desktop|opaque|menu-open",
+     "runner.theme-applied|solarized-dark|desktop|opaque|popover-open",
+     "runner.environment|solarized-dark|desktop|opaque|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|popover-open",
+     "runner.theme-applied|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.environment|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.theme-applied|solarized-dark|desktop|opaque|md-source",
+     "runner.environment|solarized-dark|desktop|opaque|md-source",
+     "runner.theme-applied|solarized-dark|desktop|opaque|md-live",
+     "runner.environment|solarized-dark|desktop|opaque|md-live",
+     "runner.theme-applied|solarized-dark|desktop|opaque|md-reading",
+     "runner.environment|solarized-dark|desktop|opaque|md-reading"
+    ],
+    "unexpected": []
+   },
+   "same": false
+  },
+  {
+   "name": "E39.5.1 run 1 vs run 2",
+   "a": "run 1",
+   "b": "run 2",
+   "count": [
+    3915,
+    3915
+   ],
+   "breakdown": [
+    {
+     "DIFF": 576,
+     "PASS (EMULATED)": 820,
+     "PASS": 2489,
+     "UNSUPPORTED": 30
+    },
+    {
+     "DIFF": 576,
+     "PASS (EMULATED)": 820,
+     "PASS": 2489,
+     "UNSUPPORTED": 30
+    }
+   ],
+   "onlyA": 0,
+   "onlyB": 0,
+   "repeatDiff": 0,
+   "stateDiff": 0,
+   "detailDiff": 75,
+   "unexpected": 0,
+   "samples": {
+    "onlyA": [],
+    "onlyB": [],
+    "repeatDiff": [],
+    "stateDiff": [],
+    "detailDiff": [
+     "runner.environment|solarized-dark|desktop|opaque|default",
+     "runner.environment|solarized-dark|desktop|opaque|user-accent",
+     "runner.environment|solarized-dark|desktop|opaque|popover-open",
+     "runner.pointer-prepared|solarized-dark|desktop|opaque|popover-open",
+     "runner.environment|solarized-dark|desktop|opaque|tooltip-open",
+     "runner.environment|solarized-dark|desktop|opaque|md-source",
+     "runner.environment|solarized-dark|desktop|opaque|md-live",
+     "runner.environment|solarized-dark|desktop|opaque|md-reading",
+     "runner.environment|solarized-dark|desktop|opaque|md-user-fonts",
+     "runner.environment|solarized-dark|desktop|opaque|ed-source",
+     "runner.environment|solarized-dark|desktop|opaque|ed-live",
+     "runner.environment|solarized-dark|desktop|opaque|ed-source-no-lines",
+     "runner.environment|solarized-dark|desktop|opaque|ed-live-no-lines",
+     "runner.environment|solarized-dark|desktop|opaque|ed-code-line",
+     "runner.environment|solarized-dark|desktop|opaque|ed-widget-line",
+     "runner.environment|solarized-dark|desktop|opaque|ed-selection",
+     "runner.environment|solarized-dark|desktop|opaque|ed-search",
+     "runner.environment|solarized-dark|desktop|opaque|ed-fold",
+     "runner.environment|solarized-dark|desktop|opaque|ed-suggest",
+     "runner.environment|solarized-dark|desktop|translucent|default"
+    ],
+    "unexpected": []
+   },
+   "same": true
+  }
+ ],
+ "problems": [
+  "the measured spec or sources changed since the baseline (f7dd00a); compare the unchanged checks only: src/common/components/markdown.css         |    13 +;  src/common/components/syntax.css           |    11 +-;  src/common/mapping/canvas-graph.css        |    22 +;  src/common/mapping/markdown.css            |     5 +-;  src/common/platform/translucent.css        |     8 +;  src/palette/kanagawa-dragon.css            |     2 +-;  src/palette/solarized-dark.css             |     2 +-;  src/themes/kanagawa-dragon.css             |     3 +;  src/themes/kanagawa-dragon/canvas.css      |    12 +;  src/themes/kanagawa-dragon/syntax.css      |    27 +;  src/themes/solarized-dark.css              |     1 +;  tests/fixtures/inkdrop-rendered-6.2.0.json | 23312 +++++++++++++++++++++++++++;  tests/fixtures/vault/Mermaid.md            |    10 +;  tests/runtime/code-tokens.js               |    17 +-;  tests/runtime/current-installer.sh         |    17 +-;  tests/runtime/inkdrop-isolated.sh          |   127 +;  tests/runtime/inkdrop-production.sh        |   177 +;  tests/runtime/lib/mermaid.mjs              |    49 +-;  tests/runtime/lib/syntax.mjs               |    54 +-;  tests/runtime/mermaid-dump.js              |    12 +-;  tests/runtime/mermaid-judge-self-test.mjs  |    76 +;  tests/runtime/obsidian-isolated.sh         |    12 +-;  tests/runtime/probe.js                     |    24 +;  tests/runtime/run.mjs                      |    46 +-;  tests/runtime/self-test-spec.json          |    98 +;  tests/spec/runtime/desktop.json            |   240 +-;  tests/spec/syntax.json                     |    17 +-",
+  "compare E39.5.1 run 1 vs baseline: not the same (see summary.json)",
+  "E43.7.7 run1: missing runtime-electron-43.7.7-run1.json",
+  "E43.7.7 run2: missing runtime-electron-43.7.7-run2.json",
+  "E43.7.7 self-test: missing runtime-electron-43.7.7-self-test.json",
+  "E43.7.7 frame: missing runtime-electron-43.7.7-frame.json",
+  "kit dry run: missing kit-dry-run-work/report-emulated.json"
+ ],
+ "specSinceBaseline": [
+  "src/common/components/markdown.css         |    13 +",
+  " src/common/components/syntax.css           |    11 +-",
+  " src/common/mapping/canvas-graph.css        |    22 +",
+  " src/common/mapping/markdown.css            |     5 +-",
+  " src/common/platform/translucent.css        |     8 +",
+  " src/palette/kanagawa-dragon.css            |     2 +-",
+  " src/palette/solarized-dark.css             |     2 +-",
+  " src/themes/kanagawa-dragon.css             |     3 +",
+  " src/themes/kanagawa-dragon/canvas.css      |    12 +",
+  " src/themes/kanagawa-dragon/syntax.css      |    27 +",
+  " src/themes/solarized-dark.css              |     1 +",
+  " tests/fixtures/inkdrop-rendered-6.2.0.json | 23312 +++++++++++++++++++++++++++",
+  " tests/fixtures/vault/Mermaid.md            |    10 +",
+  " tests/runtime/code-tokens.js               |    17 +-",
+  " tests/runtime/current-installer.sh         |    17 +-",
+  " tests/runtime/inkdrop-isolated.sh          |   127 +",
+  " tests/runtime/inkdrop-production.sh        |   177 +",
+  " tests/runtime/lib/mermaid.mjs              |    49 +-",
+  " tests/runtime/lib/syntax.mjs               |    54 +-",
+  " tests/runtime/mermaid-dump.js              |    12 +-",
+  " tests/runtime/mermaid-judge-self-test.mjs  |    76 +",
+  " tests/runtime/obsidian-isolated.sh         |    12 +-",
+  " tests/runtime/probe.js                     |    24 +",
+  " tests/runtime/run.mjs                      |    46 +-",
+  " tests/runtime/self-test-spec.json          |    98 +",
+  " tests/spec/runtime/desktop.json            |   240 +-",
+  " tests/spec/syntax.json                     |    17 +-"
+ ],
+ "finishedAt": "2026-11-03T03:38:05.230Z"
+}

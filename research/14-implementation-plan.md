@@ -8574,3 +8574,14 @@ Q-D10 は変えていない。BLOCKED も解いていない。
 - **見えたこと**（採否の判定ではない。詳細は `11o-kd-canvas-colours/README.md` と、比較画像 `kanagawa-dragon-canvas-three-way.png`）: 色 2（琥珀色）と色 4（オリーブ寄りの緑）は、色なしの枠と区別できるようになった（試験 1 では灰色）。色 2 と色 3 は、区別できるが差は大きくない。`ronin-yellow` への替えは、今の画像では要らないと見る。色付きのグループの背景は、色 4 らしい黄緑になる。色 5・6 は灰色のまま。全体の落ち着いた雰囲気は保たれる。
 - 次: 独立レビューで採否を決める。採用なら、製品 CSS への統合（共通の `canvas-graph.css` と、KD の `canvas.css`）、静的・対象限定・回帰の検査、新キットで iPhone 1 回。
 - 今回していないこと: 製品の CSS・検査の仕様の変更、iPhone、本番の Inkdrop・通常の Vault の操作、macOS の全画面。
+
+### 6.176 工程 11P の独立レビューと、Canvas・Graph の製品 CSS への統合（`b3d1989`、`evidence/phase3-step11/11p-canvas-graph-integration/`）
+
+- **判定**: 工程 11P は APPROVE / COMPLETE。KD の Canvas は trial 2 を正式採用: 色 1 `dragon-red`、色 2 `autumn-yellow`、色 3 `dragon-yellow`、色 4 `spring-green`、色 5 `dragon-aqua`、色 6 `dragon-violet`。色 2・4 は、KD 自身の橙と緑の彩度が低く（C 20・18）枠が灰色に見えたため、同じパレットの彩度の高い色（C 45）に替える。色 2 と 3 は近いが画像で区別でき、`ronin-yellow` には替えない。色 5・6 の識別性の弱さは、パレットに改善できる色がないので、既知の制約として受け入れる。これ以上の色の探索はしない。SD の Canvas・Graph と、KD の Graph・Canvas の枠・ドットは、工程 11N の試験案を正式採用。製品 CSS への統合を承認。
+- **統合**（`b3d1989`）: 共通の `src/common/mapping/canvas-graph.css`（11 変数）と、KD 固有の `src/themes/kanagawa-dragon/canvas.css`（色 2・4 の 2 変数だけ）、`ui.canvas-graph` の検査（SD は共通の期待値、KD は色 2・4 を別に検査）。静的検査 S1・S4 の制約で、元の Kanagawa のパレット変数を直接参照できず、既存の `--ink-syntax-changed-color`・`--ink-md-list-mark-3-color` を使った（解決値は trial 2 と一致）。共通の `--color-*`・`--color-base-*`、Inkdrop 由来のパレットの値、ほかの製品 CSS は変えていない。ビルドは撮影した試験ビルドとバイト単位で同じ（SD `f6b59e61…`、KD `9cc55c6f…`）。
+- **最終のマッピング**: SD（色 1〜6）= red・orange・yellow・green・teal・violet、KD = dragon-red・autumn-yellow・dragon-yellow・spring-green・dragon-aqua・dragon-violet。色なしのノードの枠とエッジ = `--ink-disabled-text-color`、ドット = `--ink-solid-border-color`、Graph の線 = `--ink-strong-border-color`、タグ = `--ink-green`、添付 = `--ink-yellow`。
+- **検証**: 静的検査と `npm test` は終了コード 0。対象限定の実行時検査（1.14.5 / E39.5.1）は、379 変数のうち変化は設計した 11 変数だけ、KD の色 2・4 は trial 2 の値、Graph の描画の色は 3 つだけ。macOS 4 環境のフル回帰は、どの環境も run1・run2 が 3915 件で FAIL 0、自己テスト 791 件が宣言どおり、frame 31 件 PASS、基準との比較は既存 3871 件の状態の変化 0（新しい 44 件が片側にだけ）、DIFF 576・UNSUPPORTED 30 は同じ。
+- **手順の誤りの訂正**: 最初の 1.14.4 の回帰で、環境変数 `OBSIDIAN_ASAR` に 1.14.5 の asar を指定したままにしたため、その中の E39.5.1 は 1.14.5 で動いた。E43.7.7 は正しい。誤った枠の結果は残し、「1.14.4 の枠に入った 1.14.5 / E39.5.1」と明記した。1.14.4 / E39.5.1 は、環境変数を外して回し直し（`Obsidian 1.14.4, Electron 39.5.1`）、合格。
+- **iPhone の新しいキット**: kit id `c60ce128-4211-4b20-a132-325c72efdb49`、ZIP の SHA-256 `f71918ff…`、SD の `theme.css` `f6b59e61…`、KD の `theme.css` `9cc55c6f…`、ランナーとオラクルは `5a9e5b1` から不変。旧キット `79751c34…` は保持し、差は 2 つの `theme.css`・マーカー・`main.js` だけ。自己テストは build 34・plugin 63・dry-run 7 がすべて PASS。**iPhone の実機は、ユーザーの準備ができるまで操作しない。** 916 件の実機検査は最終 CSS で、ツアーは既存の 38 段（Canvas・Graph の画面はツアーにないので、新たな再撮影はしない）。
+- **残る視覚検証**: iPhone 実機、G4、V-38、G8。
+- 今回していないこと: iPhone・本番の Inkdrop・通常の Vault の操作、macOS の全画面、撮影。
