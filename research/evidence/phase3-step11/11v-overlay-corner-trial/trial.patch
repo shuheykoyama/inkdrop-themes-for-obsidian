@@ -1,0 +1,26 @@
+diff --git a/src/common/components/overlays.css b/src/common/components/overlays.css
+index 5608f59..15d6e38 100644
+--- a/src/common/components/overlays.css
++++ b/src/common/components/overlays.css
+@@ -42,3 +42,21 @@
+ .theme-dark .checkbox-container {
+   --background-modifier-border-hover: var(--ink-toggle-lane-background);
+ }
++
++/* Command palette and menu corners (G8, research/14 §6.186): Inkdrop 6.3.0's command palette (.telescope-container) has a
++   24px radius and its selected row 7px; its in-app menu (.ui.dropdown .menu) 15px. Properties of these elements only, not
++   --radius-* (every overlay reads those) and not --menu-radius (the Graph controls read it too). Desktop only: the mobile
++   prompt and menus keep Obsidian's own look. The shadows are not changed: Inkdrop's are literals in its app CSS, not palette
++   tokens (S1 forbids colour literals here), and Obsidian's menu and prompt shadows already carry the same large soft layer.
++   Sizes, spacing, colours and the selected text colour are untouched (that colour has no token in the palette). */
++.theme-dark:not(.is-mobile) .prompt {
++  border-radius: 24px;
++}
++
++.theme-dark:not(.is-mobile) .prompt .suggestion-item {
++  border-radius: 7px;
++}
++
++.theme-dark:not(.is-mobile) .menu {
++  border-radius: 15px;
++}
