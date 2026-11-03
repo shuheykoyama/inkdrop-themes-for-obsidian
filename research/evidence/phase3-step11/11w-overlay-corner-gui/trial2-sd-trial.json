@@ -1,0 +1,33 @@
+{
+ "label": "sd-trial",
+ "themeName": "DEV solarized-dark (unnamed) [trial]",
+ "editorEdge": {
+  "rect": [
+   947,
+   602,
+   201,
+   89
+  ],
+  "radius": "15px",
+  "insideViewport": true,
+  "items": 3
+ },
+ "moreButton": [
+  0,
+  0,
+  "More options"
+ ],
+ "moreMenu": null,
+ "tabMenu": {
+  "rect": [
+   104,
+   21,
+   88,
+   39
+  ],
+  "radius": "15px",
+  "insideViewport": true,
+  "items": 1
+ },
+ "leftover": 0
+}

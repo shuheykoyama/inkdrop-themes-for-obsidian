@@ -1,0 +1,3 @@
+ displaysleep         20
+ sleep                0 (sleep prevented by caffeinate, sharingd)
+ disksleep            10

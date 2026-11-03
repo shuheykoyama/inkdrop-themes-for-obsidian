@@ -1,0 +1,196 @@
+{
+ "label": "sd-trial",
+ "themeName": "DEV solarized-dark (unnamed) [trial]",
+ "at": "2026-11-03T16:37:08.873Z",
+ "checks": {
+  "palette": {
+   "container": {
+    "rect": [
+     250,
+     105,
+     700,
+     490
+    ],
+    "radius": "24px",
+    "overflow": "hidden",
+    "bg": "rgb(0, 33, 41)"
+   },
+   "selected": {
+    "rect": [
+     263,
+     167,
+     674,
+     31.5
+    ],
+    "radius": "7px",
+    "overflow": "visible",
+    "bg": "rgba(255, 255, 255, 0.08)"
+   },
+   "plain": {
+    "rect": [
+     263,
+     199.5,
+     674,
+     31.5
+    ],
+    "radius": "7px",
+    "overflow": "visible",
+    "bg": "rgba(0, 0, 0, 0)"
+   },
+   "items": 100,
+   "hover": {
+    "selectedIndex": 2,
+    "radius": "7px",
+    "cornersOutsidePrompt": 0
+   },
+   "edgeRows": {
+    "first": {
+     "inset": [
+      13,
+      13,
+      62,
+      397
+     ],
+     "cornersOutsidePrompt": 0
+    },
+    "last": {
+     "inset": [
+      13,
+      13,
+      3282,
+      -2823
+     ],
+     "cornersOutsidePrompt": 4
+    }
+   },
+   "keyboard": {
+    "selectedBefore": 2,
+    "selectedAfterTwoDown": 4,
+    "itemsAfterTyping": 3,
+    "closedByEscape": true
+   }
+  },
+  "switcher": {
+   "container": {
+    "rect": [
+     250,
+     105,
+     700,
+     139.1
+    ],
+    "radius": "24px",
+    "overflow": "hidden",
+    "bg": "rgb(0, 33, 41)"
+   },
+   "row": {
+    "rect": [
+     263,
+     167,
+     674,
+     31.5
+    ],
+    "radius": "7px",
+    "overflow": "visible",
+    "bg": "rgba(255, 255, 255, 0.08)"
+   }
+  },
+  "menu": {
+   "container": {
+    "rect": [
+     98,
+     149,
+     193,
+     402.6
+    ],
+    "radius": "15px",
+    "overflow": "hidden",
+    "bg": "rgb(0, 20, 26)"
+   },
+   "itemCount": 13,
+   "hover-first": {
+    "selectedIndex": 0,
+    "bg": "rgba(255, 255, 255, 0.02)",
+    "itemRadius": "4px",
+    "inset": [
+     7,
+     7,
+     7,
+     371
+    ],
+    "cornersOutsideMenu": 0
+   },
+   "hover-last": {
+    "selectedIndex": 12,
+    "bg": "rgba(255, 255, 255, 0.02)",
+    "itemRadius": "4px",
+    "inset": [
+     7,
+     7,
+     371,
+     7
+    ],
+    "cornersOutsideMenu": 0
+   },
+   "keyboardSelected": 0,
+   "closedByEscape": true,
+   "edge": null
+  },
+  "others": {
+   "editorContextMenu": {
+    "rect": [
+     502,
+     302,
+     203.9,
+     376.6
+    ],
+    "radius": "15px",
+    "overflow": "hidden",
+    "bg": "rgb(0, 20, 26)"
+   },
+   "moreOptionsMenu": null,
+   "graphControls": {
+    "rect": [
+     948,
+     89.8,
+     240,
+     160.6
+    ],
+    "radius": "8px",
+    "overflow": "auto",
+    "bg": "rgb(0, 20, 26)"
+   },
+   "modal": {
+    "rect": [
+     320,
+     249.4,
+     560,
+     201.3
+    ],
+    "radius": "24px",
+    "overflow": "auto",
+    "bg": "rgb(0, 33, 41)"
+   },
+   "notice": {
+    "rect": [
+     1102,
+     32,
+     88,
+     32.9
+    ],
+    "radius": "8px",
+    "overflow": "visible",
+    "bg": "rgba(0, 20, 26, 0.8)"
+   }
+  },
+  "leftoverPrompts": 0
+ },
+ "setup": {
+  "theme": "DEV solarized-dark (unnamed) [trial]",
+  "size": [
+   1200,
+   700
+  ],
+  "cssSha256": "3f494eda34298b5f396cc19879c40f315b71c538629b72549785b60c88ea8bc7",
+  "cssLength": 139269
+ }
+}
