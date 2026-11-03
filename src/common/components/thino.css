@@ -1,0 +1,34 @@
+/* Component: the Thino plugin (obsidian-memos), a community plugin the user runs in the right sidebar.
+   Thino colours itself through --memos-* variables defined on .theme-dark with fixed greys (#353535, #727171,
+   #525252, ...), a red and orange accent (the heatmap and the save button) and Obsidian's neutral
+   --color-base-* scale, none of which belongs to this theme's palette. Pointing them at the theme's semantic
+   variables gives the plugin the same surfaces, borders, text and accent as the rest of the workspace.
+   .theme-dark:is(body) is one element more than the plugin's own .theme-dark definitions, so these win
+   wherever the variables are read (the sidebar view and the popups on the body). No plugin rule is changed. */
+.theme-dark:is(body) {
+  --memos-text-black: var(--text-normal);
+  --memos-text-gray: var(--text-muted);
+  --memos-text-lightgray: var(--text-faint);
+  --memos-text-blue: var(--text-accent);
+  --memos-text-unresolved-blue: var(--text-faint);
+  --memos-text-green: var(--ink-green);
+  --memos-text-red: var(--text-error);
+  --memos-text-light-red: var(--text-error);
+  --memos-time-text-color: var(--text-muted);
+  --memos-memo-bg-primary: var(--background-secondary-alt);
+  --memos-memo-border: var(--background-modifier-border);
+  --memos-icon: var(--icon-color);
+  --memos-icon-hover: var(--icon-color-hover);
+  --memos-bg-black: var(--text-normal);
+  --memos-bg-gray: var(--background-modifier-border);
+  --memos-bg-whitegray: var(--background-modifier-border-hover);
+  --memos-bg-lightgray: var(--background-modifier-border-hover);
+  --memos-bg-blue: var(--interactive-accent);
+  --memos-bg-yellow: var(--background-modifier-border-hover);
+  --memos-bg-light-blue: var(--code-background);
+  --memos-bg-paper-yellow: var(--background-modifier-border);
+  --memos-editor-save-btn-bg: var(--interactive-accent);
+  --memos-editor-save-btn-color: var(--text-on-accent);
+  --memos-editor-suggest-color: var(--text-accent);
+  --memos-filter-save-btn-bg: var(--interactive-accent);
+}
