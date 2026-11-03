@@ -1,0 +1,8 @@
+image,region,"rect_points(x,y,w,h)",mean_r,mean_g,mean_b,sd_r,sd_g,sd_b,dE76_vs_inkdrop_v32,dE2000_vs_inkdrop_v32
+obsidian-solarized-dark-translucent-gray-active.png,ribbon,"6,280,32,360",31.0,53.0,58.0,0.0,0.13,0.11,,
+obsidian-solarized-dark-translucent-gray-active.png,left-tabstrip,"180,6,80,28",18.0,41.0,46.0,0.0,0.0,0.0,,
+obsidian-solarized-dark-translucent-gray-active.png,left-dock,"60,200,220,420",19.6,43.4,49.0,11.11,11.34,12.42,,
+obsidian-solarized-dark-translucent-gray-active.png,vault-profile,"130,668,110,18",18.0,41.0,46.0,0.0,0.0,0.0,,
+obsidian-solarized-dark-translucent-gray-active.png,root-tabstrip,"560,6,330,28",18.0,41.0,46.0,0.0,0.0,0.0,,
+obsidian-solarized-dark-translucent-gray-active.png,editor,"850,260,80,390",6.7,36.4,42.6,0.99,1.33,1.93,,
+obsidian-solarized-dark-translucent-gray-active.png,right-dock,"960,240,220,400",18.0,41.0,46.0,0.0,0.0,0.0,,

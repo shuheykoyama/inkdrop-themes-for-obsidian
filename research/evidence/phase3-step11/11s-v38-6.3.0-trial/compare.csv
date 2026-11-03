@@ -1,0 +1,15 @@
+theme,capture,inkdrop_region,inkdrop_mean_rgb,inkdrop_max_sd,obsidian_region,obsidian_mean_rgb,obsidian_max_sd,dE2000,limit,result
+solarized-dark,gray-active,sidebar,"[31.0, 53.0, 58.0]",0.0,ribbon,"[31.0, 53.0, 58.0]",0.13,0.0,1.0,PASS
+solarized-dark,gray-active,note-list,"[18.0, 41.0, 46.0]",0.0,left-dock,"[19.6, 43.4, 49.0]",12.42,0.8,1.0,FAIL (not flat: measurement invalid)
+solarized-dark,gray-active,note-list,"[18.0, 41.0, 46.0]",0.0,right-dock,"[18.0, 41.0, 46.0]",0.0,0.0,1.0,PASS
+solarized-dark,gray-active,note-list,"[18.0, 41.0, 46.0]",0.0,vault-profile,"[18.0, 41.0, 46.0]",0.0,0.0,1.0,PASS
+solarized-dark,gray-active,note-list,"[18.0, 41.0, 46.0]",0.0,left-tabstrip,"[18.0, 41.0, 46.0]",0.0,0.0,1.0,PASS
+solarized-dark,gray-active,note-list,"[18.0, 41.0, 46.0]",0.0,root-tabstrip,"[18.0, 41.0, 46.0]",0.0,0.0,1.0,PASS
+solarized-dark,gray-active,editor,"[7.0, 36.0, 42.0]",0.0,editor,"[6.7, 36.4, 42.6]",1.93,0.18,1.0,FAIL (not flat: measurement invalid)
+kanagawa-dragon,gray-active,sidebar,,,ribbon,,,,1.0,FAIL (region missing)
+kanagawa-dragon,gray-active,note-list,,,left-dock,,,,1.0,FAIL (region missing)
+kanagawa-dragon,gray-active,note-list,,,right-dock,,,,1.0,FAIL (region missing)
+kanagawa-dragon,gray-active,note-list,,,vault-profile,,,,1.0,FAIL (region missing)
+kanagawa-dragon,gray-active,note-list,,,left-tabstrip,,,,1.0,FAIL (region missing)
+kanagawa-dragon,gray-active,note-list,,,root-tabstrip,,,,1.0,FAIL (region missing)
+kanagawa-dragon,gray-active,editor,,,editor,,,,1.0,FAIL (region missing)
