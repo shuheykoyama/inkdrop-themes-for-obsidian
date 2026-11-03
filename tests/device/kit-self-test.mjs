@@ -171,6 +171,7 @@ if (mode === "build") {
 const PORT = 9335;
 const APP = process.env.OBSIDIAN_APP ?? "/Applications/Obsidian.app";
 const ASAR = process.env.OBSIDIAN_ASAR ?? path.join(process.env.HOME, "Library/Application Support/obsidian/obsidian-1.14.4.asar");
+let runVersion = "unknown"; // what the launched instance reports about itself (the app and Electron actually running)
 async function launch(dir, vault) {
   try { await fetch(`http://127.0.0.1:${PORT}/json/version`); throw new Error(`port ${PORT} is already in use`); } catch (e) { if (/already in use/.test(e.message)) throw e; }
   mkdirSync(path.join(dir, "userdata"), { recursive: true });
@@ -181,6 +182,8 @@ async function launch(dir, vault) {
     await sleep(1000);
     try { if (await evaluate(PORT, "(() => !!(window.app && app.workspace.layoutReady))()", 5000)) break; } catch {}
   }
+  try { const ua = await evaluate(PORT, "navigator.userAgent", 5000); runVersion = `Obsidian ${execFileSync("defaults", ["read", path.join(APP, "Contents/Info"), "CFBundleShortVersionString"], { encoding: "utf8" }).trim()}, Electron ${/Electron\/([\d.]+)/.exec(ua)?.[1] ?? "?"}`; } catch {}
+  console.log(`isolated instance: ${runVersion}`);
   // Restricted mode off and the kit's plugin on, as on the device (writes the vault's plugin settings once, before any snapshot).
   await evaluate(PORT, `(async () => { await app.plugins.setEnable(true); await app.plugins.loadManifests(); await app.plugins.enablePluginAndSave("ink-device-check"); return 1; })()`);
   await sleep(5000);
@@ -327,7 +330,7 @@ ws.send(JSON.stringify({ id: 1, method: "Page.captureScreenshot", params: { form
     }
   } finally { release(); await app.stop(); }
   const res = readdirSync(work).find((f) => f.startsWith("results-"));
-  const judged = spawnSync(process.execPath, [path.join(repo, "tests/device/judge.mjs"), path.join(work, res), "--out", path.join(work, "report-emulated.json"), "--label", `Mac, isolated Obsidian 1.14.4, mobile emulation (${tablet ? "tablet" : "phone"})`], { encoding: "utf8" });
+  const judged = spawnSync(process.execPath, [path.join(repo, "tests/device/judge.mjs"), path.join(work, res), "--out", path.join(work, "report-emulated.json"), "--label", `Mac, isolated ${runVersion}, mobile emulation (${tablet ? "tablet" : "phone"})`], { encoding: "utf8" });
   writeFileSync(path.join(work, "judge.txt"), judged.stdout);
   const report = JSON.parse(readFileSync(path.join(work, "report-emulated.json"), "utf8"));
   const list = report.results ?? report;
