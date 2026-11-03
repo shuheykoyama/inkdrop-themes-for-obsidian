@@ -1,0 +1,59 @@
+{
+  "_comment": "V-38 with Inkdrop 6.3.0 (research/14 \u00a76.183): the same as v38-obsidian.json except the editor region, which is a FALLBACK fixed before any new capture. The original editor region (850, 260, 80, 390) lies on the Heading 1 background band of Sample note (rows 334-380 of the Obsidian window, x 336-907) and was not flat (sd 1.93; 11s-v38-6.3.0-trial). Rule, flatness only and no colour difference involved: keep x and width, stay inside the original y range, take the largest contiguous run of rows whose standard deviation over x 850-930 is at most 0.5 in the existing trial image (rows 381-659 of the original range 260-650 -> 381-650, 80 x 270). It is used only if the original region is still not flat when Obsidian shows Other note instead of Sample note. Same rectangle for Solarized Dark and Kanagawa Dragon.",
+  "window_width_points": 1200,
+  "theme_from_name": [
+    [
+      "-solarized-dark-",
+      "sd"
+    ],
+    [
+      "-kanagawa-dragon-",
+      "kd"
+    ]
+  ],
+  "regions": {
+    "ribbon": [
+      6,
+      280,
+      32,
+      360
+    ],
+    "left-tabstrip": [
+      180,
+      6,
+      80,
+      28
+    ],
+    "left-dock": [
+      60,
+      200,
+      220,
+      420
+    ],
+    "vault-profile": [
+      130,
+      668,
+      110,
+      18
+    ],
+    "root-tabstrip": [
+      560,
+      6,
+      330,
+      28
+    ],
+    "editor": [
+      850,
+      381,
+      80,
+      270
+    ],
+    "right-dock": [
+      960,
+      240,
+      220,
+      400
+    ]
+  },
+  "max_sd": 1.0
+}
