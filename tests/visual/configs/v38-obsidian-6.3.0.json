@@ -1,5 +1,5 @@
 {
-  "_comment": "V-38 with Inkdrop 6.3.0 (research/14 \u00a76.183): the same as v38-obsidian.json except the editor region, which is a FALLBACK fixed before any new capture. The original editor region (850, 260, 80, 390) lies on the Heading 1 background band of Sample note (rows 334-380 of the Obsidian window, x 336-907) and was not flat (sd 1.93; 11s-v38-6.3.0-trial). Rule, flatness only and no colour difference involved: keep x and width, stay inside the original y range, take the largest contiguous run of rows whose standard deviation over x 850-930 is at most 0.5 in the existing trial image (rows 381-659 of the original range 260-650 -> 381-650, 80 x 270). It is used only if the original region is still not flat when Obsidian shows Other note instead of Sample note. Same rectangle for Solarized Dark and Kanagawa Dragon.",
+  "_comment": "V-38 with Inkdrop 6.3.0 (research/14 \u00a76.183): the same as v38-obsidian.json except the editor region, which is a FALLBACK fixed before any new capture. The original editor region (850, 260, 80, 390) lies on the Heading 1 background band of Sample note (rows 334-380 of the Obsidian window, x 336-907) and was not flat (sd 1.93; 11s-v38-6.3.0-trial). Rule, flatness only and no colour difference involved: keep x and width, stay inside the original rows 260-649, take the largest contiguous run of rows whose standard deviation over x 850-930 is at most 0.5 in the existing trial image (rows 381-649 of the original rows 260-649, the half-open range [260, 650) -> y 381, height 269, 80 x 269). It is used only if the original region is still not flat when Obsidian shows Other note instead of Sample note. Same rectangle for Solarized Dark and Kanagawa Dragon.",
   "window_width_points": 1200,
   "theme_from_name": [
     [
@@ -46,7 +46,7 @@
       850,
       381,
       80,
-      270
+      269
     ],
     "right-dock": [
       960,
