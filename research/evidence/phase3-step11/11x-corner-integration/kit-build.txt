@@ -1,0 +1,4 @@
+vault <scratch>/KIT3/out/InkdropThemeTest
+zip <scratch>/KIT3/out/InkdropThemeTest.zip
+kit id b2a24a48-cb52-49fd-9aed-fd1aaafb2f73
+jobs 80 (probe 66, extra 32), checks 480; on a phone 66 jobs, on a tablet 28; tour steps phone 38, tablet 18

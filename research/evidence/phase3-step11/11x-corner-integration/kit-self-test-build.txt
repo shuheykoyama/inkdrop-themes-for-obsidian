@@ -1,0 +1,4 @@
+PASS judge.ed-prepared-not-folded  {"folded":false,"got":"FAIL","want":"FAIL"}
+PASS judge.ed-prepared-folded  {"folded":true,"got":"PASS","want":"PASS"}
+PASS judge.ed-prepared-not-recorded  {"got":"PASS","want":"PASS"}
+all 34 kit self-test checks PASS
