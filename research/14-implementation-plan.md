@@ -8740,3 +8740,12 @@ Q-D10 は変えていない。BLOCKED も解いていない。
 - **モバイルでの 3 規則**: タブレットのエミュレーション（`is-mobile`）で、規則の有無でパレット（24px、行 24px）・`.menu`（8px）の Computed Style は変わらない（SD・KD）。電話エミュレーション・実機は未測定。
 - 復元: 隔離 Obsidian 停止、ポート閉、LaunchServices は `restore` 済み（作業前に残っていた 1.14.5 の複製の登録は、なくなった）、`caffeinate` 停止。
 - 次: 独立レビュー → iPhone 実機検証（ユーザーの「準備できた」が必要）→ 最終完成度レビュー。キットの再生成なし。
+
+### 6.190 工程 11Y の独立レビューと、iPhone 実機検証（`evidence/phase3-step11/11z-iphone-device/`）
+
+- **判定**: 工程 11Y は APPROVE WITH QUALIFICATIONS / COMPLETE（CI run `41690216920`）。保存済みレポートの「Obsidian ?」は表示上の問題として補足記録を維持。LaunchServices は完全一致ではない（記録済み）。
+- **実機検証**（ユーザーの「準備できました」のあと）: iPhone13,3、iOS 27.0、Obsidian 1.14.5。キット `b2a24a48-cb52-49fd-9aed-fd1aaafb2f73`（ZIP `79f592fc…`、照合済み）、CSS は SD `7e4936c6…`・KD `2d5556d6…`。`probe` で Vault 名・マーカー・kit id を照合してから実行。旧 Vault は上書き・削除せず、ユーザーが名前を変えて退避。
+- **結果**: `checks` 916 件、PASS 806、**FAIL 0**、DIFF 96、UNSUPPORTED 10、N/A 4（`device.environment` も PASS）。ツアー 38/38、ドロワーのヘッダー 4 段 PASS。38 枚を縮小して目視し、欠け・重なり・崩れなし、通知の写り込みなし。
+- **角丸 3 規則**: 実機で、パレット・メニューがデスクトップの値に変わった様子はない。実機の Computed Style の「あり・なし」の比較はしていない（前工程のエミュレーションで変化なし）。
+- Mac 側の中継は停止。iPhone の設定（自動ロック、Web インスペクタ、おやすみモード）の復元とテスト Vault の扱いは、ユーザーの確認待ち。
+- 次: 独立レビュー → 最終完成度レビュー。キット・CSS・期待値は変えていない。
