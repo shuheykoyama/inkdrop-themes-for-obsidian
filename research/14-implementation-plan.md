@@ -8645,3 +8645,11 @@ Q-D10 は変えていない。BLOCKED も解いていない。
   - 修正の方針: Inkdrop に対応する UI は、原則として 6.2.0 の設計を正本にする。対応物のない Obsidian 固有 UI は、Minimal・Things の手法を参考にする。**実際に問題が確認された部分だけ**直す。数値の許容差を新設しない。Inkdrop の DOM 構造を無理に真似しない。
 - **G4（変更なし）**: Obsidian 1.14.5 / Electron 43.8.3 の隔離インスタンス、最終の SD・KD の CSS、12 面、版と CSS の SHA-256 の照合、全画面のあとの状態の検証、Space の数、ユーザーによる Mission Control の確認。中止・復元の手順は変えない。「準備できた」を待つ。
 - 今回していないこと: Inkdrop の起動・終了・再起動、本番のテーマの切り替え、ネイティブ撮影、実フルスクリーン、Space の操作、iPhone、製品の CSS・基準の変更。
+
+### 6.181 §6.180 の独立レビュー（`4116c9e`）と、G4 の実測（`evidence/phase3-step11/11r-g4-final/`）
+
+- **レビュー**: APPROVE / COMPLETE（CI run `41601771716` 成功）。製品 CSS・検査基準・オラクル・キットの変更は不要。G8 の分類 A は「対象の静的な CSS の規則に差が確認されていない」の意味に限り、共通変数・DOM・JavaScript の動き・描画結果まで同一とは断定しない。G4 の許可は、V-38・G8 の許可とみなさない。
+- **G4 の実測**（ユーザーの「準備できた」のあと。隔離 Obsidian 1.14.5 / Electron 43.8.3、最終 CSS: SD `f6b59e61…`・KD `9cc55c6f…` を `prep` が照合）: **SD・KD とも `COMPLETE`**。12 の面すべてで、全画面の中の値 = 不透明の値、出たあとの値 = 全画面の前の translucent の値、不透明 ≠ translucent（対照）。全画面の中は `isFullScreen()` true・`is-fullscreen` あり、出たあとは false・なし。Space は前も出た直後も、通常のみ 25（全画面の Space 0）。隔離インスタンスは停止（ポート 9333 は閉じた）。
+- **途中**: `prep` を SD、KD と続けたため、SD の `full` は「`prep` のあとにテーマが変わった」として、全画面に入る前に拒否（既存の安全の検査）。SD の `prep` をやり直して `full` を行い COMPLETE。拒否の記録は残す（判定に使わない）。次回は、テーマごとに `prep` と `full` を続ける。
+- **後片付け**: 実行後の LaunchServices の `check` に E43.8.3 のコピーの候補が 1 件増えていたので、`current-installer.sh restore` で外し、`check` が作業の前と同じ出力に戻ることを確認。Space の数が同じでも完全な復元の証明にならないので、**ユーザーの Mission Control の確認は未了**（これが済むまで、G4 を完全に完了とは書かない）。
+- 次: ユーザーの Mission Control の確認と、G4 の独立レビュー。そのあと V-38・G8（それぞれ個別の「準備できた」）。

@@ -1,0 +1,138 @@
+{
+ "environment": {
+  "app": "1.14.5",
+  "electron": "43.8.3",
+  "frame": "hidden",
+  "themeLength": 144036,
+  "built": 144036
+ },
+ "theme": "kanagawa-dragon",
+ "cssSha256": "9cc55c6fcbab47cf7137e3805550840f3fd1b0004321ddd51794b3a95994dc52",
+ "cssLength": 144036,
+ "loadedTheme": {
+  "theme": "G4 kanagawa-dragon",
+  "length": 144036,
+  "sha256": "9cc55c6fcbab47cf7137e3805550840f3fd1b0004321ddd51794b3a95994dc52"
+ },
+ "opaque": {
+  "at": "2026-11-03T08:24:10.188Z",
+  "isFullScreen": false,
+  "classes": [
+   "is-focused"
+  ],
+  "theme": "G4 kanagawa-dragon",
+  "values": {
+   "ribbon": "rgb(17, 17, 14)",
+   "ribbonCorner": "rgb(24, 22, 22)",
+   "statusBar": "rgb(24, 22, 22)",
+   "leftLeaf": "rgb(24, 22, 22)",
+   "leftLeafContent": "rgba(0, 0, 0, 0)",
+   "leftTabStrip": "rgb(24, 22, 22)",
+   "rightLeaf": "rgb(24, 22, 22)",
+   "rightLeafContent": "rgba(0, 0, 0, 0)",
+   "rightTabStrip": "rgb(24, 22, 22)",
+   "centreTabStrip": "rgb(24, 22, 22)",
+   "editor": "rgb(30, 29, 26)",
+   "vaultProfile": "rgb(24, 22, 22)"
+  }
+ },
+ "translucentBefore": {
+  "at": "2026-11-03T08:24:11.702Z",
+  "isFullScreen": false,
+  "classes": [
+   "is-focused",
+   "is-translucent"
+  ],
+  "theme": "G4 kanagawa-dragon",
+  "values": {
+   "ribbon": "rgba(17, 17, 14, 0.5)",
+   "ribbonCorner": "rgba(24, 22, 22, 0.7)",
+   "statusBar": "rgba(24, 22, 22, 0.7)",
+   "leftLeaf": "rgba(0, 0, 0, 0)",
+   "leftLeafContent": "rgba(24, 22, 22, 0.7)",
+   "leftTabStrip": "rgba(24, 22, 22, 0.7)",
+   "rightLeaf": "rgba(0, 0, 0, 0)",
+   "rightLeafContent": "rgba(24, 22, 22, 0.7)",
+   "rightTabStrip": "rgba(24, 22, 22, 0.7)",
+   "centreTabStrip": "rgba(24, 22, 22, 0.7)",
+   "editor": "rgba(30, 29, 26, 0.9)",
+   "vaultProfile": "rgba(24, 22, 22, 0.7)"
+  }
+ },
+ "expected": {
+  "app": "1.14.5",
+  "electron": "43.8.3"
+ },
+ "live": {
+  "app": "1.14.5",
+  "electron": "43.8.3"
+ },
+ "stateBefore": {
+  "isFullScreen": false,
+  "isFullscreenClass": false
+ },
+ "spacesBefore": {
+  "0": 25
+ },
+ "fullscreenRequestedAt": "2026-11-03T08:24:26.088Z",
+ "enteredFullScreen": true,
+ "during": {
+  "at": "2026-11-03T08:24:28.362Z",
+  "isFullScreen": true,
+  "classes": [
+   "is-focused",
+   "is-translucent",
+   "is-fullscreen"
+  ],
+  "theme": "G4 kanagawa-dragon",
+  "values": {
+   "ribbon": "rgb(17, 17, 14)",
+   "ribbonCorner": "rgb(24, 22, 22)",
+   "statusBar": "rgb(24, 22, 22)",
+   "leftLeaf": "rgb(24, 22, 22)",
+   "leftLeafContent": "rgba(0, 0, 0, 0)",
+   "leftTabStrip": "rgb(24, 22, 22)",
+   "rightLeaf": "rgb(24, 22, 22)",
+   "rightLeafContent": "rgba(0, 0, 0, 0)",
+   "rightTabStrip": "rgb(24, 22, 22)",
+   "centreTabStrip": "rgb(24, 22, 22)",
+   "editor": "rgb(30, 29, 26)",
+   "vaultProfile": "rgb(24, 22, 22)"
+  }
+ },
+ "exitRequestedAt": "2026-11-03T08:24:28.363Z",
+ "leftFullScreen": true,
+ "after": {
+  "at": "2026-11-03T08:24:31.038Z",
+  "isFullScreen": false,
+  "classes": [
+   "is-focused",
+   "is-translucent"
+  ],
+  "theme": "G4 kanagawa-dragon",
+  "values": {
+   "ribbon": "rgba(17, 17, 14, 0.5)",
+   "ribbonCorner": "rgba(24, 22, 22, 0.7)",
+   "statusBar": "rgba(24, 22, 22, 0.7)",
+   "leftLeaf": "rgba(0, 0, 0, 0)",
+   "leftLeafContent": "rgba(24, 22, 22, 0.7)",
+   "leftTabStrip": "rgba(24, 22, 22, 0.7)",
+   "rightLeaf": "rgba(0, 0, 0, 0)",
+   "rightLeafContent": "rgba(24, 22, 22, 0.7)",
+   "rightTabStrip": "rgba(24, 22, 22, 0.7)",
+   "centreTabStrip": "rgba(24, 22, 22, 0.7)",
+   "editor": "rgba(30, 29, 26, 0.9)",
+   "vaultProfile": "rgba(24, 22, 22, 0.7)"
+  }
+ },
+ "stateAfterExit": {
+  "isFullScreen": false,
+  "isFullscreenClass": false
+ },
+ "spacesAfterExit": {
+  "0": 25
+ },
+ "spacesRestored": true,
+ "fullscreenEndedAt": "2026-11-03T08:24:31.097Z",
+ "status": "COMPLETE"
+}

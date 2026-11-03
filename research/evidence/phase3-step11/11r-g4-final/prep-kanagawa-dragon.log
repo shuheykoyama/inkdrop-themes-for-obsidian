@@ -1,0 +1,11 @@
+["is-focused","is-translucent"] {
+  app: '1.14.5',
+  electron: '43.8.3',
+  frame: 'hidden',
+  themeLength: 144036,
+  built: 144036
+} {
+  theme: 'G4 kanagawa-dragon',
+  length: 144036,
+  sha256: '9cc55c6fcbab47cf7137e3805550840f3fd1b0004321ddd51794b3a95994dc52'
+}

@@ -1,0 +1,138 @@
+{
+ "environment": {
+  "app": "1.14.5",
+  "electron": "43.8.3",
+  "frame": "hidden",
+  "themeLength": 138326,
+  "built": 138326
+ },
+ "theme": "solarized-dark",
+ "cssSha256": "f6b59e616f1e2d5cb3b82aefa5e5c8a1bb44b8e1431af7f057101c4ad9ed0fac",
+ "cssLength": 138326,
+ "loadedTheme": {
+  "theme": "G4 solarized-dark",
+  "length": 138326,
+  "sha256": "f6b59e616f1e2d5cb3b82aefa5e5c8a1bb44b8e1431af7f057101c4ad9ed0fac"
+ },
+ "opaque": {
+  "at": "2026-11-03T08:24:49.437Z",
+  "isFullScreen": false,
+  "classes": [
+   "is-focused"
+  ],
+  "theme": "G4 solarized-dark",
+  "values": {
+   "ribbon": "rgb(7, 53, 65)",
+   "ribbonCorner": "rgb(0, 45, 56)",
+   "statusBar": "rgb(0, 45, 56)",
+   "leftLeaf": "rgb(0, 45, 56)",
+   "leftLeafContent": "rgba(0, 0, 0, 0)",
+   "leftTabStrip": "rgb(0, 45, 56)",
+   "rightLeaf": "rgb(0, 45, 56)",
+   "rightLeafContent": "rgba(0, 0, 0, 0)",
+   "rightTabStrip": "rgb(0, 45, 56)",
+   "centreTabStrip": "rgb(0, 45, 56)",
+   "editor": "rgb(0, 33, 41)",
+   "vaultProfile": "rgb(0, 45, 56)"
+  }
+ },
+ "translucentBefore": {
+  "at": "2026-11-03T08:24:50.950Z",
+  "isFullScreen": false,
+  "classes": [
+   "is-focused",
+   "is-translucent"
+  ],
+  "theme": "G4 solarized-dark",
+  "values": {
+   "ribbon": "rgba(0, 45, 56, 0.5)",
+   "ribbonCorner": "rgba(0, 33, 41, 0.7)",
+   "statusBar": "rgba(0, 33, 41, 0.7)",
+   "leftLeaf": "rgba(0, 0, 0, 0)",
+   "leftLeafContent": "rgba(0, 33, 41, 0.7)",
+   "leftTabStrip": "rgba(0, 33, 41, 0.7)",
+   "rightLeaf": "rgba(0, 0, 0, 0)",
+   "rightLeafContent": "rgba(0, 33, 41, 0.7)",
+   "rightTabStrip": "rgba(0, 33, 41, 0.7)",
+   "centreTabStrip": "rgba(0, 33, 41, 0.7)",
+   "editor": "rgba(0, 33, 41, 0.9)",
+   "vaultProfile": "rgba(0, 33, 41, 0.7)"
+  }
+ },
+ "expected": {
+  "app": "1.14.5",
+  "electron": "43.8.3"
+ },
+ "live": {
+  "app": "1.14.5",
+  "electron": "43.8.3"
+ },
+ "stateBefore": {
+  "isFullScreen": false,
+  "isFullscreenClass": false
+ },
+ "spacesBefore": {
+  "0": 25
+ },
+ "fullscreenRequestedAt": "2026-11-03T08:24:51.192Z",
+ "enteredFullScreen": true,
+ "during": {
+  "at": "2026-11-03T08:24:53.422Z",
+  "isFullScreen": true,
+  "classes": [
+   "is-focused",
+   "is-translucent",
+   "is-fullscreen"
+  ],
+  "theme": "G4 solarized-dark",
+  "values": {
+   "ribbon": "rgb(7, 53, 65)",
+   "ribbonCorner": "rgb(0, 45, 56)",
+   "statusBar": "rgb(0, 45, 56)",
+   "leftLeaf": "rgb(0, 45, 56)",
+   "leftLeafContent": "rgba(0, 0, 0, 0)",
+   "leftTabStrip": "rgb(0, 45, 56)",
+   "rightLeaf": "rgb(0, 45, 56)",
+   "rightLeafContent": "rgba(0, 0, 0, 0)",
+   "rightTabStrip": "rgb(0, 45, 56)",
+   "centreTabStrip": "rgb(0, 45, 56)",
+   "editor": "rgb(0, 33, 41)",
+   "vaultProfile": "rgb(0, 45, 56)"
+  }
+ },
+ "exitRequestedAt": "2026-11-03T08:24:53.424Z",
+ "leftFullScreen": true,
+ "after": {
+  "at": "2026-11-03T08:24:56.095Z",
+  "isFullScreen": false,
+  "classes": [
+   "is-focused",
+   "is-translucent"
+  ],
+  "theme": "G4 solarized-dark",
+  "values": {
+   "ribbon": "rgba(0, 45, 56, 0.5)",
+   "ribbonCorner": "rgba(0, 33, 41, 0.7)",
+   "statusBar": "rgba(0, 33, 41, 0.7)",
+   "leftLeaf": "rgba(0, 0, 0, 0)",
+   "leftLeafContent": "rgba(0, 33, 41, 0.7)",
+   "leftTabStrip": "rgba(0, 33, 41, 0.7)",
+   "rightLeaf": "rgba(0, 0, 0, 0)",
+   "rightLeafContent": "rgba(0, 33, 41, 0.7)",
+   "rightTabStrip": "rgba(0, 33, 41, 0.7)",
+   "centreTabStrip": "rgba(0, 33, 41, 0.7)",
+   "editor": "rgba(0, 33, 41, 0.9)",
+   "vaultProfile": "rgba(0, 33, 41, 0.7)"
+  }
+ },
+ "stateAfterExit": {
+  "isFullScreen": false,
+  "isFullscreenClass": false
+ },
+ "spacesAfterExit": {
+  "0": 25
+ },
+ "spacesRestored": true,
+ "fullscreenEndedAt": "2026-11-03T08:24:56.155Z",
+ "status": "COMPLETE"
+}

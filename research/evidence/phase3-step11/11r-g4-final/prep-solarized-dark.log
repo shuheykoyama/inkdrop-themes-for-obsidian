@@ -1,0 +1,11 @@
+["is-focused","is-translucent"] {
+  app: '1.14.5',
+  electron: '43.8.3',
+  frame: 'hidden',
+  themeLength: 138326,
+  built: 138326
+} {
+  theme: 'G4 solarized-dark',
+  length: 138326,
+  sha256: 'f6b59e616f1e2d5cb3b82aefa5e5c8a1bb44b8e1431af7f057101c4ad9ed0fac'
+}

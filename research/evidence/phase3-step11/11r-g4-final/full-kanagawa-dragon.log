@@ -1,0 +1,7 @@
+COMPLETE {
+  entered: true,
+  left: true,
+  spacesBefore: { '0': 25 },
+  spacesAfterExit: { '0': 25 },
+  error: undefined
+}

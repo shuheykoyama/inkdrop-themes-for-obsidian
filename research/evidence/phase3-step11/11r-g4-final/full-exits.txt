@@ -1,0 +1,3 @@
+full solarized-dark exit 1
+full kanagawa-dragon exit 0
+full solarized-dark (2nd) exit 0
