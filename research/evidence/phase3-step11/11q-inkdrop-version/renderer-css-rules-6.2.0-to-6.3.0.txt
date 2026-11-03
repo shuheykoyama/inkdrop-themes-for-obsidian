@@ -1,0 +1,27 @@
+# Inkdrop renderer app CSS (renderer/assets/app-*.css), rules whose selector+body exist in only one version.
+# 6.2.0: app-C5SHbtoX.css (2797 rules); 6.3.0: app-CA7GjW_B.css (2806 rules). Other renderer CSS bundles (icon-picker, icons, login-view, notification-bar, plugin-readme-markdown-view, preferences-layout) are byte-identical.
+
+## only in 6.2.0 (6)
+.editor.limit-max-width.editor-viewmode-preview .mde-preview-container .mde-preview { flex:0 1 var(--readable-line-length-width,740px) }
+.mde-preview pre .ui.copy-to-clipboard.button { opacity:0;z-index:10;transition:opacity .2s ease-in-out,transform .2s ease-in-out;position:absolute;top:2px;right:2px;transform:scale(.9) }
+.mde-preview pre .ui.copy-to-clipboard.button>svg[name=check] { color:var(--success-color) }
+.mde-preview pre:hover .ui.copy-to-clipboard.button { opacity:1;transform:scale(1) }
+&>* { margin-right:.4em;vertical-align:middle!important }
+& .tag-list .ui.label.tag-label { margin-right:.3em }
+
+## only in 6.3.0 (15)
+.editor.limit-max-width.editor-viewmode-preview .mde-preview-container .mde-preview { --readable-width:min(var(--readable-line-length-width,740px), 100%) }
+.editor.limit-max-width.editor-viewmode-preview .mde-preview-container .mde-preview>* { margin-inline:auto!important }
+.editor.limit-max-width.editor-viewmode-preview .mde-preview-container .mde-preview>:not(table,:has(.mde-preview-unwrap)) { max-width:var(--readable-width) }
+.editor.limit-max-width.editor-viewmode-preview .mde-preview-container .mde-preview>:is(table,:has(.mde-preview-unwrap)) { width:fit-content;min-width:var(--readable-width);max-width:100% }
+.mde-preview :is(pre,.mde-preview-inline-code) .ui.copy-to-clipboard.button { opacity:0;z-index:10;transition:opacity .2s ease-in-out,scale .2s ease-in-out;position:absolute;scale:.9 }
+.mde-preview :is(pre,.mde-preview-inline-code) .ui.copy-to-clipboard.button>svg[name=check] { color:var(--success-color) }
+.mde-preview pre .ui.copy-to-clipboard.button { top:2px;right:2px }
+.mde-preview pre:hover .ui.copy-to-clipboard.button { opacity:1;scale:1 }
+.mde-preview .mde-preview-inline-code { position:relative }
+.mde-preview .mde-preview-inline-code .ui.copy-to-clipboard.button { --icon-button-font-size:.9em;--icon-button-padding:.5em;pointer-events:none;top:50%;left:100%;translate:0 -50% }
+.mde-preview .mde-preview-inline-code:hover .ui.copy-to-clipboard.button,.mde-preview .mde-preview-inline-code .ui.copy-to-clipboard.button:focus-visible { opacity:1;pointer-events:auto;scale:1 }
+margin-right:.3em;&:last-child { margin-right:0 }
+&>:not(.note-link-text) { vertical-align:middle!important }
+&>.note-status-icon { vertical-align:calc(.5cap - .5em)!important }
+vertical-align:middle;margin-right:.3em;&:last-child { margin-right:0 }
