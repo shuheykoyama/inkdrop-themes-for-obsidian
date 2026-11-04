@@ -1,0 +1,58 @@
+/* Platform: desktop UI typography (the user's request of 2026-11-04: font sizes, weights and the like follow Inkdrop,
+   except the font family; research/14 section 6.194). Measured in Inkdrop 6.3.0 and in Obsidian 1.14.5 with the survey
+   of every visible text of each window / dialog (the values are in the plan section). The role of an Obsidian
+   element is its nearest Inkdrop one (file explorer = note list and sidebar, Settings = Preferences, ...). Desktop
+   only: Inkdrop has no mobile app. Last in the entry so no later rule of lower specificity follows
+   (no-descending-specificity). Line heights are not set: Inkdrop's differ from part to part (1.0 to 1.43) and
+   setting them would move Obsidian's row heights. Tabs, the status bar and the tooltips have no measured
+   Inkdrop counterpart and keep Obsidian's. */
+.theme-dark:not(.is-mobile) {
+  /* File explorer items: Inkdrop's sidebar items and note list titles are 14px (13px in Obsidian). */
+  --nav-item-size: 14px;
+
+  /* Settings: Inkdrop's Preferences labels are bold, its section headings 17.5px. */
+  --setting-item-name-weight: 700;
+  --setting-group-heading-size: 17.5px;
+
+  /* Notifications: Inkdrop's text is 14px (13px in Obsidian). */
+  --notice-font-size: 14px;
+}
+
+/* Note titles of the file explorer: Inkdrop's note list titles are 600 (folders stay as the sidebar's notebooks, 400). */
+.theme-dark:not(.is-mobile) .nav-file-title-content {
+  font-weight: 600;
+}
+
+/* Menus: Inkdrop's menu items are 14px. */
+.theme-dark:not(.is-mobile) .menu-item-title {
+  font-size: 14px;
+}
+
+/* Command palette: Inkdrop's rows are 500 and its input 18.2px (14px in Obsidian). */
+.theme-dark:not(.is-mobile) .prompt .suggestion-title {
+  font-weight: 500;
+}
+
+.theme-dark:not(.is-mobile) .prompt .prompt-input {
+  font-size: 18.2px;
+}
+
+/* Dialogs: Inkdrop's titles are 700 and its buttons 13px / 600. */
+.theme-dark:not(.is-mobile) .modal-title {
+  font-weight: 700;
+}
+
+.theme-dark:not(.is-mobile) .modal-button-container button {
+  font-weight: 600;
+}
+
+/* Settings (Preferences): items and descriptions 14px, buttons 14px / 600. */
+.theme-dark:not(.is-mobile) .modal.mod-settings .vertical-tab-nav-item-title,
+.theme-dark:not(.is-mobile) .modal.mod-settings .setting-item-description {
+  font-size: 14px;
+}
+
+.theme-dark:not(.is-mobile) .modal.mod-settings .setting-item-control button {
+  font-size: 14px;
+  font-weight: 600;
+}

@@ -3911,6 +3911,54 @@
       ],
       "kind": "text",
       "value": "1.5em"
+    },
+    {
+      "id": "ui.font.file-title-size",
+      "requirement": "ui.font-sizes",
+      "selector": ".workspace-leaf-content[data-type=\"file-explorer\"] .nav-file-title-content",
+      "document": "main",
+      "property": "font-size",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "14px"
+    },
+    {
+      "id": "ui.font.file-title-weight",
+      "requirement": "ui.font-sizes",
+      "selector": ".workspace-leaf-content[data-type=\"file-explorer\"] .nav-file-title-content",
+      "document": "main",
+      "property": "font-weight",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "600"
+    },
+    {
+      "id": "ui.font.folder-title-size",
+      "requirement": "ui.font-sizes",
+      "selector": ".workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder-title-content",
+      "document": "main",
+      "property": "font-size",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "14px"
+    },
+    {
+      "id": "ui.font.folder-title-weight",
+      "requirement": "ui.font-sizes",
+      "selector": ".workspace-leaf-content[data-type=\"file-explorer\"] .nav-folder-title-content",
+      "document": "main",
+      "property": "font-weight",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "400"
     }
   ]
 }
