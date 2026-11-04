@@ -3889,59 +3889,6 @@
       "token": "--ink-yellow"
     },
     {
-      "id": "ui.font-size.editor",
-      "requirement": "ui.font-sizes",
-      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-source-view.mod-cm6 .cm-content",
-      "document": "main",
-      "property": "font-size",
-      "state": "md-live",
-      "appearance": [
-        "opaque"
-      ],
-      "kind": "text",
-      "value": "13px"
-    },
-    {
-      "id": "ui.font-size.reading",
-      "requirement": "ui.font-sizes",
-      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view p",
-      "document": "main",
-      "property": "font-size",
-      "state": "md-reading",
-      "appearance": [
-        "opaque"
-      ],
-      "kind": "text",
-      "value": "15px"
-    },
-    {
-      "id": "ui.font-size.reading-h1",
-      "requirement": "ui.font-sizes",
-      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view h1",
-      "document": "main",
-      "property": "font-size",
-      "state": "md-reading",
-      "appearance": [
-        "opaque"
-      ],
-      "kind": "text",
-      "value": "30px"
-    },
-    {
-      "id": "ui.font-size.reading-h6",
-      "requirement": "ui.font-sizes",
-      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view h6",
-      "document": "main",
-      "property": "font-size",
-      "state": "md-reading",
-      "appearance": [
-        "opaque"
-      ],
-      "kind": "text",
-      "value": "12.75px",
-      "scrollTo": "Heading 6"
-    },
-    {
       "id": "ui.font-size.ui-medium",
       "requirement": "ui.font-sizes",
       "selector": "body",
