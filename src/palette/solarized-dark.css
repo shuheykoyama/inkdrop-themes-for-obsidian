@@ -676,4 +676,9 @@
   --hsl-pink-700: 331deg 64% 42%; /* inkdropapp_solarized-dark@4337f6e styles/tokens.css:115 */
   --hsl-blue-800: 205deg 70% 28%; /* inkdropapp_solarized-dark@4337f6e styles/tokens.css:25 */
   --hsl-green-600: 68deg 100% 25%; /* inkdropapp_solarized-dark@4337f6e styles/tokens.css:49 */
+
+  /* Tokens added from research/data by research/tools/mermaid-kinds-gen/palette-tokens.mjs (the --mermaid-* tokens Inkdrop's Pele
+     stylesheet reads, research/14 section 6.196; the button line, section 6.197), and the tokens they reference */
+  --ink-button-box-shadow: 0px 0px 0px 1px var(--ink-strong-transparent-white) inset; /* inkdropapp_css@add48d9 ui.css:716 | light-dark(): dark branch */
+  --ink-strong-transparent-white: rgb(255 255 255 / 15%); /* inkdropapp_css@add48d9 ui.css:266 | notation (official lint) */
 }

@@ -25,4 +25,33 @@
   --h5-line-height: 1.25;
   --h6-line-height: 1.25;
   --code-size: 0.85em;
+
+  /* Weights (the user's request of 2026-11-05; research/14 section 6.197). Headings and bold follow Inkdrop's editor and preview
+     (bold = 700; Obsidian had 700 / 680 / ... / 600 and a bold of 600). The UI text of the lists and the tabs is 500, the headings of
+     the sidebar sections 600. The status bar, the backlinks' excerpts, names and counts are in components below. */
+  --h1-weight: 700;
+  --h2-weight: 700;
+  --h3-weight: 700;
+  --h4-weight: 700;
+  --h5-weight: 700;
+  --h6-weight: 700;
+  --bold-weight: 700;
+  --bold-modifier: 300; /* bold text is calc(var(--font-weight) + var(--bold-modifier)): 400 + 300 = 700 */
+  --nav-item-weight: 500;
+  --nav-item-weight-active: 500;
+  --nav-item-weight-hover: 500;
+  --nav-heading-weight: 600;
+  --nav-heading-weight-hover: 600;
+  --tab-font-weight: 500;
+  --file-header-font-weight: 500;
+  --vault-profile-font-weight: 500;
+
+  /* Icons: the line of every Lucide icon is 1.5 times Obsidian's (2px -> 3px; the large and extra large sizes 1.75px and 1.25px
+     -> 2.625px and 1.875px). */
+  --icon-stroke: 3px;
+  --icon-xs-stroke-width: 3px;
+  --icon-s-stroke-width: 3px;
+  --icon-m-stroke-width: 3px;
+  --icon-l-stroke-width: 2.625px;
+  --icon-xl-stroke-width: 1.875px;
 }

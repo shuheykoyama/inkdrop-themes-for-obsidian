@@ -14,8 +14,9 @@ for (const theme of ["solarized-dark", "kanagawa-dragon"]) {
   let css = readFileSync(file, "utf8");
   const defined = new Set([...css.matchAll(/^\s*(--[\w-]+)\s*:/gm)].map((m) => m[1]));
   const rename = (v) => v.replace(/var\(\s*(--[\w-]+)/g, (m, n) => (byToken.has(n) ? `var(${paletteName(n, byToken.get(n).raw_value)}` : m));
-  // --color-neutral-950: the page colour of Inkdrop's dark mode, which its Pele stylesheet uses for --pele-bg
-  const lines = []; const queue = [...byToken.keys()].filter((t) => t.startsWith("--mermaid-") || t === "--color-neutral-950");
+  // --color-neutral-950: the page colour of Inkdrop's dark mode, which its Pele stylesheet uses for --pele-bg;
+  // --button-box-shadow (and the 15% white it reads): the inset line of Inkdrop's buttons (research/14 section 6.197)
+  const lines = []; const queue = [...byToken.keys()].filter((t) => t.startsWith("--mermaid-") || ["--color-neutral-950", "--strong-transparent-white", "--button-box-shadow"].includes(t));
   const seen = new Set();
   while (queue.length) {
     const t = queue.shift(); if (seen.has(t)) continue; seen.add(t);
@@ -31,7 +32,8 @@ for (const theme of ["solarized-dark", "kanagawa-dragon"]) {
     const marks = [ld ? "light-dark(): dark branch" : null, value !== asDeclared ? "notation (official lint)" : null].filter(Boolean);
     lines.push(`  ${name}: ${value}; /* ${r["file:line"]}${marks.length ? ` | ${marks.join(" | ")}` : ""} */`);
   }
-  const block = `\n  /* Mermaid, every diagram type (research/14 section 6.196): the rest of the --mermaid-* tokens, which Inkdrop's Pele stylesheet\n     reads (research/tools/mermaid-kinds-gen/palette-tokens.mjs), and the tokens they reference */\n${lines.join("\n")}\n`;
+  if (!lines.length) { console.log(theme, "nothing to add"); continue; }
+  const block = `\n  /* Tokens added from research/data by research/tools/mermaid-kinds-gen/palette-tokens.mjs (the --mermaid-* tokens Inkdrop's Pele\n     stylesheet reads, research/14 section 6.196; the button line, section 6.197), and the tokens they reference */\n${lines.join("\n")}\n`;
   const i = css.lastIndexOf("}");
   css = css.slice(0, i).replace(/\n*$/, "\n") + block + css.slice(i);
   writeFileSync(file, css);

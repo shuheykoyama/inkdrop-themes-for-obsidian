@@ -3934,7 +3934,7 @@
         "opaque"
       ],
       "kind": "text",
-      "value": "600"
+      "value": "500"
     },
     {
       "id": "ui.font.folder-title-size",
@@ -3958,7 +3958,99 @@
         "opaque"
       ],
       "kind": "text",
-      "value": "400"
+      "value": "500"
+    },
+    {
+      "id": "ui.font.tab-title-weight",
+      "requirement": "ui.font-sizes",
+      "selector": ".workspace-split.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title",
+      "document": "main",
+      "property": "font-weight",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "500",
+      "state": "md-reading"
+    },
+    {
+      "id": "ui.font.header-title-weight",
+      "requirement": "ui.font-sizes",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .view-header-title",
+      "document": "main",
+      "property": "font-weight",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "500",
+      "state": "md-reading"
+    },
+    {
+      "id": "ui.font.reading-h2-weight",
+      "requirement": "ui.font-sizes",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view h2",
+      "document": "main",
+      "property": "font-weight",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "700",
+      "scrollTo": "Heading 2"
+    },
+    {
+      "id": "ui.font.reading-h6-weight",
+      "requirement": "ui.font-sizes",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view h6",
+      "document": "main",
+      "property": "font-weight",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "700",
+      "scrollTo": "Heading 6"
+    },
+    {
+      "id": "ui.font.reading-strong-weight",
+      "requirement": "ui.font-sizes",
+      "selector": ".workspace-split.mod-root .workspace-leaf.mod-active .markdown-reading-view .markdown-preview-view strong",
+      "document": "main",
+      "property": "font-weight",
+      "state": "md-reading",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "700",
+      "scrollTo": "Body with"
+    },
+    {
+      "id": "ui.icon.stroke",
+      "requirement": "ui.font-sizes",
+      "selector": "body",
+      "document": "main",
+      "property": "--icon-stroke",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "3px"
+    },
+    {
+      "id": "ui.icon.stroke-large",
+      "requirement": "ui.font-sizes",
+      "selector": "body",
+      "document": "main",
+      "property": "--icon-l-stroke-width",
+      "appearance": [
+        "opaque"
+      ],
+      "kind": "text",
+      "value": "2.625px"
     }
   ]
 }

@@ -18,9 +18,13 @@
   --notice-font-size: 14px;
 }
 
-/* Note titles of the file explorer: Inkdrop's note list titles are 600 (folders stay as the sidebar's notebooks, 400). */
-.theme-dark:not(.is-mobile) .nav-file-title-content {
-  font-weight: 600;
+/* The status bar, and the text of the backlinks pane (file names, excerpts, counts): 500, like the lists (the user's request of
+   2026-11-05). The pane's section headings are 600 through --nav-heading-weight (mapping/typography.css). */
+.theme-dark:not(.is-mobile) .status-bar,
+.theme-dark:not(.is-mobile) .backlink-pane .search-result-file-title .tree-item-inner,
+.theme-dark:not(.is-mobile) .backlink-pane .search-result-file-match,
+.theme-dark:not(.is-mobile) .backlink-pane .tree-item-flair {
+  font-weight: 500;
 }
 
 /* Menus: Inkdrop's menu items are 14px. */
@@ -55,4 +59,8 @@
 .theme-dark:not(.is-mobile) .modal.mod-settings .setting-item-control button {
   font-size: 14px;
   font-weight: 600;
+
+  /* Inkdrop's buttons carry a 1px inset line of 15% white (--button-box-shadow); Obsidian's button takes its shadow from these. */
+  --input-shadow: var(--ink-button-box-shadow);
+  --input-shadow-hover: var(--ink-button-box-shadow);
 }

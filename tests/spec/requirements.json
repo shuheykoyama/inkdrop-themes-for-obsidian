@@ -431,7 +431,7 @@
     {
       "id": "ui.font-sizes",
       "qd": "Q-D8",
-      "description": "Text sizes follow Inkdrop 6.3.0 (user's request of 2026-11-04): heading scale 2 / 1.5 / 1.25 / 1 / .875 / .85em, UI steps 12 / 13 / 14px; desktop UI sizes and weights of the file explorer, menus, command palette, dialogs and Settings (platform/desktop.css); the note text size stays the user's own Font size setting (the user took back the 13px / 15px note text on 2026-11-04)",
+      "description": "Text sizes follow Inkdrop 6.3.0 (user's request of 2026-11-04): heading scale 2 / 1.5 / 1.25 / 1 / .875 / .85em, UI steps 12 / 13 / 14px; desktop UI sizes and weights of the file explorer, menus, command palette, dialogs and Settings (platform/desktop.css); UI weights 500 for lists, tabs, header, status bar and backlinks, headings and bold 700, icon strokes 1.5 times Obsidian's (research/14 section 6.197); the note text size stays the user's own Font size setting (the user took back the 13px / 15px note text on 2026-11-04)",
       "platforms": [
         "desktop"
       ],
