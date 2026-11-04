@@ -4,6 +4,7 @@
 @import "../common/mapping/workspace.css";
 @import "../common/mapping/accent.css";
 @import "../common/mapping/text.css";
+@import "../common/mapping/typography.css";
 @import "../common/mapping/borders.css";
 @import "../common/mapping/states.css";
 @import "../common/mapping/ui.css";
@@ -20,5 +21,6 @@
 @import "../common/platform/mobile.css";
 @import "../common/mapping/canvas-graph.css";
 @import "../common/components/thino.css";
+@import "../common/platform/desktop.css";
 @import "./kanagawa-dragon/syntax.css";
 @import "./kanagawa-dragon/canvas.css";

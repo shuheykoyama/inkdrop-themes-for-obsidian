@@ -1,5 +1,5 @@
 {
-  "_comment": "Negative tests of the runtime runner (research/14 §3.2). `selfTest` is the outcome the runner MUST produce; cases marked FAIL prove that a missing, hidden, unreadable or wrongly expected element cannot pass. Not product requirements. Mobile cases run under app.emulateMobile(true); an emulated pass is reported as PASS (EMULATED) and compared as PASS here. self.mobile-translucent-leak turns translucency on during a mobile probe on purpose: its runner.environment row must be FAIL.",
+  "_comment": "Negative tests of the runtime runner (research/14 \u00a73.2). `selfTest` is the outcome the runner MUST produce; cases marked FAIL prove that a missing, hidden, unreadable or wrongly expected element cannot pass. Not product requirements. Mobile cases run under app.emulateMobile(true); an emulated pass is reported as PASS (EMULATED) and compared as PASS here. self.mobile-translucent-leak turns translucency on during a mobile probe on purpose: its runner.environment row must be FAIL.",
   "checks": [
     {
       "id": "self.positive-control.editor",
@@ -76,7 +76,7 @@
         "opaque"
       ],
       "expect": "hidden",
-      "reason": "Hidden frame (default): .titlebar is display:none (research/11 §7)",
+      "reason": "Hidden frame (default): .titlebar is display:none (research/11 \u00a77)",
       "selfTest": "PASS"
     },
     {
@@ -157,7 +157,7 @@
         "translucent"
       ],
       "selfTest": "PASS",
-      "token": "--ink-sidebar-background-acrylic"
+      "token": "--ink-note-list-bar-background-acrylic"
     },
     {
       "id": "self.text-kind-correct",
@@ -401,12 +401,26 @@
       "id": "self.pseudo-ignored",
       "selector": ".workspace-ribbon.mod-primary",
       "document": "main",
-      "property": "background-color",
+      "property": "content",
       "appearance": [
         "opaque"
       ],
-      "token": "--ink-note-list-bar-background",
-      "selfTest": "FAIL"
+      "selfTest": "FAIL",
+      "kind": "text",
+      "value": "\" \""
+    },
+    {
+      "id": "self.pseudo-honoured",
+      "selector": ".workspace-ribbon.mod-primary",
+      "document": "main",
+      "property": "content",
+      "appearance": [
+        "opaque"
+      ],
+      "selfTest": "PASS",
+      "kind": "text",
+      "value": "\" \"",
+      "pseudo": "::before"
     },
     {
       "id": "self.pseudo-corner-translucent",

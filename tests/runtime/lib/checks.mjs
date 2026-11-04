@@ -44,11 +44,12 @@ export function judge(c, m, defs) {
   }
   if (kind === "em") {
     // A length of `value` em: the computed px over the element's font size. WebKit draws borders in whole device
-    // pixels (3.333px for 0.25em of 14px at DPR 3), so up to 0.5px off passes.
+    // pixels (3.333px for 0.25em of 14px at DPR 3), so up to 0.5px off passes; Chromium floors them (3px for
+    // 0.25em of 15px at DPR 1), so a value up to just under 1px below the wanted one passes too.
     const px = parseFloat(m.value), fs = parseFloat(m.fontSize);
     if (!Number.isFinite(px) || !Number.isFinite(fs)) return ["FAIL", `not a length: ${JSON.stringify(m.value)} / font ${JSON.stringify(m.fontSize)}`];
     const want = Number(c.value) * fs;
-    return Math.abs(px - want) <= 0.5 ? ["PASS", `${m.value} (${c.value}em of ${m.fontSize})`] : ["FAIL", `${m.value} != ${c.value}em of ${m.fontSize} (${want}px)`];
+    return Math.abs(px - want) <= 0.5 || (px <= want && want - px < 1) ? ["PASS", `${m.value} (${c.value}em of ${m.fontSize})`] : ["FAIL", `${m.value} != ${c.value}em of ${m.fontSize} (${want}px)`];
   }
   if (kind === "text") {
     const exp = c.value !== undefined ? c.value : defs.has(c.token) ? substitute(defs.get(c.token), defs) : null;

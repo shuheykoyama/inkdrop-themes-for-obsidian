@@ -1,0 +1,27 @@
+/* Mapping: text sizes (the user's request of 2026-11-04: font sizes follow Inkdrop's, including the ratio of the UI
+   font to the note text). Shared structure, no colour literals. Inkdrop 6.3.0 (renderer bundle, @inkdropapp/css):
+   UI base 14px with the steps mini 11, tiny 12, small 13, medium 14, large 16; editor 13px and preview 15px
+   (default editor.fontSize and preview.fontSize; the user's Inkdrop has no override), line-height 1.5; preview
+   headings 2 / 1.5 / 1.25 / 1 / .875 / .85em with line-height 1.25; inline code and code blocks 85%.
+   The note text sizes are in platform/desktop.css (desktop only). */
+.theme-dark {
+  /* UI (the steps Obsidian has: smaller = Inkdrop tiny, small = small, medium = medium). */
+  --font-ui-smaller: 12px;
+  --font-ui-small: 13px;
+  --font-ui-medium: 14px;
+
+  /* Headings: Inkdrop's scale and line-height; code: Inkdrop's 85%. */
+  --h1-size: 2em;
+  --h2-size: 1.5em;
+  --h3-size: 1.25em;
+  --h4-size: 1em;
+  --h5-size: 0.875em;
+  --h6-size: 0.85em;
+  --h1-line-height: 1.25;
+  --h2-line-height: 1.25;
+  --h3-line-height: 1.25;
+  --h4-line-height: 1.25;
+  --h5-line-height: 1.25;
+  --h6-line-height: 1.25;
+  --code-size: 0.85em;
+}

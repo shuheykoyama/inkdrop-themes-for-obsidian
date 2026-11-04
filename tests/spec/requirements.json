@@ -429,6 +429,15 @@
       "mandatory": true
     },
     {
+      "id": "ui.font-sizes",
+      "qd": "Q-D8",
+      "description": "Text sizes follow Inkdrop 6.3.0 on the desktop (user's request of 2026-11-04): editor 13px, reading view 15px, headings 2 / 1.5 / 1.25 / 1 / .875 / .85em, UI steps 12 / 13 / 14px; the user's Font size setting no longer applies to note text on the desktop",
+      "platforms": [
+        "desktop"
+      ],
+      "mandatory": false
+    },
+    {
       "id": "qd8.user-font",
       "qd": "Q-D8",
       "description": "A user's interface font setting wins over the theme's UI font",
