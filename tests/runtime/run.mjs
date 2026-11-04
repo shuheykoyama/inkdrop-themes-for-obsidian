@@ -65,11 +65,26 @@ async function syntaxPage() {
 }
 // Mermaid (Q-D12, step 9): every diagram of tests/spec/mermaid.json's note is dumped
 // (tests/runtime/mermaid-dump.js) and judged against a reference rendering (tests/runtime/lib/mermaid.mjs).
-const mermaidSpec = JSON.parse(readFileSync(path.join(repo, "tests/spec/mermaid.json"), "utf8"));
+const mermaidJsSpec = JSON.parse(readFileSync(path.join(repo, "tests/spec/mermaid.json"), "utf8"));
+const mermaidPeleSpec = JSON.parse(readFileSync(path.join(repo, "tests/spec/mermaid-pele.json"), "utf8"));
 const mermaidDump = readFileSync(path.join(repo, "tests/runtime/mermaid-dump.js"), "utf8");
+// Pele's reference is styled by Inkdrop's own Mermaid-plugin stylesheet (tests/fixtures/inkdrop-pele-mermaid.css) with its tokens.
+const peleCss = readFileSync(path.join(repo, "tests/fixtures/inkdrop-pele-mermaid.css"), "utf8");
+const peleTokens = [...new Set(peleCss.match(/--mermaid-[a-z0-9-]+/g))].filter((n) => n !== "--mermaid-");
+// Obsidian 1.15 and later draws Mermaid text with Pele (window.pele), 1.14 with Mermaid.js (window.mermaid); the first diagram drawn loads it.
+const mermaidEngine = await evaluate(args.port, `(async () => {
+  app.saveLocalStorage("mermaid-vault-trust", true);
+  const leaf = app.workspace.getLeaf("tab");
+  await leaf.setViewState({ type: "markdown", state: { file: ${JSON.stringify(mermaidJsSpec.note)}, mode: "preview" }, active: true });
+  for (let i = 0; i < 30 && !(window.pele || window.mermaid); i++) { leaf.view.currentMode.applyScroll(8); await new Promise((r) => setTimeout(r, 300)); }
+  leaf.detach();
+  return window.pele ? "pele" : window.mermaid ? "mermaid" : null;
+})()`);
+const pele = mermaidEngine === "pele";
+const mermaidSpec = pele ? mermaidPeleSpec : mermaidJsSpec;
 async function mermaidPage(view, opts = {}, spec = mermaidSpec) {
   progress("mermaid dump", view, JSON.stringify(opts));
-  const input = { note: spec.note, view, tokens: spec.tokens, kinds: spec.kinds, unsupported: spec.unsupported, reference: "inkdrop", ...opts };
+  const input = { note: spec.note, view, tokens: spec.tokens, kinds: spec.kinds, unsupported: spec.unsupported, reference: "inkdrop", ...(pele ? { referenceCss: peleCss, peleTokens } : {}), ...opts };
   return evaluate(args.port, `window.__MERMAID = ${JSON.stringify(input)};\n${mermaidDump}`);
 }
 // Obsidian's base colour scheme of the isolated vault ("obsidian" = dark, "moonstone" = light).
@@ -393,7 +408,7 @@ if (selfTest) {
   const D = '.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"]';
   // The inline cases leave the user-styled node alone (its style attribute already sets fill).
   const mutateMermaid = (fn) => { const s = structuredClone(mermaidSpec); fn(s); return s; };
-  const mcases = [
+  const mjsCases = [
     { name: "positive control (theme and spec as committed)", expect: "PASS" },
     { name: "positive control, Live Preview", expect: "PASS", view: "live" },
     { name: "positive control, light scheme (Mermaid's defaults)", expect: "PASS", scheme: "light" },
@@ -424,6 +439,23 @@ if (selfTest) {
     { name: "filter on node shapes (painted)", expect: "FAIL", inline: [{ selector: 'g.node rect.label-container:not([style*="fill"])', property: "filter", value: "blur(1px)", priority: "important" }], only: [".colours"] },
     { name: "edge stroke-opacity changed (painted)", expect: "FAIL", inline: [{ selector: 'path.flowchart-link:not([style*="stroke:"])', property: "stroke-opacity", value: "0.3", priority: "important" }], only: [".colours"] },
   ];
+  // Pele (Obsidian 1.15 and later): the same kinds of change on Pele's markup.
+  const P = ".theme-dark .markdown-rendered .mermaid";
+  const peleCases = [
+    { name: "positive control (theme and spec as committed)", expect: "PASS" },
+    { name: "positive control, Live Preview", expect: "PASS", view: "live" },
+    { name: "positive control, light scheme (Obsidian's own colours)", expect: "PASS", scheme: "light" },
+    { name: "filter on a diagram", expect: "FAIL", css: `${P} > svg { filter: invert(1) !important; }`, only: [".filter"] },
+    { name: "wrong token on node shapes", expect: "FAIL", css: `${P} .pele-flowchart .pele-node > rect { fill: var(--ink-mermaid-cluster-background-color) !important; }`, only: [".colours"] },
+    { name: "wrong token on the slices of a pie chart", expect: "FAIL", css: `${P} .pele-pie .pele-slice { fill: var(--ink-mermaid-cluster-background-color) !important; }`, only: [".colours"] },
+    { name: "wrong token on a Gantt bar", expect: "FAIL", css: `${P} .pele-gantt .pele-task > rect { fill: var(--ink-mermaid-cluster-background-color) !important; }`, only: [".colours"] },
+    { name: "a palette token overridden under the diagram", expect: "FAIL", css: `${P} { --ink-mermaid-node-background-color: rgb(255 0 255); }`, only: [".colours"] },
+    { name: "missing elements (edges not drawn)", expect: "FAIL", css: `${P} .pele-edge { display: none !important; }`, only: [".elements"] },
+    { name: "theme loses to an inline style with !important", expect: "FAIL", inline: [{ selector: "g.pele-node > rect", property: "fill", value: "rgb(51, 51, 51)", priority: "important" }], only: [".colours"] },
+    { name: "light scheme leak (rule without .theme-dark)", expect: "FAIL", scheme: "light", css: ".markdown-rendered .mermaid .pele-flowchart .pele-node > rect { fill: var(--ink-mermaid-node-background-color) !important; }", only: [".colours"] },
+    { name: "leak into a non-Mermaid image", expect: "FAIL", css: ".theme-dark .markdown-rendered img { filter: hue-rotate(90deg) !important; }", only: [".others"] },
+  ];
+  const mcases = pele ? peleCases : mjsCases;
   for (const c of mcases) {
     await evaluate(args.port, `(() => { document.getElementById("ink-mermaid-self-test")?.remove(); ${c.css ? `document.head.createEl("style", { attr: { id: "ink-mermaid-self-test" }, text: ${JSON.stringify(c.css)} });` : ""} return 1; })()`);
     const light = c.scheme === "light";

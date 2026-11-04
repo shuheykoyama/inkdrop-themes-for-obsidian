@@ -519,4 +519,134 @@
   --ink-derived-search-match-selected-outline-color: hsl(var(--kanagawa-dragon-yellow)); /* derived: outline color of --ink-editor-search-match-selected-outline */
   --ink-derived-fold-placeholder-border-color: hsl(var(--kanagawa-dragon-black6)); /* derived: border color of --ink-editor-fold-placeholder-border */
   --ink-derived-mermaid-label-bkg-color: hsl(var(--kanagawa-wave-blue2) / 50%); /* derived: 50% alpha of --ink-mermaid-edge-label-background-color */
+
+  /* Mermaid, every diagram type (research/14 section 6.196): the rest of the --mermaid-* tokens, which Inkdrop's Pele stylesheet
+     reads (research/tools/mermaid-kinds-gen/palette-tokens.mjs), and the tokens they reference */
+  --ink-mermaid-active-task-background-color: hsl(var(--kanagawa-dragon-pink) / 70%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:96 */
+  --ink-mermaid-active-task-border-color: hsl(var(--kanagawa-dragon-pink)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:99 */
+  --ink-mermaid-alt-section-background-color: hsl(var(--kanagawa-dragon-black6) / 10%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:91 */
+  --ink-mermaid-crit-task-background-color: hsl(var(--kanagawa-autumn-red) / 70%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:102 */
+  --ink-mermaid-crit-task-border-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:103 */
+  --ink-mermaid-cynefin-chaotic-background-color: hsl(var(--kanagawa-autumn-red) / 35%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:145 */
+  --ink-mermaid-cynefin-clear-background-color: hsl(var(--kanagawa-dragon-yellow) / 35%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:148 */
+  --ink-mermaid-cynefin-cliff-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:138 */
+  --ink-mermaid-cynefin-complex-background-color: hsl(var(--kanagawa-dragon-green2) / 35%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:139 */
+  --ink-mermaid-cynefin-complicated-background-color: hsl(var(--kanagawa-dragon-blue2) / 35%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:142 */
+  --ink-mermaid-cynefin-confusion-background-color: hsl(var(--kanagawa-dragon-pink) / 35%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:151 */
+  --ink-mermaid-done-task-background-color: hsl(var(--kanagawa-dragon-black5)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:100 */
+  --ink-mermaid-done-task-border-color: hsl(var(--kanagawa-dragon-black6)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:101 */
+  --ink-mermaid-em-command-background-color: hsl(var(--kanagawa-dragon-blue2) / 35%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:125 */
+  --ink-mermaid-em-command-border-color: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:128 */
+  --ink-mermaid-em-event-background-color: hsl(var(--kanagawa-dragon-yellow) / 35%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:129 */
+  --ink-mermaid-em-event-border-color: hsl(var(--kanagawa-dragon-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:132 */
+  --ink-mermaid-em-processor-background-color: hsl(var(--kanagawa-dragon-pink) / 35%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:117 */
+  --ink-mermaid-em-processor-border-color: hsl(var(--kanagawa-dragon-pink)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:120 */
+  --ink-mermaid-em-read-model-background-color: hsl(var(--kanagawa-dragon-green2) / 35%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:121 */
+  --ink-mermaid-em-read-model-border-color: hsl(var(--kanagawa-dragon-green2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:124 */
+  --ink-mermaid-error-background-color: hsl(var(--kanagawa-winter-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:113 */
+  --ink-mermaid-error-text-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:114 */
+  --ink-mermaid-grid-color: hsl(var(--kanagawa-dragon-black6) / 40%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:104 */
+  --ink-mermaid-primary-color: hsl(var(--kanagawa-dragon-blue)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:108 */
+  --ink-mermaid-secondary-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:109 */
+  --ink-mermaid-section-background-color: hsl(var(--kanagawa-dragon-black6) / 20%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:90 */
+  --ink-mermaid-task-background-color: hsl(var(--kanagawa-wave-blue2) / 80%); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:94 */
+  --ink-mermaid-task-border-color: hsl(var(--kanagawa-dragon-blue2)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:95 */
+  --ink-mermaid-tertiary-color: hsl(var(--kanagawa-dragon-yellow)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:110 */
+  --ink-mermaid-today-line-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:105 */
+  --ink-mermaid-wardley-evolution-color: hsl(var(--kanagawa-dragon-red)); /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/preview.css:135 */
+  --ink-color-neutral-950: hsl(var(--hsl-neutral-950)); /* inkdropapp_css@add48d9 tokens.css:458 */
+  --ink-mermaid-alt-background-color: var(--ink-mermaid-cluster-background-color); /* inkdropapp_css@add48d9 mermaid.css:92 */
+  --ink-mermaid-arch-edge-arrow-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:161 */
+  --ink-mermaid-arch-edge-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:160 */
+  --ink-mermaid-arch-group-border-color: var(--ink-mermaid-cluster-border-color); /* inkdropapp_css@add48d9 mermaid.css:162 */
+  --ink-mermaid-arrowhead-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:28 */
+  --ink-mermaid-attribute-even-background-color: var(--ink-mermaid-cluster-background-color); /* inkdropapp_css@add48d9 mermaid.css:102 */
+  --ink-mermaid-attribute-odd-background-color: var(--ink-mermaid-node-background-color); /* inkdropapp_css@add48d9 mermaid.css:101 */
+  --ink-mermaid-class-text-color: var(--ink-mermaid-node-text-color); /* inkdropapp_css@add48d9 mermaid.css:80 */
+  --ink-mermaid-commit-label-background-color: var(--ink-mermaid-edge-label-background-color); /* inkdropapp_css@add48d9 mermaid.css:192 */
+  --ink-mermaid-commit-label-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:191 */
+  --ink-mermaid-composite-background-color: var(--ink-mermaid-cluster-background-color); /* inkdropapp_css@add48d9 mermaid.css:89 */
+  --ink-mermaid-composite-border-color: var(--ink-mermaid-cluster-border-color); /* inkdropapp_css@add48d9 mermaid.css:91 */
+  --ink-mermaid-composite-title-background-color: var(--ink-mermaid-cluster-background-color); /* inkdropapp_css@add48d9 mermaid.css:90 */
+  --ink-mermaid-cynefin-arrow-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:259 */
+  --ink-mermaid-cynefin-boundary-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:257 */
+  --ink-mermaid-cynefin-label-color: var(--ink-mermaid-primary-text-color); /* inkdropapp_css@add48d9 mermaid.css:281 */
+  --ink-mermaid-cynefin-text-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:280 */
+  --ink-mermaid-default-link-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:29 */
+  --ink-mermaid-em-arrowhead-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:222 */
+  --ink-mermaid-em-relation-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:223 */
+  --ink-mermaid-em-swimlane-background-color: var(--ink-mermaid-section-background-color); /* inkdropapp_css@add48d9 mermaid.css:220 */
+  --ink-mermaid-em-swimlane-border-color: var(--ink-mermaid-cluster-border-color); /* inkdropapp_css@add48d9 mermaid.css:221 */
+  --ink-mermaid-em-ui-background-color: var(--ink-mermaid-node-background-color); /* inkdropapp_css@add48d9 mermaid.css:198 */
+  --ink-mermaid-em-ui-border-color: var(--ink-mermaid-node-border-color); /* inkdropapp_css@add48d9 mermaid.css:199 */
+  --ink-mermaid-exclude-background-color: var(--ink-mermaid-alt-section-background-color); /* inkdropapp_css@add48d9 mermaid.css:113 */
+  --ink-mermaid-inner-end-background-color: var(--ink-mermaid-node-border-color); /* inkdropapp_css@add48d9 mermaid.css:93 */
+  --ink-mermaid-label-color: var(--ink-mermaid-node-text-color); /* inkdropapp_css@add48d9 mermaid.css:38 */
+  --ink-mermaid-packet-block-background-color: var(--ink-mermaid-node-background-color); /* inkdropapp_css@add48d9 mermaid.css:230 */
+  --ink-mermaid-packet-block-border-color: var(--ink-mermaid-node-border-color); /* inkdropapp_css@add48d9 mermaid.css:229 */
+  --ink-mermaid-packet-byte-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:226 */
+  --ink-mermaid-packet-label-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:227 */
+  --ink-mermaid-packet-title-color: var(--ink-mermaid-title-color); /* inkdropapp_css@add48d9 mermaid.css:228 */
+  --ink-mermaid-person-background-color: var(--ink-mermaid-node-background-color); /* inkdropapp_css@add48d9 mermaid.css:156 */
+  --ink-mermaid-person-border-color: var(--ink-mermaid-node-border-color); /* inkdropapp_css@add48d9 mermaid.css:157 */
+  --ink-mermaid-pie-legend-text-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:172 */
+  --ink-mermaid-pie-outer-stroke-color: var(--ink-mermaid-node-border-color); /* inkdropapp_css@add48d9 mermaid.css:174 */
+  --ink-mermaid-pie-section-text-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:171 */
+  --ink-mermaid-pie-stroke-color: var(--ink-mermaid-node-border-color); /* inkdropapp_css@add48d9 mermaid.css:173 */
+  --ink-mermaid-pie-title-text-color: var(--ink-mermaid-title-color); /* inkdropapp_css@add48d9 mermaid.css:170 */
+  --ink-mermaid-quadrant-1-background-color: var(--ink-mermaid-primary-color); /* inkdropapp_css@add48d9 mermaid.css:177 */
+  --ink-mermaid-quadrant-2-background-color: var(--ink-mermaid-secondary-color); /* inkdropapp_css@add48d9 mermaid.css:178 */
+  --ink-mermaid-quadrant-3-background-color: var(--ink-mermaid-tertiary-color); /* inkdropapp_css@add48d9 mermaid.css:179 */
+  --ink-mermaid-quadrant-4-background-color: var(--ink-mermaid-cluster-background-color); /* inkdropapp_css@add48d9 mermaid.css:180 */
+  --ink-mermaid-quadrant-border-color: var(--ink-mermaid-node-border-color); /* inkdropapp_css@add48d9 mermaid.css:184 */
+  --ink-mermaid-quadrant-point-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:182 */
+  --ink-mermaid-quadrant-text-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:181 */
+  --ink-mermaid-quadrant-title-color: var(--ink-mermaid-title-color); /* inkdropapp_css@add48d9 mermaid.css:183 */
+  --ink-mermaid-radar-axis-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:253 */
+  --ink-mermaid-radar-graticule-color: var(--ink-mermaid-grid-color); /* inkdropapp_css@add48d9 mermaid.css:254 */
+  --ink-mermaid-relation-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:96 */
+  --ink-mermaid-relation-label-background-color: var(--ink-mermaid-edge-label-background-color); /* inkdropapp_css@add48d9 mermaid.css:98 */
+  --ink-mermaid-relation-label-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:97 */
+  --ink-mermaid-requirement-background-color: var(--ink-mermaid-node-background-color); /* inkdropapp_css@add48d9 mermaid.css:165 */
+  --ink-mermaid-requirement-border-color: var(--ink-mermaid-node-border-color); /* inkdropapp_css@add48d9 mermaid.css:166 */
+  --ink-mermaid-requirement-text-color: var(--ink-mermaid-node-text-color); /* inkdropapp_css@add48d9 mermaid.css:167 */
+  --ink-mermaid-row-even-background-color: var(--ink-mermaid-cluster-background-color); /* inkdropapp_css@add48d9 mermaid.css:100 */
+  --ink-mermaid-row-odd-background-color: var(--ink-mermaid-node-background-color); /* inkdropapp_css@add48d9 mermaid.css:99 */
+  --ink-mermaid-secondary-border-color: var(--ink-mermaid-cluster-border-color); /* inkdropapp_css@add48d9 mermaid.css:46 */
+  --ink-mermaid-special-state-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:88 */
+  --ink-mermaid-state-background-color: var(--ink-mermaid-node-background-color); /* inkdropapp_css@add48d9 mermaid.css:83 */
+  --ink-mermaid-state-border-color: var(--ink-mermaid-node-border-color); /* inkdropapp_css@add48d9 mermaid.css:84 */
+  --ink-mermaid-state-label-color: var(--ink-mermaid-node-text-color); /* inkdropapp_css@add48d9 mermaid.css:85 */
+  --ink-mermaid-surface-background-color: var(--ink-mermaid-cluster-background-color); /* inkdropapp_css@add48d9 mermaid.css:47 */
+  --ink-mermaid-surface-border-color: var(--ink-mermaid-cluster-border-color); /* inkdropapp_css@add48d9 mermaid.css:48 */
+  --ink-mermaid-tag-label-background-color: var(--ink-mermaid-node-background-color); /* inkdropapp_css@add48d9 mermaid.css:194 */
+  --ink-mermaid-tag-label-border-color: var(--ink-mermaid-node-border-color); /* inkdropapp_css@add48d9 mermaid.css:195 */
+  --ink-mermaid-tag-label-color: var(--ink-mermaid-node-text-color); /* inkdropapp_css@add48d9 mermaid.css:193 */
+  --ink-mermaid-task-text-clickable-color: var(--ink-mermaid-task-text-color); /* inkdropapp_css@add48d9 mermaid.css:122 */
+  --ink-mermaid-task-text-color: var(--ink-text-color); /* inkdropapp_css@add48d9 mermaid.css:118 */
+  --ink-mermaid-task-text-dark-color: var(--ink-mermaid-task-text-color); /* inkdropapp_css@add48d9 mermaid.css:120 */
+  --ink-mermaid-task-text-light-color: var(--ink-mermaid-task-text-color); /* inkdropapp_css@add48d9 mermaid.css:119 */
+  --ink-mermaid-task-text-outside-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:121 */
+  --ink-mermaid-transition-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:86 */
+  --ink-mermaid-transition-label-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:87 */
+  --ink-mermaid-venn-set-text-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:188 */
+  --ink-mermaid-venn-title-text-color: var(--ink-mermaid-title-color); /* inkdropapp_css@add48d9 mermaid.css:187 */
+  --ink-mermaid-wardley-annotation-background-color: var(--ink-mermaid-node-background-color); /* inkdropapp_css@add48d9 mermaid.css:250 */
+  --ink-mermaid-wardley-annotation-border-color: var(--ink-mermaid-node-border-color); /* inkdropapp_css@add48d9 mermaid.css:248 */
+  --ink-mermaid-wardley-annotation-text-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:249 */
+  --ink-mermaid-wardley-axis-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:240 */
+  --ink-mermaid-wardley-axis-text-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:241 */
+  --ink-mermaid-wardley-background-color: var(--ink-mermaid-background-color); /* inkdropapp_css@add48d9 mermaid.css:239 */
+  --ink-mermaid-wardley-component-background-color: var(--ink-mermaid-node-background-color); /* inkdropapp_css@add48d9 mermaid.css:243 */
+  --ink-mermaid-wardley-component-border-color: var(--ink-mermaid-node-border-color); /* inkdropapp_css@add48d9 mermaid.css:244 */
+  --ink-mermaid-wardley-component-label-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:245 */
+  --ink-mermaid-wardley-grid-color: var(--ink-mermaid-grid-color); /* inkdropapp_css@add48d9 mermaid.css:242 */
+  --ink-mermaid-wardley-link-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:246 */
+  --ink-mermaid-xychart-axis-color: var(--ink-mermaid-line-color); /* inkdropapp_css@add48d9 mermaid.css:236 */
+  --ink-mermaid-xychart-background-color: var(--ink-mermaid-background-color); /* inkdropapp_css@add48d9 mermaid.css:233 */
+  --ink-mermaid-xychart-text-color: var(--ink-mermaid-text-color); /* inkdropapp_css@add48d9 mermaid.css:235 */
+  --ink-mermaid-xychart-title-color: var(--ink-mermaid-title-color); /* inkdropapp_css@add48d9 mermaid.css:234 */
+  --kanagawa-winter-red: 346deg 30% 20%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:57 */
+  --kanagawa-dragon-blue: 199deg 19% 49%; /* inkdropapp_kanagawa@f9c14a5 packages/dragon/styles/palette.css:51 */
+  --hsl-neutral-950: 0deg 0% 4%; /* inkdropapp_css@add48d9 tokens.css:215 */
 }

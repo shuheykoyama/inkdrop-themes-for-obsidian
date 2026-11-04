@@ -86,4 +86,33 @@
   --ink-mermaid-gen-082: rgb(255 216 177);
   --ink-mermaid-gen-083: rgb(255 203 93);
   --ink-mermaid-gen-084: rgb(255 186 42);
+
+
+
+
+  /* Derived Mermaid colours for Pele (research/tools/mermaid-kinds-gen/pele-port.mjs): Inkdrop's stylesheet writes them as
+     hsl(from <token> h s calc(l - 10)); computed here from the token's resolved value in research/data. Not Inkdrop tokens. */
+  --ink-derived-mermaid-pie-series-4: hsl(199deg 19% 39%);
+  --ink-derived-mermaid-pie-series-5: hsl(4deg 42% 50%);
+  --ink-derived-mermaid-pie-series-6: hsl(41deg 33% 55%);
+  --ink-derived-mermaid-pie-series-7: hsl(259deg 19% 39%);
+  --ink-derived-mermaid-pie-series-8: hsl(139deg 19% 39%);
+  --ink-derived-mermaid-gitgraph-series-1: hsl(199deg 19% 74%);
+  --ink-derived-mermaid-gitgraph-series-2: hsl(4deg 42% 85%);
+  --ink-derived-mermaid-gitgraph-series-3: hsl(41deg 33% 90%);
+  --ink-derived-mermaid-gitgraph-series-4: hsl(169deg 19% 74%);
+  --ink-derived-mermaid-gitgraph-series-5: hsl(139deg 19% 74%);
+  --ink-derived-mermaid-gitgraph-series-6: hsl(109deg 19% 74%);
+  --ink-derived-mermaid-gitgraph-series-7: hsl(259deg 19% 74%);
+  --ink-derived-mermaid-gitgraph-series-8: hsl(319deg 19% 74%);
+  --ink-derived-mermaid-node-shadow: drop-shadow(0 1px 2px hsl(var(--hsl-black) / 50%)); /* derived: inkdropapp_css@0.10.4 mermaid.css:41 (Inkdrop 6.3.0; not in research/data) | light-dark(): dark branch */
+  --ink-derived-mermaid-flow-container-border-color: var(--ink-mermaid-secondary-border-color); /* derived: inkdropapp_css@0.10.4 mermaid.css:54 (Inkdrop 6.3.0; not in research/data) | light-dark(): dark branch */
+  --ink-derived-mermaid-usecase-actor-background-color: var(--ink-mermaid-actor-background-color); /* derived: inkdropapp_css@0.10.4 mermaid.css:197 (Inkdrop 6.3.0; not in research/data) | light-dark(): dark branch */
+  --ink-derived-mermaid-usecase-actor-border-color: var(--ink-mermaid-actor-border-color); /* derived: inkdropapp_css@0.10.4 mermaid.css:198 (Inkdrop 6.3.0; not in research/data) | light-dark(): dark branch */
+  --ink-derived-mermaid-usecase-background-color: var(--ink-mermaid-node-background-color); /* derived: inkdropapp_css@0.10.4 mermaid.css:199 (Inkdrop 6.3.0; not in research/data) | light-dark(): dark branch */
+  --ink-derived-mermaid-usecase-border-color: var(--ink-mermaid-node-border-color); /* derived: inkdropapp_css@0.10.4 mermaid.css:200 (Inkdrop 6.3.0; not in research/data) | light-dark(): dark branch */
+  --ink-derived-mermaid-usecase-boundary-background-color: var(--ink-mermaid-cluster-background-color); /* derived: inkdropapp_css@0.10.4 mermaid.css:201 (Inkdrop 6.3.0; not in research/data) | light-dark(): dark branch */
+  --ink-derived-mermaid-usecase-boundary-border-color: var(--ink-mermaid-cluster-border-color); /* derived: inkdropapp_css@0.10.4 mermaid.css:202 (Inkdrop 6.3.0; not in research/data) | light-dark(): dark branch */
+  --ink-derived-mermaid-usecase-include-line-color: var(--ink-mermaid-line-color); /* derived: inkdropapp_css@0.10.4 mermaid.css:203 (Inkdrop 6.3.0; not in research/data) | light-dark(): dark branch */
+  --ink-derived-mermaid-usecase-extend-line-color: var(--ink-mermaid-line-color); /* derived: inkdropapp_css@0.10.4 mermaid.css:204 (Inkdrop 6.3.0; not in research/data) | light-dark(): dark branch */
 }

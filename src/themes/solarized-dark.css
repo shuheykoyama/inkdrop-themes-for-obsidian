@@ -19,6 +19,7 @@
 @import "../common/components/syntax.css";
 @import "../common/components/mermaid.css";
 @import "../common/components/mermaid-kinds.css";
+@import "../common/components/mermaid-pele.css";
 @import "../common/platform/translucent.css";
 @import "../common/platform/mobile.css";
 @import "../common/mapping/canvas-graph.css";

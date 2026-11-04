@@ -13,7 +13,7 @@
 // note in place before measuring; `inline` sets inline styles on Obsidian's SVG elements (runner self-test).
 // Reports what it found, never a judgement (tests/runtime/lib/mermaid.mjs judges).
 (async () => {
-  const { note, view, tokens, kinds, unsupported, reference, rerender, inline } = window.__MERMAID;
+  const { note, view, tokens, kinds, unsupported, reference, rerender, inline, referenceCss, peleTokens } = window.__MERMAID;
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   // Mermaid diagrams render only in a trusted vault (Obsidian 1.14 asks once per vault): the test vault is trusted.
   app.saveLocalStorage("mermaid-vault-trust", true);
@@ -67,10 +67,13 @@
     await sleep(800);
   }
   // Obsidian loads Mermaid with the first diagram it draws: on a fresh start (a device) draw one first.
-  for (let i = 0; i < 30 && !window.mermaid && blocks.length; i++) await scrollTo(blocks[0].line);
+  for (let i = 0; i < 30 && !(window.mermaid || window.pele) && blocks.length; i++) await scrollTo(blocks[0].line);
+  // Obsidian 1.15 and later draws with Pele (window.pele); 1.14 with Mermaid.js (window.mermaid).
+  const pele = !!window.pele;
+  out.engine = pele ? "pele" : "mermaid";
   // themeVariables from the theme's tokens, resolved to computed colours as Inkdrop's plugin resolves its own.
   const probe = document.body.createEl("span");
-  const themeVariables = Object.fromEntries(Object.entries(tokens).map(([k, t]) => { probe.style.color = `var(--ink-mermaid-${t})`; return [k, getComputedStyle(probe).color]; }));
+  const themeVariables = Object.fromEntries(Object.entries(tokens ?? {}).map(([k, t]) => { probe.style.color = `var(--ink-mermaid-${t})`; return [k, getComputedStyle(probe).color]; }));
   probe.remove();
   out.themeVariables = themeVariables;
   // The colours, and what else decides how a colour is painted (tests/runtime/lib/mermaid.mjs picks per element
@@ -92,16 +95,54 @@
   const host = document.body.createDiv();
   // The reference is laid out as wide as the note: some diagrams (Gantt) place their labels by the width they get.
   host.style.cssText = `position: absolute; left: -10000px; top: 0; width: ${el.querySelector(".markdown-preview-sizer, .cm-content")?.clientWidth ?? 700}px;`;
+  // Pele: Inkdrop's stylesheet and the tokens it reads, resolved from the palette (as Inkdrop resolves its own).
+  const peleVars = [];
+  if (pele && reference !== "default") {
+    document.getElementById("ink-ref-pele")?.remove();
+    document.head.createEl("style", { attr: { id: "ink-ref-pele" }, text: referenceCss });
+    const cs0 = getComputedStyle(document.body);
+    for (const n of peleTokens) {
+      for (const name of [n.replace("--mermaid-", "--ink-mermaid-"), n.replace("--mermaid-", "--ink-derived-mermaid-")]) { const raw = cs0.getPropertyValue(name).trim(); if (raw) { peleVars.push([n, raw]); break; } }
+    }
+    for (const [n, src] of [["--muted-text-color", "--ink-muted-text-color"], ["--page-font", "--ink-page-font"], ["--color-white", "--ink-color-neutral-950"], ["--color-neutral-950", "--ink-color-neutral-950"], ["--text-color", "--ink-text-color"]]) peleVars.push([n, cs0.getPropertyValue(src).trim()]);
+  }
+  // Pele lays a diagram out by the width of its container (a label wraps or shortens, ticks thin out), so the reference must be as wide as
+  // the diagram in the note: peleRef draws `code` in a fresh reference host of that width.
+  const peleRef = async (code, width) => {
+    const outer = host.createDiv(); outer.style.width = `${width}px`;
+    const h = outer.createDiv({ cls: reference === "default" ? "mermaid" : "mermaid-diagram" });
+    if (reference !== "default") { outer.style.colorScheme = "dark"; for (const [name, v] of peleVars) h.style.setProperty(name, v); }
+    window.pele.mount(h, code); await sleep(50);
+    return h.querySelector("svg");
+  };
+  const alnum = (x) => label(x).replace(/\W+/g, "");
   const seen = new Set();
   for (const [n, b] of blocks.entries()) {
     // The diagram type is what Mermaid itself puts on the reference SVG (aria-roledescription), whatever the first word of the text.
     const init = reference === "default" ? "" : `%%{init: ${JSON.stringify({ theme: "base", themeVariables })}}%%\n`;
     let refSvg = null;
+    if (pele) {
+      // Pele's reference: the same text drawn by the same Pele into a host that is NOT under the theme, as Inkdrop draws it:
+      // dark -- a .mermaid-diagram host with Inkdrop's own plugin stylesheet (referenceCss) and its --mermaid-* tokens resolved
+      // from the palette; light -- a plain .mermaid host, which gets Obsidian's own colours.
+      try {
+        const outer = host.createDiv(); outer.style.width = "100%";
+        const h = outer.createDiv({ cls: reference === "default" ? "mermaid" : "mermaid-diagram" });
+        if (reference !== "default") {
+          outer.style.colorScheme = "dark";
+          for (const [name, v] of peleVars) h.style.setProperty(name, v);
+        }
+        window.pele.mount(h, b.code);
+        await sleep(50);
+        refSvg = h.querySelector("svg");
+      } catch (e) { refSvg = null; }
+    } else {
     try {
       const { svg: ref } = await window.mermaid.render(`inkref${n}${Date.now()}`, init + b.code);
       host.innerHTML = ref;
       refSvg = host.querySelector("svg");
     } catch (e) { refSvg = null; }
+    }
     const want = refSvg?.getAttribute("aria-roledescription");
     if (!want || !kinds.includes(want)) {
       // Another kind: only its filter (Obsidian's inversion keeps it readable).
@@ -120,13 +161,21 @@
     for (let i = 0; i < 20 && !svg; i++) {
       await scrollTo(b.line);
       collectOthers();
-      svg = [...el.querySelectorAll(`.mermaid > svg[aria-roledescription="${want}"]`)].find((s) => label(s) === label(refSvg));
+      const cands = [...el.querySelectorAll(`.mermaid > svg[aria-roledescription="${want}"]`)];
+      if (pele) {
+        // The drawn diagram of this kind whose text is that of the reference drawn at the diagram's own width.
+        for (const c of cands) {
+          const r2 = await peleRef(b.code, c.parentElement.getBoundingClientRect().width);
+          if (alnum(r2) === alnum(c)) { svg = c; refSvg = r2; break; }
+        }
+      } else svg = cands.find((s) => label(s) === label(refSvg));
     }
     if (!svg) { out.diagrams.push({ block: n, kind: want, missing: true }); continue; }
     for (const s of inline ?? []) for (const e of svg.querySelectorAll(s.selector)) e.style.setProperty(s.property, s.value, s.priority ?? "");
     out.diagrams.push({ block: n, kind: want, id: svg.id, filter: getComputedStyle(svg).filter, actual: read(svg, true), reference: read(refSvg, false) });
   }
   host.remove();
+  document.getElementById("ink-ref-pele")?.remove();
   out.others = [...others].map(([element, filter]) => ({ element, filter }));
   leaf.detach();
   if (previous) app.workspace.setActiveLeaf(previous, { focus: true });
