@@ -250,9 +250,12 @@ try {
 
     // The output carries every palette declaration unchanged; outside the palette no colour literal at all.
     const out = declarations(outputs[theme]);
-    const missing = palette.filter((p) => !out.some((d) => d.selector === p.selector && d.prop === p.prop && d.value === p.value));
+    const missing = [...palette, ...(existsSync(path.join(root, "src/palette", `${theme}-mermaid.css`)) ? declarations(readFileSync(path.join(root, "src/palette", `${theme}-mermaid.css`), "utf8")) : [])].filter((p) => !out.some((d) => d.selector === p.selector && d.prop === p.prop && d.value === p.value));
     check(`S1 ${theme} output keeps every palette declaration verbatim`, outputs[theme] !== "" && missing.length === 0, list(missing.map((x) => x.prop)));
-    const paletteKeys = new Set(palette.map((p) => `${p.selector}|${p.prop}|${p.value}`));
+    // The generated palette extension (derived Mermaid colours, src/palette/<theme>-mermaid.css) is palette too.
+    const extraPath = path.join(root, "src/palette", `${theme}-mermaid.css`);
+    const extra = existsSync(extraPath) ? declarations(readFileSync(extraPath, "utf8")) : [];
+    const paletteKeys = new Set([...palette, ...extra].map((p) => `${p.selector}|${p.prop}|${p.value}`));
     const converted = out.filter((d) => !paletteKeys.has(`${d.selector}|${d.prop}|${d.value}`) && literals(d.value) !== "");
     check(`S1 ${theme} no colour literal outside the palette in the output`, converted.length === 0, list(converted.map((d) => `${d.prop}: ${d.value}`)));
   }
@@ -305,7 +308,7 @@ try {
     const lits = [], nested = [], important = [];
     tree.walkDecls((d) => {
       if (literal.test(d.value)) lits.push(`${d.prop}: ${d.value}`);
-      if (d.important && !allowlist.some((a) => a.rule === "declaration-no-important" && a.selector === norm(d.parent.selector) && a.property === d.prop)) important.push(`${d.parent.selector} { ${d.prop} }`);
+      if (d.important && !allowlist.some((a) => a.rule === "declaration-no-important" && ((a.selector === norm(d.parent.selector) && a.property === d.prop) || (a.selectorPrefix && norm(d.parent.selector).startsWith(a.selectorPrefix))))) important.push(`${d.parent.selector} { ${d.prop} }`);
     });
     tree.walkRules((r) => { if (r.parent?.type === "rule") nested.push(r.selector); });
     if (rel.startsWith(`src${path.sep}themes${path.sep}`) && !rel.slice(11).includes(path.sep)) {
@@ -341,7 +344,7 @@ try {
     check(`S4 ${rel} every selector is under .theme-dark`, outside.length === 0, outside.join(" | "));
   }
   for (const a of allowlist.filter((x) => x.rule === "declaration-no-important")) {
-    check(`S4 allow-list !important ${a.selector} { ${a.property} } names the app.css rule it overrides`, typeof a.overrides === "string" && a.overrides.trim() !== "");
+    check(`S4 allow-list !important ${a.selector ?? a.selectorPrefix} { ${a.property} } names the app.css rule it overrides`, typeof a.overrides === "string" && a.overrides.trim() !== "");
   }
 
   // ---------- S5: official lint on the outputs ----------
@@ -364,12 +367,12 @@ try {
     check(`S5 ${theme} stylelint errors = 0`, errors.length === 0, errors.map((w) => `${w.rule} L${w.line}: ${w.text}`).join(" | "));
     const unlisted = warnings.filter((w) => {
       const loc = at(w.line, w.column);
-      return !allowlist.some((a) => a.rule === w.rule && (a.theme === "*" || a.theme === theme) && loc && a.selector === loc.selector && a.property === loc.property);
+      return !allowlist.some((a) => a.rule === w.rule && (a.theme === "*" || a.theme === theme) && loc && ((a.selector === loc.selector && a.property === loc.property) || (a.selectorPrefix && loc.selector.startsWith(a.selectorPrefix))));
     });
     check(`S5 ${theme} every stylelint warning is allow-listed with a reason`, unlisted.length === 0, unlisted.map((w) => `${w.rule} L${w.line}`).join(" | "));
     const listed = allowlist.filter((a) => a.theme === "*" || a.theme === theme);
-    const stale = listed.filter((a) => !warnings.some((w) => { const loc = at(w.line, w.column); return w.rule === a.rule && loc && a.selector === loc.selector && a.property === loc.property; }));
-    check(`S5 ${theme} no stale allow-list entries`, stale.length === 0, stale.map((a) => `${a.rule} ${a.selector} { ${a.property} }`).join(" | "));
+    const stale = listed.filter((a) => !warnings.some((w) => { const loc = at(w.line, w.column); return w.rule === a.rule && loc && ((a.selector === loc.selector && a.property === loc.property) || (a.selectorPrefix && loc.selector.startsWith(a.selectorPrefix))); }));
+    check(`S5 ${theme} no stale allow-list entries`, stale.length === 0, stale.map((a) => `${a.rule} ${a.selector ?? a.selectorPrefix} { ${a.property} }`).join(" | "));
   }
   check("S5 every allow-list entry has a reason", allowlist.every((a) => typeof a.reason === "string" && a.reason.trim()));
 

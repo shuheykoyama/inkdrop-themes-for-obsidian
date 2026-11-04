@@ -452,6 +452,15 @@
       "overrides": "Mermaid 11.13.0's own <style> inside each diagram SVG, scoped by the diagram's random id (e.g. #m8f3c1f55b7b95b07 .node rect { fill; stroke }, #m… { fill }), specificity 1-0-0 and up",
       "reason": "Q-D12 needs Inkdrop's --mermaid-* colours on Flowchart / Sequence elements; Mermaid's id-scoped rules beat any id-less selector, so only !important applies them (measured: the same rule without !important leaves Mermaid's colour). A user's style / classDef stays: Mermaid emits both as inline declarations with !important (classDef also as id-scoped !important rules), which beat these stylesheet rules.",
       "refs": "research/14 §6.21 (V-10)"
+    },
+    {
+      "rule": "declaration-no-important",
+      "theme": "*",
+      "selectorPrefix": ".theme-dark .markdown-rendered .mermaid > svg",
+      "property": null,
+      "overrides": "Mermaid 11.13.0 stylesheet of each diagram, scoped by the diagram's random id: #<id> .node rect { fill: ... } (specificity 1,x,x; the same declarations without !important)",
+      "reason": "Obsidian's own Mermaid stylesheet carries the default colours under the diagram's id, which no class-scoped rule can beat without !important. The rules of the diagram types other than Flowchart and Sequence are generated (research/tools/mermaid-kinds-gen), hundreds of them, so the entry covers the whole scope instead of listing each one; the Flowchart and Sequence rules keep their own entries.",
+      "refs": "research/14 §6.21, §6.195"
     }
   ]
 }

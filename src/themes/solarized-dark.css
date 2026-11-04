@@ -1,6 +1,7 @@
 /* Theme entry: Solarized Dark. Only @import rules; scripts/build.mjs inlines them in this order
    (palette -> common mapping -> components -> platform -> theme-specific exceptions). */
 @import "../palette/solarized-dark.css";
+@import "../palette/solarized-dark-mermaid.css";
 @import "../common/mapping/workspace.css";
 @import "../common/mapping/accent.css";
 @import "../common/mapping/text.css";
@@ -17,6 +18,7 @@
 @import "../common/components/editor.css";
 @import "../common/components/syntax.css";
 @import "../common/components/mermaid.css";
+@import "../common/components/mermaid-kinds.css";
 @import "../common/platform/translucent.css";
 @import "../common/platform/mobile.css";
 @import "../common/mapping/canvas-graph.css";

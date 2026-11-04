@@ -8811,3 +8811,18 @@ Q-D10 は変えていない。BLOCKED も解いていない。
 - **判断が分かれる点**: ファイル一覧のノート名を 600 にした（Inkdrop のノート一覧の題が太字のため。重く見えるなら 400 に戻せる）。
 - **検査**: `npm test` 成功、ランタイム 3939 件 FAIL なし。要件 `ui.font-sizes` に 4 検査（ファイル一覧のノート名・フォルダ名のサイズと太さ）を追加。ほかの部分（メニュー、パレット、ダイアログ、設定）は、測定で確認したが、検査には入れていない。
 - **最終のハッシュ**: SD `89c88ea11fd23a5499f0f6a8d65eaaf012f328d46e2c17256a725a3c7fdb927e`、KD `cce222134fa53f0ad3ff60214cc18a13ac10689b60df2087839db39fa3088f28`。
+
+### 6.195 Mermaid の全図種を Inkdrop の色に合わせる（2026-11-04、ユーザーの依頼。`research/tools/mermaid-kinds-gen/`）
+
+- **依頼と範囲**: 「Obsidian で編集・表示できる Mermaid は、すべて Inkdrop と同じになるように」。Q-D12 の (b)「主要図種だけ（Flowchart と Sequence）」を、(c)「全図種」に広げる決定をユーザーが行った。Obsidian 1.14.5 の Mermaid 11.13.0 が描ける図種のうち、これまでの 2 種以外の **20 種**: class、stateDiagram、er、gantt、pie、journey、gitGraph、mindmap、timeline、quadrantChart、requirement、c4、sankey、xychart、block、packet、kanban、architecture、radar、treemap（すべてサンプルが描画できた）。
+- **方法**: Inkdrop の Mermaid プラグインは、base テーマに、`--mermaid-*` トークンから解決した themeVariables を渡している。これまでの検査と同じく、同じ Mermaid で「Inkdrop の設定での描画」を基準にし、その描画の色を CSS に写す。手で 1 図種ずつ規則を書かず、生成した:
+  1. `gen1.mjs`: 基準の描画の `<style>`（Mermaid 自身の色の宣言）を取る。
+  2. `gen3.mjs`: スタイルシートにない色（`fill`・`stroke`・`stop-color` の属性とインラインの style）を、Obsidian 既定の描画と基準の描画で、要素ごとに取る。
+  3. `gen2.mjs`: CSS（図の id を図種の範囲に置き換え、`!important`）とパレットを書く。色が `--ink-mermaid-*` のトークンならそれを使い、そうでない派生色（カラースケール、パイの各片、gantt のバーなど。Mermaid が themeVariables から導く）は `--ink-mermaid-gen-N` としてテーマごとのパレットに置く。
+- **成果物**: `src/common/components/mermaid-kinds.css`（生成）、`src/palette/solarized-dark-mermaid.css`・`kanagawa-dragon-mermaid.css`（生成。派生色 83 個）。両テーマの構造は同一（SD と KD の基準の描画で、ルールの並びが一致することを確かめた）。反転フィルタは 22 種すべてで外す。範囲は `.markdown-rendered` の中、閲覧と編集（Live Preview）。
+- **できないこと**: クラス図の付箋（note）の図形は、Mermaid が色を `style="fill:… !important"` でインラインに書く。インラインの `!important` は、どんな `!important` の規則でも負けるため、CSS では変えられない（付箋の黄色が残る）。ランタイム検査は、この 2 か所を DIFF（理由つき、PASS にしない）と報告する。
+- **検査の変更**（基準は緩めていない。対象を広げた）: `tests/spec/mermaid.json` の `kinds` に 20 種を足し、`unsupported` を空にした（必須の要素の型は、各図種の描画から作った）。`mermaid-dump.js` は、図種を「Mermaid が基準の SVG に付ける `aria-roledescription`」で決める（先頭の単語に依らない）。`lib/mermaid.mjs` は、グラデーションや marker の `url(#…-N)` の番号の違い（描画ごとに変わる）を無視し、`stop-color` を比べ、インライン `!important` の色の差を DIFF にする。フィクスチャ `Mermaid.md` は 24 ブロックに増やした（gitGraph のコミット ID は固定。乱数だと、基準と実物を対応づけられない）。静的検査は、生成したパレットファイル（S1）と、生成した規則の `!important`（S4・S5、範囲指定の許可）、`no-descending-specificity`（生成ファイルの範囲だけ無効にし、理由を書いた）を扱えるようにした。ランナーのセルフテストは、「反転フィルタが残った」「パイの片の色が違う」「gantt のバーの色が違う」の 3 件を足し、旧い「未対応図種が反転を失う」を外した。
+- **サンプルと検査の揺れ**: ライトの比較で、Gantt のタスクの文字がバーの内か外かが、実物と基準の描画で揺れた（サンプルのバーが境目の幅だった）。バーを長く、題を短くして、揺れない図にした（テーマの規則の問題ではない。ライトはテーマの規則が当たらない状態の比較）。インライン `!important` の DIFF 扱いは、Mermaid 自身がそうする図種（`spec.inlineImportant`、クラス図だけ）に限った（広げると、セルフテストの「テーマがインラインの `!important` に負ける」が FAIL でなくなるため）。
+- **結果**: `npm test` 成功。ランナーのセルフテスト 797 件がすべて期待どおり。ランタイム **5709 件が FAIL 0、UNSUPPORTED 0**（PASS (EMULATED) 1528、DIFF 602。Obsidian 1.14.5 / Electron 43.8.3）。Mermaid は SD・KD、閲覧・Live Preview・ライトで、22 図種とも基準と一致（クラス図の付箋 2 か所は DIFF）。1 回前の全回帰で、SD の「半透明のあと」の状態の Markdown ソース表示 9 検査が「要素なし」で失敗したが、同じコードの再実行で再現しなかった（画面外の行が描画されないタイミングの揺れとみる。原因は未確認）。
+- **最終のハッシュ**: SD `367079fc4e007fed599d96c31cb86f664a0a1619a41ef3524024452eb4addce4`、KD `2365e2096cd3d11ecd13dcbc9da2618fe6f0bb579a6f88719e286d71b5704444`（`theme.css` は約 245KB。以前は約 140KB）。
+- **未確認**: iPhone 実機での Mermaid（キットは更新していない。Mermaid の色は `.markdown-rendered` の中の規則で、モバイルにも当たる設計だが、実機・エミュレーションでの測定はしていない）、あなたの実際の Vault の図（ユーザーのスニペットやプラグインとの干渉）、Mermaid の別の版での再生成。

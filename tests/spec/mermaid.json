@@ -1,19 +1,31 @@
 {
-  "description": "Mermaid diagrams (Q-D12, step 9, research/14 §6.21). The runtime Mermaid checks (tests/runtime/lib/mermaid.mjs) render every block of `note` twice in the isolated Obsidian: as Obsidian draws it with the theme applied, and as a REFERENCE -- the same text, the same bundled Mermaid, the base theme and themeVariables resolved from this theme's --ink-mermaid-* tokens, which is what Inkdrop's Mermaid plugin does (inkdropapp/mermaid@384e9f5 packages/mermaid/src/theme.ts). `tokens` maps each themeVariable to the --ink-mermaid-<token> that Inkdrop's theme.ts reads it from (--mermaid-<token>), limited to the ones the palette declares; Mermaid derives the rest from them as in Inkdrop. `kinds` are the supported diagram kinds (svg[aria-roledescription]); `unsupported` the other kinds of the note, which keep Obsidian's inverting filter and are reported as UNSUPPORTED, never PASS. `image` is the note's test image, whose filter must stay none. `required` lists, per kind, element types (a tag and classes it must have) of which at least one element must be drawn, over all blocks of that kind.",
+  "description": "Mermaid diagrams (Q-D12, step 9, research/14 \u00a76.21). The runtime Mermaid checks (tests/runtime/lib/mermaid.mjs) render every block of `note` twice in the isolated Obsidian: as Obsidian draws it with the theme applied, and as a REFERENCE -- the same text, the same bundled Mermaid, the base theme and themeVariables resolved from this theme's --ink-mermaid-* tokens, which is what Inkdrop's Mermaid plugin does (inkdropapp/mermaid@384e9f5 packages/mermaid/src/theme.ts). `tokens` maps each themeVariable to the --ink-mermaid-<token> that Inkdrop's theme.ts reads it from (--mermaid-<token>), limited to the ones the palette declares; Mermaid derives the rest from them as in Inkdrop. `kinds` are the supported diagram kinds (svg[aria-roledescription]); `unsupported` the other kinds of the note, which keep Obsidian's inverting filter and are reported as UNSUPPORTED, never PASS. `image` is the note's test image, whose filter must stay none. `required` lists, per kind, element types (a tag and classes it must have) of which at least one element must be drawn, over all blocks of that kind. (2026-11-04, the user's request: every diagram type Obsidian's Mermaid draws takes Inkdrop's colours; the 20 other types are generated from Mermaid's own stylesheet, research/14 section 6.195.)",
   "note": "Mermaid.md",
   "kinds": [
     "flowchart-v2",
-    "sequence"
-  ],
-  "unsupported": [
+    "sequence",
     "class",
     "stateDiagram",
+    "er",
     "gantt",
     "pie",
-    "er",
+    "journey",
     "gitGraph",
-    "mindmap"
+    "mindmap",
+    "timeline",
+    "quadrantChart",
+    "requirement",
+    "c4",
+    "sankey",
+    "xychart",
+    "block",
+    "packet",
+    "kanban",
+    "architecture",
+    "radar",
+    "treemap"
   ],
+  "unsupported": [],
   "obsidianFilter": "invert(1) hue-rotate(180deg) saturate(1.25)",
   "image": "half-transparent.png",
   "tokens": {
@@ -150,6 +162,281 @@
         "text",
         "sequenceNumber"
       ]
+    ],
+    "class": [
+      [
+        "g",
+        "label"
+      ],
+      [
+        "g",
+        "divider"
+      ],
+      [
+        "g",
+        "node"
+      ]
+    ],
+    "stateDiagram": [
+      [
+        "path",
+        "edge-thickness-normal"
+      ],
+      [
+        "g",
+        "node"
+      ],
+      [
+        "g",
+        "label"
+      ]
+    ],
+    "er": [
+      [
+        "g",
+        "label"
+      ],
+      [
+        "g",
+        "divider"
+      ],
+      [
+        "g",
+        "node"
+      ]
+    ],
+    "gantt": [
+      [
+        "g",
+        "tick"
+      ],
+      [
+        "rect",
+        "section"
+      ],
+      [
+        "rect",
+        "task"
+      ]
+    ],
+    "pie": [
+      [
+        "path",
+        "pieCircle"
+      ],
+      [
+        "text",
+        "slice"
+      ],
+      [
+        "g",
+        "legend"
+      ]
+    ],
+    "journey": [
+      [
+        "circle",
+        "actor-1"
+      ],
+      [
+        "line",
+        "task-line"
+      ],
+      [
+        "circle",
+        "face"
+      ]
+    ],
+    "gitGraph": [
+      [
+        "circle",
+        "commit"
+      ],
+      [
+        "path",
+        "arrow"
+      ],
+      [
+        "rect",
+        "commit-label-bkg"
+      ]
+    ],
+    "mindmap": [
+      [
+        "g",
+        "node"
+      ],
+      [
+        "g",
+        "label"
+      ],
+      [
+        "path",
+        "edge-thickness-normal"
+      ]
+    ],
+    "timeline": [
+      [
+        "g",
+        "timeline-node"
+      ],
+      [
+        "path",
+        "node-bkg"
+      ],
+      [
+        "line",
+        "node-line--1"
+      ]
+    ],
+    "quadrantChart": [
+      [
+        "g",
+        "quadrant"
+      ],
+      [
+        "g",
+        "label"
+      ],
+      [
+        "g",
+        "data-point"
+      ]
+    ],
+    "requirement": [
+      [
+        "g",
+        "label"
+      ],
+      [
+        "g",
+        "node"
+      ],
+      [
+        "g",
+        "basic"
+      ]
+    ],
+    "c4": [
+      [
+        "g",
+        "person-man"
+      ]
+    ],
+    "sankey": [
+      [
+        "g",
+        "node"
+      ],
+      [
+        "g",
+        "link"
+      ],
+      [
+        "g",
+        "nodes"
+      ]
+    ],
+    "xychart": [
+      [
+        "g",
+        "label"
+      ],
+      [
+        "g",
+        "ticks"
+      ],
+      [
+        "g",
+        "main"
+      ]
+    ],
+    "block": [
+      [
+        "g",
+        "node"
+      ],
+      [
+        "rect",
+        "basic"
+      ],
+      [
+        "g",
+        "label"
+      ]
+    ],
+    "packet": [
+      [
+        "text",
+        "packetByte"
+      ],
+      [
+        "rect",
+        "packetBlock"
+      ],
+      [
+        "text",
+        "packetLabel"
+      ]
+    ],
+    "kanban": [
+      [
+        "g",
+        "node"
+      ],
+      [
+        "rect",
+        "basic"
+      ],
+      [
+        "g",
+        "label"
+      ]
+    ],
+    "architecture": [
+      [
+        "tspan",
+        "text-outer-tspan"
+      ],
+      [
+        "tspan",
+        "text-inner-tspan"
+      ],
+      [
+        "g",
+        "architecture-service"
+      ]
+    ],
+    "radar": [
+      [
+        "circle",
+        "radarGraticule"
+      ],
+      [
+        "line",
+        "radarAxisLine"
+      ],
+      [
+        "text",
+        "radarAxisLabel"
+      ]
+    ],
+    "treemap": [
+      [
+        "g",
+        "treemapNode"
+      ],
+      [
+        "rect",
+        "treemapLeaf"
+      ],
+      [
+        "text",
+        "treemapLabel"
+      ]
     ]
-  }
+  },
+  "inlineImportant": [
+    "class"
+  ]
 }

@@ -75,25 +75,34 @@
   out.themeVariables = themeVariables;
   // The colours, and what else decides how a colour is painted (tests/runtime/lib/mermaid.mjs picks per element
   // which of them are painted).
-  const props = ["fill", "stroke", "color", "background-color", "opacity", "fill-opacity", "stroke-opacity", "filter"];
+  const props = ["fill", "stroke", "color", "background-color", "stop-color", "opacity", "fill-opacity", "stroke-opacity", "filter"];
   const SVG_NS = "http://www.w3.org/2000/svg";
   // A rect, circle or ellipse with a zero width, height or radius is not rendered at all (SVG 2, 10.2-10.4).
   const empty = (e) => { if (!["rect", "circle", "ellipse"].includes(e.localName) || e.namespaceURI !== SVG_NS) return undefined; const b = e.getBBox(); return b.width === 0 || b.height === 0; };
   // shown: drawn with a box (markers' contents and the defs are never drawn themselves).
   const shown = (e) => { const r = e.getBoundingClientRect(); return e.checkVisibility({ opacityProperty: true, visibilityProperty: true }) && (r.width > 0 || r.height > 0); };
+  // imp: the properties set inline with !important (Mermaid does that for the colours of a few shapes, e.g. the notes of a class diagram):
+  // no stylesheet rule can beat them.
   const read = (svg, live) => [...svg.querySelectorAll("*")].filter((e) => !e.closest("style")).map((e) => {
     const cs = getComputedStyle(e);
-    return { tag: e.tagName.toLowerCase(), cls: [...e.classList].join(" "), ns: e.namespaceURI === SVG_NS ? "svg" : "html", empty: empty(e), shown: live ? shown(e) : undefined, ...Object.fromEntries(props.map((p) => [p, cs.getPropertyValue(p)])) };
+    return { tag: e.tagName.toLowerCase(), cls: [...e.classList].join(" "), ns: e.namespaceURI === SVG_NS ? "svg" : "html", empty: empty(e), shown: live ? shown(e) : undefined, imp: [...(e.style ?? [])].filter((n) => e.style.getPropertyPriority(n) === "important"), ...Object.fromEntries(props.map((p) => [p, cs.getPropertyValue(p)])) };
   });
   // The visible text of a diagram (its <style> holds the random id, so it is left out).
   const label = (svg) => [...svg.querySelectorAll("text, foreignObject")].map((e) => e.textContent).join("|");
   const host = document.body.createDiv();
-  host.style.cssText = "position: absolute; left: -10000px; top: 0;";
+  // The reference is laid out as wide as the note: some diagrams (Gantt) place their labels by the width they get.
+  host.style.cssText = `position: absolute; left: -10000px; top: 0; width: ${el.querySelector(".markdown-preview-sizer, .cm-content")?.clientWidth ?? 700}px;`;
   const seen = new Set();
   for (const [n, b] of blocks.entries()) {
-    // The diagram type is the first word after any %%{init}%% directive or %% comment lines.
-    const head = b.code.split("\n").filter((l) => !l.trim().startsWith("%%")).join("\n").trim().split(/\s/)[0];
-    const want = /^(flowchart|graph)$/.test(head) ? "flowchart-v2" : head === "sequenceDiagram" ? "sequence" : null;
+    // The diagram type is what Mermaid itself puts on the reference SVG (aria-roledescription), whatever the first word of the text.
+    const init = reference === "default" ? "" : `%%{init: ${JSON.stringify({ theme: "base", themeVariables })}}%%\n`;
+    let refSvg = null;
+    try {
+      const { svg: ref } = await window.mermaid.render(`inkref${n}${Date.now()}`, init + b.code);
+      host.innerHTML = ref;
+      refSvg = host.querySelector("svg");
+    } catch (e) { refSvg = null; }
+    const want = refSvg?.getAttribute("aria-roledescription");
     if (!want || !kinds.includes(want)) {
       // Another kind: only its filter (Obsidian's inversion keeps it readable).
       let svg = null;
@@ -105,10 +114,6 @@
       if (svg) { seen.add(svg.getAttribute("aria-roledescription")); out.unsupported.push({ kind: svg.getAttribute("aria-roledescription"), filter: getComputedStyle(svg).filter }); }
       continue;
     }
-    const init = reference === "default" ? "" : `%%{init: ${JSON.stringify({ theme: "base", themeVariables })}}%%\n`;
-    const { svg: ref } = await window.mermaid.render(`inkref${n}${Date.now()}`, init + b.code);
-    host.innerHTML = ref;
-    const refSvg = host.querySelector("svg");
     // The SVG of this block: the drawn diagram of that kind with the same visible text as the reference (the
     // order of the drawn diagrams is not stable, as Reading view renders lazily).
     let svg = null;

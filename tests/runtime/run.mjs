@@ -405,7 +405,9 @@ if (selfTest) {
     { name: "theme loses to an inline style with !important", expect: "FAIL", inline: [{ selector: 'g.node rect.label-container:not([style*="fill"])', property: "fill", value: "rgb(51, 51, 51)", priority: "important" }], only: [".colours"] },
     { name: "user linkStyle overridden by the theme", expect: "FAIL", css: `${D} path.flowchart-link { stroke: var(--ink-mermaid-line-color) !important; }`, only: [".colours"] },
     { name: "light scheme leak (rule without .theme-dark)", expect: "FAIL", scheme: "light", css: '.markdown-rendered .mermaid > svg[aria-roledescription="flowchart-v2"] g.node rect.label-container { fill: var(--ink-mermaid-node-background-color) !important; }', only: [".colours"] },
-    { name: "filter lifted on every kind (unsupported kinds lose their inversion)", expect: "FAIL", css: ".theme-dark .markdown-rendered .mermaid > svg { filter: none !important; }", only: [".unsupported"] },
+    { name: "inversion filter kept on another diagram type (class)", expect: "FAIL", css: '.theme-dark .markdown-rendered .mermaid > svg[aria-roledescription="class"] { filter: invert(1) hue-rotate(180deg) saturate(1.25) !important; }', only: [".filter"] },
+    { name: "wrong token on the slices of a pie chart (an attribute colour)", expect: "FAIL", css: '.theme-dark .markdown-rendered .mermaid > svg:is([id], #a)[aria-roledescription="pie"] path.pieCircle { fill: var(--ink-mermaid-cluster-background-color) !important; }', only: [".colours"] },
+    { name: "wrong token on a Gantt bar (a stylesheet colour)", expect: "FAIL", css: '.theme-dark .markdown-rendered .mermaid > svg:is([id], #a)[aria-roledescription="gantt"] rect.task { fill: var(--ink-mermaid-cluster-background-color) !important; }', only: [".colours"] },
     { name: "leak into a non-Mermaid image", expect: "FAIL", css: ".theme-dark .markdown-rendered img { filter: hue-rotate(90deg) !important; }", only: [".others"] },
     // Painted properties per element type (research/14 §6.54): a change that paints differently FAILs, a change
     // of a property the element does not paint does not. The SVG-label block (htmlLabels: false) has SVG text

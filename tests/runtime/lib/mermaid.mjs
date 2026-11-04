@@ -30,13 +30,18 @@ import { parseComputedColor, sameColor } from "../../lib/css.mjs";
 
 const PROPS = ["fill", "stroke", "color", "background-color"];
 const OPACITIES = ["opacity", "fill-opacity", "stroke-opacity"];
+// A gradient / marker reference differs by the id Mermaid numbers at each render (url("#linearGradient-12")); the gradient's own stops are compared as elements.
+const noIds = (v) => (typeof v === "string" ? v.replace(/url\("?#[^")]*?-\d+"?\)/g, "url(#)") : v);
 const same = (p, a, b) => {
+  a = noIds(a); b = noIds(b);
   if (OPACITIES.includes(p) && a !== "" && b !== "" && !Number.isNaN(Number(a)) && !Number.isNaN(Number(b))) return Math.abs(Number(a) - Number(b)) <= 0.01;
   const ca = parseComputedColor(a), cb = parseComputedColor(b);
   return ca && cb ? sameColor(ca, cb) : a === b;
 };
 // The properties compared on element `a` (Obsidian's) and its reference `b`; null when neither is rendered.
 export function paintedProps(a, b) {
+  // A gradient stop paints with stop-color only.
+  if (a.tag === "stop") return ["stop-color"];
   if (a.ns === undefined) return PROPS;
   // An HTML label and the foreignObject around it paint the same way (CSS boxes): their text colour,
   // background, opacity and filter. Kept as two cases: the element types are judged apart in the details.
@@ -72,7 +77,7 @@ export function judgeMermaid(spec, page, scheme, where, ok) {
     results.push({ id: `${prefix}.${kind}.elements`, requirement, ...where, status: !drawn.length || missing.length || absent.length ? "FAIL" : ok,
       detail: [...missing, ...absent.map(([t, c]) => `no drawn ${t}${c ? `.${c.replace(/ /g, ".")}` : ""}`)].join("; ") || `${spec.required[kind].length} element types drawn` });
     // colours
-    const diffs = new Map();
+    const diffs = new Map(), lockedDiffs = new Map();
     let elements = 0, notRendered = 0;
     for (const d of drawn) {
       if (d.actual.length !== d.reference.length) diffs.set(`block ${d.block}: ${d.actual.length} elements vs reference ${d.reference.length}`, 1);
@@ -85,21 +90,26 @@ export function judgeMermaid(spec, page, scheme, where, ok) {
         if (!props) { notRendered++; return; }
         for (const p of props) {
           if (same(p, a[p], b[p])) continue;
+          // Set inline with !important by Mermaid itself (only the diagram types the spec lists in inlineImportant do that): a stylesheet
+          // cannot change it, so it is reported (DIFF), not failed. Anywhere else an inline !important is a real difference.
+          if (spec.inlineImportant?.includes(kind) && a.imp?.includes(p)) { const k = `${a.tag}${a.cls ? `.${a.cls.replace(/ /g, ".")}` : ""} ${p} ${a[p]} vs ${b[p]}`; lockedDiffs.set(k, (lockedDiffs.get(k) ?? 0) + 1); continue; }
           const k = `${a.tag}${a.cls ? `.${a.cls.replace(/ /g, ".")}` : ""} ${p} ${a[p]} vs ${b[p]}`;
           diffs.set(k, (diffs.get(k) ?? 0) + 1);
         }
       });
     }
-    results.push({ id: `${prefix}.${kind}.colours`, requirement, ...where, status: !drawn.length || missing.length || diffs.size ? "FAIL" : ok,
-      detail: [...missing, ...[...diffs].slice(0, 4).map(([k, n]) => `${n}x ${k}`)].join("; ") + (diffs.size > 4 ? ` (+${diffs.size - 4} more)` : "") || `${drawn.length} diagram(s), ${elements} elements as the reference${notRendered ? ` (${notRendered} not rendered, not compared)` : ""}`,
-      measured: diffs.size ? [...diffs].map(([k, n]) => ({ n, diff: k })) : undefined });
+    results.push({ id: `${prefix}.${kind}.colours`, requirement, ...where, status: !drawn.length || missing.length || diffs.size ? "FAIL" : lockedDiffs.size ? "DIFF" : ok,
+      detail: ([...missing, ...[...diffs].slice(0, 4).map(([k, n]) => `${n}x ${k}`)].join("; ") + (diffs.size > 4 ? ` (+${diffs.size - 4} more)` : "")) || (lockedDiffs.size ? `all other elements as the reference; ${[...lockedDiffs].reduce((n, [, c]) => n + c, 0)} colour(s) Mermaid sets inline with !important, which no stylesheet can change: ${[...lockedDiffs].slice(0, 3).map(([k, n]) => `${n}x ${k}`).join("; ")}` : `${drawn.length} diagram(s), ${elements} elements as the reference${notRendered ? ` (${notRendered} not rendered, not compared)` : ""}`),
+      measured: diffs.size ? [...diffs].map(([k, n]) => ({ n, diff: k })) : lockedDiffs.size ? [...lockedDiffs].map(([k, n]) => ({ n, locked: k })) : undefined });
   }
   // Unsupported kinds: never PASS.
   const want = scheme === "light" ? "none" : spec.obsidianFilter;
   const found = new Map(page.unsupported.map((u) => [u.kind, u.filter]));
   const wrong = spec.unsupported.filter((k) => found.get(k) !== want).map((k) => `${k}: ${found.get(k) ?? "not drawn"}`);
-  results.push({ id: `${prefix}.unsupported`, requirement: "qd12.unsupported", ...where, status: wrong.length ? "FAIL" : "UNSUPPORTED",
-    detail: wrong.length ? `filter not ${want}: ${wrong.join("; ")}` : `${spec.unsupported.length} kinds keep filter ${want} (not themed)` });
+  // A diagram of a kind the spec lists neither as supported nor as unsupported is a FAIL: the fixture and the spec disagree.
+  const unlisted = page.unsupported.filter((u) => !spec.unsupported.includes(u.kind)).map((u) => u.kind);
+  if (spec.unsupported.length || unlisted.length) results.push({ id: `${prefix}.unsupported`, requirement: "qd12.unsupported", ...where, status: wrong.length || unlisted.length ? "FAIL" : "UNSUPPORTED",
+    detail: unlisted.length ? `kinds in neither list: ${unlisted.join(", ")}` : wrong.length ? `filter not ${want}: ${wrong.join("; ")}` : `${spec.unsupported.length} kinds keep filter ${want} (not themed)` });
   // Other images and SVGs.
   const filtered = page.others.filter((o) => o.filter !== "none");
   const image = page.others.some((o) => o.element.endsWith(` ${spec.image}`));
