@@ -24,4 +24,7 @@
   --file-header-background: var(--ink-editor-background);
   --file-header-background-focused: var(--ink-editor-background);
   --status-bar-background: var(--ink-note-list-bar-background);
+
+  /* Note title: Inkdrop's title input colour (--input-color, 85% light), not the body text colour. */
+  --inline-title-color: var(--ink-input-color);
 }
