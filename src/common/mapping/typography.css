@@ -46,3 +46,9 @@
   --file-header-font-weight: 500;
   --vault-profile-font-weight: 500;
 }
+
+/* Font smoothing: Inkdrop and Obsidian both use `auto`. A plugin that sets `html { -webkit-font-smoothing:
+   antialiased }` (Todoist Board does) thins every glyph on macOS; the rule on body (.theme-dark is its class) wins over that inherited value. */
+.theme-dark {
+  -webkit-font-smoothing: auto;
+}
