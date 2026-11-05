@@ -45,13 +45,4 @@
   --tab-font-weight: 500;
   --file-header-font-weight: 500;
   --vault-profile-font-weight: 500;
-
-  /* Icons: the line of every Lucide icon is 1.5 times Obsidian's (2px -> 3px; the large and extra large sizes 1.75px and 1.25px
-     -> 2.625px and 1.875px). */
-  --icon-stroke: 3px;
-  --icon-xs-stroke-width: 3px;
-  --icon-s-stroke-width: 3px;
-  --icon-m-stroke-width: 3px;
-  --icon-l-stroke-width: 2.625px;
-  --icon-xl-stroke-width: 1.875px;
 }

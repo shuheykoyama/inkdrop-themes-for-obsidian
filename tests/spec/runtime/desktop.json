@@ -4027,30 +4027,6 @@
       "kind": "text",
       "value": "700",
       "scrollTo": "Body with"
-    },
-    {
-      "id": "ui.icon.stroke",
-      "requirement": "ui.font-sizes",
-      "selector": "body",
-      "document": "main",
-      "property": "--icon-stroke",
-      "appearance": [
-        "opaque"
-      ],
-      "kind": "text",
-      "value": "3px"
-    },
-    {
-      "id": "ui.icon.stroke-large",
-      "requirement": "ui.font-sizes",
-      "selector": "body",
-      "document": "main",
-      "property": "--icon-l-stroke-width",
-      "appearance": [
-        "opaque"
-      ],
-      "kind": "text",
-      "value": "2.625px"
     }
   ]
 }
