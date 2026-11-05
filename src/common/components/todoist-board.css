@@ -1,0 +1,12 @@
+/* Component: the Todoist Board plugin, a community plugin that sets html { -webkit-font-smoothing: antialiased }
+   for its whole UI. The theme keeps `auto` for the app (mapping/typography.css, like Inkdrop); the plugin's own
+   screens get its antialiased rendering back (the thinner look the user wants there). font-smoothing inherits,
+   so the plugin's roots are enough: the board view, its modals, its menu and its settings tab. */
+.theme-dark .todoist-board,
+.theme-dark .todoist-board-menu,
+.theme-dark .todoist-board-settings-tab,
+.theme-dark .todoist-settings-modal,
+.theme-dark .todoist-task-sheet-modal,
+.theme-dark .todoist-edit-task-modal {
+  -webkit-font-smoothing: antialiased;
+}

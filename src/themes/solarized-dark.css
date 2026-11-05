@@ -24,4 +24,5 @@
 @import "../common/platform/mobile.css";
 @import "../common/mapping/canvas-graph.css";
 @import "../common/components/thino.css";
+@import "../common/components/todoist-board.css";
 @import "../common/platform/desktop.css";

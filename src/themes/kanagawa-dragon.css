@@ -24,6 +24,7 @@
 @import "../common/platform/mobile.css";
 @import "../common/mapping/canvas-graph.css";
 @import "../common/components/thino.css";
+@import "../common/components/todoist-board.css";
 @import "./kanagawa-dragon/syntax.css";
 @import "./kanagawa-dragon/canvas.css";
 @import "../common/platform/desktop.css";
