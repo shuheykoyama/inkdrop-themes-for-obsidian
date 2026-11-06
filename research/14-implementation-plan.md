@@ -8924,3 +8924,11 @@ Inkdrop 6.3.0 は、承認のもとで 2 回操作した（一時ノートの作
 - **対応**: `components/syntax.css` に、`.theme-dark.ink-highlight .markdown-rendered pre code { color: var(--ink-mde-preview-inline-code-text-color) }` を足した（プラグインがあるときだけ。プラグインなしの既存のテストと見た目は変えない）。
 - **結果**: Kanagawa Dragon は、135 言語・境界・拡張・癖の全ノート（186 通りの要素のクラスの並び、約 1300 万文字、重複を含む）で、色・斜体・太さ・線・枠・背景・余白・輪郭の差が 0。Solarized Dark も、同じ全ノート（258 通り、約 1400 万文字）で差が 0。実際の Inkdrop 6.2.0 の実測（21 ブロック、2014 文字）との色の比較は、Kanagawa Dragon・Solarized Dark の両方で、ソース・ライブプレビュー・閲覧すべて 0 文字違い。
 - **残る限界**: 基準は Inkdrop の CSS を iframe で描いた値と、6.2.0 の実測（21 ブロック）で、Inkdrop 6.3.0 の Kanagawa Dragon の 135 言語の実測ではない。Inkdrop の 2 つ目の Julia は、Inkdrop の言語表で 1 つ目に隠れて使われない（意図かバグかは不明。Inkdrop の更新履歴にも記述がなかった）。
+
+### 6.206 Julia: Inkdrop の 2 つ目（Lezer 製）を使う（2026-11-07、ユーザーの依頼）
+
+- **Inkdrop の実際の動作**: 言語表に Julia が 2 つあり（`language-data` の StreamLanguage 製が先、Inkdrop が足した Lezer 製が後）、先に当たる 1 つ目が使われる。6.3.0 の実測（`julia` のブロック 501 文字）は、1 つ目と 0 文字違い、2 つ目とは 413 文字違い。同じ Julia のコードで、2 つの解析器の見た目は、Solarized Dark で 60 文字（12.0%）、Kanagawa Dragon で 56 文字（11.2%）違う（型名・括弧・記号・関数名などの色分けの細かさ。Inkdrop 自身の CSS で描画）。
+- **2 つ目の正体**: Inkdrop の束の `dist-DZge6hTx.js` は、npm の `@plutojl/lang-julia`（`julia()`）で、文法は `@plutojl/lezer-julia` 1.2.0 と `nodeNames`・`states` が完全に同一、ハイライトの規則（`styleTags`、69 規則）も同一（末尾のカンマの書式だけが違う）。
+- **対応（ユーザーの依頼）**: プラグインは、`language-data` の Julia の場所に、この Lezer 製の Julia を置く（`src/languages.js`。エディタとプレビューの両方）。つまり、プラグインの Julia は Inkdrop 自身の画面とは違い、Inkdrop が足した 2 つ目の見た目になる。回帰ツールは `globalThis.INK_JULIA_LEGACY` で Inkdrop の実際の動作（1 つ目）に戻して、これまでの実測との 0 文字違いを保つ（135 言語 0/101974、境界 0/749）。
+- **検証**: Obsidian 1.15.0 で、`Ext.md` の Julia ブロックのクラスが、プラグインの予測と、ソース・ライブプレビュー・閲覧すべてで 0 文字違い（`function` は `tok-definition-keyword`、関数名は `tok-definition tok-variable-name`、`(` は `tok-paren` など）。装飾（色・斜体・太さなど）は、Inkdrop 自身の CSS との比較（260 通りの要素、約 1360 万文字）が、Solarized Dark・Kanagawa Dragon の両方で差 0。`npm test` 成功。
+- **注意**: 2 つ目の Lezer 製の解析器を、Inkdrop の束のコードのまま Node で動かすと、別のコピーの `@lezer/highlight` のタグを使うため、こちらの色付けの表と一部（関数名の 1 文字）で噛み合わない。比較は npm 版（同一の文法とハイライト規則）で行った。

@@ -9,9 +9,15 @@ import { graphqlLanguage } from "cm6-graphql";
 import { svelte } from "@replit/codemirror-lang-svelte";
 import { nix } from "@replit/codemirror-lang-nix";
 import { mermaid } from "codemirror-lang-mermaid";
+import { julia } from "@plutojl/lang-julia";
 import { inkExtensions } from "./inkdrop-markdown.js";
 
-const others = languages.filter((l) => l.name !== "Markdown");
+// Julia: Inkdrop's table has two (language-data's StreamLanguage one first, its own Lezer one after) and uses the first. Here the
+// Lezer one (the same grammar: @plutojl/lezer-julia 1.2.0) takes the first one's place, by request: Inkdrop's own Julia highlighting
+// is the more detailed one. `globalThis.INK_JULIA_LEGACY` (the regression tools only) restores Inkdrop's own behaviour.
+const juliaDesc = LanguageDescription.of({ alias: ["julia"], extensions: ["julia"], name: "Julia", load: async () => julia() });
+const pickJulia = (l) => (l.name === "Julia" && !globalThis.INK_JULIA_LEGACY ? juliaDesc : l);
+const others = languages.filter((l) => l.name !== "Markdown").map(pickJulia);
 const extras = [
   LanguageDescription.of({ alias: ["ex", "elixir"], extensions: ["ex", "exs"], name: "Elixir", load: async () => new LanguageSupport(elixirLanguage) }),
   LanguageDescription.of({ alias: ["graphql"], extensions: ["graphql"], name: "GraphQL", load: async () => new LanguageSupport(graphqlLanguage) }),
@@ -28,7 +34,7 @@ export const find = (info) => LanguageDescription.matchLanguageName(table, info,
 // Inkdrop's preview resolves languages differently from its editor: language-data's own table (Markdown with no aliases and
 // no Inkdrop extensions) plus the extras; `markdown` and `md` (exactly, lower case) are parsed with a Markdown whose nested
 // languages are only those named by /```(\w+)/ in the text (backtick fences and word characters only), loaded beforehand.
-const previewTable = [...languages, ...extras];
+const previewTable = [...languages.map(pickJulia), ...extras];
 const findPreview = (info) => LanguageDescription.matchLanguageName(previewTable, info, true);
 const nestedCache = new Map();
 export async function previewParser(info, code) {

@@ -33,7 +33,7 @@ Everything runs from this directory. `data/` is not committed (Inkdrop's measure
 1. `npm ci`, then `node plugin/build.mjs` (writes `plugin/out/main.js`).
 2. Static drift check: extract Inkdrop's `app.asar` (`npx @electron/asar extract /Applications/Inkdrop.app/Contents/Resources/app.asar <dir>`), then
    `node tools/check-versions.mjs <dir>/renderer/assets`. Every Lezer grammar must be reported `SAME` (6.3.0: 32 of 33; the
-   33rd is Inkdrop's extra Julia, which its own table shadows). Legacy (StreamLanguage) modes carry no table: step 3 covers them.
+   33rd is Inkdrop's extra Julia, a different parser from its table's first Julia; the plugin uses it (`@plutojl/lang-julia` 1.2.0, the same grammar and rules), where Inkdrop itself uses the first. `tools/regress.mjs` sets `INK_JULIA_LEGACY` to compare with the app, which uses the first). Legacy (StreamLanguage) modes carry no table: step 3 covers them.
 3. Dynamic suite, one block per language (`git clone --depth 1 https://github.com/highlightjs/highlight.js data/highlight.js`
    for the samples; `node tools/mk-samples.mjs` writes `Languages.md`):
    `LANG_NOTE=<Languages.md> LANG_MEASURE=tools/lang-measure.mjs bash tools/lang-run.sh <work> data/inkdrop-lang135 <tmp>`

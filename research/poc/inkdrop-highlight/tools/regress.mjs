@@ -1,7 +1,8 @@
 // the new pipeline against the Inkdrop measurements already taken: 135 languages (editor + preview) and the edge cases (editor)
 import { readFileSync } from "node:fs";
-import { docClasses, codeClasses, norm } from "./predict.mjs";
-import { find } from "../src/languages.js";
+globalThis.INK_JULIA_LEGACY = true; // Inkdrop itself uses language-data's Julia: the regression compares with the app
+const { docClasses, codeClasses, norm } = await import("./predict.mjs");
+const { find } = await import("../src/languages.js");
 globalThis.__find = find;
 let tot = 0, bad = 0, blocks = 0; const diffs = [];
 for (const view of ["preview", "editor"]) {
