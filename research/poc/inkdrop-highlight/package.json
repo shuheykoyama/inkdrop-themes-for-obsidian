@@ -1,0 +1,16 @@
+{
+  "name": "inkdrop-highlight-poc",
+  "private": true,
+  "type": "module",
+  "description": "Proof of concept: Inkdrop's code highlighting in Obsidian (Lezer, tok-* classes)",
+  "dependencies": {
+    "@codemirror/language": "6.13.1",
+    "@codemirror/language-data": "6.5.2",
+    "@codemirror/lang-markdown": "6.5.2",
+    "@codemirror/legacy-modes": "6.5.5",
+    "@lezer/highlight": "1.2.5",
+    "@lezer/common": "1.5.5",
+    "@lezer/markdown": "1.8.1",
+    "esbuild": "0.28.2"
+  }
+}
