@@ -468,13 +468,28 @@
   color: var(--ink-syntax-url-color);
 }
 
-/* With the Inkdrop highlight plugin (research/poc/inkdrop-highlight), which adds `ink-highlight` to <body> and puts Inkdrop's
-   `tok-*` spans into the code: Obsidian's own colours on the CM5 token spans that wrap them (and on front matter and $$
-   math spans) give way, so text takes the colour of its `tok-*` span, or the code block's own colour where Inkdrop has none.
-   The `tok-*` rules themselves are in syntax-tok.css. */
+/* With the Inkdrop highlight plugin (research/poc/inkdrop-highlight), which adds `ink-highlight` to <body>, `ink-hl-line` to every
+   editor line it puts Inkdrop's `tok-*` spans into (code, front matter, $$ math) and the spans themselves: Obsidian's own Markdown
+   styling of the spans on those lines (colours, bold, italic, inline-code boxes, which Obsidian's parser puts there when it reads the
+   text differently from Inkdrop's) gives way, so text takes the colour and style of its `tok-*` span, or the code block's own where
+   Inkdrop has none. The `tok-*` rules themselves are in syntax-tok.css, imported after this one. */
+.theme-dark.ink-highlight .markdown-source-view.mod-cm6 .ink-hl-line span:not([class*="tok-"]),
 .theme-dark.ink-highlight .markdown-source-view.mod-cm6 .cm-hmd-codeblock:not([class*="tok-"]),
 .theme-dark.ink-highlight .markdown-source-view.mod-cm6 .cm-hmd-frontmatter:not([class*="tok-"]),
 .theme-dark.ink-highlight .markdown-source-view.mod-cm6 .cm-math:not([class*="tok-"]) {
   color: inherit;
-  font-style: inherit;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  background: none;
+  border: 0 none;
+  border-radius: 0;
+  outline: 0 none;
+  padding: 0;
+}
+
+/* Code in a quote or callout sits on a line the theme sets italic (Inkdrop's code in a quote is upright: its quote style is a token
+   class on the quote's own text only). */
+.theme-dark.ink-highlight .markdown-source-view.mod-cm6 [class*="tok-"] {
+  font-style: normal;
 }
