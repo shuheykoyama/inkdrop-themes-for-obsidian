@@ -45,7 +45,7 @@ const data = await ev(`(async()=>{
     const r=byLine.get(n); if (r) cur.lines.push(r); else { cur.lines.push([[t,"?"]]); cur.missing++; }
   }
   return blocks;})()`);
-const gt = JSON.parse(readFileSync("data/inkdrop-lang135/inkdrop-" + (mode === "reading" ? "preview" : "editor") + ".json", "utf8")).blocks.filter((x) => !x.error).map((x) => ({ lang: x.lang, code: x.text, ranges: x.ranges }));
+const gt = JSON.parse(readFileSync("data/" + (process.env.GT_DIR ?? "inkdrop-lang135") + "/inkdrop-" + (mode === "reading" ? "preview" : "editor") + ".json", "utf8")).blocks.filter((x) => !x.error && x.lang !== "julia").map((x) => ({ lang: x.lang, code: x.text, ranges: x.ranges }));
 const norm = (c) => c.split(/\s+/).filter(Boolean).sort().join(" ");
 let notFound = 0; const taken = new Set(); const diffs = []; let totalBad = 0, total = 0;
 for (const g of gt) {

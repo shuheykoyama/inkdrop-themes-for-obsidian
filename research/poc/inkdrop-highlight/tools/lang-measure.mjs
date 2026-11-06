@@ -12,7 +12,12 @@ const ws = new WebSocket(t.webSocketDebuggerUrl); await new Promise((r, j) => { 
 let id = 0; const pend = new Map(); ws.onmessage = (e) => { const m = JSON.parse(e.data); if (pend.has(m.id)) { pend.get(m.id)(m); pend.delete(m.id); } };
 const send = (method, params) => new Promise((res, rej) => { const n = ++id; pend.set(n, (m) => (m.error ? rej(new Error(JSON.stringify(m.error))) : res(m.result))); ws.send(JSON.stringify({ id: n, method, params })); });
 const evaluate = async (expression, timeout = 900000) => { const r = await Promise.race([send("Runtime.evaluate", { expression, returnByValue: true, awaitPromise: true }), new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), timeout))]); if (r.exceptionDetails) throw new Error(JSON.stringify(r.exceptionDetails).slice(0, 400)); return r.result.value; };
+if (process.env.INK_THEME) { // switch Inkdrop's theme for this measurement (the run's restore step puts the user's config back)
+  const sel = await evaluate(`window.__P2B_THEME = ${JSON.stringify(process.env.INK_THEME)};\n${readFileSync(path.join(repo, "research/evidence/phase2-p0/tools/inkdrop-select-theme.js"), "utf8")}`);
+  if (!sel.active?.includes(process.env.INK_THEME)) { console.log(`STOPPED: theme ${process.env.INK_THEME} is not active (${sel.active})`); process.exit(1); }
+}
 const theme = await evaluate(`inkdrop.config.get("core.theme")`);
+console.log("measuring with theme", theme);
 mkdirSync(outDir, { recursive: true });
 const measure = readFileSync(path.join(repo, "tests/visual/g7-measure.js"), "utf8");
 for (const view of ["editor", "preview"]) {

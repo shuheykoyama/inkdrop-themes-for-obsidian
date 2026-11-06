@@ -8932,3 +8932,11 @@ Inkdrop 6.3.0 は、承認のもとで 2 回操作した（一時ノートの作
 - **対応（ユーザーの依頼）**: プラグインは、`language-data` の Julia の場所に、この Lezer 製の Julia を置く（`src/languages.js`。エディタとプレビューの両方）。つまり、プラグインの Julia は Inkdrop 自身の画面とは違い、Inkdrop が足した 2 つ目の見た目になる。回帰ツールは `globalThis.INK_JULIA_LEGACY` で Inkdrop の実際の動作（1 つ目）に戻して、これまでの実測との 0 文字違いを保つ（135 言語 0/101974、境界 0/749）。
 - **検証**: Obsidian 1.15.0 で、`Ext.md` の Julia ブロックのクラスが、プラグインの予測と、ソース・ライブプレビュー・閲覧すべてで 0 文字違い（`function` は `tok-definition-keyword`、関数名は `tok-definition tok-variable-name`、`(` は `tok-paren` など）。装飾（色・斜体・太さなど）は、Inkdrop 自身の CSS との比較（260 通りの要素、約 1360 万文字）が、Solarized Dark・Kanagawa Dragon の両方で差 0。`npm test` 成功。
 - **注意**: 2 つ目の Lezer 製の解析器を、Inkdrop の束のコードのまま Node で動かすと、別のコピーの `@lezer/highlight` のタグを使うため、こちらの色付けの表と一部（関数名の 1 文字）で噛み合わない。比較は npm 版（同一の文法とハイライト規則）で行った。
+
+### 6.207 Kanagawa Dragon を、Solarized Dark と同じ質で Inkdrop 6.3.0 の実測と比べた（2026-11-07、ユーザーの依頼）
+
+- **実測**: Inkdrop 6.3.0 を、ユーザーの承認のもとで 1 回操作した。本番の Inkdrop を終了し、デバッグ付きで起動し、一時ノートを作り、テーマを一時的に `kanagawa-dragon` に切り替えて（`research/evidence/phase2-p0/tools/inkdrop-select-theme.js`）、135 言語のノート（エディタとプレビュー）を測り、ノートを削除し、設定（`config.json` など）を元に戻した（`RESTORED`、ポート 9334 閉）。測定のとき、テーマが `kanagawa-dragon` であることを確認した。エディタの 2 ブロック（`ls`・`rscript`）が、Solarized Dark のときと同じく、描画が落ち着かず未測定。
+- **テーマに依存しないこと**: Solarized Dark の実測と Kanagawa Dragon の実測で、どのクラスが付くか（`tok-*`・`md-*` の範囲）は、エディタ・プレビューとも 135 ブロックすべてで完全に同一。
+- **色の比較**（Obsidian 1.15.0、最終版のテーマとプラグイン、文字ごとの表示される色。Inkdrop の実測の色と比較。`julia` のブロックは、プラグインが Inkdrop 自身とは違う解析器を使うので除いた）: Kanagawa Dragon は、閲覧 134 ブロック 51262 文字、ソース・ライブプレビュー 132 ブロック 49710 文字が、いずれも 0 文字違い。Solarized Dark も、同じ最終版で測り直して、同じ数で 0 文字違い（行の装飾と閲覧の文字色の修正のあとの再確認）。DOM の文字列が違う 4 ブロックは、サンプル末尾の空行だけ。
+- **これで、装飾は両テーマとも、(1) Inkdrop 6.3.0 の実測の色（135 言語）、(2) Inkdrop 自身の CSS の計算値（色・斜体・太さなど、§6.204、§6.205）の両方で一致している**。
+- **残る限界**: 斜体・太字・下線は、アプリの実測ではなく、Inkdrop の CSS の計算値との比較（色は実測と CSS の両方）。`julia` は、プラグインが意図して Inkdrop と違う解析器（Inkdrop が足した 2 つ目）を使う。

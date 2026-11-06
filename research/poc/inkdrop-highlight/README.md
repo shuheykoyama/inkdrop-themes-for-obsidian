@@ -46,7 +46,8 @@ Everything runs from this directory. `data/` is not committed (Inkdrop's measure
    vault and the notes `Languages.md`, `Edge.md`, `Ext.md`, `Quirk.md`, `Big.md`; `tools/run-ob2.mjs` and `tools/run-ob-edge.mjs`
    read the DOM of Reading view, Source mode and Live Preview; `tools/edge-cmp3.mjs`, `tools/ext-cmp-ob.mjs`,
    `tools/quirk-cmp-ob.mjs` compare it with Inkdrop's measurement; `tools/run-ob-color.mjs` compares the computed colour of every
-   character with the colour Inkdrop rendered (Solarized Dark only: Inkdrop was measured with that theme); `tools/style-check.mjs` compares
+   character with the colour Inkdrop rendered (`GT_DIR=inkdrop-lang135` for Solarized Dark; for Kanagawa Dragon measure Inkdrop with
+   `INK_THEME=kanagawa-dragon` set for `lang-run.sh` into `data/inkdrop-lang135-kd` and use `GT_DIR=inkdrop-lang135-kd`; Julia is left out); `tools/style-check.mjs` compares
    colour, italic, weight, decoration, border, background, padding and outline of every class chain with Inkdrop's own CSS rendered in an iframe.
 
 Notes rendered before the plugin was enabled keep Obsidian's own highlighting until they change or Obsidian restarts
