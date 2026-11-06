@@ -1,11 +1,7 @@
 import { readFileSync } from "node:fs";
-import { scan } from "../src/blocks.js";
-const norm = (s) => s.split(/\s+/).filter((x) => x.startsWith("tok-") || x.startsWith("md-")).sort().join(" ");
+import { docClasses, norm } from "./predict.mjs";
 const body = readFileSync("fixtures/edge-body.md", "utf8");
-const S = scan(body); const region = new Array(body.length).fill(false);
-for (const f of S.fences) for (let k = f.from; k < f.to; k++) region[k] = true;
-if (S.front) for (let k = S.front.from; k < S.front.to; k++) region[k] = true;
-for (const m of S.math) for (let k = m.from; k < m.to; k++) region[k] = true;
+const { region } = docClasses(body);
 const ink = JSON.parse(readFileSync("data/inkdrop-edge/edge-editor.json", "utf8"));
 const perChar = (runs) => { const o = []; for (const [s, c] of runs) for (const ch of s) o.push([ch, norm(c)]); return o; };
 for (const mode of ["source", "live"]) {

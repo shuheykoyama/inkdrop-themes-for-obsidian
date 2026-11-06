@@ -24,7 +24,7 @@ const expr = (view) => `(async () => {
     const out = [];
     const all = [...document.querySelectorAll(".mde-preview pre")];
     for (const p of all) { p.scrollIntoView({ block: "center" }); await sleep(150); const c = p.querySelector("code.mde-preview-code-body") || p.querySelector("code"); out.push({ codeClass: c ? [...c.classList].join(" ") : null, preClass: [...p.classList].join(" "), runs: c ? runsOf(c) : [] }); }
-    return { mode, blocks: out };
+    return { mode, blocks: out, head: pre.innerHTML.slice(0, 3000), headText: pre.innerText.slice(0, 400) };
   }
   const cm = inkdrop.getExports()["@codemirror"].view.EditorView.findFromDOM(document.querySelector(".cm-editor"));
   const doc = cm.state.doc; const lines = [];

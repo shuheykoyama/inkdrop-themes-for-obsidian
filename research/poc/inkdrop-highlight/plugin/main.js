@@ -1,93 +1,61 @@
 import { Plugin } from "obsidian";
 import { ViewPlugin, Decoration } from "@codemirror/view";
 import { RangeSetBuilder, StateEffect } from "@codemirror/state";
-const refresh = StateEffect.define();
-import { LanguageDescription, StreamLanguage } from "@codemirror/language";
-import { yaml as yamlLegacy } from "@codemirror/legacy-modes/mode/yaml";
-import { scan } from "../src/blocks.js";
 import { tagHighlighter, highlightTree, tags as t } from "@lezer/highlight";
-import { languages } from "@codemirror/language-data";
 import { tags as mk } from "../src/tok-table.js";
+import { mdHighlighter, yamlParser } from "../src/inkdrop-markdown.js";
+import { find, previewParser } from "../src/languages.js";
+import { scan } from "../src/blocks.js";
 
-import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
-import { styleTags, Tag } from "@lezer/highlight";
-
-// Inkdrop's Markdown tags (HeaderMark etc.) and the classes it gives them (the `md-*` table of its preview highlighter).
-const T = Array.from({ length: 10 }, () => Tag.define());
-const [mHeader, mBreak, mQuote, mList, mLink, mEmph, mCode, mTable, mStrike, mInline] = T;
-const mdProps = { props: [styleTags({
-  HeaderMark: [mHeader, t.processingInstruction], HardBreak: [mBreak, t.processingInstruction], QuoteMark: [mQuote, t.processingInstruction],
-  ListMark: [mList, t.processingInstruction], LinkMark: [mLink, t.processingInstruction], EmphasisMark: [mEmph, t.processingInstruction],
-  CodeMark: [mCode, t.processingInstruction], TableDelimiter: [mTable, t.processingInstruction], StrikethroughMark: [mStrike, t.processingInstruction],
-  InlineCode: [mInline, t.monospace],
-})] };
-const mdHl = tagHighlighter([[mHeader, "md-header-mark"], [mBreak, "md-hard-break"], [mQuote, "md-quote-mark"], [mList, "md-list-mark"], [mLink, "md-link-mark"],
-  [mEmph, "md-emphasis-mark"], [mCode, "md-code-mark"], [mTable, "md-table-delimiter"], [mStrike, "md-strikethrough-mark"], [mInline, "md-inline-code"]].map(([tag, cls]) => ({ tag, class: cls })));
-const hl = tagHighlighter(mk(t));
-
-// Inkdrop's language table: language-data, with Markdown given the aliases md, mkd and gfm and Markdown code blocks parsed with the same table.
-const others = languages.filter((l) => l.name !== "Markdown");
-const mdDesc = LanguageDescription.of({ name: "Markdown", alias: ["md", "mkd", "gfm"], extensions: ["md", "markdown", "mkd", "gfm"],
-  load: async () => markdown({ addKeymap: false, base: markdownLanguage, codeLanguages: others, extensions: [mdProps] }) });
-const table = [...others, mdDesc];
-
-// Languages only Inkdrop's table has (not in language-data): left to Obsidian's own highlighting
-const INKDROP_ONLY = new Set(["elixir", "ex", "graphql", "svelte", "nix", "mermaid"]);
-const skipInfo = (info) => INKDROP_ONLY.has(info.toLowerCase());
-const cache = new Map(); // `${info}\0${code}` -> [[from,to,cls]]
-const loaded = new Map(); // info -> parser | null
+const highlighters = [tagHighlighter(mk(t)), mdHighlighter];
+const refresh = StateEffect.define();
+const parsers = new Map(); // info -> parser | null (no such language in Inkdrop's table)
 
 async function ensure(info, code) {
-  if (!loaded.has(info)) {
-    const d = LanguageDescription.matchLanguageName(table, info, true);
+  if (!parsers.has(info)) {
+    const d = find(info);
     let p = null;
     if (d) { if (!d.support) await d.load(); p = d.support ? d.support.language.parser : null; }
-    loaded.set(info, p);
+    parsers.set(info, p);
   }
   // Markdown parses its own fenced code with the languages loaded so far: load the ones this text names first
-  if (code && LanguageDescription.matchLanguageName(table, info, true)?.name === "Markdown")
+  if (code && find(info)?.name === "Markdown")
     for (const m of code.matchAll(/^\s*(?:`{3,}|~{3,})\s*([^\s`]+)/gm)) await ensure(m[1]);
-  return loaded.get(info);
+  return parsers.get(info);
 }
-function spans(info, code) {
-  const key = info + "\0" + code;
-  if (cache.has(key)) return cache.get(key);
-  const p = loaded.get(info);
-  const out = [];
-  if (p) highlightTree(p.parse(code), [hl, mdHl], (from, to, cls) => out.push([from, to, cls]));
-  cache.set(key, out);
+// [from, to, class] of one fenced block; `ranges` (the CodeText pieces) keeps quote and list markers out of the code
+function fenceSpans(text, f) {
+  const p = parsers.get(f.info), out = [];
+  // a tree parsed over ranges starts at 0 = the first range's start
+  if (p) highlightTree(p.parse(text, undefined, f.ranges), highlighters, (a, z, cls) => out.push([a + f.ranges[0].from, z + f.ranges[0].from, cls]));
   return out;
 }
+const readingCache = new Map();
+async function readingSpans(info, code) {
+  const key = info + "\0" + code;
+  if (!readingCache.has(key)) { const p = await previewParser(info, code), out = []; if (p) highlightTree(p.parse(code), highlighters, (a, z, cls) => out.push([a, z, cls])); readingCache.set(key, out); }
+  return readingCache.get(key);
+}
 
-const yamlParser = StreamLanguage.define(yamlLegacy).parser;
-const MARK = "md-code-mark tok-processing-instruction";
 let lastDoc = null, lastScan = null;
 function scanDoc(doc) { if (doc !== lastDoc) { lastScan = scan(doc.toString()); lastDoc = doc; } return lastScan; }
 
 const editorExt = ViewPlugin.fromClass(class {
-  constructor(view) { this.view = view; this.decorations = this.build(view); }
+  constructor(view) { this.decorations = this.build(view); }
   update(u) { if (u.docChanged || u.viewportChanged || u.transactions.some((tr) => tr.effects.some((e) => e.is(refresh)))) this.decorations = this.build(u.view); }
   build(view) {
     const items = []; // [from, to, class]
-    const doc = view.state.doc, S = scanDoc(doc);
+    const S = scanDoc(view.state.doc);
     for (const f of S.fences) {
-      if (f.to <= f.from || skipInfo(f.info)) continue;
-      const code = doc.sliceString(f.from, f.to);
-      if (!loaded.has(f.info) || (loaded.get(f.info) && !cache.has(f.info + "\0" + code))) {
-        ensure(f.info, code).then(() => { try { view.dispatch({ effects: [refresh.of(null)] }); } catch {} });
-        if (!loaded.has(f.info)) continue;
-      }
+      if (f.to <= f.from) continue;
+      const code = S.text.slice(f.from, f.to);
+      if (!parsers.has(f.info)) { ensure(f.info, code).then(() => { try { view.dispatch({ effects: [refresh.of(null)] }); } catch {} }); continue; }
       // Inkdrop's editor marks the code of a block without a known language as monospace
-      if (loaded.get(f.info) === null) { items.push([f.from, f.to, "tok-monospace"]); continue; }
-      for (const [a, z, cls] of spans(f.info, code)) items.push([f.from + a, f.from + z, cls]);
+      if (parsers.get(f.info) === null) { for (const r of f.ranges) items.push([r.from, r.to, "tok-monospace"]); continue; }
+      items.push(...fenceSpans(S.text, f));
     }
-    if (S.front) { // front matter: the --- marks and legacy YAML inside
-      const text = doc.sliceString(S.front.from, S.front.to), first = text.indexOf("\n"), last = text.lastIndexOf("\n");
-      items.push([S.front.from, S.front.from + first, MARK], [S.front.from + last + 1, S.front.to, MARK]);
-      const inner = text.slice(first + 1, last);
-      highlightTree(yamlParser.parse(inner), [hl, mdHl], (a, z, cls) => items.push([S.front.from + first + 1 + a, S.front.from + first + 1 + z, cls]));
-    }
-    for (const m of S.math) { const text = doc.sliceString(m.from, m.to), first = text.indexOf("\n"), last = text.lastIndexOf("\n"); items.push([m.from, m.from + first, MARK], [m.from + last + 1, m.to, MARK]); }
+    // front matter and $$ math blocks: highlighted by the same tree (YAML / LaTeX inside, md-code-mark on the marks)
+    for (const m of S.marks) highlightTree(S.tree, highlighters, (a, z, cls) => items.push([a, z, cls]), m.from, m.to);
     items.sort((x, y) => x[0] - y[0] || x[1] - y[1]);
     const b = new RangeSetBuilder();
     for (const [a, z, cls] of items) if (z > a) b.add(a, z, Decoration.mark({ class: cls }));
@@ -95,26 +63,47 @@ const editorExt = ViewPlugin.fromClass(class {
   }
 }, { decorations: (v) => v.decorations });
 
+function readingYaml(text) { const out = []; highlightTree(yamlParser.parse(text), highlighters, (a, z, cls) => out.push([a, z, cls])); return out; }
+function paint(code, spans) {
+  const text = code.textContent, frag = document.createDocumentFragment(); let pos = 0;
+  for (const [a, z, cls] of spans) { if (a > pos) frag.append(text.slice(pos, a)); const s = document.createElement("span"); s.className = cls; s.textContent = text.slice(a, z); frag.append(s); pos = z; }
+  if (pos < text.length) frag.append(text.slice(pos));
+  code.replaceChildren(frag);
+}
+
+function fenceInfo(ctx, el, code) {
+  const sec = ctx.getSectionInfo(el); if (!sec) return null;
+  const line = sec.text.split("\n")[sec.lineStart + Number(code.dataset.line || 0)] ?? "";
+  const w = /^\s*(?:>\s*)*(?:(?:[-*+]|\d+[.)])\s+)?(?:`{3,}|~{3,})\s*([^\s`]*)/.exec(line);
+  const info = w?.[1]?.replace(/:.*$/, "");
+  return info && info.toLowerCase() === code.className.split(" ").find((c) => c.startsWith("language-")).slice(9).replace(/:.*$/, "") ? info : null;
+}
+
 export default class InkHighlight extends Plugin {
   async onload() {
     this.registerEditorExtension(editorExt);
-    this.registerMarkdownPostProcessor(async (el) => {
+    this.registerMarkdownPostProcessor(async (el, ctx) => {
       for (const code of el.querySelectorAll("pre > code")) {
         const m = [...code.classList].find((c) => c.startsWith("language-"));
-        if (!m || code.closest(".frontmatter, .frontmatter-container")) continue; // Obsidian's own properties block is not a code block
-        const info = m.slice(9).replace(/:.*$/, ""); // Inkdrop's preview takes the language before a :filename suffix
-        if (skipInfo(info)) continue;
-        await ensure(info, code.textContent);
-        const text = code.textContent;
+        // Obsidian's properties shown as source (Settings > Editor > Properties in document): coloured like the front matter in Inkdrop's editor
+        const isFront = !!code.closest(".frontmatter");
+        if (!m && !isFront) continue;
+        let spans;
+        if (isFront) spans = readingYaml(code.textContent);
+        else {
+          let info = m.slice(9).replace(/:.*$/, ""); // Inkdrop's preview takes the language before a :filename suffix
+          // Obsidian lower-cases the language class, but Inkdrop's preview treats only exactly `markdown` and `md` as its Markdown: read the fence line
+          if (info === "markdown" || info === "md") info = fenceInfo(ctx, el, code) ?? info;
+          spans = await readingSpans(info, code.textContent);
+        }
         const apply = () => {
           if (code.querySelector('[class^="tok-"]')) return;
-          const sp = spans(info, code.textContent);
-          const frag = document.createDocumentFragment(); let pos = 0; const t2 = code.textContent;
-          for (const [a, z, cls] of sp) {
-            if (a > pos) frag.append(t2.slice(pos, a));
-            const s = document.createElement("span"); s.className = cls; s.textContent = t2.slice(a, z); frag.append(s); pos = z;
+          const text = code.textContent, frag = document.createDocumentFragment(); let pos = 0;
+          for (const [a, z, cls] of spans) {
+            if (a > pos) frag.append(text.slice(pos, a));
+            const s = document.createElement("span"); s.className = cls; s.textContent = text.slice(a, z); frag.append(s); pos = z;
           }
-          if (pos < t2.length) frag.append(t2.slice(pos));
+          if (pos < text.length) frag.append(text.slice(pos));
           code.replaceChildren(frag); obs.takeRecords();
         };
         // Obsidian runs Prism after the post-processors and rewrites the code element: re-apply when it does
