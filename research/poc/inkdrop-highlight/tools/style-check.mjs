@@ -4,12 +4,14 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { docClasses } from "./predict.mjs";
-// usage (isolated Obsidian on 9333 with the theme and the plugin, notes Languages.md Ext.md Quirk.md Edge.md in its vault; Inkdrop's app.asar extracted to $INKDROP_ASAR):
+// usage (isolated Obsidian on 9333 with the theme and the plugin, notes Languages.md Ext.md Quirk.md Edge.md in its vault; Inkdrop's app.asar extracted to $INKDROP_ASAR; THEME=kanagawa-dragon for that theme):
 //   node tools/style-check.mjs Languages,Ext,Quirk,Edge
 const HOME = process.env.HOME;
 const BASE = path.join(process.env.INKDROP_ASAR, "node_modules/@inkdropapp/css");
-const PKG = `${HOME}/Library/Application Support/inkdrop/packages/solarized-dark/styles`;
-const css = ["layers.css", "tokens.css", "syntax.css"].map((f) => readFileSync(path.join(BASE, f), "utf8")).join("\n") + "\n" + ["tokens.css", "syntax.css"].map((f) => readFileSync(path.join(PKG, f), "utf8")).join("\n");
+const THEME = process.env.THEME ?? "solarized-dark";
+const PKG = `${HOME}/Library/Application Support/inkdrop/packages/${THEME}/styles`;
+const PKG_FILES = THEME === "kanagawa-dragon" ? ["palette.css", "ui.css", "syntax.css", "preview.css"] : ["tokens.css", "ui.css", "syntax.css", "preview.css"];
+const css = ["layers.css", "tokens.css", "ui.css", "syntax.css", "markdown.css"].map((f) => readFileSync(path.join(BASE, f), "utf8")).join("\n") + "\n" + PKG_FILES.map((f) => readFileSync(path.join(PKG, f), "utf8")).join("\n");
 const list = await (await fetch("http://127.0.0.1:9333/json/list")).json();
 const t = list.find((x) => x.type === "page" && x.url.includes("obsidian.md"));
 const ws = new WebSocket(t.webSocketDebuggerUrl); await new Promise((r) => (ws.onopen = r));
@@ -33,7 +35,7 @@ for (const note of notes) for (const mode of ["source", "live", "reading"]) {
   await ev(`(async()=>{const l=app.workspace.getLeaf();await l.setViewState({type:"markdown",state:{file:${JSON.stringify(note + ".md")},mode:${JSON.stringify(mode === "reading" ? "preview" : "source")},source:${mode === "source"}}});app.workspace.leftSplit.collapse();app.workspace.rightSplit.collapse();await new Promise(r=>setTimeout(r,3500));return 1})()`);
   const body = readFileSync({ Languages: "data/Languages.md", Ext: "fixtures/ext-body.md", Quirk: "fixtures/quirk-body.md", Edge: "fixtures/edge-body.md" }[note], "utf8"); const mask = docClasses(body).region.map((x) => (x ? "1" : "0")).join("");
   const got = await ev(collector(mode, mask));
-  for (const [[chain, style], chars] of got) { if (!seen.has(chain)) seen.set(chain, new Map()); const m = seen.get(chain); const k = JSON.stringify(style); m.set(k, (m.get(k) ?? 0) + chars); const w = (globalThis.__where ??= new Map()); if (!w.has(chain + k)) w.set(chain + k, `${note}/${mode}`); }
+  for (const [[chain0, style], chars] of got) { const chain = (mode === "reading" ? "R|" : "E|") + chain0; if (!seen.has(chain)) seen.set(chain, new Map()); const m = seen.get(chain); const k = JSON.stringify(style); m.set(k, (m.get(k) ?? 0) + chars); const w = (globalThis.__where ??= new Map()); if (!w.has(chain0 + k)) w.set(chain0 + k, `${note}/${mode}`); }
   console.log(note, mode, "chains so far", seen.size);
 }
 // reference: Inkdrop's CSS in an iframe
@@ -41,21 +43,21 @@ const chains = [...seen.keys()];
 const ref = await ev(`(async()=>{
   const PROPS=${JSON.stringify(PROPS)}; const chains=${JSON.stringify(chains)};
   const f=document.createElement("iframe"); f.style.cssText="position:fixed;left:-9999px;width:800px;height:600px";
-  f.srcdoc='<!doctype html><html style="color-scheme:dark"><head><style>'+${JSON.stringify(css)}.replace(/<\\/style/g,"")+'</style></head><body class="dark-mode"><div class="cm-editor" style="color:var(--editor-foreground-color)"><div class="cm-line" id="root"></div></div></body></html>';
-  document.body.appendChild(f); await new Promise(r=>f.onload=r); const d=f.contentDocument, root=d.getElementById("root");
+  f.srcdoc='<!doctype html><html style="color-scheme:dark"><head><style>'+${JSON.stringify(css)}.replace(/<\\/style/g,"")+'</style></head><body class="dark-mode"><div class="cm-editor" style="color:var(--editor-foreground-color)"><div class="cm-line" id="root"></div></div><div class="mde-preview"><div class="codeblock"><pre><div class="mde-preview-code"><code class="mde-preview-code-body" id="rroot"></code></div></pre></div></div></body></html>';
+  document.body.appendChild(f); await new Promise(r=>f.onload=r); const d=f.contentDocument;
   const res={};
-  for(const ch of chains){ root.textContent=""; let parent=root; const names=ch?ch.split(" > "):[]; 
+  for(const ch0 of chains){ const ch=ch0.slice(2); const root=d.getElementById(ch0[0]==="R"?"rroot":"root"); root.textContent=""; let parent=root; const names=ch?ch.split(" > "):[]; 
     // one span per class: outermost first, as the plugin's spans are each one highlighter range; Inkdrop's rules then see the chain
     let el=document.createElement("span"); 
     for(const n of names){ const s=d.createElement("span"); s.className=n; parent.appendChild(s); parent=s; }
     const t=d.createElement("span"); t.textContent="x"; parent.appendChild(t);
-    const s=f.contentWindow.getComputedStyle(parent); const o={}; for(const p of PROPS)o[p]=s.getPropertyValue(p); res[ch]=o; }
+    const s=f.contentWindow.getComputedStyle(parent); const o={}; for(const p of PROPS)o[p]=s.getPropertyValue(p); res[ch0]=o; }
   f.remove(); return res; })()`);
 let bad = 0, total = 0; const lines = [];
 for (const [chain, styles] of seen) for (const [k, chars] of styles) {
-  total += chars; const mine = JSON.parse(k), want = ref[chain]; const cmp = chain === "" ? ["color", "font-style", "font-weight", "text-decoration-line"] : PROPS; // bare text: its parent is Obsidian's line or code element, whose box (padding, border) is not text styling
+  total += chars; const mine = JSON.parse(k), want = ref[chain]; const cmp = chain.slice(2) === "" ? ["color", "font-style", "font-weight", "text-decoration-line"] : PROPS; // bare text: its parent is Obsidian's line or code element, whose box (padding, border) is not text styling
   const diff = cmp.filter((p) => mine[p] !== want[p]);
-  if (diff.length) { bad += chars; lines.push(`  [${globalThis.__where.get(chain + k)}] chain "${chain}" (${chars} chars): ${diff.map((p) => `${p}: obsidian=${mine[p]} inkdrop=${want[p]}`).join("; ")}`); }
+  if (diff.length) { bad += chars; lines.push(`  [${globalThis.__where.get(chain.slice(2) + k)}] chain "${chain}" (${chars} chars): ${diff.map((p) => `${p}: obsidian=${mine[p]} inkdrop=${want[p]}`).join("; ")}`); }
 }
 console.log(`distinct class chains ${chains.length}; characters compared ${total}; characters whose style differs ${bad}`);
 console.log(lines.slice(0, 25).join("\n"));

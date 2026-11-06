@@ -8916,3 +8916,11 @@ Inkdrop 6.3.0 は、承認のもとで 2 回操作した（一時ノートの作
 - **修正後の結果**: 130 通りのクラスの並びで、比べた約 1400 万文字（スクロールで同じ行を何度も測るため、重複を含む）に、**差が 0**。`npm test` 成功、Obsidian 1.15.0 のランタイム 6629 件が FAIL 0。
 - **確かめた範囲の注意**: 基準は Inkdrop の CSS を iframe で描いた値で、Inkdrop のアプリの実測ではない（色は、実測と 0 文字違いを別に確認済み、§6.203）。裸の文字（`tok-*` の span のない文字）は、色・斜体・太さ・線の種類だけを比べた（親が Obsidian の行やコード要素で、その箱の余白は文字の装飾ではないため）。Kanagawa Dragon は Inkdrop の実測も、CSS の比較もしていない（テーマは SD だけで比べた）。行そのものの装飾（コードブロックの背景、Obsidian が別の見出しとして読んだ行の文字の大きさ）は、プラグインでは戻さない。
 - **Obsidian の挙動（プラグインの外）**: 大きなノートで、コードブロックの背景（`HyperMD-codeblock`）が途中から付かなくなるのは、プラグインなしで再現する Obsidian 自身の挙動（原因は未調査）。プラグインの色付けはその影響を受けず、全行に付く。
+
+### 6.205 Kanagawa Dragon の装飾の検証と、閲覧のコードの文字色（2026-11-07、ユーザーの依頼）
+
+- **Kanagawa Dragon の装飾**: Inkdrop 自身の CSS（`@inkdropapp/css` と Kanagawa Dragon のパッケージ。`palette.css`・`ui.css`・`syntax.css`・`preview.css`）を iframe で動かし、エディタの基準と閲覧の基準（`.mde-preview .codeblock pre code`）に分けて、Obsidian（テーマ + プラグイン）の計算値と比べた（`tools/style-check.mjs`、`THEME=kanagawa-dragon`）。
+- **見つけた差**: 閲覧のコードの、`tok-*` の span のない文字の色。Inkdrop のプレビューは、`code` の規則（`markdown.css`。`pre code` は色を戻さない）で、コードの文字を `--mde-preview-inline-code-text-color`（Kanagawa Dragon では rgb(200,192,146)）で描く。Obsidian は本文の色 rgb(197,201,197)。Inkdrop 6.2.0 の実測（`tests/fixtures/inkdrop-rendered-6.2.0.json`、KD のプレビュー 564 文字）も rgb(200,192,146)、エディタは rgb(197,201,197) で、CSS の基準と実測が一致した。Solarized Dark は 2 つの値が同じなので差が出なかった。
+- **対応**: `components/syntax.css` に、`.theme-dark.ink-highlight .markdown-rendered pre code { color: var(--ink-mde-preview-inline-code-text-color) }` を足した（プラグインがあるときだけ。プラグインなしの既存のテストと見た目は変えない）。
+- **結果**: Kanagawa Dragon は、135 言語・境界・拡張・癖の全ノート（186 通りの要素のクラスの並び、約 1300 万文字、重複を含む）で、色・斜体・太さ・線・枠・背景・余白・輪郭の差が 0。Solarized Dark も、同じ全ノート（258 通り、約 1400 万文字）で差が 0。実際の Inkdrop 6.2.0 の実測（21 ブロック、2014 文字）との色の比較は、Kanagawa Dragon・Solarized Dark の両方で、ソース・ライブプレビュー・閲覧すべて 0 文字違い。
+- **残る限界**: 基準は Inkdrop の CSS を iframe で描いた値と、6.2.0 の実測（21 ブロック）で、Inkdrop 6.3.0 の Kanagawa Dragon の 135 言語の実測ではない。Inkdrop の 2 つ目の Julia は、Inkdrop の言語表で 1 つ目に隠れて使われない（意図かバグかは不明。Inkdrop の更新履歴にも記述がなかった）。
