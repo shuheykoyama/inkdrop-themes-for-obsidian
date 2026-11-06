@@ -493,3 +493,10 @@
 .theme-dark.ink-highlight .markdown-source-view.mod-cm6 [class*="tok-"] {
   font-style: normal;
 }
+
+/* Reading view with the plugin: Inkdrop's preview colours the text of a code block with its inline-code colour (markdown.css: the
+   `code` rule that `pre code` does not reset), which is not the text colour in Kanagawa Dragon (measured: 6.2.0, 564 characters;
+   Solarized Dark has the same value for both). Spans with a `tok-*` class keep their own colour. */
+.theme-dark.ink-highlight .markdown-rendered pre code {
+  color: var(--ink-mde-preview-inline-code-text-color);
+}
