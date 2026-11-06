@@ -467,3 +467,14 @@
 .theme-dark .markdown-rendered :is(code.language-markdown, code.language-md) .token.url .token.url {
   color: var(--ink-syntax-url-color);
 }
+
+/* With the Inkdrop highlight plugin (research/poc/inkdrop-highlight), which adds `ink-highlight` to <body> and puts Inkdrop's
+   `tok-*` spans into the code: Obsidian's own colours on the CM5 token spans that wrap them (and on front matter and $$
+   math spans) give way, so text takes the colour of its `tok-*` span, or the code block's own colour where Inkdrop has none.
+   The `tok-*` rules themselves are in syntax-tok.css. */
+.theme-dark.ink-highlight .markdown-source-view.mod-cm6 .cm-hmd-codeblock:not([class*="tok-"]),
+.theme-dark.ink-highlight .markdown-source-view.mod-cm6 .cm-hmd-frontmatter:not([class*="tok-"]),
+.theme-dark.ink-highlight .markdown-source-view.mod-cm6 .cm-math:not([class*="tok-"]) {
+  color: inherit;
+  font-style: inherit;
+}
