@@ -81,6 +81,8 @@ function fenceInfo(ctx, el, code) {
 
 export default class InkHighlight extends Plugin {
   async onload() {
+    // tells the theme the plugin is running (its CSS lets Inkdrop's token colours replace Obsidian's own)
+    document.body.classList.add("ink-highlight"); this.register(() => document.body.classList.remove("ink-highlight"));
     this.registerEditorExtension(editorExt);
     this.registerMarkdownPostProcessor(async (el, ctx) => {
       for (const code of el.querySelectorAll("pre > code")) {
