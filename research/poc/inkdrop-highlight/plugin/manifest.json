@@ -1,1 +1,1 @@
-{"id":"ink-highlight-poc","name":"Ink highlight PoC","version":"0.0.1","minAppVersion":"1.0.0","description":"poc","author":"x"}
+{"id":"ink-highlight-poc","name":"Inkdrop code highlight (PoC)","version":"0.0.1","minAppVersion":"1.0.0","description":"Gives fenced code, front matter and math the token classes of Inkdrop 6.3.0, so the Inkdrop themes colour them like Inkdrop. Prototype.","author":"shuheykoyama","isDesktopOnly":true}
