@@ -1,6 +1,6 @@
 import { Plugin } from "obsidian";
 import { ViewPlugin, Decoration } from "@codemirror/view";
-import { RangeSetBuilder, StateEffect } from "@codemirror/state";
+import { StateEffect } from "@codemirror/state";
 import { tagHighlighter, highlightTree, tags as t } from "@lezer/highlight";
 import { tags as mk } from "../src/tok-table.js";
 import { mdHighlighter, yamlParser } from "../src/inkdrop-markdown.js";
@@ -56,10 +56,16 @@ const editorExt = ViewPlugin.fromClass(class {
     }
     // front matter and $$ math blocks: highlighted by the same tree (YAML / LaTeX inside, md-code-mark on the marks)
     for (const m of S.marks) highlightTree(S.tree, highlighters, (a, z, cls) => items.push([a, z, cls]), m.from, m.to);
-    items.sort((x, y) => x[0] - y[0] || x[1] - y[1]);
-    const b = new RangeSetBuilder();
-    for (const [a, z, cls] of items) if (z > a) b.add(a, z, Decoration.mark({ class: cls }));
-    return b.finish();
+    // Obsidian's own parser can miss a block Inkdrop's parser sees (a fence containing a shorter fence, for one): mark every code line
+    // so the theme can take Obsidian's Markdown styling (bold, italic, inline code) off the spans of those lines
+    const doc = view.state.doc, lines = new Set();
+    for (const [a, z] of [...items.map((i) => [i[0], i[1]]), ...S.fences.flatMap((f) => f.ranges.map((r) => [r.from, r.to]))]) {
+      if (z <= a) continue;
+      for (let n = doc.lineAt(a).number, end = doc.lineAt(z).number; n <= end; n++) lines.add(doc.line(n).from);
+    }
+    const all = items.filter((i) => i[1] > i[0]).map(([a, z, cls]) => Decoration.mark({ class: cls }).range(a, z));
+    for (const from of lines) all.push(Decoration.line({ class: "ink-hl-line" }).range(from));
+    return Decoration.set(all, true);
   }
 }, { decorations: (v) => v.decorations });
 
