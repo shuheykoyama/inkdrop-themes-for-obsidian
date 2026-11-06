@@ -12,7 +12,7 @@
 
 // ```lang\n<code>\n``` blocks; `start` is the offset of <code> in the note body.
 export function blocks(note) {
-  return [...note.matchAll(/^```(\w+)\n([\s\S]*?)\n```$/gm)].map((m) => ({ lang: m[1], code: m[2], start: m.index + 4 + m[1].length }));
+  return [...note.matchAll(/^```([^\s`]+)\n([\s\S]*?)\n```$/gm)].map((m) => ({ lang: m[1], code: m[2], start: m.index + 4 + m[1].length }));
 }
 
 // ranges: [{ from, to, ... }] in block offsets. Every non-blank character of `code` must lie in exactly one range,
